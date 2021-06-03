@@ -1,0 +1,19 @@
+@import '~styles/globals';
+
+.main-header {
+  height: 115px;
+
+  @media (max-width: 1900px) {
+    height: 95px;
+  }
+
+  @media (max-width: 992px) {
+    height: 89px;
+  }
+
+  &__wrapper--fix {
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+  }
+}

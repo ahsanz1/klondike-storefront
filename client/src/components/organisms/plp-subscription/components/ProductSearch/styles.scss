@@ -1,0 +1,29 @@
+@import '~styles/globals';
+
+.products-search {
+  .search-field {
+    max-width: none;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: left;
+  }
+
+  .search-field__input-wrapper {
+    max-width: none;
+  }
+
+  .site-search__input {
+    border: 3px solid $grey-color;
+    color: $primary-color;
+  }
+
+  .products-search {
+    font-size: 2rem;
+  }
+
+  .product-search-p {
+    font-size: 1.2rem;
+  }
+}

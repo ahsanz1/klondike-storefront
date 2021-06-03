@@ -1,0 +1,30 @@
+.product-contanier {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 80px 60px;
+
+  @media (max-width: 768px) {
+    padding: 10px 7px;
+  }
+
+  .category-title {
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: #000;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    line-height: 45px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      margin-bottom: 13px;
+      font-size: 26px;
+    }
+  }
+}
+
+.grey-bg-category {
+  background-color: #f7f7f7;
+}

@@ -1,0 +1,41 @@
+@import '~styles/globals';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $primary-color-light;
+  font-family: $font-futura;
+  font-size: $font-size-body;
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-intro;
+  font-weight: 500;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+.d-none {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .d-sm-block {
+    display: block;
+  }
+
+  .d-sm-none {
+    display: none;
+  }
+}

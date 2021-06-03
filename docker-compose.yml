@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+  eat-iq-bar:
+    build:
+      context: .
+    command: ["dumb-init", "-cv", "--", "bash", "-c", "npm run start:dev"]
+    container_name: klondike
+    network_mode: bridge
+    ports:
+      - "3000:8080"
+    volumes:
+      - ./:/eat-iq-bar/
+      - /node_modules

@@ -1,0 +1,41 @@
+.refer-footer {
+  width: 100%;
+  padding: 30px;
+  background-color: #f8f8f8;
+  color: #808080;
+  text-align: center;
+
+  .rf-heading {
+    margin-bottom: 2rem;
+    color: #808080;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    font-size: 20px;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (max-width: 768px) {
+    p {
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    img {
+      width: 25px;
+    }
+  }
+}

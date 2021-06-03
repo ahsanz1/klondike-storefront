@@ -1,0 +1,75 @@
+@import '~styles/globals';
+
+.bullet-points {
+  display: flex;
+  flex-direction: column;
+
+  .bullet-point {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+
+    .bullet-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+      background-repeat: no-repeat;
+      text-align: left;
+    }
+
+    .bullet-label {
+      margin: 0;
+      color: black;
+      font-size: 24px;
+      letter-spacing: 0.3px;
+      line-height: 1.4;
+    }
+  }
+}
+
+@media (min-width: 1800px) {
+  .bullet-points {
+    .bullet-point {
+      &:first-child {
+        margin-top: 0.84vw;
+      }
+
+      .bullet-label {
+        font-size: 1.34vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .bullet-points {
+    .bullet-point {
+      .bullet-label {
+        font-size: 2.2vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bullet-points {
+    align-items: flex-start;
+    margin: 0 auto 10px;
+
+    .bullet-point {
+      justify-content: start;
+      margin-left: 20px;
+
+      .bullet-icon {
+        width: 15px;
+        height: 15px;
+      }
+
+      .bullet-label {
+        padding-bottom: 5px;
+        font-size: 18px;
+      }
+    }
+  }
+}

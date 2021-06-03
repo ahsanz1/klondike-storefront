@@ -1,0 +1,49 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1em;
+
+  .breadcrumbs-link,
+  .disabled-link {
+    border: none;
+    outline: none;
+    background: transparent;
+    // color: #197bbd;
+    font-size: 0.8571428571em;
+  }
+
+  .breadcrumbs-link {
+    // color: #197bbd;
+    cursor: pointer;
+  }
+
+  .disabled-link {
+    color: black;
+    cursor: auto;
+  }
+
+  .active {
+    color: #15669d;
+
+    &:hover {
+      color: #15669d;
+    }
+  }
+
+  .bread-crumb-separator {
+    width: 10px;
+    height: 10px;
+    margin: 0 0.6428571429em;
+    color: #737373;
+  }
+}
+
+@media (max-width: 999px) {
+  .breadcrumbs {
+    width: 100%;
+    max-width: 40em;
+    margin: 1em auto 0;
+    padding: 0 1em;
+  }
+}

@@ -1,0 +1,85 @@
+@import '~styles/globals';
+
+.faq-question {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  font-family: $font-futura-heavy;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-content {
+  display: none;
+  margin-bottom: 15px;
+  transition: max-height 0.4s ease-in;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+.faq-show {
+  display: block;
+}
+
+.faq-item {
+  position: relative;
+  margin-bottom: 15px;
+
+  .faq-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    transition: all 0.3s ease-in-out;
+
+    img {
+      width: 43px;
+      height: auto;
+      cursor: pointer;
+    }
+  }
+
+  .faq-answer {
+    color: #222;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-item {
+    padding-left: 0;
+  }
+
+  .faq-question {
+    font-size: 26px;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 450px) {
+  .faq-item {
+    padding-left: 0;
+
+    .faq-arrow {
+      img {
+        width: 27px;
+      }
+    }
+
+    .faq-answer {
+      color: #222;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 26px;
+    }
+  }
+
+  .faq-question {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}

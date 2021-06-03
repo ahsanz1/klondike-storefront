@@ -1,0 +1,56 @@
+@import '~styles/globals';
+
+.checkout-page {
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1 0 auto;
+  flex-direction: row;
+  width: 100%;
+  // max-width: 78.5714285714em;
+  margin: 0 auto;
+  overflow-x: hidden;
+  // padding: 0 5%;
+  // background-color: rgb(221, 220, 220);
+
+  .c-label,
+  .c-link {
+    font-family: $font-apple-system !important;
+  }
+
+  .checkout-header-form {
+    display: flex;
+    // display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    width: 57%;
+    max-width: 100%;
+    padding-top: 4em;
+    padding-right: 6%;
+    padding-left: 10%;
+    border-right: 1px solid #fafafa;
+    color: #545454;
+    // flex-direction: column;
+    -webkit-box-flex: 1;
+  }
+}
+
+@media (max-width: 999px) {
+  .checkout-page {
+    // flex: 1 0 auto;
+    // flex-direction: column-reverse;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    // padding: 0 1em;
+
+    .checkout-header-form {
+      justify-content: center;
+      width: 100%;
+      // max-width: 100%;
+      margin: 0 auto;
+      padding: 0;
+      border: none;
+    }
+  }
+}

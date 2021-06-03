@@ -1,0 +1,81 @@
+@import '~styles/globals';
+
+.footer {
+  padding: 80px 0 55px 0;
+  background-color: #333;
+  color: #fff;
+
+  .links-mobile-bottom {
+    margin-top: -42px;
+    margin-bottom: 42px;
+    padding: 0;
+    list-style: none;
+
+    li {
+      a {
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .bottom-payment {
+    margin-top: 20px;
+    font-family: $font-futura;
+    font-size: 16px;
+
+    img {
+      max-width: 250px;
+      margin-left: 20px;
+      vertical-align: middle;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bottom-payment {
+      text-align: center;
+
+      img {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.page-width {
+  margin: 0 auto;
+  padding-right: 60px;
+  padding-left: 60px;
+}
+
+.footer-logo {
+  width: 170px;
+  color: #fff;
+}
+
+.site-footer__hr {
+  height: 3px;
+  margin: 45px 0 20px 0;
+  border: none;
+  background-color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 50px 0;
+  }
+
+  .page-width {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+}
+
+.policy-mobile {
+  margin-top: 40px;
+  margin-right: 5px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}

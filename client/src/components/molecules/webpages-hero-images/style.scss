@@ -1,0 +1,18 @@
+.desktopImage {
+  width: 100%;
+}
+
+.mobileImage {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktopImage {
+    display: none;
+  }
+
+  .mobileImage {
+    display: block;
+    width: 100%;
+  }
+}

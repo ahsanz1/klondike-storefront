@@ -1,0 +1,25 @@
+.delivery-schedule {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 767px) {
+    display: block;
+  }
+
+  .delivery-schedule-section {
+    width: 100%;
+    margin: 50px 0;
+
+    .delivery-schedule-heading {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .delivery-schedule-text {
+      margin: 10px 0;
+    }
+  }
+}

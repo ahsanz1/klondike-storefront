@@ -1,0 +1,34 @@
+.success-thanks {
+  display: block;
+  color: #fff !important;
+  //font-family: Arial;
+  font-size: 16px !important;
+  font-weight: 700;
+}
+
+.success-email {
+  display: block;
+  margin-bottom: 5px !important;
+  color: #fff !important;
+  //font-family: Arial;
+  font-size: 16px !important;
+}
+
+.newsletter-inputwrap {
+  position: relative;
+  width: 100%;
+  color: #fff;
+  font-size: 12px;
+}
+
+.newsletter-text {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .newsletter-text {
+    text-align: center;
+  }
+}

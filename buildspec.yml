@@ -1,0 +1,123 @@
+version: 0.2
+
+env:
+  shell: bash
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+    finally:
+      - echo This always runs even if the update or install command fails 
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 201787177692.dkr.ecr.us-east-1.amazonaws.com
+      - docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - echo $CODEBUILD_WEBHOOK_BASE_REF
+      - curl -sS -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator
+      - curl -sS -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl
+      - chmod +x ./kubectl ./aws-iam-authenticator
+      - export PATH=$PWD/:$PATH
+      - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+      - chmod 700 get_helm.sh
+      - ./get_helm.sh
+    finally:
+      - echo This always runs even if the login command fails 
+  build:
+    commands:
+      - git clone https://gaelrozario:$GITPASS@bitbucket.org/ydv-all/klondike-storefront.git
+      - cd klondike-storefront
+      - |
+        if [[ "$CODEBUILD_WEBHOOK_BASE_REF" == "refs/heads/develop" ]] ; then 
+          branch="develop" 
+        else 
+          branch="master"
+        fi
+      - |
+        if [[ "$branch" == "develop" ]] ; then
+          git checkout $branch
+          git config user.email "ops@fabric.inc"
+          git config user.name "ops"
+          docker run --rm -v "$PWD":/app treeder/bump --filename developVERSION patch
+          version=`cat developVERSION`
+          docker build -t klondike-storefront:latest .
+          git add -A
+          git commit -m "develop version $version"
+          git tag -a "develop-$version" -m "develop version $version"
+          git push origin develop
+          git push --tags
+          docker tag klondike-storefront:latest 201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront:develop-$version
+        else
+          git checkout $branch
+          git config user.email "ops@fabric.inc"
+          git config user.name "ops"
+          docker run --rm -v "$PWD":/app treeder/bump patch
+          version=`cat VERSION`
+          docker build -t klondike-storefront:latest .
+          git add -A
+          git commit -m "version $version"
+          git tag -a "$version" -m "version $version"
+          git push origin master
+          git push --tags
+          docker tag klondike-storefront:latest 201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront:$version
+        fi
+    finally:
+      - echo This always runs even if the install command fails
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - |
+        if [[ "$branch" == "develop" ]] ; then
+          docker push 201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront:develop-$version
+          cd ~/
+          git clone https://gaelrozario:$GITPASS@bitbucket.org/ydv-all/helm.git
+          cd helm
+          git checkout master
+          git config user.email "ops@fabric.inc"
+          git config user.name "ops"
+          developversion=develop-$version
+          imageregistry=201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront
+          sed -i "/^\([[:space:]]*image: \).*/s//\1$imageregistry/" klondike-storefront/development-values.yaml
+          sed -i "/^\([[:space:]]*tag: \).*/s//\1$developversion/" klondike-storefront/development-values.yaml
+          aws --profile default configure set aws_access_key_id $eks_access
+          aws --profile default configure set aws_secret_access_key $eks_secret
+          CREDENTIALS=$(aws sts assume-role --role-arn $EKS_KUBECTL_ROLE_ARN --role-session-name codebuild-kubectl --duration-seconds 900)
+          export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
+          export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
+          export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
+          export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
+          aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
+          helm upgrade klondike-storefront-development klondike-storefront --values klondike-storefront/development-values.yaml -n development
+          git add -A
+          git commit -m "klondike-storefront version $developversion"
+          git tag -a "klondike-storefront-$developversion" -m "klondike-storefront version $developversion"
+          git push origin master
+          git push --tags
+        else
+          docker push 201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront:$version
+          cd ~/
+          git clone https://gaelrozario:$GITPASS@bitbucket.org/ydv-all/helm.git
+          cd helm
+          git checkout master
+          git config user.email "ops@fabric.inc"
+          git config user.name "ops"
+          imageregistry=201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront
+          sed -i "/^\([[:space:]]*image: \).*/s//\1$imageregistry/" klondike-storefront/uat-values.yaml
+          sed -i "/^\([[:space:]]*tag: \).*/s//\1$version/" klondike-storefront/uat-values.yaml
+          sed -i "/^\([[:space:]]*image: \).*/s//\1$imageregistry/" klondike-storefront/production-values.yaml
+          sed -i "/^\([[:space:]]*tag: \).*/s//\1$version/" klondike-storefront/production-values.yaml
+          aws --profile default configure set aws_secret_access_key $eks_secret
+          CREDENTIALS=$(aws sts assume-role --role-arn $EKS_KUBECTL_ROLE_ARN --role-session-name codebuild-kubectl --duration-seconds 900)
+          export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
+          export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
+          export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
+          export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
+          aws eks update-kubeconfig --name storefront-development-k8s
+          helm upgrade klondike-storefront-uat klondike-storefront --values klondike-storefront/uat-values.yaml --namespace uat
+          helm upgrade klondike-storefront-production klondike-storefront --values klondike-storefront/production-values.yaml -n production
+          git add -A
+          git commit -m "klondike-storefront version $version"
+          git tag -a "klondike-storefront-$version" -m "klondike-storefront version $version"
+          git push origin master
+          git push --tags
+        fi

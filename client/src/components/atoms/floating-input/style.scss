@@ -1,0 +1,73 @@
+.float-label {
+  position: relative;
+  color: #333;
+
+  .input-wrapper {
+    padding: 0.4285714286em 0;
+
+    .input-component,
+    .input-error {
+      display: block;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      flex-grow: 1;
+      width: 100%;
+      // padding: 1.1em 0.7857142857em 0.9285714286em;
+      padding-top: 1.5em;
+      padding-bottom: 0.3571428571em;
+      padding-left: 12px;
+      border-radius: 5px;
+      background-color: white;
+      background-clip: padding-box;
+    }
+
+    .dropdown-component,
+    .dropdown-error {
+      display: block;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      flex-grow: 1;
+      width: 100%;
+      // padding: 0.4em 0.7857142857em;
+      padding-top: 0.72em;
+      padding-bottom: 0.3571428571em;
+      border: 1px solid #d5d5d5;
+      border-radius: 5px;
+      background-color: white;
+      background-clip: padding-box;
+
+      .ant-select-selector {
+        width: auto;
+        padding: 8px 0 0;
+        border: none;
+      }
+    }
+
+    .input-component {
+      border: 1px solid #d5d5d5;
+    }
+
+    .input-error,
+    .dropdown-error {
+      border: 1px solid #e32c2b;
+    }
+  }
+
+  .label {
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    transition: 0.2s ease all;
+    font-size: 12px;
+    font-weight: normal;
+    pointer-events: none;
+  }
+
+  .label-float {
+    top: 13px;
+  }
+}
+
+.error-msg {
+  color: #e32c2b;
+}

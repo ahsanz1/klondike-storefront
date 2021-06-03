@@ -1,0 +1,51 @@
+.refer-form {
+  color: #a9a9a9;
+
+  @media (max-width: 768px) {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .r-primary-label {
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .r-secondary-label {
+    font-size: 16px;
+    line-height: 17px;
+  }
+
+  @media (max-width: 768px) {
+    .r-primary-label {
+      font-size: 16px;
+    }
+
+    .r-secondary-label {
+      font-size: 13px;
+    }
+  }
+
+  .r-inputField {
+    height: 70px;
+    padding: 0 1rem;
+
+    @media (max-width: 768px) {
+      height: 50px;
+    }
+
+    &::placeholder {
+      color: #cacaca;
+    }
+  }
+
+  .get-invite-btn {
+    height: 70px;
+
+    @media (max-width: 768px) {
+      height: 50px;
+    }
+  }
+}

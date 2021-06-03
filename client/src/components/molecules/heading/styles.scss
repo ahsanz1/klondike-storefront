@@ -1,0 +1,35 @@
+.heading {
+  display: block;
+  margin-bottom: 40px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &.for-mobile {
+    display: none;
+  }
+
+  .heading--underline-effect {
+    border-bottom: 4px solid #ffd17b;
+    color: #ffd17b;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 24px;
+    line-height: 36px;
+
+    &.for-dekstop {
+      display: none;
+    }
+
+    &.for-mobile {
+      display: block;
+    }
+  }
+}

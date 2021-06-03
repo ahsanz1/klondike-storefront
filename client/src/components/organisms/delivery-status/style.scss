@@ -1,0 +1,73 @@
+.delivery-status {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+
+  .delivery-status-section {
+    width: 80%;
+    margin: 50px auto;
+
+    .delivery-status-label {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .delivery-status-variant {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .delivery-status-info-cta {
+      margin: 20px 0;
+      font-size: 18px;
+      font-weight: 700;
+
+      .delivery-status-cta {
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        background: none;
+        color: #3b97ff;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .delivery-status-input {
+        width: 80%;
+
+        .delivery-status-input-save {
+          display: block;
+          margin: 0;
+          padding: 0;
+          border: none;
+          outline: none;
+          background: none;
+        }
+      }
+    }
+
+    .delivery-shipping {
+      .delivery-status-shipping {
+        font-size: 18px;
+      }
+
+      .delivery-shipping-cta {
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        background: none;
+        color: #3b97ff;
+        font-size: 18px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

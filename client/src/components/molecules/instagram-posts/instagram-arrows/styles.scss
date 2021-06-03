@@ -1,0 +1,15 @@
+@import '~styles/globals';
+
+.instagram-arrows {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  button {
+    padding: 6px;
+
+    &:hover {
+      background-color: $light-grey-color;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@import '~styles/globals';
+
+.cart-page {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  margin-top: 75px;
+  margin-bottom: 70px;
+  padding: 0 40px;
+
+  .cart-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .cart-top {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 3px solid #ccc;
+
+      .your-cart {
+        margin: 0;
+        margin-right: auto;
+        padding-bottom: 0;
+        font-family: $font-futura-heavy;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 24px;
+      }
+
+      .cart-specs {
+        display: flex;
+        flex-direction: row;
+        width: 35%;
+        margin-left: auto;
+        padding-bottom: 30px;
+
+        .spec {
+          margin: 0;
+          color: #666;
+          font-family: $font-futura-heavy;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 23px;
+          text-transform: uppercase;
+        }
+
+        .align-left {
+          margin-right: auto;
+          text-align: left;
+        }
+
+        .align-center {
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .align-right {
+          margin-left: auto;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-page {
+    margin-top: 60px;
+    padding: 0 30px;
+
+    .cart-header {
+      .cart-top {
+        border-bottom: none;
+
+        .cart-specs {
+          display: none;
+        }
+      }
+    }
+  }
+}

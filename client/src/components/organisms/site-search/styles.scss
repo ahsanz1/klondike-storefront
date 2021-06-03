@@ -1,0 +1,31 @@
+@import '~styles/globals';
+
+.site-search {
+  & &__input {
+    border: 3px solid $grey-color;
+    outline: 0;
+    color: $primary-color;
+    font-size: 16px;
+
+    &::placeholder {
+      opacity: 1; /* Firefox */
+      color: $primary-color;
+    }
+
+    &::-ms-input-placeholder {
+      color: $primary-color;
+    }
+
+    &:-ms-input-placeholder {
+      color: $primary-color;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+
+  &__input-icon {
+    padding: 10px;
+  }
+}

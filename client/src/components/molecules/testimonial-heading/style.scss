@@ -1,0 +1,34 @@
+.testimonial-stars {
+  display: inline-block;
+  position: relative;
+  width: 160px;
+  height: 29px;
+  margin-top: 4px;
+  margin-right: -5px;
+  background: url('https://cdn.shopify.com/s/files/1/1682/9837/files/noun_5_stars_9d382900-d868-4080-a65a-d372628281eb.svg');
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 92%;
+    height: 4px;
+    transform: translate(-50%, 50%);
+    background-color: #ffd17b;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-stars {
+    width: 100px;
+    height: 18px;
+    margin-top: 4px;
+    margin-right: -3px;
+
+    &::after {
+      bottom: -5px;
+    }
+  }
+}

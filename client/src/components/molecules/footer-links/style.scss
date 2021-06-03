@@ -1,0 +1,46 @@
+@import '~styles/globals';
+
+.footer-column {
+  h3 {
+    margin-bottom: 1em;
+    color: #fff;
+    font-family: $font-futura;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+    text-transform: uppercase;
+  }
+}
+
+.menu-column {
+  text-align: left;
+}
+
+.footer-menu {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 18px;
+  line-height: 32px;
+  list-style: none;
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    border-bottom: 3px solid #fff;
+    color: #fff;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-column {
+    margin-bottom: 42px;
+  }
+
+  .footer-menu {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

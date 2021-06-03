@@ -1,0 +1,242 @@
+@import '~styles/globals';
+
+.section-tabbable {
+  max-width: 920px;
+  min-height: 300px;
+  margin-right: auto;
+  margin-left: auto;
+
+  .headings-group {
+    margin-bottom: 25px;
+    text-align: center;
+
+    .headline {
+      padding: 0 5px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: inherit;
+  }
+
+  .slider-tabs {
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 20px;
+    border: 3px solid #fff;
+
+    .slick-slider {
+      display: flex;
+      flex-direction: column;
+
+      .slick-dots {
+        position: relative;
+        bottom: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+
+        li {
+          margin-right: 7px;
+          margin-left: 7px;
+
+          &:not(.slick-active) {
+            span {
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+
+      &.slick-initialized {
+        .slick-dots {
+          display: flex !important;
+        }
+      }
+
+      @media (min-width: 768px) {
+        flex-direction: column-reverse;
+
+        .slick-dots {
+          margin-top: 0;
+          margin-bottom: 45px;
+
+          li {
+            display: flex;
+            flex: 1;
+            width: auto;
+            height: auto;
+            margin-right: -1px;
+            margin-left: -1px;
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 0;
+            background-color: transparent;
+            text-transform: uppercase;
+
+            &:not(.slick-active) {
+              span {
+                opacity: 1;
+                background-color: transparent !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 0 40px;
+
+    .slider-tabs {
+      margin-right: 0;
+      margin-left: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .headings-group {
+      margin-bottom: 45px;
+
+      .headline {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.nutrient-slider-card {
+  .image-block {
+    display: none;
+  }
+
+  .text-block {
+    line-height: 25px;
+  }
+
+  .title {
+    margin: 5px 0 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .text {
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
+
+  .nutrient-list {
+    padding-left: 20px;
+    font-size: 15px;
+    list-style: square;
+  }
+
+  img {
+    max-width: 100%;
+    padding-bottom: 25px;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+
+    .title {
+      font-size: 24px;
+    }
+
+    .text {
+      font-size: 18px;
+    }
+
+    .nutrient-list {
+      font-size: 18px;
+    }
+
+    .image-block {
+      display: inline-flex;
+      min-width: 310px;
+      margin-right: 45px;
+
+      img {
+        width: 310px;
+        padding-bottom: 0;
+      }
+    }
+
+    .image-title-block {
+      display: none;
+    }
+  }
+}
+
+.nutrient-popup-content {
+  max-width: 800px;
+  margin: 1.75rem auto;
+  padding: 40px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease-in;
+  border-radius: 0.3rem;
+  background-color: $white-color;
+  color: $primary-color;
+  font-size: $font-size-body;
+
+  .heading {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 3px solid #ccc;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 43px;
+  }
+
+  .nutrient-popup-text {
+    a {
+      display: inline-block;
+      margin: -4px 1px 0;
+      padding: 4px 0;
+      color: #004f80;
+      font-size: 11px;
+      line-height: 16px;
+      vertical-align: top;
+      cursor: pointer;
+    }
+  }
+}
+
+.nutrient-popup-wrapper {
+  visibility: hidden;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  transition: all 0.4s ease;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+
+    .nutrient-popup-content {
+      transform: translateY(0);
+    }
+  }
+}
+
+body.open-nutrient-popup {
+  overflow: hidden !important;
+}

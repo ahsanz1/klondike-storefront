@@ -1,0 +1,16 @@
+.logo {
+  display: inline-block;
+  z-index: 99999;
+
+  a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  svg {
+    width: 100px;
+    height: auto;
+  }
+}

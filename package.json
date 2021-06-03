@@ -1,0 +1,53 @@
+{
+  "name": "klondike",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "start:uat": "NODE_ENV=uat node server.js",
+    "start:qa": "NODE_ENV=qa node server.js",
+    "start:dev": "NODE_ENV=dev node server.js",
+    "server": "NODE_ENV=production node server.js",
+    "client": "npm run start:prod --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "buildDescriptors": "node combineDescriptors.js",
+    "postbuild:dev": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build:webpack:dev --prefix client",
+    "postbuild:qa": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build:qa --prefix client",
+    "postbuild:uat": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build:uat --prefix client",
+    "postbuild:prod": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build:prod --prefix client",
+    "postbuildUpload": "NODE_ENV=production node cdnServe.js",
+    "postBuildGzip": "NODE_ENV=production node compressor.js",
+    "postbuildOnly": "NPM_CONFIG_PRODUCTION=false npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/ydv-all/klondike-storefront"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/ydv-all/klondike-storefront/issues"
+  },
+  "homepage": "https://bitbucket.org/ydv-all/klondike-storefront",
+  "dependencies": {
+    "@teamfabric/xpm": "1.1.3",
+    "algoliasearch": "^4.5.1",
+    "axios": "^0.20.0",
+    "compressing": "^1.5.1",
+    "credit-card-type": "^9.0.1",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-unless": "^0.5.0",
+    "glob": "^7.1.6",
+    "react-script-tag": "^1.1.2",
+    "react-text-mask": "^5.4.3",
+    "reactstrap": "^8.6.0",
+    "sitemap": "^6.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "s3-folder-upload": "github:omer-waheed/s3-folder-upload#master"
+  }
+}

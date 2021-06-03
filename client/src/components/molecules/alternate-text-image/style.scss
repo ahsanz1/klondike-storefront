@@ -1,0 +1,144 @@
+@import '~styles/globals';
+
+.about-us {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 80px;
+  background: #fff;
+  vertical-align: center;
+
+  .dialogue {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: -75px;
+    margin-left: 50px;
+    padding-right: 55px;
+    text-align: left;
+
+    .dialogues {
+      margin-bottom: 15px;
+      font-size: 24px;
+      line-height: 1.5;
+
+      &:last-child {
+        margin-bottom: 30px;
+      }
+    }
+
+    .bold {
+      font-weight: 700;
+    }
+  }
+
+  .about-us-image {
+    width: 50%;
+  }
+
+  .about-us-text {
+    width: 50%;
+    font-family: $font-futura;
+    font-size: 24px;
+    font-weight: 500; //fixed from 300 to 500 for (text was not bold on laptop)
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  &:nth-child(odd) {
+    flex-direction: row;
+    justify-content: center;
+
+    .about-us-image {
+      margin-right: 50px;
+
+      @media (max-width: 767px) {
+        margin-right: 0;
+      }
+    }
+
+    .about-us-text {
+      // margin-left: 50px;
+      padding-right: 55px;
+    }
+  }
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+
+    .about-us-image {
+      margin-left: 50px;
+
+      @media (max-width: 767px) {
+        margin-left: 0;
+      }
+    }
+
+    .about-us-text {
+      margin-right: 50px;
+      padding-left: 55px;
+
+      @media (max-width: 767px) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &:last-child {
+    flex-direction: column-reverse;
+    padding-bottom: 80px;
+
+    .about-us-image {
+      margin-left: 0;
+    }
+
+    .about-us-text {
+      margin-bottom: 30px; //fixed from 60px to 30px
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .about-us {
+    flex-direction: column-reverse !important;
+    padding-top: 60px;
+    overflow: hidden;
+
+    .dialogue {
+      position: static;
+      right: 0;
+      width: 100%;
+      max-width: 100%; //fixed from 70% to 100%
+      margin: 0;
+      padding: 10px 40px 45px; //fixed from 10px 10x 0 to 10px 40px 45px
+      text-align: center;
+
+      .dialogues {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    }
+
+    .about-us-image {
+      width: 100%;
+    }
+
+    .about-us-text {
+      position: static;
+      right: 0;
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: -20px; //fixed from -50px to -20px
+      padding: 10px 40px 0 !important;
+      font-size: 18px !important; //from 18px to 18px !important
+      font-weight: 500; //fixed from 600px to 500px
+      text-align: center;
+    }
+
+    &:last-child {
+      width: 100%;
+      padding-bottom: 40px;
+    }
+  }
+}

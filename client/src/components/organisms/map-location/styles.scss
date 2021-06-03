@@ -1,0 +1,32 @@
+.map-location {
+  max-width: 920px;
+  margin: 60px auto;
+  padding: 60px 20px;
+  border-top: 3px solid #ccc;
+
+  &__heading {
+    margin-bottom: 20px;
+    font-size: 35px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 25px;
+    }
+  }
+
+  &__description {
+    font-size: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+
+    a {
+      color: black;
+    }
+
+    a:hover {
+      color: black;
+    }
+  }
+}

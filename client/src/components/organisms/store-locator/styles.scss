@@ -1,0 +1,100 @@
+.store-locator {
+  max-width: 1120px;
+  margin: 50px 0;
+  margin: auto;
+  padding: 20px;
+  padding-top: 80px;
+
+  &__heading {
+    margin-bottom: 45px;
+    font-size: 36px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      margin-bottom: 35px;
+      font-size: 26px;
+      line-height: 36px;
+    }
+  }
+
+  &__locations-map {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 40px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__tabs {
+    // display: none !important;
+    z-index: 3;
+    flex-direction: column;
+    margin: 10px 0 0 0;
+
+    @media (max-width: 768px) {
+      display: flex !important;
+    }
+
+    .tabList {
+      display: none;
+      flex-direction: row;
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      @media (max-width: 768px) {
+        display: flex !important;
+      }
+
+      li {
+        display: inline-block;
+        width: 49.2%;
+        padding: 5px 0;
+        transition: all 0.5s ease;
+        border: 1px solid #ccc;
+        background: #fff;
+        text-align: center;
+
+        &.active {
+          transition: all 0.5s ease;
+          background: #727272;
+          color: #fff;
+        }
+      }
+    }
+
+    &__body {
+      display: flex !important;
+    }
+  }
+
+  .location-input {
+    &__find-icon {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+      background: transparent;
+
+      img {
+        width: 30px !important;
+        height: 30px !important;
+      }
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+
+    &__find-btn {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}

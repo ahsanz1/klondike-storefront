@@ -1,0 +1,56 @@
+.subscription-address {
+  display: flex;
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 60px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  &__form {
+    flex: 1;
+    padding-bottom: 50px;
+  }
+
+  .request-form__title,
+  .request-form__mobile-title {
+    margin-left: 8px;
+    text-align: left;
+  }
+
+  .request-form__submit-button-wrapper {
+    text-align: left;
+  }
+
+  .shipping-address {
+    padding-bottom: 10px;
+  }
+
+  .hide-btn {
+    .request-form__submit-button-wrapper {
+      display: none;
+    }
+  }
+
+  .billing-address {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .error-wrapper {
+    padding: 0 70px;
+  }
+
+  .checkbox-wrapper {
+    display: flex;
+    padding: 0 70px;
+    font-size: 16px;
+    font-weight: bold;
+
+    @media (max-width: 767px) {
+      padding: 0 35px;
+    }
+  }
+}

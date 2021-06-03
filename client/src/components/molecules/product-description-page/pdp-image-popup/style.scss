@@ -1,0 +1,36 @@
+.pdp-image-wrap {
+  max-width: 800px;
+  margin: 1.75rem auto;
+  padding: 1rem;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease-in;
+  border-radius: 0.3rem;
+  background-color: #fff;
+}
+
+.pdp-image-popup {
+  visibility: hidden;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  transition: all 0.4s ease;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+
+    .pdp-image-wrap {
+      transform: translateY(0);
+    }
+  }
+}
+
+body.image-popup-open {
+  overflow: hidden !important;
+}

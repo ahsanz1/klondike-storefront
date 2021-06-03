@@ -1,0 +1,43 @@
+@import '~styles/globals';
+
+.what-section {
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  .what-section-wrapper {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 40px;
+
+    .what-heading {
+      margin-bottom: 40px;
+      font-size: 35px;
+      letter-spacing: 0.4px;
+      line-height: 45px;
+      text-align: center;
+    }
+
+    .what-big-p {
+      color: #000;
+      font-size: 24px;
+      letter-spacing: normal;
+      line-height: 1.5;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .what-section-wrapper {
+      padding: 0;
+
+      .what-heading {
+        font-size: 26px;
+      }
+
+      .what-big-p {
+        font-size: 18px;
+      }
+    }
+  }
+}

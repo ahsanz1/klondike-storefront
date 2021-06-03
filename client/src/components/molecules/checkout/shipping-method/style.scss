@@ -1,0 +1,183 @@
+.shipping-method {
+  padding-bottom: 4em;
+
+  .contact-info-box {
+    // padding: 0.8571428571em 1.1428571429em;
+    padding: 12px 16px;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: #d9d9d9;
+    background: #fff;
+    background-clip: padding-box;
+    color: #545454;
+
+    .contact-info-box-contact,
+    .contact-info-box-ship-to {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .contact-info-box-contact-label,
+      .contact-info-box-ship-to-label {
+        -webkit-flex: 0 1 5em;
+        -ms-flex: 0 1 5em;
+        flex: 0 1 5em;
+        margin: 0;
+        padding-right: 1.1428571429em;
+        color: #737373;
+        -webkit-box-flex: 0;
+        font-weight: 400;
+        line-height: 18.2px;
+      }
+
+      .contact-info-box-contact-change,
+      .contact-info-box-ship-to-change {
+        margin-left: auto;
+        color: #197bbd;
+        font-size: 12px;
+      }
+    }
+
+    .contact-info-box-ship-to {
+      //   margin-top: 0.8571428571em;
+      //   padding-top: 0.8571428571em;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e6e6e6;
+    }
+  }
+
+  .shipping-method-form {
+    padding-top: 3em;
+
+    .shipping-method-p {
+      margin-bottom: 1.5em;
+      color: #333;
+      // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      //   Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      //   'Segoe UI Symbol', sans-serif;
+      font-size: 1.2857142857em;
+      line-height: 1.3em;
+    }
+
+    .shipping-method-form-fields {
+      border: 1px solid #d9d9d9;
+      border-radius: 5px;
+      border-color: #d9d9d9;
+      background: #fff;
+      background-clip: padding-box;
+      color: #545454;
+
+      .shipping-method-form-fields-field {
+        display: flex;
+        position: relative;
+        box-sizing: border-box;
+        flex-direction: row;
+        align-items: start;
+        width: 100%;
+        padding: 1.1428571429em;
+        zoom: 1;
+        color: #545454;
+
+        &:not(:first-child) {
+          border-top: 1px solid #d9d9d9;
+        }
+
+        input[type='radio'] {
+          position: relative;
+          width: 18px;
+          height: 18px;
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          border: 1px solid;
+          border-radius: 50%;
+          border-color: #d9d9d9;
+          background-color: white;
+          vertical-align: -4px;
+          white-space: nowrap;
+          cursor: pointer;
+
+          &:checked {
+            border-width: 7px;
+            border-color: grey;
+          }
+        }
+
+        .shipping-method-service-info {
+          padding-left: 0.75em;
+          cursor: pointer;
+
+          .shipping-method-service-days {
+            color: #737373;
+            font-size: 0.8571428571em;
+          }
+        }
+
+        .shipping-method-service-price {
+          margin-left: auto;
+          color: #333;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .shipping-form-footer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.5em;
+
+      .shipping-form-footer-link-button {
+        transition: color 0.2s ease-in-out;
+        border: none;
+        background: transparent;
+        color: #197bbd;
+        cursor: pointer;
+
+        &:hover {
+          color: #15669d;
+        }
+      }
+
+      .continue-to {
+        position: relative;
+        width: 189px;
+        height: 60px;
+        padding: 1.4em 1.7em;
+        transition: color 0.2s ease-in-out;
+        border: 1px transparent solid;
+        border-radius: 5px;
+        background-color: #197bbd;
+        color: white;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #135e90;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 749px) {
+  .shipping-method {
+    .shipping-method-form {
+      .shipping-form-footer {
+        flex-direction: column-reverse;
+
+        .shipping-form-footer-link-button {
+          padding-top: 1.5em;
+        }
+
+        .continue-to {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

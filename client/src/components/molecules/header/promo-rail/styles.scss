@@ -1,0 +1,116 @@
+@import '~styles/globals';
+
+.promo-rail {
+  position: relative;
+  z-index: 9;
+  overflow: hidden;
+  background-color: $primary-color;
+  color: $white-color;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 15px;
+  text-align: center;
+
+  @media (max-width: 1900px) {
+    font-size: 15px;
+  }
+
+  &:active {
+    outline: 0;
+  }
+
+  &.show {
+    max-height: 200px;
+    transition: max-height 0.4s ease-in;
+  }
+
+  &.hide {
+    max-height: 0;
+    transition: max-height 0.4s ease-out;
+  }
+
+  &__page-width {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    // padding: 9.5px 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 152px;
+
+    @media (max-width: 1800px) {
+      padding: 0 60px;
+    }
+
+    @media (max-width: 992px) {
+      padding: 0 25px;
+    }
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      padding: 0;
+    }
+  }
+
+  &__slider {
+    position: relative;
+
+    @media (min-width: 769px) {
+      position: fixed !important;
+      top: -300px;
+    }
+
+    & .slick-slide {
+      max-width: 100%;
+    }
+  }
+
+  &__promo-item {
+    margin: 0;
+  }
+
+  &__promo-item-slide {
+    min-width: 200px;
+    padding: 10px 0;
+  }
+
+  &__promo-item-wrapper {
+    padding: 15px 0;
+
+    @media (max-width: 1900px) {
+      padding: 13px 0;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__links {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__dot {
+    margin: 0 7px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  a {
+    color: $white-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $white-color;
+      text-decoration: underline;
+    }
+  }
+}

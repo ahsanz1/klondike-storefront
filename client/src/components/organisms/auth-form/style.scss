@@ -1,0 +1,86 @@
+@import '~styles/globals';
+
+.generic--form--container {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0;
+
+  @media (max-width: 460px) {
+    width: 100%;
+    padding: 20px 20px;
+  }
+
+  .request-form {
+    padding-bottom: 0;
+
+    .request-form__content {
+      .request-form__title {
+        width: 100%;
+        margin-bottom: 32px;
+        padding: 0 20px;
+        font-family: $font-futura;
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .label-input {
+    margin: 0;
+  }
+
+  input {
+    border: 3px solid #000;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .request-form__submit-button-wrapper {
+    width: 100%;
+    margin-top: 4px;
+
+    .request-form__submit-button {
+      display: inline-block;
+      width: 100%;
+      min-width: 100%;
+      max-width: unset;
+      margin: 0;
+      margin-top: 0;
+      margin-bottom: 30px;
+      padding: 10px 30px;
+      transition: all ease-in 0.15s;
+      border: 2px solid #111;
+      background-color: #fff;
+      color: #111;
+      font-size: 20.5px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #111;
+        color: #fff;
+      }
+    }
+  }
+
+  .tokenExpiredTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  .expiredText {
+    font-size: 20px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,92 @@
+@import '~styles/globals';
+
+.user-contact-info {
+  .user-contact-headings {
+    display: flex;
+    flex-direction: row;
+    margin-top: -0.1428571429rem;
+    margin-right: -0.5714285714rem;
+    margin-bottom: -0.1428571429rem;
+    margin-left: -0.5714285714rem;
+
+    // padding-right: 0.5714285714rem;
+    // align-items: center;
+
+    .contact-info-heading {
+      padding-left: 0.5714285714rem;
+      color: #333;
+      font-size: 1.2857142857em;
+    }
+
+    .contact-info-login {
+      margin-left: auto;
+      padding-right: 0.5714285714rem;
+      font-family: $font-apple-system;
+
+      .contact-info-login-link {
+        transition: color 0.2s ease-in-out;
+        color: #197bbd;
+      }
+    }
+  }
+
+  .contact-info-boxq {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+
+    .contact-info-box-avatar {
+      position: relative;
+      width: 50px;
+      max-width: none;
+      height: 35px;
+      padding-right: 1em;
+      overflow: hidden;
+      border-radius: 8px;
+      background-size: cover;
+    }
+
+    .contact-info-box-details {
+      padding-top: 0.25em;
+
+      .contact-info-box-title {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .contact-info-box-link {
+        color: #197bbd;
+      }
+    }
+  }
+
+  .signup-offer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1.5em;
+
+    .signup-offer-checkbox {
+      padding-right: 0.75em;
+
+      .ant-checkbox {
+        top: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 432px) {
+  .user-contact-info {
+    .user-contact-headings {
+      flex-direction: column;
+
+      .contact-info-login {
+        margin-left: 0;
+        padding-right: 0;
+        padding-left: 0.5714285714rem;
+      }
+    }
+  }
+}
