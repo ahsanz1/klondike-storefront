@@ -69,6 +69,30 @@ phases:
       - |
         if [[ "$branch" == "develop" ]] ; then
           docker push 201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront:develop-$version
+          cd ~/
+          git clone https://gaelrozario:$GITPASS@bitbucket.org/ydv-all/helm.git
+          cd helm
+          git checkout master
+          git config user.email "ops@fabric.inc"
+          git config user.name "ops"
+          developversion=develop-$version
+          imageregistry=201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront
+          sed -i "/^\([[:space:]]*image: \).*/s//\1$imageregistry/" klondike-storefront/development-values.yaml
+          sed -i "/^\([[:space:]]*tag: \).*/s//\1$developversion/" klondike-storefront/development-values.yaml
+          aws --profile default configure set aws_access_key_id $eks_access
+          aws --profile default configure set aws_secret_access_key $eks_secret
+          CREDENTIALS=$(aws sts assume-role --role-arn $EKS_KUBECTL_ROLE_ARN --role-session-name codebuild-kubectl --duration-seconds 900)
+          export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
+          export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
+          export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
+          export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
+          aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
+          helm upgrade klondike-storefront-development klondike-storefront --values klondike-storefront/development-values.yaml -n development
+          git add -A
+          git commit -m "klondike-storefront version $developversion"
+          git tag -a "klondike-storefront-$developversion" -m "klondike-storefront version $developversion"
+          git push origin master
+          git push --tags
         else
           docker push 201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront:$version
         fi
