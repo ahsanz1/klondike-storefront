@@ -96,3 +96,4 @@ phases:
         else
           docker push 201787177692.dkr.ecr.us-east-1.amazonaws.com/klondike-storefront:$version
         fi
+
