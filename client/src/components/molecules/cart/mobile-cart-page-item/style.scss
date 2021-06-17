@@ -1,0 +1,120 @@
+@import '~styles/globals';
+
+.mobile-cart {
+  .mobile-cart-page-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    .cart-item-image {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .product-desc {
+      padding: 14px 0;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+
+      .product-title {
+        font-family: $font-futura-heavy;
+        font-size: 21px;
+      }
+
+      .product-bar-quantity {
+        width: 100%;
+        margin: 0;
+        margin-top: 5px;
+        padding: 0;
+        color: #666;
+        font-family: $font-futura-heavy;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .remove-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 6px 12px;
+        border: none;
+        background-color: #ccc;
+        color: #777;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 14px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+
+    .price,
+    .quantity,
+    .total {
+      display: flex;
+      flex-direction: row;
+      padding: 9.8px 0;
+      font-family: $font-futura-heavy;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .price {
+      border-bottom: 1px solid #ccc;
+
+      .price-label {
+        margin-right: auto;
+      }
+    }
+
+    .quantity {
+      border-bottom: 1px solid #ccc;
+
+      .button-label {
+        margin-right: auto;
+      }
+
+      .button-controls {
+        display: flex;
+        flex-direction: row;
+
+        .items-quanity {
+          width: 40px;
+          margin: 0 5px;
+          font-size: 18px;
+          font-weight: 700;
+          text-align: center;
+        }
+
+        // .quantity-btn {
+        //   padding: 0;
+        //   border: none;
+        //   outline: none;
+        //   background: none;
+        //   cursor: pointer;
+
+        //   img {
+        //     width: 22px;
+        //     height: 24px;
+        //   }
+        // }
+
+        .quantity-increase-btn,
+        .quantity-decrease-btn {
+          margin-left: 12px;
+        }
+      }
+    }
+
+    .total {
+      border-bottom: 3px solid #ccc;
+
+      .total-label {
+        margin-right: auto;
+      }
+    }
+  }
+}

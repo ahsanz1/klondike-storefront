@@ -1,0 +1,78 @@
+@import '~styles/globals';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  // flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem 3.5rem;
+
+  .sidebar {
+    padding-left: 48px;
+  }
+
+  .cancel-subscription {
+    // padding-left: 32px;
+    margin-top: 40px;
+
+    &__heading {
+      font-family: $font-futura-md;
+    }
+
+    > button,
+    .c-link {
+      display: block;
+      padding: 0;
+      padding-bottom: 1.5rem;
+      border: none;
+      background: none;
+      color: #40a9ff;
+      font-family: $font-futura-md;
+      font-size: 1rem;
+    }
+
+    &__reasons {
+      > button {
+        display: block;
+        padding: 0;
+        padding-bottom: 0.5rem;
+        border: none;
+        background: none;
+        color: #40a9ff;
+        font-family: $font-futura-md;
+        font-size: 1rem;
+      }
+
+      > button:hover {
+        cursor: pointer;
+      }
+    }
+
+    > button:hover {
+      cursor: pointer;
+    }
+
+    > p {
+      margin: 0;
+      padding-top: 1.25rem;
+      padding-bottom: 2rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .container {
+    padding: 1.5rem 2rem;
+
+    .sidebar {
+      padding-left: 0;
+    }
+
+    .cancel-subscription {
+      padding-top: 1rem;
+      padding-left: 0;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@import '~styles/globals';
+
+.simple-form {
+  .request-form__subtitle {
+    font-size: 24px;
+
+    a {
+      color: $primary-color;
+      font-family: $font-futura-md;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+}

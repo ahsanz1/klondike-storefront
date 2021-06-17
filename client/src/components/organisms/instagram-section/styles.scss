@@ -1,0 +1,137 @@
+@import '~styles/globals';
+
+.insta-section {
+  padding: 80px 0;
+  background-color: $bg-light-grey-color;
+
+  .page-width {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding-right: 60px;
+    padding-left: 60px;
+
+    .title {
+      margin-bottom: 40px;
+      font-size: 40px;
+      font-weight: bold;
+      line-height: 1;
+      text-align: center;
+
+      a {
+        color: $primary-color;
+        font-size: 35px;
+        font-weight: bold;
+        letter-spacing: 0.4px;
+        line-height: 45px;
+        text-transform: uppercase;
+      }
+    }
+
+    .insta-feed {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      margin-top: 30px;
+      text-align: center;
+
+      > a {
+        width: 19%;
+        margin: 0.4%;
+
+        @media (max-width: 768px) {
+          width: 32%;
+        }
+      }
+
+      .insta-feed__container {
+        position: relative;
+        width: 100%;
+        padding-top: 100%;
+        background: $bg-light-grey-color;
+
+        .overlay {
+          display: flex;
+          position: absolute;
+          top: 0;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          transition: 0.3s ease;
+          opacity: 0;
+          background-color: $primary-color;
+          color: $white-color;
+          font-weight: bold;
+        }
+
+        .overlay:hover {
+          opacity: 0.6;
+        }
+
+        > img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          object-fit: cover;
+          height: 100%;
+        }
+
+        & video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          object-fit: cover;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.insta-columns {
+  flex: 5;
+}
+
+@media (max-width: 768px) {
+  .insta-section {
+    padding: 0 0 40px;
+
+    .page-width {
+      padding-right: 25px;
+      padding-left: 25px;
+
+      .title {
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 1;
+        text-align: center;
+
+        a {
+          display: block;
+          width: 100%;
+          padding-top: 40px;
+          padding-bottom: 10px;
+          font-size: 26px;
+          line-height: 36px;
+        }
+      }
+
+      // .box-9 {
+      //   display: none;
+      // }
+
+      .insta-section__page-width__insta-feed {
+        > a {
+          width: 32.5%;
+          margin: 0.3%;
+        }
+      }
+    }
+  }
+}

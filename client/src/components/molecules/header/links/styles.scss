@@ -1,0 +1,15 @@
+@import '~styles/globals';
+
+.links {
+  display: flex;
+
+  a {
+    color: $primary-color;
+    font-size: 18px;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+.store-locator-form {
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+
+  &__select {
+    width: 100%;
+    height: 30px;
+    margin: 0 0 10px 0 !important;
+    padding: 0 10px;
+    border-radius: 4px;
+    border-color: #ccc;
+    outline: 0;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    appearance: none;
+  }
+
+  &__search-btn {
+    width: 100%;
+    height: 34px;
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    outline: 0;
+    background-color: #6c78eb;
+    color: white;
+    font: bold 14px/1.4 Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &__footer {
+    margin-bottom: 15px;
+
+    hr {
+      border: 1px solid #cccccc8f;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  .input-label {
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+  }
+
+  .ant-select-selector {
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+  }
+
+  .ant-select-focused.ant-select .ant-select-selector {
+    box-shadow: none !important;
+  }
+
+  &__toggle-btn {
+    display: none;
+    margin-top: 15px;
+    text-align: right;
+
+    @media (max-width: 768px) {
+      display: block;
+
+      .see-more {
+        border: none;
+        background: transparent;
+        color: #555a64;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      .hide {
+        display: none;
+        transition: all 0.8s ease-in;
+      }
+    }
+  }
+
+  .more-fileds {
+    display: block;
+
+    @media (max-width: 768px) {
+      &.show {
+        visibility: visible;
+        max-height: 300px;
+        transition: max-height 0.3s ease-in;
+        opacity: 1;
+      }
+
+      &.hide {
+        visibility: hidden;
+        z-index: -1 !important;
+        max-height: 0;
+        transition: max-height 0.4s ease-out;
+        opacity: 0;
+      }
+    }
+  }
+}

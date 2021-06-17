@@ -1,0 +1,15 @@
+@import '~styles/globals';
+
+.instagram-footer {
+  display: flex;
+
+  &__date {
+    color: #808080;
+    font-size: 14px;
+  }
+
+  &__link {
+    margin-left: 13px;
+    color: $primary-color;
+  }
+}

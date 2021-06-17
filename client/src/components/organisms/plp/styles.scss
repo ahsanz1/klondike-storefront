@@ -1,0 +1,17 @@
+.plp {
+  padding: 60px 0;
+
+  .tabs-dropdown {
+    .c-dropdown {
+      font-weight: 700;
+    }
+  }
+
+  &__all-products {
+    .plp__products-section {
+      &:nth-child(2n + 2) {
+        background-color: #f7f7f7;
+      }
+    }
+  }
+}

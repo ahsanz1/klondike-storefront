@@ -1,0 +1,42 @@
+.location-item {
+  &__ml {
+    margin-left: 7px;
+  }
+
+  &__link {
+    color: #005293;
+
+    &:hover {
+      color: #005293;
+      text-decoration: underline;
+    }
+  }
+
+  &__content {
+    padding: 10px;
+    font: normal 14px/1.4 Arial, Helvetica, sans-serif;
+
+    div {
+      color: #555;
+    }
+  }
+
+  &__mapBtn {
+    width: 100%;
+    padding: 10px 0;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #000;
+    font: bold 14px/1.4 Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &.hide {
+      display: none;
+    }
+
+    &.show {
+      display: block;
+    }
+  }
+}

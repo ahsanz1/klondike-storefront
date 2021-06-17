@@ -1,0 +1,11 @@
+.request-forms {
+  &__accordion {
+    .ant-collapse-header {
+      display: none;
+    }
+
+    .ant-collapse-content-box {
+      padding: 0 !important;
+    }
+  }
+}

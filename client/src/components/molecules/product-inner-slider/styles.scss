@@ -1,0 +1,243 @@
+.product-inner {
+  position: relative;
+  width: 100%;
+  // background-color: gold;
+
+  .arrow-btn {
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    left: 10%;
+    transform: translate(0, -100%);
+    border: none;
+    outline: none;
+    background: none;
+
+    &.next {
+      right: 10%;
+      left: unset;
+    }
+
+    .pis--span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      opacity: 0.4;
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+
+      &.chevron-left {
+        background-image: url('../../../images/chevron-left.svg');
+      }
+
+      &.chevron-right {
+        background-image: url('../../../images/chevron-right.svg');
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .slick-new-nav {
+    display: block;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+
+    .slick-new-inner {
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 30px 0 0;
+      border-top: 3px solid #fff;
+
+      .slick-new-ul {
+        all: unset;
+        display: inline-flex;
+        list-style: none;
+
+        li {
+          all: unset;
+
+          .slick-new-item {
+            margin-right: 40px;
+            margin-left: 40px;
+            padding-bottom: 10px;
+            transition: border-bottom 0.25s ease-in-out;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+
+            .slick-new-img {
+              margin-bottom: 0;
+
+              img {
+                width: auto;
+                height: 70px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 2561px) {
+  .product-inner {
+    .arrow-btn {
+      left: 34%;
+
+      &.next {
+        right: 34%;
+      }
+    }
+  }
+}
+
+@media (min-width: 2561px) {
+  .product-inner {
+    .arrow-btn.single {
+      &.prev {
+        left: 32%;
+      }
+
+      &.next {
+        right: 32%;
+      }
+    }
+  }
+}
+
+@media (max-width: 2560px) and (min-width: 1801px) {
+  .product-inner {
+    // background-color: grey;
+
+    .arrow-btn {
+      left: 20%;
+
+      &.next {
+        right: 20%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 768px) {
+  .product-inner {
+    .slick-new-nav {
+      .slick-new-inner {
+        .slick-new-ul {
+          li {
+            .slick-new-item {
+              margin-right: 30px;
+              margin-left: 30px;
+
+              .slick-new-img {
+                img {
+                  height: 50px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .product-inner {
+    .arrow-btn {
+      left: 0;
+      transform: translate(0, -15%);
+
+      &.next {
+        right: 0;
+      }
+
+      .pis--span {
+        &.chevron-left {
+          background-image: url('../../../images/arrow_left.svg');
+          filter: invert(1);
+        }
+
+        &.chevron-right {
+          transform: scale(-1);
+          background-image: url('../../../images/arrow_left.svg');
+          filter: invert(1);
+        }
+      }
+    }
+  }
+
+  .slick-new-nav {
+    display: none !important;
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-inner {
+    .arrow-btn {
+      top: 24%;
+      left: -3%;
+
+      &.next {
+        right: -3%;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .product-inner {
+    .arrow-btn {
+      top: 20%;
+      left: -4%;
+
+      &.next {
+        right: -4%;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .product-inner {
+    .arrow-btn {
+      top: 16%;
+      left: -5%;
+
+      &.next {
+        right: -5%;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .product-inner {
+    .arrow-btn {
+      top: 12%;
+      left: -5%;
+
+      &.next {
+        right: -5%;
+      }
+
+      .pis--span {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

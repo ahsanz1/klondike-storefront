@@ -1,0 +1,233 @@
+@import '~styles/globals';
+
+.shipping-address-form-fields {
+  input {
+    padding: 0.9285714286em 0.7857142857em;
+    font-family: $font-apple-system;
+  }
+
+  .float-label {
+    .label {
+      font-family: $font-apple-system;
+    }
+  }
+
+  .shipping-address-country,
+  .error-msg {
+    font-family: $font-apple-system;
+  }
+
+  .shipping-address-first-last-name,
+  .shipping-address-country-postalcode {
+    display: flex;
+    flex-direction: row;
+
+    .shipping-address-first-name,
+    .shipping-address-last-name {
+      flex: 1 1 auto;
+      // padding: 0 0.4285714286em;
+    }
+
+    .shipping-address-country,
+    .shipping-address-postalcode {
+      flex: 1;
+    }
+
+    .shipping-address-first-name,
+    .shipping-address-country {
+      padding-right: 0.4285714286em;
+    }
+
+    .shipping-address-last-name,
+    .shipping-address-postalcode {
+      padding-left: 0.4285714286em;
+    }
+  }
+
+  .mobile-number-input {
+    position: relative;
+    // border: 1px solid black;
+
+    .mobile-number-tooltip {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 2.8571428571rem;
+      height: 60px;
+      // padding: 0.4285714286em 0;
+      // border: 1px solid black;
+
+      .mobile-number-tooltip-button {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        .mobile-number-tooltip-button-absolute {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+
+          .mobile-number-tooltip-logo {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        .mobile-number-tooltip {
+          display: block;
+          visibility: hidden;
+          position: relative;
+          z-index: 200;
+          top: -85%;
+          right: 146%;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          width: 180px;
+          margin: 0 0 5px 0;
+          margin-right: -90px;
+          padding: 0.75em 1em;
+          -webkit-transform: rotateX(20deg) scale(0.8);
+          transform: rotateX(20deg) scale(0.8);
+          -webkit-transform-origin: 90% 120%;
+          transform-origin: center 120%;
+          transform-origin: 90% 120%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          -webkit-transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+          transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+          border-radius: 4px;
+          opacity: 0;
+          background-color: rgba(51, 51, 51, 0.9);
+          color: #fff;
+          font-size: 0.8571428571em;
+          font-style: normal;
+          text-align: center;
+          white-space: normal;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 50%;
+            width: 0;
+            margin-right: -6px;
+            border: 6px solid transparent;
+            border-top-color: rgba(51, 51, 51, 0.9);
+          }
+        }
+      }
+    }
+
+    .mobile-number-tooltip-button:hover .mobile-number-tooltip {
+      visibility: visible;
+      -webkit-transform: rotateX(0deg) scale(1);
+      transform: rotateX(0deg) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+.shipping-form-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5em;
+
+  .return-to-link {
+    transition: color 0.2s ease-in-out;
+    color: #197bbd;
+  }
+
+  .continue-to {
+    position: relative;
+    padding: 1.4em 1.7em;
+    border: 1px transparent solid;
+    border-radius: 5px;
+    background-color: #135e90;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+@media (max-width: 749px) {
+  .shipping-address-form-fields {
+    .shipping-address-first-last-name,
+    .shipping-address-country-postalcode {
+      flex-direction: column;
+
+      .shipping-address-first-name,
+      .shipping-address-country {
+        padding-right: 0;
+      }
+
+      .shipping-address-last-name,
+      .shipping-address-postalcode {
+        padding-left: 0;
+      }
+    }
+
+    .mobile-number-input {
+      .mobile-number-tooltip {
+        .mobile-number-tooltip-button {
+          .mobile-number-tooltip {
+            display: block;
+            visibility: hidden;
+            position: absolute;
+            z-index: 200;
+            right: 0.5em;
+            bottom: 80%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 180px;
+            margin: 0 0 5px 0;
+            padding: 0.75em 1em;
+            -webkit-transform: rotateX(20deg) scale(0.8);
+            transform: rotateX(20deg) scale(0.8);
+            -webkit-transform-origin: 90% 120%;
+            transform-origin: 90% 120%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+            transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+            border-radius: 4px;
+            opacity: 0;
+            background-color: rgba(51, 51, 51, 0.9);
+            color: #fff;
+            font-size: 0.8571428571em;
+            font-style: normal;
+            text-align: center;
+            white-space: normal;
+
+            &::after {
+              content: '';
+              position: absolute;
+              top: 100%;
+              right: 18px;
+              width: 0;
+              border: 6px solid transparent;
+              border-top-color: rgba(51, 51, 51, 0.9);
+            }
+          }
+        }
+      }
+
+      .mobile-number-tooltip-button:hover .mobile-number-tooltip {
+        visibility: visible;
+        -webkit-transform: rotateX(0deg) scale(1);
+        transform: rotateX(0deg) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+}

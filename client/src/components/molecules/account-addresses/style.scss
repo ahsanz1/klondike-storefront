@@ -1,0 +1,67 @@
+.address-form-edit-delete {
+  display: flex;
+  flex-direction: column;
+  // margin-top: 60px;
+  margin-bottom: 60px;
+
+  .sub-title {
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .default-name {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23px;
+  }
+
+  .edit-btn {
+    width: 100%;
+    max-width: 60px;
+    margin-top: 10px;
+    padding: 8px 14px;
+    transition: all ease-in 0.15s;
+    border: none;
+    background-color: #111;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .delete-btn {
+    width: 100%;
+    max-width: 78px;
+    margin-top: 10px;
+    padding: 8px 14px;
+    transition: all ease-in 0.15s;
+    border: none;
+    background-color: #111;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .sc-bdfBwQ,
+  .fsySfm,
+  .request-form {
+    max-width: 700px;
+    margin-top: 40px;
+    background-color: white;
+
+    .label-input__input {
+      border: 3px solid black;
+    }
+  }
+}

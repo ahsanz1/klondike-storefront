@@ -1,0 +1,111 @@
+@import '~styles/globals';
+
+.ant-modal-root .ant-modal-wrap .ant-modal {
+  .ant-modal-content {
+    .ant-modal-body {
+      .address-p {
+        margin: 10px 0 0 24px;
+        font-size: 20px;
+      }
+
+      .suggested-addresses {
+        font-family: FuturaNew, Arial, Helvetica, sans-serif;
+
+        .suggested-address,
+        .entered-address {
+          display: flex;
+          flex-direction: row;
+          align-items: baseline;
+          cursor: pointer;
+
+          .address {
+            margin-left: 10px;
+
+            p {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        .address-submit {
+          margin-top: 20px;
+          padding: 5px;
+          border: 1px solid black;
+          outline: none;
+          background: none;
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.contact-info-form {
+  padding-bottom: 4em;
+
+  .divider {
+    margin-top: 2.5em;
+
+    .ant-divider-horizontal.ant-divider-with-text {
+      font-size: 12px;
+      font-weight: 300;
+    }
+  }
+
+  .shipping-address-label {
+    margin-bottom: 1em;
+    padding-top: 2em;
+    padding-right: 0.5714285714rem;
+    color: #333;
+    font-size: 18px;
+  }
+
+  .shipping-form-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5em;
+
+    .return-to-link {
+      transition: color 0.2s ease-in-out;
+      color: #197bbd;
+    }
+
+    .continue-to {
+      position: relative;
+      width: 210px;
+      height: 63.53px;
+      // padding: 1.4em 1.7em;
+      transition: all 0.2s;
+      border: 1px transparent solid;
+      border-radius: 5px;
+      outline: 0;
+      background-color: #197bbd;
+      color: white;
+      font-family: $font-apple-system;
+      font-weight: 500;
+      text-align: center;
+
+      &:hover {
+        background-color: #135e90;
+      }
+    }
+  }
+}
+
+@media (max-width: 749px) {
+  .contact-info-form {
+    .shipping-form-footer {
+      flex-direction: column-reverse;
+
+      .return-to-link {
+        padding-top: 1.5em;
+      }
+
+      .continue-to {
+        width: 100%;
+      }
+    }
+  }
+}

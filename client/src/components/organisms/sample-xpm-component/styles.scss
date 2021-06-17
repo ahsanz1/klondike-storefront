@@ -1,0 +1,20 @@
+.sample-xpm-component {
+  width: 100%;
+  padding: 50px 0;
+  border-top: 1px solid #ddd;
+
+  .empty-description {
+    width: 100%;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: 500;
+
+    li {
+      text-align: left;
+    }
+  }
+
+  .ant-empty-normal {
+    width: fit-content;
+    margin: auto;
+  }
+}

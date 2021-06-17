@@ -1,0 +1,67 @@
+.discount-order-child {
+  .dorc--iq-header {
+    margin-bottom: 40px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    line-height: 45px;
+    text-align: center;
+    text-transform: uppercase;
+
+    &.for-mobile {
+      display: none;
+    }
+
+    .dorc--underline-effect {
+      border-bottom: 4px solid #ffd17b;
+      color: #ffd17b;
+    }
+  }
+
+  &__discount-img {
+    .image-container {
+      &:first-child {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .discount-order-child {
+    .dorc--iq-header {
+      &.for-dekstop {
+        display: none;
+      }
+
+      &.for-mobile {
+        display: block;
+      }
+    }
+
+    &__discount-img {
+      .image-container {
+        &:first-child {
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .discount-order-child {
+    .dorc--iq-header {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .discount-order-child {
+    .dorc--iq-header {
+      font-size: 20px;
+    }
+  }
+}

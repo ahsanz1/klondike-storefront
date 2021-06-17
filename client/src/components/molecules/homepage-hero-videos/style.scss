@@ -1,0 +1,17 @@
+// .desktopVideo {
+//   display: block;
+// }
+
+.mobileVideo {
+  display: none;
+}
+
+@media screen and (max-width: 691px) {
+  .desktopVideo {
+    display: none;
+  }
+
+  .mobileVideo {
+    display: block;
+  }
+}

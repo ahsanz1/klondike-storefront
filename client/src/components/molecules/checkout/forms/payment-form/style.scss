@@ -1,0 +1,293 @@
+.payment-forms {
+  padding-top: 3em;
+
+  .payment-form-heading {
+    color: #333;
+    font-size: 1.2857142857em;
+    line-height: 1.3em;
+  }
+
+  .payment-form-paragraph {
+    margin-top: 0.25em;
+    line-height: 1.5em;
+  }
+
+  .payment-form {
+    margin-top: 1.5em;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: #d9d9d9;
+    background: #fff;
+    background-clip: padding-box;
+    color: #545454;
+
+    .payment-credit-card {
+      &:not(:first-child) {
+        border-top: 1px solid #d9d9d9;
+      }
+
+      .payment-credit-card-header {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        padding: 1.1428571429em;
+        cursor: pointer;
+
+        .payment-credit-card-header-radio,
+        .payment-credit-card-header-images {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          // width: 100%;
+        }
+
+        .payment-credit-card-header-radio {
+          .radio-heading {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border-color: #d9d9d9;
+            background-color: white;
+          }
+
+          .payment-credit-card-header-heading {
+            padding-left: 0.75em;
+            color: #333;
+            font-weight: 500;
+          }
+        }
+
+        .payment-credit-card-header-images {
+          margin-left: auto;
+          padding-right: 5px;
+
+          .credit-card-icon {
+            padding-right: 5px;
+          }
+
+          .credit-card-icon-grey {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            opacity: 0.5;
+          }
+
+          .payment-credit-card-header-images-and-more {
+            display: inline-block;
+            margin-top: 4px;
+            margin-left: 0.55em;
+            color: #737373;
+            font-size: 0.8571428571em;
+            cursor: default;
+          }
+        }
+      }
+
+      .payment-credit-card-fields {
+        padding: 1.1428571429em;
+        border-top: 1px solid #d9d9d9;
+        background-color: #fafafa;
+
+        .mobile-number-input {
+          position: relative;
+          // border: 1px solid black;
+
+          .mobile-number-tooltip {
+            display: block;
+            position: absolute;
+            top: -7px;
+            right: 0;
+            width: 2.8571428571rem;
+            height: 60px;
+            // padding: 0.4285714286em 0;
+            // border: 1px solid black;
+
+            .mobile-number-tooltip-button {
+              position: relative;
+              width: 100%;
+              height: 100%;
+
+              .mobile-number-tooltip-button-absolute {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+
+                .mobile-number-tooltip-logo {
+                  position: absolute;
+                  top: 50%;
+                  right: 50%;
+                  left: 50%;
+                  width: 16px;
+                  height: 16px;
+                  -webkit-transform: translate(-50%, -50%);
+                  transform: translate(-50%, -50%);
+                }
+              }
+
+              .mobile-number-tooltip,
+              .credit-card-code-tooltip {
+                display: block;
+                visibility: hidden;
+                position: relative;
+                z-index: 200;
+                top: -85%;
+                right: 146%;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                width: 180px;
+                margin: 0 0 5px 0;
+                margin-right: -90px;
+                padding: 0.75em 1em;
+                -webkit-transform: rotateX(20deg) scale(0.8);
+                transform: rotateX(20deg) scale(0.8);
+                -webkit-transform-origin: 90% 120%;
+                transform-origin: center 120%;
+                transform-origin: 90% 120%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                -webkit-transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+                transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+                border-radius: 4px;
+                opacity: 0;
+                background-color: rgba(51, 51, 51, 0.9);
+                color: #fff;
+                font-size: 0.8571428571em;
+                font-style: normal;
+                text-align: center;
+                white-space: normal;
+
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: 100%;
+                  right: 50%;
+                  width: 0;
+                  margin-right: -6px;
+                  border: 6px solid transparent;
+                  border-top-color: rgba(51, 51, 51, 0.9);
+                }
+              }
+
+              .credit-card-code-tooltip {
+                top: -170%;
+              }
+            }
+          }
+
+          .mobile-number-tooltip-button:hover .mobile-number-tooltip,
+          .mobile-number-tooltip-button:hover .credit-card-code-tooltip {
+            visibility: visible;
+            -webkit-transform: rotateX(0deg) scale(1);
+            transform: rotateX(0deg) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+          }
+        }
+
+        .input-error {
+          display: block;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          flex-grow: 1;
+          width: 100%;
+          // margin-top: 0.4285714286em;
+          // margin: 0.4285714286em;
+          padding: 0.9285714286em 0.7857142857em;
+          border: 3px solid #e32c2b;
+          border-radius: 5px;
+          background-color: white;
+          background-clip: padding-box;
+        }
+
+        .payment-credit-card-input-field {
+          display: block;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          flex-grow: 1;
+          width: 100%;
+          margin: 0.4285714286em 0;
+          padding: 0.94em 0.8em;
+          transition: padding 0.2s ease-out 0s;
+          border: 1px solid #d5d5d5;
+          border-radius: 5px;
+          background-color: white;
+          color: rgb(51, 51, 51);
+          // padding: 0.9285714286em 0.7857142857em;
+          background-clip: padding-box;
+        }
+
+        .payment-credit-card-expiry-code {
+          display: flex;
+          flex-direction: row;
+
+          .payment-credit-card-expiry-date,
+          .payment-credit-card-security-code {
+            flex: 1 1 auto;
+          }
+
+          .payment-credit-card-expiry-date {
+            padding-right: 0.4285714286em;
+          }
+
+          .payment-credit-card-security-code {
+            padding-left: 0.4285714286em;
+          }
+        }
+      }
+    }
+
+    .payment-paypal {
+      .payment-paypal-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1.1428571429em;
+        border-top: 1px solid #d9d9d9;
+
+        .paypal-logo {
+          display: block;
+          height: 24px;
+          margin-top: -2px;
+          padding-left: 0.75em;
+        }
+      }
+
+      .payment-paypal-box {
+        // display: none;
+        padding: 2.2857114em;
+        border-top: 1px solid #d9d9d9;
+        background-color: #fafafa;
+        text-align: center;
+
+        .paypal-redirect-image {
+          width: 163px;
+          height: 81px;
+          margin-bottom: 1.1428571429em;
+        }
+
+        .paypal-redirect-instructions {
+          line-height: 1.5em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 432px) {
+  .payment-forms {
+    .payment-form {
+      .payment-credit-card {
+        .payment-credit-card-header {
+          flex-direction: column;
+          align-items: flex-start;
+
+          .payment-credit-card-header-images {
+            margin-left: 0;
+            padding-right: 0;
+            padding-left: 1.55em;
+          }
+        }
+      }
+    }
+  }
+}

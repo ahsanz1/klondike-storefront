@@ -1,0 +1,17 @@
+.locations-list {
+  width: 30%;
+  height: 530px;
+  overflow: auto;
+  border: 1px solid #ccc;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  > div {
+    &:nth-child(2n + 2) {
+      background: #eee;
+    }
+  }
+}

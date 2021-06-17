@@ -1,0 +1,285 @@
+@import '~styles/globals';
+
+.subscription-order {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 50px auto;
+
+    .sidebar {
+      width: 30%;
+
+      .customerName {
+        margin-bottom: 30px;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 25px;
+      }
+
+      .sidebar-links {
+        padding: 0;
+        list-style: none;
+
+        li {
+          margin: 0 0 10px;
+
+          .c-link {
+            color: #5a9fff;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 20px;
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+
+    .subscription-details {
+      width: 100%;
+
+      .top-heading {
+        margin-bottom: 20px;
+        font-family: Intro, Arial, Helvetica, sans-serif;
+        font-size: 35px;
+        font-weight: 500;
+        letter-spacing: 0.4px;
+        line-height: 45px;
+        text-transform: capitalize;
+      }
+
+      .Orderaddress {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 22px;
+
+        a {
+          margin-left: 15px;
+          color: #5a9fff;
+        }
+      }
+
+      .SingleOrdertable {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        background-color: transparent;
+        font-size: 18px;
+        line-height: 20px;
+
+        .tableColumn {
+          .tableHeadings {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #cecece;
+            color: #6a6c79;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: left;
+            text-transform: uppercase;
+
+            .label {
+              width: 13.75%;
+              text-align: center;
+
+              &:nth-child(5) {
+                width: 20%;
+              }
+
+              &:first-child {
+                width: 25%;
+                text-align: left;
+              }
+
+              // &:last-child {
+              //   text-align: right;
+              // }
+            }
+          }
+
+          .tableRowsData {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #cecece;
+            color: #57585d;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 18px;
+            text-align: left;
+            text-transform: uppercase;
+
+            .row {
+              width: 13.75%;
+              margin: auto;
+              text-align: center;
+
+              &:nth-child(5) {
+                width: 20%;
+              }
+
+              &:first-child {
+                width: 25%;
+                text-align: left;
+              }
+
+              &:last-child {
+                .actionLinks {
+                  text-align: center;
+                }
+              }
+
+              .link {
+                display: block;
+                color: #5a9fff;
+                font-weight: 600;
+                text-transform: capitalize;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+
+        .buttonHolder {
+          button {
+            padding: 10px 5px;
+            border: 1px solid #000;
+            background: #000;
+            color: #fff;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 18px;
+            text-transform: uppercase;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .address {
+        color: #333032;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+
+        .c-label {
+          margin: 0 0 7px;
+        }
+      }
+
+      .what-big-p {
+        color: #000;
+        font-family: $font-futura-md;
+        font-size: 24px;
+        letter-spacing: normal;
+        line-height: 1.5;
+        text-align: center;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .wrapper {
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+
+      .sidebar {
+        width: 100%;
+        margin-bottom: 30px;
+
+        .customerName {
+          margin-bottom: 15px;
+        }
+
+        .sidebar-links {
+          li {
+            .c-link {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
+      .subscription-details {
+        width: 100%;
+
+        .top-heading {
+          font-size: 25px;
+          line-height: 28px;
+        }
+
+        .Orderaddress {
+          font-size: 15px;
+          line-height: 18px;
+        }
+      }
+
+      .SingleOrdertable {
+        font-size: 16px;
+        line-height: 18px;
+
+        .tableHolder {
+          margin-bottom: 20px;
+          overflow-y: hidden;
+        }
+
+        .tableColumn {
+          display: flex;
+          flex-direction: column !important;
+          width: 800px;
+          max-width: 800px;
+          padding-right: 10px;
+          overflow-x: auto;
+          overflow-y: auto;
+
+          .row {
+            .dataLabel {
+              display: inline-block;
+              width: 100%;
+              margin: 0;
+              padding: 0 !important;
+              border: none !important;
+              font-size: 18px;
+              line-height: 25px;
+            }
+
+            .tableData {
+              display: inline-block;
+              width: 100%;
+              margin: 0;
+              padding: 0;
+              text-align: right !important;
+            }
+
+            &:last-child {
+              .dataLabel {
+                text-align: left !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

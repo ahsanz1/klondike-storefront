@@ -1,0 +1,72 @@
+.subscription-billing-information {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 767px) {
+    display: block;
+  }
+
+  .subscription-billing-information-section {
+    width: 80%;
+    margin: 40px 0;
+
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+      margin: 0;
+    }
+
+    .billing-info-heading {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .billing-card-info,
+    .billing-address-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 5px;
+      border-top: 1px solid black;
+
+      .billing-card-info-heading,
+      .billing-address-info-heading {
+        width: 70%;
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .card-info,
+      .billing-info {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        margin: 0;
+        text-align: left;
+
+        .billing-info-button {
+          display: inline-block;
+          padding: 10px 5px;
+          border: none;
+          border-width: 0;
+          outline: none;
+          background-color: black;
+          color: white;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 18px;
+          text-align: center;
+          text-decoration: none;
+          text-transform: uppercase;
+          vertical-align: middle;
+          white-space: nowrap;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

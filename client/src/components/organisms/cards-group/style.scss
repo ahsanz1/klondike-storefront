@@ -1,0 +1,68 @@
+@import '~styles/globals';
+
+.cg-wrap {
+  width: 100%;
+  overflow: auto;
+}
+
+.cg-section {
+  width: 100%;
+}
+
+.card-contanier {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 75px;
+
+  .card-heading {
+    margin-bottom: 10px;
+    font-size: 35px;
+    letter-spacing: 0.4px;
+    line-height: 45px;
+    text-align: center;
+  }
+
+  .bigP {
+    padding: 20px 60px;
+    color: #000;
+    font-family: $font-futura;
+    font-size: 24px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .ant-row {
+    justify-content: space-between;
+    margin-left: -30px;
+    padding: 0 40px;
+
+    .ant-col {
+      max-width: 330px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card-heading {
+      font-size: 26px;
+      line-height: 36px;
+    }
+
+    .bigP {
+      padding: 10px 0;
+      font-size: 18px;
+    }
+
+    .ant-row {
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card-contanier {
+    margin: 40 auto;
+    padding: 0 30px;
+  }
+}

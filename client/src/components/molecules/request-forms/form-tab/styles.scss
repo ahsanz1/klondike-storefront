@@ -1,0 +1,57 @@
+@import '~styles/globals';
+
+.form-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 50px;
+
+  @media (max-width: 991px) {
+    max-width: 340px;
+    margin: 0 20px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 170px;
+    margin: 0 5px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-family: $font-intro;
+    font-size: 35px;
+    letter-spacing: 0.4px;
+    line-height: 45px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 26px;
+      line-height: 36px;
+    }
+  }
+
+  &__button {
+    max-width: 260px;
+    padding: 10px 30px;
+    border: 2px solid $secondary-color;
+    outline: 0;
+    background: 0 0;
+    color: $secondary-color;
+    font-size: 20.5px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $secondary-color;
+      color: $white-color;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 140px;
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+}
