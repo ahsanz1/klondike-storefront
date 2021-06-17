@@ -118,4 +118,3 @@ phases:
           git push origin master
           git push --tags
         fi
-
