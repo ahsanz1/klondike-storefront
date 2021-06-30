@@ -29,6 +29,16 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
+  heroBannerdata,
+  bannerlubricants,
+  DownTime,
+  Testimonial,
+  ProductInovationslider,
+  CommitedSuccess,
+  homebanneer,
+  // ProductLubricant,
+  LubricantComponent,
+  distributionproduct,
   // customizedProductDescription,
   PressKit,
   MainPageHeroData,
@@ -78,6 +88,53 @@ const mockData = {
     {
       id: 'InstagramSection',
       params: instagramPosts,
+    },
+  ],
+
+  '/Home': [
+    {
+      id: 'HomePage',
+      params: heroBannerdata,
+    },
+    {
+      id: 'HomeLubricat',
+      params: bannerlubricants,
+    },
+    // {
+    //   id: 'ProductLubricant',
+    //   params: ProductLubricant,
+    // },
+    {
+      id: 'distributionproduct',
+      params: LubricantComponent,
+    },
+    {
+      id: 'downtime',
+      params: DownTime,
+    },
+    {
+      id: 'homebanner',
+      params: homebanneer,
+    },
+    {
+      id: 'CommitedSuccess',
+      params: CommitedSuccess,
+    },
+    {
+      id: 'distributionproduct',
+      params: distributionproduct,
+    },
+    {
+      id: 'Testimonial',
+      params: Testimonial,
+    },
+    {
+      id: 'ProductInovationslider',
+      params: ProductInovationslider,
+    },
+    {
+      id: 'downtime',
+      params: DownTime,
     },
   ],
   '/cart': [

@@ -4,9 +4,15 @@
 }
 
 .social-icons {
+  margin-top: 40px;
   margin-bottom: 0;
   padding-top: 7px;
   text-align: right;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+    text-align: left;
+  }
 
   li {
     display: inline-block;
@@ -17,6 +23,10 @@
 
 .social-icons__link {
   padding: 0 10px;
+
+  @media screen and (max-width: 768px) {
+    margin-right: 10px;
+  }
 }
 
 .social-icon-label {
@@ -33,10 +43,10 @@
 
 @media (max-width: 576px) {
   .s-icon {
-    height: 25px;
+    height: 30px;
   }
 
   .social-icons__link {
-    padding: 0;
+    padding: 30;
   }
 }

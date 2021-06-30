@@ -15,7 +15,7 @@ const NavbarcartIcon = ({ linkCartPageIcon = false }) => {
     <div className="cart-specific">
       <div className={linkCartPageIcon ? 'cartshow' : 'hide'}>
         <Link to="/cart">
-          <Image height={26} src="/static/icons/header/cart.svg" alt="..." />
+          <Image height={26} src="/static/images/shopping-cart.png" alt="..." />
           {itemCount > 0 && (
             <Label className="navbar-cart-count">{itemCount}</Label>
           )}
@@ -28,7 +28,7 @@ const NavbarcartIcon = ({ linkCartPageIcon = false }) => {
           role="button"
           tabIndex={0}
         >
-          <Image height={26} src="/static/icons/header/cart.svg" alt="..." />
+          <Image height={26} src="/static/images/shopping-cart.png" alt="..." />
           {itemCount > 0 && (
             <Label className="navbar-cart-count">{itemCount}</Label>
           )}

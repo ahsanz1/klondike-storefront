@@ -14,7 +14,12 @@ import { AppContext } from 'libs/context'
 
 import './styles.scss'
 
-const Navbar = ({ logo = '', links = [], dynamicLinks = [] }) => {
+const Navbar = ({
+  logo = '',
+  links = [],
+  dynamicLinks = [],
+  buyButton = '',
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const { user } = useContext(AppContext)
@@ -47,12 +52,16 @@ const Navbar = ({ logo = '', links = [], dynamicLinks = [] }) => {
           </Button>
         </div>
         <Link
-          to="/"
+          to="/Home"
           onClick={() => {
             setIsOpen(false)
           }}
         >
-          <img className="header__logo" src={logo} alt="..." />
+          <img
+            className="header__logo"
+            src="https://klondikelubricants.com/wp-content/uploads/2016/04/logo-internal2016.png"
+            alt="..."
+          />
         </Link>
         <Links
           className="header__links"
@@ -60,29 +69,45 @@ const Navbar = ({ logo = '', links = [], dynamicLinks = [] }) => {
           mobile={false}
           links={links}
         />
+        <Button className="Buy-Button">{buyButton}</Button>
+
         <div
           className="header__icons"
           onClick={() => {
             setIsOpen(false)
           }}
         >
-          <Link to="/search" className="header__search-icon">
-            <Image
-              height={26}
-              src="/static/icons/header/search.svg"
-              alt="..."
-            />
+          <Link
+            to="/search"
+            className="header__search-icon"
+            style={{
+              paddingRight: '30px',
+            }}
+          >
+            <Image height={26} src="/static/images/search.png" alt="..." />
+          </Link>
+          <Link
+            to="/about-us"
+            className="header__User-icon"
+            style={{
+              paddingRight: '30px',
+            }}
+          >
+            <Image height={26} src="/static/images/user.png" alt="..." />
           </Link>
           <Button
             iconOnly
             style={{
-              paddingLeft: '14px',
+              paddingRight: '35px',
             }}
           >
             <NavbarcartIcon
               linkCartPageIcon={location.pathname === '/cart' && true}
             />
           </Button>
+          <Link to="/about-us" className="header__search-icon">
+            <Image height={26} src="/static/images/english.png" alt="..." />
+          </Link>
         </div>
       </div>
       <div
@@ -106,6 +131,8 @@ const Navbar = ({ logo = '', links = [], dynamicLinks = [] }) => {
 Navbar.propTypes = {
   links: PropTypes.arrayOf(PropTypes.object),
   logo: PropTypes.string,
+  navButton: PropTypes.string,
   dynamicLinks: PropTypes.array,
+  buyButton: PropTypes.string,
 }
 export default Navbar

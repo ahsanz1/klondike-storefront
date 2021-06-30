@@ -95,6 +95,7 @@
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
+    "swiper": "^6.7.0",
     "tiny-cookie": "^2.3.2",
     "validator": "^13.5.1",
     "yup": "^0.32.8"

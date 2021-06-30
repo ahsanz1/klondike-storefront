@@ -4,10 +4,10 @@
   position: absolute;
   width: 100%;
   height: 80px;
-  background-color: $white-color;
+  background-color: $primary-color-dark;
 
   @media (max-width: 1900px) {
-    height: 60px;
+    height: 110px;
   }
 
   @media (max-width: 992px) {
@@ -30,6 +30,12 @@
     @media (max-width: 992px) {
       padding: 0 25px;
       transition: all 0.5s linear;
+    }
+  }
+
+  .desktop-logo {
+    @media screen and (max-width: 768px) {
+      display: none;
     }
   }
 
@@ -107,16 +113,23 @@
     }
 
     .header-link {
+      display: flex;
+      align-items: center;
       margin: 0 18px;
       padding: 7px 0;
-      border-bottom: 3px solid transparent;
-      font-size: 24px;
+      color: $white-color;
+      font-family: Open-Sans, Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: normal;
+      // border-bottom: 3px solid transparent;
       letter-spacing: 0.015em;
-      line-height: 19px;
+      line-height: 27px;
+      text-transform: uppercase;
 
       &:hover {
         padding-bottom: 6px;
-        border-bottom: 3px solid $light-border-color;
+        border-bottom: 3px solid $white-color;
       }
 
       @media (max-width: 1900px) {
@@ -129,8 +142,29 @@
     }
   }
 
-  &__search-icon {
+  &__User-icon {
     @media (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  .Buy-Button {
+    box-sizing: border-box;
+    align-items: center;
+    width: 174px;
+    height: 42px;
+    border: 1px solid #f1a900;
+    border-radius: 5px;
+    background: #f7921e;
+    color: #fff;
+    font-family: Open-Sans, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 22px;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 768px) {
       display: none;
     }
   }

@@ -1,0 +1,45 @@
+.product-wrapper {
+  padding: 50px 0;
+  background: #032939;
+
+  .swiper-container {
+    width: 80%;
+    margin: 0 auto;
+
+    .swiper-scrollbar {
+      background: white;
+    }
+
+    .swiper-scrollbar-drag {
+      width: 500px;
+      background: red;
+    }
+
+    .swiper-wrapper {
+      .swiper-slide {
+        width: 80%;
+        margin: 0 auto;
+
+        @media screen and (max-width: 768px) {
+          width: 285px !important;
+        }
+
+        .Product-content {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          @media screen and (max-width: 768px) {
+            display: contents;
+          }
+
+          p {
+            width: 70%;
+            margin-bottom: 2rem;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

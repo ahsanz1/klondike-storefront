@@ -12,6 +12,27 @@ Components[
 Components[
   'MainPageHero'
 ] = require('components/organisms/mainpage-hero').default
+Components['HomePage'] = require('Components/organisms/Home').default
+Components[
+  'ProductLubricant'
+] = require('Components/organisms/LubricantProduct').default
+Components[
+  'distributionproduct'
+] = require('Components/organisms/HomeDistributionProduct').default
+Components['downtime'] = require('Components/organisms/DownTime').default
+Components['homebanner'] = require('Components/organisms/HomeBanner').default
+Components[
+  'Testimonial'
+] = require('Components/organisms/ClientTestimonial').default
+Components[
+  'CommitedSuccess'
+] = require('Components/organisms/CommitedSuccess').default
+Components[
+  'ProductInovationslider'
+] = require('Components/organisms/ProductInvotationSlider').default
+Components[
+  'HomeLubricat'
+] = require('components/organisms/HomeLubricant').default
 Components[
   'WebpageGlobalHeroBanner'
 ] = require('components/organisms/webpages-hero-image-banner').default

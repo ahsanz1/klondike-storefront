@@ -1,0 +1,21 @@
+.distribute-wraper {
+  background: #013a4e;
+
+  .distribute-heading {
+    width: 1025px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: white;
+    font-family: nevis, Arial, Helvetica, sans-serif;
+    font-size: 46px;
+    letter-spacing: -0.01em;
+    line-height: 140%;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 768px) {
+      width: 331px;
+      font-size: 20px;
+    }
+  }
+}
