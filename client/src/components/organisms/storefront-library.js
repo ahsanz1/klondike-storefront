@@ -21,6 +21,9 @@ Components[
 Components[
   'Testimonials'
 ] = require('components/organisms/testimonials').default
+Components[
+  'contactaddress'
+] = require('Components/organisms/ContactAddres').default
 Components['CardsGroup'] = require('components/organisms/cards-group').default
 Components['CartPage'] = require('components/organisms/cart-page').default
 Components['Faqs'] = require('components/organisms/faqs').default

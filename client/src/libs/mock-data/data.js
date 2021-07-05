@@ -29,6 +29,8 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
+  // PcpHeroBanner,
+  contactaddress,
   // customizedProductDescription,
   PressKit,
   MainPageHeroData,
@@ -47,7 +49,7 @@ import {
   whyUsBanner,
   requestFormOfficeData,
   // simpleFormData,
-  contactUsBanner,
+  // contactUsBanner,
   mapLocationData,
   policyData,
   simpleFormData,
@@ -80,6 +82,7 @@ const mockData = {
       params: instagramPosts,
     },
   ],
+
   '/cart': [
     {
       id: 'CartPage',
@@ -337,13 +340,17 @@ const mockData = {
     },
   ],
   '/contact-us': [
-    {
-      id: 'WebpageGlobalHeroBanner',
-      params: { ...contactUsBanner, key: '112233446677' },
-    },
+    // {
+    //   id: 'HomePage',
+    //   params: PcpHeroBanner,
+    // },
     {
       id: 'SimpleForm',
       params: simpleFormData,
+    },
+    {
+      id: 'contactaddress',
+      params: contactaddress,
     },
     {
       id: 'MapLocation',

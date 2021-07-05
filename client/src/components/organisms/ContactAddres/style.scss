@@ -1,0 +1,12 @@
+.Address-wraper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  background: #013a4e;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    padding-left: 30px;
+  }
+}
