@@ -29,6 +29,9 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
+  ProductOverview,
+  ProductItem,
+  Productbanner,
   // customizedProductDescription,
   PressKit,
   MainPageHeroData,
@@ -78,6 +81,24 @@ const mockData = {
     {
       id: 'InstagramSection',
       params: instagramPosts,
+    },
+  ],
+  '/PCP': [
+    // {
+    //   id: 'HomePage',
+    //   params: PcpHeroBanner,
+    // },
+    {
+      id: 'ProductOverview',
+      params: ProductOverview,
+    },
+    {
+      id: 'ProductItem',
+      params: ProductItem,
+    },
+    {
+      id: 'Productbanner',
+      params: Productbanner,
     },
   ],
   '/cart': [

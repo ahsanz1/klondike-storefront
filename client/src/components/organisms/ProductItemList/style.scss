@@ -1,0 +1,15 @@
+.Productitem-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px 120px;
+  background: #013a4e;
+
+  @media screen and (max-width: 1500px) and (min-width: 1366px) {
+    padding: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+}
