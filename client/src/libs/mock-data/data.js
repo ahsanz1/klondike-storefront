@@ -29,6 +29,7 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
+  TermsCondition,
   // customizedProductDescription,
   PressKit,
   MainPageHeroData,
@@ -78,6 +79,12 @@ const mockData = {
     {
       id: 'InstagramSection',
       params: instagramPosts,
+    },
+  ],
+  '/terms-condition': [
+    {
+      id: 'TermsCondition',
+      params: TermsCondition,
     },
   ],
   '/cart': [
