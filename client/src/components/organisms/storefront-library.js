@@ -19,6 +19,9 @@ Components[
 Components[
   'distributionproduct'
 ] = require('Components/organisms/HomeDistributionProduct').default
+Components[
+  'distribution'
+] = require('Components/organisms/DistributionProduct').default
 Components['downtime'] = require('Components/organisms/DownTime').default
 Components['homebanner'] = require('Components/organisms/HomeBanner').default
 Components[

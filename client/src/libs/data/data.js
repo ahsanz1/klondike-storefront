@@ -95,9 +95,7 @@ export const LubricantComponent = {
     headingtext:
       'Products Lubricants Built to Withstand the Extremes of Your Operations',
   },
-  aboutUsSecondContent: [],
 
-  distributionProduct: [],
   LubricantContent: [
     {
       image: {
@@ -139,9 +137,8 @@ export const distributionSecond = {
     headingtext:
       'WHY KLONDIKE? BECAUSE WE KNOW THE NEEDS OF THE NORTH AMERICAN MARKET?',
   },
-  LubricantContent: [],
-  distributionProduct: [],
-  aboutUsSecondContent: [
+
+  LubricantContent: [
     {
       image: {
         url: '/static/images/klondike1.png',
@@ -197,10 +194,8 @@ export const distributionproduct = {
     headingtext:
       'Distribution That Spans the Continent, Gets Products To You Faster',
   },
-  LubricantContent: [],
-  aboutUsSecondContent: [],
 
-  distributionProduct: [
+  LubricantContent: [
     {
       image: {
         url: '/static/images/mask.png',

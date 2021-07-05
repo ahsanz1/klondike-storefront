@@ -106,7 +106,7 @@ const mockData = {
     //   params: ProductLubricant,
     // },
     {
-      id: 'distributionproduct',
+      id: 'distribution',
       params: LubricantComponent,
     },
     {
@@ -118,11 +118,11 @@ const mockData = {
       params: homebanneer,
     },
     {
-      id: 'distributionproduct',
+      id: 'distribution',
       params: distributionSecond,
     },
     {
-      id: 'distributionproduct',
+      id: 'distribution',
       params: distributionproduct,
     },
     {
