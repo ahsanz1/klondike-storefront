@@ -8,7 +8,6 @@ const PageBannerContent = ({
   banerlogoimg,
   heading,
   buttontxt,
-  headingbanner,
 }) => {
   return (
     <>
@@ -23,9 +22,6 @@ const PageBannerContent = ({
           <Button>{buttontxt}</Button>
         </div>
       </div>
-      <div className="heading-wrapper">
-        <p>{headingbanner}</p>
-      </div>
     </>
   )
 }
@@ -35,7 +31,6 @@ PageBannerContent.propTypes = {
   banerlogoimg: PropTypes.string,
   heading: PropTypes.string,
   buttontxt: PropTypes.string,
-  headingbanner: PropTypes.string,
 }
 
 export default PageBannerContent

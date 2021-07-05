@@ -13,7 +13,7 @@ const Testimonial = ({ testimonial }) => {
     slidesToScroll: 1,
     arrows: true,
   }
-  console.log('testimonial1', testimonial)
+
   return (
     <div className="testimonial-wrapper">
       <h1 className="buy-heading">Why I buy KLONDIKE</h1>

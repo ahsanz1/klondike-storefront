@@ -9,21 +9,8 @@ const HomeDistributionProduct = ({
   distributionheading,
   LubricantContent,
 }) => {
-  console.log(
-    'LubricantContent',
-    aboutUsSecondContent,
-    distributionProduct,
-    LubricantContent,
-  )
   return (
     <>
-      {LubricantContent.map((content, i) => (
-        <DistributionProduct {...content} key={i} />
-      ))}
-
-      {aboutUsSecondContent.map((content, i) => (
-        <DistributionProduct {...content} key={i} />
-      ))}
       <div className="distribute-wraper">
         {distributionheading && (
           <h1 className="distribute-heading">
@@ -31,6 +18,13 @@ const HomeDistributionProduct = ({
           </h1>
         )}
       </div>
+      {LubricantContent.map((content, i) => (
+        <DistributionProduct {...content} key={i} />
+      ))}
+
+      {aboutUsSecondContent.map((content, i) => (
+        <DistributionProduct {...content} key={i} />
+      ))}
 
       {distributionProduct.map((content, i) => (
         <DistributionProduct {...content} key={i} />

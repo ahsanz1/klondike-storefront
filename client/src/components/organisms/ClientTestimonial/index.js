@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 // import './style.scss'
 import Testimonial from 'components/molecules/testimonial'
 
-const HomeBanner = ({ testimonial }) => {
+const ClientTestimonial = ({ testimonial }) => {
   return (
     <>
       <Testimonial testimonial={testimonial} />
@@ -11,8 +11,8 @@ const HomeBanner = ({ testimonial }) => {
   )
 }
 
-HomeBanner.propTypes = {
+ClientTestimonial.propTypes = {
   testimonial: PropTypes.string,
 }
 
-export default HomeBanner
+export default ClientTestimonial

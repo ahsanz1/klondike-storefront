@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 // import './style.scss'
 import Commited from 'components/molecules/commited'
 
-const LubricantProduct = ({ commited }) => {
+const CommitedSuccess = ({ commited }) => {
   return (
     <>
       {commited.map((content, i) => (
@@ -13,8 +13,8 @@ const LubricantProduct = ({ commited }) => {
   )
 }
 
-LubricantProduct.propTypes = {
+CommitedSuccess.propTypes = {
   commited: PropTypes.string,
 }
 
-export default LubricantProduct
+export default CommitedSuccess

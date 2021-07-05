@@ -36,6 +36,7 @@ import {
   ProductInovationslider,
   CommitedSuccess,
   homebanneer,
+  distributionSecond,
   // ProductLubricant,
   LubricantComponent,
   distributionproduct,
@@ -117,12 +118,16 @@ const mockData = {
       params: homebanneer,
     },
     {
-      id: 'CommitedSuccess',
-      params: CommitedSuccess,
+      id: 'distributionproduct',
+      params: distributionSecond,
     },
     {
       id: 'distributionproduct',
       params: distributionproduct,
+    },
+    {
+      id: 'CommitedSuccess',
+      params: CommitedSuccess,
     },
     {
       id: 'Testimonial',

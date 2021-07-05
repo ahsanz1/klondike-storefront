@@ -1,26 +1,3 @@
-.heading-wrapper {
-  background: #032939;
-
-  p {
-    width: 971px;
-    margin: 0 auto;
-    padding: 78px;
-    color: white;
-    font-family: nevis, Arial, Helvetica, sans-serif;
-    font-size: 46px;
-    letter-spacing: -0.03em;
-    line-height: 111%;
-    text-align: center;
-    text-transform: uppercase;
-
-    @media screen and (max-width: 768px) {
-      width: 337px;
-      padding: 41px 10px;
-      font-size: 20px;
-    }
-  }
-}
-
 .pagebanner-wrapper {
   position: relative;
 

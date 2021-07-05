@@ -91,6 +91,10 @@ export const ProductLubricant = {
   ],
 }
 export const LubricantComponent = {
+  distributionheading: {
+    headingtext:
+      'Products Lubricants Built to Withstand the Extremes of Your Operations',
+  },
   aboutUsSecondContent: [],
 
   distributionProduct: [],
@@ -127,6 +131,109 @@ export const LubricantComponent = {
       paragraph: true,
       headingtext: 'For all your jobs in tough terrains and extreme climates',
       btntext: 'LEARN MORE',
+    },
+  ],
+}
+export const distributionSecond = {
+  distributionheading: {
+    headingtext:
+      'WHY KLONDIKE? BECAUSE WE KNOW THE NEEDS OF THE NORTH AMERICAN MARKET?',
+  },
+  LubricantContent: [],
+  distributionProduct: [],
+  aboutUsSecondContent: [
+    {
+      image: {
+        url: '/static/images/klondike1.png',
+        altText: 'alt',
+      },
+      text:
+        'You’ll find our roots firmly planted in the cold harsh conditions of the Canadian North, where our business began. As a Canadian company, we’re big believers in honesty, loyalty and hard work – traditional Canadian values that define our approach to everything we do. ',
+      paragraph: true,
+      headingtext: 'Canadian Brand',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike2.png',
+        altText: 'alt',
+      },
+      text:
+        'Rigorous testing ensures KLONDIKE’S products meet or exceed warranty requirements of all international engine manufacturers who adhere to the major global standards. Our products meet OEM requirements, individual industry certification standards and comply with the environmental and safety standards outlined by industry regulators.',
+      paragraph: true,
+      headingtext: 'OEM Approved',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike3.png',
+        altText: 'alt',
+      },
+      text:
+        'Our in-depth knowledge of the North American market comes from decades in the oils and lubricants business and pays dividends in terms of focused product development and innovation for all heavy duty, industrial and automotive.',
+      paragraph: true,
+      headingtext: 'North American-Made',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike4.png',
+        altText: 'alt',
+      },
+      text:
+        'Take advantage of the stability and longer-term outlook that go along with our independence. From increased loyalty and commitment to a unified vision of success, we thrive on the flexibility and innovation that comes from being a growing, independently owned company. ',
+      paragraph: true,
+      headingtext: 'Independent',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+  ],
+}
+export const distributionproduct = {
+  distributionheading: {
+    headingtext:
+      'Distribution That Spans the Continent, Gets Products To You Faster',
+  },
+  LubricantContent: [],
+  aboutUsSecondContent: [],
+
+  distributionProduct: [
+    {
+      image: {
+        url: '/static/images/mask.png',
+        alt: '',
+      },
+      headingtext: '15 million litres in stock ',
+      text:
+        'Our 15 million litres of in-stock oils and lubricants mean we’ve got the inventory you need on hand, as soon as you need it. From specialty greases to bulk oils, you’ll find what you need close to your worksite, no matter how remote',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/distribute2.png',
+        alt: '',
+      },
+      headingtext:
+        'Lubricants available in our multiple warehouses across North America ',
+      text:
+        'We take distribution seriously, knowing you want the oils and lubricants you need in a hurry, regardless of where your worksite is. Availability and expedited delivery are just a couple of the key differences between us and our competitors.',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/distribute3.png',
+        alt: '',
+      },
+      headingtext: '99.2% order fulfillment rate ',
+      text:
+        'Solid inventory forecasting and quick replenishment cycles are vital parts of our exceptional order fulfillment rate. This customer-friendly measure helps avoid back orders and reduces equipment downtime for all of our customers. ',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
     },
   ],
 }
@@ -190,99 +297,6 @@ export const DownTime = {
       ],
       text: '',
       buttontxt: 'BECOME A DEALER',
-    },
-  ],
-}
-export const distributionproduct = {
-  LubricantContent: [],
-  aboutUsSecondContent: [
-    {
-      image: {
-        url: '/static/images/klondike1.png',
-        altText: 'alt',
-      },
-      text:
-        'You’ll find our roots firmly planted in the cold harsh conditions of the Canadian North, where our business began. As a Canadian company, we’re big believers in honesty, loyalty and hard work – traditional Canadian values that define our approach to everything we do. ',
-      paragraph: true,
-      headingtext: 'Canadian Brand',
-      btntext: 'LEARN MORE',
-      outerboreder: '1px solid orange',
-    },
-    {
-      image: {
-        url: '/static/images/klondike2.png',
-        altText: 'alt',
-      },
-      text:
-        'Rigorous testing ensures KLONDIKE’S products meet or exceed warranty requirements of all international engine manufacturers who adhere to the major global standards. Our products meet OEM requirements, individual industry certification standards and comply with the environmental and safety standards outlined by industry regulators.',
-      paragraph: true,
-      headingtext: 'OEM Approved',
-      btntext: 'LEARN MORE',
-      outerboreder: '1px solid orange',
-    },
-    {
-      image: {
-        url: '/static/images/klondike3.png',
-        altText: 'alt',
-      },
-      text:
-        'Our in-depth knowledge of the North American market comes from decades in the oils and lubricants business and pays dividends in terms of focused product development and innovation for all heavy duty, industrial and automotive.',
-      paragraph: true,
-      headingtext: 'North American-Made',
-      btntext: 'LEARN MORE',
-      outerboreder: '1px solid orange',
-    },
-    {
-      image: {
-        url: '/static/images/klondike4.png',
-        altText: 'alt',
-      },
-      text:
-        'Take advantage of the stability and longer-term outlook that go along with our independence. From increased loyalty and commitment to a unified vision of success, we thrive on the flexibility and innovation that comes from being a growing, independently owned company. ',
-      paragraph: true,
-      headingtext: 'Independent',
-      btntext: 'LEARN MORE',
-      outerboreder: '1px solid orange',
-    },
-  ],
-  distributionheading: {
-    headingtext:
-      'Distribution That Spans the Continent, Gets Products To You Faster',
-  },
-  distributionProduct: [
-    {
-      image: {
-        url: '/static/images/mask.png',
-        alt: '',
-      },
-      headingtext: '15 million litres in stock ',
-      text:
-        'Our 15 million litres of in-stock oils and lubricants mean we’ve got the inventory you need on hand, as soon as you need it. From specialty greases to bulk oils, you’ll find what you need close to your worksite, no matter how remote',
-      btntext: 'HOW TO BUY',
-      outerboreder: '1px solid orange',
-    },
-    {
-      image: {
-        url: '/static/images/distribute2.png',
-        alt: '',
-      },
-      headingtext:
-        'Lubricants available in our multiple warehouses across North America ',
-      text:
-        'We take distribution seriously, knowing you want the oils and lubricants you need in a hurry, regardless of where your worksite is. Availability and expedited delivery are just a couple of the key differences between us and our competitors.',
-      btntext: 'HOW TO BUY',
-      outerboreder: '1px solid orange',
-    },
-    {
-      image: {
-        url: '/static/images/distribute3.png',
-        alt: '',
-      },
-      headingtext: '99.2% order fulfillment rate ',
-      text:
-        'Solid inventory forecasting and quick replenishment cycles are vital parts of our exceptional order fulfillment rate. This customer-friendly measure helps avoid back orders and reduces equipment downtime for all of our customers. ',
-      btntext: 'HOW TO BUY',
-      outerboreder: '1px solid orange',
     },
   ],
 }
