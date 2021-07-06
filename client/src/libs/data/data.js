@@ -22,7 +22,23 @@ export const merchandiseOptions = {
   imageMaxWidth: '100%',
   cardItemsInRow: 4,
 }
-
+export const TermsCondition = {
+  heading: 'Terms & Conditionns',
+  subheading: 'Egestas in libero ',
+  paragraph:
+    'Sed nulla iaculis morbi imperdiet diam. Eu odio placerat et arcu eu. Arcu et elit egestas nunc. Quis gravida tortor turpis pulvinar nulla enim eu aliquet. Duis sed curabitur ipsum nisl, viverra. Nam lectus adipiscing in diam scelerisque arcu mi faucibus. Quam et morbi sit dui. Lacus, ultrices amet scelerisque posuere lobortis proin faucibus vulputate venenatis. Orci elementum arcu enim phasellus. Arcu tellus at quam turpis eget at faucibus.',
+  termlist: [
+    {
+      text: 'Cursus scelerisque congue ipsum, id.',
+    },
+    {
+      text: 'Tellus aliquet nisi, orci integer sed quam.',
+    },
+    {
+      text: 'Eros id mauris facilisi amet dolor.',
+    },
+  ],
+}
 export const faqsData = {
   desktopHeading: 'FREQUENTLY ASKED QUESTIONS',
   mobileHeading: 'FAQ',
