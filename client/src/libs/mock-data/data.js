@@ -32,6 +32,7 @@ import {
   ProductOverview,
   ProductItem,
   Productbanner,
+  TermsCondition,
   // customizedProductDescription,
   PressKit,
   MainPageHeroData,
@@ -101,6 +102,13 @@ const mockData = {
       params: Productbanner,
     },
   ],
+  '/terms-condition': [
+    {
+      id: 'TermsCondition',
+      params: TermsCondition,
+    },
+  ],
+
   '/cart': [
     {
       id: 'CartPage',
