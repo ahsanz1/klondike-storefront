@@ -15,7 +15,7 @@
   li {
     display: inline-flex;
     align-items: center;
-    margin-right: 25px;
+    margin-right: 10px;
 
     a {
       color: rgb(5, 5, 5);
@@ -37,6 +37,7 @@
 
 @media (max-width: 875px) {
   .footer-bottom-menu {
+    padding-left: 20px;
     font-size: 11px;
   }
 }

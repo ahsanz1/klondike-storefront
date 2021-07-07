@@ -72,9 +72,12 @@ export const footerConstants = {
   ],
 
   logoImage: {
-    url: '/static/icons/footer-logo.svg',
+    url: '/static/images/logo.png',
   },
-
+  Productimg: {
+    url: '/static/images/productfooter.png',
+  },
+  footerimg: { url: '/static/images/footerimg.png' },
   policyText: '©2021 KLONDIKE Lubricants Corporation. All rights reserved.',
   privacyTitle: 'Privacy Policy',
   privacyLink: '/',
