@@ -8,13 +8,13 @@ Components[
 ] = require('components/organisms/product-slider').default
 Components[
   'ProductOverview'
-] = require('Components/organisms/PCPOverview').default
+] = require('components/organisms/PCPOverview').default
 Components[
   'ProductItem'
-] = require('Components/organisms/ProductItemList').default
+] = require('components/organisms/ProductItemList').default
 Components[
   'Productbanner'
-] = require('Components/organisms/ProductBanner').default
+] = require('components/organisms/ProductBanner').default
 Components[
   'DiscountOrder'
 ] = require('components/organisms/discount-order').default
