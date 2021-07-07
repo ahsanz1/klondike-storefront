@@ -101,5 +101,5 @@ export const Header = {
   // promoBanner: 'Free Shipping on All U.S. Orders!',
   // referLabel: 'Refer + Earn',
   // referLink: '/refer-earn',
-  // logo: { url: '/static/logo.svg' },
+  logo: { url: '/static/images/logo.png' },
 }

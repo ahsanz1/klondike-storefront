@@ -30,9 +30,11 @@ const Footer = ({
   connectKlondikeLink = '',
   tosTitle = '',
   tosLink = '',
+  Productimg = '',
+  footerimg = '',
   // newsLetterTitle = '',
   // newsLetterDesc = '',
-  // logoImage = {},
+  logoImage = {},
   // paymentText = '',
   // paymentMethodsImage = {},
 }) => {
@@ -102,7 +104,7 @@ const Footer = ({
       <NewsletterModal />
       <div className="footer">
         <div className="footer-img">
-          <img src="/static/images/footerimg.png" alt="alt" />
+          <img src={footerimg.url} alt="alt" />
         </div>
         <div className="page-width">
           <Row className="footerDropdownHolder">
@@ -125,7 +127,7 @@ const Footer = ({
               <Image
                 alt="Footer logo"
                 className="footer-logo"
-                src="https://klondikelubricants.com/wp-content/uploads/2016/04/logo-internal2016.png"
+                src={logoImage.url}
               />
               <div className="logoTxt">
                 <p>{logoDescription}</p>
@@ -166,11 +168,7 @@ const Footer = ({
             </Col>
             <Col xs={24} sm={24} md={12}>
               <div className="rightFotterContent">
-                <img
-                  src="/static/images/nanoil.png"
-                  className="nanOilimg"
-                  alt="img"
-                />
+                <img src={Productimg.url} className="nanOilimg" alt="img" />
                 <h5>{nanOilFooter}</h5>
                 <Button>{dealer}</Button>
               </div>
@@ -273,6 +271,8 @@ Footer.propTypes = {
   nanOilFooter: PropTypes.string,
   data: PropTypes.string,
   paymentMethodsImage: PropTypes.object,
+  Productimg: PropTypes.string,
+  footerimg: PropTypes.string,
 }
 
 export default Footer
