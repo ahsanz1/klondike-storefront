@@ -5,7 +5,7 @@ Components[
 ] = require('components/organisms/instagram-section').default
 Components[
   'TermsCondition'
-] = require('Components/organisms/TermsCondition').default
+] = require('components/organisms/TermsCondition').default
 Components[
   'ProductSlider'
 ] = require('components/organisms/product-slider').default
