@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Label from 'components/atoms/label'
 import Button from 'components/atoms/img-button'
-import BulletHeading from 'components/molecules/bullet-heading'
+// import BulletHeading from 'components/molecules/bullet-heading'
 
 import './style.scss'
 
@@ -17,10 +17,10 @@ const HomepageHeroTextLinks = ({
 }) => {
   return (
     <div className="content">
-      <Label className="desktop heading">{firstDesktopHeading}</Label>
+      .<Label className="desktop heading">{firstDesktopHeading}</Label>
       <Label className="desktop heading">{secondDesktopHeading}</Label>
       <Label className="mobile heading">{mobileHeading}</Label>
-      <BulletHeading headings={bulletPoints} />
+      {/* <BulletHeading headings={bulletPoints} /> */}
       <Button text={buttonText} buttonLink={buttonLink} className="buttons" />
     </div>
   )

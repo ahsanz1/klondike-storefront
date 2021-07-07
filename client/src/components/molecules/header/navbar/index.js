@@ -57,7 +57,11 @@ const Navbar = ({
             setIsOpen(false)
           }}
         >
-          <img className="header__logo" src={logo} alt="..." />
+          <img
+            className="header__logo"
+            src="https://klondikelubricants.com/wp-content/uploads/2016/04/logo-internal2016.png"
+            alt="..."
+          />
         </Link>
         <Links
           className="header__links"
