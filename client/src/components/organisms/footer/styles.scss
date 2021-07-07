@@ -79,7 +79,6 @@
 
   .ant-row {
     @media screen and (max-width: 768px) {
-      flex-flow: column;
       // flex-flow: column;
       width: 325px;
       margin: 0 auto;
@@ -100,12 +99,6 @@
     .ant-col-xs-0 {
       @media screen and (max-width: 768px) {
         display: initial;
-      }
-    }
-
-    .account-link {
-      @media screen and (max-width: 768px) {
-        display: none;
       }
     }
   }

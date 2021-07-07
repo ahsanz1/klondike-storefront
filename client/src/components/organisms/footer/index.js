@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 import NewsletterModal from 'components/organisms/newsletter-modal'
 import Image from 'components/atoms/image'
+import Accordion from 'components/molecules/accordion'
 import FooterLinks from 'components/molecules/footer-links'
 // import FooterNewsletter from 'components/molecules/footer-newsletter'
 import FooterSocialLinks from 'components/molecules/footer-socialinks'
@@ -35,6 +36,21 @@ const Footer = ({
   // paymentText = '',
   // paymentMethodsImage = {},
 }) => {
+  const [footerlink, setFooterLink] = useState([...footerLinks])
+  useEffect(() => {
+    let newFooterLink = [...footerLinks]
+    newFooterLink.map((footerLink, i) => {
+      newFooterLink[i] = { ...footerLink, isOpen: false }
+    })
+    setFooterLink([...newFooterLink])
+  }, [footerLinks])
+
+  const isOpenHandler = faqId => {
+    let newFooterLink = [...footerLinks]
+    newFooterLink[faqId].isOpen = !newFooterLink[faqId].isOpen
+    setFooterLink([...newFooterLink])
+  }
+
   // const iconInputProps = {
   //   img: '/static/icons/mail-footer.svg',
   //   buttonType: 'submit',
@@ -89,8 +105,23 @@ const Footer = ({
           <img src="/static/images/footerimg.png" alt="alt" />
         </div>
         <div className="page-width">
+          <Row className="footerDropdownHolder">
+            {footerlink.length &&
+              footerlink.map((fLinks, index) => (
+                <Col xs={24} sm={24} md={24} key={fLinks.heading}>
+                  <Accordion
+                    key={index}
+                    question={fLinks.heading}
+                    links={fLinks.links}
+                    isOpen={fLinks.isOpen}
+                    isOpenHandler={isOpenHandler}
+                    faqId={index}
+                  />
+                </Col>
+              ))}
+          </Row>
           <Row>
-            <Col xs={0} sm={0} md={12}>
+            <Col xs={12} sm={0} md={12}>
               <Image
                 alt="Footer logo"
                 className="footer-logo"
@@ -100,7 +131,7 @@ const Footer = ({
                 <p>{logoDescription}</p>
                 <p>{logoDescriptionValues}</p>
               </div>
-              <Row className="account-link">
+              <Row className="footer-links">
                 {footerLinks.length &&
                   footerLinks.map((fLinks, i) => (
                     <Col xs={12} sm={8} md={8} key={fLinks.heading}>
@@ -183,9 +214,9 @@ const Footer = ({
             </Col>
           </Row>
           <Row>
-            <Col xs={24} sm={0} md={0}>
+            {/* <Col xs={24} sm={0} md={0}>
               <h3 className="policy-mobile">{policyText}</h3>
-            </Col>
+            </Col> */}
           </Row>
           {/* <div className="bottom-payment">
             <span>
