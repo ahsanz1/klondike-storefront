@@ -1,0 +1,44 @@
+.TermsConditions-wrapper {
+  padding: 3rem;
+  background: #013a4e;
+
+  .Termscondition-container {
+    width: 792px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 768px) {
+      width: 334px;
+    }
+
+    h1 {
+      margin: 0;
+      color: white;
+      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 110%;
+    }
+
+    h3 {
+      padding: 2rem 0;
+      color: white;
+      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      line-height: 18px;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: white;
+      font-family: Raleway, Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 140%;
+    }
+  }
+}

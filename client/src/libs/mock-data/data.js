@@ -29,8 +29,10 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
-  // PcpHeroBanner,
-  contactaddress,
+  ProductOverview,
+  ProductItem,
+  Productbanner,
+  TermsCondition,
   // customizedProductDescription,
   PressKit,
   MainPageHeroData,
@@ -49,7 +51,7 @@ import {
   whyUsBanner,
   requestFormOfficeData,
   // simpleFormData,
-  // contactUsBanner,
+  contactUsBanner,
   mapLocationData,
   policyData,
   simpleFormData,
@@ -80,6 +82,30 @@ const mockData = {
     {
       id: 'InstagramSection',
       params: instagramPosts,
+    },
+  ],
+  '/PCP': [
+    // {
+    //   id: 'HomePage',
+    //   params: PcpHeroBanner,
+    // },
+    {
+      id: 'ProductOverview',
+      params: ProductOverview,
+    },
+    {
+      id: 'ProductItem',
+      params: ProductItem,
+    },
+    {
+      id: 'Productbanner',
+      params: Productbanner,
+    },
+  ],
+  '/terms-condition': [
+    {
+      id: 'TermsCondition',
+      params: TermsCondition,
     },
   ],
 
@@ -340,17 +366,13 @@ const mockData = {
     },
   ],
   '/contact-us': [
-    // {
-    //   id: 'HomePage',
-    //   params: PcpHeroBanner,
-    // },
+    {
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...contactUsBanner, key: '112233446677' },
+    },
     {
       id: 'SimpleForm',
       params: simpleFormData,
-    },
-    {
-      id: 'contactaddress',
-      params: contactaddress,
     },
     {
       id: 'MapLocation',
