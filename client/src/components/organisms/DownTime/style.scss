@@ -1,0 +1,11 @@
+.downtime-wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 73px;
+  background: #013a4e;
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+    padding: 15px 73px;
+  }
+}

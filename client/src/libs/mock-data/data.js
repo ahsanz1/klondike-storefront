@@ -32,6 +32,17 @@ import {
   ProductOverview,
   ProductItem,
   Productbanner,
+  heroBannerdata,
+  bannerlubricants,
+  DownTime,
+  Testimonial,
+  ProductInovationslider,
+  CommitedSuccess,
+  homebanneer,
+  distributionSecond,
+  // ProductLubricant,
+  LubricantComponent,
+  distributionproduct,
   TermsCondition,
   // customizedProductDescription,
   PressKit,
@@ -100,6 +111,57 @@ const mockData = {
     {
       id: 'Productbanner',
       params: Productbanner,
+    },
+  ],
+
+  '/Home': [
+    {
+      id: 'HomePage',
+      params: heroBannerdata,
+    },
+    {
+      id: 'HomeLubricat',
+      params: bannerlubricants,
+    },
+    // {
+    //   id: 'ProductLubricant',
+    //   params: ProductLubricant,
+    // },
+    {
+      id: 'distribution',
+      params: LubricantComponent,
+    },
+    {
+      id: 'downtime',
+      params: DownTime,
+    },
+    {
+      id: 'homebanner',
+      params: homebanneer,
+    },
+    {
+      id: 'distribution',
+      params: distributionSecond,
+    },
+    {
+      id: 'distribution',
+      params: distributionproduct,
+    },
+    {
+      id: 'CommitedSuccess',
+      params: CommitedSuccess,
+    },
+    {
+      id: 'Testimonial',
+      params: Testimonial,
+    },
+    {
+      id: 'ProductInovationslider',
+      params: ProductInovationslider,
+    },
+    {
+      id: 'downtime',
+      params: DownTime,
     },
   ],
   '/terms-condition': [
