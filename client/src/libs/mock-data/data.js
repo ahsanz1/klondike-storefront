@@ -40,6 +40,7 @@ import {
   // ProductLubricant,
   LubricantComponent,
   distributionproduct,
+  TermsCondition,
   // customizedProductDescription,
   PressKit,
   MainPageHeroData,
@@ -140,6 +141,12 @@ const mockData = {
     {
       id: 'downtime',
       params: DownTime,
+    },
+  ],
+  '/terms-condition': [
+    {
+      id: 'TermsCondition',
+      params: TermsCondition,
     },
   ],
   '/cart': [
