@@ -2,9 +2,9 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { navigate, useLocation } from '@reach/router'
 import PropTypes from 'prop-types'
-import LoginLinks from 'components/molecules/login-links'
+// import LoginLinks from 'components/molecules/login-links'
 import RequestForm from 'components/molecules/request-forms/request-form'
-import CancelButton from 'components/molecules/cancel-button'
+// import CancelButton from 'components/molecules/cancel-button'
 import {
   createUser,
   loginUser,
@@ -31,6 +31,7 @@ const AuthForm = ({
   formTitle = '',
   mobileFormTitle = '',
   buttonLabel = '',
+  forgotText = '',
   formInputs = [],
   links = [], // login
   accountResetLink = '/', // register
@@ -68,6 +69,7 @@ const AuthForm = ({
     buttonLabel,
     formInputs,
     resetTitle,
+    forgotText,
     resetDetailTitle,
   }
 
@@ -76,11 +78,11 @@ const AuthForm = ({
     text: resetText,
   }
 
-  const cancelButton = {
-    show: showCancelBtn,
-    text: cancelBtnText,
-    to: cancelBtnLink,
-  }
+  // const cancelButton = {
+  //   show: showCancelBtn,
+  //   text: cancelBtnText,
+  //   to: cancelBtnLink,
+  // }
 
   const expiredToken = {
     title: expiredTokenTitle,
@@ -475,8 +477,8 @@ const AuthForm = ({
                 error={error}
                 resetLink={resetLink}
               />
-              {cancelButton.show && <CancelButton data={cancelButton} />}
-              {links && <LoginLinks links={links} />}
+              {/* {cancelButton.show && <CancelButton data={cancelButton} />}
+              {links && <LoginLinks links={links} />} */}
             </>
           ) : (
             <div className="tokenExpiredTitle">
@@ -507,6 +509,7 @@ AuthForm.propTypes = {
   expiredTokenDescription: PropTypes.string,
   resetTitle: PropTypes.string,
   resetDetailTitle: PropTypes.string,
+  forgotText: PropTypes.string,
 }
 
 export default AuthForm

@@ -484,7 +484,7 @@ export const whatSectionData = {
     'IQBARs are protein bars formulated with clean-label ingredients rich in compounds shown to benefit the brain and body. Each bar contains 6 brain nutrients, 12g plant protein, 3g net carbs, and 1-1g sugar. IQBARs are keto, paleo friendly, vegan, kosher, and free from GMOs, gluten, dairy, soy, and sugar alcohols.',
 }
 export const myAccount = {
-  title: 'MY ACCOUNT',
+  title: 'ACCOUNT',
   subTitle: 'ORDER HISTORY',
   ordersPlaced: "You haven't placed any orders yet",
   accDetails: 'ACCOUNT DETAILS',
@@ -505,6 +505,80 @@ export const myAccount = {
     totalCost: '60.72',
   },
 }
+export const accountTabsData = [
+  {
+    tabTitle: 'Profile',
+    data: {
+      session: 'Current Session',
+      zip: 'A1234-Joe',
+      email: 'jhon@example.com',
+      shipAddress: {
+        heading: 'Shipping Address',
+        name: 'Lorem Ipesum',
+        building: '123',
+        street: 'Neque, odio purus, Id duis',
+        code: '123456789',
+      },
+      dropShip: {
+        heading: 'Drop Shipping Address',
+        name: 'Lorem Ipesum',
+        building: '123',
+        street: 'Neque, odio purus, Id duis',
+        code: '123456789',
+      },
+    },
+  },
+  {
+    tabTitle: 'All Orders',
+    data: {
+      orderArray: [
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+          orderNumber: 'Order Number',
+          cart: 'ADD TO CART',
+          review: 'WRITE A REVIEW',
+          order: {
+            price: '$8.00',
+            text: 'REORDER',
+          },
+          status: {
+            date: 'DEC 13,2021',
+            price: '$160.00',
+            status: {
+              text: 'STATUS',
+              value: 'SHIPPED',
+            },
+          },
+        },
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+          orderNumber: 'Order Number',
+          cart: 'ADD TO CART',
+          review: 'WRITE A REVIEW',
+          order: {
+            price: '$8.00',
+            text: 'REORDER',
+          },
+          status: {
+            date: 'DEC 13,2021',
+            price: '$160.00',
+            status: {
+              text: 'STATUS',
+              value: 'SHIPPED',
+            },
+          },
+        },
+      ],
+    },
+  },
+  {
+    tabTitle: 'Credit Limit',
+    data: {
+      limit: 'CREDIT LIMIT',
+      price: '$44533',
+    },
+  },
+]
 
 export const shippingAddress = {
   form: {
@@ -947,13 +1021,20 @@ export const authLoginFormData = {
   formId: 1,
   formBgColor: '#ffffff',
   links: [
-    { text: 'CREATE ACCOUNT', to: '/account/register' },
-    { text: 'FORGOT YOUR PASSWORD', to: '/account/forgetpassword' },
+    { text: 'CREATE ACCOUNT11', to: '/account/register' },
+    { text: 'FORGOT PASSWORD?', to: '/account/forgetpassword' },
   ],
 
-  formTitle: 'LOGIN',
-  mobileFormTitle: 'LOGIN',
-  buttonLabel: 'SIGN IN',
+  formTitle: {
+    text1: 'WELCOME BACK,',
+    text2: 'LOGIN HERE,',
+  },
+  mobileFormTitle: {
+    text1: 'WELCOME BACK,',
+    text2: 'LOGIN HERE,',
+  },
+  buttonLabel: 'LOG IN',
+  forgotText: 'Forgot Password?',
   formInputs: [
     {
       formRow: [
@@ -1050,7 +1131,7 @@ export const authForgetPasswordFormData = {
   cancelBtnText: 'CANCEL',
   cancelBtnLink: '/account/login',
   showCancelBtn: true,
-  formTitle: 'LOGIN',
+  formTitle: 'WELCOME BACK,',
   resetTitle: 'RESET YOUR PASSWORD',
   resetDetailTitle: 'We will send you an email to reset your password.',
   mobileFormTitle: 'LOGIN',
