@@ -1,0 +1,46 @@
+.content-wrapper {
+  h1 {
+    color: #fff;
+    font-family: nevis, Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  h5 {
+    color: #fff;
+    font-family: nevis, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    letter-spacing: -0.015em;
+    line-height: 110%;
+  }
+
+  p {
+    font-family: Open-Sans, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: -0.015em;
+    line-height: 160%;
+    -webkit-text-fill-color: transparent;
+  }
+
+  button {
+    top: 0;
+    left: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    width: 191px;
+    height: 48px;
+    border: 2px solid #e35205;
+    border-radius: 5px;
+    background: transparent;
+    color: #fff;
+    font-family: nevis, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.75px;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}

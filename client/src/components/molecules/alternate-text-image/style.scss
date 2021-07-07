@@ -6,7 +6,7 @@
   justify-content: center;
   width: 100%;
   padding-top: 80px;
-  background: #fff;
+  background: #013a4e;
   vertical-align: center;
 
   .dialogue {
@@ -34,21 +34,25 @@
   }
 
   .about-us-image {
-    width: 50%;
+    width: 25%;
+    padding-right: 80px;
   }
 
   .about-us-text {
-    width: 50%;
-    font-family: $font-futura;
-    font-size: 24px;
-    font-weight: 500; //fixed from 300 to 500 for (text was not bold on laptop)
-    line-height: 1.5;
-    text-align: left;
+    color: #fff;
+    font-family: Open-Sans, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 140%;
+    font-feature-settings: 'pnum' on, 'lnum' on;
   }
 
   &:nth-child(odd) {
-    flex-direction: row;
+    flex-flow: row-reverse;
+    // flex-direction: row;
     justify-content: center;
+    background: #032939;
 
     .about-us-image {
       margin-right: 50px;
@@ -59,25 +63,8 @@
     }
 
     .about-us-text {
-      // margin-left: 50px;
-      padding-right: 55px;
-    }
-  }
-
-  &:nth-child(even) {
-    flex-direction: row-reverse;
-
-    .about-us-image {
-      margin-left: 50px;
-
-      @media (max-width: 767px) {
-        margin-left: 0;
-      }
-    }
-
-    .about-us-text {
       margin-right: 50px;
-      padding-left: 55px;
+      padding-right: 55px;
 
       @media (max-width: 767px) {
         margin-right: 0;
@@ -86,7 +73,7 @@
   }
 
   &:last-child {
-    flex-direction: column-reverse;
+    flex-direction: row-reverse;
     padding-bottom: 80px;
 
     .about-us-image {
@@ -95,6 +82,54 @@
 
     .about-us-text {
       margin-bottom: 30px; //fixed from 60px to 30px
+    }
+  }
+
+  .oil-wrapper {
+    width: 385px;
+    margin-bottom: 50px;
+
+    .oil-heading {
+      color: #fff;
+      font-family: nevis, Helvetica, Arial, sans-serif;
+      font-size: 30px;
+      line-height: 110%;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 768px) {
+        width: 327px;
+        margin: 0 auto;
+        font-size: 32px;
+      }
+    }
+
+    .about-us-text {
+      @media screen and (max-width: 768px) {
+        padding: 20px 30px !important;
+        text-align: left;
+      }
+    }
+
+    .oil-button {
+      box-sizing: border-box;
+      align-items: center;
+      width: 147px;
+      height: 48px;
+      margin-top: 24px;
+      border: 2px solid #e35205;
+      border-radius: 5px;
+      background: transparent;
+      color: #fff;
+      font-family: nevis, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.75px;
+      line-height: 28px;
+      text-align: center;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 768px) {
+        margin-left: 30px;
+      }
     }
   }
 }
@@ -122,6 +157,7 @@
 
     .about-us-image {
       width: 100%;
+      padding-right: 20px;
     }
 
     .about-us-text {

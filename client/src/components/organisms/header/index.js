@@ -7,6 +7,9 @@ import './styles.scss'
 
 const Header = ({
   offerLabel = '',
+  promoButton = '',
+  buyButton = '',
+  url = '',
   offerLink = '',
   promoBanner = '',
   referLabel = '',
@@ -20,18 +23,35 @@ const Header = ({
       label: offerLabel,
       link: offerLink,
     },
+    promoBtn: {
+      label: promoButton,
+      link: offerLink,
+    },
     promoBanner: promoBanner,
     extraLink: {
       label: referLabel,
       link: referLink,
     },
+    promoLogo: {
+      url: '/static/images/promologo.png',
+      altText: 'alt',
+    },
+    // navButton: {
+    //   label: buyButton,
+    //   link: offerLink,
+    // },
   }
 
   return (
     <div className="main-header">
       <div className="main-header__wrapper--fix">
         <PromoRail {...promoData} />
-        <Navbar logo={logo.url} links={links} dynamicLinks={dynamicLinks} />
+        <Navbar
+          logo={logo.url}
+          links={links}
+          dynamicLinks={dynamicLinks}
+          buyButton={buyButton}
+        />
       </div>
     </div>
   )
@@ -41,10 +61,13 @@ Header.propTypes = {
   links: PropTypes.arrayOf(PropTypes.object),
   logo: PropTypes.object,
   offerLabel: PropTypes.string,
+  promoButton: PropTypes.string,
+  buyButton: PropTypes.string,
   offerLink: PropTypes.string,
-  promoBanner: PropTypes.string,
   referLabel: PropTypes.string,
   referLink: PropTypes.string,
+  url: PropTypes.string,
   dynamicLinks: PropTypes.array,
+  promoBanner: PropTypes.string,
 }
 export default Header

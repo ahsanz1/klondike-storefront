@@ -10,7 +10,7 @@ const FooterSocialLinks = ({ socialIcons = [], screen = '' }) => {
     <>
       {screen === 'desktop' ? (
         <ul className="social-icons">
-          <li className="social-icon-label">{'Follow us'}</li>
+          {/* <li className="social-icon-label">{'Follow us'}</li> */}
           {socialIcons &&
             socialIcons.map((socialIcon, index) => (
               <li className="social-icons__item" key={index}>
