@@ -1,9 +1,9 @@
-import MissionStatementData from 'components/organisms/mission-statement/data'
+// import MissionStatementData from 'components/organisms/mission-statement/data'
 import WebpageGlobalHeroBannerData from 'components/organisms/webpages-hero-image-banner/data'
-import discountOrderData from 'components/organisms/discount-order/data'
+// import discountOrderData from 'components/organisms/discount-order/data'
 // import testimonialsData from 'components/organisms/testimonials/data'
-import productSliderData from 'components/organisms/product-slider/data'
-import instagramPosts from 'components/organisms/instagram-section/data'
+// import productSliderData from 'components/organisms/product-slider/data'
+// import instagramPosts from 'components/organisms/instagram-section/data'
 import { categoriesXPM as categories } from 'components/organisms/plp/data'
 import SliderTabbableData from 'components/organisms/slider-tabable/data'
 
@@ -11,7 +11,7 @@ import {
   merchandiseOptions,
   benefits,
   review,
-  reviews,
+  // reviews,
   requestFormData,
   faqsData,
   whyEatIQBAR,
@@ -43,7 +43,7 @@ import {
   TermsCondition,
   // customizedProductDescription,
   PressKit,
-  MainPageHeroData,
+  // MainPageHeroData,
   DeliveryStatus,
   subscriptionBillingInfo,
   PurchaseHistory,
@@ -66,34 +66,34 @@ import {
   emptyCartData,
 } from 'libs/data/data'
 const mockData = {
-  '/': [
-    {
-      id: 'MainPageHero',
-      params: MainPageHeroData,
-    },
-    {
-      id: 'MissionStatement',
-      params: MissionStatementData,
-    },
-    {
-      id: 'ProductSlider',
-      params: productSliderData,
-    },
-    {
-      id: 'DiscountOrder',
-      params: discountOrderData,
-    },
-    {
-      id: 'Testimonials',
-      params: reviews,
-    },
-    {
-      id: 'InstagramSection',
-      params: instagramPosts,
-    },
-  ],
+  // '/': [
+  //   {
+  //     id: 'MainPageHero',
+  //     params: MainPageHeroData,
+  //   },
+  //   {
+  //     id: 'MissionStatement',
+  //     params: MissionStatementData,
+  //   },
+  //   {
+  //     id: 'ProductSlider',
+  //     params: productSliderData,
+  //   },
+  //   {
+  //     id: 'DiscountOrder',
+  //     params: discountOrderData,
+  //   },
+  //   {
+  //     id: 'Testimonials',
+  //     params: reviews,
+  //   },
+  //   {
+  //     id: 'InstagramSection',
+  //     params: instagramPosts,
+  //   },
+  // ],
 
-  '/Home': [
+  '/': [
     {
       id: 'HomePage',
       params: heroBannerdata,
