@@ -101,23 +101,15 @@ const RequestForm = (
       onFormSubmit(formData, formsIndex)
     }
   }
-  console.log('check form data:', form)
+
   return (
     <Container color={formBgColor} className={`request-form ${className}`}>
       <div className="request-form__content">
         <Label className="request-form__title">
-          {isEditableForm ? (
-            form.formEditTitle
-          ) : (
-            <>
-              <Label>{form.formTitle.text1}</Label>
-              <Label>{form.formTitle.text2}</Label>
-            </>
-          )}
+          {isEditableForm ? form.formEditTitle : form.formTitle}
         </Label>
         <Label className="request-form__mobile-title">
-          <Label>{form.mobileFormTitle.text1}</Label>
-          <Label>{form.mobileFormTitle.text2}</Label>
+          {form.mobileFormTitle}
         </Label>
         {form.subtitle && (
           <div
@@ -210,7 +202,6 @@ const RequestForm = (
               closable
             />
           )}
-          <Label className="forgot">{form.forgotText}</Label>
           <div className="request-form__submit-button-wrapper">
             <Button type="submit" className="request-form__submit-button">
               {loading ? (
