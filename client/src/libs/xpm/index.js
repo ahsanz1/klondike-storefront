@@ -35,7 +35,7 @@ export const fetchLayout = async ({ url }) => {
 export const fetchGc = async () => {
   let data = []
   const response = await axios.get(
-    `${xpmApiDomain}/api-xpm/global-component/live`,
+    `${xpmApiDomain}/api-xpm/glol-component/live`,
     {
       headers: {
         'x-site-context': `{"account":"${account}","stage":"${stage}","site": "${site}", "channel": ${channel},"date":"${new Date()}"}`,

@@ -1,9 +1,9 @@
-import MissionStatementData from 'components/organisms/mission-statement/data'
+// import MissionStatementData from 'components/organisms/mission-statement/data'
 import WebpageGlobalHeroBannerData from 'components/organisms/webpages-hero-image-banner/data'
-import discountOrderData from 'components/organisms/discount-order/data'
+// import discountOrderData from 'components/organisms/discount-order/data'
 // import testimonialsData from 'components/organisms/testimonials/data'
-import productSliderData from 'components/organisms/product-slider/data'
-import instagramPosts from 'components/organisms/instagram-section/data'
+// import productSliderData from 'components/organisms/product-slider/data'
+// import instagramPosts from 'components/organisms/instagram-section/data'
 import { categoriesXPM as categories } from 'components/organisms/plp/data'
 import SliderTabbableData from 'components/organisms/slider-tabable/data'
 
@@ -11,7 +11,7 @@ import {
   merchandiseOptions,
   benefits,
   review,
-  reviews,
+  // reviews,
   requestFormData,
   faqsData,
   whyEatIQBAR,
@@ -29,10 +29,21 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
+  heroBannerdata,
+  bannerlubricants,
+  DownTime,
+  Testimonial,
+  ProductInovationslider,
+  CommitedSuccess,
+  homebanneer,
+  distributionSecond,
+  // ProductLubricant,
+  LubricantComponent,
+  distributionproduct,
   TermsCondition,
   // customizedProductDescription,
   PressKit,
-  MainPageHeroData,
+  // MainPageHeroData,
   DeliveryStatus,
   subscriptionBillingInfo,
   PurchaseHistory,
@@ -55,30 +66,81 @@ import {
   emptyCartData,
 } from 'libs/data/data'
 const mockData = {
+  // '/': [
+  //   {
+  //     id: 'MainPageHero',
+  //     params: MainPageHeroData,
+  //   },
+  //   {
+  //     id: 'MissionStatement',
+  //     params: MissionStatementData,
+  //   },
+  //   {
+  //     id: 'ProductSlider',
+  //     params: productSliderData,
+  //   },
+  //   {
+  //     id: 'DiscountOrder',
+  //     params: discountOrderData,
+  //   },
+  //   {
+  //     id: 'Testimonials',
+  //     params: reviews,
+  //   },
+  //   {
+  //     id: 'InstagramSection',
+  //     params: instagramPosts,
+  //   },
+  // ],
+
   '/': [
     {
-      id: 'MainPageHero',
-      params: MainPageHeroData,
+      id: 'HomePage',
+      params: heroBannerdata,
     },
     {
-      id: 'MissionStatement',
-      params: MissionStatementData,
+      id: 'HomeLubricat',
+      params: bannerlubricants,
+    },
+    // {
+    //   id: 'ProductLubricant',
+    //   params: ProductLubricant,
+    // },
+    {
+      id: 'distribution',
+      params: LubricantComponent,
     },
     {
-      id: 'ProductSlider',
-      params: productSliderData,
+      id: 'downtime',
+      params: DownTime,
     },
     {
-      id: 'DiscountOrder',
-      params: discountOrderData,
+      id: 'homebanner',
+      params: homebanneer,
     },
     {
-      id: 'Testimonials',
-      params: reviews,
+      id: 'distribution',
+      params: distributionSecond,
     },
     {
-      id: 'InstagramSection',
-      params: instagramPosts,
+      id: 'distribution',
+      params: distributionproduct,
+    },
+    {
+      id: 'CommitedSuccess',
+      params: CommitedSuccess,
+    },
+    {
+      id: 'Testimonial',
+      params: Testimonial,
+    },
+    {
+      id: 'ProductInovationslider',
+      params: ProductInovationslider,
+    },
+    {
+      id: 'downtime',
+      params: DownTime,
     },
   ],
   '/terms-condition': [

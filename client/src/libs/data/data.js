@@ -22,6 +22,380 @@ export const merchandiseOptions = {
   imageMaxWidth: '100%',
   cardItemsInRow: 4,
 }
+
+export const heroBannerdata = {
+  desktopHeroImage: {
+    url: '/static/images/bannerhome.png',
+    altText: 'alt',
+  },
+
+  mobileHeroImage: {
+    url: '/static/images/mobile.png',
+    altText: 'alt',
+  },
+  bannercontent: {
+    bannerheading:
+      '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
+
+    bannerbutton: 'Learn more',
+  },
+}
+export const bannerlubricants = {
+  bannersubheading:
+    'Get your lubricants quickly  |  Run your equipment longer  |  Complete your jobs faster',
+  bannerparagraph:
+    'Every one of our oils and lubricants is built to do the hard work required to keep your engines running smoothly and reliably when your equipment is stretched to the limit by the temperatures or operating conditions. KLONDIKE products are specially formulated to help increase fuel efficiency, reduce emissions and keep engines running longer, delivering the long-lasting protection that only a premium product can. You’ll be thankful you chose KLONDIKE knowing you’ve got the backing of our comprehensive KLONDIKE warranty',
+}
+export const ProductLubricant = {
+  headingtext: {
+    headingtext:
+      'Products Lubricants Built to Withstand the Extremes of Your Operations',
+  },
+
+  LubricantContent: [
+    {
+      image: {
+        url:
+          'https://klondikelubricants.com/wp-content/uploads/2020/11/EP-1.5_large.png',
+        altText: 'alt',
+      },
+      text:
+        'Our wide range of oils, lubricants and greases are field tested and designed specifically for the application and industry you operate in. These highly engineered specialty productsfluids are designed with input from customers, based on their real-life experiences, making them a risk-free way of protecting your expensive machinery.',
+      paragraph: true,
+      heading: 'oil lubricants and greases',
+      buttontext: 'Button',
+    },
+    {
+      image: {
+        url:
+          'https://klondikelubricants.com/wp-content/uploads/2020/11/KL-HD0580_15W-40_CK-4_18.9L_Pail_website3-Copy-e1605210454711.png',
+        altText: 'alt',
+      },
+      text:
+        'Advanced base stocks and proven additives characterize our heavy duty, industrial and automotive oils and lubricants. These are products customers have grown to trust, based on performance, efficiency and protection after years of heavy loads and demanding use. Let KLONDIKE keep your engines running longer and stronger than you ever expected.',
+      paragraph: true,
+      heading: 'for heavy duty, industrial and automotive markets',
+      buttontext: 'Button',
+    },
+    {
+      image: {
+        url:
+          'https://klondikelubricants.com/wp-content/uploads/2019/01/nav-KL-LD1280-5W-30-SN-PLUS-Synthetic-Blend_Jug.png',
+        altText: 'alt',
+      },
+      text:
+        'Heat, cold, water, dirt. All are enemies of your equipment running smoothly and efficiently for long periods of time. Find out how KLONDIKE’s dedicated research can help you vanquish those enemies and cut downtime in tough terrain and remote areas by more than 40%.',
+      paragraph: true,
+      heading: 'For all your jobs in tough terrains and extreme climates',
+      buttontext: 'Button',
+    },
+  ],
+}
+export const LubricantComponent = {
+  distributionheading: {
+    headingtext:
+      'Products Lubricants Built to Withstand the Extremes of Your Operations',
+  },
+
+  LubricantContent: [
+    {
+      image: {
+        url: '/static/images/klondike1.png',
+        altText: 'alt',
+      },
+      text:
+        'Our wide range of oils, lubricants and greases are field tested and designed specifically for the application and industry you operate in. These highly engineered specialty productsfluids are designed with input from customers, based on their real-life experiences, making them a risk-free way of protecting your expensive machinery.',
+      paragraph: true,
+      headingtext: 'OIL LUBRICANTS AND GREASES',
+      btntext: 'LEARN MORE',
+    },
+    {
+      image: {
+        url: '/static/images/klondike2.png',
+        altText: 'alt',
+      },
+      text:
+        'Advanced base stocks and proven additives characterize our heavy duty, industrial and automotive oils and lubricants. These are products customers have grown to trust, based on performance, efficiency and protection after years of heavy loads and demanding use. Let KLONDIKE keep your engines running longer and stronger than you ever expected.',
+      paragraph: true,
+      headingtext: 'for heavy duty, industrial and automotive markets',
+      btntext: 'LEARN MORE',
+    },
+    {
+      image: {
+        url: '/static/images/klondike3.png',
+        altText: 'alt',
+      },
+      text:
+        'Heat, cold, water, dirt. All are enemies of your equipment running smoothly and efficiently for long periods of time. Find out how KLONDIKE’s dedicated research can help you vanquish those enemies and cut downtime in tough terrain and remote areas by more than 40%.',
+      paragraph: true,
+      headingtext: 'For all your jobs in tough terrains and extreme climates',
+      btntext: 'LEARN MORE',
+    },
+  ],
+}
+export const distributionSecond = {
+  distributionheading: {
+    headingtext:
+      'WHY KLONDIKE? BECAUSE WE KNOW THE NEEDS OF THE NORTH AMERICAN MARKET?',
+  },
+
+  LubricantContent: [
+    {
+      image: {
+        url: '/static/images/klondike1.png',
+        altText: 'alt',
+      },
+      text:
+        'You’ll find our roots firmly planted in the cold harsh conditions of the Canadian North, where our business began. As a Canadian company, we’re big believers in honesty, loyalty and hard work – traditional Canadian values that define our approach to everything we do. ',
+      paragraph: true,
+      headingtext: 'Canadian Brand',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike2.png',
+        altText: 'alt',
+      },
+      text:
+        'Rigorous testing ensures KLONDIKE’S products meet or exceed warranty requirements of all international engine manufacturers who adhere to the major global standards. Our products meet OEM requirements, individual industry certification standards and comply with the environmental and safety standards outlined by industry regulators.',
+      paragraph: true,
+      headingtext: 'OEM Approved',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike3.png',
+        altText: 'alt',
+      },
+      text:
+        'Our in-depth knowledge of the North American market comes from decades in the oils and lubricants business and pays dividends in terms of focused product development and innovation for all heavy duty, industrial and automotive.',
+      paragraph: true,
+      headingtext: 'North American-Made',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike4.png',
+        altText: 'alt',
+      },
+      text:
+        'Take advantage of the stability and longer-term outlook that go along with our independence. From increased loyalty and commitment to a unified vision of success, we thrive on the flexibility and innovation that comes from being a growing, independently owned company. ',
+      paragraph: true,
+      headingtext: 'Independent',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+  ],
+}
+export const distributionproduct = {
+  distributionheading: {
+    headingtext:
+      'Distribution That Spans the Continent, Gets Products To You Faster',
+  },
+
+  LubricantContent: [
+    {
+      image: {
+        url: '/static/images/mask.png',
+        alt: '',
+      },
+      headingtext: '15 million litres in stock ',
+      text:
+        'Our 15 million litres of in-stock oils and lubricants mean we’ve got the inventory you need on hand, as soon as you need it. From specialty greases to bulk oils, you’ll find what you need close to your worksite, no matter how remote',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/distribute2.png',
+        alt: '',
+      },
+      headingtext:
+        'Lubricants available in our multiple warehouses across North America ',
+      text:
+        'We take distribution seriously, knowing you want the oils and lubricants you need in a hurry, regardless of where your worksite is. Availability and expedited delivery are just a couple of the key differences between us and our competitors.',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/distribute3.png',
+        alt: '',
+      },
+      headingtext: '99.2% order fulfillment rate ',
+      text:
+        'Solid inventory forecasting and quick replenishment cycles are vital parts of our exceptional order fulfillment rate. This customer-friendly measure helps avoid back orders and reduces equipment downtime for all of our customers. ',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
+    },
+  ],
+}
+export const DownTime = {
+  downTimeCosting: [
+    {
+      image: {
+        url: '/static/images/Rectangle.png',
+        alt: '',
+      },
+      heading: 'How Much is Downtime Costing You?',
+      text:
+        'Got equipment sitting idle because you’re not getting lubricants fast enough?',
+      list: [
+        {
+          text: 'Wasting time ordering from multiple vendors?',
+        },
+        {
+          text:
+            'Frustrated trying to find and buy the right oil for your entire fleet?',
+        },
+        {
+          text:
+            'Too many oils to keep track of for your diverse and various equipment?',
+        },
+        {
+          text:
+            'Squandering money replacing parts for vehicles, equipment, and machinery?',
+        },
+        {
+          text:
+            'Are you losing work because of too much downtime with your equipment?',
+        },
+      ],
+      Paragraph:
+        'Your KLONDIKE dealer is part of a North American distribution system with more than 15 million litres of oils and lubricants in stock, so you can get the products you need, when you need them. Availability and selection are two ways we make sure your equipment is in the field, not in the shop.',
+      buttontxt: 'HOW TO BUY',
+    },
+
+    {
+      image: {
+        url: '/static/images/Rectangle.png',
+        alt: '',
+      },
+      heading: 'Increasing Equipment Uptime',
+      list: [
+        {
+          heading: '1: Find a KLONDIKE Dealer',
+          text:
+            ' Choose from one of the many distributors dealers located across North America',
+        },
+        {
+          heading: '2: Choose Your KLONDIKE Lubricants',
+          text:
+            ' Ask your dealer for a specific product or use our LUBE-LINK oil search toolapplication',
+        },
+        {
+          heading: ' 3: Reduce Your Equipment Downtime',
+          text: ' Use our high-quality performance oil or lub',
+        },
+      ],
+      text: '',
+      buttontxt: 'BECOME A DEALER',
+    },
+  ],
+}
+export const homebanneer = {
+  bannerComponent: [
+    {
+      backgroundimg: {
+        url: '/static/images/MaskGroup.png',
+        alt: 'alt',
+      },
+      banerlogoimg: {
+        url: '/static/images/lubelogobanner.png',
+        alt: 'alt',
+      },
+      heading: 'Lubricants Built to Withstand the Extremes of Your Operations',
+      buttontxt: 'SEARCH NOW',
+      headingbanner:
+        'Why KLONDIKE? Because We Know the Needs of the North American market?',
+    },
+  ],
+}
+export const Testimonial = {
+  testimonial: [
+    {
+      image: {
+        url: '/static/images/client.png',
+        alt: '',
+      },
+
+      headingtext: 'Paul Lawrence',
+      text:
+        ' “KLONDIKE has a huge range of products and amazing support. If you can dream it, they can make it happen. With access to the owners and a focus on the end customer, KLONDIKE Lubricants is a great Service First partner!” ',
+      buyklondike: 'Why I buy KLONDIKE',
+    },
+    {
+      image: {
+        url: '/static/images/client.png',
+        alt: '',
+      },
+
+      headingtext: 'Paul Lawrence',
+      text:
+        ' “KLONDIKE has a huge range of products and amazing support. If you can dream it, they can make it happen. With access to the owners and a focus on the end customer, KLONDIKE Lubricants is a great Service First partner!” ',
+    },
+  ],
+}
+export const CommitedSuccess = {
+  commited: [
+    {
+      heading: '100% COMMITTED TO YOUR SUCCESS',
+      paragraph:
+        'The KLONDIKE Quality Assurance Guarantee is how we back our products, underlining our promise to stand behind our oils, lubricants, greases and chemicals. Our American Petroleum Institute (API) and International Lubricating Standardization & Approval Committee (ILSAC) product certifications make it clear our products meet and exceed the requirements of this stringent global testing.',
+      subheading:
+        'KLONDIKE will repair or replace equipment parts that have been damaged as a direct result of the failure of any of our products. *',
+      butontext: 'SEE WARRANTY',
+    },
+  ],
+}
+export const ProductInovationslider = {
+  productHeading: {
+    productHeading:
+      'Innovation and customer demand fuel new specialty product growth',
+  },
+
+  productInovation: [
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+  ],
+}
+
 export const TermsCondition = {
   heading: 'Terms & Conditionns',
   subheading: 'Egestas in libero ',
@@ -1800,84 +2174,361 @@ export const usStates = {
   ],
 }
 
-export const aboutUsPage = {
-  desktopHeroImage: {
-    url:
-      'https://cdn.shopify.com/s/files/1/1682/9837/files/hero_images_artboardabout_us_1eb84790-8817-479e-84f7-8fbba181d1d5_1600x.jpg?v=1594396303',
-    altText: 'alt',
-  },
-  mobileHeroImage: {
-    url:
-      'https://cdn.shopify.com/s/files/1/1682/9837/files/hero_images_artboardabout_us_mobile_8d59196a-4bda-4900-a6b9-bf15b67c4264_700x.jpg?v=1594396315',
-    altText: 'alt',
-  },
-  aboutUsContent: [
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About1.svg?v=14209667136057949764',
-        altText: 'alt',
-      },
-      text:
-        'While studying psychology and neuroscience as a Harvard undergrad, I became fascinated with the human brain and how it functions.',
-      paragraph: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About2.svg?v=17241191729928395287',
-        altText: 'alt',
-      },
-      text:
-        'After graduating and settling into long workdays selling and marketing software, I experienced failings with my own brain. Mental fatigue and headaches became daily struggles.',
-      paragraph: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About3.svg?v=6141588718709028390',
-        altText: 'alt',
-      },
-      text:
-        'Eventually, I identified my carb-packed diet as the culprit. By eliminating high-carb staples from my regimen and consuming vastly more fats and anti-inflammatory compounds, I experienced an astounding recovery in my mental energy and clarity.',
-      paragraph: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About4.svg?v=7779015416736652260',
-        altText: 'alt',
-      },
-      text:
-        'Elation soon gave way to frustration as I struggled to find ready-to-eat options that fit my new diet and my hectic lifestyle. The fact that no food product centering on brain and body nutrition existed astounded me.',
-      paragraph: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About5.svg?v=3561270368287852354',
-        altText: 'alt',
-      },
-      firstText:
-        'After hearing similar frustrations from others on a low-carb regimen, I thought:',
-      secondText: '“Why don’t I create that product?"',
-      thirdText:
-        'Before long, I was spending nights and weekends researching esoteric nutrients and “prototyping” in my apartment kitchen.',
-      dialogue: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/OurStory-Six.png?v=14126893207822201278',
-        altText: 'alt',
-      },
-      text:
-        'After countless iterations over the course of a year, I launched a Kickstarter campaign in late 2017 and the first version of IQBAR was born.',
-      alt: 'alt',
-      paragraph: true,
-    },
-  ],
-}
+// export const aboutUsPage = {
+//   desktopHeroImage: {
+//     url: '/static/images/bannerhome.png',
+//     altText: 'alt',
+//   },
+
+//   mobileHeroImage: {
+//     url: '/static/images/mobile.png',
+//     altText: 'alt',
+//   },
+//   bannercontent: {
+//     bannerheading:
+//       '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
+
+//     bannerbutton: 'Learn more',
+//   },
+//   bannerlubricants: {
+//     bannersubheading:
+//       'Get your lubricants quickly  |  Run your equipment longer  |  Complete your jobs faster',
+//     bannerparagraph:
+//       'Every one of our oils and lubricants is built to do the hard work required to keep your engines running smoothly and reliably when your equipment is stretched to the limit by the temperatures or operating conditions. KLONDIKE products are specially formulated to help increase fuel efficiency, reduce emissions and keep engines running longer, delivering the long-lasting protection that only a premium product can. You’ll be thankful you chose KLONDIKE knowing you’ve got the backing of our comprehensive KLONDIKE warranty',
+//   },
+//   headingtext: {
+//     headingtext:
+//       'Products Lubricants Built to Withstand the Extremes of Your Operations',
+//   },
+
+//   aboutUsContent: [
+//     {
+//       image: {
+//         url:
+//           'https://klondikelubricants.com/wp-content/uploads/2020/11/EP-1.5_large.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Our wide range of oils, lubricants and greases are field tested and designed specifically for the application and industry you operate in. These highly engineered specialty productsfluids are designed with input from customers, based on their real-life experiences, making them a risk-free way of protecting your expensive machinery.',
+//       paragraph: true,
+//       heading: 'oil lubricants and greases',
+//       buttontext: 'Button',
+//     },
+//     {
+//       image: {
+//         url:
+//           'https://klondikelubricants.com/wp-content/uploads/2020/11/KL-HD0580_15W-40_CK-4_18.9L_Pail_website3-Copy-e1605210454711.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Advanced base stocks and proven additives characterize our heavy duty, industrial and automotive oils and lubricants. These are products customers have grown to trust, based on performance, efficiency and protection after years of heavy loads and demanding use. Let KLONDIKE keep your engines running longer and stronger than you ever expected.',
+//       paragraph: true,
+//       heading: 'for heavy duty, industrial and automotive markets',
+//       buttontext: 'Button',
+//     },
+//     {
+//       image: {
+//         url:
+//           'https://klondikelubricants.com/wp-content/uploads/2019/01/nav-KL-LD1280-5W-30-SN-PLUS-Synthetic-Blend_Jug.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Heat, cold, water, dirt. All are enemies of your equipment running smoothly and efficiently for long periods of time. Find out how KLONDIKE’s dedicated research can help you vanquish those enemies and cut downtime in tough terrain and remote areas by more than 40%.',
+//       paragraph: true,
+//       heading: 'For all your jobs in tough terrains and extreme climates',
+//       buttontext: 'Button',
+//     },
+
+//     // {
+//     //   image: {
+//     //     url:
+//     //       'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About5.svg?v=3561270368287852354',
+//     //     altText: 'alt',
+//     //   },
+//     //   firstText:
+//     //     'After hearing similar frustrations from others on a low-carb regimen, I thought:',
+//     //   secondText: '“Why don’t I create that product?"',
+//     //   thirdText:
+//     //     'Before long, I was spending nights and weekends researching esoteric nutrients and “prototyping” in my apartment kitchen.',
+//     //   dialogue: true,
+//     // },
+//     // {
+//     //   image: {
+//     //     url:
+//     //       'https://klondikelubricants.com/wp-content/uploads/2020/11/small-page-group-RETINA.png',
+//     //     altText: 'alt',
+//     //   },
+//     //   text:
+//     //     'At KLONDIKE we pride ourselves in manufacturing globally certified products ranging from packaged and bulk oils to industrial lubricants and chemicals.',
+//     //   alt: 'alt',
+//     //   paragraph: true,
+//     // },
+//   ],
+
+//   aboutUsSecondContent: [
+//     {
+//       image: {
+//         url: '/static/images/klondike1.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'You’ll find our roots firmly planted in the cold harsh conditions of the Canadian North, where our business began. As a Canadian company, we’re big believers in honesty, loyalty and hard work – traditional Canadian values that define our approach to everything we do. ',
+//       paragraph: true,
+//       headingtext: 'Canadian Brand',
+//       btntext: 'LEARN MORE',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/klondike2.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Rigorous testing ensures KLONDIKE’S products meet or exceed warranty requirements of all international engine manufacturers who adhere to the major global standards. Our products meet OEM requirements, individual industry certification standards and comply with the environmental and safety standards outlined by industry regulators.',
+//       paragraph: true,
+//       headingtext: 'OEM Approved',
+//       btntext: 'LEARN MORE',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/klondike3.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Our in-depth knowledge of the North American market comes from decades in the oils and lubricants business and pays dividends in terms of focused product development and innovation for all heavy duty, industrial and automotive.',
+//       paragraph: true,
+//       headingtext: 'North American-Made',
+//       btntext: 'LEARN MORE',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/klondike4.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Take advantage of the stability and longer-term outlook that go along with our independence. From increased loyalty and commitment to a unified vision of success, we thrive on the flexibility and innovation that comes from being a growing, independently owned company. ',
+//       paragraph: true,
+//       headingtext: 'Independent',
+//       btntext: 'LEARN MORE',
+//     },
+
+//     // {
+//     //   image: {
+//     //     url:
+//     //       'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About5.svg?v=3561270368287852354',
+//     //     altText: 'alt',
+//     //   },
+//     //   firstText:
+//     //     'After hearing similar frustrations from others on a low-carb regimen, I thought:',
+//     //   secondText: '“Why don’t I create that product?"',
+//     //   thirdText:
+//     //     'Before long, I was spending nights and weekends researching esoteric nutrients and “prototyping” in my apartment kitchen.',
+//     //   dialogue: true,
+//     // },
+//     // {
+//     //   image: {
+//     //     url:
+//     //       'https://klondikelubricants.com/wp-content/uploads/2020/11/small-page-group-RETINA.png',
+//     //     altText: 'alt',
+//     //   },
+//     //   text:
+//     //     'At KLONDIKE we pride ourselves in manufacturing globally certified products ranging from packaged and bulk oils to industrial lubricants and chemicals.',
+//     //   alt: 'alt',
+//     //   paragraph: true,
+//     // },
+//   ],
+//   distributionheading: {
+//     headingtext:
+//       'Distribution That Spans the Continent, Gets Products To You Faster',
+//   },
+//   distributionProduct: [
+//     {
+//       image: {
+//         url: '/static/images/mask.png',
+//         alt: '',
+//       },
+//       headingtext: '15 million litres in stock ',
+//       text:
+//         'Our 15 million litres of in-stock oils and lubricants mean we’ve got the inventory you need on hand, as soon as you need it. From specialty greases to bulk oils, you’ll find what you need close to your worksite, no matter how remote',
+//       btntext: 'HOW TO BUY',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/distribute2.png',
+//         alt: '',
+//       },
+//       headingtext:
+//         'Lubricants available in our multiple warehouses across North America ',
+//       text:
+//         'We take distribution seriously, knowing you want the oils and lubricants you need in a hurry, regardless of where your worksite is. Availability and expedited delivery are just a couple of the key differences between us and our competitors.',
+//       btntext: 'HOW TO BUY',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/distribute3.png',
+//         alt: '',
+//       },
+//       headingtext: '99.2% order fulfillment rate ',
+//       text:
+//         'Solid inventory forecasting and quick replenishment cycles are vital parts of our exceptional order fulfillment rate. This customer-friendly measure helps avoid back orders and reduces equipment downtime for all of our customers. ',
+//       btntext: 'HOW TO BUY',
+//     },
+//   ],
+
+//   downTimeCosting: [
+//     {
+//       image: {
+//         url: '/static/images/Rectangle.png',
+//         alt: '',
+//       },
+//       heading: 'How Much is Downtime Costing You?',
+//       text:
+//         'Got equipment sitting idle because you’re not getting lubricants fast enough?',
+//       list: [
+//         {
+//           text: 'Wasting time ordering from multiple vendors?',
+//         },
+//         {
+//           text:
+//             'Frustrated trying to find and buy the right oil for your entire fleet?',
+//         },
+//         {
+//           text:
+//             'Too many oils to keep track of for your diverse and various equipment?',
+//         },
+//         {
+//           text:
+//             'Squandering money replacing parts for vehicles, equipment, and machinery?',
+//         },
+//         {
+//           text:
+//             'Are you losing work because of too much downtime with your equipment?',
+//         },
+//       ],
+//       Paragraph:
+//         'Your KLONDIKE dealer is part of a North American distribution system with more than 15 million litres of oils and lubricants in stock, so you can get the products you need, when you need them. Availability and selection are two ways we make sure your equipment is in the field, not in the shop.',
+//       buttontxt: 'HOW TO BUY',
+//     },
+
+//     {
+//       image: {
+//         url: '/static/images/Rectangle.png',
+//         alt: '',
+//       },
+//       heading: 'Increasing Equipment Uptime',
+//       list: [
+//         {
+//           heading: '1: Find a KLONDIKE Dealer',
+//           text:
+//             ' Choose from one of the many distributors dealers located across North America',
+//         },
+//         {
+//           heading: '2: Choose Your KLONDIKE Lubricants',
+//           text:
+//             ' Ask your dealer for a specific product or use our LUBE-LINK oil search toolapplication',
+//         },
+//         {
+//           heading: ' 3: Reduce Your Equipment Downtime',
+//           text: ' Use our high-quality performance oil or lub',
+//         },
+//       ],
+//       text: '',
+//       buttontxt: 'BECOME A DEALER',
+//     },
+//   ],
+//   bannerComponent: [
+//     {
+//       backgroundimg: {
+//         url: '/static/images/MaskGroup.png',
+//         alt: 'alt',
+//       },
+//       banerlogoimg: {
+//         url: '/static/images/lubelogobanner.png',
+//         alt: 'alt',
+//       },
+//       heading: 'Lubricants Built to Withstand the Extremes of Your Operations',
+//       buttontxt: 'SEARCH NOW',
+//       headingbanner:
+//         'Why KLONDIKE? Because We Know the Needs of the North American market?',
+//     },
+//   ],
+//   commited: [
+//     {
+//       heading: '100% COMMITTED TO YOUR SUCCESS',
+//       paragraph:
+//         'The KLONDIKE Quality Assurance Guarantee is how we back our products, underlining our promise to stand behind our oils, lubricants, greases and chemicals. Our American Petroleum Institute (API) and International Lubricating Standardization & Approval Committee (ILSAC) product certifications make it clear our products meet and exceed the requirements of this stringent global testing.',
+//       subheading:
+//         'KLONDIKE will repair or replace equipment parts that have been damaged as a direct result of the failure of any of our products. *',
+//       butontext: 'SEE WARRANTY',
+//     },
+//   ],
+
+//   testimonial: [
+//     {
+//       image: {
+//         url: '/static/images/client.png',
+//         alt: '',
+//       },
+
+//       headingtext: 'Paul Lawrence',
+//       text:
+//         ' “KLONDIKE has a huge range of products and amazing support. If you can dream it, they can make it happen. With access to the owners and a focus on the end customer, KLONDIKE Lubricants is a great Service First partner!” ',
+//       buyklondike: 'Why I buy KLONDIKE',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/client.png',
+//         alt: '',
+//       },
+
+//       headingtext: 'Paul Lawrence',
+//       text:
+//         ' “KLONDIKE has a huge range of products and amazing support. If you can dream it, they can make it happen. With access to the owners and a focus on the end customer, KLONDIKE Lubricants is a great Service First partner!” ',
+//     },
+//   ],
+
+//   productHeading: {
+//     productHeading:
+//       'Innovation and customer demand fuel new specialty product growth',
+//   },
+
+//   productInovation: [
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//   ],
+// }
 export const pdpSkuData = {
   sku: '',
 }

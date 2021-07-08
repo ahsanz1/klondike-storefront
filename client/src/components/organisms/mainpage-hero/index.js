@@ -13,7 +13,7 @@ const MainPageHero = ({
   firstDesktopHeading,
   secondDesktopHeading,
   mobileHeading,
-  bulletPoints,
+  // bulletPoints,
   buttonText,
   buttonLink,
 }) => {
@@ -29,7 +29,7 @@ const MainPageHero = ({
             firstDesktopHeading={firstDesktopHeading}
             secondDesktopHeading={secondDesktopHeading}
             mobileHeading={mobileHeading}
-            bulletPoints={bulletPoints}
+            // bulletPoints={bulletPoints}
             buttonText={buttonText}
             buttonLink={buttonLink}
           />

@@ -1,8 +1,8 @@
 @import '~styles/globals';
 
 .footer {
-  padding: 80px 0 55px 0;
-  background-color: #333;
+  padding: 0 0 55px 0;
+  background-color: #0d394b;
   color: #fff;
 
   .links-mobile-bottom {
@@ -41,17 +41,145 @@
       }
     }
   }
+
+  .footer-img {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.bottom-bar {
+  display: flex;
+  height: 62px;
+  background: #f0b800;
+
+  @media screen and (max-width: 768px) {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
+  p {
+    margin-right: 80px;
+    padding-left: 20px;
+    line-height: 62px;
+
+    @media screen and (max-width: 768px) {
+      margin-right: 0;
+      font-size: 12px;
+    }
+  }
 }
 
 .page-width {
   margin: 0 auto;
   padding-right: 60px;
   padding-left: 60px;
+
+  .ant-row {
+    @media screen and (max-width: 768px) {
+      // flex-flow: column;
+      width: 325px;
+      margin: 0 auto;
+    }
+
+    .ant-col-xs-12 {
+      .ant-row.footer-links {
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        max-width: 100% !important;
+      }
+    }
+
+    .ant-col-xs-0 {
+      @media screen and (max-width: 768px) {
+        display: initial;
+      }
+    }
+  }
+
+  .footerDropdownHolder {
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
 }
 
 .footer-logo {
   width: 170px;
   color: #fff;
+}
+
+.logoTxt {
+  margin-bottom: 80px;
+
+  @media screen and (max-width: 768px) {
+    width: 334px;
+    text-align: center;
+  }
+
+  p {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 24px;
+  }
+}
+
+.footer-links {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.rightFotterContent {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+    display: contents;
+  }
+
+  .nanOilimg {
+    max-width: 356px;
+  }
+
+  h5 {
+    align-items: center;
+    color: #f5f5f5;
+    font-family: nevis, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+    line-height: 110%;
+    text-transform: uppercase;
+  }
+
+  button {
+    box-sizing: border-box;
+    align-items: center;
+    align-self: flex-end;
+    width: 246px;
+    height: 48px;
+    border: 2px solid #e35205;
+    border-radius: 5px;
+    background: transparent;
+    color: #fff;
+    font-family: nevis, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.75px;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+  }
 }
 
 .site-footer__hr {
