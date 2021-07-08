@@ -15,7 +15,7 @@ Components[
 Components[
   'MainPageHero'
 ] = require('components/organisms/mainpage-hero').default
-Components['HomePage'] = require('Components/organisms/Home').default
+Components['HomePage'] = require('components/organisms/Home').default
 Components[
   'ProductLubricant'
 ] = require('components/organisms/LubricantProduct').default
