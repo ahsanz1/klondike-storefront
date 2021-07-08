@@ -18,24 +18,24 @@ Components[
 Components['HomePage'] = require('Components/organisms/Home').default
 Components[
   'ProductLubricant'
-] = require('Components/organisms/LubricantProduct').default
+] = require('components/organisms/LubricantProduct').default
 Components[
   'distributionproduct'
-] = require('Components/organisms/HomeDistributionProduct').default
+] = require('components/organisms/HomeDistributionProduct').default
 Components[
   'distribution'
-] = require('Components/organisms/DistributionProduct').default
-Components['downtime'] = require('Components/organisms/DownTime').default
-Components['homebanner'] = require('Components/organisms/HomeBanner').default
+] = require('components/organisms/DistributionProduct').default
+Components['downtime'] = require('components/organisms/DownTime').default
+Components['homebanner'] = require('components/organisms/HomeBanner').default
 Components[
   'Testimonial'
-] = require('Components/organisms/ClientTestimonial').default
+] = require('components/organisms/ClientTestimonial').default
 Components[
   'CommitedSuccess'
-] = require('Components/organisms/CommitedSuccess').default
+] = require('components/organisms/CommitedSuccess').default
 Components[
   'ProductInovationslider'
-] = require('Components/organisms/ProductInvotationSlider').default
+] = require('components/organisms/ProductInvotationSlider').default
 Components[
   'HomeLubricat'
 ] = require('components/organisms/HomeLubricant').default
