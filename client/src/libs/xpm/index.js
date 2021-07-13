@@ -14,7 +14,7 @@ import {
 export const fetchLayout = async ({ url }) => {
   let data = []
   const response = await axios.get(
-    `${xpmApiDomain}/api-xpm/pag/live?url=${url}`,
+    `${xpmApiDomain}/api-xpm/page/live?url=${url}`,
     {
       headers: {
         'x-site-context': `{"account":"${account}","stage":"${stage}","site": "${site}", "channel": ${channel},"date":"${new Date()}"}`,
