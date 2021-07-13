@@ -16,14 +16,8 @@ exports.default = Types.Component({
       url: Types.String({ label: 'URL' }),
       altText: Types.String({ label: 'Alt text' }),
     }),
-    bannercontent: Types.Array({
-      label: 'Banner Content',
-      children: Types.Shape({
-        children: {
-          bannerheading: Types.String({ label: 'Banner Text' }),
-          bannerbutton: Types.String({ label: 'Button Content' }),
-        },
-      }),
-    }),
+
+    bannerheading: Types.String({ label: 'Banner Text' }),
+    bannerbutton: Types.String({ label: 'Button Content' }),
   },
 })
