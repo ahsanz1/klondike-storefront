@@ -33,12 +33,12 @@ export const heroBannerdata = {
     url: '/static/images/mobile.png',
     altText: 'alt',
   },
-  bannercontent: {
-    bannerheading:
-      '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
+  // bannercontent: {
+  bannerheading:
+    '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
 
-    bannerbutton: 'Learn more',
-  },
+  bannerbutton: 'Learn more',
+  // },
 }
 export const bannerlubricants = {
   bannersubheading:
