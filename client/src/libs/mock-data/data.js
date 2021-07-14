@@ -95,11 +95,11 @@ const mockData = {
 
   '/': [
     {
-      id: 'HomePage',
+      id: 'Home',
       params: heroBannerdata,
     },
     {
-      id: 'HomeLubricat',
+      id: 'HomeLubricant',
       params: bannerlubricants,
     },
     // {
@@ -107,23 +107,23 @@ const mockData = {
     //   params: ProductLubricant,
     // },
     {
-      id: 'distribution',
+      id: 'DistributionProduct',
       params: LubricantComponent,
     },
     {
-      id: 'downtime',
+      id: 'DownTime',
       params: DownTime,
     },
     {
-      id: 'homebanner',
+      id: 'HomeBanner',
       params: homebanneer,
     },
     {
-      id: 'distribution',
+      id: 'DistributionProduct',
       params: distributionSecond,
     },
     {
-      id: 'distribution',
+      id: 'DistributionProduct',
       params: distributionproduct,
     },
     {
@@ -131,15 +131,15 @@ const mockData = {
       params: CommitedSuccess,
     },
     {
-      id: 'Testimonial',
+      id: 'ClientTestimonial',
       params: Testimonial,
     },
     {
-      id: 'ProductInovationslider',
+      id: 'ProductInvotationSlider',
       params: ProductInovationslider,
     },
     {
-      id: 'downtime',
+      id: 'DownTime',
       params: DownTime,
     },
   ],
