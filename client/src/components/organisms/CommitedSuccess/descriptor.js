@@ -3,7 +3,8 @@ const { Types } = require('@teamfabric/xpm')
 exports.default = Types.Component({
   id: 'CommitedSuccess',
   label: 'CommitedSuccess Component',
-  description: `About us component where each child has 4 text options and boolean attributes for 
+  isGlobal: false,
+  description: `Commited component where each child has 4 text options and boolean attributes for 
   displaying text as paragraph or dialogue`,
 
   attributes: {
@@ -14,7 +15,7 @@ exports.default = Types.Component({
           heading: Types.String({ label: 'Heading' }),
           subheading: Types.String({ label: 'Sub Heading' }),
           paragraph: Types.String({ label: 'Text' }),
-          butontext: Types.String({ label: 'Button Content' }),
+          butontext: Types.String({ label: 'Button Text' }),
         },
       }),
     }),

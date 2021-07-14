@@ -3,6 +3,7 @@ const { Types } = require('@teamfabric/xpm')
 exports.default = Types.Component({
   id: 'DistributionProduct ',
   label: 'Alt Img Text Product',
+  isGlobal: false,
   description: `Distribution component where each child has 4 text options and boolean attributes for 
   displaying text as paragraph or dialogue`,
 

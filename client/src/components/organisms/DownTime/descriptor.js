@@ -3,6 +3,7 @@ const { Types } = require('@teamfabric/xpm')
 exports.default = Types.Component({
   id: 'DownTime',
   label: 'DowntTime Component',
+  isGlobal: false,
   description: `About us component where each child has 4 text options and boolean attributes for 
   displaying text as paragraph or dialogue`,
 
@@ -20,9 +21,10 @@ exports.default = Types.Component({
           text: Types.String({ label: 'Text' }),
           buttontxt: Types.String({ label: 'Button Content' }),
           list: Types.Array({
-            label: 'List title',
+            label: 'List Item',
             children: Types.Shape({
               children: {
+                heading: Types.String({ label: 'List Heading' }),
                 text: Types.String({ label: 'List Text' }),
               },
             }),

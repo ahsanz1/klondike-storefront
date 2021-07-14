@@ -3,6 +3,7 @@ const { Types } = require('@teamfabric/xpm')
 exports.default = Types.Component({
   id: 'Home',
   label: 'Home Banner Content',
+  isGlobal: false,
   description: `Home component where each child has 1 text options and other is Button conte`,
 
   attributes: {
@@ -18,6 +19,6 @@ exports.default = Types.Component({
     }),
 
     bannerheading: Types.String({ label: 'Banner Text' }),
-    bannerbutton: Types.String({ label: 'Button Content' }),
+    bannerbutton: Types.String({ label: 'Button Text' }),
   },
 })
