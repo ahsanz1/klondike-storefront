@@ -3,6 +3,7 @@ const { Types } = require('@teamfabric/xpm')
 exports.default = Types.Component({
   id: 'ProductInvotationSlider',
   label: 'Product Slider',
+  isGlobal: false,
   description: `Product slider component where each child has 2 text options  attributes for 
   displaying text as description and image`,
 

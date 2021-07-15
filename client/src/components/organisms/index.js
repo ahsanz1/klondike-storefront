@@ -37,8 +37,26 @@ import CheckoutSuccess from 'components/molecules/checkout/checkout-success'
 import SingleOrderDetails from 'components/organisms/single-order-details'
 import OrderDetails from 'components/organisms/order-details'
 import SliderTabbable from 'components/organisms/slider-tabable'
+import ProductInvotationSlider from 'component/organisms/ProductInvotationSlider'
+import Home from 'component/organisms/Home'
+import HomeLubricant from 'components/organisms/HomeLubricant'
+import DistributionProduct from 'components/organisms/DistributionProduct'
+import DownTime from 'components/organisms/DownTime'
+import HomeBanner from 'components/organisms/HomeBanner'
+import CommitedSuccess from 'components/organisms/CommitedSuccess'
+import ClientTestimonial from 'components/organisms/ClientTestimonial'
 
 export default {
+  ClientTestimonial: params => <ClientTestimonial {...ClientTestimonial} />,
+  CommitedSuccess: params => <CommitedSuccess {...CommitedSuccess} />,
+  HomeBanner: params => <HomeBanner {...HomeBanner} />,
+  DownTime: params => <DownTime {...DownTime} />,
+  DistributionProduct: params => (
+    <DistributionProduct {...DistributionProduct} />
+  ),
+  HomeLubricant: params => <HomeLubricant {...HomeLubricant} />,
+  Home: params => <Home {...params} />,
+  ProductInvotationSlider: params => <ProductInvotationSlider {...params} />,
   Faqs: params => <Faqs {...params} />,
   Reviews: params => <Reviews {...params} />,
   CardsGroup: params => <CardsGroup {...params} />,
