@@ -7,7 +7,7 @@ const ProductInvotationSlider = ({ productHeading, productInovation }) => {
   return (
     <>
       <div className="productHeading">
-        {productHeading && <h1>{productHeading.productHeading}</h1>}
+        {productHeading && <h1>{productHeading}</h1>}
         <ProductInovation productInovation={productInovation} />
       </div>
     </>
