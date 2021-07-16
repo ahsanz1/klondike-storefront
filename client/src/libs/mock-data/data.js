@@ -1,9 +1,9 @@
-import MissionStatementData from 'components/organisms/mission-statement/data'
+// import MissionStatementData from 'components/organisms/mission-statement/data'
 import WebpageGlobalHeroBannerData from 'components/organisms/webpages-hero-image-banner/data'
-import discountOrderData from 'components/organisms/discount-order/data'
+// import discountOrderData from 'components/organisms/discount-order/data'
 // import testimonialsData from 'components/organisms/testimonials/data'
-import productSliderData from 'components/organisms/product-slider/data'
-import instagramPosts from 'components/organisms/instagram-section/data'
+// import productSliderData from 'components/organisms/product-slider/data'
+// import instagramPosts from 'components/organisms/instagram-section/data'
 import { categoriesXPM as categories } from 'components/organisms/plp/data'
 import SliderTabbableData from 'components/organisms/slider-tabable/data'
 
@@ -11,7 +11,7 @@ import {
   merchandiseOptions,
   benefits,
   review,
-  reviews,
+  // reviews,
   requestFormData,
   faqsData,
   whyEatIQBAR,
@@ -29,9 +29,9 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
-  ProductOverview,
-  ProductItem,
-  Productbanner,
+  // ProductOverview,
+  // ProductItem,
+  // Productbanner,
   heroBannerdata,
   bannerlubricants,
   DownTime,
@@ -46,7 +46,7 @@ import {
   TermsCondition,
   // customizedProductDescription,
   PressKit,
-  MainPageHeroData,
+  // MainPageHeroData,
   DeliveryStatus,
   subscriptionBillingInfo,
   PurchaseHistory,
@@ -67,60 +67,43 @@ import {
   policyData,
   simpleFormData,
   emptyCartData,
+  contactaddress,
 } from 'libs/data/data'
 const mockData = {
+  // '/': [
+  //   {
+  //     id: 'MainPageHero',
+  //     params: MainPageHeroData,
+  //   },
+  //   {
+  //     id: 'MissionStatement',
+  //     params: MissionStatementData,
+  //   },
+  //   {
+  //     id: 'ProductSlider',
+  //     params: productSliderData,
+  //   },
+  //   {
+  //     id: 'DiscountOrder',
+  //     params: discountOrderData,
+  //   },
+  //   {
+  //     id: 'Testimonials',
+  //     params: reviews,
+  //   },
+  //   {
+  //     id: 'InstagramSection',
+  //     params: instagramPosts,
+  //   },
+  // ],
+
   '/': [
     {
-      id: 'MainPageHero',
-      params: MainPageHeroData,
-    },
-    {
-      id: 'MissionStatement',
-      params: MissionStatementData,
-    },
-    {
-      id: 'ProductSlider',
-      params: productSliderData,
-    },
-    {
-      id: 'DiscountOrder',
-      params: discountOrderData,
-    },
-    {
-      id: 'Testimonials',
-      params: reviews,
-    },
-    {
-      id: 'InstagramSection',
-      params: instagramPosts,
-    },
-  ],
-  '/PCP': [
-    // {
-    //   id: 'HomePage',
-    //   params: PcpHeroBanner,
-    // },
-    {
-      id: 'ProductOverview',
-      params: ProductOverview,
-    },
-    {
-      id: 'ProductItem',
-      params: ProductItem,
-    },
-    {
-      id: 'Productbanner',
-      params: Productbanner,
-    },
-  ],
-
-  '/Home': [
-    {
-      id: 'HomePage',
+      id: 'Home',
       params: heroBannerdata,
     },
     {
-      id: 'HomeLubricat',
+      id: 'HomeLubricant',
       params: bannerlubricants,
     },
     // {
@@ -128,23 +111,23 @@ const mockData = {
     //   params: ProductLubricant,
     // },
     {
-      id: 'distribution',
+      id: 'DistributionProduct',
       params: LubricantComponent,
     },
     {
-      id: 'downtime',
+      id: 'DownTime',
       params: DownTime,
     },
     {
-      id: 'homebanner',
+      id: 'HomeBanner',
       params: homebanneer,
     },
     {
-      id: 'distribution',
+      id: 'DistributionProduct',
       params: distributionSecond,
     },
     {
-      id: 'distribution',
+      id: 'DistributionProduct',
       params: distributionproduct,
     },
     {
@@ -152,15 +135,15 @@ const mockData = {
       params: CommitedSuccess,
     },
     {
-      id: 'Testimonial',
+      id: 'ClientTestimonial',
       params: Testimonial,
     },
     {
-      id: 'ProductInovationslider',
+      id: 'ProductInvotationSlider',
       params: ProductInovationslider,
     },
     {
-      id: 'downtime',
+      id: 'DownTime',
       params: DownTime,
     },
   ],
@@ -435,6 +418,10 @@ const mockData = {
     {
       id: 'SimpleForm',
       params: simpleFormData,
+    },
+    {
+      id: 'ContactAddres',
+      params: contactaddress,
     },
     {
       id: 'MapLocation',

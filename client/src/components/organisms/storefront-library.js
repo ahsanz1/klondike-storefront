@@ -15,29 +15,27 @@ Components[
 Components[
   'MainPageHero'
 ] = require('components/organisms/mainpage-hero').default
-Components['HomePage'] = require('Components/organisms/Home').default
+Components['Home'] = require('components/organisms/Home').default
 Components[
   'ProductLubricant'
-] = require('Components/organisms/LubricantProduct').default
+] = require('components/organisms/LubricantProduct').default
+
 Components[
-  'distributionproduct'
-] = require('Components/organisms/HomeDistributionProduct').default
+  'DistributionProduct'
+] = require('components/organisms/DistributionProduct').default
+Components['DownTime'] = require('components/organisms/DownTime').default
+Components['HomeBanner'] = require('components/organisms/HomeBanner').default
 Components[
-  'distribution'
-] = require('Components/organisms/DistributionProduct').default
-Components['downtime'] = require('Components/organisms/DownTime').default
-Components['homebanner'] = require('Components/organisms/HomeBanner').default
-Components[
-  'Testimonial'
-] = require('Components/organisms/ClientTestimonial').default
+  'ClientTestimonial'
+] = require('components/organisms/ClientTestimonial').default
 Components[
   'CommitedSuccess'
-] = require('Components/organisms/CommitedSuccess').default
+] = require('components/organisms/CommitedSuccess').default
 Components[
-  'ProductInovationslider'
-] = require('Components/organisms/ProductInvotationSlider').default
+  'ProductInvotationSlider'
+] = require('components/organisms/ProductInvotationSlider').default
 Components[
-  'HomeLubricat'
+  'HomeLubricant'
 ] = require('components/organisms/HomeLubricant').default
 Components[
   'WebpageGlobalHeroBanner'
@@ -49,7 +47,7 @@ Components[
   'Testimonials'
 ] = require('components/organisms/testimonials').default
 Components[
-  'contactaddress'
+  'ContactAddres'
 ] = require('components/organisms/ContactAddres').default
 Components['cardsGroup'] = require('components/organisms/cards-group').default
 Components['cartPage'] = require('components/organisms/cart-page').default

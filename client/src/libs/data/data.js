@@ -33,12 +33,12 @@ export const heroBannerdata = {
     url: '/static/images/mobile.png',
     altText: 'alt',
   },
-  bannercontent: {
-    bannerheading:
-      '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
+  // bannercontent: {
+  bannerheading:
+    '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
 
-    bannerbutton: 'Learn more',
-  },
+  bannerbutton: 'Learn more',
+  // },
 }
 export const bannerlubricants = {
   bannersubheading:
@@ -92,10 +92,8 @@ export const ProductLubricant = {
   ],
 }
 export const LubricantComponent = {
-  distributionheading: {
-    headingtext:
-      'Products Lubricants Built to Withstand the Extremes of Your Operations',
-  },
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
 
   LubricantContent: [
     {
@@ -134,10 +132,8 @@ export const LubricantComponent = {
   ],
 }
 export const distributionSecond = {
-  distributionheading: {
-    headingtext:
-      'WHY KLONDIKE? BECAUSE WE KNOW THE NEEDS OF THE NORTH AMERICAN MARKET?',
-  },
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
 
   LubricantContent: [
     {
@@ -191,10 +187,8 @@ export const distributionSecond = {
   ],
 }
 export const distributionproduct = {
-  distributionheading: {
-    headingtext:
-      'Distribution That Spans the Continent, Gets Products To You Faster',
-  },
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
 
   LubricantContent: [
     {
@@ -352,10 +346,8 @@ export const CommitedSuccess = {
   ],
 }
 export const ProductInovationslider = {
-  productHeading: {
-    productHeading:
-      'Innovation and customer demand fuel new specialty product growth',
-  },
+  productHeading:
+    'Innovation and customer demand fuel new specialty product growth',
 
   productInovation: [
     {

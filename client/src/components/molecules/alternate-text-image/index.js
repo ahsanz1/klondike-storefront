@@ -4,7 +4,7 @@ import './style.scss'
 
 import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
-import Button from 'components/atoms/Button'
+import Button from 'components/atoms/button'
 
 const AlternateTextImage = ({
   image,
