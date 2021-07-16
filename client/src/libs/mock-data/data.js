@@ -29,6 +29,9 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
+  // ProductOverview,
+  // ProductItem,
+  // Productbanner,
   heroBannerdata,
   bannerlubricants,
   DownTime,
@@ -64,6 +67,7 @@ import {
   policyData,
   simpleFormData,
   emptyCartData,
+  contactaddress,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -149,6 +153,7 @@ const mockData = {
       params: TermsCondition,
     },
   ],
+
   '/cart': [
     {
       id: 'CartPage',
@@ -413,6 +418,10 @@ const mockData = {
     {
       id: 'SimpleForm',
       params: simpleFormData,
+    },
+    {
+      id: 'ContactAddres',
+      params: contactaddress,
     },
     {
       id: 'MapLocation',

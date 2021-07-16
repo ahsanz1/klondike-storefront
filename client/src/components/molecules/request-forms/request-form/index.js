@@ -105,121 +105,126 @@ const RequestForm = (
   return (
     <Container color={formBgColor} className={`request-form ${className}`}>
       <div className="request-form__content">
-        <Label className="request-form__title">
-          {isEditableForm ? form.formEditTitle : form.formTitle}
-        </Label>
-        <Label className="request-form__mobile-title">
-          {form.mobileFormTitle}
-        </Label>
-        {form.subtitle && (
-          <div
-            className="request-form__subtitle"
-            dangerouslySetInnerHTML={{ __html: form.subtitle }}
-          />
-        )}
-        <Label className="request-form__reset-title">{form.resetTitle}</Label>
-
-        {formsIndex === 4 ? (
-          <Label className="request-form__reset-detail-title">
-            {/* {form.resetDetailTitle} */}
+        <div className="form-content">
+          <Label className="request-form__title">
+            {isEditableForm ? form.formEditTitle : form.formTitle}
           </Label>
-        ) : (
-          <Label className="request-form__reset-detail-title">
-            {form.resetDetailTitle}
+          <Label className="request-form__mobile-title">
+            {form.mobileFormTitle}
           </Label>
-        )}
-
-        {formsIndex !== 2 && (
-          <Label className="request-form__error">{error}</Label>
-        )}
-
-        {formsIndex === 2 && error.length > 1 && (
-          <Label className="request-form__error">
-            {error}
-            {resetPasswordLink.link && (
-              <Link
-                to={resetPasswordLink.link}
-                className="request-form__resetLink"
-              >
-                {resetPasswordLink.text}
-              </Link>
-            )}
-          </Label>
-        )}
-
-        {success.length > 0 && (
-          <Label className="request-form__success">{success}</Label>
-        )}
-        <form onSubmit={onSubmit} ref={formRef}>
-          {form.formInputs.map(({ formRow }, rowIndex) => (
-            <div key={rowIndex} className="request-form__row">
-              {formRow.map((item, colIndex) => {
-                let { label, fieldType, id, placeholder, optionsType } = item
-                let items = []
-                if (options[optionsType]) {
-                  items = options[optionsType]
-                }
-                if (id === 'state' && switchRegion) {
-                  if (formData['country'] !== 'US') {
-                    label = 'Region'
-                    fieldType = 'text'
-                    items = []
-                  }
-                }
-
-                return (
-                  <div
-                    key={colIndex}
-                    className="request-form__col"
-                    style={{
-                      width: 100 / formRow.length + '%',
-                    }}
-                  >
-                    <LabelInput
-                      items={items}
-                      inputClass={lblInputClass}
-                      placeholder={placeholder}
-                      label={label}
-                      validations={item}
-                      value={formData[id] || ''}
-                      onBlurHandler={onBlurHandler}
-                      onChangeHandler={onChangeHandler}
-                      errors={formErrors[id]}
-                      id={id}
-                      fieldType={fieldType}
-                    />
-                  </div>
-                )
-              })}
-            </div>
-          ))}
-          {openAlert && (
-            <Alert
-              message={alertData.message}
-              description={alertData.description}
-              type={alertData.type}
-              className="custom-alert"
-              closable
+          {form.subtitle && (
+            <div
+              className="request-form__subtitle"
+              dangerouslySetInnerHTML={{ __html: form.subtitle }}
             />
           )}
-          <div className="request-form__submit-button-wrapper">
-            <Button type="submit" className="request-form__submit-button">
-              {loading ? (
-                <Spin indicator={antIcon} />
-              ) : (
-                <>{isEditableForm ? 'Update Address' : form.buttonLabel}</>
+        </div>
+
+        <div className="request-forms">
+          <Label className="request-form__reset-title">{form.resetTitle}</Label>
+
+          {formsIndex === 4 ? (
+            <Label className="request-form__reset-detail-title">
+              {/* {form.resetDetailTitle} */}
+            </Label>
+          ) : (
+            <Label className="request-form__reset-detail-title">
+              {form.resetDetailTitle}
+            </Label>
+          )}
+
+          {formsIndex !== 2 && (
+            <Label className="request-form__error">{error}</Label>
+          )}
+
+          {formsIndex === 2 && error.length > 1 && (
+            <Label className="request-form__error">
+              {error}
+              {resetPasswordLink.link && (
+                <Link
+                  to={resetPasswordLink.link}
+                  className="request-form__resetLink"
+                >
+                  {resetPasswordLink.text}
+                </Link>
               )}
-            </Button>
-            {form.cancelButtonLabel && (
-              <Button
-                className="request-form__submit-button"
-                onClick={showForm}
-              >
-                {form.cancelButtonLabel}
-              </Button>
+            </Label>
+          )}
+
+          {success.length > 0 && (
+            <Label className="request-form__success">{success}</Label>
+          )}
+          <form onSubmit={onSubmit} ref={formRef}>
+            {form.formInputs.map(({ formRow }, rowIndex) => (
+              <div key={rowIndex} className="request-form__row">
+                {formRow.map((item, colIndex) => {
+                  let { label, fieldType, id, placeholder, optionsType } = item
+                  let items = []
+                  if (options[optionsType]) {
+                    items = options[optionsType]
+                  }
+                  if (id === 'state' && switchRegion) {
+                    if (formData['country'] !== 'US') {
+                      label = 'Region'
+                      fieldType = 'text'
+                      items = []
+                    }
+                  }
+
+                  return (
+                    <div
+                      key={colIndex}
+                      className="request-form__col"
+                      style={{
+                        width: 100 / formRow.length + '%',
+                      }}
+                    >
+                      <LabelInput
+                        items={items}
+                        inputClass={lblInputClass}
+                        placeholder={placeholder}
+                        label={label}
+                        validations={item}
+                        value={formData[id] || ''}
+                        onBlurHandler={onBlurHandler}
+                        onChangeHandler={onChangeHandler}
+                        errors={formErrors[id]}
+                        id={id}
+                        fieldType={fieldType}
+                      />
+                    </div>
+                  )
+                })}
+              </div>
+            ))}
+            {openAlert && (
+              <Alert
+                message={alertData.message}
+                description={alertData.description}
+                type={alertData.type}
+                className="custom-alert"
+                closable
+              />
             )}
-          </div>
-        </form>
+            <div className="request-form__submit-button-wrapper">
+              <Button type="submit" className="request-form__submit-button">
+                {loading ? (
+                  <Spin indicator={antIcon} />
+                ) : (
+                  <>{isEditableForm ? 'Update Address' : form.buttonLabel}</>
+                )}
+              </Button>
+              {form.cancelButtonLabel && (
+                <Button
+                  className="request-form__submit-button"
+                  onClick={showForm}
+                >
+                  {form.cancelButtonLabel}
+                </Button>
+              )}
+            </div>
+          </form>
+        </div>
       </div>
     </Container>
   )

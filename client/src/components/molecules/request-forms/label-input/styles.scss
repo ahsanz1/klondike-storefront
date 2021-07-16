@@ -14,12 +14,13 @@
 
   &__input {
     width: 100%;
-    height: 52px;
+    height: 64px;
     margin-bottom: 1.5rem;
     padding: 12px 16px;
-    border: 3px solid #ccc;
+    border: transparent;
     outline: 0;
-    background-color: $white-color;
+    background-color: #002a3a;
+    color: white;
     font-size: 14px;
     font-weight: 600;
 
