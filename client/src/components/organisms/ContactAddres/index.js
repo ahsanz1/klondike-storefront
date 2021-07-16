@@ -6,9 +6,8 @@ import ContactAddress from 'components/molecules/ContactAddress'
 const ContactAddres = ({ Addresdata }) => {
   return (
     <div className="Address-wraper">
-      {Addresdata.map((content, i) => (
-        <ContactAddress {...content} key={i} />
-      ))}
+      {(Addresdata || []).length &&
+        Addresdata.map((content, i) => <ContactAddress {...content} key={i} />)}
     </div>
   )
 }

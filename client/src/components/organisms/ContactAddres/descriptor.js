@@ -1,9 +1,9 @@
 const { Types } = require('@teamfabric/xpm')
 exports.default = Types.Component({
   id: 'ContactAddres',
-  label: 'Address',
+  label: 'Addres',
   isGlobal: false,
-  description: `Address component where each child has 4 text options and boolean attributes for 
+  description: `Address component where each child has 4 text options  attributes for 
   displaying text as paragraph or list`,
   attributes: {
     Addresdata: Types.Array({
