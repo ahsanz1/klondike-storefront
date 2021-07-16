@@ -45,16 +45,16 @@ import DownTime from 'components/organisms/DownTime'
 import HomeBanner from 'components/organisms/HomeBanner'
 import CommitedSuccess from 'components/organisms/CommitedSuccess'
 import ClientTestimonial from 'components/organisms/ClientTestimonial'
+import ContactAddres from 'components/organisms/ContactAddres'
 
 export default {
-  ClientTestimonial: params => <ClientTestimonial {...ClientTestimonial} />,
-  CommitedSuccess: params => <CommitedSuccess {...CommitedSuccess} />,
-  HomeBanner: params => <HomeBanner {...HomeBanner} />,
-  DownTime: params => <DownTime {...DownTime} />,
-  DistributionProduct: params => (
-    <DistributionProduct {...DistributionProduct} />
-  ),
-  HomeLubricant: params => <HomeLubricant {...HomeLubricant} />,
+  ContactAddres: params => <ContactAddres {...params} />,
+  ClientTestimonial: params => <ClientTestimonial {...params} />,
+  CommitedSuccess: params => <CommitedSuccess {...params} />,
+  HomeBanner: params => <HomeBanner {...params} />,
+  DownTime: params => <DownTime {...params} />,
+  DistributionProduct: params => <DistributionProduct {...params} />,
+  HomeLubricant: params => <HomeLubricant {...params} />,
   Home: params => <Home {...params} />,
   ProductInvotationSlider: params => <ProductInvotationSlider {...params} />,
   Faqs: params => <Faqs {...params} />,

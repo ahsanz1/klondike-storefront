@@ -2,17 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 
-const ContactAddress = ({ heading, label, street, postal, AddressList }) => {
+const ContactAddress = ({ heading, label, street, postal }) => {
   return (
     <div className="Address">
       <h1>{heading}</h1>
-      {AddressList.map((data, i) => (
-        <p key={i}>
-          {data.label}
-          {data.street}
-          {data.postal}
-        </p>
-      ))}
+      <p>{label}</p>
+      <p>{street}</p>
+      <p>{postal}</p>
     </div>
   )
 }
@@ -22,7 +18,6 @@ ContactAddress.propTypes = {
   label: PropTypes.string,
   street: PropTypes.string,
   postal: PropTypes.string,
-  AddressList: PropTypes.array,
 }
 
 export default ContactAddress
