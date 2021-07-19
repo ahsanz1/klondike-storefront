@@ -477,6 +477,54 @@ export const contactaddress = {
     },
   ],
 }
+
+export const pdpdata = {
+  heading: '15W-40 CK-4 Advanced Formula',
+  imgdata: [
+    {
+      image: {
+        url: '/static/images/klondike4.png',
+        alt: '',
+      },
+      btntxt: 'HOW TO BUY',
+    },
+  ],
+  data: [
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+    },
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+    },
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+    },
+  ],
+}
+
+export const pdpdatasheet = {
+  heading: 'TECHNICAL INFORMATION',
+  subheading: 'KLONDIKE - BRAVING THE FORCE OF MOVEMENT®',
+  pds: 'Product Data Sheet',
+  sds: 'Safety Data Sheet',
+  paragraph: [
+    {
+      text:
+        'KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology LONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology LONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation ',
+    },
+    // {
+    //   text:
+    //     'KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology.',
+    // },
+  ],
+  Readmore: 'Read more',
+}
 export const benefits = {
   bgColor: '#f7f7f7',
   heading: 'THE BENEFITS',
