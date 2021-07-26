@@ -24,29 +24,27 @@ Components[
 Components[
   'MainPageHero'
 ] = require('components/organisms/mainpage-hero').default
-Components['HomePage'] = require('components/organisms/Home').default
+Components['Home'] = require('components/organisms/Home').default
 Components[
   'ProductLubricant'
 ] = require('components/organisms/LubricantProduct').default
+
 Components[
-  'distributionproduct'
-] = require('components/organisms/HomeDistributionProduct').default
-Components[
-  'distribution'
+  'DistributionProduct'
 ] = require('components/organisms/DistributionProduct').default
-Components['downtime'] = require('components/organisms/DownTime').default
-Components['homebanner'] = require('components/organisms/HomeBanner').default
+Components['DownTime'] = require('components/organisms/DownTime').default
+Components['HomeBanner'] = require('components/organisms/HomeBanner').default
 Components[
-  'Testimonial'
+  'ClientTestimonial'
 ] = require('components/organisms/ClientTestimonial').default
 Components[
   'CommitedSuccess'
 ] = require('components/organisms/CommitedSuccess').default
 Components[
-  'ProductInovationslider'
+  'ProductInvotationSlider'
 ] = require('components/organisms/ProductInvotationSlider').default
 Components[
-  'HomeLubricat'
+  'HomeLubricant'
 ] = require('components/organisms/HomeLubricant').default
 Components[
   'WebpageGlobalHeroBanner'
@@ -57,8 +55,11 @@ Components[
 Components[
   'Testimonials'
 ] = require('components/organisms/testimonials').default
-Components['CardsGroup'] = require('components/organisms/cards-group').default
-Components['CartPage'] = require('components/organisms/cart-page').default
+Components[
+  'ContactAddres'
+] = require('components/organisms/ContactAddres').default
+Components['cardsGroup'] = require('components/organisms/cards-group').default
+Components['cartPage'] = require('components/organisms/cart-page').default
 Components['Faqs'] = require('components/organisms/faqs').default
 Components[
   'RequestForms'

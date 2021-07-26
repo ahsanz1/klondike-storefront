@@ -8,9 +8,7 @@ const DistributionProduct = ({ LubricantContent, distributionheading }) => {
     <>
       <div className="distribute-wraper">
         {distributionheading && (
-          <h1 className="distribute-heading">
-            {distributionheading.headingtext}
-          </h1>
+          <h1 className="distribute-heading">{distributionheading}</h1>
         )}
       </div>
       {LubricantContent.map((content, i) => (

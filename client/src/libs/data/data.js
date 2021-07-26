@@ -33,12 +33,12 @@ export const heroBannerdata = {
     url: '/static/images/mobile.png',
     altText: 'alt',
   },
-  bannercontent: {
-    bannerheading:
-      '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
+  // bannercontent: {
+  bannerheading:
+    '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
 
-    bannerbutton: 'Learn more',
-  },
+  bannerbutton: 'Learn more',
+  // },
 }
 export const bannerlubricants = {
   bannersubheading:
@@ -92,10 +92,8 @@ export const ProductLubricant = {
   ],
 }
 export const LubricantComponent = {
-  distributionheading: {
-    headingtext:
-      'Products Lubricants Built to Withstand the Extremes of Your Operations',
-  },
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
 
   LubricantContent: [
     {
@@ -134,10 +132,8 @@ export const LubricantComponent = {
   ],
 }
 export const distributionSecond = {
-  distributionheading: {
-    headingtext:
-      'WHY KLONDIKE? BECAUSE WE KNOW THE NEEDS OF THE NORTH AMERICAN MARKET?',
-  },
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
 
   LubricantContent: [
     {
@@ -191,10 +187,8 @@ export const distributionSecond = {
   ],
 }
 export const distributionproduct = {
-  distributionheading: {
-    headingtext:
-      'Distribution That Spans the Continent, Gets Products To You Faster',
-  },
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
 
   LubricantContent: [
     {
@@ -352,10 +346,8 @@ export const CommitedSuccess = {
   ],
 }
 export const ProductInovationslider = {
-  productHeading: {
-    productHeading:
-      'Innovation and customer demand fuel new specialty product growth',
-  },
+  productHeading:
+    'Innovation and customer demand fuel new specialty product growth',
 
   productInovation: [
     {
@@ -595,6 +587,52 @@ export const Productbanner = {
   ],
 }
 
+export const contactaddress = {
+  Addresdata: [
+    {
+      heading: 'British Columbia – Serving BC',
+      AddressList: [
+        {
+          label: 'Head Office ',
+        },
+        {
+          street: '3078 275th Street',
+        },
+        {
+          postal: 'Langley, BC  V4W 3L4',
+        },
+      ],
+    },
+    {
+      heading: 'Alberta – Serving Northern BC, AB, SK, YT and NT',
+      AddressList: [
+        {
+          label: 'Oils & Lubricants Warehouse',
+        },
+        {
+          street: '101-1005 Derwent Way',
+        },
+        {
+          postal: 'Annacis Island, BC  V3M 5R4',
+        },
+      ],
+    },
+    {
+      heading: 'Manitoba – Serving MB, Northwestern ON and NU',
+      AddressList: [
+        {
+          label: 'Oils & Lubricants Warehouse',
+        },
+        {
+          street: '1510 Wall Street NW',
+        },
+        {
+          postal: 'Winnipeg, MB  R3G 2T3',
+        },
+      ],
+    },
+  ],
+}
 export const benefits = {
   bgColor: '#f7f7f7',
   heading: 'THE BENEFITS',
@@ -1399,7 +1437,9 @@ export const mapLocationData = {
   positionLng: '-122.214',
   title: `WHERE WE'RE AT`,
   description: `<p class="big-margin-b">
-  Team IQBAR currently works out of the <a href="https://masschallenge.org/" target="_blank" rel="noreferrer">MassChallenge</a> office at <span class="bold">21 Drydock Ave, Boston, MA 02210.</span>
+  123 Example Ave, <br/><br/>
+New york City, NY 10000 <br/><br/>
+123.456.7890
 </p>`,
 }
 
@@ -3437,23 +3477,25 @@ export const subscriptionOrderDetails = {
 
 export const simpleFormData = {
   buttonLabel: 'Send Message',
-  formTitle: 'Contact Us',
-  mobileFormTitle: 'Contact Us',
-  subtitle: `<p class="big-margin-b">Use the form below, or feel free to reach out to us any time at <a class="bold" href="mailto:info@eatiqbar.com">info@eatiqbar.com</a>, even just to say "hey"!</p>`,
+  formTitle: 'We’d love to hear from you',
+  mobileFormTitle: 'We’d love to hear from you',
+  subtitle: `<p class="big-margin-b">To contact a KLONDIKE sales rep call <br/> <a class="sumbit-anchor" href="tel:1-877-293-4691 ">1-877-293-4691 </a> (office hours) or use the form <br/> below.</p>`,
   formInputs: [
     {
       formRow: [
         {
           id: 'firstName',
-          label: 'FIRST NAME',
+          // label: 'FIRST NAME',
+          placeholder: 'NAME',
           validations_isRequired: true,
           validations_isEmail: false,
           validations_isPhoneNo: false,
           asterisk: true,
         },
         {
-          id: 'lastName',
-          label: 'LAST NAME',
+          id: 'Company',
+          // label: 'Company',
+          placeholder: 'COMPANY',
           validations_isRequired: true,
           validations_isEmail: false,
           validations_isPhoneNo: false,
@@ -3465,7 +3507,8 @@ export const simpleFormData = {
       formRow: [
         {
           id: 'email',
-          label: 'EMAIL',
+          // label: 'EMAIL',
+          placeholder: 'EMAIL',
           validations_isRequired: true,
           validations_isEmail: true,
           validations_isPhoneNo: false,
@@ -3473,7 +3516,8 @@ export const simpleFormData = {
         },
         {
           id: 'phoneNumber',
-          label: 'PHONE NUMBER',
+          // label: 'PHONE NUMBER',
+          placeholder: 'TELEPHONE',
           validations_isRequired: false,
           validations_isEmail: false,
           validations_isPhoneNo: true,
@@ -3481,25 +3525,26 @@ export const simpleFormData = {
         },
       ],
     },
-    {
-      formRow: [
-        {
-          id: 'reasonForMsg',
-          label: 'REASON FOR MESSAGE',
-          fieldType: 'select',
-          optionsType: 'message-reasons',
-          validations_isRequired: true,
-          validations_isEmail: false,
-          validations_isPhoneNo: false,
-          asterisk: true,
-        },
-      ],
-    },
+    // {
+    //   formRow: [
+    //     {
+    //       id: 'reasonForMsg',
+    //       label: 'REASON FOR MESSAGE',
+    //       fieldType: 'select',
+    //       optionsType: 'message-reasons',
+    //       validations_isRequired: true,
+    //       validations_isEmail: false,
+    //       validations_isPhoneNo: false,
+    //       asterisk: true,
+    //     },
+    //   ],
+    // },
     {
       formRow: [
         {
           id: 'message',
-          label: 'MESSAGE',
+          // label: 'MESSAGE',
+          placeholder: 'COMMENTS',
           fieldType: 'textarea',
           validations_isRequired: false,
           validations_isEmail: false,

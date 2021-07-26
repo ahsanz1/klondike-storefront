@@ -86,7 +86,7 @@ const SimpleForm = ({
           formInputs,
           subtitle,
         }}
-        formBgColor={'#fff'}
+        formBgColor={'#002a3a'}
         onFormSubmit={onFormSubmit}
         alertData={alertData}
         openAlert={openAlert}

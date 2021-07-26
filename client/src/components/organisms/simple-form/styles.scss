@@ -1,6 +1,10 @@
 @import '~styles/globals';
 
 .simple-form {
+  & > div {
+    background: #013a4e;
+  }
+
   .request-form__subtitle {
     font-size: 24px;
 

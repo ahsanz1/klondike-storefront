@@ -12,7 +12,7 @@ import Link from 'components/atoms/link'
 // import { subscribeNewsletter } from 'libs/api/klaviyo'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import './styles.scss'
-import Button from 'components/atoms/button'
+// import Button from 'components/atoms/button'
 
 const Footer = ({
   footerLinks = [],
@@ -122,17 +122,15 @@ const Footer = ({
                 </Col>
               ))}
           </Row>
-          <Row>
-            <Col xs={12} sm={0} md={12}>
+          <Row className="footer-text">
+            <Col xs={12} sm={0} md={4} className="footer-logoborder">
               <Image
                 alt="Footer logo"
                 className="footer-logo"
                 src={logoImage.url}
               />
-              <div className="logoTxt">
-                <p>{logoDescription}</p>
-                <p>{logoDescriptionValues}</p>
-              </div>
+            </Col>
+            <Col xs={12} sm={0} md={12}>
               <Row className="footer-links">
                 {footerLinks.length &&
                   footerLinks.map((fLinks, i) => (
@@ -166,13 +164,13 @@ const Footer = ({
                 </Col>
               </Row>
             </Col>
-            <Col xs={24} sm={24} md={12}>
+            {/* <Col xs={24} sm={24} md={12}>
               <div className="rightFotterContent">
                 <img src={Productimg.url} className="nanOilimg" alt="img" />
                 <h5>{nanOilFooter}</h5>
                 <Button>{dealer}</Button>
               </div>
-            </Col>
+            </Col> */}
             {/* <Col xs={24} sm={24} md={4}>
               <FooterNewsletter
                 isInput={isInput}
@@ -186,6 +184,9 @@ const Footer = ({
               />
             </Col> */}
           </Row>
+          {/* <Row>
+            <Col xs={24} sm={24} md={12}></Col>
+          </Row> */}
           {/* <Row>
             <Col xs={0} sm={0} md={24}>
               <hr className="site-footer__hr"></hr>
@@ -206,6 +207,10 @@ const Footer = ({
                 tosLink={tosLink}
                 tosTitle={tosTitle}
               /> */}
+              <div className="logoTxt">
+                <p>{logoDescription}</p>
+                <p>{logoDescriptionValues}</p>
+              </div>
             </Col>
             <Col xs={0} sm={24} md={9}>
               <FooterSocialLinks socialIcons={socialLinks} screen="desktop" />
