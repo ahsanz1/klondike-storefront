@@ -494,16 +494,20 @@ export const pdpdata = {
       size: '946 mL',
       unit: '12',
       part: 'KL-HD0540',
+      price: '20',
+      totalprice: '$34',
     },
     {
       size: '946 mL',
       unit: '12',
       part: 'KL-HD0540',
+      price: '20',
     },
     {
       size: '946 mL',
       unit: '12',
       part: 'KL-HD0540',
+      price: '20',
     },
   ],
 }

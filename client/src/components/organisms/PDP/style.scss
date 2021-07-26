@@ -48,9 +48,32 @@
         line-height: 53px;
       }
 
+      div.ant-tooltip {
+        .ant-tooltip-content {
+          .ant-tooltip-inner {
+            width: 422px !important;
+            background-color: yellow;
+          }
+        }
+      }
+
+      .ant-radio-checked .ant-radio-inner {
+        border-color: #d99e08;
+      }
+
+      .ant-radio-inner::after {
+        background-color: #d99e08;
+      }
+
+      .ant-radio-wrapper {
+        color: white;
+      }
+
       .item-list-warapper {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        align-items: center;
+        justify-items: center;
 
         p {
           color: white;
@@ -63,7 +86,52 @@
         span {
           color: white;
         }
+
+        .ant-input-number {
+          width: 34px;
+        }
       }
+
+      .right-align {
+        color: white;
+        text-align: right;
+      }
+
+      .item-bulk-warappers {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-items: center;
+
+        p {
+          color: white;
+          font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+          font-size: 14px;
+          font-style: Bold;
+          line-height: 26px;
+        }
+
+        span {
+          color: white;
+        }
+
+        .ant-input-number {
+          width: 34px;
+        }
+      }
+    }
+
+    .add-to-cart {
+      width: 100%;
+      max-width: 300px;
+      height: 64px;
+      background: #f2a900;
+      color: white;
+      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      font-size: 23px;
+      font-style: normal;
+      font-weight: 700px;
+      line-height: 24px;
     }
   }
 }
