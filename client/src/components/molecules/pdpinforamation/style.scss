@@ -15,6 +15,10 @@
     font-size: 24px;
     font-style: Bold;
     line-height: 33px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 20px;
+    }
   }
 
   p {
@@ -25,6 +29,10 @@
     font-weight: normal;
     letter-spacing: -0.015em;
     line-height: 160%;
+
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 
   .center {

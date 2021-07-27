@@ -494,20 +494,20 @@ export const pdpdata = {
       size: '946 mL',
       unit: '12',
       part: 'KL-HD0540',
-      price: '20',
+      price: 20,
       totalprice: '$34',
     },
     {
       size: '946 mL',
       unit: '12',
       part: 'KL-HD0540',
-      price: '20',
+      price: 20,
     },
     {
       size: '946 mL',
       unit: '12',
       part: 'KL-HD0540',
-      price: '20',
+      price: 20,
     },
   ],
 }
@@ -529,6 +529,16 @@ export const pdpdatasheet = {
   ],
   Readmore: 'Read more',
 }
+export const RadioData = {
+  packagedata: 'Note on Ordering',
+  text1:
+    'This order already has an item for bulk delivery in cart. To order products that are not in bulk, please place a separate order.',
+
+  bulk: 'Bulk Orders',
+  text2:
+    'When ordering a product to be delivered in bulk, all items within your order must be ordered in bulk, too. Packaged shipments and bulk deliveries have to be placed as separate orders.',
+}
+
 export const benefits = {
   bgColor: '#f7f7f7',
   heading: 'THE BENEFITS',

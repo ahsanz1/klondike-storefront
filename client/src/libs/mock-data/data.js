@@ -70,6 +70,7 @@ import {
   contactaddress,
   pdpdata,
   pdpdatasheet,
+  RadioData,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -445,7 +446,7 @@ const mockData = {
   '/PDP': [
     {
       id: 'PDP',
-      params: { pdpdata, pdpdatasheet },
+      params: { pdpdata, pdpdatasheet, RadioData },
     },
   ],
 }
