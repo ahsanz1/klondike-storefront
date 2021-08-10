@@ -1,0 +1,30 @@
+@import '~styles/globals';
+
+.tech-resources {
+  background: #002a3a;
+
+  @media (max-width: 768px) {
+    background: #013a4e;
+  }
+
+  ul {
+    padding: 10px;
+    list-style: none;
+
+    li {
+      color: #fff;
+      font-family: $OpenSans;
+      font-size: 10px;
+      cursor: pointer;
+
+      @media (max-width: 768px) {
+        color: #fff;
+        font-size: 16px;
+      }
+
+      &:hover {
+        color: #dc5e00;
+      }
+    }
+  }
+}

@@ -68,6 +68,7 @@ import {
   simpleFormData,
   emptyCartData,
   contactaddress,
+  ourProduct,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -291,6 +292,12 @@ const mockData = {
   '/review': [
     {
       id: 'Reviews',
+    },
+  ],
+  '/ourProduct': [
+    {
+      id: 'OurProduct',
+      params: ourProduct,
     },
   ],
   '/collections': [
