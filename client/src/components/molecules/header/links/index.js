@@ -27,14 +27,16 @@ const Links = ({
         if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
           return (
             (!link.mobileOnly || mobile) && (
-              <Link
-                key={i}
-                style={linkStyle}
-                className={linkClassName}
-                to={link.url}
-              >
-                {link.label}
-              </Link>
+              <>
+                <Link
+                  key={i}
+                  style={linkStyle}
+                  className={linkClassName}
+                  to={link.url}
+                >
+                  {link.label}
+                </Link>
+              </>
             )
           )
         } else {

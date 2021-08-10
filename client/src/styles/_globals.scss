@@ -22,6 +22,11 @@
   src: url('/static/fonts/FuturaNewBook-Reg.ttf');
 }
 
+@font-face {
+  font-family: OpenSans;
+  src: url('/static/fonts/OpenSans-Regular.ttf');
+}
+
 $primary-color: #013a4e;
 $primary-color-dark: #002a3a;
 $primary-color-light: #212529;
@@ -43,3 +48,4 @@ $font-futura-black: FuturaPTBold, Helvetica, Arial, sans-serif;
 $font-futura-heavy: FuturaPTHeavy, Helvetica, Arial, sans-serif;
 $font-intro: Intro, Arial, Helvetica, sans-serif;
 $font-apple-system: -apple-system, Roboto, Helvetica, Arial, sans-serif;
+$OpenSans: OpenSans;

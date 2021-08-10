@@ -1,7 +1,40 @@
 @import '~styles/globals';
 
-.c-link {
-  margin: 0;
-  color: $primary-color;
-  text-decoration: none;
+.header {
+  .c-link {
+    position: relative;
+    margin: 0;
+    color: $primary-color;
+    text-decoration: none;
+
+    .showMe {
+      display: none;
+      position: absolute;
+      z-index: 999;
+      top: 109px;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        position: relative;
+        top: 0;
+        background: #013a4e;
+      }
+    }
+
+    &:nth-child(2) {
+      .showMe {
+        width: 850px;
+      }
+    }
+
+    &:hover {
+      .showMe {
+        display: block;
+      }
+
+      .h-links {
+        border-bottom: 2px solid #f2a900;
+      }
+    }
+  }
 }

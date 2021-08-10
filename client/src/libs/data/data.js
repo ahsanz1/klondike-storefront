@@ -3399,7 +3399,88 @@ export const simpleFormData = {
     },
   ],
 }
-
+export const ourProduct = [
+  {
+    name: 'Products Overview',
+    image: '/static/images/nanoil.png',
+  },
+  {
+    name: 'nano',
+    image: '/static/images/klondike1.png',
+  },
+  {
+    name: 'Heavy Duty Engine Oils',
+    image: '/static/images/klondike2.png',
+  },
+  {
+    name: 'Automotive Engine Oils',
+    image: '/static/images/klondike3.png',
+  },
+  {
+    name: 'Gear Lubricants',
+    image: '/static/images/klondike1.png',
+  },
+  {
+    name: 'Transmission Fluids',
+    image: '/static/images/klondike2.png',
+  },
+  {
+    name: 'Hydraulic Fluids',
+    image: '/static/images/klondike3.png',
+  },
+  {
+    name: 'Industrial Oils',
+    image: '/static/images/klondike1.png',
+  },
+  {
+    name: 'Greases',
+    image: '/static/images/klondike2.png',
+  },
+  {
+    name: 'Biodegradable Lubricants',
+    image: '/static/images/klondike3.png',
+  },
+]
+export const aboutHeader = [
+  {
+    name: 'Overview',
+  },
+  {
+    name: 'our story',
+  },
+  {
+    name: 'why klondike',
+  },
+  {
+    name: 'indusrty applications',
+  },
+  {
+    name: 'Safety & environment',
+  },
+  {
+    name: 'work at klondike',
+  },
+]
+export const techResources = [
+  {
+    name: 'Technical Documents',
+  },
+  {
+    name: 'OEM Approvals',
+  },
+  {
+    name: 'Catalog',
+  },
+  {
+    name: 'Warranty',
+  },
+  {
+    name: 'Video Gallery',
+  },
+  {
+    name: 'Tech/News Blog',
+  },
+]
 export const contactUsBanner = {
   desktopImage: {
     url:
