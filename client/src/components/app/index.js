@@ -50,11 +50,7 @@ const App = () => {
   const handleGlobalLayout = gcData => {
     saveItem('gc', JSON.stringify(gcData))
   }
-  console.log({
-    REACT_APP_ENV: process.env.REACT_APP_ENV,
-    env: process.env,
-    loading,
-  })
+  
 
   if (loading.splash) {
     return <Splash />
