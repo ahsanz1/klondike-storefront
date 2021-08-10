@@ -2,9 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as RouterLink } from '@reach/router'
 import { genericHashLink } from 'libs/utils/hash-link'
-import Product from 'components/organisms/ourProduct'
-import AboutHeader from 'components/organisms/about-header'
-import TechResources from 'components/organisms/tech-resources'
 
 import './style.scss'
 const HashLink = genericHashLink(RouterLink)
@@ -47,21 +44,6 @@ const Link = ({
         }}
       >
         <span className="h-links">{children}</span>
-        {(children === 'OUR PRODUCTS' && (
-          <div className="showMe">
-            <Product />
-          </div>
-        )) ||
-          (children === 'About KLONDIKE' && (
-            <div className="showMe">
-              <AboutHeader />
-            </div>
-          )) ||
-          (children === 'TECH RESOURCES' && (
-            <div className="showMe">
-              <TechResources />
-            </div>
-          ))}
       </HashLink>
     )
   } else {

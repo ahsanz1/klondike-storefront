@@ -2,6 +2,9 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/atoms/link'
 import { AppContext } from 'libs/context'
+import Product from 'components/organisms/ourProduct'
+import AboutHeader from 'components/organisms/about-header'
+import TechResources from 'components/organisms/tech-resources'
 import './styles.scss'
 
 const Links = ({
@@ -35,6 +38,21 @@ const Links = ({
                   to={link.url}
                 >
                   {link.label}
+                  {(link.label === 'OUR PRODUCTS' && (
+                    <div className="showMe">
+                      <Product />
+                    </div>
+                  )) ||
+                    (link.label === 'About KLONDIKE' && (
+                      <div className="showMe">
+                        <AboutHeader />
+                      </div>
+                    )) ||
+                    (link.label === 'TECH RESOURCES' && (
+                      <div className="showMe">
+                        <TechResources />
+                      </div>
+                    ))}
                 </Link>
               </>
             )
