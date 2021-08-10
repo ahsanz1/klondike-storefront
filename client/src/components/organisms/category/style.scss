@@ -1,7 +1,36 @@
 .product-contanier {
   max-width: 1800px;
   margin: 0 auto;
-  padding: 80px 60px;
+  padding: 0 60px;
+
+  .product {
+    margin: 10px;
+    margin-top: 0;
+
+    .product-img {
+      border: 2px solid #ddaf34;
+      background: #fff;
+      box-shadow: inset 8px 8px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    a {
+      color: #ddaf34;
+      font-size: 20px;
+      font-weight: 600;
+
+      &:hover {
+        color: #ddaf34;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+
+    .product-title {
+      text-transform: capitalize !important;
+    }
+  }
 
   @media (max-width: 768px) {
     padding: 10px 7px;
@@ -26,5 +55,5 @@
 }
 
 .grey-bg-category {
-  background-color: #f7f7f7;
+  background-color: transparent;
 }
