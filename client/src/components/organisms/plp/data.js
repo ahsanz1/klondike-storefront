@@ -260,76 +260,6 @@ export const products = [
           ],
         },
       },
-      // {
-      //   image: '/static/images/product2.png',
-      //   title: 'CUSTOM CASE',
-      //   price: 149.94,
-      //   size: '(CASE OF 72)',
-      //   subscription: false,
-      //   customize: true,
-      //   viewProduct: false,
-      //   salePrice: 127.45,
-      //   currencySymbol: '$',
-      //   buttonColor: 'black',
-      //   subscribeItems: [
-      //     {
-      //       id: 1,
-      //       label: 'Ship Every Week',
-      //       value: 'ShipEveryWeek',
-      //     },
-      //   ],
-      // },
-      // {
-      //   image:
-      //     'https://cdn.shopify.com/s/files/1/1682/9837/products/bundleswithdiscountbadge-06.png?v=1590778372',
-      //   title: 'CUSTOM CASE',
-      //   price: 149.94,
-      //   size: '(CASE OF 72)',
-      //   subscription: true,
-      //   customize: false,
-      //   viewProduct: false,
-      //   salePrice: 127.45,
-      //   currencySymbol: '$',
-      //   buttonColor: 'black',
-      //   subscribeItems: [
-      //     {
-      //       id: 0,
-      //       label: 'One-Time Purchase',
-      //       value: 'oneTimePurchase',
-      //       disabled: false,
-      //     },
-      //     {
-      //       id: 1,
-      //       label: 'Subscribe & Save 10%',
-      //       value: 'subscribe&save10',
-      //       disabled: true,
-      //     },
-      //     {
-      //       id: 2,
-      //       label: 'Ship Every Week',
-      //       value: 'ShipEveryWeek',
-      //       disabled: false,
-      //     },
-      //     {
-      //       id: 3,
-      //       label: 'Ship Every 2 Week',
-      //       value: 'ShipEvery2Week',
-      //       disabled: false,
-      //     },
-      //     {
-      //       id: 4,
-      //       label: 'Ship Every 3 Week',
-      //       value: 'ShipEvery3Week',
-      //       disabled: false,
-      //     },
-      //     {
-      //       id: 5,
-      //       label: 'Ship Every 4 Week',
-      //       value: 'ShipEvery4Week',
-      //       disabled: false,
-      //     },
-      //   ],
-      // },
     ],
   },
   {
@@ -480,121 +410,106 @@ export const products = [
           },
         },
       },
-      // {
-      //   image:
-      //     'https://cdn.shopify.com/s/files/1/1682/9837/products/t-shirt-front.png?v=1589569053',
-      //   title: 'CHOCOLATE LOVERS BUNDLE',
-      //   price: 149.94,
-      //   size: '',
-      //   currencySymbol: '$',
-      //   subscription: false,
-      //   customize: false,
-      //   viewProduct: true,
-      //   salePrice: 0,
-      //   buttonColor: 'black',
-      //   subscribeItems: [
-      //     {
-      //       id: 1,
-      //       label: 'Ship Every Week',
-      //       value: 'ShipEveryWeek',
-      //     },
-      //   ],
-      // },
-      // {
-      //   image:
-      //     'https://cdn.shopify.com/s/files/1/1682/9837/products/crewneck.png?v=1589569243',
-      //   title: 'CHOCOLATE LOVERS BUNDLE',
-      //   price: 149.94,
-      //   size: '',
-      //   currencySymbol: '$',
-      //   subscription: false,
-      //   customize: false,
-      //   viewProduct: true,
-      //   salePrice: 0,
-      //   buttonColor: 'black',
-      //   subscribeItems: [
-      //     {
-      //       id: 1,
-      //       label: 'Ship Every Week',
-      //       value: 'ShipEveryWeek',
-      //     },
-      //   ],
-      // },
-      // {
-      //   image:
-      //     'https://cdn.shopify.com/s/files/1/1682/9837/products/crewneck.png?v=1589569243',
-      //   title: 'CHOCOLATE LOVERS BUNDLE',
-      //   price: 149.94,
-      //   size: '',
-      //   currencySymbol: '$',
-      //   subscription: false,
-      //   customize: false,
-      //   viewProduct: true,
-      //   salePrice: 0,
-      //   buttonColor: 'black',
-      //   subscribeItems: [
-      //     {
-      //       id: 1,
-      //       label: 'Ship Every Week',
-      //       value: 'ShipEveryWeek',
-      //     },
-      //   ],
-      // },
-      // {
-      //   image:
-      //     'https://cdn.shopify.com/s/files/1/1682/9837/products/crewneck.png?v=1589569243',
-      //   title: 'CHOCOLATE LOVERS BUNDLE',
-      //   price: 149.94,
-      //   size: '',
-      //   currencySymbol: '$',
-      //   subscription: false,
-      //   customize: false,
-      //   viewProduct: true,
-      //   salePrice: 0,
-      //   buttonColor: 'black',
-      //   subscribeItems: [
-      //     {
-      //       id: 1,
-      //       label: 'Ship Every Week',
-      //       value: 'ShipEveryWeek',
-      //     },
-      //   ],
-      // },
-      // {
-      //   image:
-      //     'https://cdn.shopify.com/s/files/1/1682/9837/products/crewneck.png?v=1589569243',
-      //   title: 'CHOCOLATE LOVERS BUNDLE',
-      //   price: 149.94,
-      //   size: '',
-      //   currencySymbol: '$',
-      //   subscription: false,
-      //   customize: false,
-      //   viewProduct: true,
-      //   salePrice: 0,
-      //   buttonColor: 'black',
-      //   subscribeItems: [
-      //     {
-      //       id: 1,
-      //       label: 'Ship Every Week',
-      //       value: 'ShipEveryWeek',
-      //     },
-      //   ],
-      // },
     ],
   },
 ]
 
 export const categoriesXPM = [
   {
-    title: 'VARIETIES + DEALS',
-    categoryName: 'VARIETIES + DEALS',
+    title: 'Heavy Duty Engine Oils',
+    categoryName: 'Heavy Duty Engine Oils',
   },
   {
-    title: 'SINGLE FLAVORS',
-    categoryName: 'SINGLE FLAVORS',
+    title: 'Nano',
+    categoryName: 'Nano',
   },
   {
-    title: 'SWAG',
-    categoryName: 'Swag',
+    title: 'Gear Lubricants',
+    categoryName: 'Gear Lubricants',
+  },
+  {
+    title: 'Transmission Fluids',
+    categoryName: 'Transmission Fluids',
+  },
+  {
+    title: 'Hydraulic Fluids',
+    categoryName: 'Hydraulic Fluids',
+  },
+  {
+    title: 'Industrial & Functional Oils',
+    categoryName: 'Industrial & Functional Oils',
+  },
+  {
+    title: 'Greases',
+    categoryName: 'Greases',
+  },
+  {
+    title: 'Biodegradable Lubricants',
+    categoryName: 'Biodegradable Lubricants',
+  },
+  {
+    title: 'Chemicals',
+    categoryName: 'Chemicals',
+  },
+]
+export const filterSelect = [
+  {
+    name: 'most relevant',
+  },
+  {
+    name: 'price: low to high',
+  },
+  {
+    name: 'price: high to low',
+  },
+  {
+    name: 'alphabetical: a-z',
+  },
+]
+export const size = [
+  {
+    text: 'size 1',
+  },
+  {
+    text: 'size 2',
+  },
+  {
+    text: 'size 3',
+  },
+  {
+    text: 'size 4',
+  },
+]
+export const partNumber = [
+  {
+    text: 'Part Number 1',
+  },
+  {
+    text: 'Part Number 2',
+  },
+  {
+    text: 'Part Number 3',
+  },
+  {
+    text: 'Part Number 4',
+  },
+]
+export const unit = [
+  {
+    text: 'Unit 1',
+  },
+  {
+    text: 'Unit 2',
+  },
+  {
+    text: 'Unit 3',
+  },
+  {
+    text: 'Unit 4',
+  },
+]
+export const untitled = [
+  {
+    text: 'untitled',
   },
 ]
