@@ -25,7 +25,7 @@ Components[
 ] = require('components/organisms/DistributionProduct').default
 Components['DownTime'] = require('components/organisms/DownTime').default
 Components['HomeBanner'] = require('components/organisms/HomeBanner').default
-// Components['OurProduct'] = require('components/organisms/ourProduct').default
+Components['OurProduct'] = require('components/organisms/ourProduct').default
 Components[
   'ClientTestimonial'
 ] = require('components/organisms/ClientTestimonial').default
