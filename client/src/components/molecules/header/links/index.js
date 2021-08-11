@@ -40,17 +40,17 @@ const Links = ({
                   {link.label}
                   {(link.label === 'OUR PRODUCTS' && (
                     <div className="showMe">
-                      <Product />
+                      <Product ourProduct={link.dropDown} />
                     </div>
                   )) ||
                     (link.label === 'About KLONDIKE' && (
                       <div className="showMe">
-                        <AboutHeader />
+                        <AboutHeader aboutHeader={link.dropDown} />
                       </div>
                     )) ||
                     (link.label === 'TECH RESOURCES' && (
                       <div className="showMe">
-                        <TechResources />
+                        <TechResources techResources={link.dropDown} />
                       </div>
                     ))}
                 </Link>

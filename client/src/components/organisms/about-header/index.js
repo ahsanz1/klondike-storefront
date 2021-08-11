@@ -1,8 +1,10 @@
 import React from 'react'
-import { aboutHeader } from 'libs/data/data'
+import PropTypes from 'prop-types'
+// import { aboutHeader } from 'libs/data/data'
 import './style.scss'
 
-export default function AboutHeader () {
+const AboutHeader = ({ aboutHeader }) => {
+  console.log('check about:', aboutHeader)
   return (
     <div className="about-header">
       <ul>
@@ -12,3 +14,7 @@ export default function AboutHeader () {
     </div>
   )
 }
+AboutHeader.propTypes = {
+  aboutHeader: PropTypes.array,
+}
+export default AboutHeader
