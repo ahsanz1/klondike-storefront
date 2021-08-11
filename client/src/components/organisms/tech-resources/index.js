@@ -1,8 +1,8 @@
 import React from 'react'
-import { techResources } from 'libs/data/data'
+import PropTypes from 'prop-types'
 import './style.scss'
 
-export default function TechResources () {
+const TechResources = ({ techResources }) => {
   return (
     <div className="tech-resources">
       <ul>
@@ -12,3 +12,7 @@ export default function TechResources () {
     </div>
   )
 }
+TechResources.propTypes = {
+  techResources: PropTypes.array,
+}
+export default TechResources
