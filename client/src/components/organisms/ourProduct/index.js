@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { ourProduct } from 'libs/data/data'
 import './style.scss'
 
-const OurProduct = () => {
+const OurProduct = props => {
   const [itemHover, setItemHover] = useState('')
   const [imgHover, setImgHover] = useState('')
   console.log('check porps:', ourProduct)
@@ -10,9 +11,9 @@ const OurProduct = () => {
     <div className="show-products">
       <div className="product-list">
         <ul>
-          {ourProduct &&
-            ourProduct.length &&
-            ourProduct.map((item, i) => (
+          {props.ourProduct &&
+            props.ourProduct.length &&
+            props.ourProduct.map((item, i) => (
               <>
                 <li
                   className="productsItem"
@@ -30,9 +31,9 @@ const OurProduct = () => {
       </div>
       <div className="product-image">
         <ul>
-          {ourProduct &&
-            ourProduct.length &&
-            ourProduct.map((item, i) => (
+          {props.ourProduct &&
+            props.ourProduct.length &&
+            props.ourProduct.map((item, i) => (
               <>
                 <li
                   className="img"
@@ -50,5 +51,8 @@ const OurProduct = () => {
       </div>
     </div>
   )
+}
+OurProduct.propTypes = {
+  ourProduct: PropTypes.array,
 }
 export default OurProduct
