@@ -18,6 +18,7 @@ const Header = ({
   links = [],
   dynamicLinks = [],
 }) => {
+  console.log('check links:', links)
   const promoData = {
     promoOffer: {
       label: offerLabel,
