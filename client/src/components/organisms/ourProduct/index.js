@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { ourProduct } from 'libs/data/data'
 import './style.scss'
 
 const OurProduct = props => {
   const [itemHover, setItemHover] = useState('')
   const [imgHover, setImgHover] = useState('')
-  console.log('check porps:', ourProduct)
+  console.log('check porps:', props.ourProduct)
   return (
     <div className="show-products">
       <div className="product-list">
@@ -23,7 +22,7 @@ const OurProduct = props => {
                   onMouseEnter={() => setItemHover(i)}
                   onMouseLeave={() => setItemHover('')}
                 >
-                  {item.name}
+                  {item.label}
                 </li>
               </>
             ))}
@@ -43,7 +42,7 @@ const OurProduct = props => {
                   onMouseEnter={() => setImgHover(i)}
                   onMouseLeave={() => setImgHover('')}
                 >
-                  <img src={item.image} alt="pic" />
+                  <img src={item.image.url} alt="pic" />
                 </li>
               </>
             ))}

@@ -16,6 +16,7 @@ const Links = ({
   style = {},
   className,
 }) => {
+  console.log('check naaa:', links)
   const { user } = useContext(AppContext)
   return (
     <div
@@ -38,19 +39,19 @@ const Links = ({
                   to={link.url}
                 >
                   {link.label}
-                  {(link.label === 'OUR PRODUCTS' && (
+                  {(link.label === 'Our Products' && (
                     <div className="showMe">
-                      <Product ourProduct={link.dropDown} />
+                      <Product ourProduct={link.productDropDown} />
                     </div>
                   )) ||
-                    (link.label === 'About KLONDIKE' && (
+                    (link.label === 'About Klondike' && (
                       <div className="showMe">
-                        <AboutHeader aboutHeader={link.dropDown} />
+                        <AboutHeader aboutHeader={link.aboutDropDown} />
                       </div>
                     )) ||
-                    (link.label === 'TECH RESOURCES' && (
+                    (link.label === 'Tech Resources' && (
                       <div className="showMe">
-                        <TechResources techResources={link.dropDown} />
+                        <TechResources techResources={link.resourcesDropDown} />
                       </div>
                     ))}
                 </Link>
