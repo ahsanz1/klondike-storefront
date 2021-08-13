@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @import '~styles/globals';
 
 .header {
@@ -7,12 +8,12 @@
     color: $primary-color;
     text-decoration: none;
 
-    .showMe {
+    .show-products {
       display: none;
       position: absolute;
       z-index: 999;
       top: 109px;
-      width: 100%;
+      width: 850px;
 
       @media (max-width: 768px) {
         position: relative;
@@ -22,13 +23,15 @@
     }
 
     &:nth-child(2) {
-      .showMe {
-        width: 850px;
+      .h-links {
+        &:hover {
+          border: none !important;
+        }
       }
     }
 
     &:hover {
-      .showMe {
+      .show-products {
         display: block;
       }
 
@@ -38,3 +41,4 @@
     }
   }
 }
+/* stylelint-enable */
