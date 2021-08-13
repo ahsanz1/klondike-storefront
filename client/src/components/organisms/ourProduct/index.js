@@ -5,7 +5,7 @@ import './style.scss'
 const OurProduct = props => {
   const [itemHover, setItemHover] = useState('')
   const [imgHover, setImgHover] = useState('')
-  console.log('check porps:', props.ourProduct)
+  console.log('check porpss:', props.ourProduct)
   return (
     <div className="show-products">
       <div className="product-list">

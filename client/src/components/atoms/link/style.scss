@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @import '~styles/globals';
 
 .header {
@@ -21,6 +22,14 @@
       }
     }
 
+    &:nth-child(2) {
+      .h-links {
+        &:hover {
+          border: none !important;
+        }
+      }
+    }
+
     &:hover {
       .show-products {
         display: block;
@@ -32,3 +41,4 @@
     }
   }
 }
+/* stylelint-enable */

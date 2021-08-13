@@ -19,14 +19,6 @@ exports.default = Types.Component({
           label: Types.String({ label: 'label' }),
           url: Types.String({ label: 'URL' }),
           mobileOnly: Types.Boolean({ label: 'Mobile Only' }),
-          aboutDropDown: Types.Array({
-            label: 'About klondike',
-            children: Types.Shape({
-              children: {
-                label: Types.String({ label: 'name' }),
-              },
-            }),
-          }),
           productDropDown: Types.Array({
             label: 'Our Product',
             children: Types.Shape({
@@ -37,14 +29,6 @@ exports.default = Types.Component({
                   url: Types.String({ label: 'URL' }),
                   altText: Types.String({ label: 'Alt text' }),
                 }),
-              },
-            }),
-          }),
-          resourcesDropDown: Types.Array({
-            label: 'Tech Resources',
-            children: Types.Shape({
-              children: {
-                label: Types.String({ label: 'name' }),
               },
             }),
           }),
