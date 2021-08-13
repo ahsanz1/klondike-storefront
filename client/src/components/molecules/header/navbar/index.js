@@ -20,6 +20,7 @@ const Navbar = ({
   dynamicLinks = [],
   buyButton = '',
 }) => {
+  console.log('button:', buyButton)
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const { user } = useContext(AppContext)

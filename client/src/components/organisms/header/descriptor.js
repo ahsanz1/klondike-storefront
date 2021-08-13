@@ -75,5 +75,6 @@ exports.default = Types.Component({
     promoBanner: Types.String({ label: 'Promo Banner' }),
     referLabel: Types.String({ label: 'Refer label' }),
     referLink: Types.String({ label: 'Refer URL' }),
+    buyButton: Types.String({ label: 'Button Text' }),
   },
 })
