@@ -1,10 +1,11 @@
+/* eslint-disable indent */
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/atoms/link'
 import { AppContext } from 'libs/context'
 import Product from 'components/organisms/ourProduct'
-import AboutHeader from 'components/organisms/about-header'
-import TechResources from 'components/organisms/tech-resources'
+// import AboutHeader from 'components/organisms/about-header'
+// import TechResources from 'components/organisms/tech-resources'
 import './styles.scss'
 
 const Links = ({
@@ -39,7 +40,12 @@ const Links = ({
                   to={link.url}
                 >
                   {link.label}
-                  {(link.label === 'Our Products' && (
+                  {link.productDropDown.length > 0 &&
+                    link.productDropDown[0].label !== '' &&
+                    link.productDropDown[0].image.url !== '' && (
+                      <Product ourProduct={link.productDropDown} />
+                    )}
+                  {/* {(link.label === 'Our Products' && (
                     <div className="showMe">
                       <Product ourProduct={link.productDropDown} />
                     </div>
@@ -53,7 +59,7 @@ const Links = ({
                       <div className="showMe">
                         <TechResources techResources={link.resourcesDropDown} />
                       </div>
-                    ))}
+                    ))} */}
                 </Link>
               </>
             )

@@ -7,12 +7,12 @@
     color: $primary-color;
     text-decoration: none;
 
-    .showMe {
+    .show-products {
       display: none;
       position: absolute;
       z-index: 999;
       top: 109px;
-      width: 100%;
+      width: 850px;
 
       @media (max-width: 768px) {
         position: relative;
@@ -21,14 +21,8 @@
       }
     }
 
-    &:nth-child(2) {
-      .showMe {
-        width: 850px;
-      }
-    }
-
     &:hover {
-      .showMe {
+      .show-products {
         display: block;
       }
 

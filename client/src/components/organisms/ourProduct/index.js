@@ -34,16 +34,18 @@ const OurProduct = props => {
             props.ourProduct.length &&
             props.ourProduct.map((item, i) => (
               <>
-                <li
-                  className="img"
-                  key={i}
-                  // eslint-disable-next-line react/jsx-no-duplicate-props
-                  className={i === itemHover && 'activeImg'}
-                  onMouseEnter={() => setImgHover(i)}
-                  onMouseLeave={() => setImgHover('')}
-                >
-                  <img src={item.image.url} alt="pic" />
-                </li>
+                {item.image.url && (
+                  <li
+                    className="img"
+                    key={i}
+                    // eslint-disable-next-line react/jsx-no-duplicate-props
+                    className={i === itemHover && 'activeImg'}
+                    onMouseEnter={() => setImgHover(i)}
+                    onMouseLeave={() => setImgHover('')}
+                  >
+                    <img src={item.image.url} alt="pic" />
+                  </li>
+                )}
               </>
             ))}
         </ul>
