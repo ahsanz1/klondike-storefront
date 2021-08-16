@@ -41,6 +41,7 @@ const Header = ({
     //   link: offerLink,
     // },
   }
+  console.log('header logo', logo)
 
   return (
     <div className="main-header">
