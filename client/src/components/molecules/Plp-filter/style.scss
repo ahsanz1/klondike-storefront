@@ -1,0 +1,76 @@
+.filter-section {
+  padding-left: 10px;
+
+  .multi-filter {
+    @media (max-width: 768px) {
+      padding-left: 20px;
+    }
+
+    select {
+      margin-right: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      background: #032939;
+      color: #fff;
+
+      option {
+        background: #032939;
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        width: 45%;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .sorting-filter {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+    padding-right: 75px;
+
+    @media (max-width: 768px) {
+      display: block;
+      margin-left: 20px;
+      padding-right: 0;
+    }
+
+    .selected-filter {
+      .c-label {
+        display: inline;
+        margin-right: 10px;
+        color: #fff;
+
+        .close {
+          margin-left: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .c-button {
+      border: none;
+      background: none;
+      text-decoration: underline;
+    }
+
+    .filter {
+      color: #fff;
+
+      select {
+        border: none;
+        outline: none;
+        background: none;
+
+        option {
+          background: #013a4e;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

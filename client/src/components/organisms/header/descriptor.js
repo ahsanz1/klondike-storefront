@@ -19,6 +19,19 @@ exports.default = Types.Component({
           label: Types.String({ label: 'label' }),
           url: Types.String({ label: 'URL' }),
           mobileOnly: Types.Boolean({ label: 'Mobile Only' }),
+          productDropDown: Types.Array({
+            label: 'Our Product',
+            children: Types.Shape({
+              children: {
+                label: Types.String({ label: 'name' }),
+                image: Types.Image({
+                  label: 'logo',
+                  url: Types.String({ label: 'URL' }),
+                  altText: Types.String({ label: 'Alt text' }),
+                }),
+              },
+            }),
+          }),
         },
       }),
     }),
@@ -62,5 +75,6 @@ exports.default = Types.Component({
     promoBanner: Types.String({ label: 'Promo Banner' }),
     referLabel: Types.String({ label: 'Refer label' }),
     referLink: Types.String({ label: 'Refer URL' }),
+    buyButton: Types.String({ label: 'Button Text' }),
   },
 })

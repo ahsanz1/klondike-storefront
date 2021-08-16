@@ -1,7 +1,44 @@
+/* stylelint-disable */
 @import '~styles/globals';
 
-.c-link {
-  margin: 0;
-  color: $primary-color;
-  text-decoration: none;
+.header {
+  .c-link {
+    position: relative;
+    margin: 0;
+    color: $primary-color;
+    text-decoration: none;
+
+    .show-products {
+      display: none;
+      position: absolute;
+      z-index: 999;
+      top: 109px;
+      width: 850px;
+
+      @media (max-width: 768px) {
+        position: relative;
+        top: 0;
+        background: #013a4e;
+      }
+    }
+
+    &:nth-child(2) {
+      .h-links {
+        &:hover {
+          border: none !important;
+        }
+      }
+    }
+
+    &:hover {
+      .show-products {
+        display: block;
+      }
+
+      .h-links {
+        border-bottom: 2px solid #f2a900;
+      }
+    }
+  }
 }
+/* stylelint-enable */

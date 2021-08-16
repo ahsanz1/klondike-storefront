@@ -115,6 +115,7 @@
     .header-link {
       display: flex;
       align-items: center;
+      height: 109px;
       margin: 0 18px;
       padding: 7px 0;
       color: $white-color;
@@ -129,7 +130,7 @@
 
       &:hover {
         padding-bottom: 6px;
-        border-bottom: 3px solid $white-color;
+        // border-bottom: 3px solid $white-color;
       }
 
       @media (max-width: 1900px) {

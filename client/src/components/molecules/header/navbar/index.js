@@ -20,11 +20,14 @@ const Navbar = ({
   dynamicLinks = [],
   buyButton = '',
 }) => {
+  console.log('button:', buyButton)
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const { user } = useContext(AppContext)
   const wholesaleLinks =
-    dynamicLinks.find(item => item.id === 'Wholesale').linksArray || []
+    dynamicLinks ||
+    dynamicLinks.find(item => item.id === 'Wholesale').linksArray ||
+    []
   if (user && user.isWholeSaleUser) {
     links = wholesaleLinks
   }

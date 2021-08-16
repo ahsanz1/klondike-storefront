@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as RouterLink } from '@reach/router'
 import { genericHashLink } from 'libs/utils/hash-link'
+
 import './style.scss'
 const HashLink = genericHashLink(RouterLink)
 
@@ -42,7 +43,7 @@ const Link = ({
           onClick && onClick()
         }}
       >
-        {children}
+        <span className="h-links">{children}</span>
       </HashLink>
     )
   } else {
