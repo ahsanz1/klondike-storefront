@@ -76,5 +76,25 @@ exports.default = Types.Component({
     referLabel: Types.String({ label: 'Refer label' }),
     referLink: Types.String({ label: 'Refer URL' }),
     buyButton: Types.String({ label: 'Button Text' }),
+    lubricantLink: Types.Image({
+      label: 'lubricant Link',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    searchIcon: Types.Image({
+      label: 'search Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    userIcon: Types.Image({
+      label: 'user Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    cartIcon: Types.Image({
+      label: 'cart Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
   },
 })
