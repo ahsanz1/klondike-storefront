@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import Link from 'components/atoms/link'
 import { SHOW, HIDE, SLIDER_CONFIG } from './constant'
-import './styles.scss'
+import rightImage from '/static/images/chevron right-black.png'
 import Button from 'components/atoms/button'
+import Select from 'components/atoms/dropdown'
+import './styles.scss'
 
 const PromoRail = ({
   promoOffer = {},
@@ -37,10 +39,21 @@ const PromoRail = ({
       window.removeEventListener('scroll', handleScroll)
     }
   })
-
+  const selectItem = [{ label: 'Eng' }, { label: 'French' }]
   return (
     <div className={`promo-rail ${showPromo}`}>
       <div className="promo-rail__page-width">
+        <Select
+          items={selectItem}
+          style={{
+            width: '100px',
+            color: '#000',
+            padding: 0,
+            lineHeight: '0px',
+            alignSelf: 'center',
+            outline: 'none',
+          }}
+        />
         <div className="promo-rail__wrapper">
           <Slider className="promo-rail__slider" {...SLIDER_CONFIG}>
             <div className="promo-rail__promo-item-slide">
@@ -53,16 +66,18 @@ const PromoRail = ({
             </div>
           </Slider>
           <div className="promo-rail__promo-item-wrapper">
+            <span className="promo-rail__promo-item">{promoOffer.label}</span>
+            <Button className="Promo-search-button">
+              <img src={rightImage} alt="rightarrow" />
+            </Button>
             <div className="promo-logo">
-              <img
-                src="https://klondikelubricants.com/wp-content/uploads/2020/06/lublink-logo.png"
-                alt="alt"
-              />
+              <Link to={promoOffer.link}>
+                <img
+                  src="https://klondikelubricants.com/wp-content/uploads/2020/06/lublink-logo.png"
+                  alt="alt"
+                />
+              </Link>
             </div>
-            <Link className="promo-rail__promo-item" to={promoOffer.link}>
-              {promoOffer.label}
-            </Link>
-            <Button className="Promo-search-button">{promoBtn.label}</Button>
           </div>
           <div className="promo-rail__promo-item-wrapper">
             <p className="promo-rail__promo-item">{promoBanner}</p>

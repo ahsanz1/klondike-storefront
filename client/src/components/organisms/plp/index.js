@@ -3,10 +3,10 @@ import { AppContext } from 'libs/context'
 // import { Tabs } from 'antd'
 import Category from 'components/organisms/category'
 import PlpTabList from 'components/organisms/plp-tab-list'
-import PlpFilter from 'components/molecules/Plp-filter'
+// import PlpFilter from 'components/molecules/Plp-filter'
 import Button from 'components/atoms/button'
-import { filterSelect, size, partNumber, unit, untitled } from './data'
-import { sortProducts } from 'libs/services/algolia'
+// import { filterSelect, size, partNumber, unit, untitled } from './data'
+// import { sortProducts } from 'libs/services/algolia'
 import PropTypes from 'prop-types'
 import RightArrow from 'images/right-arrow.png'
 import './styles.scss'
@@ -17,7 +17,7 @@ const PLP = props => {
   // const [tabKey, setTabKey] = useState('0')
   const [itemName, setItemName] = useState('')
   const [subItem, setSubItem] = useState({})
-  const [productList, setProductList] = useState([])
+  // const [productList, setProductList] = useState([])
   const [showTab, setShowtab] = useState(true)
   console.log({
     props,
@@ -36,13 +36,13 @@ const PLP = props => {
     console.log('list check:', list)
     setSubItem(list)
   }
-  const changeHandler = async e => {
-    console.log('check change:', e.target.value, itemName)
-    let response = await sortProducts(itemName, e.target.value, 0)
-    console.log('check resp:', response.hits)
-    setProductList(response.hits)
-  }
-  console.log('check category:', filterSelect, categories)
+  // const changeHandler = async e => {
+  //   console.log('check change:', e.target.value, itemName)
+  //   let response = await sortProducts(itemName, e.target.value, 0)
+  //   console.log('check resp:', response.hits)
+  //   setProductList(response.hits)
+  // }
+  // console.log('check category:', filterSelect, categories)
   return (
     <div className="plp">
       <div className="navigation-button">
@@ -55,7 +55,7 @@ const PLP = props => {
           <img src={RightArrow} alt="pic" />
         </Button>
       </div>
-      <div className="filter-section">
+      {/* <div className="filter-section">
         <PlpFilter
           filterSelect={filterSelect}
           sizeProp={size}
@@ -64,7 +64,7 @@ const PLP = props => {
           untitledProp={untitled}
           changeHandler={changeHandler}
         />
-      </div>
+      </div> */}
       <div className="custom-plp">
         {showTab && (
           <PlpTabList
@@ -79,7 +79,7 @@ const PLP = props => {
           <Category
             categoryName={itemName}
             subItemHandler={subItemHandler}
-            productList={productList}
+            // productList={productList}
           />
         </div>
       </div>

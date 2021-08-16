@@ -42,7 +42,9 @@ const Links = ({
                     link.productDropDown.length > 0 &&
                     link.productDropDown[0].label !== '' &&
                     link.productDropDown[0].image.url !== '' && (
-                      <Product ourProduct={link.productDropDown} />
+                      <>
+                        <Product ourProduct={link.productDropDown} />
+                      </>
                     )}
                 </Link>
               </>
