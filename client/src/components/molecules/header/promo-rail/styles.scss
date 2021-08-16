@@ -3,8 +3,9 @@
 .promo-rail {
   position: relative;
   z-index: 9;
+  padding: 0 20px;
   overflow: hidden;
-  background-color: #013a4e;
+  background-color: #fff;
   color: $white-color;
   font-size: 20px;
   font-weight: 500;
@@ -40,9 +41,8 @@
   &__wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
-    padding: 0 152px;
 
     .Promo-search-button {
       align-items: center;
@@ -58,7 +58,7 @@
     }
 
     @media (max-width: 1800px) {
-      padding: 0 60px;
+      // padding: 0 60px;
     }
 
     @media (max-width: 992px) {
@@ -87,7 +87,7 @@
   &__promo-item {
     align-items: center;
     margin: 0;
-    color: #fff;
+    color: #000 !important;
     font-family: nevis, Helvetica, Arial, sans-serif;
     font-size: 12px;
     letter-spacing: 0.04px;
@@ -104,6 +104,10 @@
     padding: 15px 0;
 
     .promo-logo {
+      padding: 5px;
+      border-radius: 10px;
+      background: #013a4e;
+
       img {
         width: 64px;
       }
@@ -138,5 +142,9 @@
       color: $white-color;
       text-decoration: underline;
     }
+  }
+
+  .promo-rail__promo-item {
+    align-self: center;
   }
 }
