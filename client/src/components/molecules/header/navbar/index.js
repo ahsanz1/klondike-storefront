@@ -20,7 +20,6 @@ const Navbar = ({
   dynamicLinks = [],
   buyButton = '',
 }) => {
-  console.log('button:', buyButton)
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const { user } = useContext(AppContext)
@@ -60,11 +59,7 @@ const Navbar = ({
             setIsOpen(false)
           }}
         >
-          <img
-            className="header__logo"
-            src="https://klondikelubricants.com/wp-content/uploads/2016/04/logo-internal2016.png"
-            alt="..."
-          />
+          <img className="header__logo" src={logo} alt="..." />
         </Link>
         <Links
           className="header__links"
@@ -108,9 +103,9 @@ const Navbar = ({
               linkCartPageIcon={location.pathname === '/cart' && true}
             />
           </Button>
-          <Link to="/about-us" className="header__search-icon">
+          {/* <Link to="/about-us" className="header__search-icon">
             <Image height={26} src="/static/images/english.png" alt="..." />
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div
