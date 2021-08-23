@@ -36,6 +36,7 @@
   }
 
   .bottom-section {
+    display: none;
     margin-top: 20px;
     padding: 5px 0;
     border-top: 2px solid $white-color;
@@ -45,6 +46,10 @@
     .c-image {
       margin-right: 10px;
       float: left;
+    }
+
+    @media (max-width: 768px) {
+      display: block;
     }
   }
 }
