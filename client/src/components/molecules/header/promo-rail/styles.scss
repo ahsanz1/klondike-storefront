@@ -111,15 +111,21 @@
       img {
         width: 64px;
       }
+
+      @media (max-width: 768px) {
+        align-self: center;
+        height: 20px;
+        line-height: 0;
+      }
     }
 
     @media (max-width: 1900px) {
       padding: 13px 0;
     }
 
-    @media (max-width: 768px) {
-      display: none;
-    }
+    // @media (max-width: 768px) {
+    //   display: none;
+    // }
   }
 
   &__links {
@@ -146,5 +152,15 @@
 
   .promo-rail__promo-item {
     align-self: center;
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .promo-rail__slider {
+      display: none;
+    }
   }
 }

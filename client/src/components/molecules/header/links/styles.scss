@@ -12,4 +12,27 @@
       color: $white-color;
     }
   }
+
+  .Buy-Button {
+    box-sizing: border-box;
+    align-items: center;
+    width: 174px;
+    height: 42px;
+    border: 1px solid #f1a900;
+    border-radius: 5px;
+    background: #f7921e;
+    color: #fff;
+    font-family: Open-Sans, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 33px !important;
+    text-transform: uppercase;
+  }
+
+  .bottom-section {
+    margin-top: 20px;
+    padding: 5px 0;
+    border-top: 2px solid $white-color;
+  }
 }

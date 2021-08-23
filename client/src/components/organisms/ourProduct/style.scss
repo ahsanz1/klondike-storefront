@@ -15,7 +15,7 @@
     list-style: none;
 
     @media (max-width: 768px) {
-      padding: 0 20px;
+      padding: 0;
     }
   }
 
@@ -65,7 +65,7 @@
       }
 
       @media (max-width: 500px) {
-        width: 35%;
+        width: 100%;
         padding: 0;
       }
     }

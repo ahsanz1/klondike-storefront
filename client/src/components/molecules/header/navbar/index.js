@@ -19,6 +19,13 @@ const Navbar = ({
   links = [],
   dynamicLinks = [],
   buyButton = '',
+  searchIcon = '',
+  userIcon = '',
+  cartIcon = '',
+  mobileMenu = {},
+  mobileMenuOpen = {},
+  mobileMenuClose = {},
+  menuBottom = '',
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -35,6 +42,9 @@ const Navbar = ({
     <div className="header">
       <div className="header__nav">
         <CartDropdown />
+        <div className="mobile-home-logo">
+          <Image width={75} src={logo} alt="logo" />
+        </div>
         <div className="header__mobile-menu-button">
           <Button
             iconOnly
@@ -43,13 +53,9 @@ const Navbar = ({
             }}
           >
             {isOpen ? (
-              <Image
-                width={25}
-                src="/static/icons/header/cross.svg"
-                alt="..."
-              />
+              <Image width={25} src={mobileMenuClose.url} alt="..." />
             ) : (
-              <Image width={25} src="/static/icons/header/menu.svg" alt="..." />
+              <Image width={25} src={mobileMenuOpen.url} alt="..." />
             )}
           </Button>
         </div>
@@ -82,7 +88,7 @@ const Navbar = ({
               paddingRight: '30px',
             }}
           >
-            <Image height={26} src="/static/images/search.png" alt="..." />
+            <Image height={26} src={searchIcon.url} alt={searchIcon.altText} />
           </Link>
           <Link
             to="/about-us"
@@ -91,7 +97,7 @@ const Navbar = ({
               paddingRight: '30px',
             }}
           >
-            <Image height={26} src="/static/images/user.png" alt="..." />
+            <Image height={26} src={userIcon.url} alt={userIcon.altText} />
           </Link>
           <Button
             iconOnly
@@ -101,6 +107,7 @@ const Navbar = ({
           >
             <NavbarcartIcon
               linkCartPageIcon={location.pathname === '/cart' && true}
+              cartIcon={cartIcon}
             />
           </Button>
           {/* <Link to="/about-us" className="header__search-icon">
@@ -112,15 +119,18 @@ const Navbar = ({
         className={`header__mobile-menu ${
           isOpen ? 'header__mobile-menu--show' : ''
         }`}
-        onClick={() => {
-          setIsOpen(false)
-        }}
+        // onClick={() => {
+        //   setIsOpen(false)
+        // }}
       >
         <Links
           className="header__mobile-menu-links"
           direction="column"
           mobile={true}
           links={links}
+          mobileMenu={mobileMenu}
+          buyButton={buyButton}
+          menuBottom={menuBottom}
         />
       </div>
     </div>
@@ -132,5 +142,12 @@ Navbar.propTypes = {
   navButton: PropTypes.string,
   dynamicLinks: PropTypes.array,
   buyButton: PropTypes.string,
+  searchIcon: PropTypes.string,
+  userIcon: PropTypes.string,
+  cartIcon: PropTypes.string,
+  mobileMenu: PropTypes.object,
+  mobileMenuOpen: PropTypes.object,
+  mobileMenuClose: PropTypes.object,
+  menuBottom: PropTypes.object,
 }
 export default Navbar

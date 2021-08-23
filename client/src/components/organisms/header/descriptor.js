@@ -76,6 +76,7 @@ exports.default = Types.Component({
     referLabel: Types.String({ label: 'Refer label' }),
     referLink: Types.String({ label: 'Refer URL' }),
     buyButton: Types.String({ label: 'Button Text' }),
+    menuBottom: Types.String({ label: 'Menu Bottom Text' }),
     lubricantLink: Types.Image({
       label: 'lubricant Link',
       url: Types.String({ label: 'URL' }),
@@ -93,6 +94,21 @@ exports.default = Types.Component({
     }),
     cartIcon: Types.Image({
       label: 'cart Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    mobileMenu: Types.Image({
+      label: 'Menu Expand Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    mobileMenuOpen: Types.Image({
+      label: 'Menu Open Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    mobileMenuClose: Types.Image({
+      label: 'Menu Close Icon',
       url: Types.String({ label: 'URL' }),
       altText: Types.String({ label: 'Alt text' }),
     }),
