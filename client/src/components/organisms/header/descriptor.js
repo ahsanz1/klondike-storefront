@@ -76,6 +76,7 @@ exports.default = Types.Component({
     referLabel: Types.String({ label: 'Refer label' }),
     referLink: Types.String({ label: 'Refer URL' }),
     buyButton: Types.String({ label: 'Button Text' }),
+    menuBottom: Types.String({ label: 'Menu Bottom Text' }),
     lubricantLink: Types.Image({
       label: 'lubricant Link',
       url: Types.String({ label: 'URL' }),

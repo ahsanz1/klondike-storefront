@@ -21,6 +21,10 @@ const Header = ({
   searchIcon = '',
   userIcon = '',
   cartIcon = '',
+  mobileMenu,
+  mobileMenuOpen = {},
+  mobileMenuClose = {},
+  menuBottom = '',
 }) => {
   const promoData = {
     promoOffer: {
@@ -45,7 +49,7 @@ const Header = ({
     //   link: offerLink,
     // },
   }
-  console.log('header logo', cartIcon)
+  console.log('header logo', mobileMenu)
 
   return (
     <div className="main-header">
@@ -59,6 +63,10 @@ const Header = ({
           searchIcon={searchIcon}
           userIcon={userIcon}
           cartIcon={cartIcon}
+          mobileMenu={mobileMenu}
+          mobileMenuOpen={mobileMenuOpen}
+          mobileMenuClose={mobileMenuClose}
+          menuBottom={menuBottom}
         />
       </div>
     </div>
@@ -81,5 +89,9 @@ Header.propTypes = {
   searchIcon: PropTypes.string,
   userIcon: PropTypes.string,
   cartIcon: PropTypes.string,
+  mobileMenu: PropTypes.object,
+  mobileMenuOpen: PropTypes.object,
+  mobileMenuClose: PropTypes.object,
+  menuBottom: PropTypes.object,
 }
 export default Header

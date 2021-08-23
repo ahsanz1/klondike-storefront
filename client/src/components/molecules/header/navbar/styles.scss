@@ -35,6 +35,12 @@
       padding: 0 25px;
       transition: all 0.5s linear;
     }
+
+    .mobile-home-logo {
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
   }
 
   .desktop-logo {
@@ -115,7 +121,7 @@
   }
 
   &__links {
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
 
     @media (max-width: 992px) {
       display: none;
@@ -186,6 +192,12 @@
       .h-links {
         border: none;
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .mobile-button {
+      display: block !important;
     }
   }
 }

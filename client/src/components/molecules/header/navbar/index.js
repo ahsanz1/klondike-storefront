@@ -22,6 +22,10 @@ const Navbar = ({
   searchIcon = '',
   userIcon = '',
   cartIcon = '',
+  mobileMenu = {},
+  mobileMenuOpen = {},
+  mobileMenuClose = {},
+  menuBottom = '',
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -49,13 +53,9 @@ const Navbar = ({
             }}
           >
             {isOpen ? (
-              <Image
-                width={25}
-                src="/static/icons/header/cross.svg"
-                alt="..."
-              />
+              <Image width={25} src={mobileMenuClose.url} alt="..." />
             ) : (
-              <Image width={25} src="/static/icons/header/menu.svg" alt="..." />
+              <Image width={25} src={mobileMenuOpen.url} alt="..." />
             )}
           </Button>
         </div>
@@ -119,15 +119,18 @@ const Navbar = ({
         className={`header__mobile-menu ${
           isOpen ? 'header__mobile-menu--show' : ''
         }`}
-        onClick={() => {
-          setIsOpen(false)
-        }}
+        // onClick={() => {
+        //   setIsOpen(false)
+        // }}
       >
         <Links
           className="header__mobile-menu-links"
           direction="column"
           mobile={true}
           links={links}
+          mobileMenu={mobileMenu}
+          buyButton={buyButton}
+          menuBottom={menuBottom}
         />
       </div>
     </div>
@@ -142,5 +145,9 @@ Navbar.propTypes = {
   searchIcon: PropTypes.string,
   userIcon: PropTypes.string,
   cartIcon: PropTypes.string,
+  mobileMenu: PropTypes.object,
+  mobileMenuOpen: PropTypes.object,
+  mobileMenuClose: PropTypes.object,
+  menuBottom: PropTypes.object,
 }
 export default Navbar
