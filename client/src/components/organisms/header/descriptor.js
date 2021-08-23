@@ -96,5 +96,20 @@ exports.default = Types.Component({
       url: Types.String({ label: 'URL' }),
       altText: Types.String({ label: 'Alt text' }),
     }),
+    mobileMenu: Types.Image({
+      label: 'Menu Expand Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    mobileMenuOpen: Types.Image({
+      label: 'Menu Open Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    mobileMenuClose: Types.Image({
+      label: 'Menu Close Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
   },
 })

@@ -19,6 +19,9 @@ const Navbar = ({
   links = [],
   dynamicLinks = [],
   buyButton = '',
+  searchIcon = '',
+  userIcon = '',
+  cartIcon = '',
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -35,6 +38,9 @@ const Navbar = ({
     <div className="header">
       <div className="header__nav">
         <CartDropdown />
+        <div className="mobile-home-logo">
+          <Image width={75} src={logo} alt="logo" />
+        </div>
         <div className="header__mobile-menu-button">
           <Button
             iconOnly
@@ -82,7 +88,7 @@ const Navbar = ({
               paddingRight: '30px',
             }}
           >
-            <Image height={26} src="/static/images/search.png" alt="..." />
+            <Image height={26} src={searchIcon.url} alt={searchIcon.altText} />
           </Link>
           <Link
             to="/about-us"
@@ -91,7 +97,7 @@ const Navbar = ({
               paddingRight: '30px',
             }}
           >
-            <Image height={26} src="/static/images/user.png" alt="..." />
+            <Image height={26} src={userIcon.url} alt={userIcon.altText} />
           </Link>
           <Button
             iconOnly
@@ -101,6 +107,7 @@ const Navbar = ({
           >
             <NavbarcartIcon
               linkCartPageIcon={location.pathname === '/cart' && true}
+              cartIcon={cartIcon}
             />
           </Button>
           {/* <Link to="/about-us" className="header__search-icon">
@@ -132,5 +139,8 @@ Navbar.propTypes = {
   navButton: PropTypes.string,
   dynamicLinks: PropTypes.array,
   buyButton: PropTypes.string,
+  searchIcon: PropTypes.string,
+  userIcon: PropTypes.string,
+  cartIcon: PropTypes.string,
 }
 export default Navbar

@@ -8,6 +8,10 @@
     color: $primary-color;
     text-decoration: none;
 
+    @media (max-width: 768px) {
+      color: $white-color;
+    }
+
     .show-products {
       display: none;
       position: absolute;
@@ -26,6 +30,14 @@
       .h-links {
         &:hover {
           border: none !important;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      @media (max-width: 768px) {
+        img {
+          display: none !important;
         }
       }
     }
