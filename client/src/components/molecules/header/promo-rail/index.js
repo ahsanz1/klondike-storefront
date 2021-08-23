@@ -15,7 +15,9 @@ const PromoRail = ({
   promoBanner = '',
   promoLogo = '',
   extraLink = {},
+  lubricantLink = '',
 }) => {
+  console.log('lub link:', lubricantLink)
   // const { user } = useContext(AppContext)
   const [showPromo, setShowPromo] = useState(SHOW)
   const [lastScrollTop, setLastScrollTop] = useState(
@@ -40,6 +42,7 @@ const PromoRail = ({
     }
   })
   const selectItem = [{ label: 'Eng' }, { label: 'French' }]
+
   return (
     <div className={`promo-rail ${showPromo}`}>
       <div className="promo-rail__page-width">
@@ -72,10 +75,7 @@ const PromoRail = ({
             </Button>
             <div className="promo-logo">
               <Link to={promoOffer.link}>
-                <img
-                  src="https://klondikelubricants.com/wp-content/uploads/2020/06/lublink-logo.png"
-                  alt="alt"
-                />
+                <img src={lubricantLink && lubricantLink.url} alt="alt" />
               </Link>
             </div>
           </div>
@@ -111,5 +111,6 @@ PromoRail.propTypes = {
   promoBtn: PropTypes.string,
   promoLogo: PropTypes.string,
   // promoBtn: PropTypes.object,
+  lubricantLink: PropTypes.string,
 }
 export default PromoRail
