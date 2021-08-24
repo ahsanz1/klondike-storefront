@@ -44,8 +44,9 @@
     text-transform: uppercase;
 
     .c-image {
+      position: relative;
+      top: -3px;
       margin-right: 10px;
-      float: left;
     }
 
     @media (max-width: 768px) {
