@@ -2,7 +2,7 @@ const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
   id: 'PLP',
-  label: 'PLP',
+  label: 'PLP-Page',
   isGlobal: false,
   description: 'Product Listing Page',
   attributes: {
