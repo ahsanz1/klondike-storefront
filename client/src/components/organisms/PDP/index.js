@@ -45,7 +45,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
               <div className="img-wrapper" key={i}>
                 <Image src={content.image.url} className="slider-image" />
               </div>
-              <Button>{content.btntxt}</Button>
+              <Button className="how_buy">{content.btntxt}</Button>
             </>
           ))}
         </div>
@@ -70,14 +70,18 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             className="radio-group"
           >
             <Tooltip placement="bottomLeft" title={text}>
-              <Radio value={1}>Packaged ORDER</Radio>
+              <Radio value={1} className="package">
+                Packaged ORDER
+              </Radio>
             </Tooltip>
             <Tooltip placement="bottomLeft" title={secondtext}>
-              <Radio value={2}>Bulk ORDER</Radio>
+              <Radio value={2} className="bulk">
+                Bulk ORDER
+              </Radio>
             </Tooltip>
           </Radio.Group>
           <div className="test">
-            <p className="item-list-warapper">
+            <p className="item-list-warapper mobile-hide">
               <span>SIZE</span>
               <span>UNIT/CASE</span>
               <span>PART NUM</span>
@@ -86,39 +90,48 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
               <span>Total Price</span>
             </p>
             {data.map((content, id) => (
-              <div className="item-list-warapper" key={id}>
-                <div>
-                  <p>{content.size}</p>
-                  <p></p>
+              <>
+                <div className="item-list-warapper" key={id}>
+                  <div>
+                    <span className="desktop-hide">SIZE</span>
+                    <p>{content.size}</p>
+                  </div>
+
+                  <div>
+                    <span className="desktop-hide">UNIT/CASE</span>
+                    <p>{content.unit}</p>
+                  </div>
+                  <div>
+                    <span className="desktop-hide"> PART NUM</span>
+                    <p>{content.part}</p>
+                  </div>
+                  <div>
+                    <span className="desktop-hide">Price</span>
+                    <p>
+                      ${(content.price = parseFloat(content.price).toFixed(2))}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="desktop-hide">QTy</span>
+                    <p>
+                      <InputNumber
+                        min={0}
+                        max={100}
+                        defaultValue={0}
+                        onChange={onChang}
+                      />
+                    </p>
+                  </div>
+                  <div>
+                    <span className="desktop-hide">Total Price</span>
+                    <p>
+                      $
+                      {(content.price = parseFloat(content.price).toFixed(2)) *
+                        a}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p>{content.unit}</p>
-                </div>
-                <div>
-                  <p>{content.part}</p>
-                </div>
-                <div>
-                  <p>
-                    ${(content.price = parseFloat(content.price).toFixed(2))}
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <InputNumber
-                      min={1}
-                      max={100}
-                      defaultValue={0}
-                      onChange={onChang}
-                    />
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    $
-                    {(content.price = parseFloat(content.price).toFixed(2)) * a}
-                  </p>
-                </div>
-              </div>
+              </>
             ))}
           </div>
           <p className="right-align">
@@ -138,9 +151,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             <p>item</p>
             <p>
               <InputNumber
-                min={1}
+                min={0}
                 max={100}
-                defaultValue={1}
+                defaultValue={0}
                 onChange={onChang}
               />
             </p>

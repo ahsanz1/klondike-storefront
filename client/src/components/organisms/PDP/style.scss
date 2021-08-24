@@ -33,6 +33,28 @@
   opacity: 0.5;
 }
 
+.ant-input-number-handler-wrap {
+  opacity: 1 !important;
+
+  span {
+    color: black !important;
+  }
+}
+
+span.desktop-hide {
+  display: block !important;
+
+  @media screen and (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.mobile-hide span {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
 .PDPs-wrapper {
   padding-top: 8rem;
   background-color: #013a4e;
@@ -41,18 +63,30 @@
     // display: grid;
     // grid: 250px / auto auto auto;
     display: flex;
-    // justify-content: space-evenly;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
 
+    @media screen and (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+
     .left-side {
+      @media screen and (max-width: 768px) {
+        margin: 0 auto;
+      }
+
       .img-wrapper {
         width: 100%;
         max-width: 329px;
         height: 100%;
         max-height: 350px;
         background-color: white;
+
+        @media screen and (max-width: 768px) {
+          height: auto;
+          max-height: none;
+        }
       }
 
       button {
@@ -69,17 +103,30 @@
         font-weight: 700;
         line-height: 24px;
         text-align: center;
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
       }
     }
 
     .right-side {
       margin-left: 10rem;
 
+      @media screen and (max-width: 768px) {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+      }
+
       .item-list-warapper {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         align-items: center;
         justify-items: center;
+
+        @media screen and (max-width: 768px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
 
         p {
           color: white;
@@ -149,6 +196,22 @@
         font-size: 48px;
         font-style: Bold;
         line-height: 53px;
+
+        @media screen and (max-width: 768px) {
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 700;
+          letter-spacing: -0.5px;
+          line-height: 22px;
+          text-align: left;
+        }
+      }
+
+      .radio-group {
+        @media screen and (max-width: 768px) {
+          display: flex;
+          flex-direction: column;
+        }
       }
 
       .ant-radio-checked .ant-radio-inner {

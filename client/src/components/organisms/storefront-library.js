@@ -52,6 +52,7 @@ Components[
   'ContactAddres'
 ] = require('components/organisms/ContactAddres').default
 Components['PDP'] = require('components/organisms/PDP').default
+Components['order'] = require('components/organisms/PackageOrder').default
 Components['cardsGroup'] = require('components/organisms/cards-group').default
 Components['cartPage'] = require('components/organisms/cart-page').default
 Components['Faqs'] = require('components/organisms/faqs').default

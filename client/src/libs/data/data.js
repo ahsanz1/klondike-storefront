@@ -405,6 +405,23 @@ export const TermsCondition = {
     },
   ],
 }
+export const Packagerorder = {
+  order: {
+    heading: 'PACKAGED ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be for packaged delivery.',
+    paragraph2:
+      'Please complete your order before placing an order with packaged items.',
+  },
+}
+export const bulkorder = {
+  order: {
+    heading: 'BULK ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be ordered in bulk. ',
+    paragraph2: 'Please complete your order before placing a bulk order.',
+  },
+}
 export const faqsData = {
   desktopHeading: 'FREQUENTLY ASKED QUESTIONS',
   mobileHeading: 'FAQ',

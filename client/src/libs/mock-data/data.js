@@ -68,10 +68,12 @@ import {
   simpleFormData,
   emptyCartData,
   contactaddress,
+  ourProduct,
   pdpdata,
   pdpdatasheet,
   RadioData,
-  ourProduct,
+  Packagerorder,
+  bulkorder,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -454,6 +456,18 @@ const mockData = {
     {
       id: 'PDP',
       params: { pdpdata, pdpdatasheet, RadioData },
+    },
+  ],
+  '/Order': [
+    {
+      id: 'order',
+      params: { ...Packagerorder },
+    },
+  ],
+  '/bulk': [
+    {
+      id: 'order',
+      params: { ...bulkorder },
     },
   ],
 }
