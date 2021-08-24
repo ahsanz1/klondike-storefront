@@ -19,6 +19,7 @@ const Links = ({
   mobileMenu = {},
   buyButton = '',
   menuBottom = '',
+  userIcon = '',
 }) => {
   console.log('check naaa:', mobileMenu)
   const { user } = useContext(AppContext)
@@ -65,7 +66,10 @@ const Links = ({
         }
       })}
       <Button className="Buy-Button mobile-button">{buyButton}</Button>
-      <div className="bottom-section">{menuBottom}</div>
+      <div className="bottom-section">
+        <Image width={20} src={userIcon.url} alt={userIcon.altText} />
+        {menuBottom}
+      </div>
     </div>
   )
 }
@@ -81,6 +85,7 @@ Links.propTypes = {
   mobileMenu: PropTypes.object,
   buyButton: PropTypes.string,
   menuBottom: PropTypes.string,
+  userIcon: PropTypes.string,
 }
 
 export default Links

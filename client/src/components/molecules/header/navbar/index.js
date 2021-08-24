@@ -3,7 +3,6 @@
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { useLocation } from '@reach/router'
-
 import Links from 'components/molecules/header/links'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
@@ -131,6 +130,7 @@ const Navbar = ({
           mobileMenu={mobileMenu}
           buyButton={buyButton}
           menuBottom={menuBottom}
+          userIcon={userIcon}
         />
       </div>
     </div>
