@@ -1,0 +1,46 @@
+@import '~styles/globals';
+
+.package_order-wrapper {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  .package_order {
+    width: 100%;
+    max-width: 336px;
+    margin: 0 auto;
+    padding: 1rem;
+    background: white;
+
+    .packaged_heading {
+      color: #f2a900;
+      font-family: $OpenSans;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 18px;
+      text-align: left;
+    }
+
+    p {
+      font-family: $OpenSans;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 19px;
+      text-align: left;
+    }
+  }
+
+  .Continue {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    color: white;
+    font-family: $OpenSans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+  }
+}

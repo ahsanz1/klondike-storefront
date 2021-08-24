@@ -1,0 +1,51 @@
+.Pdp-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 40px 120px;
+  background: #032939;
+
+  @media screen and (max-width: 768px) {
+    padding: 40px 40px;
+  }
+
+  h1 {
+    color: white;
+    font-family: Open-Sans, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-style: Bold;
+    line-height: 33px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  p {
+    color: white;
+    font-family: Open-Sans, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: -0.015em;
+    line-height: 160%;
+
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  .center {
+    color: white;
+    text-align: center;
+  }
+
+  a {
+    color: #f1a900;
+  }
+
+  .display-text-group {
+    margin-top: 30px;
+    color: white;
+  }
+}

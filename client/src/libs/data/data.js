@@ -405,6 +405,23 @@ export const TermsCondition = {
     },
   ],
 }
+export const Packagerorder = {
+  order: {
+    heading: 'PACKAGED ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be for packaged delivery.',
+    paragraph2:
+      'Please complete your order before placing an order with packaged items.',
+  },
+}
+export const bulkorder = {
+  order: {
+    heading: 'BULK ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be ordered in bulk. ',
+    paragraph2: 'Please complete your order before placing a bulk order.',
+  },
+}
 export const faqsData = {
   desktopHeading: 'FREQUENTLY ASKED QUESTIONS',
   mobileHeading: 'FAQ',
@@ -477,6 +494,68 @@ export const contactaddress = {
     },
   ],
 }
+
+export const pdpdata = {
+  heading: '15W-40 CK-4 Advanced Formula',
+  imgdata: [
+    {
+      image: {
+        url: '/static/images/klondike4.png',
+        alt: '',
+      },
+      btntxt: 'HOW TO BUY',
+    },
+  ],
+  data: [
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+      totalprice: '$34',
+    },
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+    },
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+    },
+  ],
+}
+
+export const pdpdatasheet = {
+  heading: 'TECHNICAL INFORMATION',
+  subheading: 'KLONDIKE - BRAVING THE FORCE OF MOVEMENT®',
+  pds: 'Product Data Sheet',
+  sds: 'Safety Data Sheet',
+  paragraph: [
+    {
+      text:
+        'KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology LONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology LONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation ',
+    },
+    // {
+    //   text:
+    //     'KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology.',
+    // },
+  ],
+  Readmore: 'Read more',
+}
+export const RadioData = {
+  packagedata: 'Note on Ordering',
+  text1:
+    'This order already has an item for bulk delivery in cart. To order products that are not in bulk, please place a separate order.',
+
+  bulk: 'Bulk Orders',
+  text2:
+    'When ordering a product to be delivered in bulk, all items within your order must be ordered in bulk, too. Packaged shipments and bulk deliveries have to be placed as separate orders.',
+}
+
 export const benefits = {
   bgColor: '#f7f7f7',
   heading: 'THE BENEFITS',
