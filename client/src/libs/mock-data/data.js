@@ -74,6 +74,7 @@ import {
   RadioData,
   Packagerorder,
   bulkorder,
+  PlpBottom,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -175,6 +176,12 @@ const mockData = {
     {
       id: 'TermsCondition',
       params: TermsCondition,
+    },
+  ],
+  '/PLPBottom': [
+    {
+      id: 'PLPBottom',
+      params: PlpBottom,
     },
   ],
 
