@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Image from 'components/atoms/image'
@@ -6,19 +6,46 @@ import Button from 'components/atoms/button'
 import PDPInformation from 'components/molecules/pdpinforamation'
 import { Radio, InputNumber, Tooltip } from 'antd'
 import { ShareAltOutlined } from '@ant-design/icons'
+import PDPMobile from '../PDPMobile'
+import Link from 'components/atoms/link'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   const { data, imgdata, heading } = pdpdata
-
+  const [disab, setDisab] = useState(false)
+  const [packg, setPackg] = useState(true)
+  const [packgdisabl, setPackgdisabl] = useState(false)
+  const [bulksdisabl, setBulkdisabl] = useState(false)
+  const [bulks, setBulks] = useState(true)
   const { packagedata, bulk, text2, text1 } = RadioData
   const [value, setValue] = React.useState(1)
   const onChange = e => {
     console.log('radio checked', e.target.value)
     setValue(e.target.value)
+    setDisab(!disab)
   }
+  const packageHandler = () => {
+    setPackg(true)
+    setBulks(false)
+  }
+  const bulkHandler = () => {
+    setPackg(false)
+    setBulks(true)
+  }
+  // const packagees = () => {
+  //   setPackg(true)
+  // }
+
   // eslint-disable-next-line space-before-function-paren
   function onChang(value) {
     console.log('changed', value)
+    setPackgdisabl(true)
+    setBulkdisabl(false)
+  }
+  const onChanging = value => {
+    console.log('bulk', value)
+    setBulkdisabl(true)
+
+    setPackgdisabl(false)
   }
   const a = value
   const text = (
@@ -70,17 +97,35 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             className="radio-group"
           >
             <Tooltip placement="bottomLeft" title={text}>
-              <Radio value={1} className="package">
-                Packaged ORDER
+              <Radio
+                value={1}
+                className={`package   ${disab ? 'disabledradio' : ''}`}
+                disabled={bulksdisabl}
+                onChange={packageHandler}
+              >
+                <Link to="/Order" className="pack_order_link">
+                  Packaged ORDER
+                </Link>
               </Radio>
             </Tooltip>
             <Tooltip placement="bottomLeft" title={secondtext}>
-              <Radio value={2} className="bulk">
-                Bulk ORDER
+              <Radio
+                value={2}
+                className={`bulk   ${!disab ? 'disabledradio' : ''}`}
+                disabled={packgdisabl}
+                onClick={() => {
+                  console.log('foucs')
+                }}
+                onChange={bulkHandler}
+              >
+                <Link to="/bulk" className="pack_order_link">
+                  Bulk ORDER
+                </Link>
               </Radio>
             </Tooltip>
           </Radio.Group>
-          <div className="test">
+          <div className="test bulk_overlay_top">
+            {!packg && <div className="bulk_overlay"></div>}
             <p className="item-list-warapper mobile-hide">
               <span>SIZE</span>
               <span>UNIT/CASE</span>
@@ -130,40 +175,51 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                         a}
                     </p>
                   </div>
+                  <hr></hr>
                 </div>
               </>
             ))}
-          </div>
-          <p className="right-align">
-            ${(newdata = parseFloat(newdata).toFixed(2))}
-          </p>
-          <hr></hr>
-          <p className="item-bulk-warappers">
-            <span>BULK</span>
-            <span>Price/LitRE</span>
-            <span>PART NUM</span>
-            <span>LITRES</span>
-            <span></span>
-          </p>
-          <div className="item-bulk-warappers">
-            <p></p>
-            <p>20</p>
-            <p>item</p>
-            <p>
-              <InputNumber
-                min={0}
-                max={100}
-                defaultValue={0}
-                onChange={onChang}
-              />
+            <p className="right-align">
+              ${(newdata = parseFloat(newdata).toFixed(2))}
             </p>
-            <p>$50</p>
+          </div>
+
+          <hr></hr>
+          <div className="top_overlay">
+            {!bulks && <div className="overlay"></div>}
+
+            <p
+              className={`item-bulk-warappers   ${
+                !disab ? 'disabledradio' : ''
+              }`}
+            >
+              <span>BULK</span>
+              <span>Price/LitRE</span>
+              <span>PART NUM</span>
+              <span>LITRES</span>
+              <span></span>
+            </p>
+            <div className="item-bulk-warappers">
+              <p></p>
+              <p>20</p>
+              <p>item</p>
+              <p>
+                <InputNumber
+                  min={0}
+                  max={100}
+                  defaultValue={0}
+                  onChange={onChanging}
+                />
+              </p>
+              <p>$50</p>
+            </div>
           </div>
           <hr></hr>
           <Button className="add-to-cart">ADD TO CART</Button>
         </div>
       </div>
       <PDPInformation pdpdatasheet={pdpdatasheet} />
+      <PDPMobile pdpdata={pdpdata} />
     </div>
   )
 }

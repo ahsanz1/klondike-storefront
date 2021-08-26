@@ -29,9 +29,9 @@
   }
 }
 
-.ant-radio-group:hover + .test {
-  opacity: 0.5;
-}
+// .ant-radio-group:hover + .test {
+//   opacity: 0.5;
+// }
 
 .ant-input-number-handler-wrap {
   opacity: 1 !important;
@@ -114,6 +114,7 @@ span.desktop-hide {
       margin-left: 10rem;
 
       @media screen and (max-width: 768px) {
+        width: 100%;
         margin-right: 0.5rem;
         margin-left: 0.5rem;
       }
@@ -142,6 +143,32 @@ span.desktop-hide {
 
         .ant-input-number {
           width: 59px;
+        }
+      }
+
+      .top_overlay {
+        position: relative;
+
+        .overlay {
+          position: absolute;
+          z-index: 6;
+          width: 100%;
+          height: 100%;
+          opacity: 0.8;
+          background: #013a4e;
+        }
+      }
+
+      .bulk_overlay_top {
+        position: relative;
+
+        .bulk_overlay {
+          position: absolute;
+          z-index: 6;
+          width: 100%;
+          height: 100%;
+          opacity: 0.8;
+          background: #013a4e;
         }
       }
 
@@ -212,6 +239,17 @@ span.desktop-hide {
           display: flex;
           flex-direction: column;
         }
+
+        .pack_order_link {
+          color: white;
+          text-decoration: none;
+          cursor: default;
+          pointer-events: none;
+
+          @media screen and (max-width: 768px) {
+            pointer-events: visible;
+          }
+        }
       }
 
       .ant-radio-checked .ant-radio-inner {
@@ -236,6 +274,10 @@ span.desktop-hide {
         padding-right: 20px;
         color: white;
         text-align: right;
+      }
+
+      .disabledradio {
+        color: #f4f4f480;
       }
     }
 
