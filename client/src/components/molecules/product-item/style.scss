@@ -7,6 +7,10 @@
     padding: 10px 15px;
   }
 
+  @media (max-width: 425px) {
+    padding: 0;
+  }
+
   .product-img {
     margin: auto;
     overflow: hidden;
@@ -26,10 +30,40 @@
       border: 4px solid #e25205;
     }
 
+    @media (min-width: 1024px) {
+      img {
+        max-height: 190px;
+      }
+    }
+
     @media (min-width: 1250px) {
       img {
         max-width: 300px;
         max-height: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      img {
+        max-height: 200px;
+      }
+    }
+
+    @media (max-width: 425px) {
+      img {
+        max-height: 150px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      img {
+        max-height: 124px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      img {
+        max-height: 92px;
       }
     }
   }

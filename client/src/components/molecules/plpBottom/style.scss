@@ -1,0 +1,33 @@
+.plp-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  // width: 49%;
+  height: 250px;
+  padding: 0 50px;
+  background: #032939;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 425px) {
+    height: 150px;
+  }
+
+  img {
+    width: 100px;
+    margin-top: 20px;
+  }
+
+  button {
+    width: inherit;
+    margin-top: 20px;
+
+    @media (max-width: 768px) {
+      width: initial;
+    }
+  }
+}

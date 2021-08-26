@@ -4,12 +4,14 @@ import { AppContext } from 'libs/context'
 import Category from 'components/organisms/category'
 import PlpTabList from 'components/organisms/plp-tab-list'
 // import PlpFilter from 'components/molecules/Plp-filter'
+import PLPBottomSection from 'components/molecules/plpBottom'
 import Button from 'components/atoms/button'
-// import { filterSelect, size, partNumber, unit, untitled } from './data'
+import { PlpBottom } from './data'
 // import { sortProducts } from 'libs/services/algolia'
 import PropTypes from 'prop-types'
 import RightArrow from 'images/right-arrow.png'
 import './styles.scss'
+import { categoriesXPM as categories } from 'components/organisms/plp/data'
 
 // const { TabPane } = Tabs
 
@@ -22,7 +24,7 @@ const PLP = props => {
   console.log({
     props,
   })
-  const { categories } = props
+  // const { categories } = props
   const { setStep } = useContext(AppContext)
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const PLP = props => {
   //   console.log('check resp:', response.hits)
   //   setProductList(response.hits)
   // }
-  // console.log('check category:', filterSelect, categories)
+  console.log('PLPBottom:', categories)
   return (
     <div className="plp">
       <div className="navigation-button">
@@ -74,7 +76,6 @@ const PLP = props => {
             subItem={subItem}
           />
         )}
-
         <div className="productItem">
           <Category
             categoryName={itemName}
@@ -82,6 +83,18 @@ const PLP = props => {
             // productList={productList}
           />
         </div>
+      </div>
+      <div className="plp-bottom-section">
+        {PlpBottom &&
+          PlpBottom.map((item, i) => (
+            <>
+              <PLPBottomSection
+                image={item.image}
+                button={item.button}
+                mobileButton={item.mobileButton}
+              />
+            </>
+          ))}
       </div>
     </div>
   )
