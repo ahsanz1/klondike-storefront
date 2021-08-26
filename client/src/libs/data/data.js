@@ -3194,6 +3194,18 @@ export const PSusbcribeNewItem = {
     },
   ],
 }
+export const PlpBottom = {
+  bottomSection: [
+    {
+      image: '/static/klondike3',
+      button: 'DOWNLOAD PDS & MSDS',
+    },
+    {
+      image: '/static/klondike3',
+      button: 'BECOME A DEALER',
+    },
+  ],
+}
 
 export const PurchaseHistory = {
   label: 'PURCHASE HISTORY',

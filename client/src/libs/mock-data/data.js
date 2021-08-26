@@ -31,7 +31,6 @@ import {
   aboutUsPage,
   ProductOverview,
   ProductItem,
-  Productbanner,
   heroBannerdata,
   bannerlubricants,
   DownTime,
@@ -74,6 +73,7 @@ import {
   RadioData,
   Packagerorder,
   bulkorder,
+  PlpBottom,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -166,15 +166,17 @@ const mockData = {
       id: 'ProductItem',
       params: ProductItem,
     },
-    {
-      id: 'Productbanner',
-      params: Productbanner,
-    },
   ],
   '/terms-condition': [
     {
       id: 'TermsCondition',
       params: TermsCondition,
+    },
+  ],
+  '/PLPBottom': [
+    {
+      id: 'PLPBottom',
+      params: PlpBottom,
     },
   ],
 
