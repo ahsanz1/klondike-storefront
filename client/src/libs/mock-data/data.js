@@ -29,9 +29,9 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
-  // ProductOverview,
-  // ProductItem,
-  // Productbanner,
+  ProductOverview,
+  ProductItem,
+  Productbanner,
   heroBannerdata,
   bannerlubricants,
   DownTime,
@@ -151,6 +151,24 @@ const mockData = {
     {
       id: 'DownTime',
       params: DownTime,
+    },
+  ],
+  '/PCP': [
+    // {
+    //   id: 'HomePage',
+    //   params: PcpHeroBanner,
+    // },
+    {
+      id: 'ProductOverview',
+      params: ProductOverview,
+    },
+    {
+      id: 'ProductItem',
+      params: ProductItem,
+    },
+    {
+      id: 'Productbanner',
+      params: Productbanner,
     },
   ],
   '/terms-condition': [

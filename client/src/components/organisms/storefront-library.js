@@ -10,6 +10,15 @@ Components[
   'ProductSlider'
 ] = require('components/organisms/product-slider').default
 Components[
+  'ProductOverview'
+] = require('components/organisms/PCPOverview').default
+Components[
+  'ProductItem'
+] = require('components/organisms/ProductItemList').default
+Components[
+  'Productbanner'
+] = require('components/organisms/ProductBanner').default
+Components[
   'DiscountOrder'
 ] = require('components/organisms/discount-order').default
 Components[

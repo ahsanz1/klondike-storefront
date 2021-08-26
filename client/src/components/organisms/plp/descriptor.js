@@ -2,7 +2,7 @@ const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
   id: 'PLP',
-  label: 'Product Listing Page',
+  label: 'PLP-Page',
   isGlobal: false,
   description: 'Product Listing Page',
   attributes: {
@@ -10,8 +10,8 @@ exports.default = Types.Component({
       label: 'Categories',
       children: Types.Shape({
         children: {
-          title: Types.String({ label: 'Tab title' }),
           categoryName: Types.String({ label: 'Category name' }),
+          categoryDesc: Types.String({ label: 'Category Desc' }),
         },
       }),
     }),

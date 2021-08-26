@@ -14,6 +14,7 @@
   }
 
   .Buy-Button {
+    display: none;
     box-sizing: border-box;
     align-items: center;
     width: 174px;
@@ -28,11 +29,28 @@
     font-weight: bold;
     line-height: 33px !important;
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 
   .bottom-section {
+    display: none;
     margin-top: 20px;
     padding: 5px 0;
     border-top: 2px solid $white-color;
+    color: $white-color;
+    text-transform: uppercase;
+
+    .c-image {
+      position: relative;
+      top: -3px;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 }

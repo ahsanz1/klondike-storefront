@@ -448,6 +448,162 @@ export const faqsData = {
     },
   ],
 }
+export const ProductOverview = {
+  heading: 'QUALITY OILS & LUBRICANTS',
+  productcontent: [
+    {
+      text:
+        'Whether it’s heavy duty, industrial, or automotive, KLONDIKE has you covered. We provide a comprehensive range of packaged and bulk oils, lubricants, greases and chemicals ready to be shipped to you from our strategically located distribution facilities throughout Canada and the USA. Our vast blending and custom formulation capabilities enable us to fulfill your industry’s most challenging requirements.',
+    },
+    {
+      text:
+        'Our oils, greases and fluids are subject to strict testing requirements and quality assurance processes. In addition to our in-depth internal technical process, our products are tested in a variety of world-class technical institutions to meet and exceed top performance requirements in any given industry. The KLONDIKE Quality Assurance Guarantee underpins the standard of excellence in our product formulations.',
+    },
+    {
+      text:
+        'The KLONDIKE lubricating oils and greases are formulated from the finest mineral and synthetic base oils with highly advanced additive technology. This ensures high performance, maximum efficiency, and total equipment protection.',
+    },
+    {
+      text:
+        'KLONDIKE is a registered international member of the American Petroleum Institute (API) and the International Lubricating Standardization & Approval Committee (ILSAC). These trademark certifications are clearly stated on our applicable products, ensuring that they meet and exceed all warranty requirements of international engine manufactures that subscribe to these stringent global testing institutions.',
+    },
+  ],
+}
+export const ProductItem = {
+  ProductList: [
+    {
+      image: {
+        url: '/static/images/pi1.png',
+        alt: '',
+      },
+      title: 'Nano',
+    },
+    {
+      image: {
+        url: '/static/images/pi2.png',
+        alt: '',
+      },
+      title: 'heavy duty engine oils',
+    },
+    {
+      image: {
+        url: '/static/images/pi3.png',
+        alt: '',
+      },
+      title: 'automotive engine oils',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'transmission fluids',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi9.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi10.png',
+        alt: '',
+      },
+      title: 'Food grade lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi10.png',
+        alt: '',
+      },
+      title: 'Food grade lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi11.png',
+        alt: '',
+      },
+      title: 'Chemicals',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+  ],
+}
+export const Productbanner = {
+  banner: [
+    {
+      image: {
+        url: '/static/images/Productbaner.png',
+        alt: '',
+      },
+      btntxt: 'How to buy',
+    },
+    {
+      image: {
+        url: '/static/images/Productbaner.png',
+        alt: '',
+      },
+      btntxt: 'Become a Dealer',
+    },
+  ],
+}
+
 export const contactaddress = {
   Addresdata: [
     {
