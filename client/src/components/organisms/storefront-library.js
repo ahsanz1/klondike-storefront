@@ -16,9 +16,6 @@ Components[
   'ProductItem'
 ] = require('components/organisms/ProductItemList').default
 Components[
-  'Productbanner'
-] = require('components/organisms/ProductBanner').default
-Components[
   'DiscountOrder'
 ] = require('components/organisms/discount-order').default
 Components[

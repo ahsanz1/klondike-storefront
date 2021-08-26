@@ -31,7 +31,6 @@ import {
   aboutUsPage,
   ProductOverview,
   ProductItem,
-  Productbanner,
   heroBannerdata,
   bannerlubricants,
   DownTime,
@@ -165,10 +164,6 @@ const mockData = {
     {
       id: 'ProductItem',
       params: ProductItem,
-    },
-    {
-      id: 'Productbanner',
-      params: Productbanner,
     },
   ],
   '/terms-condition': [
