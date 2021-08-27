@@ -31,7 +31,9 @@ const ProductInovation = ({ productInovation }) => {
           {productInovation.map((content, i) => (
             <SwiperSlide key={i}>
               <div className="Product-content">
+                {/* <div className="product_img_wraper"> */}
                 <img src={content.image.url} alt="" />
+                {/* </div> */}
                 <p>{content.detail}</p>
               </div>
             </SwiperSlide>

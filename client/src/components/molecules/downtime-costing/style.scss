@@ -1,8 +1,21 @@
+@import '~styles/globals';
+
 .internal {
+  .downtime_img_wraper {
+    width: 100%;
+    max-width: 588px;
+    height: 282px;
+    background: white;
+
+    @media screen and (max-width: 1366px) {
+      max-width: 540px;
+    }
+  }
+
   h1 {
     align-items: center;
     color: white;
-    font-family: nevis, Arial, Helvetica, sans-serif;
+    font-family: $OpenSans;
     font-size: 24px;
     letter-spacing: -0.5px;
     line-height: 110%;
@@ -21,11 +34,11 @@
     align-items: center;
     width: 247px;
     height: 38px;
-    border: 2px solid #e35205;
+    border: 2px solid $accent-color;
     border-radius: 5px;
-    background: transparent;
+    background: $accent-color;
     color: white;
-    font-family: nevis, Arial, Helvetica, sans-serif;
+    font-family: $OpenSans;
     font-size: 16px;
     letter-spacing: 0.75px;
     line-height: 28px;

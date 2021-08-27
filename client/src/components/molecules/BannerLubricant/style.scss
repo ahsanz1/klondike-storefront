@@ -1,3 +1,5 @@
+@import '~styles/globals';
+
 .banner-content {
   padding: 40px 120px;
   background: #032939;
@@ -8,7 +10,7 @@
 
   h5 {
     color: white;
-    font-family: nevis, Arial, Helvetica, sans-serif;
+    font-family: $OpenSans;
     font-size: 20px;
     letter-spacing: -0.015em;
     line-height: 110%;
@@ -16,7 +18,7 @@
 
   p {
     color: white;
-    font-family: Open-Sans, Arial, Helvetica, sans-serif;
+    font-family: $OpenSans;
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
