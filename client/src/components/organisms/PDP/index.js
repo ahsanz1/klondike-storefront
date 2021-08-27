@@ -124,7 +124,13 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
               </Radio>
             </Tooltip>
           </Radio.Group>
-          <div className="test bulk_overlay_top">
+          <div
+            className={
+              !packg
+                ? 'test  bulk_overlay_top hide-packg'
+                : 'test bulk_overlay_top'
+            }
+          >
             {!packg && <div className="bulk_overlay"></div>}
             <p className="item-list-warapper mobile-hide">
               <span>SIZE</span>
@@ -175,7 +181,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                         a}
                     </p>
                   </div>
-                  <hr></hr>
                 </div>
               </>
             ))}
@@ -183,38 +188,39 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
               ${(newdata = parseFloat(newdata).toFixed(2))}
             </p>
           </div>
+          <div className={!bulks ? 'hide-bulk' : 'pdp_bulk_order'}>
+            <hr></hr>
+            <div className="top_overlay">
+              {!bulks && <div className="overlay"></div>}
 
-          <hr></hr>
-          <div className="top_overlay">
-            {!bulks && <div className="overlay"></div>}
-
-            <p
-              className={`item-bulk-warappers   ${
-                !disab ? 'disabledradio' : ''
-              }`}
-            >
-              <span>BULK</span>
-              <span>Price/LitRE</span>
-              <span>PART NUM</span>
-              <span>LITRES</span>
-              <span></span>
-            </p>
-            <div className="item-bulk-warappers">
-              <p></p>
-              <p>20</p>
-              <p>item</p>
-              <p>
-                <InputNumber
-                  min={0}
-                  max={100}
-                  defaultValue={0}
-                  onChange={onChanging}
-                />
+              <p
+                className={`item-bulk-warappers   ${
+                  !disab ? 'disabledradio' : ''
+                }`}
+              >
+                <span>BULK</span>
+                <span>Price/LitRE</span>
+                <span>PART NUM</span>
+                <span>LITRES</span>
+                <span></span>
               </p>
-              <p>$50</p>
+              <div className="item-bulk-warappers">
+                <p></p>
+                <p>20</p>
+                <p>item</p>
+                <p>
+                  <InputNumber
+                    min={0}
+                    max={100}
+                    defaultValue={0}
+                    onChange={onChanging}
+                  />
+                </p>
+                <p>$50</p>
+              </div>
             </div>
+            <hr></hr>
           </div>
-          <hr></hr>
           <Button className="add-to-cart">ADD TO CART</Button>
         </div>
       </div>

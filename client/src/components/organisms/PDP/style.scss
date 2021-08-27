@@ -3,6 +3,10 @@
   height: 144px;
   border: 1px solid white;
   background: #013a4e !important;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .toltip-container {
@@ -159,6 +163,22 @@ span.desktop-hide {
         }
       }
 
+      .hide-bulk {
+        display: block;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .hide-packg {
+        display: block;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
       .bulk_overlay_top {
         position: relative;
 
@@ -275,6 +295,11 @@ span.desktop-hide {
         color: white;
         text-align: right;
       }
+
+      // .pdp_bulk_order {
+      //   @media screen and (max-width: 768px) {
+      //   }
+      // }
 
       .disabledradio {
         color: #f4f4f480;
