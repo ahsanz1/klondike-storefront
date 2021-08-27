@@ -1,3 +1,5 @@
+@import '~styles/globals';
+
 .TermsConditions-wrapper {
   padding: 8rem;
   background: #013a4e;
@@ -13,7 +15,7 @@
     h1 {
       margin: 0;
       color: white;
-      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      font-family: $OpenSans;
       font-size: 28px;
       font-style: normal;
       font-weight: bold;
@@ -23,7 +25,7 @@
     h3 {
       padding: 2rem 0;
       color: white;
-      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      font-family: $OpenSans;
       font-size: 13px;
       font-style: normal;
       font-weight: bold;
@@ -34,7 +36,7 @@
 
     p {
       color: white;
-      font-family: Raleway, Arial, Helvetica, sans-serif;
+      font-family: $OpenSans;
       font-size: 14px;
       font-style: normal;
       font-weight: normal;
