@@ -21,7 +21,7 @@ const PlpTabList = ({
         categories.length &&
         categories.map((item, index) => (
           <>
-            {item.categoryName.length > 0 ? (
+            {item.categoryName.length > 0 && (
               <Label
                 className={itemName === item.categoryName && 'active-category'}
                 key={index}
@@ -44,7 +44,7 @@ const PlpTabList = ({
                   </div>
                 )}
               </Label>
-            ) : null}
+            )}
           </>
         ))}
     </div>
