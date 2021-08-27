@@ -1,10 +1,10 @@
 const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
-  id: 'CategorySideBar',
+  id: 'PlpTabList',
   label: 'Category Side Bar',
   isGlobal: false,
-  description: 'List of Categories',
+  description: 'List of Categories ',
   attributes: {
     categories: Types.Array({
       label: 'Categories',

@@ -76,6 +76,10 @@ Components['Category'] = require('components/organisms/category').default
 Components['PLP'] = require('components/organisms/plp').default
 Components['AboutUs'] = require('components/organisms/about-us').default
 Components[
+  'CategorySideBar'
+] = require('components/organisms/plp-tab-list').default
+
+Components[
   'ProductDescription'
 ] = require('components/organisms/product-description').default
 Components['Reviews'] = require('components/organisms/reviews').default

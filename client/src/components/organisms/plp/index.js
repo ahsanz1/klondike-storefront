@@ -44,7 +44,7 @@ const PLP = props => {
   //   console.log('check resp:', response.hits)
   //   setProductList(response.hits)
   // }
-  console.log('PLPBottom:', categories)
+  console.log('PLPBottom:', props)
   return (
     <div className="plp">
       <div className="navigation-button">
@@ -68,14 +68,14 @@ const PLP = props => {
         />
       </div> */}
       <div className="custom-plp">
-        {showTab && (
+        {showTab ? (
           <PlpTabList
             categories={categories}
             itemName={itemName}
             clickCategoryHandler={clickCategoryHandler}
             subItem={subItem}
           />
-        )}
+        ) : null}
         <div className="productItem">
           <Category
             categoryName={itemName}

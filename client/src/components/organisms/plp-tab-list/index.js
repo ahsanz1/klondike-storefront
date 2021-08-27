@@ -16,33 +16,35 @@ const PlpTabList = ({
   }
   console.log('check categories:', categories)
   return (
-    <div className="categoryItem">
+    <div className="categoryItem trt">
       {categories &&
         categories.length &&
         categories.map((item, index) => (
           <>
-            <Label
-              className={itemName === item.categoryName && 'active-category'}
-              key={index}
-              onClick={() => clickCategoryHandler(item.categoryName)}
-            >
-              {item.categoryName}
-              {itemName === item.categoryName && (
-                <div className="subItem">
-                  {subItem &&
-                    subItem.hits &&
-                    subItem.hits.map((item, index) => (
-                      <Label
-                        key={index}
-                        onClick={() => productClickHandler(item.title)}
-                        className={item.title === product && 'active-product'}
-                      >
-                        {item.title}
-                      </Label>
-                    ))}
-                </div>
-              )}
-            </Label>
+            {item.categoryName.length > 0 ? (
+              <Label
+                className={itemName === item.categoryName && 'active-category'}
+                key={index}
+                onClick={() => clickCategoryHandler(item.categoryName)}
+              >
+                {item.categoryName}
+                {itemName === item.categoryName && (
+                  <div className="subItem">
+                    {subItem &&
+                      subItem.hits &&
+                      subItem.hits.map((item, index) => (
+                        <Label
+                          key={index}
+                          onClick={() => productClickHandler(item.title)}
+                          className={item.title === product && 'active-product'}
+                        >
+                          {item.title}
+                        </Label>
+                      ))}
+                  </div>
+                )}
+              </Label>
+            ) : null}
           </>
         ))}
     </div>
