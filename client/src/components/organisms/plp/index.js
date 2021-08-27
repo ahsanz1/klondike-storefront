@@ -68,14 +68,14 @@ const PLP = props => {
         />
       </div> */}
       <div className="custom-plp">
-        {showTab ? (
+        {showTab && (
           <PlpTabList
             categories={categories}
             itemName={itemName}
             clickCategoryHandler={clickCategoryHandler}
             subItem={subItem}
           />
-        ) : null}
+        )}
         <div className="productItem">
           <Category
             categoryName={itemName}
