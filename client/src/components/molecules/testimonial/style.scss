@@ -11,13 +11,17 @@
 
   h1 {
     width: 282px;
-    margin-left: 120px;
+    margin-left: 80px;
     color: white;
     font-family: nevis, Arial, Helvetica, sans-serif;
     font-size: 48px;
     letter-spacing: -0.5px;
     line-height: 110%;
     text-transform: uppercase;
+
+    @media screen and (max-width: 1366px) {
+      margin-left: 50px;
+    }
 
     @media screen and (max-width: 768px) {
       margin-left: 0;
@@ -28,8 +32,8 @@
 .slider {
   // display: none;
 
-  width: 35%;
-  margin-right: 12rem;
+  width: 41%;
+  margin-right: 11.5rem;
   margin-left: auto;
   padding-bottom: 40px;
   background-color: white;

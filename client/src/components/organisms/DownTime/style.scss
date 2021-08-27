@@ -1,8 +1,18 @@
+@import '~styles/globals';
+
 .downtime-wrapper {
   display: flex;
   justify-content: space-around;
   padding: 60px 73px;
   background: #013a4e;
+
+  @media screen and (min-width: 1600px) {
+    padding: 60px 250px;
+  }
+
+  @media screen and (max-width: 1366px) {
+    padding: 60px 115px;
+  }
 
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;

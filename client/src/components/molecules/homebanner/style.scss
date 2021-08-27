@@ -1,7 +1,9 @@
+@import '~styles/globals';
+
 .content-wrapper {
   h1 {
     color: #fff;
-    font-family: nevis, Helvetica, Arial, sans-serif;
+    font-family: $OpenSans;
     font-size: 32px;
     letter-spacing: -0.04em;
     text-transform: uppercase;
@@ -9,14 +11,14 @@
 
   h5 {
     color: #fff;
-    font-family: nevis, Helvetica, Arial, sans-serif;
+    font-family: $OpenSans;
     font-size: 20px;
     letter-spacing: -0.015em;
     line-height: 110%;
   }
 
   p {
-    font-family: Open-Sans, Helvetica, Arial, sans-serif;
+    font-family: $OpenSans;
     font-size: 12px;
     font-style: normal;
     font-weight: normal;
@@ -32,11 +34,11 @@
     align-items: center;
     width: 191px;
     height: 48px;
-    border: 2px solid #e35205;
+    border: 2px solid $accent-color;
     border-radius: 5px;
-    background: transparent;
+    background: $accent-color;
     color: #fff;
-    font-family: nevis, Helvetica, Arial, sans-serif;
+    font-family: $OpenSans;
     font-size: 16px;
     letter-spacing: 0.75px;
     line-height: 28px;
