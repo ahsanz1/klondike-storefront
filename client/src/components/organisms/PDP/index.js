@@ -11,24 +11,24 @@ import Link from 'components/atoms/link'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   const { data, imgdata, heading } = pdpdata
-  const [disab, setDisab] = useState(false)
-  const [packg, setPackg] = useState(true)
-  const [packgdisabl, setPackgdisabl] = useState(false)
-  const [bulksdisabl, setBulkdisabl] = useState(false)
+  const [disable, setDisable] = useState(false)
+  const [packages, setPackages] = useState(true)
+  const [packagedisabl, setPackagedisabl] = useState(false)
+  const [bulksdisable, setBulkdisable] = useState(false)
   const [bulks, setBulks] = useState(true)
   const { packagedata, bulk, text2, text1 } = RadioData
   const [value, setValue] = React.useState(1)
   const onChange = e => {
     console.log('radio checked', e.target.value)
     setValue(e.target.value)
-    setDisab(!disab)
+    setDisable(!disable)
   }
   const packageHandler = () => {
-    setPackg(true)
+    setPackages(true)
     setBulks(false)
   }
   const bulkHandler = () => {
-    setPackg(false)
+    setPackages(false)
     setBulks(true)
   }
   // const packagees = () => {
@@ -38,14 +38,14 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   // eslint-disable-next-line space-before-function-paren
   function onChang(value) {
     console.log('changed', value)
-    setPackgdisabl(true)
-    setBulkdisabl(false)
+    setPackagedisabl(true)
+    setBulkdisable(false)
   }
   const onChanging = value => {
     console.log('bulk', value)
-    setBulkdisabl(true)
+    setBulkdisable(true)
 
-    setPackgdisabl(false)
+    setPackagedisabl(false)
   }
   const a = value
   const text = (
@@ -99,8 +99,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             <Tooltip placement="bottomLeft" title={text}>
               <Radio
                 value={1}
-                className={`package   ${disab ? 'disabledradio' : ''}`}
-                disabled={bulksdisabl}
+                className={`package   ${disable ? 'disabledradio' : ''}`}
+                disabled={bulksdisable}
                 onChange={packageHandler}
               >
                 <Link to="/Order" className="pack_order_link">
@@ -111,8 +111,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             <Tooltip placement="bottomLeft" title={secondtext}>
               <Radio
                 value={2}
-                className={`bulk   ${!disab ? 'disabledradio' : ''}`}
-                disabled={packgdisabl}
+                className={`bulk   ${!disable ? 'disabledradio' : ''}`}
+                disabled={packagedisabl}
                 onClick={() => {
                   console.log('foucs')
                 }}
@@ -126,12 +126,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
           </Radio.Group>
           <div
             className={
-              !packg
+              !packages
                 ? 'test  bulk_overlay_top hide-packg'
                 : 'test bulk_overlay_top'
             }
           >
-            {!packg && <div className="bulk_overlay"></div>}
+            {!packages && <div className="bulk_overlay"></div>}
             <p className="item-list-warapper mobile-hide">
               <span>SIZE</span>
               <span>UNIT/CASE</span>
@@ -195,7 +195,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
 
               <p
                 className={`item-bulk-warappers   ${
-                  !disab ? 'disabledradio' : ''
+                  !disable ? 'disabledradio' : ''
                 }`}
               >
                 <span>BULK</span>
