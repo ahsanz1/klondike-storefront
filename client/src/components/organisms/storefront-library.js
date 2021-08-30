@@ -157,4 +157,6 @@ Components[
   'SliderTabbable'
 ] = require('components/organisms/slider-tabable').default
 
+Components['PlpTabList'] = require('components/organisms/plp-tab-list').default
+
 export default Components

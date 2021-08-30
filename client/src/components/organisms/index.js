@@ -46,6 +46,7 @@ import HomeBanner from 'components/organisms/HomeBanner'
 import CommitedSuccess from 'components/organisms/CommitedSuccess'
 import ClientTestimonial from 'components/organisms/ClientTestimonial'
 import ContactAddres from 'components/organisms/ContactAddres'
+import PlpTabList from 'components/organisms/plp-tab-list'
 
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
@@ -102,4 +103,5 @@ export default {
   SubscriptionOrderDetails: params => <subscriptionOrderDetails {...params} />,
   OrderDetails: params => <OrderDetails {...params} />,
   SliderTabbable: params => <SliderTabbable {...params} />,
+  PlpTabList: params => <PlpTabList {...params} />,
 }
