@@ -81,10 +81,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             <p
               className="right-align"
               // onClick={() => {
-              //   window.open(
-              //     `https://facebook.com/sharer.php?u=${'https://dev.klondike.fabric.zone/'}`,
-              //     '_blank',
-              //   )
+              //   // window.open(
+              //   //   `https://facebook.com/sharer.php?u=${'https://dev.klondike.fabric.zone/'}`,
+              //   //   '_blank',
+              //   // )
+              //   window.location.href
               // }}
             >
               <ShareAltOutlined />
@@ -99,7 +100,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             <Tooltip placement="bottomLeft" title={text}>
               <Radio
                 value={1}
-                className={`package   ${disable ? 'disabledradio' : ''}`}
+                className={`package   ${disable || 'disabledradio'}`}
                 disabled={bulksdisable}
                 onChange={packageHandler}
               >
