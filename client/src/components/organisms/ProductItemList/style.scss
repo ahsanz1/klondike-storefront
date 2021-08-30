@@ -1,15 +1,19 @@
 .Productitem-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 50px 120px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  // justify-content: center;
+  padding: 50px 107px;
   background: #013a4e;
 
-  @media screen and (max-width: 1500px) and (min-width: 1366px) {
-    padding: 0;
+  // @media screen and (max-width: 1500px) and (min-width: 1366px) {
+  //   padding: 0;
+  // }
+  @media screen and (max-width: 1366px) {
+    padding: 50px 68px;
   }
 
   @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
     padding: 0;
   }
 }
