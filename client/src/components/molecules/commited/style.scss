@@ -1,7 +1,10 @@
+@import '~styles/globals';
+
 .commited-wraper {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background: white;
 
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;
@@ -10,33 +13,34 @@
 
   .commited-content {
     width: 792px;
-    padding: 20px 0 20px 80px;
+    padding: 20px 0 20px 0;
 
     @media screen and (max-width: 768px) {
       width: 356px;
-      padding: 20px;
+      padding: 30px;
     }
 
     h1 {
-      font-family: nevis, Arial, Helvetica, sans-serif;
+      font-family: $OpenSans;
       font-size: 32px;
+      font-weight: 700;
       letter-spacing: -0.5px;
       line-height: 110%;
     }
 
     p {
-      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      font-family: $OpenSans;
       font-size: 15px;
       font-style: normal;
-      font-weight: normal;
+      font-weight: 400;
       line-height: 140%;
     }
 
     h3 {
-      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      font-family: $OpenSans;
       font-size: 14px;
       font-style: normal;
-      font-weight: bold;
+      font-weight: 700;
       line-height: 140%;
     }
   }
@@ -46,11 +50,11 @@
       box-sizing: border-box;
       width: 217px;
       height: 48px;
-      border: 2px solid #e35205;
+      border: 2px solid $accent-color;
       border-radius: 5px;
-      background: #e35205;
+      background: $accent-color;
       color: white;
-      font-family: nevis, Arial, Helvetica, sans-serif;
+      font-family: $OpenSans;
       font-size: 16px;
       letter-spacing: 0.75px;
       line-height: 28px;
@@ -61,8 +65,8 @@
         width: 150px;
         margin-bottom: 20px;
         margin-left: 20px;
-        background: transparent;
-        color: black;
+        background: $accent-color;
+        color: white;
         font-size: 14px;
       }
     }

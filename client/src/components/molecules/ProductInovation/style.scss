@@ -3,7 +3,7 @@
   background: #032939;
 
   .swiper-container {
-    width: 80%;
+    width: 84%;
     margin: 0 auto;
 
     .swiper-scrollbar {
@@ -15,8 +15,10 @@
     }
 
     .swiper-scrollbar-drag {
-      width: 500px;
+      //width: 900px !important;
       height: 5px;
+      transform: translate3d(0, 0, 0);
+      transition-duration: 0ms;
       background: red;
       color: red;
     }
@@ -41,6 +43,13 @@
 
           @media screen and (max-width: 768px) {
             display: contents;
+          }
+
+          .product_img_wraper {
+            width: 268px;
+            // height: 250px;
+            background: white;
+            box-shadow: 8px 8px 10px 0 #0000004d inset;
           }
 
           p {

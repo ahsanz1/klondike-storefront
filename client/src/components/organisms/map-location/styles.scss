@@ -1,3 +1,5 @@
+@import '~styles/globals';
+
 .map-location {
   // max-width: 920px;
   display: flex;
@@ -27,7 +29,7 @@
   &__description {
     width: 356px;
     color: white;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-family: $OpenSans;
     font-size: 14px;
     font-style: normal;
     font-weight: bold;

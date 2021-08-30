@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
-
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import SwiperCore, { Scrollbar, A11y } from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -16,11 +16,13 @@ import 'swiper/components/scrollbar/scrollbar.scss'
 SwiperCore.use([Scrollbar, A11y])
 
 const ProductInovation = ({ productInovation }) => {
+  const [size] = useWindowSize()
+
   return (
     <div className="product-wrapper">
       <Swiper
         spaceBetween={20}
-        slidesPerView={4}
+        slidesPerView={size < 768 ? 1 : 4}
         //   navigation
         //   pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
@@ -31,7 +33,9 @@ const ProductInovation = ({ productInovation }) => {
           {productInovation.map((content, i) => (
             <SwiperSlide key={i}>
               <div className="Product-content">
-                <img src={content.image.url} alt="" />
+                <div className="product_img_wraper">
+                  <img src={content.image.url} alt="" />
+                </div>
                 <p>{content.detail}</p>
               </div>
             </SwiperSlide>
