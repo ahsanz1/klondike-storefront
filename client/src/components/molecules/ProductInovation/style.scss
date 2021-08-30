@@ -46,6 +46,9 @@
           }
 
           .product_img_wraper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 268px;
             height: 250px;
             margin-bottom: 10px;
