@@ -15,7 +15,7 @@
     }
 
     .swiper-scrollbar-drag {
-      width: 391.58px !important;
+      //width: 900px !important;
       height: 5px;
       transform: translate3d(0, 0, 0);
       transition-duration: 0ms;
@@ -45,12 +45,12 @@
             display: contents;
           }
 
-          // .product_img_wraper {
-          //   width: 268px;
-          //   height: 250px;
-          //   background: white;
-          //   box-shadow: 8px 8px 10px 0 #0000004d inset;
-          // }
+          .product_img_wraper {
+            width: 268px;
+            // height: 250px;
+            background: white;
+            box-shadow: 8px 8px 10px 0 #0000004d inset;
+          }
 
           p {
             width: 70%;
