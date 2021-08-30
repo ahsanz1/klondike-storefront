@@ -1,0 +1,66 @@
+@import '~styles/globals';
+
+.pdp_mobile-wraper {
+  .pdp_mobile-container {
+    margin: 0 auto;
+
+    .ant-radio-checked .ant-radio-inner {
+      border-color: #d99e08;
+    }
+
+    .ant-radio-inner::after {
+      background-color: #d99e08;
+    }
+
+    .product-img {
+      max-width: 195px;
+      height: 240px;
+      margin: 0 auto;
+      background: white;
+    }
+
+    .pdp_mobile-heading {
+      margin-top: 31px;
+      color: white;
+      font-family: $OpenSans;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 22px;
+      text-align: center;
+    }
+
+    .radio_btn_container {
+      width: 170px;
+    }
+
+    .item-list-warapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      max-width: 400px;
+
+      .item {
+        width: 100%;
+        max-width: 100px;
+
+        p {
+          color: white;
+          font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+          font-size: 14px;
+          font-style: Bold;
+          line-height: 26px;
+        }
+
+        span {
+          color: white;
+        }
+
+        .ant-input-number {
+          width: 59px;
+        }
+      }
+    }
+  }
+}
