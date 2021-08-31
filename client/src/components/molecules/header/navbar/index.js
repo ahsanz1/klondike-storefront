@@ -59,7 +59,7 @@ const Navbar = ({
           </Button>
         </div>
         <Link
-          to="/Home"
+          to="/"
           onClick={() => {
             setIsOpen(false)
           }}

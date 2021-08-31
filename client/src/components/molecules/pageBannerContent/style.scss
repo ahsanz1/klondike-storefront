@@ -35,6 +35,10 @@
         line-height: 110%;
         text-align: center;
         text-transform: uppercase;
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
       }
 
       img {
