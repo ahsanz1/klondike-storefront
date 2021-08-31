@@ -91,6 +91,70 @@ export const ProductLubricant = {
     },
   ],
 }
+export const faqsData = {
+  desktopHeading: 'PRODUCT PRICE LIST & ORDER FORM',
+  mobileHeading: 'PRODUCT PRICE LIST & ORDER FORM',
+  faqsData: [
+    {
+      question: 'Nano',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: false,
+    },
+    {
+      question: 'Heavy duty engine oils',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: false,
+    },
+    {
+      question: 'automotive engine oils',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'gear lubricants',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+    },
+    {
+      question: 'transmission fluids',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+    },
+    {
+      question: 'hydraulic fluids',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+    },
+    {
+      question: 'industrial oils',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+    },
+    {
+      question: 'greases',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+    },
+    {
+      question: 'biodegradable lubricants',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+    },
+    {
+      question: 'food grade lubricants',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+    },
+    {
+      question: 'chemicals',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+    },
+  ],
+}
 export const LubricantComponent = {
   distributionheading:
     'Products Lubricants Built to Withstand the Extremes of Your Operations',
@@ -131,6 +195,7 @@ export const LubricantComponent = {
     },
   ],
 }
+
 export const distributionSecond = {
   distributionheading:
     'Products Lubricants Built to Withstand the Extremes of Your Operations',
@@ -422,32 +487,32 @@ export const bulkorder = {
     paragraph2: 'Please complete your order before placing a bulk order.',
   },
 }
-export const faqsData = {
-  desktopHeading: 'FREQUENTLY ASKED QUESTIONS',
-  mobileHeading: 'FAQ',
-  faqsData: [
-    {
-      question: 'What are IQBARs?',
-      answer:
-        'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
-    },
-    {
-      question: 'Why is the product called “IQBAR”?',
-      answer:
-        'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
-    },
-    {
-      question: 'What are IQBARs?',
-      answer:
-        'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
-    },
-    {
-      question: 'Why is the product called “IQBAR”?',
-      answer:
-        'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
-    },
-  ],
-}
+// export const faqsData = {
+//   desktopHeading: 'FREQUENTLY ASKED QUESTIONS',
+//   mobileHeading: 'FAQ',
+//   faqsData: [
+//     {
+//       question: 'What are IQBARs?',
+//       answer:
+//         'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+//     },
+//     {
+//       question: 'Why is the product called “IQBAR”?',
+//       answer:
+//         'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+//     },
+//     {
+//       question: 'What are IQBARs?',
+//       answer:
+//         'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+//     },
+//     {
+//       question: 'Why is the product called “IQBAR”?',
+//       answer:
+//         'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+//     },
+//   ],
+// }
 export const ProductOverview = {
   heading: 'QUALITY OILS & LUBRICANTS',
   productcontent: [
@@ -604,6 +669,53 @@ export const Productbanner = {
   ],
 }
 
+// export const faqsData = {
+//   desktopHeading: 'PRODUCT PRICE LIST & ORDER FORM',
+//   mobileHeading: 'PRODUCT PRICE LIST & ORDER FORM',
+//   faqsData: [
+//     {
+//       short: true,
+//       question: 'How quick do I get my deal?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How do I find out what the next deal is?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How can I pay?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How do I track my order?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How do I make a return?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'Can I order more than just one of the items?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'My item was delivered to me broken, now what?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How do I contact you?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//   ],
+// }
 export const contactaddress = {
   Addresdata: [
     {

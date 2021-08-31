@@ -49,6 +49,7 @@ import ContactAddres from 'components/organisms/ContactAddres'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import PCPOverview from 'components/organisms/PCPOverview'
 import ProductItemList from 'components/organisms/ProductItemList'
+import ProductOrderList from 'components/organisms/productorderlist'
 
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
@@ -108,4 +109,5 @@ export default {
   PlpTabList: params => <PlpTabList {...params} />,
   PCPOverview: params => <PCPOverview {...params} />,
   ProductItemList: params => <ProductItemList {...params} />,
+  ProductOrderList: params => <ProductOrderList {...params} />,
 }

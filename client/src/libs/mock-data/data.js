@@ -6,6 +6,7 @@ import WebpageGlobalHeroBannerData from 'components/organisms/webpages-hero-imag
 // import instagramPosts from 'components/organisms/instagram-section/data'
 import { categoriesXPM as categories } from 'components/organisms/plp/data'
 import SliderTabbableData from 'components/organisms/slider-tabable/data'
+// import tableAccoData from 'components/organisms/faqs/data'
 
 import {
   merchandiseOptions,
@@ -179,7 +180,6 @@ const mockData = {
       params: PlpBottom,
     },
   ],
-
   '/cart': [
     {
       id: 'CartPage',
@@ -488,6 +488,12 @@ const mockData = {
     {
       id: 'order',
       params: { ...bulkorder },
+    },
+  ],
+  '/productorderform': [
+    {
+      id: 'ProductOrderList',
+      params: {},
     },
   ],
 }

@@ -8,16 +8,26 @@ import PropTypes from 'prop-types'
 import Image from 'components/atoms/image'
 import './style.scss'
 import Link from 'components/atoms/link'
+import ProductAccordion from '../productaccordian'
 
 const Accordion = ({
+  // product,
+  // packageSize,
+  // part,
+  // perCase,
+  // perPallet,
+  // unitPrice,
+  // tableData = [],
   links = [],
   isOpen = false,
   question = '',
   answer = '',
+  table = false,
   isOpenHandler,
   faqId = 0,
   short = false,
 }) => {
+  console.log('tabletable', table)
   return (
     <div>
       <Row className="accordion-item">
@@ -25,7 +35,7 @@ const Accordion = ({
           <div className="accordion-arrow">
             {isOpen ? (
               <Image
-                src="/static/icons/chevron-down.png"
+                src="/static/icons/arrow-up.png"
                 alt=""
                 onClick={() => {
                   isOpenHandler(faqId)
@@ -33,7 +43,7 @@ const Accordion = ({
               />
             ) : (
               <Image
-                src="/static/icons/chevron-down.png"
+                src="/static/icons/arrow-down.png"
                 alt=""
                 onClick={() => {
                   isOpenHandler(faqId)
@@ -42,7 +52,7 @@ const Accordion = ({
             )}
           </div>
         </Col>
-        <Col md={22} xs={18} sm={18}>
+        <Col md={table ? 24 : 22} xs={18} sm={18}>
           <h4
             className="accordion-question"
             onClick={() => {
@@ -58,8 +68,8 @@ const Accordion = ({
                 : 'accordion-content accordion-hide'
             }
           >
-            {short ? (
-              <p>{answer}</p>
+            {table ? (
+              <ProductAccordion />
             ) : (
               <p
                 dangerouslySetInnerHTML={{
@@ -84,6 +94,12 @@ const Accordion = ({
 }
 
 Accordion.propTypes = {
+  product: PropTypes.string,
+  packageSize: PropTypes.string,
+  part: PropTypes.string,
+  perCase: PropTypes.string,
+  perPallet: PropTypes.string,
+  unitPrice: PropTypes.string,
   isOpen: PropTypes.bool,
   question: PropTypes.string,
   answer: PropTypes.string,
@@ -91,6 +107,7 @@ Accordion.propTypes = {
   faqId: PropTypes.number,
   short: PropTypes.bool,
   links: PropTypes.array,
+  table: PropTypes.bool,
 }
 
 export default Accordion
