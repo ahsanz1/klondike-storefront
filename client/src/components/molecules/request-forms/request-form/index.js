@@ -8,6 +8,7 @@ import { Spin, Alert } from 'antd'
 import { validators } from 'libs/utils/validators'
 import { LoadingOutlined } from '@ant-design/icons'
 import Link from 'components/atoms/link'
+import LoginLinks from 'components/molecules/login-links'
 import { options } from 'libs/utils/helper'
 
 import './styles.scss'
@@ -35,6 +36,7 @@ const RequestForm = (
     switchRegion = false,
     openAlert = false,
     alertData = {},
+    links = [],
   },
   ref,
 ) => {
@@ -175,9 +177,9 @@ const RequestForm = (
                     <div
                       key={colIndex}
                       className="request-form__col"
-                      style={{
-                        width: 100 / formRow.length + '%',
-                      }}
+                      // style={{
+                      //   width: 100 / formRow.length + '%',
+                      // }}
                     >
                       <LabelInput
                         items={items}
@@ -206,6 +208,7 @@ const RequestForm = (
                 closable
               />
             )}
+            {links && <LoginLinks links={links} />}
             <div className="request-form__submit-button-wrapper">
               <Button type="submit" className="request-form__submit-button">
                 {loading ? (
@@ -250,6 +253,7 @@ RequestForm.propTypes = {
   switchRegion: PropTypes.bool,
   openAlert: PropTypes.string,
   alertData: PropTypes.string,
+  links: PropTypes.array,
 }
 
 export default forwardRef(RequestForm)

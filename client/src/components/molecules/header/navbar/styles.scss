@@ -191,6 +191,19 @@
     }
   }
 
+  .quick-order {
+    border: none;
+    background: none;
+    color: $white-color;
+    font-family: $OpenSans;
+    font-size: 16px;
+    line-height: 22px;
+
+    &:hover {
+      color: #f7921e;
+    }
+  }
+
   .header__icons {
     .c-link {
       border: none;

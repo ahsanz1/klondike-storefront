@@ -15,14 +15,19 @@
   &__input {
     width: 100%;
     height: 64px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
     padding: 12px 16px;
-    border: transparent;
+    border: transparent !important;
+    border-radius: 16px;
     outline: 0;
-    background-color: #002a3a;
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
+    background-color: #f5f5f5;
+    color: #8c8885;
+    font-family: $OpenSans !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold !important;
+    letter-spacing: 0.75px;
+    line-height: 28px;
 
     &.c-dropdown {
       margin-bottom: 1.5rem;
@@ -31,7 +36,6 @@
 
   &__error-message {
     margin-top: -1.2rem;
-    margin-bottom: 15px;
     color: #dc3545;
     font-size: 12px;
     font-weight: 700;

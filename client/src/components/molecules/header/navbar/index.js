@@ -36,6 +36,8 @@ const Navbar = ({
   if (user && user.isWholeSaleUser) {
     links = wholesaleLinks
   }
+  let userLoginInfo = localStorage.getItem('userPersonalInfo')
+  userLoginInfo = JSON.parse(userLoginInfo)
 
   return (
     <div className="header">
@@ -72,7 +74,13 @@ const Navbar = ({
           mobile={false}
           links={links}
         />
-        <Button className="Buy-Button">{buyButton}</Button>
+        <Button
+          className={
+            userLoginInfo && userLoginInfo.email ? 'quick-order' : 'Buy-Button'
+          }
+        >
+          {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
+        </Button>
 
         <div
           className="header__icons"
@@ -90,7 +98,7 @@ const Navbar = ({
             <Image height={26} src={searchIcon.url} alt={searchIcon.altText} />
           </Link>
           <Link
-            to="/about-us"
+            to="/account"
             className="header__User-icon"
             style={{
               paddingRight: '30px',
@@ -98,17 +106,20 @@ const Navbar = ({
           >
             <Image height={26} src={userIcon.url} alt={userIcon.altText} />
           </Link>
-          <Button
-            iconOnly
-            style={{
-              paddingRight: '35px',
-            }}
-          >
-            <NavbarcartIcon
-              linkCartPageIcon={location.pathname === '/cart' && true}
-              cartIcon={cartIcon}
-            />
-          </Button>
+          {userLoginInfo && userLoginInfo.email && (
+            <Button
+              iconOnly
+              style={{
+                paddingRight: '35px',
+              }}
+            >
+              <NavbarcartIcon
+                linkCartPageIcon={location.pathname === '/cart' && true}
+                cartIcon={cartIcon}
+              />
+            </Button>
+          )}
+
           {/* <Link to="/about-us" className="header__search-icon">
             <Image height={26} src="/static/images/english.png" alt="..." />
           </Link> */}

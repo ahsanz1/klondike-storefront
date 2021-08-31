@@ -11,7 +11,7 @@ import { PlpBottom } from './data'
 import PropTypes from 'prop-types'
 import RightArrow from 'images/right-arrow.png'
 import './styles.scss'
-import { categoriesXPM as categories } from 'components/organisms/plp/data'
+// import { categoriesXPM as categories } from 'components/organisms/plp/data'
 
 // const { TabPane } = Tabs
 
@@ -70,7 +70,7 @@ const PLP = props => {
       <div className="custom-plp">
         {showTab && (
           <PlpTabList
-            categories={categories}
+            categories={props.categories}
             itemName={itemName}
             clickCategoryHandler={clickCategoryHandler}
             subItem={subItem}

@@ -1593,13 +1593,13 @@ export const locationsData = {
 
 export const authLoginFormData = {
   formId: 1,
-  formBgColor: '#ffffff',
+  formBgColor: 'green',
   links: [
     { text: 'CREATE ACCOUNT', to: '/account/register' },
     { text: 'FORGOT YOUR PASSWORD', to: '/account/forgetpassword' },
   ],
 
-  formTitle: 'LOGIN',
+  formTitle: 'Log In Here,',
   mobileFormTitle: 'LOGIN',
   buttonLabel: 'SIGN IN',
   formInputs: [
