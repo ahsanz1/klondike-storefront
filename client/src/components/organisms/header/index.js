@@ -49,7 +49,6 @@ const Header = ({
     //   link: offerLink,
     // },
   }
-  console.log('header logo', mobileMenu)
 
   return (
     <div className="main-header">

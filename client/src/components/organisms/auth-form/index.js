@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { navigate, useLocation } from '@reach/router'
 import PropTypes from 'prop-types'
-import LoginLinks from 'components/molecules/login-links'
+// import LoginLinks from 'components/molecules/login-links'
 import RequestForm from 'components/molecules/request-forms/request-form'
 import CancelButton from 'components/molecules/cancel-button'
 import {
@@ -237,9 +237,10 @@ const AuthForm = ({
   }, [])
 
   const onSubmit = async (data, formsIndex) => {
+    console.log('login Data:', data, formsIndex)
     setLoading(true)
 
-    if (formsIndex === 1) {
+    if (formsIndex === 0) {
       setError('')
 
       // Extract values from login form
@@ -251,6 +252,7 @@ const AuthForm = ({
         username: email,
         password: password,
       }
+      console.log('payload:', payload)
       const loginCall = await loginUser(payload)
       // loginUser(payload)
       //   .then(({ hasError, response }) => {
@@ -474,9 +476,10 @@ const AuthForm = ({
                 formsIndex={Number(formId)}
                 error={error}
                 resetLink={resetLink}
+                links={links}
               />
               {cancelButton.show && <CancelButton data={cancelButton} />}
-              {links && <LoginLinks links={links} />}
+              {/* {links && <LoginLinks links={links} />} */}
             </>
           ) : (
             <div className="tokenExpiredTitle">
