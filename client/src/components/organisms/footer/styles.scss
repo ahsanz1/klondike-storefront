@@ -127,6 +127,10 @@
 .footer-logo {
   width: 170px;
   color: #fff;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 6rem;
+  }
 }
 
 .logoTxt {
@@ -209,6 +213,7 @@
   }
 
   .page-width {
+    margin-top: 3rem;
     padding-right: 25px;
     padding-left: 25px;
   }
