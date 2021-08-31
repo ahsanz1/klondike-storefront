@@ -154,16 +154,16 @@ const mockData = {
     },
   ],
   '/PCP': [
-    // {
-    //   id: 'HomePage',
-    //   params: PcpHeroBanner,
-    // },
     {
-      id: 'ProductOverview',
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...contactUsBanner, key: '112233446677' },
+    },
+    {
+      id: 'PCPOverview',
       params: ProductOverview,
     },
     {
-      id: 'ProductItem',
+      id: 'ProductItemList',
       params: ProductItem,
     },
   ],
