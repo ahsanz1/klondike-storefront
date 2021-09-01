@@ -23,6 +23,8 @@ const Links = ({
 }) => {
   console.log('check naaa:', mobileMenu)
   const { user } = useContext(AppContext)
+  let userLoginInfo = localStorage.getItem('userPersonalInfo')
+  userLoginInfo = JSON.parse(userLoginInfo)
   return (
     <div
       style={{
@@ -65,7 +67,14 @@ const Links = ({
           return null
         }
       })}
-      <Button className="Buy-Button mobile-button">{buyButton}</Button>
+      <Button
+        className={
+          userLoginInfo && userLoginInfo.email ? 'quick-order' : 'Buy-Button'
+        }
+      >
+        {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
+      </Button>
+      {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
       <div className="bottom-section">
         <Image width={20} src={userIcon.url} alt={userIcon.altText} />
         {menuBottom}
