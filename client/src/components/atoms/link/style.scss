@@ -17,13 +17,35 @@
       position: absolute;
       z-index: 999;
       top: 109px;
-      width: 850px;
+      left: -180px;
+      width: 780px;
 
       @media (max-width: 768px) {
         position: relative;
         top: 0;
+        left: 0;
         width: 100%;
         background: #013a4e;
+
+        .img-div {
+          border: none;
+          background: none;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .show-products-image {
+      display: none;
+      position: absolute;
+      z-index: 999;
+      top: 109px;
+      width: 100%;
+      background: #002a3a;
+
+      @media (max-width: 768px) {
+        position: relative;
+        top: 0;
       }
     }
 
@@ -45,6 +67,10 @@
 
     &:hover {
       .show-products {
+        display: block;
+      }
+
+      .show-products-image {
         display: block;
       }
 
