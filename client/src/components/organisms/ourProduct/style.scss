@@ -22,7 +22,7 @@
   }
 
   .product-list {
-    width: 25%;
+    width: 30%;
     float: left;
 
     @media (max-width: 768px) {
@@ -102,7 +102,8 @@
 
   .img-div {
     display: inline-flex;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     padding: 10px;
     border: 1px solid #fff;
     background: #fff;
@@ -112,11 +113,16 @@
       display: block;
       height: auto;
     }
+
+    img {
+      width: 100%;
+    }
   }
 
   .activeImg {
     display: inline-flex;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     padding: 10px;
     border: 1px solid #000;
     background: #dc5e00;
