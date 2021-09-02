@@ -16,7 +16,8 @@ import {
   faqsData,
   whyEatIQBAR,
   whatSectionData,
-  myAccount,
+  // myAccount,
+  accountTabsData,
   accountAddress,
   locationsData,
   findUsBanner,
@@ -189,7 +190,8 @@ const mockData = {
   '/account': [
     {
       id: 'MyAccount',
-      params: { myAccount },
+      // params: { myAccount },
+      params: { accountTabsData },
     },
   ],
   '/account/address': [
