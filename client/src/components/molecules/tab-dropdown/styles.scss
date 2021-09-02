@@ -11,13 +11,13 @@
     margin: 0 60px 16px;
 
     @media (max-width: 768px) {
-      margin: 0 20px 10px;
+      margin: 0;
     }
   }
 
   &.ant-tabs-top > .ant-tabs-nav::before,
   &.ant-tabs-top > div > .ant-tabs-nav::before {
-    border-bottom: 3px solid #999;
+    border-bottom: 2px solid #fff;
   }
 
   .ant-tabs-nav-list {
@@ -52,11 +52,11 @@
   }
 
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: $primary-color;
+    color: #fff;
   }
 
   .ant-tabs-ink-bar {
-    background: black;
+    background: #e25205;
   }
 
   &__dropdown {

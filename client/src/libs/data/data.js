@@ -1129,29 +1129,144 @@ export const whatSectionData = {
   answer:
     'IQBARs are protein bars formulated with clean-label ingredients rich in compounds shown to benefit the brain and body. Each bar contains 6 brain nutrients, 12g plant protein, 3g net carbs, and 1-1g sugar. IQBARs are keto, paleo friendly, vegan, kosher, and free from GMOs, gluten, dairy, soy, and sugar alcohols.',
 }
-export const myAccount = {
-  title: 'MY ACCOUNT',
-  subTitle: 'ORDER HISTORY',
-  ordersPlaced: "You haven't placed any orders yet",
-  accDetails: 'ACCOUNT DETAILS',
-  viewStore: 'VIEW STORE',
-  viewAddress: {
-    text: 'View Addresses',
-    to: 'account/address',
-  },
-  shopNowButton: {
-    link: '/collections/all-bars',
-    text: 'SHOP NOW',
-  },
-  orderHistory: {
-    orderId: '42335',
-    date: 'January 18, 2021',
-    paymentStatus: 'Paid',
-    fulfilmentStatus: 'unfulfilled',
-    totalCost: '60.72',
-  },
-}
+// export const myAccount = {
+//   title: 'MY ACCOUNT',
+//   subTitle: 'ORDER HISTORY',
+//   ordersPlaced: "You haven't placed any orders yet",
+//   accDetails: 'ACCOUNT DETAILS',
+//   viewStore: 'VIEW STORE',
+//   viewAddress: {
+//     text: 'View Addresses',
+//     to: 'account/address',
+//   },
+//   shopNowButton: {
+//     link: '/collections/all-bars',
+//     text: 'SHOP NOW',
+//   },
+//   orderHistory: {
+//     orderId: '42335',
+//     date: 'January 18, 2021',
+//     paymentStatus: 'Paid',
+//     fulfilmentStatus: 'unfulfilled',
+//     totalCost: '60.72',
+//   },
+// }
+export const accountTabsData = [
+  {
+    tabTitle: 'Profile',
 
+    data: {
+      session: 'Current Session',
+
+      zip: 'A1234-Joe',
+
+      email: 'jhon@example.com',
+
+      heading: 'Shipping Address',
+
+      dropHeading: 'Drop Ship Address',
+
+      shipAddress: {
+        heading: 'Shipping Address',
+
+        name: 'Lorem Ipesum',
+
+        building: '123',
+
+        street: 'Neque, odio purus, Id duis',
+
+        code: '123456789',
+      },
+
+      dropShip: {
+        heading: 'Drop Shipping Address',
+
+        name: 'Lorem Ipesum',
+
+        building: '123',
+
+        street: 'Neque, odio purus, Id duis',
+
+        code: '123456789',
+      },
+    },
+  },
+  {
+    tabTitle: 'All Orders',
+    data: {
+      cart: 'ADD TO CART',
+
+      review: 'WRITE A REVIEW',
+
+      reorder: 'REORDER',
+
+      orderArray: [
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+
+          orderNumber: 'Order Number',
+
+          cart: 'ADD TO CART',
+
+          review: 'WRITE A REVIEW',
+
+          order: {
+            price: '$8.00',
+
+            text: 'REORDER',
+          },
+
+          status: {
+            date: 'DEC 13,2021',
+
+            price: '$160.00',
+
+            status: {
+              text: 'STATUS',
+
+              value: 'SHIPPED',
+            },
+          },
+        },
+
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+
+          orderNumber: 'Order Number',
+
+          cart: 'ADD TO CART',
+
+          review: 'WRITE A REVIEW',
+
+          order: {
+            price: '$8.00',
+
+            text: 'REORDER',
+          },
+
+          status: {
+            date: 'DEC 13,2021',
+
+            price: '$160.00',
+
+            status: {
+              text: 'STATUS',
+
+              value: 'SHIPPED',
+            },
+          },
+        },
+      ],
+    },
+  },
+  {
+    tabTitle: 'Credit Limit',
+    data: {
+      limit: 'CREDIT LIMIT',
+      price: '$44533',
+    },
+  },
+]
 export const shippingAddress = {
   form: {
     formInputs: [
