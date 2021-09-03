@@ -52,7 +52,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
         </>
       ) : title === 'All Orders' ? (
         <>
-          {userOrder && userOrder.length < 1 ? (
+          {!userOrder ? (
             'No Orders Found!'
           ) : (
             <>
