@@ -5,8 +5,9 @@ import Category from 'components/organisms/category'
 import PlpTabList from 'components/organisms/plp-tab-list'
 // import PlpFilter from 'components/molecules/Plp-filter'
 import PLPBottomSection from 'components/molecules/plpBottom'
+import SelectedCategory from 'components/molecules/selectedPlpCategory'
 import Button from 'components/atoms/button'
-import { PlpBottom } from './data'
+// import { PlpBottom } from './data'
 // import { sortProducts } from 'libs/services/algolia'
 import PropTypes from 'prop-types'
 import RightArrow from 'images/right-arrow.png'
@@ -18,8 +19,8 @@ import './styles.scss'
 const PLP = props => {
   // const [tabKey, setTabKey] = useState('0')
   const [itemName, setItemName] = useState('')
+  const [desc, setDesc] = useState('')
   const [subItem, setSubItem] = useState({})
-  // const [productList, setProductList] = useState([])
   const [showTab, setShowtab] = useState(true)
   console.log({
     props,
@@ -30,9 +31,10 @@ const PLP = props => {
   useEffect(() => {
     setStep(1)
   }, [])
-  const clickCategoryHandler = name => {
+  const clickCategoryHandler = (name, desc) => {
     console.log('clicked:', name)
     setItemName(name)
+    setDesc(desc)
   }
   const subItemHandler = list => {
     console.log('list check:', list)
@@ -67,6 +69,7 @@ const PLP = props => {
           changeHandler={changeHandler}
         />
       </div> */}
+      <SelectedCategory name={itemName} desc={desc} />
       <div className="custom-plp">
         {showTab && (
           <PlpTabList
@@ -85,11 +88,11 @@ const PLP = props => {
         </div>
       </div>
       <div className="plp-bottom-section">
-        {PlpBottom &&
-          PlpBottom.map((item, i) => (
+        {props.plpBottom &&
+          props.plpBottom.map((item, i) => (
             <>
               <PLPBottomSection
-                image={item.image}
+                image={item.plpBottomImage}
                 button={item.button}
                 mobileButton={item.mobileButton}
               />
@@ -106,6 +109,7 @@ PLP.propTypes = {
   partNumber: PropTypes.array,
   unit: PropTypes.array,
   untitled: PropTypes.array,
+  plpBottom: PropTypes.array,
 }
 
 export default PLP

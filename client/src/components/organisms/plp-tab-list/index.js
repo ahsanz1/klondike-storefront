@@ -25,7 +25,9 @@ const PlpTabList = ({
               <Label
                 className={itemName === item.categoryName && 'active-category'}
                 key={index}
-                onClick={() => clickCategoryHandler(item.categoryName)}
+                onClick={() =>
+                  clickCategoryHandler(item.categoryName, item.categoryDesc)
+                }
               >
                 {item.categoryName}
                 {itemName === item.categoryName && (
