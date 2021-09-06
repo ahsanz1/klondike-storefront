@@ -179,6 +179,8 @@ export const Header = {
   buyButton: 'HOW TO BUY',
   promoButton: 'Search Now',
   promoLogo: { url: '/static/images/promologo.png' },
+  url: '/account/login?logout=true',
+
   // offerLink: '/products?sku=7BARSAMPLER',
   // promoBanner: 'Free Shipping on All U.S. Orders!',
   // referLabel: 'Refer + Earn',

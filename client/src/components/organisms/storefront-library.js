@@ -145,4 +145,6 @@ Components[
   'SliderTabbable'
 ] = require('components/organisms/slider-tabable').default
 
+Components['Oats'] = require('components/organisms/OATS/index').default
+
 export default Components

@@ -447,6 +447,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/oats': [
+    {
+      id: 'Oats',
+      params: {},
+    },
+  ],
 }
 
 export default mockData

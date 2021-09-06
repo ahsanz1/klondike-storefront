@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Select } from 'antd'
 import './style.scss'
 
-const { Option } = Select
+// const { Option } = Select
 const Dropdown = ({
   value,
   style = {},
@@ -20,7 +20,7 @@ const Dropdown = ({
   return (
     <Select
       value={value}
-      defaultValue={items && items[0].label}
+      defaultValue={items && items[0]}
       style={style}
       className={`c-dropdown ${className}`}
       onChange={value => {
@@ -29,7 +29,12 @@ const Dropdown = ({
       dropdownStyle={dropdownStyle}
       name={name}
     >
-      {items.map((menuItem, i) => {
+      <option>
+        <li>All</li>
+        <li>Car</li>
+        <li>Truck</li>
+      </option>
+      {/* {items.map((menuItem, i) => {
         return (
           <Option
             className={optionClassName}
@@ -50,7 +55,7 @@ const Dropdown = ({
               }`}
           </Option>
         )
-      })}
+      })} */}
     </Select>
   )
 }
