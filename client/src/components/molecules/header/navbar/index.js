@@ -3,7 +3,6 @@
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { useLocation } from '@reach/router'
-
 import Links from 'components/molecules/header/links'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
@@ -19,6 +18,13 @@ const Navbar = ({
   links = [],
   dynamicLinks = [],
   buyButton = '',
+  searchIcon = '',
+  userIcon = '',
+  cartIcon = '',
+  mobileMenu = {},
+  mobileMenuOpen = {},
+  mobileMenuClose = {},
+  menuBottom = '',
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -30,11 +36,16 @@ const Navbar = ({
   if (user && user.isWholeSaleUser) {
     links = wholesaleLinks
   }
+  let userLoginInfo = localStorage.getItem('userPersonalInfo')
+  userLoginInfo = JSON.parse(userLoginInfo)
 
   return (
     <div className="header">
       <div className="header__nav">
         <CartDropdown />
+        <div className="mobile-home-logo">
+          <Image width={75} src={logo} alt="logo" />
+        </div>
         <div className="header__mobile-menu-button">
           <Button
             iconOnly
@@ -43,27 +54,19 @@ const Navbar = ({
             }}
           >
             {isOpen ? (
-              <Image
-                width={25}
-                src="/static/icons/header/cross.svg"
-                alt="..."
-              />
+              <Image width={25} src={mobileMenuClose.url} alt="..." />
             ) : (
-              <Image width={25} src="/static/icons/header/menu.svg" alt="..." />
+              <Image width={25} src={mobileMenuOpen.url} alt="..." />
             )}
           </Button>
         </div>
         <Link
-          to="/Home"
+          to="/"
           onClick={() => {
             setIsOpen(false)
           }}
         >
-          <img
-            className="header__logo"
-            src="https://klondikelubricants.com/wp-content/uploads/2016/04/logo-internal2016.png"
-            alt="..."
-          />
+          <img className="header__logo" src={logo} alt="..." />
         </Link>
         <Links
           className="header__links"
@@ -71,7 +74,13 @@ const Navbar = ({
           mobile={false}
           links={links}
         />
-        <Button className="Buy-Button">{buyButton}</Button>
+        <Button
+          className={
+            userLoginInfo && userLoginInfo.email ? 'quick-order' : 'Buy-Button'
+          }
+        >
+          {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
+        </Button>
 
         <div
           className="header__icons"
@@ -86,45 +95,53 @@ const Navbar = ({
               paddingRight: '30px',
             }}
           >
-            <Image height={26} src="/static/images/search.png" alt="..." />
+            <Image height={26} src={searchIcon.url} alt={searchIcon.altText} />
           </Link>
           <Link
-            to="/about-us"
+            to="/account"
             className="header__User-icon"
             style={{
               paddingRight: '30px',
             }}
           >
-            <Image height={26} src="/static/images/user.png" alt="..." />
+            <Image height={26} src={userIcon.url} alt={userIcon.altText} />
           </Link>
-          <Button
-            iconOnly
-            style={{
-              paddingRight: '35px',
-            }}
-          >
-            <NavbarcartIcon
-              linkCartPageIcon={location.pathname === '/cart' && true}
-            />
-          </Button>
-          <Link to="/about-us" className="header__search-icon">
+          {userLoginInfo && userLoginInfo.email && (
+            <Button
+              iconOnly
+              style={{
+                paddingRight: '35px',
+              }}
+            >
+              <NavbarcartIcon
+                linkCartPageIcon={location.pathname === '/cart' && true}
+                cartIcon={cartIcon}
+              />
+            </Button>
+          )}
+
+          {/* <Link to="/about-us" className="header__search-icon">
             <Image height={26} src="/static/images/english.png" alt="..." />
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div
         className={`header__mobile-menu ${
           isOpen ? 'header__mobile-menu--show' : ''
         }`}
-        onClick={() => {
-          setIsOpen(false)
-        }}
+        // onClick={() => {
+        //   setIsOpen(false)
+        // }}
       >
         <Links
           className="header__mobile-menu-links"
           direction="column"
           mobile={true}
           links={links}
+          mobileMenu={mobileMenu}
+          buyButton={buyButton}
+          menuBottom={menuBottom}
+          userIcon={userIcon}
         />
       </div>
     </div>
@@ -136,5 +153,12 @@ Navbar.propTypes = {
   navButton: PropTypes.string,
   dynamicLinks: PropTypes.array,
   buyButton: PropTypes.string,
+  searchIcon: PropTypes.string,
+  userIcon: PropTypes.string,
+  cartIcon: PropTypes.string,
+  mobileMenu: PropTypes.object,
+  mobileMenuOpen: PropTypes.object,
+  mobileMenuClose: PropTypes.object,
+  menuBottom: PropTypes.object,
 }
 export default Navbar

@@ -19,14 +19,6 @@ exports.default = Types.Component({
           label: Types.String({ label: 'label' }),
           url: Types.String({ label: 'URL' }),
           mobileOnly: Types.Boolean({ label: 'Mobile Only' }),
-          aboutDropDown: Types.Array({
-            label: 'About klondike',
-            children: Types.Shape({
-              children: {
-                label: Types.String({ label: 'name' }),
-              },
-            }),
-          }),
           productDropDown: Types.Array({
             label: 'Our Product',
             children: Types.Shape({
@@ -37,14 +29,6 @@ exports.default = Types.Component({
                   url: Types.String({ label: 'URL' }),
                   altText: Types.String({ label: 'Alt text' }),
                 }),
-              },
-            }),
-          }),
-          resourcesDropDown: Types.Array({
-            label: 'Tech Resources',
-            children: Types.Shape({
-              children: {
-                label: Types.String({ label: 'name' }),
               },
             }),
           }),
@@ -91,5 +75,42 @@ exports.default = Types.Component({
     promoBanner: Types.String({ label: 'Promo Banner' }),
     referLabel: Types.String({ label: 'Refer label' }),
     referLink: Types.String({ label: 'Refer URL' }),
+    buyButton: Types.String({ label: 'Button Text' }),
+    menuBottom: Types.String({ label: 'Menu Bottom Text' }),
+    lubricantLink: Types.Image({
+      label: 'lubricant Link',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    searchIcon: Types.Image({
+      label: 'search Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    userIcon: Types.Image({
+      label: 'user Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    cartIcon: Types.Image({
+      label: 'cart Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    mobileMenu: Types.Image({
+      label: 'Menu Expand Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    mobileMenuOpen: Types.Image({
+      label: 'Menu Open Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
+    mobileMenuClose: Types.Image({
+      label: 'Menu Close Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
   },
 })

@@ -405,6 +405,23 @@ export const TermsCondition = {
     },
   ],
 }
+export const Packagerorder = {
+  order: {
+    heading: 'PACKAGED ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be for packaged delivery.',
+    paragraph2:
+      'Please complete your order before placing an order with packaged items.',
+  },
+}
+export const bulkorder = {
+  order: {
+    heading: 'BULK ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be ordered in bulk. ',
+    paragraph2: 'Please complete your order before placing a bulk order.',
+  },
+}
 export const faqsData = {
   desktopHeading: 'FREQUENTLY ASKED QUESTIONS',
   mobileHeading: 'FAQ',
@@ -431,6 +448,162 @@ export const faqsData = {
     },
   ],
 }
+export const ProductOverview = {
+  heading: 'QUALITY OILS & LUBRICANTS',
+  productcontent: [
+    {
+      text:
+        'Whether it’s heavy duty, industrial, or automotive, KLONDIKE has you covered. We provide a comprehensive range of packaged and bulk oils, lubricants, greases and chemicals ready to be shipped to you from our strategically located distribution facilities throughout Canada and the USA. Our vast blending and custom formulation capabilities enable us to fulfill your industry’s most challenging requirements.',
+    },
+    {
+      text:
+        'Our oils, greases and fluids are subject to strict testing requirements and quality assurance processes. In addition to our in-depth internal technical process, our products are tested in a variety of world-class technical institutions to meet and exceed top performance requirements in any given industry. The KLONDIKE Quality Assurance Guarantee underpins the standard of excellence in our product formulations.',
+    },
+    {
+      text:
+        'The KLONDIKE lubricating oils and greases are formulated from the finest mineral and synthetic base oils with highly advanced additive technology. This ensures high performance, maximum efficiency, and total equipment protection.',
+    },
+    {
+      text:
+        'KLONDIKE is a registered international member of the American Petroleum Institute (API) and the International Lubricating Standardization & Approval Committee (ILSAC). These trademark certifications are clearly stated on our applicable products, ensuring that they meet and exceed all warranty requirements of international engine manufactures that subscribe to these stringent global testing institutions.',
+    },
+  ],
+}
+export const ProductItem = {
+  ProductList: [
+    {
+      image: {
+        url: '/static/images/pi1.png',
+        alt: '',
+      },
+      title: 'Nano',
+    },
+    {
+      image: {
+        url: '/static/images/pi2.png',
+        alt: '',
+      },
+      title: 'heavy duty engine oils',
+    },
+    {
+      image: {
+        url: '/static/images/pi3.png',
+        alt: '',
+      },
+      title: 'automotive engine oils',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'transmission fluids',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi9.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi10.png',
+        alt: '',
+      },
+      title: 'Food grade lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi10.png',
+        alt: '',
+      },
+      title: 'Food grade lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi11.png',
+        alt: '',
+      },
+      title: 'Chemicals',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+  ],
+}
+export const Productbanner = {
+  banner: [
+    {
+      image: {
+        url: '/static/images/Productbaner.png',
+        alt: '',
+      },
+      btntxt: 'How to buy',
+    },
+    {
+      image: {
+        url: '/static/images/Productbaner.png',
+        alt: '',
+      },
+      btntxt: 'Become a Dealer',
+    },
+  ],
+}
+
 export const contactaddress = {
   Addresdata: [
     {
@@ -477,6 +650,68 @@ export const contactaddress = {
     },
   ],
 }
+
+export const pdpdata = {
+  heading: '15W-40 CK-4 Advanced Formula',
+  imgdata: [
+    {
+      image: {
+        url: '/static/images/klondike4.png',
+        alt: '',
+      },
+      btntxt: 'HOW TO BUY',
+    },
+  ],
+  data: [
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+      totalprice: '$34',
+    },
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+    },
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+    },
+  ],
+}
+
+export const pdpdatasheet = {
+  heading: 'TECHNICAL INFORMATION',
+  subheading: 'KLONDIKE - BRAVING THE FORCE OF MOVEMENT®',
+  pds: 'Product Data Sheet',
+  sds: 'Safety Data Sheet',
+  paragraph: [
+    {
+      text:
+        'KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology LONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology LONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation ',
+    },
+    // {
+    //   text:
+    //     'KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology.',
+    // },
+  ],
+  Readmore: 'Read more',
+}
+export const RadioData = {
+  packagedata: 'Note on Ordering',
+  text1:
+    'This order already has an item for bulk delivery in cart. To order products that are not in bulk, please place a separate order.',
+
+  bulk: 'Bulk Orders',
+  text2:
+    'When ordering a product to be delivered in bulk, all items within your order must be ordered in bulk, too. Packaged shipments and bulk deliveries have to be placed as separate orders.',
+}
+
 export const benefits = {
   bgColor: '#f7f7f7',
   heading: 'THE BENEFITS',
@@ -894,29 +1129,144 @@ export const whatSectionData = {
   answer:
     'IQBARs are protein bars formulated with clean-label ingredients rich in compounds shown to benefit the brain and body. Each bar contains 6 brain nutrients, 12g plant protein, 3g net carbs, and 1-1g sugar. IQBARs are keto, paleo friendly, vegan, kosher, and free from GMOs, gluten, dairy, soy, and sugar alcohols.',
 }
-export const myAccount = {
-  title: 'MY ACCOUNT',
-  subTitle: 'ORDER HISTORY',
-  ordersPlaced: "You haven't placed any orders yet",
-  accDetails: 'ACCOUNT DETAILS',
-  viewStore: 'VIEW STORE',
-  viewAddress: {
-    text: 'View Addresses',
-    to: 'account/address',
-  },
-  shopNowButton: {
-    link: '/collections/all-bars',
-    text: 'SHOP NOW',
-  },
-  orderHistory: {
-    orderId: '42335',
-    date: 'January 18, 2021',
-    paymentStatus: 'Paid',
-    fulfilmentStatus: 'unfulfilled',
-    totalCost: '60.72',
-  },
-}
+// export const myAccount = {
+//   title: 'MY ACCOUNT',
+//   subTitle: 'ORDER HISTORY',
+//   ordersPlaced: "You haven't placed any orders yet",
+//   accDetails: 'ACCOUNT DETAILS',
+//   viewStore: 'VIEW STORE',
+//   viewAddress: {
+//     text: 'View Addresses',
+//     to: 'account/address',
+//   },
+//   shopNowButton: {
+//     link: '/collections/all-bars',
+//     text: 'SHOP NOW',
+//   },
+//   orderHistory: {
+//     orderId: '42335',
+//     date: 'January 18, 2021',
+//     paymentStatus: 'Paid',
+//     fulfilmentStatus: 'unfulfilled',
+//     totalCost: '60.72',
+//   },
+// }
+export const accountTabsData = [
+  {
+    tabTitle: 'Profile',
 
+    data: {
+      session: 'Current Session',
+
+      zip: 'A1234-Joe',
+
+      email: 'jhon@example.com',
+
+      heading: 'Shipping Address',
+
+      dropHeading: 'Drop Ship Address',
+
+      shipAddress: {
+        heading: 'Shipping Address',
+
+        name: 'Lorem Ipesum',
+
+        building: '123',
+
+        street: 'Neque, odio purus, Id duis',
+
+        code: '123456789',
+      },
+
+      dropShip: {
+        heading: 'Drop Shipping Address',
+
+        name: 'Lorem Ipesum',
+
+        building: '123',
+
+        street: 'Neque, odio purus, Id duis',
+
+        code: '123456789',
+      },
+    },
+  },
+  {
+    tabTitle: 'All Orders',
+    data: {
+      cart: 'ADD TO CART',
+
+      review: 'WRITE A REVIEW',
+
+      reorder: 'REORDER',
+
+      orderArray: [
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+
+          orderNumber: 'Order Number',
+
+          cart: 'ADD TO CART',
+
+          review: 'WRITE A REVIEW',
+
+          order: {
+            price: '$8.00',
+
+            text: 'REORDER',
+          },
+
+          status: {
+            date: 'DEC 13,2021',
+
+            price: '$160.00',
+
+            status: {
+              text: 'STATUS',
+
+              value: 'SHIPPED',
+            },
+          },
+        },
+
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+
+          orderNumber: 'Order Number',
+
+          cart: 'ADD TO CART',
+
+          review: 'WRITE A REVIEW',
+
+          order: {
+            price: '$8.00',
+
+            text: 'REORDER',
+          },
+
+          status: {
+            date: 'DEC 13,2021',
+
+            price: '$160.00',
+
+            status: {
+              text: 'STATUS',
+
+              value: 'SHIPPED',
+            },
+          },
+        },
+      ],
+    },
+  },
+  {
+    tabTitle: 'Credit Limit',
+    data: {
+      limit: 'CREDIT LIMIT',
+      price: '$44533',
+    },
+  },
+]
 export const shippingAddress = {
   form: {
     formInputs: [
@@ -1358,13 +1708,13 @@ export const locationsData = {
 
 export const authLoginFormData = {
   formId: 1,
-  formBgColor: '#ffffff',
+  formBgColor: 'green',
   links: [
     { text: 'CREATE ACCOUNT', to: '/account/register' },
     { text: 'FORGOT YOUR PASSWORD', to: '/account/forgetpassword' },
   ],
 
-  formTitle: 'LOGIN',
+  formTitle: 'Log In Here,',
   mobileFormTitle: 'LOGIN',
   buttonLabel: 'SIGN IN',
   formInputs: [
@@ -2956,6 +3306,18 @@ export const PSusbcribeNewItem = {
       id: 3,
       label: '3 weeks',
       value: '3 weeks',
+    },
+  ],
+}
+export const PlpBottom = {
+  bottomSection: [
+    {
+      image: '/static/klondike3',
+      button: 'DOWNLOAD PDS & MSDS',
+    },
+    {
+      image: '/static/klondike3',
+      button: 'BECOME A DEALER',
     },
   ],
 }

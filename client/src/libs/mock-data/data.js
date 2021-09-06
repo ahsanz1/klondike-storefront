@@ -16,7 +16,8 @@ import {
   faqsData,
   whyEatIQBAR,
   whatSectionData,
-  myAccount,
+  // myAccount,
+  accountTabsData,
   accountAddress,
   locationsData,
   findUsBanner,
@@ -29,9 +30,8 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
-  // ProductOverview,
-  // ProductItem,
-  // Productbanner,
+  ProductOverview,
+  ProductItem,
   heroBannerdata,
   bannerlubricants,
   DownTime,
@@ -69,6 +69,12 @@ import {
   emptyCartData,
   contactaddress,
   ourProduct,
+  pdpdata,
+  pdpdatasheet,
+  RadioData,
+  Packagerorder,
+  bulkorder,
+  PlpBottom,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -148,10 +154,30 @@ const mockData = {
       params: DownTime,
     },
   ],
+  '/PCP': [
+    {
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...contactUsBanner, key: '112233446677' },
+    },
+    {
+      id: 'PCPOverview',
+      params: ProductOverview,
+    },
+    {
+      id: 'ProductItemList',
+      params: ProductItem,
+    },
+  ],
   '/terms-condition': [
     {
       id: 'TermsCondition',
       params: TermsCondition,
+    },
+  ],
+  '/PLPBottom': [
+    {
+      id: 'PLPBottom',
+      params: PlpBottom,
     },
   ],
 
@@ -164,7 +190,8 @@ const mockData = {
   '/account': [
     {
       id: 'MyAccount',
-      params: { myAccount },
+      // params: { myAccount },
+      params: { accountTabsData },
     },
   ],
   '/account/address': [
@@ -451,6 +478,24 @@ const mockData = {
     {
       id: 'Oats',
       params: {},
+    },
+  ],
+  '/PDP': [
+    {
+      id: 'PDP',
+      params: { pdpdata, pdpdatasheet, RadioData },
+    },
+  ],
+  '/Order': [
+    {
+      id: 'order',
+      params: { ...Packagerorder },
+    },
+  ],
+  '/bulk': [
+    {
+      id: 'order',
+      params: { ...bulkorder },
     },
   ],
 }

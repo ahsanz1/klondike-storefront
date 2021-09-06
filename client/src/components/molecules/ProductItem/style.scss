@@ -1,0 +1,56 @@
+@import '~styles/globals';
+
+.overviewtitle {
+  margin-top: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 3px;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 20px;
+  }
+
+  .outr-border {
+    // padding: 3px;
+    // border: 1px solid orange;
+
+    .productimg-wraper {
+      display: flex;
+      justify-content: center;
+      width: 266.89px;
+      height: 304.63px;
+      background: white;
+      box-shadow: 8px 8px 10px 0 #0000004d inset;
+
+      @media screen and (max-width: 768px) {
+        width: 155px;
+        height: 201px;
+      }
+
+      img {
+        padding: 27px;
+
+        @media screen and (max-width: 768px) {
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+  .title-wrapper {
+    p {
+      margin-top: 15px;
+      color: #f2a900;
+      font-family: $OpenSans;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 110%;
+      text-transform: capitalize;
+
+      @media screen and (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+  }
+}

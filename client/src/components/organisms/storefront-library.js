@@ -9,6 +9,10 @@ Components[
 Components[
   'ProductSlider'
 ] = require('components/organisms/product-slider').default
+Components['PCPOverview'] = require('components/organisms/PCPOverview').default
+Components[
+  'ProductItemList'
+] = require('components/organisms/ProductItemList').default
 Components[
   'DiscountOrder'
 ] = require('components/organisms/discount-order').default
@@ -51,6 +55,8 @@ Components[
 Components[
   'ContactAddres'
 ] = require('components/organisms/ContactAddres').default
+Components['PDP'] = require('components/organisms/PDP').default
+Components['order'] = require('components/organisms/PackageOrder').default
 Components['cardsGroup'] = require('components/organisms/cards-group').default
 Components['cartPage'] = require('components/organisms/cart-page').default
 Components['Faqs'] = require('components/organisms/faqs').default
@@ -67,6 +73,10 @@ Components['ReferEarn'] = require('components/organisms/refer-earn').default
 Components['Category'] = require('components/organisms/category').default
 Components['PLP'] = require('components/organisms/plp').default
 Components['AboutUs'] = require('components/organisms/about-us').default
+Components[
+  'CategorySideBar'
+] = require('components/organisms/plp-tab-list').default
+
 Components[
   'ProductDescription'
 ] = require('components/organisms/product-description').default
@@ -146,5 +156,6 @@ Components[
 ] = require('components/organisms/slider-tabable').default
 
 Components['Oats'] = require('components/organisms/OATS/index').default
+Components['PlpTabList'] = require('components/organisms/plp-tab-list').default
 
 export default Components

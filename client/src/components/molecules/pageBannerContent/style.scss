@@ -1,3 +1,5 @@
+@import '~styles/globals';
+
 .pagebanner-wrapper {
   position: relative;
 
@@ -15,11 +17,13 @@
     position: absolute;
     top: 10%;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
+    padding: 0 95px;
 
     @media screen and (max-width: 768px) {
       flex-wrap: wrap;
+      padding: 0 20px;
     }
 
     .imgwrapper {
@@ -31,6 +35,10 @@
         line-height: 110%;
         text-align: center;
         text-transform: uppercase;
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
       }
 
       img {
@@ -42,7 +50,7 @@
       box-sizing: border-box;
       width: 195px;
       height: 38px;
-      border: 2px solid #e35205;
+      border: 2px solid $accent-color;
       border-radius: 5px;
       background: transparent;
       color: white;

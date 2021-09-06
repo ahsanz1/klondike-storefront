@@ -17,8 +17,15 @@ const Header = ({
   logo = {},
   links = [],
   dynamicLinks = [],
+  lubricantLink = '',
+  searchIcon = '',
+  userIcon = '',
+  cartIcon = '',
+  mobileMenu,
+  mobileMenuOpen = {},
+  mobileMenuClose = {},
+  menuBottom = '',
 }) => {
-  console.log('check links:', links)
   const promoData = {
     promoOffer: {
       label: offerLabel,
@@ -46,12 +53,19 @@ const Header = ({
   return (
     <div className="main-header">
       <div className="main-header__wrapper--fix">
-        <PromoRail {...promoData} />
+        <PromoRail {...promoData} lubricantLink={lubricantLink} />
         <Navbar
           logo={logo.url}
           links={links}
           dynamicLinks={dynamicLinks}
           buyButton={buyButton}
+          searchIcon={searchIcon}
+          userIcon={userIcon}
+          cartIcon={cartIcon}
+          mobileMenu={mobileMenu}
+          mobileMenuOpen={mobileMenuOpen}
+          mobileMenuClose={mobileMenuClose}
+          menuBottom={menuBottom}
         />
       </div>
     </div>
@@ -70,5 +84,13 @@ Header.propTypes = {
   url: PropTypes.string,
   dynamicLinks: PropTypes.array,
   promoBanner: PropTypes.string,
+  lubricantLink: PropTypes.string,
+  searchIcon: PropTypes.string,
+  userIcon: PropTypes.string,
+  cartIcon: PropTypes.string,
+  mobileMenu: PropTypes.object,
+  mobileMenuOpen: PropTypes.object,
+  mobileMenuClose: PropTypes.object,
+  menuBottom: PropTypes.object,
 }
 export default Header

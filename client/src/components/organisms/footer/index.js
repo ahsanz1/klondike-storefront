@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
-import NewsletterModal from 'components/organisms/newsletter-modal'
+// import NewsletterModal from 'components/organisms/newsletter-modal'
 import Image from 'components/atoms/image'
 import Accordion from 'components/molecules/accordion'
 import FooterLinks from 'components/molecules/footer-links'
@@ -101,7 +101,6 @@ const Footer = ({
 
   return (
     <>
-      <NewsletterModal />
       <div className="footer">
         <div className="footer-img">
           <img src={footerimg.url} alt="alt" />
@@ -134,7 +133,7 @@ const Footer = ({
               <Row className="footer-links">
                 {footerLinks.length &&
                   footerLinks.map((fLinks, i) => (
-                    <Col xs={12} sm={8} md={8} key={fLinks.heading}>
+                    <Col xs={12} sm={8} md={8} key={i}>
                       <FooterLinks
                         heading={fLinks.heading}
                         links={fLinks.links}

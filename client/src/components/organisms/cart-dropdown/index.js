@@ -24,6 +24,7 @@ const CartDropdown = () => {
             closeModal()
           }}
         ></div>
+
         <div className="cart-dropdown">
           <div className="cart-dropdown-header">
             <Link className="cart-dropdown-header-label" to="/cart">
@@ -70,5 +71,4 @@ const CartDropdown = () => {
     )
   )
 }
-
 export default CartDropdown

@@ -1,10 +1,11 @@
+/* eslint-disable indent */
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/atoms/link'
+import Button from 'components/atoms/button'
 import { AppContext } from 'libs/context'
 import Product from 'components/organisms/ourProduct'
-import AboutHeader from 'components/organisms/about-header'
-import TechResources from 'components/organisms/tech-resources'
+import Image from 'components/atoms/image'
 import './styles.scss'
 
 const Links = ({
@@ -15,9 +16,15 @@ const Links = ({
   linkClassName = '',
   style = {},
   className,
+  mobileMenu = {},
+  buyButton = '',
+  menuBottom = '',
+  userIcon = '',
 }) => {
-  console.log('check naaa:', links)
+  console.log('check naaa:', mobileMenu)
   const { user } = useContext(AppContext)
+  let userLoginInfo = localStorage.getItem('userPersonalInfo')
+  userLoginInfo = JSON.parse(userLoginInfo)
   return (
     <div
       style={{
@@ -36,24 +43,22 @@ const Links = ({
                   key={i}
                   style={linkStyle}
                   className={linkClassName}
-                  to={link.url}
+                  to="#"
                 >
                   {link.label}
-                  {(link.label === 'Our Products' && (
-                    <div className="showMe">
-                      <Product ourProduct={link.productDropDown} />
-                    </div>
-                  )) ||
-                    (link.label === 'About Klondike' && (
-                      <div className="showMe">
-                        <AboutHeader aboutHeader={link.aboutDropDown} />
-                      </div>
-                    )) ||
-                    (link.label === 'Tech Resources' && (
-                      <div className="showMe">
-                        <TechResources techResources={link.resourcesDropDown} />
-                      </div>
-                    ))}
+                  <Image
+                    width={25}
+                    src={mobileMenu && mobileMenu.url}
+                    alt={mobileMenu.altText}
+                  />
+                  {link.productDropDown &&
+                    link.productDropDown.length > 0 &&
+                    link.productDropDown[0].label !== '' &&
+                    link.productDropDown[0].image.url !== '' && (
+                      <>
+                        <Product ourProduct={link.productDropDown} />
+                      </>
+                    )}
                 </Link>
               </>
             )
@@ -62,6 +67,18 @@ const Links = ({
           return null
         }
       })}
+      <Button
+        className={
+          userLoginInfo && userLoginInfo.email ? 'quick-order' : 'Buy-Button'
+        }
+      >
+        {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
+      </Button>
+      {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
+      <div className="bottom-section">
+        <Image width={20} src={userIcon.url} alt={userIcon.altText} />
+        {menuBottom}
+      </div>
     </div>
   )
 }
@@ -74,6 +91,10 @@ Links.propTypes = {
   linkClassName: PropTypes.string,
   style: PropTypes.object,
   className: PropTypes.string,
+  mobileMenu: PropTypes.object,
+  buyButton: PropTypes.string,
+  menuBottom: PropTypes.string,
+  userIcon: PropTypes.string,
 }
 
 export default Links
