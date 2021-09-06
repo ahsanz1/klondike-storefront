@@ -94,6 +94,18 @@
     @media (max-width: 768px) {
       min-width: auto;
     }
+
+    .c-link {
+      @media (max-width: 320px) {
+        padding-right: 10px !important;
+      }
+    }
+
+    button {
+      @media (max-width: 320px) {
+        padding-right: 0 !important;
+      }
+    }
   }
 
   &__mobile-menu {
@@ -113,13 +125,18 @@
 
     &-links {
       position: relative;
-      height: calc(100vh - 54px);
+      height: calc(100vh - 116px);
       padding: 12px 40px;
       overflow: auto;
       text-align: left;
 
       @media (max-width: 768px) {
+        height: calc(100vh - 100px);
         padding: 12px 25px 35px;
+      }
+
+      @media (max-width: 375px) {
+        height: calc(100vh - 116px);
       }
 
       a {

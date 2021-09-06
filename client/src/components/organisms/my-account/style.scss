@@ -246,6 +246,15 @@
     .header {
       position: relative;
       // height: auto;
+      @media (max-width: 768px) {
+        position: fixed;
+        top: 46px;
+      }
+
+      @media (max-width: 375px) {
+        position: fixed;
+        top: 62px;
+      }
     }
   }
 }

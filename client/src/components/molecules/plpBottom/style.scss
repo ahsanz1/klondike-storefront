@@ -28,5 +28,10 @@
     @media (max-width: 768px) {
       width: initial;
     }
+
+    &:hover {
+      transition: 1s;
+      background: #ddaf34;
+    }
   }
 }

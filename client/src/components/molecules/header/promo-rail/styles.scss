@@ -23,12 +23,25 @@
 
   &.show {
     max-height: 200px;
-    transition: max-height 0.4s ease-in;
+    // transition: max-height 0.4s ease-in;
+    @media (max-width: 768px) {
+      display: block;
+      position: fixed;
+      width: 100%;
+    }
   }
 
   &.hide {
     max-height: 0;
-    transition: max-height 0.4s ease-out;
+
+    @media (max-width: 768px) {
+      display: block;
+      position: fixed;
+      width: 100%;
+      max-height: 200px !important;
+    }
+
+    // transition: max-height 0.4s ease-out;
   }
 
   &__page-width {
