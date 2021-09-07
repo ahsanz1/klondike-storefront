@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import './style.scss'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import HomeBanner from 'components/molecules/homebanner'
+// import Oats from './OATS'
 
 const Home = ({
   desktopHeroImage,
@@ -26,6 +27,7 @@ const Home = ({
       <div className="bannercontetwraper">
         <HomeBanner {...bannercontent} />
       </div>
+      {/* <Oats/> */}
     </>
   )
 }

@@ -474,6 +474,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/oats': [
+    {
+      id: 'Oats',
+      params: {},
+    },
+  ],
   '/PDP': [
     {
       id: 'PDP',
