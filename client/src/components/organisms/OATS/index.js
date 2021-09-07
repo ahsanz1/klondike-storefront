@@ -4,7 +4,6 @@ import './style.scss'
 
 import InputTextField from 'components/atoms/input'
 import Dropdown from 'components/atoms/dropdown'
-
 import { tableOatsData } from './data'
 import Button from 'components/atoms/button'
 
@@ -13,7 +12,6 @@ const Oats = () => {
 
   // const [otsdata, setOtsdata] = useState()
   const [query, setQuery] = useState()
-
   // const getproducts = () => {
   //   const url =
   //     'https://klondike-ws-canada.phoenix.earlweb.net/search?q=audi&token=LiEoiv0tqygb'
