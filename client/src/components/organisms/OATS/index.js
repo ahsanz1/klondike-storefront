@@ -9,7 +9,7 @@ import { tableOatsData } from './data'
 import Button from 'components/atoms/button'
 
 const Oats = () => {
-  const { mainHeading } = tableOatsData
+  const { mainHeading, listItem } = tableOatsData
 
   // const [otsdata, setOtsdata] = useState()
   const [query, setQuery] = useState()
@@ -46,7 +46,8 @@ const Oats = () => {
               placeholder="Enter code  model"
             />
             <div className="wrapper-two">
-              <Dropdown className="cars" />
+              <Dropdown className="cars" items={listItem} />
+
               <div className="search_bar">
                 <Button className="btn-search">
                   <img
