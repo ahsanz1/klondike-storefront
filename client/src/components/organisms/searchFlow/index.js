@@ -13,9 +13,8 @@ const SearchFlow = props => {
   const [searchValue, setSearchValue] = useState('')
   const [itemList, setItemList] = useState([])
   const searchValueHandler = async ({ value }) => {
-    const list = await fetchItems(value)
-    console.log('check search:', list)
     setSearchValue(value)
+    const list = await fetchItems(value)
     setItemList(list.hits)
   }
   const clear = () => {

@@ -89,7 +89,7 @@ const Navbar = ({
           }}
         >
           <Link
-            to="/search"
+            to="/SearchFlow"
             className="header__search-icon"
             style={{
               paddingRight: '30px',
