@@ -3321,7 +3321,10 @@ export const PlpBottom = {
     },
   ],
 }
-
+export const searchFlow = {
+  backgroundImage: '/static/images/search.png',
+  clearIcon: '/static/images/Union.png',
+}
 export const PurchaseHistory = {
   label: 'PURCHASE HISTORY',
   orders: [

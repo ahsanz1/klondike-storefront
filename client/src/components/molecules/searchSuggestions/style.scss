@@ -1,0 +1,31 @@
+/* stylelint-disable */
+@import '~styles/globals';
+
+.search-suggestion {
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block !important;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+      float: none !important;
+      line-height: 28px;
+
+      &:hover {
+        .c-label {
+          color: #dc5e00;
+        }
+      }
+
+      .c-label {
+        color: $white-color;
+        font-size: 16px;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+    }
+  }
+}
+/* stylelint-enable */
