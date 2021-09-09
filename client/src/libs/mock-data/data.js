@@ -76,6 +76,7 @@ import {
   bulkorder,
   PlpBottom,
   PcpBottom,
+  searchFlow,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -183,6 +184,12 @@ const mockData = {
     {
       id: 'PLPBottom',
       params: PlpBottom,
+    },
+  ],
+  '/SearchFlow': [
+    {
+      id: 'SearchFlow',
+      params: searchFlow,
     },
   ],
 
