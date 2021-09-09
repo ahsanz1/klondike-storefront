@@ -75,6 +75,7 @@ import {
   Packagerorder,
   bulkorder,
   PlpBottom,
+  PcpBottom,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -166,6 +167,10 @@ const mockData = {
     {
       id: 'ProductItemList',
       params: ProductItem,
+    },
+    {
+      id: 'PCPBottom',
+      params: PcpBottom,
     },
   ],
   '/terms-condition': [
