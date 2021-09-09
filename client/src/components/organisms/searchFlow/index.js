@@ -19,6 +19,7 @@ const SearchFlow = props => {
   }
   const clear = () => {
     setSearchValue('')
+    setItemList([])
   }
   console.log('itemLIst:', itemList)
   return (
@@ -35,6 +36,13 @@ const SearchFlow = props => {
           </Button>
         </div>
         <Label className="suggestion-heading">Suggestion</Label>
+        {itemList.length === 0 ? (
+          <Label style={{ color: '#fff', marginLeft: '30px' }}>
+            No Suggestion Found!
+          </Label>
+        ) : (
+          ''
+        )}
         <div className="search-list">
           <div className="suggestion-name">
             <Suggestion itemList={searchValue ? itemList : []} />
