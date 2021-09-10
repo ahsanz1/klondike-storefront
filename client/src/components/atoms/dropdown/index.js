@@ -38,7 +38,7 @@ const Dropdown = ({
             disabled={menuItem.disabled}
             style={menuItem.disabled ? disabledOptionStyle : {}}
           >
-            {/* {menuItem.label ||
+            {menuItem.label ||
               ` Ship Every ${menuItem.frequency} ${
                 menuItem.frequencyType === 'Weekly'
                   ? menuItem.frequency > 1
@@ -47,7 +47,7 @@ const Dropdown = ({
                   : menuItem.frequency > 1
                   ? 'Months'
                   : 'Month'
-              }`} */}
+              }`}
           </Option>
         )
       })}

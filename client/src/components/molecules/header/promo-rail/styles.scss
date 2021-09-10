@@ -3,7 +3,7 @@
 .promo-rail {
   position: relative;
   z-index: 9;
-  padding: 0 20px;
+  padding: 0 90px;
   overflow: hidden;
   background-color: #fff;
   color: $white-color;
@@ -15,6 +15,14 @@
 
   @media (max-width: 1900px) {
     font-size: 15px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 500px) {
+    padding: 0 5px;
   }
 
   &:active {
@@ -49,6 +57,28 @@
     flex-direction: row;
     width: 100%;
     // padding: 9.5px 0;
+    .ant-select {
+      border: 1px solid rgba(0, 0, 0, 0.6) !important;
+      border-radius: 3px !important;
+
+      .ant-select-arrow {
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .ant-select-selector {
+      padding: 0 !important;
+      border: none !important;
+    }
+
+    .ant-select-selection-item {
+      color: rgba(0, 0, 0, 0.6);
+      font-family: $OpenSans;
+      font-size: 10px;
+      font-weight: bold;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
   }
 
   &__wrapper {
@@ -59,6 +89,7 @@
 
     .Promo-search-button {
       align-items: center;
+      margin-right: 15px;
       border: none;
       background: transparent;
       color: #f1a900;
@@ -79,7 +110,6 @@
     }
 
     @media (max-width: 768px) {
-      justify-content: center;
       padding: 0;
     }
   }
@@ -100,9 +130,9 @@
   &__promo-item {
     align-items: center;
     margin: 0;
-    color: #000 !important;
-    font-family: nevis, Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    color: #656565;
+    font-size: 16.5px;
+    font-weight: bold;
     letter-spacing: 0.04px;
     line-height: 18px;
   }
