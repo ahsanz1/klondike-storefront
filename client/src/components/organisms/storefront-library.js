@@ -158,5 +158,5 @@ Components[
 
 Components['Oats'] = require('components/organisms/OATS/index').default
 Components['PlpTabList'] = require('components/organisms/plp-tab-list').default
-
+Components['PCPBottom'] = require('components/organisms/pcpBottom').default
 export default Components
