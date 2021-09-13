@@ -27,7 +27,7 @@ const SearchFlow = props => {
       <div className="serach-flow">
         <div className="serach-input">
           <Input
-            placeholder="Serach"
+            placeholder="Search"
             value={searchValue}
             onChange={searchValueHandler}
           />
