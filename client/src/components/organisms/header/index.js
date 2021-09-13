@@ -21,6 +21,7 @@ const Header = ({
   searchIcon = '',
   userIcon = '',
   cartIcon = '',
+  mobileLogo = {},
   mobileMenu,
   mobileMenuOpen = {},
   mobileMenuClose = {},
@@ -49,7 +50,7 @@ const Header = ({
     //   link: offerLink,
     // },
   }
-
+  console.log('mobile logo:', mobileLogo)
   return (
     <div className="main-header">
       <div className="main-header__wrapper--fix">
@@ -62,6 +63,7 @@ const Header = ({
           searchIcon={searchIcon}
           userIcon={userIcon}
           cartIcon={cartIcon}
+          mobileLogo={mobileLogo}
           mobileMenu={mobileMenu}
           mobileMenuOpen={mobileMenuOpen}
           mobileMenuClose={mobileMenuClose}
@@ -88,6 +90,7 @@ Header.propTypes = {
   searchIcon: PropTypes.string,
   userIcon: PropTypes.string,
   cartIcon: PropTypes.string,
+  mobileLogo: PropTypes.object,
   mobileMenu: PropTypes.object,
   mobileMenuOpen: PropTypes.object,
   mobileMenuClose: PropTypes.object,

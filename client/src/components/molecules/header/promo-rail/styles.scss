@@ -30,7 +30,7 @@
   }
 
   &.show {
-    max-height: 200px;
+    // max-height: 200px;
     // transition: max-height 0.4s ease-in;
     @media (max-width: 768px) {
       display: block;
@@ -40,7 +40,7 @@
   }
 
   &.hide {
-    max-height: 0;
+    // max-height: 0;
 
     @media (max-width: 768px) {
       display: block;
@@ -99,6 +99,10 @@
       text-align: center;
       text-transform: uppercase;
       text-decoration-line: underline;
+
+      img {
+        width: 7px;
+      }
     }
 
     @media (max-width: 1800px) {
@@ -147,12 +151,25 @@
     padding: 15px 0;
 
     .promo-logo {
-      padding: 5px;
-      border-radius: 10px;
+      padding: 3px 12px;
+      border-radius: 18px;
       background: #013a4e;
 
       img {
+        position: relative;
+        bottom: 1px;
+        left: 1px;
         width: 64px;
+
+        @media (max-width: 768px) {
+          top: 1px;
+          bottom: 0;
+        }
+
+        @media (max-width: 500px) {
+          top: 2px;
+          width: 50px;
+        }
       }
 
       @media (max-width: 768px) {
