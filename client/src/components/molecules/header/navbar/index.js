@@ -21,6 +21,7 @@ const Navbar = ({
   searchIcon = '',
   userIcon = '',
   cartIcon = '',
+  mobileLogo = {},
   mobileMenu = {},
   mobileMenuOpen = {},
   mobileMenuClose = {},
@@ -44,7 +45,7 @@ const Navbar = ({
       <div className="header__nav">
         <CartDropdown />
         <div className="mobile-home-logo">
-          <Image width={75} src={logo} alt="logo" />
+          <Image width={75} src={mobileLogo.url} alt="logo" />
         </div>
         <div className="header__mobile-menu-button">
           <Button
@@ -66,6 +67,7 @@ const Navbar = ({
             setIsOpen(false)
           }}
         >
+          <img className="mbl-version" src={mobileLogo.url} alt="..." />
           <img className="header__logo" src={logo} alt="..." />
         </Link>
         <Links
@@ -156,6 +158,7 @@ Navbar.propTypes = {
   searchIcon: PropTypes.string,
   userIcon: PropTypes.string,
   cartIcon: PropTypes.string,
+  mobileLogo: PropTypes.object,
   mobileMenu: PropTypes.object,
   mobileMenuOpen: PropTypes.object,
   mobileMenuClose: PropTypes.object,

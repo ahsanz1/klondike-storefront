@@ -6,9 +6,9 @@
   height: 80px;
   background-color: #002a3a;
 
-  @media (max-width: 1900px) {
-    height: 110px;
-  }
+  // @media (max-width: 1900px) {
+  //   height: 110px;
+  // }
 
   @media (max-width: 992px) {
     height: 54px;
@@ -66,6 +66,10 @@
 
     @media (max-width: 992px) {
       width: 88px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 
@@ -148,6 +152,9 @@
         // &:not(:last-child) {
         //   border-bottom: 3px solid $light-border-color;
         // }
+        @media (max-width: 375px) {
+          padding: 0;
+        }
       }
     }
 
@@ -155,6 +162,10 @@
       position: absolute;
       top: 15px;
       right: 0;
+
+      @media (max-width: 375px) {
+        top: 5px;
+      }
     }
   }
 
@@ -208,9 +219,9 @@
     align-items: center;
     width: 174px;
     height: 42px;
-    border: 1px solid #f1a900;
-    border-radius: 5px;
-    background: #f7921e;
+    border: 1px solid #f2a900;
+    border-radius: 9px;
+    background: #f2a900;
     color: #fff;
     font-family: Open-Sans, Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -232,14 +243,19 @@
     font-size: 16px;
     line-height: 22px;
     text-align: left;
+    text-transform: uppercase;
 
     @media (max-width: 1400px) {
       position: relative;
-      left: 6%;
+      left: 4%;
     }
 
     @media (max-width: 1024px) {
       left: 0;
+    }
+
+    @media (max-width: 768px) {
+      top: 30px;
     }
 
     &:hover {
@@ -260,6 +276,20 @@
   @media screen and (max-width: 768px) {
     .mobile-button {
       display: block !important;
+    }
+  }
+
+  .mbl-version {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
+
+    img {
+      @media screen and (max-width: 768px) {
+        width: 50px;
+      }
     }
   }
 }
