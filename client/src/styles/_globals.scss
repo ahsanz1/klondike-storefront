@@ -27,6 +27,11 @@
   src: url('/static/fonts/OpenSans-Regular.ttf');
 }
 
+@font-face {
+  font-family: Poppins;
+  src: url('/static/fonts/Poppins-Regular.ttf');
+}
+
 $primary-color: #013a4e;
 $primary-color-dark: #002a3a;
 $primary-color-light: #212529;
@@ -49,3 +54,4 @@ $font-futura-heavy: FuturaPTHeavy, Helvetica, Arial, sans-serif;
 $font-intro: Intro, Arial, Helvetica, sans-serif;
 $font-apple-system: -apple-system, Roboto, Helvetica, Arial, sans-serif;
 $OpenSans: OpenSans;
+$Poppins: Poppins;
