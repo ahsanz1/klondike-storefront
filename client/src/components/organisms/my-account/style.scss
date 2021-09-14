@@ -240,12 +240,26 @@
 .main-header {
   height: auto;
 
+  @media (max-width: 500px) {
+    position: fixed;
+    top: 0;
+  }
+
   .main-header__wrapper--fix {
     position: relative;
 
     .header {
       position: relative;
       // height: auto;
+      @media (max-width: 768px) {
+        position: fixed;
+        top: 46px;
+      }
+
+      @media (max-width: 375px) {
+        position: fixed;
+        top: 62px;
+      }
     }
   }
 }

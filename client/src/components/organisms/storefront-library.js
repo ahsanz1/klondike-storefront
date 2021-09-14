@@ -72,6 +72,7 @@ Components['AuthForm'] = require('components/organisms/auth-form').default
 Components['ReferEarn'] = require('components/organisms/refer-earn').default
 Components['Category'] = require('components/organisms/category').default
 Components['PLP'] = require('components/organisms/plp').default
+Components['SearchFlow'] = require('components/organisms/searchFlow').default
 Components['AboutUs'] = require('components/organisms/about-us').default
 Components[
   'CategorySideBar'
@@ -157,5 +158,5 @@ Components[
 
 Components['Oats'] = require('components/organisms/OATS/index').default
 Components['PlpTabList'] = require('components/organisms/plp-tab-list').default
-
+Components['PCPBottom'] = require('components/organisms/pcpBottom').default
 export default Components

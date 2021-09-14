@@ -3280,6 +3280,19 @@ export const PProductsData = [
     },
   },
 ]
+export const PcpBottom = [
+  {
+    image:
+      'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+    button: 'DOWNLOAD PDS & MSDS',
+    mobileButton: 'DOWNLOAD PDS & MSDS',
+  },
+  {
+    image: '/static/images/productfooter.png',
+    button: 'BECOME A DEALER',
+    mobileButton: 'BECOME A DEALER',
+  },
+]
 
 export const PSusbcribeNewItem = {
   id: 'fake-item-id',
@@ -3321,7 +3334,10 @@ export const PlpBottom = {
     },
   ],
 }
-
+export const searchFlow = {
+  backgroundImage: '/static/images/search.png',
+  clearIcon: '/static/images/Union.png',
+}
 export const PurchaseHistory = {
   label: 'PURCHASE HISTORY',
   orders: [

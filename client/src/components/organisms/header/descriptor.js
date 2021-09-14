@@ -12,6 +12,11 @@ exports.default = Types.Component({
       url: Types.String({ label: 'URL' }),
       altText: Types.String({ label: 'Alt text' }),
     }),
+    mobileLogo: Types.Image({
+      label: 'mobile-logo',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
     links: Types.Array({
       label: 'Default Header Links',
       children: Types.Shape({

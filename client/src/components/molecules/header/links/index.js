@@ -21,7 +21,6 @@ const Links = ({
   menuBottom = '',
   userIcon = '',
 }) => {
-  console.log('check naaa:', mobileMenu)
   const { user } = useContext(AppContext)
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)

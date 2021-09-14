@@ -26,7 +26,12 @@
     margin-top: 20px;
 
     @media (max-width: 768px) {
-      width: initial;
+      width: max-content !important;
+    }
+
+    &:hover {
+      transition: s;
+      background: #ddaf34;
     }
   }
 }
