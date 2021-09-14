@@ -240,6 +240,11 @@
 .main-header {
   height: auto;
 
+  @media (max-width: 500px) {
+    position: fixed;
+    top: 0;
+  }
+
   .main-header__wrapper--fix {
     position: relative;
 

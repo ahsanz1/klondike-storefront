@@ -46,15 +46,25 @@
       flex-wrap: wrap;
       padding: 0;
     }
+
+    @media (max-width: 500px) {
+      display: block;
+      flex-wrap: nowrap;
+      padding: 0;
+    }
   }
 
   .form-content {
-    width: 382px;
+    width: 250px;
   }
 
   .request-forms {
     width: 762px;
     margin-left: auto;
+
+    @media (max-width: 500px) {
+      width: auto;
+    }
   }
 
   &__error {
@@ -97,7 +107,8 @@
     }
 
     @media (max-width: 375px) {
-      width: 80% !important;
+      width: 90% !important;
+      padding: 0 !important;
     }
   }
 
@@ -168,6 +179,16 @@
   &__col {
     @media (max-width: 768px) {
       width: 100% !important;
+    }
+
+    &:nth-child(2) {
+      .label-input {
+        input {
+          @media (max-width: 500px) {
+            margin-bottom: 0 !important;
+          }
+        }
+      }
     }
   }
 
