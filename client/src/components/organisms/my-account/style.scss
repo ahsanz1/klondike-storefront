@@ -8,14 +8,18 @@
   .welcome-title {
     margin-bottom: 0.85rem;
     color: #fff;
-    font-size: 12px;
+    font-family: $OpenSans;
+    font-size: 24px;
+    font-weight: bold;
     text-transform: uppercase;
   }
 
   .page-title {
     color: #fff;
-    font-size: 16;
-    line-height: 16px;
+    font-family: $OpenSans;
+    font-size: 3.3vw;
+    font-weight: bold;
+    line-height: 110%;
     text-transform: uppercase;
   }
 
@@ -29,7 +33,9 @@
 
   .ant-tabs-tab {
     color: #fff;
-    font-size: 14px;
+    font-family: $OpenSans;
+    font-size: 0.96vw;
+    font-weight: bold;
   }
 }
 
@@ -71,7 +77,9 @@
   padding: 0;
   border: 0;
   background-color: transparent;
-  font-size: 1.15rem;
+  font-family: $OpenSans;
+  font-size: 1.1vw;
+  font-weight: bold;
   text-decoration: underline;
 
   &:hover {
@@ -88,15 +96,23 @@
   padding-bottom: 1rem;
   color: #fff;
 
+  .c-label {
+    font-family: $OpenSans;
+    font-size: 0.9vw;
+    font-weight: normal;
+  }
+
   .zip {
     color: #f1a900;
-    font-size: 24px;
+    font-family: $OpenSans;
+    font-size: 1.6vw;
     font-weight: bold;
   }
 
   .session {
-    font-weight: 24px;
-    font-weight: 700;
+    font-family: $OpenSans;
+    font-size: 0.9vw;
+    font-weight: bold;
     text-transform: uppercase;
   }
 
@@ -273,16 +289,16 @@
 }
 
 .credit-limit {
-  font-family: $OpenSans;
-  font-size: 14px;
-  font-weight: 700;
+  font-family: $OpenSans !important;
+  font-size: 0.9vw !important;
+  font-weight: bold !important;
 }
 
 .credit-price {
   color: #f1a900;
-  font-family: $OpenSans;
-  font-size: 24px;
-  font-weight: 700;
+  font-family: $OpenSans !important;
+  font-size: 1.6vw !important;
+  font-weight: bold !important;
 }
 
 .order-image {

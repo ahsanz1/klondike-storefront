@@ -177,6 +177,12 @@
   }
 
   &__col {
+    .label-input {
+      input {
+        margin-bottom: 0 !important;
+      }
+    }
+
     @media (max-width: 768px) {
       width: 100% !important;
     }
@@ -184,9 +190,8 @@
     &:nth-child(2) {
       .label-input {
         input {
-          @media (max-width: 500px) {
-            margin-bottom: 0 !important;
-          }
+          margin-top: 10px;
+          margin-bottom: 0 !important;
         }
       }
     }
