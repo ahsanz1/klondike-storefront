@@ -1,14 +1,14 @@
 @import '~styles/globals';
 
-.img {
-  height: 814px;
-  background-image: url('/static/images/background.png');
-  background-size: cover;
+// .img {
+//   height: 814px;
+//   background-image: url('/static/images/background.png');
+//   background-size: cover;
 
-  @media (max-width: 768px) {
-    background-image: url('/static/images/bg.png');
-  }
-}
+//   @media (max-width: 768px) {
+//     background-image: url('/static/images/bg.png');
+//   }
+// }
 
 .oats {
   @media (max-width: 768px) {
@@ -51,7 +51,7 @@
       justify-content: center;
       width: 304px;
       // margin-right: 36px;
-      margin-top: 21px;
+      margin-top: 119px;
       margin-left: 2px;
       padding: 12px;
       outline: none;
@@ -133,7 +133,7 @@
     margin-top: 140px;
 
     @media (max-width: 768px) {
-      display: flex;
+      display: block;
       margin-left: 31px;
       padding-bottom: 23px;
     }
@@ -144,6 +144,7 @@
 
       @media (max-width: 768px) {
         width: 219px;
+        margin-top: 21px;
       }
 
       .ant-select-selector {
@@ -167,12 +168,12 @@
       }
 
       &.family {
-        min-width: 186;
+        width: 186;
         // border-radius: 16px;
       }
 
       &.manufecturer {
-        min-width: 229px;
+        width: 229px;
         // border-radius: 16px;
       }
     }
@@ -196,31 +197,28 @@
   }
 }
 
-// .table-wrapper {
-//   max-width: 90%;
-//   margin: 0 auto;
-//   padding-top: 36px;
-//   color: #fff;
+.table-wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+  padding-top: 36px;
+  color: #fff;
 
-//   .flex {
-//     display: flex;
-//     justify-content: space-between;
-//   }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    width: 1300px;
+  }
 
-//   .title {
-//     .custom-grid {
-//       color: #f1a900;
-//     }
-//   }
+  .title {
+    .custom-grid {
+      color: #f1a900;
+    }
+  }
 
-//   .custom-grid {
-//     width: 20%;
-//   }
-
-//   @media (max-width: 768px) {
-//     flex-direction: column;
-//   }
-// }
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
 
 .overflow {
   @media (max-width: 768px) {
