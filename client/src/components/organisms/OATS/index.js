@@ -14,7 +14,7 @@ const Oats = () => {
 
   const getproducts = () => {
     const url = [
-      `https://klondike-ws-canada.phoenix.earlweb.net/search?q=${query}&token=LiEoiv0tqygb`,
+      `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&token=LiEoiv0tqygb`,
     ]
     axios.get(url).then(response => {
       let results = response.data.equipment_list
@@ -75,21 +75,13 @@ const Oats = () => {
               {otsdata &&
                 otsdata.equipment &&
                 otsdata.equipment.map((data, i) => {
-                  const {
-                    productgroup,
-                    manufacturer,
-                    model,
-                    year,
-                    fueltype,
-                  } = data
-
                   return (
                     <div className="table-content flex" key={i}>
-                      <p className="custom-grid">{productgroup}</p>
-                      <p className="custom-grid">{manufacturer}</p>
-                      <p className="custom-grid">{model}</p>
-                      <p className="custom-grid">{year}</p>
-                      <p className="custom-grid">{fueltype}</p>
+                      <p className="custom-grid">{data && data.productgroup}</p>
+                      <p className="custom-grid">{data && data.manufacturer}</p>
+                      <p className="custom-grid">{data && data.model}</p>
+                      <p className="custom-grid">{data && data.year}</p>
+                      <p className="custom-grid">{data && data.alt_fueltype}</p>
                     </div>
                   )
                 })}

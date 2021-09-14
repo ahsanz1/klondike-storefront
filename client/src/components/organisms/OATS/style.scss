@@ -210,9 +210,11 @@
   }
 
   .title {
-    .custom-grid {
-      color: #f1a900;
-    }
+    color: #f1a900;
+  }
+
+  .custom-grid {
+    width: 20%;
   }
 
   @media (max-width: 768px) {

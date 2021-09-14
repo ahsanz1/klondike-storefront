@@ -11,4 +11,9 @@
       line-height: 140%;
     }
   }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    line-height: 140%;
+  }
 }
