@@ -3,6 +3,7 @@
 .label-input {
   display: flex;
   flex-direction: column;
+  width: 327px;
   margin: 0 5px;
 
   &__label {
@@ -32,6 +33,10 @@
     &.c-dropdown {
       margin-bottom: 1.5rem;
     }
+
+    @media (max-width: 375px) {
+      width: 85% !important;
+    }
   }
 
   &__error-message {
@@ -39,6 +44,13 @@
     color: #dc3545;
     font-size: 12px;
     font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  ::placeholder {
+    font-family: $OpenSans;
+    font-size: 16px;
+    font-weight: bold;
     text-transform: uppercase;
   }
 }
