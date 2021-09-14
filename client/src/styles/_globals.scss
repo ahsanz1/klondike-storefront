@@ -32,6 +32,11 @@
   src: url('/static/fonts/Poppins-Regular.ttf');
 }
 
+@font-face {
+  font-family: Raleway;
+  src: url('/static/fonts/Raleway-Regular.ttf');
+}
+
 $primary-color: #013a4e;
 $primary-color-dark: #002a3a;
 $primary-color-light: #212529;
@@ -55,3 +60,4 @@ $font-intro: Intro, Arial, Helvetica, sans-serif;
 $font-apple-system: -apple-system, Roboto, Helvetica, Arial, sans-serif;
 $OpenSans: OpenSans;
 $Poppins: Poppins;
+$Raleway: Raleway;

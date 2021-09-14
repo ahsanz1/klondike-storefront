@@ -5,6 +5,10 @@
   margin: 0 auto;
   padding: 2.5em 2rem;
 
+  @media screen and (max-width: 500px) {
+    margin-top: 116px;
+  }
+
   .welcome-title {
     margin-bottom: 0.85rem;
     color: #fff;
@@ -89,6 +93,10 @@
   &:focus {
     outline: 0;
   }
+
+  @media screen and(max-width: 500px) {
+    font-size: 16px;
+  }
 }
 
 .account-tabpane-content {
@@ -100,6 +108,11 @@
     font-family: $OpenSans;
     font-size: 0.9vw;
     font-weight: normal;
+
+    @media (max-width: 768px) {
+      font-family: $Raleway;
+      font-size: 14px;
+    }
   }
 
   .zip {
@@ -107,6 +120,11 @@
     font-family: $OpenSans;
     font-size: 1.6vw;
     font-weight: bold;
+
+    @media (max-width: 768px) {
+      color: #e25205;
+      font-size: 16px;
+    }
   }
 
   .session {
@@ -114,6 +132,10 @@
     font-size: 0.9vw;
     font-weight: bold;
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .order-filter {
@@ -122,6 +144,8 @@
     border-bottom: 1px solid #fff;
 
     p {
+      font-family: $OpenSans;
+      font-size: 14px;
       font-weight: 700;
 
       select {
@@ -132,6 +156,13 @@
         outline: none;
         background: #002a3a !important;
         color: #fff;
+        font-family: $Poppins;
+        font-size: 14px;
+
+        @media screen and (max-width: 500px) {
+          height: 31px;
+          border-radius: 5px;
+        }
       }
     }
   }
@@ -292,6 +323,10 @@
   font-family: $OpenSans !important;
   font-size: 0.9vw !important;
   font-weight: bold !important;
+
+  @media screen and (max-width: 500px) {
+    font-size: 14px !important;
+  }
 }
 
 .credit-price {
@@ -299,6 +334,10 @@
   font-family: $OpenSans !important;
   font-size: 1.6vw !important;
   font-weight: bold !important;
+
+  @media screen and (max-width: 500px) {
+    font-size: 16px !important;
+  }
 }
 
 .order-image {
@@ -393,6 +432,16 @@
     select {
       background: #013a4e;
       color: #fff;
+
+      @media screen and (max-width: 500px) {
+        background:
+          url('../../../../static/images/arrowdown.png') no-repeat
+          right !important;
+        background-color: #0d394b !important;
+        font-family: $OpenSans;
+        font-size: 14px;
+        font-weight: bold;
+      }
     }
   }
 
