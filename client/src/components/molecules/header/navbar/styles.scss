@@ -40,6 +40,12 @@
       @media (min-width: 992px) {
         display: none;
       }
+
+      @media (min-width: 500px) {
+        img {
+          width: 80%;
+        }
+      }
     }
 
     @media screen and (max-width: 768px) {
@@ -154,6 +160,9 @@
         // }
         @media (max-width: 375px) {
           padding: 0;
+          font-family: $OpenSans;
+          font-weight: normal;
+          text-transform: uppercase;
         }
       }
     }
