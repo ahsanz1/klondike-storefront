@@ -102,7 +102,7 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
       }
     >
       {/* <h2 className="category-title">{categoryName}</h2> */}
-      <Row>
+      <Row gutter={[6, 6]}>
         {loading ? (
           [1, 2, 3].map((skelton, index) => (
             <Col
@@ -122,7 +122,7 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
           <>
             {products &&
               products.map((product, index) => (
-                <Col span={12} md={12} lg={8} key={index}>
+                <Col span={12} md={12} lg={6} key={index}>
                   <ProductItem
                     item={{
                       ...product,

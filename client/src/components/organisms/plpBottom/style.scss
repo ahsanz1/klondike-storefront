@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 0 50px;
+  padding-bottom: 1.4vw !important;
   background: #032939;
 
   @media (max-width: 768px) {
@@ -13,17 +13,22 @@
   }
 
   @media (max-width: 425px) {
+    justify-content: center;
     height: 150px;
   }
 
   img {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 0 !important;
+
+    @media screen and (max-width: 500px) {
+      width: 123px;
+    }
   }
 
   button {
     width: inherit;
-    margin-top: 20px;
+    margin-top: 0 !important;
 
     @media (max-width: 768px) {
       width: initial;
