@@ -14,7 +14,8 @@
 
   @media (max-width: 425px) {
     justify-content: center;
-    height: 150px;
+    width: 327px;
+    height: 157px;
   }
 
   img {
@@ -23,6 +24,8 @@
 
     @media screen and (max-width: 500px) {
       width: 123px;
+      height: 137px;
+      object-fit: contain;
     }
   }
 
