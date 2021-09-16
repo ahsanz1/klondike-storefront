@@ -233,7 +233,7 @@
     background: #f2a900;
     color: #fff;
     font-family: Open-Sans, Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 1.5vw;
     font-style: normal;
     font-weight: bold;
     line-height: 22px;
@@ -241,6 +241,7 @@
 
     @media screen and (max-width: 768px) {
       display: none;
+      font-size: 20px;
     }
   }
 
