@@ -60,6 +60,7 @@ const SearchFlow = props => {
                           : item['Image 1 URL'],
                       }}
                       title={item.title}
+                      category={item.Category}
                     />
                   </li>
                 ))}
