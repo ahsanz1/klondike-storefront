@@ -63,6 +63,10 @@
     font-weight: bold;
     line-height: 33px;
     text-transform: uppercase;
+
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
   }
 
   .search-list {
@@ -72,6 +76,7 @@
 
     @media (max-width: 768px) {
       flex-direction: column;
+      margin-top: 91px;
     }
 
     .products {
@@ -135,8 +140,21 @@
             }
           }
 
+          .search-category {
+            display: none;
+            margin: 5px 0;
+            color: #fff;
+            font-family: $OpenSans;
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 18px;
+
+            @media screen and(max-width: 500px) {
+              display: block;
+            }
+          }
+
           .search-title {
-            margin-top: 10px;
             color: $white-color;
             font-family: $OpenSans;
             font-size: 20px;
