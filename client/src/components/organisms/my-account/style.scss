@@ -6,7 +6,7 @@
   padding: 2.5em 2rem;
 
   @media screen and (max-width: 500px) {
-    margin-top: 116px;
+    margin-top: 98px;
   }
 
   .welcome-title {
@@ -304,9 +304,8 @@
         top: 46px;
       }
 
-      @media (max-width: 375px) {
-        position: fixed;
-        top: 62px;
+      @media (max-width: 500px) {
+        top: 62px !important;
       }
     }
   }
