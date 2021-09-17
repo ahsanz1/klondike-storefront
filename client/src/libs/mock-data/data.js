@@ -496,6 +496,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/quickOrder': [
+    {
+      id: 'QuickOrder',
+      params: {},
+    },
+  ],
 }
 
 export default mockData

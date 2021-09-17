@@ -160,4 +160,8 @@ Components[
   'ProductOrderList'
 ] = require('components/organisms/productorderlist').default
 
+Components[
+  'QuickOrder'
+] = require('components/organisms/quick-order/index').default
+
 export default Components
