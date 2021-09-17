@@ -9,6 +9,7 @@ import useSubscriptionItems from 'libs/api-hooks/useSubscriptionItems'
 // import { subscribeItems } from 'libs/data/data'
 
 const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
+  console.log('fetch', fetchCategory)
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const { subscriptionItems, getSubscriptionItems } = useSubscriptionItems()

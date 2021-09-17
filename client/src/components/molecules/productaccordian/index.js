@@ -1,20 +1,32 @@
-import React from 'react'
-// import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
-import { tableProAccoData } from './data'
+// import { tableProAccoData } from './data'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
+import { fetchCategory } from 'libs/services/algolia'
 // import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 // import Label from 'components/atoms/label'
 import './style.scss'
 
-const ProductAccordion = () => {
-  const { tableData } = tableProAccoData
+const ProductAccordion = ({ question }) => {
+  // const { tableData } = tableProAccoData
+  const [itemdata, setItemData] = useState([])
+
+  console.log('question', question)
+  useEffect(() => {
+    const data = async () => {
+      const items = await fetchCategory(question)
+      setItemData(items.hits)
+    }
+
+    data()
+  }, [])
 
   return (
     <>
       {/* <Panel header="This is panel header 2" key="2"> */}
-      <div className="table-wrapper">
+      <div className="table-wrapper-faqs">
         <Row className="title flex">
           <Col lg={8}>
             <p>PRODUCT</p>
@@ -36,47 +48,44 @@ const ProductAccordion = () => {
           </Col>
         </Row>
 
-        {tableData &&
-          tableData.map((data, i) => {
-            const {
-              product,
-              packageSize,
-              part,
-              perCase,
-              perPallet,
-              unitPrice,
-              hoverButton,
-              productImage,
-            } = data
+        {itemdata &&
+          itemdata.map((data, i) => {
             return (
               <>
                 <Row className="table-content flex" key={i}>
                   <Col lg={8} className="custom-width">
-                    <p className="text-setting-table">{product}</p>
+                    <p className="text-setting-table">
+                      {data['product title']}
+                    </p>
                   </Col>
                   <Col lg={4} className="custom-width">
-                    <p className="light-text-weight">{packageSize}</p>
+                    <p className="light-text-weight">{data['Package Size']}</p>
                   </Col>
                   <Col lg={3} className="custom-width">
-                    <p>{part}</p>
+                    <p>{data['Part Number']}</p>
                   </Col>
                   <Col lg={3} className="custom-width">
-                    <p className="text-class-center">{perCase}</p>
+                    <p className="text-class-center">{data['Weight']}</p>
                   </Col>
                   <Col lg={3} className="custom-width">
-                    <p className="text-class-center">{perPallet}</p>
+                    <p className="text-class-center">
+                      {data['Unit of Measurement']}
+                    </p>
                   </Col>
                   <Col lg={3} className="custom-width">
                     <p className="text-class-right text-setting-table">
-                      {unitPrice}
+                      ${data['Order Price']}
                     </p>
                   </Col>
                   <div className="hover-details">
                     <div className="table-image">
-                      <Image src={productImage} className="table-image" />
+                      <Image
+                        src={data['Image URL'] || data['Image 1 URL']}
+                        className="table-image"
+                      />
                     </div>
                     <div className="table-button">
-                      <Button className="hover-button">{hoverButton}</Button>
+                      <Button className="hover-button">ADD TO CART</Button>
                     </div>
                   </div>
                 </Row>
@@ -91,5 +100,6 @@ const ProductAccordion = () => {
 // const { array } = PropTypes
 ProductAccordion.propTypes = {
   // ProductAccordion: PropTypes.array,
+  question: PropTypes.array,
 }
 export default ProductAccordion

@@ -46,6 +46,7 @@ import HomeBanner from 'components/organisms/HomeBanner'
 import CommitedSuccess from 'components/organisms/CommitedSuccess'
 import ClientTestimonial from 'components/organisms/ClientTestimonial'
 import ContactAddres from 'components/organisms/ContactAddres'
+import Oats from 'components/organisms/OATS/index'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import PCPOverview from 'components/organisms/PCPOverview'
 import ProductItemList from 'components/organisms/ProductItemList'
@@ -106,6 +107,7 @@ export default {
   SubscriptionOrderDetails: params => <subscriptionOrderDetails {...params} />,
   OrderDetails: params => <OrderDetails {...params} />,
   SliderTabbable: params => <SliderTabbable {...params} />,
+  Oats: params => <Oats {...params} />,
   PlpTabList: params => <PlpTabList {...params} />,
   PCPOverview: params => <PCPOverview {...params} />,
   ProductItemList: params => <ProductItemList {...params} />,

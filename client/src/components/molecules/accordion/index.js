@@ -27,69 +27,70 @@ const Accordion = ({
   faqId = 0,
   short = false,
 }) => {
-  console.log('tabletable', table)
   return (
-    <div>
-      <Row className="accordion-item">
-        <Col md={2} xs={6} sm={6}>
-          <div className="accordion-arrow">
-            {isOpen ? (
-              <Image
-                src="/static/icons/arrow-up.png"
-                alt=""
-                onClick={() => {
-                  isOpenHandler(faqId)
-                }}
-              />
-            ) : (
-              <Image
-                src="/static/icons/arrow-down.png"
-                alt=""
-                onClick={() => {
-                  isOpenHandler(faqId)
-                }}
-              />
-            )}
-          </div>
-        </Col>
-        <Col md={table ? 24 : 22} xs={18} sm={18}>
-          <h4
-            className="accordion-question"
-            onClick={() => {
-              isOpenHandler(faqId)
-            }}
-          >
-            {question}
-          </h4>
-          <div
-            className={
-              isOpen
-                ? 'accordion-content accordion-show'
-                : 'accordion-content accordion-hide'
-            }
-          >
-            {table ? (
-              <ProductAccordion />
-            ) : (
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: `${answer}`,
-                }}
-              ></p>
-            )}
+    <>
+      <div>
+        <Row className="accordion-item">
+          <Col md={2} xs={6} sm={6}>
+            <div className="accordion-arrow">
+              {isOpen ? (
+                <Image
+                  src="/static/icons/arrow-up.png"
+                  alt=""
+                  onClick={() => {
+                    isOpenHandler(faqId)
+                  }}
+                />
+              ) : (
+                <Image
+                  src="/static/icons/arrow-down.png"
+                  alt=""
+                  onClick={() => {
+                    isOpenHandler(faqId)
+                  }}
+                />
+              )}
+            </div>
+          </Col>
+          <Col md={table ? 24 : 22} xs={18} sm={18}>
+            <h4
+              className="accordion-question"
+              onClick={() => {
+                isOpenHandler(faqId)
+              }}
+            >
+              {question}
+            </h4>
+            <div
+              className={
+                isOpen
+                  ? 'accordion-content accordion-show'
+                  : 'accordion-content accordion-hide'
+              }
+            >
+              {table ? (
+                <ProductAccordion question={question} />
+              ) : (
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: `${answer}`,
+                  }}
+                ></p>
+              )}
 
-            {links &&
-              links.map((obj, index) => {
-                return (
-                  <Link to={obj.url} key={index}>
-                    <div className="footerLinks"> {obj.text}</div>
-                  </Link>
-                )
-              })}
-          </div>
-        </Col>
-      </Row>
-    </div>
+              {links &&
+                links.map((obj, index) => {
+                  return (
+                    <Link to={obj.url} key={index}>
+                      <div className="footerLinks"> {obj.text}</div>
+                    </Link>
+                  )
+                })}
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </>
   )
 }
 

@@ -1,0 +1,19 @@
+@import '~styles/globals';
+
+.selected-category {
+  margin-bottom: 50px;
+
+  h2 {
+    color: #eceae9;
+    font-family: $OpenSans;
+    font-size: 48px;
+    line-height: 110%;
+  }
+
+  p {
+    color: #eceae9;
+    font-family: $OpenSans;
+    font-size: 12px;
+    line-height: 157%;
+  }
+}

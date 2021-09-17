@@ -21,6 +21,7 @@ const Navbar = ({
   searchIcon = '',
   userIcon = '',
   cartIcon = '',
+  mobileLogo = {},
   mobileMenu = {},
   mobileMenuOpen = {},
   mobileMenuClose = {},
@@ -36,13 +37,15 @@ const Navbar = ({
   if (user && user.isWholeSaleUser) {
     links = wholesaleLinks
   }
+  let userLoginInfo = localStorage.getItem('userPersonalInfo')
+  userLoginInfo = JSON.parse(userLoginInfo)
 
   return (
     <div className="header">
       <div className="header__nav">
         <CartDropdown />
         <div className="mobile-home-logo">
-          <Image width={75} src={logo} alt="logo" />
+          <Image width={75} src={mobileLogo.url} alt="logo" />
         </div>
         <div className="header__mobile-menu-button">
           <Button
@@ -64,6 +67,7 @@ const Navbar = ({
             setIsOpen(false)
           }}
         >
+          <img className="mbl-version" src={mobileLogo.url} alt="..." />
           <img className="header__logo" src={logo} alt="..." />
         </Link>
         <Links
@@ -72,7 +76,13 @@ const Navbar = ({
           mobile={false}
           links={links}
         />
-        <Button className="Buy-Button">{buyButton}</Button>
+        <Button
+          className={
+            userLoginInfo && userLoginInfo.email ? 'quick-order' : 'Buy-Button'
+          }
+        >
+          {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
+        </Button>
 
         <div
           className="header__icons"
@@ -81,7 +91,7 @@ const Navbar = ({
           }}
         >
           <Link
-            to="/search"
+            to="/SearchFlow"
             className="header__search-icon"
             style={{
               paddingRight: '30px',
@@ -90,7 +100,7 @@ const Navbar = ({
             <Image height={26} src={searchIcon.url} alt={searchIcon.altText} />
           </Link>
           <Link
-            to="/about-us"
+            to="/account"
             className="header__User-icon"
             style={{
               paddingRight: '30px',
@@ -98,17 +108,20 @@ const Navbar = ({
           >
             <Image height={26} src={userIcon.url} alt={userIcon.altText} />
           </Link>
-          <Button
-            iconOnly
-            style={{
-              paddingRight: '35px',
-            }}
-          >
-            <NavbarcartIcon
-              linkCartPageIcon={location.pathname === '/cart' && true}
-              cartIcon={cartIcon}
-            />
-          </Button>
+          {userLoginInfo && userLoginInfo.email && (
+            <Button
+              iconOnly
+              style={{
+                paddingRight: '35px',
+              }}
+            >
+              <NavbarcartIcon
+                linkCartPageIcon={location.pathname === '/cart' && true}
+                cartIcon={cartIcon}
+              />
+            </Button>
+          )}
+
           {/* <Link to="/about-us" className="header__search-icon">
             <Image height={26} src="/static/images/english.png" alt="..." />
           </Link> */}
@@ -145,6 +158,7 @@ Navbar.propTypes = {
   searchIcon: PropTypes.string,
   userIcon: PropTypes.string,
   cartIcon: PropTypes.string,
+  mobileLogo: PropTypes.object,
   mobileMenu: PropTypes.object,
   mobileMenuOpen: PropTypes.object,
   mobileMenuClose: PropTypes.object,

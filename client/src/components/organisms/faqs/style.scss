@@ -19,7 +19,7 @@
 .accordion-heading {
   position: absolute;
   top: 240px;
-  left: 235px;
+  left: 996px;
   width: 983px;
   height: 53px;
   color: #eceae9;
@@ -35,6 +35,10 @@
 
 .desktop-heading {
   display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .mobile-heading {
@@ -49,7 +53,7 @@
   line-height: 22.4px;
 }
 
-.table-wrapper {
+.table-wrapper-faqs {
   max-width: 100%;
   margin: 0 auto;
   padding-top: 36px;
@@ -62,6 +66,11 @@
 
   .title {
     color: #f1a900;
+  }
+
+  @media (max-width: 768px) {
+    min-width: 800px;
+    overflow-x: auto;
   }
 }
 
@@ -85,5 +94,16 @@
 
   .mobile-heading {
     display: block;
+  }
+}
+
+.price-list-pdf {
+  display: flex;
+  color: red;
+  font-family: $OpenSans;
+
+  > a:link {
+    padding: 10px;
+    text-decoration: none;
   }
 }

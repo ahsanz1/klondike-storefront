@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-
+// import Category from 'components/organisms/category'
 import Accordion from 'components/molecules/accordion'
 import Heading from 'components/atoms/heading'
 // import { tableAccoData } from './data'
 import './style.scss'
+// import Button from 'components/atoms/button'
 
 const Faqs = ({
   product,
@@ -20,6 +21,7 @@ const Faqs = ({
   short = false,
 }) => {
   const [faqs, setFaqs] = useState([...faqsData])
+
   // const { tableData } = faqsData
 
   useEffect(() => {
@@ -41,9 +43,9 @@ const Faqs = ({
         <Heading className="accordion-heading desktop-heading">
           {desktopHeading}
         </Heading>
-        <Heading className="accordion-heading mobile-heading">
+        {/* <Heading className="accordion-heading mobile-heading">
           {mobileHeading}
-        </Heading>
+        </Heading> */}
       </div>
       <div color="#fff" className="accordion-container">
         <p
@@ -66,6 +68,23 @@ const Faqs = ({
               faqId={index}
             />
           ))}
+        <div className="price-list-pdf">
+          <a
+            href="https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Price List as .pdf
+          </a>
+
+          <a
+            href="https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Price List as .pdf
+          </a>
+        </div>
       </div>
     </>
   )

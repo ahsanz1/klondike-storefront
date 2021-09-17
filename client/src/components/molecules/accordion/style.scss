@@ -18,12 +18,15 @@
 }
 
 .accordion-content {
-  height: initial;
+  // height: initial;
   margin-bottom: 0;
-  overflow: visible;
   transition: all 0.3s;
   font-size: 16px;
   line-height: 23px;
+
+  @media (max-width: 768px) {
+    overflow: auto;
+  }
 
   p {
     color: #fff;

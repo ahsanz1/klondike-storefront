@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 
 const OurProduct = props => {
   const [itemHover, setItemHover] = useState('')
   const [imgHover, setImgHover] = useState('')
-  console.log('check porpss:', props.ourProduct)
+  const [sectionWidth, setSectionWidth] = useState(false)
+
+  useEffect(() => {
+    props.ourProduct.some(
+      item => item.image && item.image.url && setSectionWidth(true),
+    )
+  })
   return (
-    <div className="show-products">
+    <div className={!sectionWidth ? 'show-products-image' : 'show-products'}>
       <div className="product-list">
         <ul>
           {props.ourProduct &&
@@ -39,11 +45,13 @@ const OurProduct = props => {
                     className="img"
                     key={i}
                     // eslint-disable-next-line react/jsx-no-duplicate-props
-                    className={i === itemHover && 'activeImg'}
+
                     onMouseEnter={() => setImgHover(i)}
                     onMouseLeave={() => setImgHover('')}
                   >
-                    <img src={item.image.url} alt="pic" />
+                    <div className={i === itemHover ? 'activeImg' : 'img-div'}>
+                      <img src={item.image.url} alt="pic" />
+                    </div>
                   </li>
                 )}
               </>

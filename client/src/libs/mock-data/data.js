@@ -17,7 +17,8 @@ import {
   faqsData,
   whyEatIQBAR,
   whatSectionData,
-  myAccount,
+  // myAccount,
+  accountTabsData,
   accountAddress,
   locationsData,
   findUsBanner,
@@ -75,6 +76,8 @@ import {
   Packagerorder,
   bulkorder,
   PlpBottom,
+  PcpBottom,
+  searchFlow,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -167,6 +170,10 @@ const mockData = {
       id: 'ProductItemList',
       params: ProductItem,
     },
+    {
+      id: 'PCPBottom',
+      params: PcpBottom,
+    },
   ],
   '/terms-condition': [
     {
@@ -180,6 +187,13 @@ const mockData = {
       params: PlpBottom,
     },
   ],
+  '/SearchFlow': [
+    {
+      id: 'SearchFlow',
+      params: searchFlow,
+    },
+  ],
+
   '/cart': [
     {
       id: 'CartPage',
@@ -189,7 +203,8 @@ const mockData = {
   '/account': [
     {
       id: 'MyAccount',
-      params: { myAccount },
+      // params: { myAccount },
+      params: { accountTabsData },
     },
   ],
   '/account/address': [
@@ -469,6 +484,12 @@ const mockData = {
   '/subscription/address': [
     {
       id: 'SubscriptionAddresses',
+      params: {},
+    },
+  ],
+  '/oats': [
+    {
+      id: 'Oats',
       params: {},
     },
   ],

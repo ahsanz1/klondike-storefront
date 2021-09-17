@@ -20,7 +20,7 @@ const Dropdown = ({
   return (
     <Select
       value={value}
-      defaultValue={items && items[0].label}
+      defaultValue={items && items[0] && items[0].label}
       style={style}
       className={`c-dropdown ${className}`}
       onChange={value => {

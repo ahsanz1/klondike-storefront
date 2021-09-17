@@ -99,16 +99,16 @@ export const faqsData = {
       question: 'Nano',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
-      table: false,
+      table: true,
     },
     {
       question: 'Heavy duty engine oils',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
-      table: false,
+      table: true,
     },
     {
-      question: 'automotive engine oils',
+      question: 'Auto Engine Oils',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
       table: true,
@@ -117,41 +117,49 @@ export const faqsData = {
       question: 'gear lubricants',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
     },
     {
-      question: 'transmission fluids',
+      question: 'Transmission Fluids',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
     },
     {
       question: 'hydraulic fluids',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
     },
     {
       question: 'industrial oils',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
     },
     {
-      question: 'greases',
+      question: 'Greases',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
     },
     {
       question: 'biodegradable lubricants',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
     },
     {
       question: 'food grade lubricants',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
     },
     {
       question: 'chemicals',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
     },
   ],
 }
@@ -1241,29 +1249,144 @@ export const whatSectionData = {
   answer:
     'IQBARs are protein bars formulated with clean-label ingredients rich in compounds shown to benefit the brain and body. Each bar contains 6 brain nutrients, 12g plant protein, 3g net carbs, and 1-1g sugar. IQBARs are keto, paleo friendly, vegan, kosher, and free from GMOs, gluten, dairy, soy, and sugar alcohols.',
 }
-export const myAccount = {
-  title: 'MY ACCOUNT',
-  subTitle: 'ORDER HISTORY',
-  ordersPlaced: "You haven't placed any orders yet",
-  accDetails: 'ACCOUNT DETAILS',
-  viewStore: 'VIEW STORE',
-  viewAddress: {
-    text: 'View Addresses',
-    to: 'account/address',
-  },
-  shopNowButton: {
-    link: '/collections/all-bars',
-    text: 'SHOP NOW',
-  },
-  orderHistory: {
-    orderId: '42335',
-    date: 'January 18, 2021',
-    paymentStatus: 'Paid',
-    fulfilmentStatus: 'unfulfilled',
-    totalCost: '60.72',
-  },
-}
+// export const myAccount = {
+//   title: 'MY ACCOUNT',
+//   subTitle: 'ORDER HISTORY',
+//   ordersPlaced: "You haven't placed any orders yet",
+//   accDetails: 'ACCOUNT DETAILS',
+//   viewStore: 'VIEW STORE',
+//   viewAddress: {
+//     text: 'View Addresses',
+//     to: 'account/address',
+//   },
+//   shopNowButton: {
+//     link: '/collections/all-bars',
+//     text: 'SHOP NOW',
+//   },
+//   orderHistory: {
+//     orderId: '42335',
+//     date: 'January 18, 2021',
+//     paymentStatus: 'Paid',
+//     fulfilmentStatus: 'unfulfilled',
+//     totalCost: '60.72',
+//   },
+// }
+export const accountTabsData = [
+  {
+    tabTitle: 'Profile',
 
+    data: {
+      session: 'Current Session',
+
+      zip: 'A1234-Joe',
+
+      email: 'jhon@example.com',
+
+      heading: 'Shipping Address',
+
+      dropHeading: 'Drop Ship Address',
+
+      shipAddress: {
+        heading: 'Shipping Address',
+
+        name: 'Lorem Ipesum',
+
+        building: '123',
+
+        street: 'Neque, odio purus, Id duis',
+
+        code: '123456789',
+      },
+
+      dropShip: {
+        heading: 'Drop Shipping Address',
+
+        name: 'Lorem Ipesum',
+
+        building: '123',
+
+        street: 'Neque, odio purus, Id duis',
+
+        code: '123456789',
+      },
+    },
+  },
+  {
+    tabTitle: 'All Orders',
+    data: {
+      cart: 'ADD TO CART',
+
+      review: 'WRITE A REVIEW',
+
+      reorder: 'REORDER',
+
+      orderArray: [
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+
+          orderNumber: 'Order Number',
+
+          cart: 'ADD TO CART',
+
+          review: 'WRITE A REVIEW',
+
+          order: {
+            price: '$8.00',
+
+            text: 'REORDER',
+          },
+
+          status: {
+            date: 'DEC 13,2021',
+
+            price: '$160.00',
+
+            status: {
+              text: 'STATUS',
+
+              value: 'SHIPPED',
+            },
+          },
+        },
+
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+
+          orderNumber: 'Order Number',
+
+          cart: 'ADD TO CART',
+
+          review: 'WRITE A REVIEW',
+
+          order: {
+            price: '$8.00',
+
+            text: 'REORDER',
+          },
+
+          status: {
+            date: 'DEC 13,2021',
+
+            price: '$160.00',
+
+            status: {
+              text: 'STATUS',
+
+              value: 'SHIPPED',
+            },
+          },
+        },
+      ],
+    },
+  },
+  {
+    tabTitle: 'Credit Limit',
+    data: {
+      limit: 'CREDIT LIMIT',
+      price: '$44533',
+    },
+  },
+]
 export const shippingAddress = {
   form: {
     formInputs: [
@@ -1705,13 +1828,13 @@ export const locationsData = {
 
 export const authLoginFormData = {
   formId: 1,
-  formBgColor: '#ffffff',
+  formBgColor: 'green',
   links: [
     { text: 'CREATE ACCOUNT', to: '/account/register' },
     { text: 'FORGOT YOUR PASSWORD', to: '/account/forgetpassword' },
   ],
 
-  formTitle: 'LOGIN',
+  formTitle: 'Log In Here,',
   mobileFormTitle: 'LOGIN',
   buttonLabel: 'SIGN IN',
   formInputs: [
@@ -3277,6 +3400,19 @@ export const PProductsData = [
     },
   },
 ]
+export const PcpBottom = [
+  {
+    image:
+      'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+    button: 'DOWNLOAD PDS & MSDS',
+    mobileButton: 'DOWNLOAD PDS & MSDS',
+  },
+  {
+    image: '/static/images/productfooter.png',
+    button: 'BECOME A DEALER',
+    mobileButton: 'BECOME A DEALER',
+  },
+]
 
 export const PSusbcribeNewItem = {
   id: 'fake-item-id',
@@ -3318,7 +3454,10 @@ export const PlpBottom = {
     },
   ],
 }
-
+export const searchFlow = {
+  backgroundImage: '/static/images/search.png',
+  clearIcon: '/static/images/Union.png',
+}
 export const PurchaseHistory = {
   label: 'PURCHASE HISTORY',
   orders: [

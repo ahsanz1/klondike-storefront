@@ -8,18 +8,22 @@
   text-align: right;
 }
 
+.hover-details {
+  display: none;
+}
+
 .table-content {
   position: relative;
   align-items: center;
   padding-top: 10px;
 
+  .hover-details {
+    display: block;
+  }
+
   &:hover {
     // border: 1px solid #9c9175;
     background-color: #005472;
-
-    .hover-details {
-      display: block;
-    }
   }
 
   &:nth-child(odd) {
@@ -58,7 +62,7 @@ p {
 .table-button {
   position: absolute;
   top: -1%;
-  right: -13%;
+  right: -12%;
 }
 
 .hover-button {
@@ -83,10 +87,6 @@ p {
   height: 191.57px;
 }
 
-// .hover-details {
-//   display: none;
-// }
-
 // .table-content {
 //   &:hover {
 //     // border: 1px solid #9c9175;
@@ -94,6 +94,7 @@ p {
 
 //     .hover-details {
 //       display: block;
+
 //     }
 //   }
 // }

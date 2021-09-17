@@ -10,9 +10,15 @@ const PLPBottom = ({ image, button, mobileButton }) => {
     <div className="bottom-plp">
       <div className="plp-bottom">
         <div>
-          <Image src={image} alt="OilBottle" className="plp-bottom-img" />
+          <Image
+            src={image.url}
+            alt={image.altText}
+            className="plp-bottom-img"
+          />
         </div>
-        <Button className="dealer-botton">{button}</Button>
+        <div>
+          <Button className="dealer-botton">{button}</Button>
+        </div>
       </div>
       <div>
         <Button className="mob-button">{mobileButton}</Button>
