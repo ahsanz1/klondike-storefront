@@ -72,6 +72,14 @@ const MyAccount = ({
       navigate('/account/login')
     }
   }, [user])
+  const logoutWord = logoutBtnText.split(' ')
+  const logoutCapital = []
+  logoutWord.forEach(element => {
+    logoutCapital.push(element.charAt(0).toUpperCase() + element.substring(1))
+  })
+  const log = logoutCapital.join(' ')
+
+  console.log('check join:', log)
 
   console.log('orders: ', allOrders)
   console.log('accountTabs: yesss   ', accountTabs)
@@ -116,7 +124,7 @@ const MyAccount = ({
             <PageHeader
               title={title}
               userName={userName}
-              logoutBtnText={logoutBtnText}
+              logoutBtnText={log}
               onClick={handleLogout}
             />
             <TabsDropdown activeKey={tabKey} onTabClick={key => setTabKey(key)}>
