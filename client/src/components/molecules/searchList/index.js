@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Label from 'components/atoms/label'
 
 const SearchList = ({ image, category, title }) => {
   return (
@@ -7,8 +8,10 @@ const SearchList = ({ image, category, title }) => {
       <div className="search-img">
         <img src={image.url} alt="" />
       </div>
-      <div className="search-category">{category}</div>
-      <div className="search-title">{title}</div>
+      <div>
+        <Label className="search-category">{category}</Label>
+        <Label className="search-title">{title}</Label>
+      </div>
     </div>
   )
 }
