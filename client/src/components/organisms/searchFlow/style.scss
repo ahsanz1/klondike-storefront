@@ -185,21 +185,24 @@
           }
 
           .search-img {
+            margin: 0 0.7vw;
+            margin-bottom: 16px !important;
+
             @media (max-width: 500px) {
               width: 155px;
               height: 194px;
             }
 
             img {
-              width: 100%;
-              height: 250px;
+              width: 13.8vw;
+              height: 15.8vw;
               background: $white-color;
               object-fit: contain;
 
               @media (max-width: 500px) {
-                object-fit: contain;
                 width: 155px;
                 height: 194px;
+                object-fit: contain;
               }
             }
           }
