@@ -442,6 +442,14 @@
         font-size: 14px;
         font-weight: bold;
       }
+
+      option {
+        input {
+          @media screen and (max-width: 500px) {
+            display: none !important;
+          }
+        }
+      }
     }
   }
 
