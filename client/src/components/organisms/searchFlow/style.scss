@@ -77,6 +77,10 @@
         width: 292px;
         height: 52px;
       }
+
+      @media (max-width: 320px) {
+        width: 235px;
+      }
     }
   }
 
