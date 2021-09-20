@@ -267,6 +267,10 @@
       font-size: 11px;
       text-align: right;
     }
+
+    @media (max-width: 320px) {
+      width: 135px;
+    }
   }
 
   @media (max-width: 768px) {
