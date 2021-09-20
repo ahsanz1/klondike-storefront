@@ -608,45 +608,57 @@ export const contactaddress = {
   Addresdata: [
     {
       heading: 'British Columbia – Serving BC',
-      AddressList: [
-        {
-          label: 'Head Office ',
-        },
-        {
-          street: '3078 275th Street',
-        },
-        {
-          postal: 'Langley, BC  V4W 3L4',
-        },
-      ],
+
+      label: 'Head Office ',
+
+      street: '3078 275th Street',
+
+      postal: 'Langley, BC  V4W 3L4',
     },
     {
       heading: 'Alberta – Serving Northern BC, AB, SK, YT and NT',
-      AddressList: [
-        {
-          label: 'Oils & Lubricants Warehouse',
-        },
-        {
-          street: '101-1005 Derwent Way',
-        },
-        {
-          postal: 'Annacis Island, BC  V3M 5R4',
-        },
-      ],
+
+      label: 'Oils & Lubricants Warehouse',
+
+      street: '101-1005 Derwent Way',
+
+      postal: 'Annacis Island, BC  V3M 5R4',
     },
     {
       heading: 'Manitoba – Serving MB, Northwestern ON and NU',
-      AddressList: [
-        {
-          label: 'Oils & Lubricants Warehouse',
-        },
-        {
-          street: '1510 Wall Street NW',
-        },
-        {
-          postal: 'Winnipeg, MB  R3G 2T3',
-        },
-      ],
+
+      label: 'Oils & Lubricants Warehouse',
+
+      street: '1510 Wall Street NW',
+
+      postal: 'Winnipeg, MB  R3G 2T3',
+    },
+    {
+      heading: 'Ontario – Serving ON and QC',
+
+      label: 'Oils & Lubricants Warehouse',
+
+      street: '1615 Clark Blvd',
+
+      postal: 'Brampton, ON  L6T 4W1',
+    },
+    {
+      heading: 'Quebec – Serving Eastern Canada',
+
+      label: 'Office',
+
+      street: '390 Notre-Dame Street West',
+
+      postal: 'Montreal, QC  H2Y 1T9',
+    },
+    {
+      heading: 'New Brunswick – Serving the Atlantic Provinces',
+
+      label: 'Oils & Lubricants Warehouse',
+
+      street: '350 English Dr',
+
+      postal: 'Moncton, NB  E1E 3Y9',
     },
   ],
 }
@@ -1627,13 +1639,13 @@ export const accountAddress = {
 
 export const mapLocationData = {
   apiKey: 'AIzaSyAtjWF9aNg_twldLxczJc___MluwCaRFkA',
-  positionLat: '37.772',
-  positionLng: '-122.214',
+  positionLat: '49.058289',
+  positionLng: '-122.462019',
   title: `WHERE WE'RE AT`,
   description: `<p class="big-margin-b">
-  123 Example Ave, <br/><br/>
-New york City, NY 10000 <br/><br/>
-123.456.7890
+  Head Office, <br/><br/>
+ 3078 275th Street<br/><br/>
+Langley, BC V4W 3L4
 </p>`,
 }
 
@@ -3861,13 +3873,11 @@ export const techResources = [
 ]
 export const contactUsBanner = {
   desktopImage: {
-    url:
-      'https://cdn.shopify.com/s/files/1/1682/9837/files/hero_images_artboardCONTACT_a7bbfb38-067c-4ed5-8298-962a160c8354_1600x.jpg?v=1594396470',
+    url: 'static/images/pcpbanner.png',
     altText: 'Desktop hero image',
   },
   mobileImage: {
-    url:
-      'https://cdn.shopify.com/s/files/1/1682/9837/files/hero_images_artboardcontact_us_mobile_4284eafc-d172-43d4-9635-8a4925454e98_700x.jpg?v=1594396483',
+    url: 'static/images/pcpmobilebanner.png',
     altText: 'Mobile hero image',
   },
 }
