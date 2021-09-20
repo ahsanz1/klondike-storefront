@@ -43,6 +43,11 @@
       background: #013a4e;
     }
 
+    @media (max-width: 375px) {
+      display: flex;
+      justify-content: space-between;
+    }
+
     input {
       width: 83.3vw;
       height: 4.4vw;
@@ -74,7 +79,9 @@
       }
 
       @media (max-width: 375px) {
-        width: 235px;
+        display: flex;
+        justify-content: space-between;
+        width: 290px;
         height: 52px;
       }
     }
