@@ -158,6 +158,14 @@ Components[
 
 Components['Oats'] = require('components/organisms/OATS/index').default
 Components['PlpTabList'] = require('components/organisms/plp-tab-list').default
+Components[
+  'ProductOrderList'
+] = require('components/organisms/productorderlist').default
+
 Components['PCPBottom'] = require('components/organisms/pcpBottom').default
+Components[
+  'Checkoutsection'
+] = require('components/organisms/checkout-section').default
+
 Components['QuickOrder'] = require('components/organisms/quick-order').default
 export default Components
