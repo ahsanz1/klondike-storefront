@@ -114,6 +114,6 @@ export default {
   PCPOverview: params => <PCPOverview {...params} />,
   ProductItemList: params => <ProductItemList {...params} />,
   ProductOrderList: params => <ProductOrderList {...params} />,
-  QuickOrder: params => <QuickOrder {...params} />,
   Checkoutsection: params => <Checkoutsection {...params} />,
+  QuickOrder: params => <QuickOrder {...params} />,
 }

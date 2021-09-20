@@ -103,6 +103,7 @@ const DesktopCartPageItem = props => {
           //   disabled={removing && true}
         >
           {/* {removing ? 'Removing' : 'Remove'} */}
+          Remove
         </Button>
       </div>
     </div>

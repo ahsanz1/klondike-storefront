@@ -517,7 +517,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/quickOrder': [
+  '/quickorder': [
     {
       id: 'QuickOrder',
       params: {},

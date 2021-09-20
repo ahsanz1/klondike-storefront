@@ -37,9 +37,7 @@ const SearchFlow = props => {
         </div>
         <Label className="suggestion-heading">Suggestion</Label>
         {itemList.length === 0 ? (
-          <Label style={{ color: '#fff', marginLeft: '30px' }}>
-            No Suggestion Found!
-          </Label>
+          <Label className="empty-suggestion">No Suggestion Found!</Label>
         ) : (
           ''
         )}
@@ -60,6 +58,7 @@ const SearchFlow = props => {
                           : item['Image 1 URL'],
                       }}
                       title={item.title}
+                      category={item.Category}
                     />
                   </li>
                 ))}

@@ -1,3 +1,5 @@
+@import '~styles/globals';
+
 .categoryItem {
   width: 20%;
 
@@ -16,14 +18,16 @@
   .c-label {
     margin-bottom: 15px;
     padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.53);
     background: rgba(5, 5, 5, 0.39);
     color: rgba(236, 234, 233, 0.69);
-    font-size: 10px;
+    font-family: $OpenSans;
+    font-size: 0.67vw;
+    font-weight: bold;
     cursor: pointer;
 
     @media (max-width: 768px) {
       border: none !important;
+      font-size: 10px;
     }
 
     &:hover {

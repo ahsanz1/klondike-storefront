@@ -41,7 +41,7 @@ const PromoRail = ({
       window.removeEventListener('scroll', handleScroll)
     }
   })
-  const selectItem = [{ label: 'Eng' }, { label: 'French' }]
+  const selectItem = [{ label: 'Eng' }, { label: 'Fr' }]
 
   return (
     <div className={`promo-rail ${showPromo}`}>

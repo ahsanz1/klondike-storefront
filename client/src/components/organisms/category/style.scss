@@ -1,21 +1,35 @@
+@import '~styles/globals';
+
 .product-contanier {
   max-width: 1800px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 2.1vw;
+
+  @media screen and (max-width: 500px) {
+    padding: 10px 0 !important;
+  }
 
   .product {
     margin: 10px;
     margin-top: 0;
 
+    @media screen and (max-width: 500px) {
+      margin: 0;
+    }
+
     .product-img {
-      border: 2px solid #ddaf34;
       background: #fff;
       box-shadow: inset 8px 8px 10px rgba(0, 0, 0, 0.3);
+
+      @media screen and (max-width: 500px) {
+        border: 2px solid #ddaf34;
+      }
     }
 
     a {
-      color: #ddaf34;
-      font-size: 20px;
+      color: #f2a900;
+      font-family: $OpenSans;
+      font-size: 1.38vw;
       font-weight: 600;
 
       &:hover {

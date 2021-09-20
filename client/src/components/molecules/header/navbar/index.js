@@ -81,7 +81,16 @@ const Navbar = ({
             userLoginInfo && userLoginInfo.email ? 'quick-order' : 'Buy-Button'
           }
         >
-          {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
+          <Link
+            className={
+              userLoginInfo && userLoginInfo.email
+                ? 'quick-order'
+                : 'Buy-Button'
+            }
+            to="/quickorder"
+          >
+            {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
+          </Link>
         </Button>
 
         <div
