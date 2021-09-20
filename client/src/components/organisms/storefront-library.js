@@ -164,7 +164,7 @@ Components[
 
 Components['PCPBottom'] = require('components/organisms/pcpBottom').default
 Components[
-  'QuickOrder'
-] = require('components/organisms/quick-order/index').default
+  'Checkoutsection'
+] = require('components/organisms/checkout-section').default
 
 export default Components

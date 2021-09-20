@@ -523,6 +523,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/Checkoutsection': [
+    {
+      id: 'Checkoutsection',
+      params: {},
+    },
+  ],
 }
 
 export default mockData
