@@ -5,6 +5,10 @@
   .screen {
     position: unset !important;
 
+    @media (max-width: 768px) {
+      position: relative !important;
+    }
+
     @media (max-width: 500px) {
       position: relative !important;
     }
@@ -88,9 +92,10 @@
         display: flex !important;
         justify-content: space-between !important;
 
-        @media (max-width: 500px) {
+        @media (max-width: 768px) {
           display: block !important;
           justify-content: unset !important;
+          padding: 0 !important;
         }
       }
 
