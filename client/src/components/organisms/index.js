@@ -50,8 +50,10 @@ import Oats from 'components/organisms/OATS/index'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import PCPOverview from 'components/organisms/PCPOverview'
 import ProductItemList from 'components/organisms/ProductItemList'
+import ProductOrderList from 'components/organisms/productorderlist'
 import QuickOrder from 'components/organisms/quick-order'
 import ContactUs from 'components/organisms/contact-us-page'
+import Checkoutsection from 'components/organisms/checkout-section'
 
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
@@ -112,6 +114,8 @@ export default {
   PlpTabList: params => <PlpTabList {...params} />,
   PCPOverview: params => <PCPOverview {...params} />,
   ProductItemList: params => <ProductItemList {...params} />,
+  ProductOrderList: params => <ProductOrderList {...params} />,
+  Checkoutsection: params => <Checkoutsection {...params} />,
   QuickOrder: params => <QuickOrder {...params} />,
   ContactUs: params => <ContactUs {...params} />,
 }
