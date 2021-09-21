@@ -52,6 +52,7 @@ import PCPOverview from 'components/organisms/PCPOverview'
 import ProductItemList from 'components/organisms/ProductItemList'
 import ProductOrderList from 'components/organisms/productorderlist'
 import QuickOrder from 'components/organisms/quick-order'
+import ContactUs from 'components/organisms/contact-us-page'
 import Checkoutsection from 'components/organisms/checkout-section'
 
 export default {
@@ -116,4 +117,5 @@ export default {
   ProductOrderList: params => <ProductOrderList {...params} />,
   Checkoutsection: params => <Checkoutsection {...params} />,
   QuickOrder: params => <QuickOrder {...params} />,
+  ContactUs: params => <ContactUs {...params} />,
 }

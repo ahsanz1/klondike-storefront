@@ -168,4 +168,7 @@ Components[
 ] = require('components/organisms/checkout-section').default
 
 Components['QuickOrder'] = require('components/organisms/quick-order').default
+Components[
+  'ContactUs'
+] = require('components/organisms/contact-us-page').default
 export default Components
