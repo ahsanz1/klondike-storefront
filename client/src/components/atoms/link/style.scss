@@ -25,7 +25,7 @@
     }
 
     .show-products {
-      // display: none;
+      display: none;
       position: absolute;
       z-index: 999;
       top: 80px;
@@ -50,6 +50,7 @@
 
       @media (max-width: 500px) {
         padding: 0;
+        background: #013a4e;
       }
     }
 
@@ -64,6 +65,11 @@
       @media (max-width: 768px) {
         position: relative;
         top: 0;
+      }
+
+      @media (max-width: 500px) {
+        width: 100%;
+        background: none;
       }
     }
     // &:nth-child(4) {
