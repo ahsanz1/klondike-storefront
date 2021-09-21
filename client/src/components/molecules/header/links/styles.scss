@@ -66,4 +66,15 @@
       padding: 10px;
     }
   }
+
+  .toggleClass {
+    left: 0;
+    transform: rotate(180deg) !important;
+  }
+
+  .toggleSomething {
+    .h-links {
+      margin-left: 30px;
+    }
+  }
 }
