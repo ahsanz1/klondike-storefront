@@ -239,6 +239,11 @@
 }
 
 .show-products-image {
+  @media (max-width: 500px) {
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+
   ul {
     margin: 0;
     padding: 10px;
@@ -247,9 +252,10 @@
 
   .product-list {
     li {
+      margin-bottom: 17px;
       color: $white-color;
       font-family: $OpenSans;
-      font-size: 12px;
+      font-size: 16px;
       cursor: pointer;
 
       &:hover {
