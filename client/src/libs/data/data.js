@@ -1759,14 +1759,38 @@ export const accountAddress = {
 
 export const mapLocationData = {
   apiKey: 'AIzaSyAtjWF9aNg_twldLxczJc___MluwCaRFkA',
-  positionLat: '49.058289',
-  positionLng: '-122.462019',
-  title: `WHERE WE'RE AT`,
-  description: `<p class="big-margin-b">
+  locations: [
+    {
+      positionLat: '49.058289',
+      positionLng: '-122.462019',
+      title: `WHERE WE'RE AT`,
+      description: `<p class="big-margin-b">
   Head Office, <br/><br/>
  3078 275th Street<br/><br/>
 Langley, BC V4W 3L4
 </p>`,
+    },
+    {
+      positionLat: '49.172050',
+      positionLng: '-122.940670',
+    },
+    {
+      positionLat: '49.905300',
+      positionLng: '-97.181830',
+    },
+    {
+      positionLat: '43.733730',
+      positionLng: '-79.687400',
+    },
+    {
+      positionLat: '45.501750',
+      positionLng: '-73.558850',
+    },
+    {
+      positionLat: '46.088340',
+      positionLng: '-64.847780',
+    },
+  ],
 }
 
 export const locationsData = {
