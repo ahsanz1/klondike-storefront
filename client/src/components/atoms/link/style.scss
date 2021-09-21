@@ -5,6 +5,10 @@
   .screen {
     position: unset !important;
 
+    @media (max-width: 768px) {
+      position: relative !important;
+    }
+
     @media (max-width: 500px) {
       position: relative !important;
     }
@@ -21,7 +25,7 @@
     }
 
     .show-products {
-      display: none;
+      // display: none;
       position: absolute;
       z-index: 999;
       top: 80px;
@@ -34,6 +38,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        padding: 0;
         background: #013a4e;
 
         .img-div {
@@ -87,6 +92,11 @@
       .show-products {
         display: flex !important;
         justify-content: space-between !important;
+
+        @media (max-width: 768px) {
+          display: block !important;
+          justify-content: unset !important;
+        }
 
         @media (max-width: 500px) {
           display: block !important;
