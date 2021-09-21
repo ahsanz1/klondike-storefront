@@ -212,6 +212,10 @@
     background: #dc5e00;
     box-shadow: inset 0 0 3px 3px #fff;
 
+    @media (max-width: 1250px) {
+      width: 190px;
+    }
+
     img {
       width: 139px !important;
       height: 178px !important;
