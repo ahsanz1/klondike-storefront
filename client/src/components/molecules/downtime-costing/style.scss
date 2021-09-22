@@ -10,6 +10,11 @@
     @media screen and (max-width: 1366px) {
       max-width: 540px;
     }
+
+    @media screen and (max-width: 500px) {
+      max-width: 325px;
+      height: 157px;
+    }
   }
 
   h1 {
@@ -26,6 +31,10 @@
       margin: 0 auto;
       padding-top: 15px;
       font-size: 22px;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-weight: bold;
     }
   }
 
@@ -48,10 +57,17 @@
     @media screen and (max-width: 768px) {
       margin: 15px 0;
     }
+
+    @media screen and (max-width: 500px) {
+      width: 317px;
+      height: 40px;
+    }
   }
 
   p {
     color: white;
+    font-size: 12px;
+    font-weight: normal;
   }
 
   .last-item {
