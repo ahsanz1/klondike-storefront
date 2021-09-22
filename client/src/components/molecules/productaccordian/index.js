@@ -5,6 +5,7 @@ import { Row, Col } from 'antd'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
 import { fetchCategory } from 'libs/services/algolia'
+import ProductAccordionModal from './addtocartmodel'
 // import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 // import Label from 'components/atoms/label'
 import './style.scss'
@@ -22,6 +23,15 @@ const ProductAccordion = ({ question }) => {
 
     data()
   }, [])
+
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const showModal = () => {
+    setIsModalVisible(true)
+  }
+  // const onOk = () => {
+  //   setIsModalVisible(false)
+  // }
 
   return (
     <>
@@ -85,7 +95,9 @@ const ProductAccordion = ({ question }) => {
                       />
                     </div>
                     <div className="table-button">
-                      <Button className="hover-button">ADD TO CART</Button>
+                      <Button onClick={showModal} className="hover-button">
+                        ADD TO CART
+                      </Button>
                     </div>
                   </div>
                 </Row>
@@ -93,6 +105,13 @@ const ProductAccordion = ({ question }) => {
             )
           })}
       </div>
+
+      {isModalVisible && (
+        <ProductAccordionModal
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
+      )}
     </>
   )
 }

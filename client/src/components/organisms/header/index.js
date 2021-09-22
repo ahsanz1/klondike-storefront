@@ -52,7 +52,13 @@ const Header = ({
   }
   console.log('mobile logo:', mobileLogo)
   return (
-    <div className="main-header">
+    <div
+      className={
+        location.pathname === '/Checkoutsection'
+          ? 'hide-mainheader'
+          : 'main-header'
+      }
+    >
       <div className="main-header__wrapper--fix">
         <PromoRail {...promoData} lubricantLink={lubricantLink} />
         <Navbar

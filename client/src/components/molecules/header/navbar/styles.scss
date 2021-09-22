@@ -1,6 +1,10 @@
 /* stylelint-disable */
 @import '~styles/globals';
 
+.hide-header {
+  display: none;
+}
+
 .header {
   position: absolute;
   width: 100%;
