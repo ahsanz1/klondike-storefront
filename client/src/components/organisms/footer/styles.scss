@@ -1,5 +1,13 @@
 @import '~styles/globals';
 
+.hide-footer {
+  display: none;
+}
+
+.hide-bottom-bar {
+  display: none;
+}
+
 .footer {
   padding: 0 0 55px 0;
   background-color: #0d394b;
