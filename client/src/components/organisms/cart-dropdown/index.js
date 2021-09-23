@@ -3,7 +3,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from 'libs/context'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
-import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
 import Link from 'components/atoms/link'
@@ -40,10 +39,9 @@ const CartDropdown = () => {
     },
   ]
 
-  const [size] = useWindowSize()
   return (
-    isModalVisible &&
-    size > 768 && (
+    isModalVisible && (
+      // size > 768 &&
       <>
         <div
           className="cart-overlay"
@@ -61,7 +59,7 @@ const CartDropdown = () => {
                 </div>
                 <div className="cart-dropdown-header-item-no">
                   {/* <p> */}
-                  items {cartItems.length}
+                  {cartItems.length} Items
                   {/* </p> */}
                 </div>
               </div>
