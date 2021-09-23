@@ -1,9 +1,11 @@
 @import '~styles/globals';
 
 .promo-rail {
+  display: flex;
   position: relative;
-  z-index: 9;
-  padding: 0 90px;
+  z-index: 999;
+  height: 3.6vw;
+  padding: 0 6.25vw;
   overflow: hidden;
   background-color: #fff;
   color: $white-color;
@@ -13,15 +15,13 @@
   line-height: 15px;
   text-align: center;
 
-  @media (max-width: 1900px) {
-    font-size: 15px;
-  }
-
   @media (max-width: 768px) {
-    padding: 0 20px;
+    padding: 0 50px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 375px) {
+    display: flex !important;
+    height: 60px;
     padding: 0 5px;
   }
 
@@ -67,39 +67,60 @@
     // padding: 9.5px 0;
     .ant-select {
       width: auto !important;
-      border: 1px solid rgba(0, 0, 0, 0.6) !important;
-      border-radius: 3px !important;
+      border: 0.06vw solid rgba(0, 0, 0, 0.6) !important;
+      border-radius: 0.2vw !important;
+
+      @media screen and(max-width: 375px) {
+        border: 1px solid rgba(0, 0, 0, 0.6) !important;
+        border-radius: 3px !important;
+      }
 
       .ant-select-arrow {
-        top: 61%;
-        right: 11px !important;
-        width: 4px;
-        height: 8px;
+        right: 0.8vw !important;
+        width: 0.2vw;
+        height: 0.5vw;
+        margin-top: -0.3vw;
         color: rgba(0, 0, 0, 0.6);
+        font-size: 0.8vw;
 
-        @media screen and(max-width: 500px) {
+        @media screen and(max-width: 375px) {
           top: 55%;
+          right: 12px !important;
+          width: 4px;
+          height: 8px;
+          margin-top: -6px;
+          font-size: 12px;
         }
       }
     }
 
     .ant-select-selector {
       align-items: center;
-      width: 45px !important;
-      height: 24px !important;
+      width: 3.1vw !important;
+      height: 1.6vw !important;
       padding: 0 !important;
       border: none !important;
+
+      @media screen and (max-width: 375px) {
+        width: 45px !important;
+        height: 24px !important;
+      }
     }
 
     .ant-select-selection-item {
-      padding: 0 5px !important;
+      padding: 0 0.3vw !important;
       color: rgba(0, 0, 0, 0.6);
       font-family: $OpenSans;
-      font-size: 10px;
+      font-size: 0.6vw;
       font-weight: bold;
       line-height: 14px;
       text-align: left;
       text-transform: uppercase;
+
+      @media screen and (max-width: 375px) {
+        padding: 3px !important;
+        font-size: 10px;
+      }
     }
   }
 
@@ -111,13 +132,13 @@
 
     .Promo-search-button {
       align-items: center;
-      margin-right: 15px;
+      margin-right: 1vw;
       border: none;
       background: transparent;
       color: #f1a900;
       font-family: nevis, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 0.97vw;
+      line-height: 1.25vw;
       text-align: center;
       text-transform: uppercase;
       text-decoration-line: underline;
@@ -127,8 +148,9 @@
       }
 
       img {
-        width: 8px;
-        height: 14px;
+        width: 0.5vw;
+        height: 0.97vw;
+        margin-left: 0.5vw;
       }
     }
 
@@ -168,10 +190,16 @@
     margin: 0;
     color: #656565;
     font-family: $OpenSans;
-    font-size: 16.5px;
+    font-size: 1.14vw;
     font-weight: bold !important;
-    letter-spacing: 0.04px;
-    line-height: 18px;
+    letter-spacing: 0.002vw;
+    line-height: 1.25vw;
+
+    @media screen and (max-width: 375px) {
+      font-size: 11px;
+      letter-spacing: 0.04px;
+      line-height: 16px;
+    }
   }
 
   &__promo-item-slide {
@@ -181,7 +209,7 @@
 
   &__promo-item-wrapper {
     display: flex;
-    padding: 15px 0;
+    // padding: 15px 0;
 
     .promo-logo {
       display: flex;
@@ -189,21 +217,23 @@
       justify-content: center;
       width: 9.7vw;
       height: 2.5vw;
-      padding: 3px 12px;
-      border-radius: 18px;
+      padding: 0.2vw 0.8vw;
+      border-radius: 1.25vw;
       background: #013a4e;
       object-fit: contain;
 
-      @media (max-width: 500px) {
+      @media (max-width: 375px) {
         width: 104px;
         height: 32px !important;
+        padding: 10px;
+        border-radius: 18px;
       }
 
       img {
         position: relative;
         bottom: 1px;
         left: 1px;
-        width: 64px;
+        width: 4.4vw;
 
         @media (max-width: 768px) {
           top: 1px;
@@ -221,10 +251,6 @@
         height: 20px;
         line-height: 0;
       }
-    }
-
-    @media (max-width: 1900px) {
-      padding: 13px 0;
     }
 
     // @media (max-width: 768px) {
