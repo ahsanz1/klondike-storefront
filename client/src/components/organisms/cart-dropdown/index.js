@@ -10,9 +10,36 @@ import Link from 'components/atoms/link'
 import './style.scss'
 
 const CartDropdown = () => {
-  const { cartItems, isModalVisible, closeModal, subTotal } = useContext(
-    AppContext,
-  )
+  const {
+    //  cartItems,
+    isModalVisible,
+    closeModal,
+    subTotal,
+  } = useContext(AppContext)
+
+  const cartItems = [
+    {
+      mainImage: 'static/images/klondike4.png',
+      itemId: 0,
+      title: '15W-40 CK-4 Advanced Formula',
+      size: 208,
+      price: 110,
+      partnum: 'KL-GL1390',
+      percase: 12,
+      quantity: 3,
+    },
+    {
+      mainImage: 'static/images/klondike2.png',
+      itemId: 1,
+      title: '85W-140 GL-5',
+      size: 946,
+      partnum: 'KL-HD0540',
+      percase: 12,
+      price: 110,
+      quantity: 2,
+    },
+  ]
+
   const [size] = useWindowSize()
   return (
     isModalVisible &&
@@ -27,15 +54,31 @@ const CartDropdown = () => {
 
         <div className="cart-dropdown">
           <div className="cart-dropdown-header">
-            <Link className="cart-dropdown-header-label" to="/cart">
-              Your Cart
-            </Link>
+            <div className="cart-name-and-no-of-items">
+              <div className="cart-name-and-no-of-items">
+                <div>
+                  <Label>CART</Label>
+                </div>
+                <div className="cart-dropdown-header-item-no">
+                  {/* <p> */}
+                  items {cartItems.length}
+                  {/* </p> */}
+                </div>
+              </div>
+            </div>
             <Image
-              src="/static/icons/close-cross.svg"
+              src="/static/icons/closecrosswhite.svg"
               alt="close-cross"
               className="cart-dropdown-header-icon"
               onClick={closeModal}
             />
+          </div>
+          <div className="free-shipping-banner">
+            <p className="free-shipping-banner-text">
+              You are <p className="free-shipping-banner-text-price">$20</p>
+              away from free shipping
+            </p>
+            <Link className="free-shipping-details">Details</Link>
           </div>
           <div className="cart-dropdown-items">
             {cartItems && cartItems.length > 0 ? (
@@ -46,26 +89,28 @@ const CartDropdown = () => {
               <Label className="no-item">No items are in your cart.</Label>
             )}
           </div>
-          {subTotal && parseFloat(subTotal) > 0 && (
-            <div className="cart-dropdown-total">
-              <span className="cart-dd-total-label">Total</span>
-              <span className="cart-dropdown-total-amount">$ {subTotal}</span>
-            </div>
-          )}
 
           {cartItems && cartItems.length > 0 ? (
-            <Link className="cart-dropdown-checkout" to="/checkout">
-              Checkout
-            </Link>
-          ) : (
-            <Link
-              className="cart-dropdown-checkout"
-              to="/collections/all-bars"
-              onClick={() => closeModal()}
-            >
-              SHOP NOW
-            </Link>
-          )}
+            <div className="cart-dropdown-checkout-container">
+              <div className="cart-dropdown-checkout-details">
+                <div className="order-subtotal-and-checkout-btn">
+                  <p className="subtotal-title">Subtotal</p>
+                  <p className="subtotal-price">${subTotal}</p>
+                </div>
+                <div className="cart-dropdown-checkout">CHECKOUT</div>
+              </div>
+            </div>
+          ) : null
+          // (
+          //   <Link
+          //     className="cart-dropdown-checkout"
+          //     to="/collections/all-bars"
+          //     onClick={() => closeModal()}
+          //   >
+          //     SHOP NOW
+          //   </Link>
+          // )
+          }
         </div>
       </>
     )

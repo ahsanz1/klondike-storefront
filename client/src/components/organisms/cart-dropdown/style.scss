@@ -75,24 +75,6 @@
     }
   }
 
-  .cart-dropdown-total {
-    display: flex;
-    align-items: stretch;
-    width: 100%;
-    margin: auto;
-    padding: get-vw(15px) get-vw(25px);
-    border-top: get-vw(2px) solid #000;
-    border-bottom: none;
-    background-color: #013a4e;
-    color: #fff;
-    font-size: get-vw(18px);
-    font-weight: bold;
-
-    .cart-dropdown-total-amount {
-      margin-left: auto;
-    }
-  }
-
   .cart-dropdown-checkout-container {
     display: flex;
     justify-content: right;
@@ -146,47 +128,47 @@
       }
     }
   }
-}
 
-.free-shipping-banner {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  height: get-vw(80px);
-  border-bottom: get-vw(1px) solid rgba(255, 255, 255, 0.2);
-  color: white;
-  font-family: $OpenSans;
-
-  .free-shipping-banner-text {
+  .free-shipping-banner {
     display: flex;
     flex-direction: row;
-    margin-bottom: 0;
-    padding-right: get-vw(25px);
-    font-size: get-vw(20px);
-    font-style: normal;
-    font-weight: bold;
-    letter-spacing: get-vw(0.04px);
-    line-height: get-vw(27px);
-    text-align: right;
-    text-transform: uppercase;
+    align-items: center;
+    justify-content: flex-end;
+    height: get-vw(80px);
+    border-bottom: get-vw(1px) solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-family: $OpenSans;
 
-    .free-shipping-banner-text-price {
-      margin: 0%;
-      padding-right: get-vw(10px);
-      padding-left: get-vw(10px);
-      color: #f1a900;
+    .free-shipping-banner-text {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0;
+      padding-right: get-vw(25px);
+      font-size: get-vw(20px);
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: get-vw(0.04px);
+      line-height: get-vw(27px);
+      text-align: right;
+      text-transform: uppercase;
+
+      .free-shipping-banner-text-price {
+        margin: 0%;
+        padding-right: get-vw(10px);
+        padding-left: get-vw(10px);
+        color: #f1a900;
+      }
     }
-  }
 
-  .free-shipping-details {
-    border: none;
-    background: #013a4e;
-    color: #c2bbb7;
-    font-size: get-vw(12px);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 185.5%;
-    text-decoration-color: #c2bbb7;
+    .free-shipping-details {
+      border: none;
+      background: #013a4e;
+      color: #c2bbb7;
+      font-size: get-vw(12px);
+      font-style: normal;
+      font-weight: 600;
+      line-height: 185.5%;
+      text-decoration-color: #c2bbb7;
+    }
   }
 }
