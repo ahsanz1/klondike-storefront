@@ -17,7 +17,7 @@ const AccordionComponent = ({
     <div>
       <Label onClick={onClick} className={`acc-c-label ${className}`}>
         <p>{text}</p>
-        <div>
+        <div className="accordion-image">
           {isActive ? (
             <Image src="/static/icons/arrow-up.png" alt="" />
           ) : (

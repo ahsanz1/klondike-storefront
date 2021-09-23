@@ -41,7 +41,11 @@ const Navbar = ({
   userLoginInfo = JSON.parse(userLoginInfo)
 
   return (
-    <div className="header">
+    <div
+      className={
+        location.pathname === '/Checkoutsection' ? 'hide-header' : 'header'
+      }
+    >
       <div className="header__nav">
         <CartDropdown />
         <div className="mobile-home-logo">
