@@ -34,7 +34,7 @@ const DesktopCartPageItem = props => {
   }
 
   return (
-    <div className="product">
+    <div className="cart-products">
       <div className="cart-item">
         <div className="product-disc-and-image">
           <Image
