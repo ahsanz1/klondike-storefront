@@ -514,6 +514,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/Technical-doucment': [
+    {
+      id: 'Technical',
+      params: {},
+    },
+  ],
 }
 
 export default mockData
