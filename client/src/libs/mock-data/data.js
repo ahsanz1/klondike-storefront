@@ -520,6 +520,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/warranty': [
+    {
+      id: 'WarrantyPage',
+      params: {},
+    },
+  ],
 }
 
 export default mockData

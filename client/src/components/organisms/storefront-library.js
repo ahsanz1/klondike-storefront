@@ -174,4 +174,7 @@ Components[
 Components[
   'ContactUs'
 ] = require('components/organisms/contact-us-page').default
+Components[
+  'WarrantyPage'
+] = require('components/organisms/warranty-page').default
 export default Components
