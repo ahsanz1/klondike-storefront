@@ -53,6 +53,14 @@ const Techtabllist = ({
     </div>
   )
 }
+Techtabllist.DefaultProps = {
+  categories: [],
+  itemName: '',
+  clickCategoryHandler: {},
+  subItem: [],
+  className: '',
+}
+
 Techtabllist.propTypes = {
   categories: PropTypes.array,
   itemName: PropTypes.string,
