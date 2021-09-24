@@ -3,17 +3,21 @@
 
 .show-products {
   width: 100%;
+  max-height: 56.7vw;
   float: left;
+  overflow-y: scroll;
   background: #fff;
 
   @media (max-width: 768px) {
+    display: block;
+    justify-content: unset;
     max-height: 200px;
     overflow: scroll;
     background: #013a4e;
   }
 
   ul {
-    padding: 10px;
+    padding: 0.6vw;
     list-style: none;
 
     @media (max-width: 768px) {
@@ -22,7 +26,7 @@
   }
 
   .product-list {
-    width: 30%;
+    width: 25%;
     float: left;
 
     @media (max-width: 768px) {
@@ -31,14 +35,34 @@
       border-bottom: 1px solid #fff;
     }
 
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+
     li {
+      margin-bottom: 2vw;
       color: #6d6d6d;
       font-family: $OpenSans;
-      font-size: 12px;
+      font-size: 1.3vw;
+      line-height: 1.8vw;
+      text-transform: capitalize;
       cursor: pointer;
+
+      @media (max-width: 375px) {
+        margin-bottom: 30px;
+        text-transform: uppercase;
+      }
 
       &:hover {
         color: #dc5e00;
+
+        img {
+          width: 9.6vw;
+          height: 12.3vw;
+          border: 0.06vw solid #000;
+          background: #dc5e00;
+          box-shadow: inset 0 0 0.2vw 0.2vw #fff;
+        }
       }
 
       @media (max-width: 768px) {
@@ -53,13 +77,23 @@
   }
 
   .product-image {
+    width: 75%;
+    float: left;
+
     @media (max-width: 768px) {
       width: 100%;
       float: left;
     }
 
+    @media (max-width: 375px) {
+      width: 100%;
+    }
+
     ul {
       @media (max-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
         width: 100%;
         padding: 0;
       }
@@ -72,30 +106,59 @@
 
     li {
       display: inline;
+      width: 15.3vw;
+      height: 15.3vw;
       background: none;
-      // padding: 0 20px;
       cursor: pointer;
 
       @media (max-width: 768px) {
         display: initial;
+        width: 221px;
+      }
+
+      @media (max-width: 375px) {
+        width: 337px;
+        height: 247px;
+        margin-bottom: 31px;
       }
 
       img {
-        // width: 100px;
+        width: 9.6vw;
+        height: 12.2vw;
 
         @media (max-width: 768px) {
           width: 100%;
-          margin-bottom: 10px;
+          margin-bottom: 0;
           background: #fff;
+        }
+
+        @media (max-width: 375px) {
+          height: 247px;
         }
       }
 
       &:hover {
-        img {
-          height: auto;
-          border: 1px solid #000;
+        width: 9.6vw;
+        height: 12.3vw;
+
+        @media (max-width: 768px) {
+          width: 221px;
+          height: 221px;
+        }
+
+        @media (max-width: 500px) {
+          width: 100% !important;
+          height: 247px;
+        }
+
+        .img-div {
+          border: 0.06vw solid #000;
           background: #dc5e00;
           box-shadow: inset 0 0 3px 3px #fff;
+
+          @media (max-width: 768px) {
+            background: #fff;
+          }
         }
       }
     }
@@ -103,39 +166,60 @@
 
   .img-div {
     display: inline-flex;
-    width: 120px;
-    // height: 120px;
-    // padding: 10px;
-    border: 1px solid #fff;
+    align-items: center;
+    justify-content: center;
+    width: 15.3vw;
+    height: 15.3vw;
+    margin-bottom: 2.5vw;
+    border: 0.06vw solid #fff;
     background: #fff;
-    box-shadow: inset 0 0 3px 3px #fff;
+    box-shadow: inset 0 0 0.2vw 0.2vw #fff;
 
     @media (max-width: 768px) {
       display: block;
+      width: 100%;
       height: auto;
     }
 
-    img {
+    @media (max-width: 500px) {
       width: 100%;
+    }
+
+    img {
+      width: 9.6vw;
+      height: 12.2vw;
+      object-fit: contain;
     }
   }
 
   .activeImg {
     display: inline-flex;
-    width: 120px;
-    // height: 120px;
-    // padding: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 15.3vw;
+    height: 15.3vw;
     border: 1px solid #000;
     background: #dc5e00;
-    box-shadow: inset 0 0 3px 3px #fff;
+    box-shadow: inset 0 0 0.2vw 0.2vw #fff;
 
     img {
-      width: 100%;
+      width: 9.6vw;
+      height: 12.2vw;
+      object-fit: contain;
+      // border: 1px solid #000;
+      // background: #dc5e00;
+      // box-shadow: inset 0 0 3px 3px #fff;
+      @media (max-width: 768px) {
+        width: 100% !important;
+        // height: auto !important;
+      }
     }
 
     @media (max-width: 768px) {
       display: block;
+      width: 100%;
       height: auto;
+      background: #fff;
     }
   }
 }
@@ -143,15 +227,16 @@
 .show-products-image {
   ul {
     margin: 0;
-    padding: 10px;
+    padding: 0.69vw;
     list-style: none;
   }
 
   .product-list {
     li {
+      margin-bottom: 1.1vw;
       color: $white-color;
       font-family: $OpenSans;
-      font-size: 12px;
+      font-size: 1.1vw;
       cursor: pointer;
 
       &:hover {

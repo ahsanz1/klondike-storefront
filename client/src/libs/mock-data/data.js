@@ -64,11 +64,8 @@ import {
   requestFormOfficeData,
   // simpleFormData,
   contactUsBanner,
-  mapLocationData,
   policyData,
-  simpleFormData,
   emptyCartData,
-  contactaddress,
   ourProduct,
   pdpdata,
   pdpdatasheet,
@@ -459,20 +456,8 @@ const mockData = {
   ],
   '/contact-us': [
     {
-      id: 'WebpageGlobalHeroBanner',
-      params: { ...contactUsBanner, key: '112233446677' },
-    },
-    {
-      id: 'SimpleForm',
-      params: simpleFormData,
-    },
-    {
-      id: 'ContactAddres',
-      params: contactaddress,
-    },
-    {
-      id: 'MapLocation',
-      params: mapLocationData,
+      id: 'ContactUs',
+      params: {},
     },
   ],
   '/policies/privacy-policy': [

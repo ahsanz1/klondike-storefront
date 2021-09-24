@@ -24,6 +24,7 @@ const Links = ({
   const { user } = useContext(AppContext)
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
+  console.log('check menu:', links)
   return (
     <div
       style={{
@@ -41,15 +42,26 @@ const Links = ({
                 <Link
                   key={i}
                   style={linkStyle}
-                  className={linkClassName}
+                  className={
+                    link.productDropDown &&
+                    link.productDropDown.length > 0 &&
+                    link.productDropDown[0].label !== '' &&
+                    link.productDropDown[0].image.url !== ''
+                      ? `screen ${linkClassName}`
+                      : linkClassName
+                    // link.productDropDown[0].image.url
+                    //   ? `screen ${linkClassName}`
+                    //   :
+                  }
                   to="#"
                 >
-                  {link.label}
+                  {link && link.label && link.label}
                   <Image
                     width={25}
                     src={mobileMenu && mobileMenu.url}
                     alt={mobileMenu.altText}
                   />
+
                   {link.productDropDown &&
                     link.productDropDown.length > 0 &&
                     link.productDropDown[0].label !== '' &&

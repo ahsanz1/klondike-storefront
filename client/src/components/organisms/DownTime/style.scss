@@ -19,4 +19,8 @@
     flex-wrap: wrap;
     padding: 15px 73px;
   }
+
+  @media screen and (max-width: 500px) {
+    margin-left: 0;
+  }
 }
