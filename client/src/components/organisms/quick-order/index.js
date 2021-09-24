@@ -16,7 +16,7 @@ import useAddToCart from 'libs/api-hooks/useAddToCart'
 /* eslint-disable indent */
 
 const QuickOrder = () => {
-  const [packageComponent, setPackageComponent] = useState(false)
+  const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
   const [radioStateBulk, setRadioStateBulk] = useState(false)
@@ -25,7 +25,7 @@ const QuickOrder = () => {
   const [productstitle, setProductstitle] = useState([])
   const [fetcheditems, setFetcheditems] = useState([])
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
-  const [accordianisActive, setAccordianIsActive] = useState(false)
+  const [accordianisActive, setAccordianIsActive] = useState(true)
 
   const { addToCartApiCall } = useAddToCart()
 

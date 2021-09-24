@@ -91,7 +91,7 @@ const Navbar = ({
                 ? 'quick-order'
                 : 'Buy-Button'
             }
-            to="/quickorder"
+            to={userLoginInfo && userLoginInfo.email ? '/quickorder' : '#'}
           >
             {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
           </Link>
