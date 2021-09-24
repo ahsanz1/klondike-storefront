@@ -3991,7 +3991,16 @@ export const contactUsBanner = {
     altText: 'Mobile hero image',
   },
 }
-
+export const technicalBanner = {
+  desktopImage: {
+    url: '/static/images/bg_tech-resources.png',
+    altText: 'desktop hero image',
+  },
+  mobileImage: {
+    url: '/static/images/bg_tech-resources.png',
+    altText: 'desktop hero image',
+  },
+}
 export const policyData = {
   page: `<div class="shopify-policy__container">
   <div class="shopify-policy__title">

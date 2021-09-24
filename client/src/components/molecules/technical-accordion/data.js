@@ -2,13 +2,17 @@ export const tableProAccoData = {
   tableData: [
     {
       product: 'KLONDIKE nano Full Synthetic EP-1.5',
-      packageSize: 'Jug: 5 L / 1.32 GAL',
-      part: 'KL-LD4660 ',
-      perCase: '2',
-      perPallet: '56',
-      unitPrice: '$4,501.40',
-      hoverButton: 'ADD TO CART',
-      productImage: '/static/images/productImage.png',
+      PSDENGLISH:
+        'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf',
+      PSDFRENCH:
+        'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf ',
+      SDSENGLISH:
+        'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf',
+      SDSFRENCH:
+        '5https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf6',
+      // unitPrice: '$4,501.40',
+      // hoverButton: 'ADD TO CART',
+      // productImage: '/static/images/productImage.png',
     },
     {
       product: ' ISO 220 EP Full Synthetic',

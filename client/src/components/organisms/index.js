@@ -53,6 +53,7 @@ import ProductItemList from 'components/organisms/ProductItemList'
 import ProductOrderList from 'components/organisms/productorderlist'
 import QuickOrder from 'components/organisms/quick-order'
 import Checkoutsection from 'components/organisms/checkout-section'
+import Technical from 'components/organisms/Technical-document'
 
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
@@ -116,4 +117,5 @@ export default {
   ProductOrderList: params => <ProductOrderList {...params} />,
   Checkoutsection: params => <Checkoutsection {...params} />,
   QuickOrder: params => <QuickOrder {...params} />,
+  Technical: params => <Technical {...params} />,
 }
