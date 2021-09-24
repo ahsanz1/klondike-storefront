@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/atoms/link'
 import Button from 'components/atoms/button'
@@ -21,16 +21,10 @@ const Links = ({
   menuBottom = '',
   userIcon = '',
 }) => {
-  const [toggleOption, setToggleOption] = useState('')
   const { user } = useContext(AppContext)
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
   console.log('check menu:', links)
-  const toggleArrow = name => {
-    console.log('check selected:', name)
-    setToggleOption(name)
-  }
-  console.log('links check:', links)
   return (
     <div
       style={{
@@ -48,30 +42,25 @@ const Links = ({
                 <Link
                   key={i}
                   style={linkStyle}
-                  className={`${
-                    link.productDropDown[0].image.url
+                  className={
+                    link.productDropDown &&
+                    link.productDropDown.length > 0 &&
+                    link.productDropDown[0].label !== '' &&
+                    link.productDropDown[0].image.url !== ''
                       ? `screen ${linkClassName}`
                       : linkClassName
-                  } ${toggleOption === link.label ? 'toggleSomething' : ''}`}
+                    // link.productDropDown[0].image.url
+                    //   ? `screen ${linkClassName}`
+                    //   :
+                  }
                   to="#"
-                  onClick={() => toggleArrow(link.label)}
                 >
-                  {toggleOption === link.label && (
-                    <Image
-                      width={25}
-                      src={mobileMenu && mobileMenu.url}
-                      alt={mobileMenu.altText}
-                      className="toggleClass"
-                    />
-                  )}
-                  {link.label}
-                  {toggleOption !== link.label && (
-                    <Image
-                      width={25}
-                      src={mobileMenu && mobileMenu.url}
-                      alt={mobileMenu.altText}
-                    />
-                  )}
+                  {link && link.label && link.label}
+                  <Image
+                    width={25}
+                    src={mobileMenu && mobileMenu.url}
+                    alt={mobileMenu.altText}
+                  />
 
                   {link.productDropDown &&
                     link.productDropDown.length > 0 &&
