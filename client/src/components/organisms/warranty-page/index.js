@@ -70,6 +70,10 @@ const WarrantyPage = ({ categories }) => {
   )
 }
 
+WarrantyPage.DefaultProps = {
+  categories: [],
+}
+
 WarrantyPage.propTypes = {
   categories: PropTypes.array,
 }
