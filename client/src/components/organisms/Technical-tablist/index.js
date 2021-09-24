@@ -8,6 +8,7 @@ const Techtabllist = ({
   itemName,
   clickCategoryHandler,
   subItem,
+  className,
 }) => {
   const [product, setProduct] = useState('')
   console.log('props:', categories)
@@ -16,7 +17,7 @@ const Techtabllist = ({
   }
   console.log('check categories:', categories)
   return (
-    <div className="categoryItem-tab trt">
+    <div className={`categoryItem-tab trt ${className}`}>
       {categoriesXPM &&
         categoriesXPM.length &&
         categoriesXPM.map((item, index) => (
@@ -57,5 +58,6 @@ Techtabllist.propTypes = {
   itemName: PropTypes.string,
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
+  className: PropTypes.string,
 }
 export default Techtabllist
