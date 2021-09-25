@@ -526,6 +526,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/video-gallery': [
+    {
+      id: 'VideoGallery',
+      params: {},
+    },
+  ],
 }
 
 export default mockData

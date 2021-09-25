@@ -177,4 +177,7 @@ Components[
 Components[
   'WarrantyPage'
 ] = require('components/organisms/warranty-page').default
+Components[
+  'VideoGallery'
+] = require('components/organisms/video-gallery').default
 export default Components
