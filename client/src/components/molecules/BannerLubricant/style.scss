@@ -1,28 +1,33 @@
 @import '~styles/globals';
 
 .banner-content {
-  padding: 40px 120px;
+  padding: 2.7vw 8.3vw;
   background: #032939;
 
   @media screen and (max-width: 768px) {
     padding: 40px 40px;
   }
 
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+
   h5 {
     color: white;
     font-family: $OpenSans;
-    font-size: 20px;
-    letter-spacing: -0.015em;
+    font-size: 1.3vw;
+    font-weight: bold;
+    letter-spacing: -0.016vw;
     line-height: 110%;
   }
 
   p {
     color: white;
     font-family: $OpenSans;
-    font-size: 14px;
+    font-size: 0.97vw;
     font-style: normal;
     font-weight: normal;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.016vw;
     line-height: 160%;
   }
 }

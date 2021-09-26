@@ -2,17 +2,26 @@
   position: absolute;
   top: 31%;
   width: 35%;
-  margin-left: 8rem;
+  margin-left: 8.8vw;
 
   @media (max-width: 768px) {
     top: 25%;
     width: 92%;
     margin-left: 2rem;
   }
+
+  @media (max-width: 500px) {
+    top: 81.3vw;
+    width: 76.8vw;
+  }
 }
 
 .heroimgwrapper {
   position: relative;
+
+  @media screen and(max-width: 500px) {
+    margin-top: 35.7vw;
+  }
 }
 
 .price-sheet {

@@ -7,14 +7,14 @@
     top: 100px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 500px) {
     position: relative;
-    top: 106px;
+    top: 120px;
   }
 
   .clear {
     display: inline;
-    margin-left: 15px;
+    margin-left: 1vw;
     border: none;
     background: none;
     cursor: pointer;
@@ -22,20 +22,22 @@
     @media (max-width: 500px) {
       margin-left: 22px;
     }
+
+    img {
+      width: 0.8vw;
+      height: 0.8vw;
+
+      @media (max-width: 500px) {
+        width: 12.8px;
+        height: 12.8px;
+      }
+    }
   }
 
   .serach-input {
-    padding: 10px 30px;
-    padding-left: 0;
+    padding: 0.6vw 2vw;
+    padding-left: 8.3vw;
     background: #002a3a;
-
-    @media (max-width: 1440px) {
-      padding-left: 120px;
-    }
-
-    @media (max-width: 1200px) {
-      padding-left: 30px;
-    }
 
     @media (max-width: 500px) {
       margin-top: 10px;
@@ -51,21 +53,25 @@
     input {
       width: 83.3vw;
       height: 4.4vw;
-      padding-left: 40px;
-      border: 2px solid #013a4e;
-      border-radius: 16px;
+      padding-left: 2.7vw;
+      border: 0.13vw solid #013a4e;
+      border-radius: 1.1vw;
       outline: none;
-      background: url('../../../../static/images/search.png') no-repeat 10px;
+      background: url('../../../../static/images/search.png') no-repeat 0.69vw;
       background-color: #013a4e !important;
+      background-size: 1.4vw;
       color: $white-color;
+      font-family: $Poppins;
+      font-size: 1.1vw;
+      background-position-y: 1.3vw;
 
-      @media (max-width: 1250px) {
-        width: 90%;
-      }
+      // @media (max-width: 1250px) {
+      //   width: 90%;
+      // }
 
-      @media (max-width: 992px) {
-        width: 88%;
-      }
+      // @media (max-width: 992px) {
+      //   width: 88%;
+      // }
 
       @media (max-width: 768px) {
         width: 85%;
@@ -74,8 +80,13 @@
       @media (max-width: 500px) {
         width: 330px;
         height: 52px;
+        padding-left: 40px;
         border-radius: 5px;
         background-color: #002a3a !important;
+        background-size: 20px;
+        font-size: 16px;
+        background-position-y: 15px;
+        background-position-x: 15px;
       }
 
       @media (max-width: 375px) {
@@ -89,22 +100,27 @@
 
   ::placeholder {
     color: $white-color;
+    font-size: 1.1vw;
+
+    @media screen and(max-width: 500px) {
+      font-size: 16px;
+    }
   }
 
   .suggestion-heading {
-    margin-bottom: 20px;
-    padding: 30px 120px;
+    margin-bottom: 1.3vw;
+    padding: 2vw 8.3vw;
     padding-bottom: 0;
     color: $white-color;
     font-family: $OpenSans;
-    font-size: 24px;
+    font-size: 1.6vw;
     font-weight: bold;
-    line-height: 33px;
+    line-height: 2.2vw;
     text-transform: uppercase;
 
-    @media (max-width: 1250px) {
-      padding: 30px;
-    }
+    // @media (max-width: 1250px) {
+    //   padding: 30px;
+    // }
 
     @media screen and (max-width: 500px) {
       display: none;
@@ -112,13 +128,11 @@
   }
 
   .empty-suggestion {
-    padding: 0 120px;
+    padding: 0 8.3vw;
     color: #fff;
-
-    @media (max-width: 1250px) {
-      padding: 30px;
-    }
-
+    font-size: 1.1vw; // @media (max-width: 1250px) {
+    //   padding: 30px;
+    // }
     @media screen and (max-width: 500px) {
       display: none;
     }
@@ -127,11 +141,11 @@
   .search-list {
     display: flex;
     justify-content: space-between;
-    padding: 30px 120px;
+    padding: 2vw 8.3vw;
 
-    @media (max-width: 1250px) {
-      padding: 30px;
-    }
+    // @media (max-width: 1250px) {
+    //   padding: 30px;
+    // }
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -176,7 +190,7 @@
 
       li {
         display: inline;
-        margin: 0 10px;
+        margin: 0 0.6vw;
         float: left;
 
         @media (max-width: 768px) {
@@ -184,8 +198,8 @@
         }
 
         .search-Items {
-          margin-bottom: 25px;
-          border: 3px solid #013a4e;
+          margin-bottom: 1.7vw;
+          border: 0.2vw solid #013a4e;
 
           // &:hover {
           //   border-color: #dc5e00;
@@ -193,7 +207,7 @@
 
           .search-img {
             // margin: 0 0.7vw;
-            margin-bottom: 16px !important;
+            margin-bottom: 1.1vw !important;
 
             @media (max-width: 500px) {
               width: 155px;
@@ -216,22 +230,25 @@
 
           .search-category {
             display: none;
-            margin: 5px 0;
+            margin: 0.3vw 0;
             color: #fff;
             font-family: $OpenSans;
-            font-size: 13px;
+            font-size: 0.9vw;
             font-weight: bold;
-            line-height: 18px;
+            line-height: 1.2vw;
 
             @media screen and(max-width: 500px) {
               display: block;
+              margin-bottom: 5px;
+              font-size: 13px;
+              line-height: 18px;
             }
           }
 
           .search-title {
             color: $white-color;
             font-family: $OpenSans;
-            font-size: 20px;
+            font-size: 1.3vw;
             font-weight: 600;
             line-height: 110%;
 

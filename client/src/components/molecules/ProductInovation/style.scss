@@ -1,40 +1,60 @@
+@import '~styles/globals';
+
 .product-wrapper {
-  padding: 50px 0;
+  padding: 3.4vw 0;
   background: #032939;
 
   .swiper-container {
-    width: 84%;
+    width: 78.2vw;
     margin: 0 auto;
+    padding-bottom: 4.1vw;
 
     .swiper-scrollbar {
-      position: absolute;
-      top: 21rem;
+      // position: absolute;
+      // top: 23.3vw;
       width: 100%;
-      height: 5px;
+      height: 0.3vw;
       background: white;
+
+      @media (max-width: 500px) {
+        height: 1vw;
+      }
     }
 
     .swiper-scrollbar-drag {
+      width: 67vw !important;
       //width: 900px !important;
-      height: 5px;
+      height: 0.3vw;
       transform: translate3d(0, 0, 0);
       transition-duration: 0ms;
       background: red;
       color: red;
+
+      @media (max-width: 500px) {
+        width: 25.6vw !important;
+        height: 1vw;
+        background: #e25205;
+        color: #e25205;
+      }
     }
 
     .swiper-wrapper {
       .swiper-slide {
-        width: 80%;
-        margin: 0 auto;
+        width: 19.9vw !important;
+        margin-right: 1.3vw !important;
 
         @media screen and (max-width: 768px) {
           width: 285px !important;
         }
 
-        @media screen and (min-width: 992px) {
-          width: 300px;
+        @media (max-width: 500px) {
+          width: 76vw !important;
+          height: 80vw !important;
         }
+
+        // @media screen and (min-width: 992px) {
+        //   width: 300px;
+        // }
 
         .Product-content {
           display: flex;
@@ -48,17 +68,32 @@
           .product_img_wraper {
             display: flex;
             justify-content: center;
-            width: 269px;
-            height: 251px;
-            margin-bottom: 11px;
+            width: 18.6vw;
+            height: 17.3vw;
+            margin-bottom: 0.7vw;
             background: white;
-            box-shadow: 8px 8px 10px 0 #0000004d inset;
+            box-shadow: 0.5vw 0.5vw 0.6vw 0 #0000004d inset;
+
+            @media (max-width: 500px) {
+              width: 76vw;
+              height: 80vw;
+            }
           }
 
           p {
-            width: 70%;
-            margin-bottom: 2rem;
-            color: white;
+            width: 19.5vw;
+            margin-bottom: 2.2vw;
+            color: #f2a900;
+            font-family: $OpenSans;
+            font-size: 1.3vw;
+            font-weight: 600;
+
+            @media (max-width: 500px) {
+              width: 100%;
+              margin: 2.6vw 0;
+              font-size: 5.3vw;
+              font-weight: 600;
+            }
           }
         }
       }
