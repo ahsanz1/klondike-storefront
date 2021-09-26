@@ -25,22 +25,21 @@
   &__content {
     display: flex;
     flex-wrap: wrap;
-    width: 370px;
+    width: 25.6vw;
     margin: auto;
-    padding: 0 57px;
+    padding: 0 3.9vw;
 
     p:empty {
       display: none;
     }
 
-    @media (max-width: 1367px) {
-      // flex-wrap: nowrap;
-      padding: 0 25px;
-    }
+    // @media (max-width: 1367px) {
+    //   padding: 0 25px;
+    // }
 
-    @media screen and (min-width: 1600px) {
-      padding: 0 57px 0 6px;
-    }
+    // @media screen and (min-width: 1600px) {
+    //   padding: 0 57px 0 6px;
+    // }
 
     @media (max-width: 768px) {
       flex-wrap: wrap;
@@ -51,29 +50,25 @@
     @media (max-width: 500px) {
       display: block;
       flex-wrap: nowrap;
-      width: 320px;
+      width: auto;
       padding: 0;
-    }
-
-    @media (max-width: 375px) {
-      width: 275px;
     }
   }
 
   .form-content {
-    width: 250px;
+    width: 16.1vw;
 
     @media (max-width: 768px) {
       width: 100%;
     }
 
     @media (max-width: 500px) {
-      width: 90%;
+      width: 58.6vw;
     }
   }
 
   .request-forms {
-    width: 762px;
+    width: 52.9vw;
     margin-left: auto;
 
     @media (max-width: 500px) {
@@ -108,11 +103,11 @@
     padding-bottom: 26px;
     color: white;
     font-family: $OpenSans !important;
-    font-size: 24px !important;
+    font-size: 1.6vw !important;
     font-style: normal;
     font-weight: bold;
     letter-spacing: -0.5px;
-    line-height: 33px;
+    line-height: 2.2vw;
     text-transform: uppercase;
 
     @media (max-width: 768px) {
@@ -120,9 +115,11 @@
       width: 78% !important;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 500px) {
       width: 90% !important;
       padding: 0 !important;
+      font-size: 6.4vw !important;
+      line-height: 8.8vw;
     }
   }
 
@@ -191,11 +188,11 @@
   }
 
   &__col {
-    .label-input {
-      input {
-        margin-bottom: 0 !important;
-      }
-    }
+    // .label-input {
+    //   input {
+    //     margin-bottom: 0 !important;
+    //   }
+    // }
 
     @media (max-width: 768px) {
       width: 100% !important;
@@ -204,8 +201,12 @@
     &:nth-child(2) {
       .label-input {
         input {
-          margin-top: 10px;
+          margin-top: 0.69vw;
           margin-bottom: 0 !important;
+
+          @media (max-width: 500px) {
+            margin-top: 2.6vw;
+          }
         }
       }
     }
@@ -312,16 +313,24 @@
 
   .links--container {
     align-items: flex-end;
-    margin-bottom: 20px;
+    margin-bottom: 1.3vw;
     padding-top: 0;
     padding-bottom: 0;
+
+    @media screen and(max-width: 500px) {
+      margin-bottom: 5.3vw;
+    }
 
     .links {
       color: #fff !important;
       font-family: $OpenSans;
-      font-size: 13px;
+      font-size: 0.9vw;
       font-weight: bold;
       letter-spacing: -0.1px;
+
+      @media screen and(max-width: 500px) {
+        font-size: 3.4vw;
+      }
     }
   }
 
