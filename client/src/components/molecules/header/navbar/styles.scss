@@ -16,7 +16,7 @@
   }
 
   @media (max-width: 768px) {
-    padding: 0 20px;
+    padding: 0 5.3vw;
   }
 
   @media (max-width: 500px) {
@@ -50,7 +50,7 @@
         width: 80% !important;
         margin-left: 5px;
 
-        @media (max-width: 375px) {
+        @media (max-width: 500px) {
           width: 90% !important;
         }
       }
@@ -92,7 +92,7 @@
 
     img {
       @media (max-width: 500px) {
-        width: 18px;
+        width: 4.8vw;
       }
     }
   }
@@ -150,17 +150,17 @@
         padding: 12px 25px 35px;
       }
 
-      @media (max-width: 375px) {
-        height: calc(100vh - 130px);
+      @media (max-width: 500px) {
+        height: calc(100vh - 34.6vw);
       }
 
       .Buy-Button {
-        @media (max-width: 375px) {
+        @media (max-width: 500px) {
           display: block !important;
-          width: 209px !important;
-          height: 46px !important;
-          margin-top: 27px;
-          font-size: 20px !important;
+          width: 55.7vw !important;
+          height: 12.2vw !important;
+          margin-top: 7.2vw;
+          font-size: 5.3vw !important;
         }
       }
 
@@ -185,8 +185,8 @@
       top: 15px;
       right: 0;
 
-      @media (max-width: 375px) {
-        top: 5px;
+      @media (max-width: 500px) {
+        top: 1.3vw;
       }
     }
   }
@@ -280,8 +280,8 @@
       padding-right: 2vw !important;
       border: none;
 
-      @media screen and(max-width: 375px) {
-        padding-right: 20px !important;
+      @media screen and(max-width: 500px) {
+        padding-right: 5.3vw !important;
       }
 
       .h-links {
@@ -299,11 +299,11 @@
       }
     }
 
-    .icon-button {
-      @media screen and(max-width: 375px) {
-        padding-right: 0 !important;
-      }
-    }
+    // .icon-button {
+    //   @media screen and(max-width: 500px) {
+    //     padding-right: 0vw !important;
+    //   }
+    // }
   }
 
   @media screen and (max-width: 768px) {
