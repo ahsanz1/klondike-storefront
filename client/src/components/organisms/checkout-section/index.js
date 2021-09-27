@@ -3,15 +3,29 @@ import { checkoutData } from './data'
 import './style.scss'
 import Label from 'components/atoms/label'
 
-import { Radio, Button, Input } from 'antd'
+import { Radio, Button, Input, Modal } from 'antd'
 import { Link } from '@reach/router'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 const Checkoutsection = () => {
   const { checkData } = checkoutData
   // const [isActive, setIsAcive] = useState(true)
   console.log('datacheckout', checkData)
-  const [pickup, setPickup] = useState(false)
-  const [delivery, setDelivery] = useState(false)
+  // const [pickup, setPickup] = useState(false)
+  // const [delivery, setDelivery] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const showModal = () => {
+    setIsModalVisible(true)
+  }
+
+  const handleOk = () => {
+    setIsModalVisible(false)
+  }
+
+  const handleCancel = () => {
+    setIsModalVisible(false)
+  }
+
   // const [value, setValue] = useState(1)
 
   // const handleClick = () => {
@@ -20,15 +34,15 @@ const Checkoutsection = () => {
   // const onChange = e => {
   //   setValue(e.target.value)
   // }
-  const radioChangeBULK = () => {
-    setPickup(false)
-    setDelivery(true)
-  }
+  // const radioChangeBULK = () => {
+  //   setPickup(false)
+  //   setDelivery(true)
+  // }
 
-  const radioChangePACKAGE = () => {
-    setDelivery(false)
-    setPickup(true)
-  }
+  // const radioChangePACKAGE = () => {
+  //   setDelivery(false)
+  //   setPickup(true)
+  // }
 
   return (
     <>
@@ -59,10 +73,10 @@ const Checkoutsection = () => {
               // value={value}
               className="radio-delivery"
             >
-              <Radio onChange={radioChangePACKAGE} value={1}>
+              <Radio onClick={() => setVisible(false)} value={1}>
                 DELIVERY
               </Radio>
-              <Radio onChange={radioChangeBULK} value={2}>
+              <Radio onClick={() => setVisible(true)} value={2}>
                 PICK UP
               </Radio>
             </Radio.Group>
@@ -75,9 +89,11 @@ const Checkoutsection = () => {
                 </div>
                 <div className="ckeckout-name">
                   <p>{data.name}</p>
-                  <Button disabled={pickup} className="btn-location">
-                    CHOOSE PICK UP LOCATION
-                  </Button>
+                  {visible && (
+                    <Button onClick={showModal} className="btn-location">
+                      CHOOSE PICK UP LOCATION
+                    </Button>
+                  )}
                 </div>
                 <div className="ckeckout-po">
                   <p>PO Number: {data.ponumber}</p>
@@ -88,7 +104,7 @@ const Checkoutsection = () => {
           <Label className="costom-po">
             <p>Custom PO Number:</p>
             <Input
-              disabled={delivery}
+              // disabled={delivery}
               className="input-po"
               placeholder="Enter custom PO number"
             ></Input>
@@ -121,6 +137,16 @@ const Checkoutsection = () => {
           <Button className="mobile-btn">PLACE ORDER</Button>
         </div>
       </div>
+      <Modal
+        title="Basic Modal"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
     </>
   )
 }
