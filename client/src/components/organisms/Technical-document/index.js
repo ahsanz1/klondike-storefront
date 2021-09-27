@@ -43,6 +43,7 @@ const Technical = ({
       <div className="technacil-wriper">
         <div className="custom-tech">
           <Techtabllist
+            itemName="Technical Documents"
             categories={categories}
             // itemName={itemName}
             //   clickCategoryHandler={clickCategoryHandler}

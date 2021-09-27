@@ -520,6 +520,19 @@ const mockData = {
       params: {},
     },
   ],
+
+  '/oamapprovals': [
+    {
+      id: 'Oamspproval',
+      params: {},
+    },
+  ],
+  '/confirmation-order': [
+    {
+      id: 'Confirmation',
+      params: {},
+    },
+  ],
 }
 
 export default mockData

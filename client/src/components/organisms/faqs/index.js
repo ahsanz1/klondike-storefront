@@ -5,6 +5,7 @@ import Accordion from 'components/molecules/accordion'
 import Heading from 'components/atoms/heading'
 // import { tableAccoData } from './data'
 import './style.scss'
+import Link from 'components/atoms/link'
 // import Button from 'components/atoms/button'
 
 const Faqs = ({
@@ -69,21 +70,23 @@ const Faqs = ({
             />
           ))}
         <div className="price-list-pdf">
-          <a
+          <Link
+            className="link-pdf"
             href="https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf"
             target="_blank"
             rel="noreferrer"
           >
             Price List as .pdf
-          </a>
+          </Link>
 
-          <a
+          <Link
+            className="link-pdf"
             href="https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf"
             target="_blank"
             rel="noreferrer"
           >
             Price List as .pdf
-          </a>
+          </Link>
         </div>
       </div>
     </>
