@@ -177,7 +177,7 @@ Components[
 Components['Oamspproval'] = require('components/organisms/oam-approval').default
 Components[
   'Confirmation'
-] = require('components/organisms/confirmation-order').default
+] = require('components/organisms/confirmation').default
 Components[
   'WarrantyPage'
 ] = require('components/organisms/warranty-page').default

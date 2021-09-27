@@ -1,0 +1,200 @@
+@import '~styles/globals';
+$vw-viewport: 1440;
+
+@function get-vw($font) {
+  $vw-context: $vw-viewport * 0.01 * 1px;
+
+  @return $font / $vw-context * 1vw;
+  @return $font;
+}
+
+.heading-confirmation {
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 87.2vw;
+    padding-top: 12.3vw;
+  }
+
+  .show-sms {
+    /* identical to box height, or 53px */
+
+    margin-left: get-vw(342px);
+    padding-top: get-vw(40px);
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: get-vw(48px);
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    line-height: 110%;
+
+    @media screen and (max-width: 768px) {
+      width: 87.2vw;
+      margin-left: 6.4vw;
+      padding-top: 25.3vw;
+      color: #fff;
+      font-family: $OpenSans;
+      font-size: 8.5vw;
+      font-style: normal;
+      font-weight: bold;
+
+      /* or 35px */
+
+      letter-spacing: -0.5px;
+      line-height: 110%;
+    }
+  }
+
+  .order-mail {
+    // display: flex;
+    // align-items: center;
+    margin-left: get-vw(424px);
+    padding-top: get-vw(18px);
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: get-vw(14px);
+    font-style: normal;
+    font-weight: normal;
+    line-height: 140%;
+    // text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    @media screen and (max-width: 768px) {
+      width: 87.2vw;
+      margin-left: 6.4vw;
+      color: #fff;
+      font-size: 3.73vw;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 140%;
+
+      /* or 20px */
+
+      font-feature-settings: 'pnum' on, 'lnum' on;
+    }
+  }
+}
+
+.confirmation-wrap {
+  display: flex;
+  flex-direction: row;
+
+  .warps-ship {
+    // padding-bottom: get-vw(276px);
+    display: flex;
+    flex-direction: column;
+    margin-left: get-vw(118px);
+    padding-top: get-vw(79px);
+
+    .order-deitail {
+      padding: get-vw(11px);
+      color: #fff;
+      font-family: $OpenSans;
+      font-size: get-vw(13px);
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      line-height: get-vw(18px);
+      text-transform: uppercase;
+
+      @media screen and (max-width: 768px) {
+        color: #fff;
+        // margin-left: 6.4vw;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        line-height: 19px;
+        text-transform: uppercase;
+      }
+    }
+
+    .change-order {
+      margin-top: get-vw(89px);
+      color: #fff;
+      font-family: $OpenSans;
+      font-size: get-vw(14px);
+      font-style: normal;
+      font-weight: normal;
+      line-height: 140%;
+      font-feature-settings: 'pnum' on, 'lnum' on;
+
+      @media screen and (max-width: 768px) {
+        color: #fff;
+        font-size: 3.73vw;
+        // margin-left: 6.4vw;
+        // margin-left: 6.4vw;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 140%;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
+    }
+  }
+
+  .shaping-adress {
+    margin-top: 8.19vw;
+    margin-left: 8.6vw;
+
+    > h2 {
+      height: get-vw(20px);
+      margin-left: get-vw(38px);
+      color: #fff;
+      // left: 596px;
+      // top: 249px;
+
+      font-family: $OpenSans;
+      font-size: get-vw(14px);
+      font-style: normal;
+      font-weight: bold;
+      line-height: 140%;
+
+      /* identical to box height, or 20px */
+
+      // display: flex;
+      // align-items: center;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 768px) {
+        padding-bottom: 3.4vw;
+        color: #fff;
+        font-family: $OpenSans;
+        font-size: 3.73vw;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 140%;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
+    }
+
+    .ship-warp {
+      width: get-vw(383px);
+      //  margin-top: get-vw(29px);
+      margin-bottom: get-vw(32px);
+      margin-left: get-vw(30px);
+      padding: get-vw(11px);
+      background-color: #002a3a;
+      color: #fff;
+      font-size: get-vw(14px);
+      font-style: normal;
+      font-weight: bold;
+      line-height: 140%;
+      text-align: start;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 768px) {
+        color: #fff;
+        font-family: $OpenSans;
+        font-size: 3.73vw;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 140%;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
