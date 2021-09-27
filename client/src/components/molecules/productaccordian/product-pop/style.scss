@@ -1,0 +1,37 @@
+@import '~styles/globals';
+$vw-viewport: 1440;
+
+@function get-vw($font) {
+  $vw-context: $vw-viewport * 0.01 * 1px;
+
+  @return $font / $vw-context * 1vw;
+  @return $font;
+}
+
+.ant-modal {
+  &.product-pop {
+    .ant-modal-content {
+      background-color: #013a4e;
+    }
+  }
+}
+// .model-warper{
+
+// }
+// .ant-modal{
+//     .ant-modal-content{
+//         position: absolute;
+//         background-color: #013A4E;
+//          width: get-vw(1121px);
+//         //  margin-left: get-vw(161px);
+//         //  margin-right: get-vw(158px);
+//          height: get-vw(398px);
+//     }
+//     .product-pop{
+
+//         width: get-vw(1121px);
+//     margin-left: get-vw(16px);
+//     height: get-vw(398px);
+//     // height: get-vw(398px);
+//     }
+// }

@@ -5,7 +5,7 @@ import { Row, Col } from 'antd'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
 import { fetchCategory } from 'libs/services/algolia'
-import ProductAccordionModal from './addtocartmodel'
+import ProductAccordionModal from './product-pop/addtocartmodel'
 // import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 // import Label from 'components/atoms/label'
 import './style.scss'
@@ -42,10 +42,10 @@ const ProductAccordion = ({ question }) => {
             <p>PRODUCT</p>
           </Col>
           <Col lg={4}>
-            <p>PACKAGE SIZE</p>
+            <p className="text-class-center">PACKAGE SIZE</p>
           </Col>
           <Col lg={3}>
-            <p>PART #</p>
+            <p className="text-class-center">PART #</p>
           </Col>
           <Col lg={3}>
             <p className="text-class-center">PER CASE</p>
