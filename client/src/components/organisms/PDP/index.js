@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Image from 'components/atoms/image'
@@ -8,6 +8,8 @@ import { Radio, InputNumber, Tooltip } from 'antd'
 import { ShareAltOutlined } from '@ant-design/icons'
 import PDPMobile from '../PDPMobile'
 import Link from 'components/atoms/link'
+
+import { AppContext } from 'libs/context'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   const { data, imgdata, heading } = pdpdata
@@ -63,6 +65,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   let newdata = data.reduce((accu, curn) => {
     return accu + parseInt(curn.price)
   }, 0)
+
+  const { showcartPOPModal } = useContext(AppContext)
+
   return (
     <div className="PDPs-wrapper">
       <div className="PDP-container">
@@ -222,7 +227,14 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             </div>
             <hr></hr>
           </div>
-          <Button className="add-to-cart">ADD TO CART</Button>
+          <Button
+            className="add-to-cart"
+            onClick={() => {
+              showcartPOPModal()
+            }}
+          >
+            ADD TO CART
+          </Button>
         </div>
       </div>
       <PDPInformation pdpdatasheet={pdpdatasheet} />
