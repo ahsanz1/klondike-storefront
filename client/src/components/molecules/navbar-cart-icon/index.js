@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { AppContext } from 'libs/context'
 import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
-import Link from 'components/atoms/link'
+// import Link from 'components/atoms/link'
 import './style.scss'
 
 const NavbarcartIcon = ({ linkCartPageIcon = false, cartIcon = '' }) => {
@@ -14,12 +14,12 @@ const NavbarcartIcon = ({ linkCartPageIcon = false, cartIcon = '' }) => {
   return (
     <div className="cart-specific">
       <div className={linkCartPageIcon ? 'cartshow' : 'hide'}>
-        <Link to="/cart">
+        {/* <Link to="/cart">
           <Image height={26} src={cartIcon.url} alt={cartIcon.altText} />
           {itemCount > 0 && (
             <Label className="navbar-cart-count">{itemCount}</Label>
           )}
-        </Link>
+        </Link> */}
       </div>
       {!linkCartPageIcon && (
         <div

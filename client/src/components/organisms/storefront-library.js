@@ -178,4 +178,10 @@ Components['Oamspproval'] = require('components/organisms/oam-approval').default
 Components[
   'Confirmation'
 ] = require('components/organisms/confirmation-order').default
+Components[
+  'WarrantyPage'
+] = require('components/organisms/warranty-page').default
+Components[
+  'VideoGallery'
+] = require('components/organisms/video-gallery').default
 export default Components

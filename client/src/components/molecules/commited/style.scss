@@ -12,52 +12,69 @@
   }
 
   .commited-content {
-    width: 792px;
-    padding: 20px 0 20px 0;
+    width: 55vw;
+    padding: 1.3vw 0 1.3vw 0;
 
-    @media screen and (max-width: 768px) {
-      width: 356px;
-      padding: 30px;
+    @media screen and (max-width: 500px) {
+      width: 100%;
+      padding: 0 5.3vw;
     }
 
     h1 {
+      color: #032939;
       font-family: $OpenSans;
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      font-size: 2.2vw;
+      font-weight: bold;
+      letter-spacing: -0.03vw;
       line-height: 110%;
+
+      @media screen and (max-width: 500px) {
+        margin-top: 0;
+        font-size: 6.4vw;
+      }
     }
 
     p {
+      color: #032939;
       font-family: $OpenSans;
-      font-size: 15px;
+      font-size: 1vw;
       font-style: normal;
-      font-weight: 400;
+      font-weight: normal;
       line-height: 140%;
+
+      @media screen and (max-width: 500px) {
+        font-size: 4vw;
+      }
     }
 
     h3 {
+      color: #032939;
       font-family: $OpenSans;
-      font-size: 14px;
+      font-size: 0.97vw;
       font-style: normal;
-      font-weight: 700;
+      font-weight: bold;
       line-height: 140%;
+
+      @media screen and (max-width: 500px) {
+        font-size: 3.7vw;
+      }
     }
   }
 
   .commited-buton {
     button {
       box-sizing: border-box;
-      width: 217px;
-      height: 48px;
-      border: 2px solid $accent-color;
-      border-radius: 5px;
-      background: $accent-color;
+      width: 13.9vw;
+      height: 3.3vw;
+      border: 0.1vw solid #f2a900;
+      border-radius: 0.3vw;
+      background: #f2a900;
       color: white;
       font-family: $OpenSans;
-      font-size: 16px;
-      letter-spacing: 0.75px;
-      line-height: 28px;
+      font-size: 1.1vw;
+      font-weight: bold;
+      letter-spacing: 0.05vw;
+      line-height: 1.3vw;
       text-align: center;
       text-transform: uppercase;
 
@@ -68,6 +85,19 @@
         background: $accent-color;
         color: white;
         font-size: 14px;
+      }
+
+      @media screen and (max-width: 500px) {
+        width: 32vw;
+        height: 10.6vw;
+        margin-top: 2.6vw;
+        margin-bottom: 8vw;
+        border: 0.5vw solid #ff8200;
+        border-radius: 1.3vw;
+        background: transparent;
+        color: #032939;
+        font-size: 3.7vw;
+        text-transform: lowercase;
       }
     }
   }

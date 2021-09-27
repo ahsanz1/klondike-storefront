@@ -533,6 +533,17 @@ const mockData = {
       params: {},
     },
   ],
+  '/warranty': [
+    {
+      id: 'WarrantyPage',
+      params: {},
+    },
+  ],
+  '/video-gallery': [
+    {
+      id: 'VideoGallery',
+      params: {},
+    },
+  ],
 }
-
 export default mockData

@@ -1,0 +1,42 @@
+@import '~styles/globals';
+
+.warranty-page-wrap {
+  padding-top: get-vw(66px);
+  padding-bottom: get-vw(78px);
+  padding-left: get-vw(69px);
+  font-family: $OpenSans;
+
+  .warranty-title {
+    margin: 0%;
+    margin-bottom: get-vw(17px);
+    color: #f1a900;
+    font-size: get-vw(36px);
+    font-style: normal;
+    font-weight: bold;
+    line-height: get-vw(49px);
+    text-transform: uppercase;
+  }
+
+  .image-and-text {
+    display: flex;
+    flex-direction: row;
+
+    .warranty-image {
+      width: get-vw(236px);
+      height: get-vw(244px);
+    }
+
+    .heading-tech {
+      width: get-vw(591px);
+      padding-left: get-vw(28px);
+      font-size: get-vw(14px);
+      font-style: normal;
+      font-weight: normal;
+      line-height: 140%;
+
+      .warranty-link {
+        color: #f1a900;
+      }
+    }
+  }
+}
