@@ -5,6 +5,7 @@ import './style.scss'
 import { string } from 'yup/lib/locale'
 
 const DistributionProduct = ({ LubricantContent, distributionheading }) => {
+  console.log('lubricant:', LubricantContent, distributionheading)
   return (
     <>
       <div className="distribute-wraper">
