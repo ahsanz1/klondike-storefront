@@ -16,6 +16,7 @@ const AppProvider = ({ children }) => {
   const [enableSecondStep, setEnableSecondStep] = useState(false)
   const [enableThirdStep, setEnableThirdStep] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [cartPopupModal, setCartPopupModal] = useState(false)
   const [pdpPurchaseType, setPdpPurchaseType] = useState(1)
   const [pdpSubscriptionType, setPdpSubscriptionType] = useState(
     'ShipEveryWeek',
@@ -72,6 +73,14 @@ const AppProvider = ({ children }) => {
     if (size > 768) {
       document.body.style.overflow = 'hidden'
     }
+  }
+  const showcartPOPModal = () => {
+    setCartPopupModal(true)
+    document.body.style.overflow = 'visible'
+  }
+  const closePopUpModal = () => {
+    setCartPopupModal(false)
+    document.body.style.overflow = 'visible'
   }
 
   const closeModal = () => {
@@ -198,6 +207,10 @@ const AppProvider = ({ children }) => {
         setEnableThirdStep,
         isModalVisible,
         showModal,
+        cartPopupModal,
+        setCartPopupModal,
+        showcartPOPModal,
+        closePopUpModal,
         closeModal,
         pdpPurchaseType,
         setPdpPurchaseType,
