@@ -24,6 +24,7 @@ exports.default = Types.Component({
           }),
           heading: Types.String({ label: 'Heading' }),
           buttontxt: Types.String({ label: 'Button Text' }),
+          searchUrl: Types.String({ label: 'Search URL' }),
         },
       }),
     }),
