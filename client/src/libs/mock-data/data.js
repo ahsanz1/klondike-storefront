@@ -520,12 +520,30 @@ const mockData = {
       params: {},
     },
   ],
+
+  '/oamapprovals': [
+    {
+      id: 'Oamspproval',
+      params: {},
+    },
+  ],
+  '/confirmation-order': [
+    {
+      id: 'Confirmation',
+      params: {},
+    },
+  ],
   '/warranty': [
     {
       id: 'WarrantyPage',
       params: {},
     },
   ],
+  '/video-gallery': [
+    {
+      id: 'VideoGallery',
+      params: {},
+    },
+  ],
 }
-
 export default mockData

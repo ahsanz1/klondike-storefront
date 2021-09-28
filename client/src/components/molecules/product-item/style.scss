@@ -7,7 +7,7 @@
     padding: 10px 15px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 500px) {
     padding: 0;
   }
 
@@ -33,7 +33,7 @@
     img:hover {
       border: 0.2vw solid #e25205;
 
-      @media screen and(max-width: 375px) {
+      @media screen and(max-width: 500px) {
         border: none;
       }
     }
@@ -48,13 +48,13 @@
     }
 
     @media (max-width: 500px) {
-      width: 161px;
-      height: 201.71px;
+      width: 42.9vw;
+      height: 53.7vw;
 
       img {
         object-fit: contain;
-        width: 94px;
-        height: 120px;
+        width: 25vw;
+        height: 32vw;
       }
     }
 

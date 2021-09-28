@@ -48,8 +48,8 @@
       text-transform: capitalize;
       cursor: pointer;
 
-      @media (max-width: 375px) {
-        margin-bottom: 30px;
+      @media (max-width: 500px) {
+        margin-bottom: 8vw;
         text-transform: uppercase;
       }
 
@@ -85,7 +85,7 @@
       float: left;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 500px) {
       width: 100%;
     }
 
@@ -116,10 +116,10 @@
         width: 221px;
       }
 
-      @media (max-width: 375px) {
-        width: 337px;
-        height: 247px;
-        margin-bottom: 31px;
+      @media (max-width: 500px) {
+        width: 89.8vw;
+        height: 65.8vw;
+        margin-bottom: 8.2vw;
       }
 
       img {
@@ -132,8 +132,8 @@
           background: #fff;
         }
 
-        @media (max-width: 375px) {
-          height: 247px;
+        @media (max-width: 500px) {
+          height: 65.8vw;
         }
       }
 

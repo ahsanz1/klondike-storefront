@@ -174,7 +174,14 @@ Components[
 Components[
   'ContactUs'
 ] = require('components/organisms/contact-us-page').default
+Components['Oamspproval'] = require('components/organisms/oam-approval').default
+Components[
+  'Confirmation'
+] = require('components/organisms/confirmation').default
 Components[
   'WarrantyPage'
 ] = require('components/organisms/warranty-page').default
+Components[
+  'VideoGallery'
+] = require('components/organisms/video-gallery').default
 export default Components

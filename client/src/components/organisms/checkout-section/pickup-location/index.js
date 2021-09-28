@@ -3,47 +3,21 @@ import { checkoutData } from './data'
 import './style.scss'
 import Label from 'components/atoms/label'
 
-import { Radio, Button, Input, Modal } from 'antd'
+import { Radio, Button, Input } from 'antd'
 import { Link } from '@reach/router'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 const Checkoutsection = () => {
   const { checkData } = checkoutData
   // const [isActive, setIsAcive] = useState(true)
   console.log('datacheckout', checkData)
-  // const [pickup, setPickup] = useState(false)
-  // const [delivery, setDelivery] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const [isModalVisible, setIsModalVisible] = useState(false)
-  const showModal = () => {
-    setIsModalVisible(true)
-  }
-
-  const handleOk = () => {
-    setIsModalVisible(false)
-  }
-
-  const handleCancel = () => {
-    setIsModalVisible(false)
-  }
-
-  // const [value, setValue] = useState(1)
+  const [value, setValue] = useState(1)
 
   // const handleClick = () => {
   //   setIsAcive(!isActive)
   // }
-  // const onChange = e => {
-  //   setValue(e.target.value)
-  // }
-  // const radioChangeBULK = () => {
-  //   setPickup(false)
-  //   setDelivery(true)
-  // }
-
-  // const radioChangePACKAGE = () => {
-  //   setDelivery(false)
-  //   setPickup(true)
-  // }
-
+  const onChange = e => {
+    setValue(e.target.value)
+  }
   return (
     <>
       <div className="checkout-header">
@@ -70,15 +44,12 @@ const Checkoutsection = () => {
           </div>
           <div className="radio-btn">
             <Radio.Group
-              // value={value}
+              onChange={onChange}
+              value={value}
               className="radio-delivery"
             >
-              <Radio onClick={() => setVisible(false)} value={1}>
-                DELIVERY
-              </Radio>
-              <Radio onClick={() => setVisible(true)} value={2}>
-                PICK UP
-              </Radio>
+              <Radio value={1}>DELIVERY</Radio>
+              <Radio value={2}>PICK UP</Radio>
             </Radio.Group>
           </div>
           {checkData.map((data, i) => {
@@ -89,14 +60,9 @@ const Checkoutsection = () => {
                 </div>
                 <div className="ckeckout-name">
                   <p>{data.name}</p>
-                  {visible && (
-                    <Button onClick={showModal} className="btn-location">
-                      CHOOSE PICK UP LOCATION
-                    </Button>
-                  )}
                 </div>
                 <div className="ckeckout-po">
-                  <p>PO Number: {data.ponumber}</p>
+                  <p>PO Number:{data.ponumber}</p>
                 </div>
               </>
             )
@@ -104,7 +70,6 @@ const Checkoutsection = () => {
           <Label className="costom-po">
             <p>Custom PO Number:</p>
             <Input
-              // disabled={delivery}
               className="input-po"
               placeholder="Enter custom PO number"
             ></Input>
@@ -121,7 +86,7 @@ const Checkoutsection = () => {
             <p>$3,450.00</p>
           </Label>
           <Label className="order-credit">
-            <p> SHIPPING & Handling</p>
+            <p> Shippling&Handling</p>
             <p>TBD</p>
           </Label>
 
@@ -131,22 +96,12 @@ const Checkoutsection = () => {
           </Label>
 
           <Label className="order-total">
-            <p className="total">Total </p>
+            <p>Total </p>
             <p>$1,970.00</p>
           </Label>
           <Button className="mobile-btn">PLACE ORDER</Button>
         </div>
       </div>
-      <Modal
-        title="Basic Modal"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
     </>
   )
 }

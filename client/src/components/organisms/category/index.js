@@ -103,9 +103,10 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
       }
     >
       {/* <h2 className="category-title">{categoryName}</h2> */}
+      <div className="image-container"></div>
       <Row gutter={[6, 6]}>
         {loading ? (
-          [1, 2, 3].map((skelton, index) => (
+          [1, 2, 3, 4].map((skelton, index) => (
             <Col
               span={24}
               md={12}

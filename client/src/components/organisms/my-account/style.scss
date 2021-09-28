@@ -1,19 +1,19 @@
 @import '~styles/globals';
 
 .account--container {
-  max-width: 1120px;
+  max-width: 77.7vw;
   margin: 0 auto;
-  padding: 2.5em 2rem;
+  padding: 2.7vw 2.2vw;
 
   @media screen and (max-width: 500px) {
-    margin-top: 98px;
+    margin-top: 35.7vw;
   }
 
   .welcome-title {
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.94vw;
     color: #fff;
     font-family: $OpenSans;
-    font-size: 24px;
+    font-size: 1.6vw;
     font-weight: bold;
     text-transform: uppercase;
   }
@@ -48,7 +48,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 2.2vw;
 
   @media (min-width: $mq-tablet-portrait) {
     align-items: flex-end;
@@ -56,8 +56,8 @@
 
     .account-head-buttons {
       position: relative;
-      top: -0.25em;
-      padding-left: 5em;
+      top: -0.2vw;
+      padding-left: 5.5vw;
     }
 
     .account-logout-button {
@@ -95,13 +95,13 @@
   }
 
   @media screen and(max-width: 500px) {
-    font-size: 16px;
+    font-size: 4.2vw;
   }
 }
 
 .account-tabpane-content {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 1.1vw;
+  padding-bottom: 1.1vw;
   color: #fff;
 
   .c-label {
@@ -111,7 +111,7 @@
 
     @media (max-width: 768px) {
       font-family: $Raleway;
-      font-size: 14px;
+      font-size: 3.7vw;
     }
   }
 
@@ -123,7 +123,7 @@
 
     @media (max-width: 768px) {
       color: #e25205;
-      font-size: 16px;
+      font-size: 4.2vw;
     }
   }
 
@@ -139,29 +139,48 @@
   }
 
   .order-filter {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #fff;
+    margin-bottom: 1.3vw;
+    padding-bottom: 1vw;
+    border-bottom: 0.006vw solid #fff;
+
+    @media screen and(max-width: 500px) {
+      padding-bottom: 4vw;
+    }
 
     p {
       font-family: $OpenSans;
-      font-size: 14px;
+      font-size: 0.97vw;
       font-weight: 700;
 
+      @media screen and(max-width: 500px) {
+        font-size: 3.7vw;
+      }
+
       select {
-        width: 115px;
-        margin-left: 10px;
-        padding: 0 5px;
+        width: 7.9vw;
+        height: 2.1vw;
+        margin-left: 0.69vw;
+        padding: 0 0.34vw;
         border: none;
         outline: none;
         background: #002a3a !important;
         color: #fff;
         font-family: $Poppins;
-        font-size: 14px;
-
+        font-size: 0.97vw;
+        // -webkit-appearance: none;
+        // -moz-appearance: none;
+        // appearance: none;
         @media screen and (max-width: 500px) {
+          width: 30.6vw;
+          height: 8.2vw;
+          border-radius: 1.3vw;
+          font-size: 3.7vw;
+        }
+
+        option {
+          width: 115px;
           height: 31px;
-          border-radius: 5px;
+          font-size: 14px;
         }
       }
     }
@@ -298,16 +317,14 @@
 
     .header {
       position: relative;
-      // @media (max-width: 1150px) {
-      //   padding: 0px 25px;
-      // }
+
       @media (max-width: 768px) {
         position: fixed;
-        top: 46px;
+        top: 12.2vw;
       }
 
       @media (max-width: 500px) {
-        top: 60px !important;
+        top: 16vw !important;
         padding: 0;
       }
 
@@ -334,7 +351,7 @@
   font-weight: bold !important;
 
   @media screen and (max-width: 500px) {
-    font-size: 14px !important;
+    font-size: 3.7vw !important;
   }
 }
 
@@ -345,7 +362,7 @@
   font-weight: bold !important;
 
   @media screen and (max-width: 500px) {
-    font-size: 16px !important;
+    font-size: 4.2vw !important;
   }
 }
 
@@ -433,7 +450,7 @@
     width: 100%;
 
     div {
-      margin-bottom: 20px;
+      margin-bottom: 5.3vw;
     }
   }
 
@@ -448,7 +465,7 @@
           right !important;
         background-color: #0d394b !important;
         font-family: $OpenSans;
-        font-size: 14px;
+        font-size: 3.7vw;
         font-weight: bold;
       }
 
@@ -496,7 +513,7 @@
       }
 
       .order-number {
-        margin-bottom: 15px;
+        margin-bottom: 4vw;
       }
     }
   }
@@ -506,10 +523,10 @@
   }
 
   .page-title {
-    font-size: 32px !important;
+    font-size: 8.5vw !important;
   }
 
   .welcome-title {
-    font-size: 20px !important;
+    font-size: 5.3vw !important;
   }
 }

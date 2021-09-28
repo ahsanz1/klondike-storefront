@@ -55,7 +55,10 @@ import QuickOrder from 'components/organisms/quick-order'
 import ContactUs from 'components/organisms/contact-us-page'
 import Checkoutsection from 'components/organisms/checkout-section'
 import Technical from 'components/organisms/Technical-document'
+import Oamspproval from 'components/organisms/oam-approval'
+import Confirmation from 'components/organisms/confirmation'
 import WarrantyPage from 'components/organisms/warranty-page'
+import VideoGallery from 'components/organisms/video-gallery'
 
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
@@ -121,5 +124,8 @@ export default {
   QuickOrder: params => <QuickOrder {...params} />,
   Technical: params => <Technical {...params} />,
   ContactUs: params => <ContactUs {...params} />,
+  Oamspproval: params => <Oamspproval {...params} />,
+  Confirmation: params => <Confirmation {...params} />,
   WarrantyPage: params => <WarrantyPage {...params} />,
+  VideoGallery: params => <VideoGallery {...params} />,
 }
