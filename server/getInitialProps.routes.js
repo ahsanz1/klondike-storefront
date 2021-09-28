@@ -30,6 +30,7 @@ router.get("/", async function (req, res, next) {
 router.get("/category/:categoryName/:pid", async function (req, res, next) {
   console.log("request",req);
   let { pid } = req.params;
+  console.log("request parms",req.params);
   let metatags = {
     ...DEFAULT_INITIAL_PARAMS,
   };
