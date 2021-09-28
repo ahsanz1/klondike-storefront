@@ -28,6 +28,7 @@ router.get("/", async function (req, res, next) {
 });
 
 router.get("/category/:categoryName/:pid", async function (req, res, next) {
+  console.log("request",req);
   let { pid } = req.params;
   let metatags = {
     ...DEFAULT_INITIAL_PARAMS,
@@ -42,8 +43,9 @@ router.get("/category/:categoryName/:pid", async function (req, res, next) {
         "x-site-context": GET_X_SITE_CONTEXT(),
       },
     };
-
+    console.log("Axios call",config);
     let product_data = await axios(config);
+    console.log("Axios call Result",product_data);
     if (product_data.data) {
       let product = null;
       if (product_data.data.product) {
@@ -102,12 +104,14 @@ router.get("/category/:categoryName/:pid", async function (req, res, next) {
 });
 
 router.get("/category/:categoryName", async function (req, res, next) {
+  console.log("request",req);
   let metatags = {
     ...DEFAULT_INITIAL_PARAMS,
     OG_TITLE: `${APP_TITLE} | Product metadata`,
   };
   try {
     let { categoryName } = req.params;
+    console.log("request parms",req.params);
     var config = {
       method: "get",
       url: `${process.env.REACT_APP_API_DOMAIN}/api-xpm/global-component/live`,
@@ -116,8 +120,9 @@ router.get("/category/:categoryName", async function (req, res, next) {
         "x-site-context": GET_X_SITE_CONTEXT(),
       },
     };
-
+    console.log("Axios call",config);
     let header_data = await axios(config);
+    console.log("Axios call Result",header_data);
     if (header_data.data) {
       if (header_data.data.length > 0) {
         let header = header_data.data.filter(
@@ -169,10 +174,12 @@ router.get("/sitemap.xml", async function (req, res, next) {
         "utf-8",
         (err, data) => {
           if (err) return reject(err);
+          console.log("error",err);
           return resolve(data);
         }
       );
     });
+    console.log(" call Result",indexFileContent);
     res.send(indexFileContent);
   } catch (err) {
     console.log(err);
@@ -199,6 +206,7 @@ router.get("*", async function (req, res, next) {
   const metatags = {
     ...DEFAULT_INITIAL_PARAMS,
   };
+  console.log("metatags Result",metatags);
   next(metatags);
 });
 
