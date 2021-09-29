@@ -2,6 +2,10 @@
 @import '~styles/globals';
 
 .serach-flow {
+  position: relative;
+  height: 38.1vw;
+  background: #013a4e;
+
   @media (max-width: 768px) {
     position: relative;
     top: 100px;
@@ -31,6 +35,48 @@
         width: 3.4vw;
         height: 3.4vw;
       }
+    }
+  }
+
+  .recentSearch {
+    position: absolute;
+    top: 7.3vw;
+    width: 83.3vw;
+    max-height: 38.1vw;
+    margin-bottom: 1.9vw;
+    overflow-y: scroll;
+    background: rgba(3, 41, 57, 0.5);
+
+    li {
+      display: flex;
+      margin: 0 3.75vw;
+      margin-bottom: 1.9vw !important;
+      padding-bottom: 1.9vw;
+      border-bottom: 0.06vw solid rgba(230, 234, 236, 0.13);
+      color: $white-color;
+      list-style: none;
+
+      button {
+        width: 90%;
+        border: none;
+        background: transparent;
+        font-size: 1.25vw;
+        text-align: left;
+
+        &:nth-child(2) {
+          width: 20%;
+          text-align: right;
+        }
+      }
+    }
+
+    .recent-heading {
+      margin-left: 2.9vw;
+      color: $white-color;
+      font-family: $OpenSans;
+      font-size: 1.3vw;
+      font-weight: bold;
+      line-height: 140%;
     }
   }
 

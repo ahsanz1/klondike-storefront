@@ -299,11 +299,10 @@
       }
     }
 
-    // .icon-button {
-    //   @media screen and(max-width: 500px) {
-    //     padding-right: 0vw !important;
-    //   }
-    // }
+    button {
+      border: none;
+      background: none;
+    }
   }
 
   @media screen and (max-width: 768px) {

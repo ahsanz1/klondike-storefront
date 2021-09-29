@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Input from 'components/atoms/input'
 // import ProductItem from 'components/molecules/ProductItem'
@@ -12,36 +12,86 @@ import Button from 'components/atoms/button'
 const SearchFlow = props => {
   const [searchValue, setSearchValue] = useState('')
   const [itemList, setItemList] = useState([])
+  const [recent, setRecent] = useState([])
+  const [showRecent, setShowRecent] = useState(false)
+  const [localRecent, setLocalRecent] = useState([])
   const searchValueHandler = async ({ value }) => {
     setSearchValue(value)
-    const list = await fetchItems(value)
-    setItemList(list.hits)
   }
   const clear = () => {
     setSearchValue('')
     setItemList([])
+    setShowRecent(false)
+    props.toggleSearch()
   }
-  console.log('itemLIst:', itemList)
+  const clearRecent = item => {
+    let clearItem = localRecent.filter(data => data !== item)
+    console.log('clearRecent:', clearItem)
+    localStorage.setItem('recentData', JSON.stringify(clearItem))
+    setLocalRecent([...clearItem])
+  }
+  const recentSearch = async e => {
+    e.preventDefault()
+    let recentArr = recent
+    recentArr.push(searchValue)
+    setRecent([...recentArr])
+    const list = await fetchItems(searchValue)
+    setItemList(list.hits)
+    setShowRecent(false)
+    let storeData = [...new Set(recent)]
+    localStorage.setItem('recentData', JSON.stringify([...storeData]))
+    setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
+  }
+  const focusInput = () => {
+    setShowRecent(true)
+    setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
+  }
+  const recentSelect = value => {
+    setSearchValue(value)
+    setShowRecent(false)
+  }
+  useEffect(() => {
+    setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
+  }, [])
+  // let localRecent = JSON.parse(localStorage.getItem('recentData'))
+  console.log('localRecent:', localRecent)
   return (
     <>
       <div className="serach-flow">
         <div className="serach-input">
-          <Input
-            placeholder="Search"
-            value={searchValue}
-            onChange={searchValueHandler}
-          />
+          <form onSubmit={recentSearch}>
+            <Input
+              placeholder="Search"
+              value={searchValue}
+              onChange={searchValueHandler}
+              onFocus={focusInput}
+            />
+          </form>
           <Button onClick={clear} className="clear">
             <img src={props.clearIcon} alt="clear Icon" />
           </Button>
         </div>
-        <Label className="suggestion-heading">Suggestion</Label>
+        {/* <Label className="suggestion-heading">Suggestion</Label>
         {itemList.length === 0 ? (
           <Label className="empty-suggestion">No Suggestion Found!</Label>
         ) : (
           ''
-        )}
+        )} */}
         <div className="search-list">
+          {showRecent && localRecent.length > 0 && (
+            <div className="recentSearch">
+              <Label className="recent-heading">Recent Searches</Label>
+              {localRecent.length > 0 &&
+                localRecent.map((item, i) => (
+                  <li key={i}>
+                    <Button onClick={() => recentSelect(item)}>{item}</Button>
+                    <Button onClick={() => clearRecent(item)} className="clear">
+                      <img src={props.clearIcon} alt="clear Icon" />
+                    </Button>
+                  </li>
+                ))}
+            </div>
+          )}
           <div className="suggestion-name">
             <Suggestion itemList={searchValue ? itemList : []} />
           </div>
@@ -71,5 +121,6 @@ const SearchFlow = props => {
 }
 SearchFlow.propTypes = {
   clearIcon: PropTypes.string,
+  toggleSearch: PropTypes.func,
 }
 export default SearchFlow

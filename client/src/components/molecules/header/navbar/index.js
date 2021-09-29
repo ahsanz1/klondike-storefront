@@ -28,6 +28,7 @@ const Navbar = ({
   mobileMenuOpen = {},
   mobileMenuClose = {},
   menuBottom = '',
+  toggleSearch = () => {},
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -107,13 +108,19 @@ const Navbar = ({
           }}
         >
           <Link
-            to="/SearchFlow"
+            // to="/SearchFlow"
             className="header__search-icon"
             style={{
               paddingRight: '30px',
             }}
           >
-            <Image height={26} src={searchIcon.url} alt={searchIcon.altText} />
+            <Button onClick={toggleSearch}>
+              <Image
+                height={26}
+                src={searchIcon.url}
+                alt={searchIcon.altText}
+              />
+            </Button>
           </Link>
           <Link
             to="/account"
@@ -179,5 +186,6 @@ Navbar.propTypes = {
   mobileMenuOpen: PropTypes.object,
   mobileMenuClose: PropTypes.object,
   menuBottom: PropTypes.object,
+  toggleSearch: PropTypes.func,
 }
 export default Navbar
