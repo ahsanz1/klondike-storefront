@@ -53,7 +53,7 @@ const Links = ({
                     //   ? `screen ${linkClassName}`
                     //   :
                   }
-                  to="#"
+                  to={link.url}
                 >
                   {link && link.label && link.label}
                   <Image
