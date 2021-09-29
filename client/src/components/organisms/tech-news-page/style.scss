@@ -1,0 +1,147 @@
+@import '~styles/globals';
+
+.tech-news-page-wrap {
+  margin-top: get-vw(70px);
+  margin-right: get-vw(213px);
+  margin-left: get-vw(87px);
+  color: white;
+  font-family: $OpenSans;
+
+  .tech-news-titles {
+    display: flex;
+    flex-direction: column;
+
+    .tech-news-title {
+      color: #f1a900;
+      font-size: get-vw(36px);
+      font-style: normal;
+      font-weight: bold;
+      line-height: get-vw(49px);
+      text-transform: uppercase;
+    }
+
+    .pages-title {
+      color: #7ba3b4;
+      font-size: get-vw(24px);
+      font-style: normal;
+      font-weight: bold;
+      line-height: get-vw(33px);
+      text-transform: uppercase;
+    }
+
+    .catagory-links {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: get-vw(555px);
+
+      .links {
+        margin-top: get-vw(8px);
+        padding-right: get-vw(12px);
+        padding-left: get-vw(12px);
+        border-right: get-vw(1px) solid #fff;
+        border-left: get-vw(1px) solid #fff;
+        color: #f0a51f;
+        font-size: get-vw(14px);
+        font-style: normal;
+        font-weight: 600;
+        line-height: get-vw(19px);
+        text-transform: uppercase;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
+    }
+
+    .blog-item {
+      max-width: 200%;
+      margin-top: get-vw(39px);
+      margin-left: get-vw(33px);
+
+      .page-no {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: get-vw(39px);
+
+        .page-no-box {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: get-vw(28px);
+          margin-left: get-vw(5px);
+          border: get-vw(1px) solid #ffa500;
+          font-size: get-vw(16px);
+          line-height: get-vw(22px);
+        }
+      }
+
+      .tech-blog-item {
+        display: flex;
+        flex-direction: row;
+
+        .item-image {
+          width: get-vw(150px);
+          height: get-vw(150px);
+        }
+
+        .item-descriptions {
+          margin-bottom: get-vw(51px);
+          margin-left: get-vw(16px);
+
+          .item-top-bar {
+            display: flex;
+            align-items: center;
+            border-bottom: get-vw(1px) solid #ffa500;
+
+            .item-date {
+              margin-right: get-vw(15px);
+              color: #fff;
+              font-size: get-vw(12px);
+              font-style: normal;
+              font-weight: 600;
+              line-height: get-vw(16px);
+              text-transform: uppercase;
+            }
+
+            .links {
+              margin-top: get-vw(8px);
+              margin-bottom: get-vw(9px);
+              padding-right: get-vw(12px);
+              padding-left: get-vw(12px);
+              border-right: get-vw(1px) solid #fff;
+              border-left: get-vw(1px) solid #fff;
+              color: #ffa500;
+              font-size: get-vw(12px);
+              font-weight: 600;
+              line-height: get-vw(16px);
+              text-transform: uppercase;
+            }
+          }
+
+          .item-desc-box {
+            .item-title {
+              margin-top: get-vw(20px);
+              margin-bottom: get-vw(9px);
+              color: #ffa500;
+              font-size: get-vw(16px);
+              font-style: normal;
+              font-weight: bold;
+              line-height: get-vw(17px);
+              text-transform: uppercase;
+            }
+          }
+
+          .paragragh-text {
+            color: #fff;
+            font-size: get-vw(14px);
+            font-style: normal;
+            font-weight: 600;
+            line-height: get-vw(19px);
+          }
+
+          .read-more {
+            color: #ffa500;
+          }
+        }
+      }
+    }
+  }
+}

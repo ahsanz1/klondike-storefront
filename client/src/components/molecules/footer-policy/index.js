@@ -28,7 +28,7 @@ const FooterPolicy = ({
         <span className="divider-dot">|</span>
       </li>
       <li className="small--hide">
-        <Link to={connectKlondike}>{connectKlondike}</Link>
+        <Link to="/contact-us">{connectKlondike}</Link>
       </li>
     </ul>
   )
