@@ -545,5 +545,11 @@ const mockData = {
       params: {},
     },
   ],
+  '/Techtabllist': [
+    {
+      id: 'Techtabllist',
+      params: {},
+    },
+  ],
 }
 export default mockData

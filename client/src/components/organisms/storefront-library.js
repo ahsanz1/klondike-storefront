@@ -184,4 +184,7 @@ Components[
 Components[
   'VideoGallery'
 ] = require('components/organisms/video-gallery').default
+Components[
+  'Techtabllist'
+] = require('components/organisms/Technical-tablist').default
 export default Components

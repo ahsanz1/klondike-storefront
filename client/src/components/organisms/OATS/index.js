@@ -35,7 +35,7 @@ const Oats = () => {
       <div className="img">
         <div className="oats">
           <h1 className="heading">{mainHeading}</h1>
-          <div className="wrapper">
+          <div className="wrapper-oats">
             <input
               onChange={filterData}
               className="input_model"
