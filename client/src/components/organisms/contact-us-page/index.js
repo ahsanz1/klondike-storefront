@@ -20,7 +20,11 @@ const ContactUs = () => {
         <WebpagesHeroImages {...contactUsBanner} key="112233446677" />
 
         <div className="contact-us-form">
-          <SimpleForm {...simpleFormData} className="contact-us-form" />
+          <SimpleForm
+            {...simpleFormData}
+            buttonLabel="Send"
+            className="contact-us-form"
+          />
         </div>
         <div className="contact-us-Address">
           <ContactAddres {...contactaddress} />

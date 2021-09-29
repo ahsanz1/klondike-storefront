@@ -12,58 +12,60 @@ import Link from 'components/atoms/link'
 const WarrantyPage = ({ categories }) => {
   return (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
+      <div className="warranty-page-wrapper">
+        <WebpagesHeroImages {...technicalBanner} />
 
-      <div className="technacil-wriper">
-        <div className="custom-tech">
-          <Techtabllist
-            className="warranty-tablist"
-            itemName="Warranty"
-            categories={categories}
-          />
-        </div>
-        <div className="technical-data">
-          <div className="warranty-page-wrap">
-            <Label className="warranty-title">Warranty</Label>
-            <div className="image-and-text">
-              <div className="warranty-image">
-                <Image src="static/images/KL_Warranty_Icon1.svg" />
-              </div>
-              <div className="heading-tech">
-                <Label>
-                  In keeping with our goal to produce the highest quality oils
-                  and lubricants, we provide warranty on all products bearing
-                  the KLONDIKE lubricants brand. To view the KLONDIKE Lubricants
-                  Corporation Warranty document, please{' '}
-                  <Link className="warranty-link">click here.</Link>
-                  <br />
-                  <br />
-                  <Label className="warranty-refer">
-                    For specific warranty details and procedures, please contact
-                    us at{' '}
-                    <Link className="warranty-link">
-                      info@klondikelubricants.com.
-                    </Link>
+        <div className="technacil-wriper">
+          <div className="custom-tech">
+            <Techtabllist
+              className="warranty-tablist"
+              itemName="Warranty"
+              categories={categories}
+            />
+          </div>
+          <div className="technical-data">
+            <div className="warranty-page-wrap">
+              <Label className="warranty-title">Warranty</Label>
+              <div className="image-and-text">
+                <div className="warranty-image">
+                  <Image src="static/images/KL_Warranty_Icon1.png" />
+                </div>
+                <div className="heading-tech">
+                  <Label>
+                    In keeping with our goal to produce the highest quality oils
+                    and lubricants, we provide warranty on all products bearing
+                    the KLONDIKE lubricants brand. To view the KLONDIKE
+                    Lubricants Corporation Warranty document, please{' '}
+                    <Link className="warranty-link">click here.</Link>
+                    <br />
+                    <br />
+                    <Label className="warranty-refer">
+                      For specific warranty details and procedures, please
+                      contact us at{' '}
+                      <Link className="warranty-link">
+                        info@klondikelubricants.com.
+                      </Link>
+                    </Label>
                   </Label>
-                </Label>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="technical-bottom">
-        <div className="technical-bottom-section">
-          {PcpBottom &&
-            PcpBottom.map((item, i) => (
-              <>
-                <PCPBottom
-                  image={item.image}
-                  button={item.button}
-                  mobileButton={item.mobileButton}
-                />
-              </>
-            ))}
+        <div className="technical-bottom">
+          <div className="technical-bottom-section">
+            {PcpBottom &&
+              PcpBottom.map((item, i) => (
+                <>
+                  <PCPBottom
+                    image={item.image}
+                    button={item.button}
+                    mobileButton={item.mobileButton}
+                  />
+                </>
+              ))}
+          </div>
         </div>
       </div>
     </>

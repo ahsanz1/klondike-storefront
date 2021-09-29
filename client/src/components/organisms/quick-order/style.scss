@@ -1,7 +1,7 @@
 @import '~styles/globals';
 
 .radio-wrapper {
-  padding-top: 5em;
+  padding-top: 53px;
   padding-left: 39px;
 
   .radiobtn {
@@ -24,16 +24,6 @@
     justify-content: center;
     padding-left: 10px;
   }
-}
-
-.price-list-btn {
-  // font-weight: bold;
-  // font-size: 14px;
-  // color: #f1a900;
-  // text-decoration: underline;
-  // // float: right;
-
-  display: none;
 }
 
 .accordian {
@@ -227,6 +217,7 @@
   grid-template-columns: 500px auto;
   padding-top: 20px;
   padding-left: 30px;
+  color: #fff;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 220px auto;
@@ -241,6 +232,7 @@
   border: none;
   background: #013a4e;
   color: #d99e08;
+  font-family: $OpenSans;
   font-size: 14px;
   text-transform: uppercase;
 }

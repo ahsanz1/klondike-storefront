@@ -9,7 +9,7 @@ const PCPBottom = ({ image, button, mobileButton }) => {
   return (
     <div className="bottom-plp">
       <div className="plp-bottom">
-        <div>
+        <div className="plp-bottom-image">
           <Image
             src={image}
             // alt={image.altText}
