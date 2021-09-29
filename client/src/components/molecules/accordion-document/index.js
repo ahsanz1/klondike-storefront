@@ -22,7 +22,7 @@ const Accordiondocment = ({
 }) => {
   return (
     <>
-      <div>
+      <div className="accordion-main">
         <Row className="accordion-item">
           <Col md={2} xs={6} sm={6}>
             <div className="accordion-arrow">
@@ -45,7 +45,7 @@ const Accordiondocment = ({
               )}
             </div>
           </Col>
-          <Col md={table ? 24 : 22} xs={18} sm={18}>
+          <Col md={22} xs={18} sm={18}>
             <h4
               className="accordion-question"
               onClick={() => {
