@@ -60,6 +60,8 @@ import Confirmation from 'components/organisms/confirmation'
 import WarrantyPage from 'components/organisms/warranty-page'
 import VideoGallery from 'components/organisms/video-gallery'
 import Techtabllist from 'components/organisms/Technical-tablist'
+import TechNews from 'components/organisms/tech-news-page'
+
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -129,4 +131,5 @@ export default {
   WarrantyPage: params => <WarrantyPage {...params} />,
   VideoGallery: params => <VideoGallery {...params} />,
   Techtabllist: params => <Techtabllist {...params} />,
+  TechNews: params => <TechNews {...params} />,
 }

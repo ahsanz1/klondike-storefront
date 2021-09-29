@@ -187,4 +187,5 @@ Components[
 Components[
   'Techtabllist'
 ] = require('components/organisms/Technical-tablist').default
+Components['TechNews'] = require('components/organisms/tech-news-page').default
 export default Components

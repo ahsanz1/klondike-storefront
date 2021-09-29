@@ -11,6 +11,8 @@ import NavbarcartIcon from 'components/molecules/navbar-cart-icon'
 import CartDropdown from 'components/organisms/cart-dropdown'
 import { AppContext } from 'libs/context'
 
+import CartPopUP from 'components/organisms/cart-pop'
+
 import './styles.scss'
 
 const Navbar = ({
@@ -48,6 +50,7 @@ const Navbar = ({
     >
       <div className="header__nav">
         <CartDropdown />
+        <CartPopUP />
         <div className="mobile-home-logo">
           <Image width={75} src={mobileLogo.url} alt="logo" />
         </div>

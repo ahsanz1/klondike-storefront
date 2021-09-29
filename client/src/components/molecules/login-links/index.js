@@ -7,7 +7,7 @@ const LoginLinks = ({ links = [] }) => {
   return (
     <div className="links--container">
       {links.map((el, index) => (
-        <Link className="links" key={index} to={el.to}>
+        <Link className="links" key={index} to="/contact-us">
           {el.text}
         </Link>
       ))}
