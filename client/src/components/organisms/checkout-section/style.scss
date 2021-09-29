@@ -83,6 +83,7 @@ $vw-viewport: 1440;
   }
 
   .ant-radio-wrapper {
+    color: white !important;
     font-size: get-vw(17px);
     font-style: normal;
     letter-spacing: 0.03em;
@@ -338,7 +339,7 @@ $vw-viewport: 1440;
     // margin-right: 36.52vw;
     // margin-left: 8.33vw;3
 
-    color: #f5f5f5;
+    color: #f5f5f5 !important;
     font-size: 17px;
 
     @media (max-width: 768px) {

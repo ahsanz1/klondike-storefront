@@ -59,6 +59,7 @@ import Oamspproval from 'components/organisms/oam-approval'
 import Confirmation from 'components/organisms/confirmation'
 import WarrantyPage from 'components/organisms/warranty-page'
 import VideoGallery from 'components/organisms/video-gallery'
+import Techtabllist from 'components/organisms/Technical-tablist'
 import TechNews from 'components/organisms/tech-news-page'
 
 export default {
@@ -129,5 +130,6 @@ export default {
   Confirmation: params => <Confirmation {...params} />,
   WarrantyPage: params => <WarrantyPage {...params} />,
   VideoGallery: params => <VideoGallery {...params} />,
+  Techtabllist: params => <Techtabllist {...params} />,
   TechNews: params => <TechNews {...params} />,
 }
