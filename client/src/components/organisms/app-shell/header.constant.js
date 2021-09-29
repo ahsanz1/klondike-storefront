@@ -176,7 +176,7 @@ export const Header = {
   //   },
   // },
   offerLabel: 'FIND THE RIGHT OIL FOR YOUR APPLICATION',
-  buyButton: 'HOW TO BUY',
+  buyButton: 'Quick Order',
   promoButton: 'Search Now',
   promoLogo: { url: '/static/images/promologo.png' },
   url: '/account/login?logout=true',
