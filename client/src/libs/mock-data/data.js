@@ -545,5 +545,17 @@ const mockData = {
       params: {},
     },
   ],
+  '/Techtabllist': [
+    {
+      id: 'Techtabllist',
+      params: {},
+    },
+  ],
+  '/tech-news-blog': [
+    {
+      id: 'TechNews',
+      params: {},
+    },
+  ],
 }
 export default mockData

@@ -15,13 +15,14 @@ $vw-viewport: 1440;
 .accordion-container {
   width: 100%;
   max-width: get-vw(1200px);
-  margin: get-vw(48px) auto get-vw(75px);
+  margin-left: 8.33vw;
   padding: 102px;
   background-color: #013a4e;
 }
 
 .accordion-heading-container {
-  margin-top: get-vw(84px);
+  // margin-top: get-vw(84px);
+  padding-top: 5.3vw;
 }
 
 .accordion-heading {
@@ -45,7 +46,7 @@ $vw-viewport: 1440;
   display: block;
 
   @media (max-width: 768px) {
-    width: get-vw(227px);
+    width: 6.72vw;
   }
 }
 

@@ -37,7 +37,7 @@ export const heroBannerdata = {
   bannerheading:
     '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
 
-  bannerbutton: 'Learn more',
+  bannerbutton: 'HOW TO BUY',
   // },
 }
 export const bannerlubricants = {

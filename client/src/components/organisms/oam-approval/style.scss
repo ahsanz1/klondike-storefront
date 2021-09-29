@@ -16,48 +16,86 @@ $vw-viewport: 1440;
     // display: flex;
     // flex-direction: column-reverse;
     width: get-vw(1000px);
-    margin-top: 100px;
+    margin-top: 9.93vw;
     margin-right: get-vw(109px);
-    margin-left: get-vw(321px);
+    margin-left: 1.3vw;
     background-color: #03293980;
+
+    > h1 {
+      margin-bottom: 0.97222vw;
+      padding-top: 70px;
+      padding-left: 87px;
+      color: #f1a900;
+      font-size: 2.5vw;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 3.40278vw;
+      text-transform: uppercase;
+      font-feature-settings: 'pnum' on, 'lnum' on;
+      // .data-warp{
+      //   display: flex;
+      //   flex-direction: column;
+      // }
+    }
   }
 
   .categoryItem-tab {
+    width: 17.2vw;
+    height: 3.26389vw;
     margin-top: 100px;
+    // margin-top: 100px;
     margin-left: get-vw(67px);
+    margin-left: 4.65278vw;
   }
 
   .oam-data {
-    margin-top: 70px;
-    margin-left: 100px;
+    display: flex;
+    flex-direction: row;
+    padding-top: 0.97px;
+    padding-bottom: 5.1vw;
 
-    > h1 {
-      width: get-vw(482px);
-      height: get-vw(49px);
-      margin-bottom: get-vw(14px);
-      color: #f1a900;
-      font-size: get-vw(36px);
-      font-style: normal;
-      font-weight: bold;
-      line-height: get-vw(49px);
+    /* margin-top: 70px; */
 
-      /* identical to box height */
+    /* margin-left: 100px; */
+    padding-left: 8.4vw;
 
-      text-transform: uppercase;
-      font-feature-settings: 'pnum' on, 'lnum' on;
+    .img-oam {
+      > .c-image {
+        max-width: none;
+      }
     }
 
     .descr-oam {
       /* or 20px */
       left: calc(50% - 591px / 2 + 277.5px);
-      width: get-vw(591px);
       opacity: 0.9;
       color: #fff;
-      font-size: get-vw(14px);
+      font-size: 0.7vw;
       font-style: normal;
       font-weight: normal;
       line-height: 140%;
       font-feature-settings: 'pnum' on, 'lnum' on;
+    }
+
+    .data-warp {
+      padding-left: 1.6vw;
+
+      .heading-oam {
+        color: #f1a900;
+
+        /* identical to box height */
+        font-family: $OpenSans;
+        font-size: 1.6vw;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 2.2vw;
+        text-transform: capitalize;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
+
+      .arow-img {
+        color: #f1a900;
+      }
     }
   }
 }

@@ -105,13 +105,27 @@
   color: #fff;
 
   .c-label {
-    font-family: $OpenSans;
-    font-size: 0.9vw;
-    font-weight: normal;
+    align-items: center !important;
+    font-family: $OpenSans !important;
+    font-size: 0.9vw !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    line-height: 1.3vw !important;
+    text-transform: uppercase !important;
 
     @media (max-width: 768px) {
-      font-family: $Raleway;
-      font-size: 3.7vw;
+      flex: none;
+      flex-grow: 0;
+      align-items: center !important;
+      align-self: stretch;
+      order: 0;
+      margin: 2px 0;
+      font-family: $OpenSans !important;
+      font-size: 3.7vw !important;
+      font-style: normal !important;
+      font-weight: bold !important;
+      line-height: 5vw !important;
+      text-transform: uppercase !important;
     }
   }
 
@@ -356,13 +370,19 @@
 }
 
 .credit-price {
+  padding-top: 0.13vw;
   color: #f1a900;
   font-family: $OpenSans !important;
   font-size: 1.6vw !important;
   font-weight: bold !important;
+  line-height: 2.2vw !important;
 
   @media screen and (max-width: 500px) {
-    font-size: 4.2vw !important;
+    padding-top: 3 0.53vw;
+    font-family: $OpenSans !important;
+    font-size: 5.8vw !important;
+    font-weight: bold !important;
+    line-height: 2.2vw !important;
   }
 }
 

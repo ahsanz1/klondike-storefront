@@ -29,7 +29,7 @@ const Accordion = ({
 }) => {
   return (
     <>
-      <div>
+      <div className="accordion-faqs">
         <Row className="accordion-item">
           <Col md={2} xs={6} sm={6}>
             <div className="accordion-arrow">

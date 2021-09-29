@@ -31,7 +31,7 @@ const Techtabllist = ({
                 }
               >
                 {item.categoryName}
-                {itemName === item.categoryName && (
+                {subItem && itemName === item.categoryName && (
                   <div className="subItem">
                     {subItem &&
                       subItem.hits &&

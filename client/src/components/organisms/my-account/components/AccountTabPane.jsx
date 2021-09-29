@@ -110,7 +110,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
       ) : (
         <>
           <Label className="credit-limit">{data.limit && data.limit}</Label>
-          <Label className="credit-price">{data.price && data.price}</Label>
+          <p className="credit-price">{data.price && data.price}</p>
         </>
       )}
     </div>

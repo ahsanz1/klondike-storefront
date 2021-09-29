@@ -24,7 +24,8 @@
     cursor: pointer;
 
     @media (max-width: 500px) {
-      margin-left: 5.8vw;
+      // margin-left: 5.8vw;
+      padding-left: 5.8vw;
     }
 
     img {
@@ -94,6 +95,7 @@
     @media (max-width: 500px) {
       display: flex;
       justify-content: space-between;
+      padding-left: 6.4vw;
     }
 
     input {
@@ -145,7 +147,8 @@
   }
 
   ::placeholder {
-    color: $white-color;
+    padding-left: 5.3vw;
+    color: #8c8885;
     font-size: 1.1vw;
 
     @media screen and(max-width: 500px) {
