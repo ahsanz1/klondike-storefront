@@ -15,6 +15,7 @@ const SearchFlow = props => {
   const [recent, setRecent] = useState([])
   const [showRecent, setShowRecent] = useState(false)
   const [localRecent, setLocalRecent] = useState([])
+
   const searchValueHandler = async ({ value }) => {
     setSearchValue(value)
   }
@@ -53,7 +54,7 @@ const SearchFlow = props => {
   useEffect(() => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
-  // let localRecent = JSON.parse(localStorage.getItem('recentData'))
+
   console.log('localRecent:', localRecent)
   return (
     <>
@@ -71,8 +72,11 @@ const SearchFlow = props => {
             <img src={props.clearIcon} alt="clear Icon" />
           </Button>
         </div>
-        {/* <Label className="suggestion-heading">Suggestion</Label>
-        {itemList.length === 0 ? (
+        {itemList.length > 0 && (
+          <Label className="suggestion-heading">Suggestion</Label>
+        )}
+
+        {/* {itemList.length === 0 ? (
           <Label className="empty-suggestion">No Suggestion Found!</Label>
         ) : (
           ''
