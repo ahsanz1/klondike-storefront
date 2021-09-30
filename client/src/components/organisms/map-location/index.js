@@ -31,30 +31,32 @@ const MapLocation = ({
             googleMapsApiKey={apiKey}
             // libraries={MAP_LIBS}
           >
-            <GoogleMap
-              id="marker-example"
-              mapContainerStyle={mapContainerStyle}
-              zoom={1}
-              center={{
-                lat: Number(maplocations[0].positionLat),
-                lng: Number(maplocations[0].positionLng),
-              }}
-            >
-              {maplocations.map((location, i) => {
-                const { positionLat, positionLng } = location
-                console.log('map mapp', positionLat)
-                return (
-                  <Marker
-                    key={i}
-                    // onLoad={onLoad}
-                    position={{
-                      lat: Number(positionLat),
-                      lng: Number(positionLng),
-                    }}
-                  />
-                )
-              })}
-            </GoogleMap>
+            <div className="map-map">
+              <GoogleMap
+                id="marker-example"
+                mapContainerStyle={mapContainerStyle}
+                zoom={2.5}
+                center={{
+                  lat: Number(maplocations[0].positionLat),
+                  lng: Number(maplocations[0].positionLng),
+                }}
+              >
+                {maplocations.map((location, i) => {
+                  const { positionLat, positionLng } = location
+                  console.log('map mapp', positionLat)
+                  return (
+                    <Marker
+                      key={i}
+                      // onLoad={onLoad}
+                      position={{
+                        lat: Number(positionLat),
+                        lng: Number(positionLng),
+                      }}
+                    />
+                  )
+                })}
+              </GoogleMap>
+            </div>
           </LoadScript>
         </div>
       </>

@@ -140,7 +140,7 @@ const QuickOrder = () => {
       return (
         <div className="wrapper">
           <AccordionComponent
-            text="Order by part Number"
+            text="Order by Part Number"
             className="accordian"
             isActive={accordianisActive}
             onClick={handleAccordianClick}
@@ -160,7 +160,7 @@ const QuickOrder = () => {
       return (
         <div className="wrapper">
           <AccordionComponent
-            text="Order by part Number"
+            text="Order by Part Number"
             className="accordian"
             isActive={accordianisActive}
             onClick={handleAccordianClick}
@@ -181,18 +181,25 @@ const QuickOrder = () => {
 
   const TotalCartPrice = () => {
     return (
-      <div className="checkout">
-        <div className="order-price">
-          <Label className="sub-total">Order Total</Label>
-          <Label className="total">$ 350.00</Label>
+      <div className="checkout-and-pricelist">
+        <div className="quick-order-price-list-btn">
+          <Link className="price-list-link" to="/faqs">
+            View Price List
+          </Link>
         </div>
-        <div className="checkout-links">
-          <Link className="checkout-btn" to="/checkout">
-            PROCEED TO CHECK OUT
-          </Link>
-          <Link className="view-btn" to="/cart">
-            VIEW CART
-          </Link>
+        <div className="checkout">
+          <div className="order-price">
+            <Label className="sub-total">Order Total</Label>
+            <Label className="total">$ 350.00</Label>
+          </div>
+          <div className="checkout-links">
+            <Link className="checkout-btn" to="/checkout">
+              PROCEED TO CHECK OUT
+            </Link>
+            <Link className="view-btn" to="/cart">
+              VIEW CART
+            </Link>
+          </div>
         </div>
       </div>
     )
@@ -242,9 +249,6 @@ const QuickOrder = () => {
             </div>
           )}
 
-          <Link to="./" className="price-list-btn">
-            View Price List
-          </Link>
           {cartItem}
         </div>
         {cartItems && <TotalCartPrice />}

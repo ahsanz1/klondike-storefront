@@ -1,66 +1,77 @@
 @import '~styles/globals';
 
-.video-gallery-wrap {
-  padding-top: get-vw(66px);
-  padding-bottom: get-vw(78px);
-  padding-left: get-vw(69px);
-  font-family: $OpenSans;
+.video-gallery-page {
+  .video-gallery-wrap {
+    padding-top: get-vw(66px);
+    padding-bottom: get-vw(78px);
+    padding-left: get-vw(69px);
+    font-family: $OpenSans;
 
-  .videos {
-    display: flex;
-    flex-direction: row;
-  }
+    .videos {
+      display: flex;
+      flex-direction: row;
+    }
 
-  .video-gallery-title {
-    margin: 0%;
-    margin-bottom: get-vw(17px);
-    color: #f1a900;
-    font-size: get-vw(36px);
-    font-style: normal;
-    font-weight: bold;
-    line-height: get-vw(49px);
-    text-transform: uppercase;
-  }
-
-  .heading-tech {
-    padding-right: get-vw(70px);
-    padding-bottom: get-vw(19px);
-  }
-
-  .big-video-element {
-    .details {
-      padding-top: get-vw(19px);
-      padding-bottom: get-vw(41px);
-      color: #fff;
-      font-size: get-vw(14px);
+    .video-gallery-title {
+      margin: 0%;
+      margin-bottom: get-vw(17px);
+      color: #f1a900;
+      font-size: get-vw(36px);
       font-style: normal;
-      font-weight: normal;
-      line-height: get-vw(20px);
+      font-weight: bold;
+      line-height: get-vw(49px);
+      text-transform: uppercase;
     }
 
-    .big-video-frame {
-      width: get-vw(480px);
-      height: get-vw(270px);
+    .heading-tech {
+      padding-right: get-vw(70px);
+      padding-bottom: get-vw(19px);
+    }
+
+    .big-video-element {
+      .details {
+        padding-top: get-vw(19px);
+        padding-bottom: get-vw(41px);
+        color: #fff;
+        font-size: get-vw(14px);
+        font-style: normal;
+        font-weight: normal;
+        line-height: get-vw(20px);
+      }
+
+      .big-video-frame {
+        width: get-vw(480px);
+        height: get-vw(270px);
+      }
+    }
+
+    .small-video-element {
+      padding-left: get-vw(41px);
+
+      .details {
+        margin-top: get-vw(23px);
+        margin-right: get-vw(70px);
+        padding-right: get-vw(60px);
+        padding-bottom: get-vw(25px);
+        color: #fff;
+        font-size: get-vw(18px);
+        font-style: normal;
+        font-weight: normal;
+        line-height: get-vw(25px);
+      }
+
+      .small-video-frame {
+        width: get-vw(271px);
+        height: get-vw(153px);
+      }
     }
   }
 
-  .small-video-element {
-    padding-left: 41px;
+  .technical-bottom {
+    padding-top: get-vw(0);
 
-    .details {
-      margin-right: get-vw(70px);
-      padding-right: get-vw(60px);
-      padding-bottom: get-vw(25px);
-      color: #fff;
-      font-size: get-vw(18px);
-      font-style: normal;
-      font-weight: normal;
-      line-height: get-vw(25px);
-    }
-
-    .small-video-frame {
-      width: get-vw(271px);
-      height: get-vw(153px);
+    .technical-bottom-section {
+      margin-top: get-vw(48px);
     }
   }
 }

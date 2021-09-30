@@ -1,84 +1,99 @@
 @import '~styles/globals';
 
-.checkout {
-  margin-top: 280px;
-  color: white;
-  font-family: $OpenSans;
-  font-style: normal;
-  font-weight: bold;
+.checkout-and-pricelist {
+  .quick-order-price-list-btn {
+    align-items: right;
+    margin-top: 58px;
+    margin-right: 51px;
+    text-align: right;
 
-  @media screen and (max-width: 768px) {
-    display: grid;
-    margin-top: 0;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    .price-list-link {
+      color: #f1a900;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+
+  .checkout {
+    margin-top: 170px;
+    color: white;
+    font-family: $OpenSans;
     font-style: normal;
     font-weight: bold;
-    place-items: center;
-  }
 
-  .order-price {
-    display: flex;
-    justify-content: center;
-
-    .sub-total {
-      padding-right: 100px;
-      color: #fff;
-      font-size: 24px;
-      letter-spacing: 0.02em;
-      line-height: 30px;
+    @media screen and (max-width: 768px) {
+      display: grid;
+      margin-top: 0;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-style: normal;
+      font-weight: bold;
+      place-items: center;
     }
 
-    .total {
-      color: #f1a900;
-      font-size: 24px;
-      letter-spacing: 0.02em;
-      line-height: 30px;
-
-      /* or 125% */
-
-      text-align: center;
-    }
-  }
-
-  .checkout-links {
-    display: grid;
-    grid-template-rows: auto auto;
-    margin-top: 25px;
-    place-items: center;
-
-    .checkout-btn {
+    .order-price {
       display: flex;
-      box-sizing: border-box;
-      align-items: center;
       justify-content: center;
-      width: 334px;
-      height: 64px;
-      margin-bottom: 20px;
-      border: 1px solid #f2a900;
-      border-radius: 5px;
-      background: #f2a900;
-      color: #fff;
-      font-size: 23px;
-      letter-spacing: -1px;
-      line-height: 24px;
-      text-transform: uppercase;
+
+      .sub-total {
+        padding-right: 100px;
+        color: #fff;
+        font-size: 24px;
+        letter-spacing: 0.02em;
+        line-height: 30px;
+      }
+
+      .total {
+        color: #f1a900;
+        font-size: 24px;
+        letter-spacing: 0.02em;
+        line-height: 30px;
+
+        /* or 125% */
+
+        text-align: center;
+      }
     }
 
-    .view-btn {
-      display: flex;
-      box-sizing: border-box;
-      align-items: center;
-      justify-content: center;
-      width: 334px;
-      height: 64px;
-      border: 1px solid #f2a900;
-      border-radius: 5px;
-      color: #fff;
-      font-size: 23px;
-      letter-spacing: -1px;
-      line-height: 24px;
-      text-transform: uppercase;
+    .checkout-links {
+      display: grid;
+      grid-template-rows: auto auto;
+      margin-top: 25px;
+      place-items: center;
+
+      .checkout-btn {
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        width: 334px;
+        height: 64px;
+        margin-bottom: 20px;
+        border: 1px solid #f2a900;
+        border-radius: 5px;
+        background: #f2a900;
+        color: #fff;
+        font-size: 23px;
+        letter-spacing: -1px;
+        line-height: 24px;
+        text-transform: uppercase;
+      }
+
+      .view-btn {
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        width: 334px;
+        height: 64px;
+        border: 1px solid #f2a900;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 23px;
+        letter-spacing: -1px;
+        line-height: 24px;
+        text-transform: uppercase;
+      }
     }
   }
 }
