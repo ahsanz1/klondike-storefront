@@ -81,6 +81,10 @@ $vw-viewport: 1440;
     padding-bottom: 15px;
     border: 0.06vw solid #f1a900;
     border-bottom: none;
+
+    @media (max-width: 768px) {
+      width: 82.2vw;
+    }
   }
 
   .accordion-item {
@@ -98,6 +102,12 @@ $vw-viewport: 1440;
 
       img {
         width: 100%;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        width: 4.8vw;
+        margin-left: 7.2vw;
         cursor: pointer;
       }
     }

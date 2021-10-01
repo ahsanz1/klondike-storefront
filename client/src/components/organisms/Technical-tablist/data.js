@@ -2,7 +2,7 @@ export const categoriesXPM = [
   {
     title: 'Technical Documents',
     categoryName: 'Technical Documents',
-    subItem: 'zahid',
+    subItem: 'Technical Documents',
   },
   {
     title: 'OEM Approvals',
