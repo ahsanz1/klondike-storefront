@@ -16,6 +16,7 @@ exports.default = Types.Component({
           subheading: Types.String({ label: 'Sub Heading' }),
           paragraph: Types.String({ label: 'Text' }),
           butontext: Types.String({ label: 'Button Text' }),
+          redirectUrl: Types.String({ label: 'Redirect URL' }),
         },
       }),
     }),
