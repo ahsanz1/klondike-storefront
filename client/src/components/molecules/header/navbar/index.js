@@ -53,7 +53,9 @@ const Navbar = ({
         <CartDropdown />
         <CartPopUP />
         <div className="mobile-home-logo">
-          <Image width={75} src={mobileLogo.url} alt="logo" />
+          <Link to="/">
+            <Image width={75} src={mobileLogo.url} alt="logo" />
+          </Link>
         </div>
         <div className="header__mobile-menu-button">
           <Button

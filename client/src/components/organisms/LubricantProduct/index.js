@@ -4,6 +4,7 @@ import './style.scss'
 import AlternateTextImage from 'components/molecules/alternate-text-image'
 
 const LubricantProduct = ({ LubricantContent, headingtext }) => {
+  console.log('check:', LubricantContent, headingtext)
   return (
     <>
       <div className="LubricantProduct-wrapper">

@@ -6,6 +6,7 @@ const OurProduct = props => {
   const [itemHover, setItemHover] = useState('')
   const [imgHover, setImgHover] = useState('')
   const [sectionWidth, setSectionWidth] = useState(false)
+  console.log('ourProducts:', props)
 
   useEffect(() => {
     props.ourProduct.some(

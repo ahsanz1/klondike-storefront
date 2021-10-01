@@ -123,6 +123,10 @@
 
       .h-links {
         border-bottom: 2px solid #f2a900;
+
+        @media (max-width: 500px) {
+          border: none;
+        }
       }
     }
   }
