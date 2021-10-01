@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
+import { AppContext } from 'libs/context'
+import Link from 'components/atoms/link'
+import Button from 'components/atoms/button'
 import './style.scss'
 
 const OurProduct = props => {
@@ -12,6 +15,7 @@ const OurProduct = props => {
       item => item.image && item.image.url && setSectionWidth(true),
     )
   })
+  const { setPlpRedirect } = useContext(AppContext)
   return (
     <div className={!sectionWidth ? 'show-products-image' : 'show-products'}>
       <div className="product-list">
@@ -28,7 +32,15 @@ const OurProduct = props => {
                   onMouseEnter={() => setItemHover(i)}
                   onMouseLeave={() => setItemHover('')}
                 >
-                  {item.label}
+                  <Link to={item.url}>
+                    <Button
+                      onClick={() =>
+                        setPlpRedirect(item && item.label && item.label)
+                      }
+                    >
+                      {item.label}
+                    </Button>
+                  </Link>
                 </li>
               </>
             ))}
@@ -50,7 +62,15 @@ const OurProduct = props => {
                     onMouseLeave={() => setImgHover('')}
                   >
                     <div className={i === itemHover ? 'activeImg' : 'img-div'}>
-                      <img src={item.image.url} alt="pic" />
+                      <Link to={item.url}>
+                        <Button
+                          onClick={() =>
+                            setPlpRedirect(item && item.label && item.label)
+                          }
+                        >
+                          <img src={item.image.url} alt="pic" />
+                        </Button>
+                      </Link>
                     </div>
                   </li>
                 )}
