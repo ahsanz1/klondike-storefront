@@ -168,6 +168,17 @@
 
   .footer-text {
     margin: 50px 0;
+    font-family: $OpenSans;
+    font-size: get-vw(14px);
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    line-height: get-vw(19px);
+    text-transform: uppercase;
+
+    .menu-column {
+      width: get-vw(300px);
+    }
   }
 
   .footer-logoborder {
