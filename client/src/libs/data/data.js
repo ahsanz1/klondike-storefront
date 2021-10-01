@@ -3858,7 +3858,7 @@ export const simpleFormData = {
   buttonLabel: 'Send Message',
   formTitle: 'We’d love to hear from you',
   mobileFormTitle: 'We’d love to hear from you',
-  subtitle: `<p class="big-margin-b">To contact a KLONDIKE sales rep call <br/> <a class="sumbit-anchor" href="tel:1-877-293-4691 ">1-877-293-4691 </a> (office hours) or use the form <br/> below.</p>`,
+  subtitle: `<p class="big-margin-b">To contact a KLONDIKE sales rep call <br/> <a class="sumbit-anchor" href="tel:1-877-293-4691 ">1-877-293-4691 </a> (office hours) or use the form below.</p>`,
   formInputs: [
     {
       formRow: [
@@ -4034,6 +4034,16 @@ export const technicalBanner = {
   mobileImage: {
     url: '/static/images/bg_tech-resources.png',
     altText: 'desktop hero image',
+  },
+}
+export const imgonbanner = {
+  desktopImage: {
+    url: '/static/images/small-page-group-RETINA.png',
+    altText: 'on Banner img',
+  },
+  mobileImage: {
+    url: '/static/images/small-page-group-RETINA.png',
+    altText: 'on Banner img',
   },
 }
 export const policyData = {

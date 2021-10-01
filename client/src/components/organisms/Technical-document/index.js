@@ -5,11 +5,12 @@ import './style.scss'
 import React, { useState, useEffect } from 'react'
 import PCPBottom from 'components/organisms/pcpBottom'
 import Accordiondocment from 'components/molecules/accordion-document'
-import { PcpBottom, technicalBanner } from 'libs/data/data'
+import { PcpBottom, technicalBanner, imgonbanner } from 'libs/data/data'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import Techtabllist from '../Technical-tablist'
 import PropTypes from 'prop-types'
 import { faqsDatadoc } from './data'
+import Image from 'components/atoms/image'
 
 const Technical = ({
   isOpen = false,
@@ -39,14 +40,13 @@ const Technical = ({
   return (
     <>
       <WebpagesHeroImages {...technicalBanner} />
+      <Image {...imgonbanner} />
 
       <div className="technacil-wriper">
         <div className="custom-tech">
           <Techtabllist
             itemName="Technical Documents"
             categories={categories}
-            // itemName={itemName}
-            //   clickCategoryHandler={clickCategoryHandler}
             // subItem={subItem}
           />
 

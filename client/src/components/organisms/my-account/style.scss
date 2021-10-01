@@ -411,7 +411,7 @@
 }
 
 .credit-price {
-  padding-top: 0.13vw;
+  padding-top: 2.13vw !important;
   color: #f1a900;
   font-family: $OpenSans !important;
   font-size: 1.6vw !important;
@@ -419,7 +419,7 @@
   line-height: 2.2vw !important;
 
   @media screen and (max-width: 500px) {
-    padding-top: 3 0.53vw;
+    padding-top: 3 0.53vw !important;
     font-family: $OpenSans !important;
     font-size: 5.8vw !important;
     font-weight: bold !important;

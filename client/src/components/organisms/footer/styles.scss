@@ -53,7 +53,54 @@
   .footer-img {
     img {
       width: 100%;
+
+      @media (max-width: 768px) {
+        height: 41px;
+      }
     }
+  }
+
+  .accordion-faqs .accordion-question {
+    @media (max-width: 768px) {
+      font-family: $Raleway;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 16px;
+    }
+  }
+
+  .accordion-faqs .ant-row.accordion-item {
+    border-bottom: 1px solid white;
+  }
+
+  .accordion-faqs div:first-child {
+    // border-bottom: 1px solid white;
+    border-bottom: 0;
+  }
+
+  .logoTxt :first-child {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 24px;
+  }
+
+  .logoTxt :nth-child(2) {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 24px;
+  }
+
+  .ant-row {
+    display: flex;
+    justify-content: center;
+  }
+
+  .social-icons {
+    margin-top: 48px;
   }
 }
 
@@ -121,6 +168,17 @@
 
   .footer-text {
     margin: 50px 0;
+    font-family: $OpenSans;
+    font-size: get-vw(14px);
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    line-height: get-vw(19px);
+    text-transform: uppercase;
+
+    .menu-column {
+      width: get-vw(300px);
+    }
   }
 
   .footer-logoborder {
@@ -137,7 +195,9 @@
   color: #fff;
 
   @media screen and (max-width: 768px) {
-    margin-left: 6rem;
+    width: 211px;
+    max-width: 150%;
+    margin-left: 55px;
   }
 }
 
