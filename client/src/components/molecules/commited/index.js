@@ -1,9 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from 'components/atoms/button'
+import Link from 'components/atoms/link'
 import './style.scss'
 
-const Commited = ({ heading, subheading, paragraph, butontext }) => {
+const Commited = ({
+  heading,
+  subheading,
+  paragraph,
+  butontext,
+  redirectUrl,
+}) => {
   return (
     <div className="commited-wraper">
       <div className="commited-content">
@@ -12,7 +19,9 @@ const Commited = ({ heading, subheading, paragraph, butontext }) => {
         <h3>{subheading}</h3>
       </div>
       <div className="commited-buton">
-        <Button>{butontext}</Button>
+        <Link to={redirectUrl}>
+          <Button>{butontext}</Button>
+        </Link>
       </div>
     </div>
   )
@@ -23,6 +32,7 @@ Commited.propTypes = {
   subheading: PropTypes.string,
   paragraph: PropTypes.string,
   butontext: PropTypes.string,
+  redirectUrl: PropTypes.string,
 }
 
 export default Commited
