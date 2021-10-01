@@ -4035,6 +4035,16 @@ export const technicalBanner = {
     altText: 'desktop hero image',
   },
 }
+export const imgonbanner = {
+  desktopImage: {
+    url: '/static/images/small-page-group-RETINA.png',
+    altText: 'on Banner img',
+  },
+  mobileImage: {
+    url: '/static/images/small-page-group-RETINA.png',
+    altText: 'on Banner img',
+  },
+}
 export const policyData = {
   page: `<div class="shopify-policy__container">
   <div class="shopify-policy__title">
