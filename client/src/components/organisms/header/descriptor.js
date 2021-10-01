@@ -34,6 +34,7 @@ exports.default = Types.Component({
                   url: Types.String({ label: 'URL' }),
                   altText: Types.String({ label: 'Alt text' }),
                 }),
+                url: Types.String({ label: 'Redirect Url' }),
               },
             }),
           }),
