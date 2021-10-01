@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import PromoRail from 'components/molecules/header/promo-rail'
 import Navbar from 'components/molecules/header/navbar'
+import SearchFlow from 'components/organisms/searchFlow'
 
 import './styles.scss'
 
@@ -27,6 +28,7 @@ const Header = ({
   mobileMenuClose = {},
   menuBottom = '',
 }) => {
+  const [toggle, setToggle] = useState(false)
   const promoData = {
     promoOffer: {
       label: offerLabel,
@@ -50,7 +52,9 @@ const Header = ({
     //   link: offerLink,
     // },
   }
-  console.log('mobile logo:', mobileLogo)
+  const searchToggle = () => {
+    setToggle(!toggle)
+  }
   return (
     <div
       className={
@@ -60,21 +64,28 @@ const Header = ({
       }
     >
       <div className="main-header__wrapper--fix">
-        <PromoRail {...promoData} lubricantLink={lubricantLink} />
-        <Navbar
-          logo={logo.url}
-          links={links}
-          dynamicLinks={dynamicLinks}
-          buyButton={buyButton}
-          searchIcon={searchIcon}
-          userIcon={userIcon}
-          cartIcon={cartIcon}
-          mobileLogo={mobileLogo}
-          mobileMenu={mobileMenu}
-          mobileMenuOpen={mobileMenuOpen}
-          mobileMenuClose={mobileMenuClose}
-          menuBottom={menuBottom}
-        />
+        {!toggle ? (
+          <>
+            <PromoRail {...promoData} lubricantLink={lubricantLink} />
+            <Navbar
+              logo={logo.url}
+              links={links}
+              dynamicLinks={dynamicLinks}
+              buyButton={buyButton}
+              searchIcon={searchIcon}
+              userIcon={userIcon}
+              cartIcon={cartIcon}
+              mobileLogo={mobileLogo}
+              mobileMenu={mobileMenu}
+              mobileMenuOpen={mobileMenuOpen}
+              mobileMenuClose={mobileMenuClose}
+              menuBottom={menuBottom}
+              toggleSearch={searchToggle}
+            />
+          </>
+        ) : (
+          <SearchFlow toggleSearch={searchToggle} />
+        )}
       </div>
     </div>
   )

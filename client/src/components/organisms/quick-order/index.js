@@ -140,7 +140,7 @@ const QuickOrder = () => {
       return (
         <div className="wrapper">
           <AccordionComponent
-            text="Order by part Number"
+            text="Order by Part Number"
             className="accordian"
             isActive={accordianisActive}
             onClick={handleAccordianClick}
@@ -160,7 +160,7 @@ const QuickOrder = () => {
       return (
         <div className="wrapper">
           <AccordionComponent
-            text="Order by part Number"
+            text="Order by Part Number"
             className="accordian"
             isActive={accordianisActive}
             onClick={handleAccordianClick}
@@ -181,18 +181,25 @@ const QuickOrder = () => {
 
   const TotalCartPrice = () => {
     return (
-      <div className="checkout">
-        <div className="order-price">
-          <Label className="sub-total">Order Total</Label>
-          <Label className="total">$ 350.00</Label>
+      <div className="checkout-and-pricelist">
+        <div className="quick-order-price-list-btn">
+          <Link className="price-list-link" to="/faqs">
+            View Price List
+          </Link>
         </div>
-        <div className="checkout-links">
-          <Link className="checkout-btn" to="/checkout">
-            PROCEED TO CHECK OUT
-          </Link>
-          <Link className="view-btn" to="/cart">
-            VIEW CART
-          </Link>
+        <div className="checkout">
+          <div className="order-price">
+            <Label className="sub-total">Order Total</Label>
+            <Label className="total">$ 350.00</Label>
+          </div>
+          <div className="checkout-links">
+            <Link className="checkout-btn" to="/checkout">
+              PROCEED TO CHECK OUT
+            </Link>
+            <Link className="view-btn" to="/cart">
+              VIEW CART
+            </Link>
+          </div>
         </div>
       </div>
     )
@@ -205,49 +212,52 @@ const QuickOrder = () => {
 
   return (
     <>
-      <div className="order-total-and-list">
-        <div className="orderComponent">
-          {/* ^^^^Order list and order component div excluding orderTotal */}
-          <div className="radio-wrapper">
-            <Radio.Group className="radio-group">
-              <Radio
-                className={'radiobtn'}
-                value={1}
-                defaultChecked={true}
-                disabled={radioStateBulk}
-                onChange={radioChangePACKAGE}
-              >
-                PACKAGED ORDER
-              </Radio>
+      <div className="quick-order-wrapper">
+        <div className="order-total-and-list">
+          <div className="orderComponent">
+            {/* ^^^^Order list and order component div excluding orderTotal */}
+            <div className="radio-wrapper">
+              <Radio.Group className="radio-group">
+                <Radio
+                  className={'radiobtn'}
+                  value={1}
+                  defaultChecked={true}
+                  disabled={radioStateBulk}
+                  onChange={radioChangePACKAGE}
+                >
+                  PACKAGED ORDER
+                </Radio>
 
-              <Radio
-                className="radiobtn"
-                value={2}
-                disabled={radioStatePackage}
-                onChange={radioChangeBULK}
-              >
-                BULK ORDER
-              </Radio>
-            </Radio.Group>
-          </div>
-          {OrderType()}
-          {cartItems && (
-            <div className="wrapper itemList">
-              <span className="list-items-catagory">
-                <Label className="catagory-label">Item</Label>
-                <Label className="catagory-label">Price</Label>
-                <Label className="catagory-label">Qty</Label>
-                <Label className="catagory-label">Subtotal</Label>
-              </span>
+                <Radio
+                  className="radiobtn"
+                  value={2}
+                  disabled={radioStatePackage}
+                  onChange={radioChangeBULK}
+                >
+                  BULK ORDER
+                </Radio>
+              </Radio.Group>
             </div>
-          )}
-
-          <Link to="./" className="price-list-btn">
-            View Price List
-          </Link>
-          {cartItem}
+            <div className="price-list-btn">
+              <Link className="price-list-text" to="/faqs">
+                View Price List
+              </Link>
+            </div>
+            {OrderType()}
+            {cartItems && (
+              <div className="wrapper itemList">
+                <span className="list-items-catagory">
+                  <Label className="catagory-label">Item</Label>
+                  <Label className="catagory-label">Price</Label>
+                  <Label className="catagory-label">Qty</Label>
+                  <Label className="catagory-label">Subtotal</Label>
+                </span>
+              </div>
+            )}
+            {cartItem}
+          </div>
+          {cartItems && <TotalCartPrice />}
         </div>
-        {cartItems && <TotalCartPrice />}
       </div>
     </>
   )

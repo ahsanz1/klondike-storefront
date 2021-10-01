@@ -52,7 +52,7 @@ const Footer = ({
     newFooterLink[faqId].isOpen = !newFooterLink[faqId].isOpen
     setFooterLink([...newFooterLink])
   }
-
+  console.log('social:', socialLinks)
   // const iconInputProps = {
   //   img: '/static/icons/mail-footer.svg',
   //   buttonType: 'submit',
@@ -98,7 +98,6 @@ const Footer = ({
   //     console.log('Unable to subscribe. Try again')
   //   }
   // }
-
   return (
     <>
       <div

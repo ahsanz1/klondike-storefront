@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
+import Link from 'components/atoms/link'
+import './style.scss'
 
 const SearchList = ({ image, category, title }) => {
   return (
     <div className="search-Items">
       <div className="search-img">
-        <img src={image.url} alt="" />
+        <Link>
+          <img src={image.url} alt="" />
+        </Link>
       </div>
       <div>
         <Label className="search-category">{category}</Label>
