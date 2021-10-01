@@ -13,7 +13,6 @@ const AlternateTextImage = ({
   buttontext,
   heading,
 }) => {
-  console.log('check 1:', image, text, paragraph, buttontext, heading)
   return (
     <div className="about-us">
       <Image src={image.url} alt={image.altText} className="about-us-image" />

@@ -5,7 +5,6 @@ import { string } from 'yup/lib/locale'
 import './style.scss'
 
 const BannerLubricant = ({ bannersubheading, bannerparagraph }) => {
-  console.log('bilal discriptor:', bannersubheading)
   return (
     <>
       <div className="banner-content">

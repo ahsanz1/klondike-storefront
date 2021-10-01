@@ -3,7 +3,6 @@ import React from 'react'
 import BannerLubricant from 'components/molecules/BannerLubricant'
 
 const HomeLubricant = props => {
-  console.log('net props:', props)
   return <BannerLubricant {...props} />
 }
 export default HomeLubricant
