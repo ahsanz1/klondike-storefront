@@ -5,7 +5,6 @@ import { AppContext } from 'libs/context'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
-import Link from 'components/atoms/link'
 import './style.scss'
 
 const CartDropdown = () => {
@@ -55,7 +54,7 @@ const CartDropdown = () => {
             <div className="cart-name-and-no-of-items">
               <div className="cart-name-and-no-of-items">
                 <div>
-                  <Label>CART</Label>
+                  <Label className="cart-text">CART</Label>
                 </div>
                 <div className="cart-dropdown-header-item-no">
                   {/* <p> */}
@@ -76,7 +75,6 @@ const CartDropdown = () => {
               You are <p className="free-shipping-banner-text-price">$20</p>
               away from free shipping
             </p>
-            <Link className="free-shipping-details">Details</Link>
           </div>
           <div className="cart-dropdown-items">
             {cartItems && cartItems.length > 0 ? (

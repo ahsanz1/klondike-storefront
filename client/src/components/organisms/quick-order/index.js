@@ -212,46 +212,52 @@ const QuickOrder = () => {
 
   return (
     <>
-      <div className="order-total-and-list">
-        <div className="orderComponent">
-          {/* ^^^^Order list and order component div excluding orderTotal */}
-          <div className="radio-wrapper">
-            <Radio.Group className="radio-group">
-              <Radio
-                className={'radiobtn'}
-                value={1}
-                defaultChecked={true}
-                disabled={radioStateBulk}
-                onChange={radioChangePACKAGE}
-              >
-                PACKAGED ORDER
-              </Radio>
+      <div className="quick-order-wrapper">
+        <div className="order-total-and-list">
+          <div className="orderComponent">
+            {/* ^^^^Order list and order component div excluding orderTotal */}
+            <div className="radio-wrapper">
+              <Radio.Group className="radio-group">
+                <Radio
+                  className={'radiobtn'}
+                  value={1}
+                  defaultChecked={true}
+                  disabled={radioStateBulk}
+                  onChange={radioChangePACKAGE}
+                >
+                  PACKAGED ORDER
+                </Radio>
 
-              <Radio
-                className="radiobtn"
-                value={2}
-                disabled={radioStatePackage}
-                onChange={radioChangeBULK}
-              >
-                BULK ORDER
-              </Radio>
-            </Radio.Group>
-          </div>
-          {OrderType()}
-          {cartItems && (
-            <div className="wrapper itemList">
-              <span className="list-items-catagory">
-                <Label className="catagory-label">Item</Label>
-                <Label className="catagory-label">Price</Label>
-                <Label className="catagory-label">Qty</Label>
-                <Label className="catagory-label">Subtotal</Label>
-              </span>
+                <Radio
+                  className="radiobtn"
+                  value={2}
+                  disabled={radioStatePackage}
+                  onChange={radioChangeBULK}
+                >
+                  BULK ORDER
+                </Radio>
+              </Radio.Group>
             </div>
-          )}
-
-          {cartItem}
+            <div className="price-list-btn">
+              <Link className="price-list-text" to="/faqs">
+                View Price List
+              </Link>
+            </div>
+            {OrderType()}
+            {cartItems && (
+              <div className="wrapper itemList">
+                <span className="list-items-catagory">
+                  <Label className="catagory-label">Item</Label>
+                  <Label className="catagory-label">Price</Label>
+                  <Label className="catagory-label">Qty</Label>
+                  <Label className="catagory-label">Subtotal</Label>
+                </span>
+              </div>
+            )}
+            {cartItem}
+          </div>
+          {cartItems && <TotalCartPrice />}
         </div>
-        {cartItems && <TotalCartPrice />}
       </div>
     </>
   )
