@@ -6,7 +6,7 @@ exports.default = Types.Component({
   isGlobal: true,
   description: 'Search component with Clear Icon',
   attributes: {
-    logo: Types.Image({
+    clearIcon: Types.Image({
       label: 'Clear Icon',
       url: Types.String({ label: 'URL' }),
       altText: Types.String({ label: 'Alt text' }),
