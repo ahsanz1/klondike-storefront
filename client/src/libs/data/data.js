@@ -1396,9 +1396,6 @@ export const accountTabsData = [
       price: '$44533',
     },
   },
-  {
-    tabTitle: 'View Price List',
-  },
 ]
 export const shippingAddress = {
   form: {
@@ -3493,7 +3490,7 @@ export const PlpBottom = {
 }
 export const searchFlow = {
   backgroundImage: '/static/images/search.png',
-  clearIcon: '/static/images/Union.png',
+  // clearIcon: '/static/images/Union.png',
 }
 export const PurchaseHistory = {
   label: 'PURCHASE HISTORY',

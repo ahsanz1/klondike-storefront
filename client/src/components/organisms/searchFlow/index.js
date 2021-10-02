@@ -55,7 +55,7 @@ const SearchFlow = props => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
 
-  console.log('localRecent:', localRecent)
+  console.log('localRecent:', props)
   return (
     <>
       <div className="serach-flow">
@@ -82,7 +82,7 @@ const SearchFlow = props => {
           ''
         )} */}
         <div className="search-list">
-          {showRecent && localRecent.length > 0 && (
+          {showRecent && localRecent && localRecent.length > 0 && (
             <div className="recentSearch">
               <Label className="recent-heading">Recent Searches</Label>
               {localRecent.length > 0 &&

@@ -53,6 +53,7 @@ const Footer = ({
     setFooterLink([...newFooterLink])
   }
   console.log('social:', socialLinks)
+
   // const iconInputProps = {
   //   img: '/static/icons/mail-footer.svg',
   //   buttonType: 'submit',
@@ -98,6 +99,7 @@ const Footer = ({
   //     console.log('Unable to subscribe. Try again')
   //   }
   // }
+
   return (
     <>
       <div
@@ -141,6 +143,7 @@ const Footer = ({
                         heading={fLinks.heading}
                         links={fLinks.links}
                       />
+
                       {i === footerLinks.length - 1 && width <= 767 && (
                         <ul className="links-mobile-bottom">
                           <li>
