@@ -16,6 +16,7 @@ const OurProduct = props => {
     )
   })
   const { setPlpRedirect } = useContext(AppContext)
+  console.log('products:', props.ourProduct)
   return (
     <div className={!sectionWidth ? 'show-products-image' : 'show-products'}>
       <div className="product-list">

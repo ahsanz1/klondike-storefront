@@ -42,7 +42,7 @@ const Navbar = ({
   }
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
-
+  console.log('check links:', links)
   return (
     <div
       className={
