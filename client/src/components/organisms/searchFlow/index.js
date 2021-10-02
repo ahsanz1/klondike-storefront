@@ -55,7 +55,7 @@ const SearchFlow = props => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
 
-  console.log('localRecent:', props.clearIcon)
+  console.log('localRecent:', props)
   return (
     <>
       <div className="serach-flow">
@@ -69,7 +69,10 @@ const SearchFlow = props => {
             />
           </form>
           <Button onClick={clear} className="clear">
-            <img src={props.clearIcon} alt="clear Icon" />
+            <img
+              src={props.clearIcon && props.clearIcon.url}
+              alt={props.clearIcon && props.clearIcon.alt}
+            />
           </Button>
         </div>
         {itemList.length > 0 && (
@@ -124,7 +127,7 @@ const SearchFlow = props => {
   )
 }
 SearchFlow.propTypes = {
-  clearIcon: PropTypes.string,
+  clearIcon: PropTypes.object,
   toggleSearch: PropTypes.func,
 }
 export default SearchFlow

@@ -50,7 +50,7 @@
       cursor: pointer;
 
       @media (max-width: 500px) {
-        margin-bottom: 8vw;
+        margin-bottom: 4vw;
         text-transform: uppercase;
       }
 
@@ -79,6 +79,10 @@
         background: none;
         color: #000;
         text-align: left;
+
+        @media (max-width: 500px) {
+          color: $white-color;
+        }
 
         &:hover {
           color: #dc5e00;
@@ -288,7 +292,7 @@
         text-align: left;
 
         &:hover {
-          color: #fff;
+          color: #dc5e00;
         }
       }
 

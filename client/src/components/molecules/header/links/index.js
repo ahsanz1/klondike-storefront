@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/atoms/link'
 import Button from 'components/atoms/button'
@@ -25,8 +25,22 @@ const Links = ({
   // let userLoginInfo = localStorage.getItem('userPersonalInfo')
   // userLoginInfo = JSON.parse(userLoginInfo)
   // console.log('check menu:', links)
+  const [arrowToggle, setArrowToggle] = useState(false)
+  const [clickName, setClickName] = useState('')
 
   const getToken = user && user.accessToken
+  const clickHandler = async name => {
+    await setClickName(name)
+    console.log('click name1:', name, arrowToggle, clickName)
+    if (clickName === name) {
+      setArrowToggle(true)
+    } else {
+      setArrowToggle(false)
+    }
+    // await setArrowToggle(!arrowToggle)
+    console.log('click name2:', name, arrowToggle, clickName)
+  }
+  console.log('links 0:', links)
   return (
     <div
       style={{
@@ -51,9 +65,6 @@ const Links = ({
                     link.productDropDown[0].image.url !== ''
                       ? `screen ${linkClassName}`
                       : linkClassName
-                    // link.productDropDown[0].image.url
-                    //   ? `screen ${linkClassName}`
-                    //   :
                   }
                   to={link.url}
                 >
@@ -62,16 +73,31 @@ const Links = ({
                     width={25}
                     src={mobileMenu && mobileMenu.url}
                     alt={mobileMenu.altText}
+                    className={
+                      arrowToggle && clickName === link.label
+                        ? 'left-image'
+                        : 'right-image'
+                    }
+                    onClick={() => clickHandler(link.label)}
                   />
-
-                  {link.productDropDown &&
-                    link.productDropDown.length > 0 &&
-                    link.productDropDown[0].label !== '' &&
-                    link.productDropDown[0].image.url !== '' && (
+                  <div
+                    className={
+                      arrowToggle && clickName === link.label
+                        ? 'toggleOptions'
+                        : 'hideToggleOptions'
+                    }
+                  >
+                    {
+                      // link.productDropDown &&
+                      //   link.productDropDown.length > 0 &&
+                      //   link.productDropDown[0].label !== '' &&
+                      //   link.productDropDown[0].image.url !== '' && (
                       <>
                         <Product ourProduct={link.productDropDown} />
                       </>
-                    )}
+                      // )
+                    }
+                  </div>
                 </Link>
               </>
             )
