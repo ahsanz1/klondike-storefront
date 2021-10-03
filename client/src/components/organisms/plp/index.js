@@ -94,6 +94,8 @@ const PLP = props => {
                 image={item.plpBottomImage}
                 button={item.button}
                 mobileButton={item.mobileButton}
+                buttonUrl={item.buttonUrl}
+                mobileButtonUrl={item.mobileButtonUrl}
               />
             </>
           ))}
