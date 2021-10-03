@@ -343,7 +343,7 @@ const mockData = {
       params: { ...category },
     },
   ],
-  '/collections/all-bars': [
+  '/plp-page': [
     {
       id: 'WebpageGlobalHeroBanner',
       params: shopBanner,
