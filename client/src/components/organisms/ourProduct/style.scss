@@ -78,7 +78,12 @@
         border: none;
         background: none;
         color: #000;
+        font-size: 4.2vw;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 140%;
         text-align: left;
+        text-transform: uppercase;
 
         @media (max-width: 500px) {
           color: $white-color;
@@ -281,7 +286,7 @@
 
       @media (max-width: 768px) {
         color: #fff;
-        font-size: 16px;
+        font-size: 4.2vw;
       }
 
       button {
@@ -289,7 +294,13 @@
         border: none;
         background: none;
         color: #fff;
+        font-family: $OpenSans;
+        font-size: 4.2vw;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 140%;
         text-align: left;
+        text-transform: uppercase;
 
         &:hover {
           color: #dc5e00;
