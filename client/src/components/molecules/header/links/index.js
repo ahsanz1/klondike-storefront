@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/atoms/link'
 import Button from 'components/atoms/button'
@@ -25,22 +25,8 @@ const Links = ({
   // let userLoginInfo = localStorage.getItem('userPersonalInfo')
   // userLoginInfo = JSON.parse(userLoginInfo)
   // console.log('check menu:', links)
-  const [arrowToggle, setArrowToggle] = useState(false)
-  const [clickName, setClickName] = useState('')
 
   const getToken = user && user.accessToken
-  const clickHandler = async name => {
-    await setClickName(name)
-    console.log('click name1:', name, arrowToggle, clickName)
-    if (clickName === name) {
-      setArrowToggle(true)
-    } else {
-      setArrowToggle(false)
-    }
-    // await setArrowToggle(!arrowToggle)
-    console.log('click name2:', name, arrowToggle, clickName)
-  }
-  console.log('links 0:', links)
   return (
     <div
       style={{
@@ -54,7 +40,7 @@ const Links = ({
         if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
           return (
             (!link.mobileOnly || mobile) && (
-              <>
+              <div>
                 <Link
                   key={i}
                   style={linkStyle}
@@ -69,24 +55,8 @@ const Links = ({
                   to={link.url}
                 >
                   {link && link.label && link.label}
-                  <Image
-                    width={25}
-                    src={mobileMenu && mobileMenu.url}
-                    alt={mobileMenu.altText}
-                    className={
-                      arrowToggle && clickName === link.label
-                        ? 'left-image'
-                        : 'right-image'
-                    }
-                    onClick={() => clickHandler(link.label)}
-                  />
-                  <div
-                    className={
-                      arrowToggle && clickName === link.label
-                        ? 'toggleOptions'
-                        : 'hideToggleOptions'
-                    }
-                  >
+
+                  <div>
                     {
                       // link.productDropDown &&
                       //   link.productDropDown.length > 0 &&
@@ -99,7 +69,12 @@ const Links = ({
                     }
                   </div>
                 </Link>
-              </>
+                <Image
+                  width={25}
+                  src={mobileMenu && mobileMenu.url}
+                  alt={mobileMenu.altText}
+                />
+              </div>
             )
           )
         } else {
