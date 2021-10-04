@@ -33,19 +33,17 @@ export const heroBannerdata = {
     url: '/static/images/mobile.png',
     altText: 'alt',
   },
-  // bannercontent: {
   bannerheading:
-    '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
+    'OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
 
   bannerbutton: 'HOW TO BUY',
-  // },
 }
-export const bannerlubricants = {
-  bannersubheading:
-    'Get your lubricants quickly  |  Run your equipment longer  |  Complete your jobs faster',
-  bannerparagraph:
-    'Every one of our oils and lubricants is built to do the hard work required to keep your engines running smoothly and reliably when your equipment is stretched to the limit by the temperatures or operating conditions. KLONDIKE products are specially formulated to help increase fuel efficiency, reduce emissions and keep engines running longer, delivering the long-lasting protection that only a premium product can. You’ll be thankful you chose KLONDIKE knowing you’ve got the backing of our comprehensive KLONDIKE warranty',
-}
+// export const bannerlubricants = {
+//   bannersubheading:
+//     'Get your lubricants quickly  |  Run your equipment longer  |  Complete your jobs faster',
+//   bannerparagraph:
+//     'Every one of our oils and lubricants is built to do the hard work required to keep your engines running smoothly and reliably when your equipment is stretched to the limit by the temperatures or operating conditions. KLONDIKE products are specially formulated to help increase fuel efficiency, reduce emissions and keep engines running longer, delivering the long-lasting protection that only a premium product can. You’ll be thankful you chose KLONDIKE knowing you’ve got the backing of our comprehensive KLONDIKE warranty',
+// }
 export const ProductLubricant = {
   headingtext: {
     headingtext:
@@ -3492,7 +3490,7 @@ export const PlpBottom = {
 }
 export const searchFlow = {
   backgroundImage: '/static/images/search.png',
-  clearIcon: '/static/images/Union.png',
+  // clearIcon: '/static/images/Union.png',
 }
 export const PurchaseHistory = {
   label: 'PURCHASE HISTORY',

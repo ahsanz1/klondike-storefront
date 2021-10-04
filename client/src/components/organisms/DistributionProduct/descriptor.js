@@ -22,6 +22,7 @@ exports.default = Types.Component({
           headingtext: Types.String({ label: 'Heading text' }),
           btntext: Types.String({ label: 'button text' }),
           btnUrl: Types.String({ label: 'Button Url' }),
+          redirecturl: Types.String({ label: 'Redirect Url' }),
           outerboreder: Types.Boolean({ label: 'Border' }),
         },
       }),

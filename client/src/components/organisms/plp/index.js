@@ -17,23 +17,22 @@ import './styles.scss'
 // const { TabPane } = Tabs
 
 const PLP = props => {
+  const { setStep, plpredirect } = useContext(AppContext)
   // const [tabKey, setTabKey] = useState('0')
-  const [itemName, setItemName] = useState('')
+  // const [itemName, setItemName] = useState('')
   const [desc, setDesc] = useState('')
   const [subItem, setSubItem] = useState({})
   const [showTab, setShowtab] = useState(true)
-  console.log({
-    props,
-  })
-  // const { categories } = props
-  const { setStep } = useContext(AppContext)
-
+  const [contextPlp, setContextPlp] = useState(plpredirect)
   useEffect(() => {
     setStep(1)
   }, [])
+  useEffect(() => {
+    setContextPlp(plpredirect)
+  }, [plpredirect])
   const clickCategoryHandler = (name, desc) => {
-    console.log('clicked:', name)
-    setItemName(name)
+    // setItemName(name)
+    setContextPlp(name)
     setDesc(desc)
   }
   const subItemHandler = list => {
@@ -69,19 +68,19 @@ const PLP = props => {
           changeHandler={changeHandler}
         />
       </div> */}
-      <SelectedCategory name={itemName} desc={desc} />
+      <SelectedCategory name={contextPlp} desc={desc} />
       <div className="custom-plp">
         {showTab && (
           <PlpTabList
             categories={props.categories}
-            itemName={itemName}
+            itemName={contextPlp}
             clickCategoryHandler={clickCategoryHandler}
             subItem={subItem}
           />
         )}
         <div className="productItem">
           <Category
-            categoryName={itemName}
+            categoryName={contextPlp}
             subItemHandler={subItemHandler}
             // productList={productList}
           />
@@ -95,6 +94,8 @@ const PLP = props => {
                 image={item.plpBottomImage}
                 button={item.button}
                 mobileButton={item.mobileButton}
+                buttonUrl={item.buttonUrl}
+                mobileButtonUrl={item.mobileButtonUrl}
               />
             </>
           ))}

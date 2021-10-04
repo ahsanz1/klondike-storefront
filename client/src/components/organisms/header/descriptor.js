@@ -34,6 +34,7 @@ exports.default = Types.Component({
                   url: Types.String({ label: 'URL' }),
                   altText: Types.String({ label: 'Alt text' }),
                 }),
+                url: Types.String({ label: 'Redirect Url' }),
               },
             }),
           }),
@@ -58,23 +59,6 @@ exports.default = Types.Component({
         },
       }),
     }),
-    // promoData: Types.Shape({
-    //   children: {
-    //     promoOffer: Types.Shape({
-    //       children: {
-    //         label: Types.String({ label: 'label' }),
-    //         url: Types.String({ label: 'URL' }),
-    //       },
-    //     }),
-    //     promoBanner: Types.String({ label: 'URL' }),
-    //     extraLink: Types.Shape({
-    //       children: {
-    //         label: Types.String({ label: 'label' }),
-    //         url: Types.String({ label: 'URL' }),
-    //       },
-    //     }),
-    //   },
-    // }),
     offerLabel: Types.String({ label: 'Offer label' }),
     offerLink: Types.String({ label: 'Offer URL' }),
     promoBanner: Types.String({ label: 'Promo Banner' }),

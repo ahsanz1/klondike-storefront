@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
+import { AppContext } from 'libs/context'
 import Link from 'components/atoms/link'
 import './style.scss'
 import { string } from 'yup/lib/locale'
 
 const DistributionProduct = ({ LubricantContent, distributionheading }) => {
-  console.log('lubricant:', LubricantContent, distributionheading)
+  const { setPlpRedirect } = useContext(AppContext)
+  console.log('lubricant:', LubricantContent)
   return (
     <>
       <div className="distribute-wraper">
@@ -28,7 +30,15 @@ const DistributionProduct = ({ LubricantContent, distributionheading }) => {
             <h1>{content.headingtext}</h1>
             <p>{content.text}</p>
             <Link to={content.btnUrl}>
-              <button>{content.btntext}</button>
+              <button
+                onClick={() =>
+                  setPlpRedirect(
+                    content && content.redirecturl && content.redirecturl,
+                  )
+                }
+              >
+                {content.btntext}
+              </button>
             </Link>
           </div>
         </div>
