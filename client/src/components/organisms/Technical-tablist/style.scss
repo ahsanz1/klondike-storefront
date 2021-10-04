@@ -14,7 +14,7 @@ $vw-viewport: 1440;
 
   @media (max-width: 768px) {
     width: 100vw !important;
-    margin-left: -18px !important;
+    margin-left: 0 !important;
   }
 
   .active-category {
@@ -35,7 +35,7 @@ $vw-viewport: 1440;
     cursor: pointer;
 
     @media (max-width: 768px) {
-      padding-left: 8vw !important;
+      padding-left: 11vw !important;
       // border: 0.26vw #f2a900 solid !important;
       font-size: 2.6vw !important;
     }

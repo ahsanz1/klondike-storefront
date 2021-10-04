@@ -9,6 +9,7 @@
     position: relative;
     top: 0;
     height: 100vh;
+    padding-top: 168px;
   }
 
   .clear {
@@ -101,6 +102,7 @@
   }
 
   .serach-input {
+    display: flex;
     padding: 0.6vw 2vw;
     padding-left: 8.3vw !important;
     background: #002a3a;
