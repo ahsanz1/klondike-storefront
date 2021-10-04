@@ -6,6 +6,7 @@ import { CartReducer, sumItems } from './app-reducer'
 
 const AppContext = React.createContext({})
 const AppProvider = ({ children }) => {
+  const [searchFilter, setSearchFilter] = useState('')
   const [plpredirect, setPlpRedirect] = useState('nano')
   const [step, setStep] = useState(1)
   const [checked, setChecked] = useState(0)
@@ -184,6 +185,8 @@ const AppProvider = ({ children }) => {
       value={{
         removeProduct,
         addProduct,
+        searchFilter,
+        setSearchFilter,
         plpredirect,
         setPlpRedirect,
         step,
