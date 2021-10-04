@@ -145,10 +145,27 @@
   padding-bottom: 1.1vw;
   color: #fff;
 
+  .credit-price {
+    padding-top: 1.13vw !important;
+    color: #f1a900;
+    font-family: $OpenSans !important;
+    font-size: 1.6vw !important;
+    font-weight: bold !important;
+    line-height: 2.2vw !important;
+
+    @media screen and (max-width: 500px) {
+      padding-top: 3 0.53vw !important;
+      font-family: $OpenSans !important;
+      font-size: 5.8vw !important;
+      font-weight: bold !important;
+      line-height: 2.2vw !important;
+    }
+  }
+
   .c-label {
     align-items: center !important;
     font-family: $OpenSans !important;
-    font-size: 0.9vw !important;
+    font-size: 0.97vw !important;
     font-style: normal !important;
     font-weight: bold !important;
     line-height: 1.3vw !important;
@@ -407,23 +424,6 @@
 
   @media screen and (max-width: 500px) {
     font-size: 3.7vw !important;
-  }
-}
-
-.credit-price {
-  padding-top: 2.13vw !important;
-  color: #f1a900;
-  font-family: $OpenSans !important;
-  font-size: 1.6vw !important;
-  font-weight: bold !important;
-  line-height: 2.2vw !important;
-
-  @media screen and (max-width: 500px) {
-    padding-top: 3 0.53vw !important;
-    font-family: $OpenSans !important;
-    font-size: 5.8vw !important;
-    font-weight: bold !important;
-    line-height: 2.2vw !important;
   }
 }
 

@@ -12,6 +12,11 @@ $vw-viewport: 1440;
   display: flex;
   flex-direction: row;
 
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   .oam-wrap {
     // display: flex;
     // flex-direction: column-reverse;
@@ -36,6 +41,22 @@ $vw-viewport: 1440;
       //   display: flex;
       //   flex-direction: column;
       // }
+      @media (max-width: 768px) {
+        padding-top: 11.2vw;
+        padding-bottom: 6.6vw;
+        padding-left: 8.4vw;
+        font-size: 6.4vw;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 5.5vw;
+        text-transform: capitalize;
+        font-feature-settings: 'pnum';
+      }
+    }
+
+    @media (max-width: 768px) {
+      width: 100vw;
+      margin-top: 39.2vw;
     }
   }
 
@@ -62,6 +83,10 @@ $vw-viewport: 1440;
     .img-oam {
       > .c-image {
         max-width: none;
+
+        @media (max-width: 768px) {
+          width: 60.2vw;
+        }
       }
     }
 
@@ -70,11 +95,25 @@ $vw-viewport: 1440;
       left: calc(50% - 591px / 2 + 277.5px);
       opacity: 0.9;
       color: #fff;
+      font-family: $OpenSans;
       font-size: 0.7vw;
       font-style: normal;
       font-weight: normal;
       line-height: 140%;
       font-feature-settings: 'pnum' on, 'lnum' on;
+
+      @media (max-width: 768px) {
+        padding-top: 1.6vw;
+        font-family: $OpenSans;
+        font-size: 3.3vw;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 140%;
+
+        /* or 20px */
+
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
     }
 
     .data-warp {
@@ -82,8 +121,6 @@ $vw-viewport: 1440;
 
       .heading-oam {
         color: #f1a900;
-
-        /* identical to box height */
         font-family: $OpenSans;
         font-size: 1.6vw;
         font-style: normal;
@@ -91,11 +128,37 @@ $vw-viewport: 1440;
         line-height: 2.2vw;
         text-transform: capitalize;
         font-feature-settings: 'pnum' on, 'lnum' on;
+
+        @media (max-width: 768px) {
+          padding-top: 2.6vw;
+
+          /* identical to box height */
+          font-family: $OpenSans;
+          font-size: 4.8vw;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 6.6vw;
+          text-transform: capitalize;
+          font-feature-settings: 'pnum' on, 'lnum' on;
+        }
       }
 
       .arow-img {
         color: #f1a900;
+
+        @media (max-width: 768px) {
+          padding-top: 2.9vw;
+        }
       }
+
+      @media (max-width: 768px) {
+        padding-left: 0.1vw;
+      }
+    }
+
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
