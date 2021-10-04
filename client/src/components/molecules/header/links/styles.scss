@@ -75,20 +75,20 @@
     }
   }
 
-  .left-image {
-    left: -30px;
-    transform: rotate(180deg);
-  }
+  // .left-image {
+  //   left: -30px;
+  //   transform: rotate(180deg);
+  // }
 
-  .toggleOptions {
-    display: block;
-  }
+  // .toggleOptions {
+  //   display: block;
+  // }
 
-  .hideToggleOptions {
-    display: block;
+  // .hideToggleOptions {
+  //   display: block;
 
-    @media (max-width: 500px) {
-      display: none;
-    }
-  }
+  //   @media (max-width: 500px) {
+  //     display: none;
+  //   }
+  // }
 }
