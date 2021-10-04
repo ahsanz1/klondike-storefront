@@ -101,5 +101,10 @@ exports.default = Types.Component({
       url: Types.String({ label: 'URL' }),
       altText: Types.String({ label: 'Alt text' }),
     }),
+    searchCloseIcon: Types.Image({
+      label: 'Search Clear Icon',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
   },
 })

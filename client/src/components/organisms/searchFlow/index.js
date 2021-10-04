@@ -55,7 +55,7 @@ const SearchFlow = props => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
 
-  console.log('localRecent:', props)
+  console.log('search props:', props)
   return (
     <>
       <div className="serach-flow">
