@@ -17,13 +17,16 @@ import CartDropdown from '../cart-dropdown'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   const { data, imgdata, heading } = pdpdata
+  const { showcartPOPModal, user } = useContext(AppContext)
+  console.log({ user })
+
   const [productData, setProductData] = useState({})
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [packagedOrder, setPackagedOrder] = useState(true)
 
   const { packagedata, bulk, text2, text1 } = RadioData
   const [value, setValue] = React.useState(1)
-console.log(productData ,'productData')
+  console.log(productData, 'productData')
   const onChange = e => {
     setValue(e.target.value)
     if (e.target.value === 1) {
@@ -89,12 +92,15 @@ console.log(productData ,'productData')
         console.log('producttt', res.response.data)
       })
       .catch((e) => console.log({ e }))
+    if (user) {
+      setIsLoggedIn(true)
+    }
   }, [])
 
   // eslint-disable-next-line space-before-function-paren
   const onQtyChange = (value, index) => {
     let { packagedOrderData } = productData
-    let newArray = [...productData]
+    let newArray = []
     newArray[index] = {
       ...newArray[index],
       totalPrice: parseFloat(Number(packagedOrderData[index]?.price) * value).toFixed(2),
@@ -143,11 +149,6 @@ console.log(productData ,'productData')
       .then((res) => showcartPOPModal())
       .catch((e) => console.log(e))
   }
-
-  const { showcartPOPModal, user } = useContext(AppContext)
-  console.log({ user }, 'user')
-
-  const style3 = { padding: 20, color: '#FFFFFF', background: '#05050563', margin: 5, fontSize: '1.5vw', }
 
   return (
     <>
@@ -265,7 +266,7 @@ console.log(productData ,'productData')
 
           </Col>
         </Row>
-        <CartDropdown productData={productData}/>
+        <CartDropdown productData={productData} />
       </div>
     </>
   )
