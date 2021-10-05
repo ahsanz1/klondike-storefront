@@ -22,6 +22,50 @@ export const getProductBySKU = async (sku, count = 1) => {
   }
 }
 
+export const addProductToCart = async (payload, count = 1) => {
+  try {
+    const response = await axios.common.post(ENDPOINTS.POST.addToCart, payload)
+    return {
+      hasError: false,
+      response: response,
+    }
+  } catch (e) {
+    if (e.response && e.response.status) {
+      const statusCode = e.response.status
+      if (statusCode === 500 && count < 4) {
+        return addProductToCart(payload, count + 1)
+      }
+    }
+    return {
+      hasError: true,
+      response: { error: e.message },
+    }
+  }
+}
+
+export const retreiveProductAttributes = async (sku, count = 1) => {
+  try {
+    const response = await axios.common.get(
+      ENDPOINTS.GET.retreiveProductAttributes(sku),
+    )
+    return {
+      hasError: false,
+      response: response,
+    }
+  } catch (e) {
+    if (e.response && e.response.status) {
+      const statusCode = e.response.status
+      if (statusCode === 500 && count < 4) {
+        return getProductBySKU(sku, count + 1)
+      }
+    }
+    return {
+      hasError: true,
+      response: { error: e.message },
+    }
+  }
+}
+
 export const getItemInStockStatus = async (itemIds, count = 1) => {
   let response
 
