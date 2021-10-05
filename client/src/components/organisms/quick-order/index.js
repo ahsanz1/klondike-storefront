@@ -182,11 +182,6 @@ const QuickOrder = () => {
   const TotalCartPrice = () => {
     return (
       <div className="checkout-and-pricelist">
-        <div className="quick-order-price-list-btn">
-          <Link className="price-list-link" to="/faqs">
-            View Price List
-          </Link>
-        </div>
         <div className="checkout">
           <div className="order-price">
             <Label className="sub-total">Order Total</Label>
