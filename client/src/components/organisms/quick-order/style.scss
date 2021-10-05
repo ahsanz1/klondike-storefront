@@ -281,7 +281,7 @@
     width: 50px;
 
     @media screen and (max-width: 768px) {
-      right: get-vw(0);
+      right: 0;
       width: 20px;
     }
   }
