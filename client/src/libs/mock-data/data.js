@@ -190,7 +190,7 @@ const mockData = {
       params: searchFlow,
     },
   ],
-  '/search-filter': [
+  '/SearchFilter': [
     {
       id: 'SearchFilter',
     },
