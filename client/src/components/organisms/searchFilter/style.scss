@@ -1,0 +1,43 @@
+@import '~styles/globals';
+
+.search-filter {
+  .products {
+    margin: 0 8.3vw;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        width: 13.8vw;
+        margin: 0 1.1vw !important;
+
+        img {
+          width: 13.8vw;
+          height: 15.8vw;
+          background: #fff;
+          object-fit: contain;
+        }
+
+        .search-Items {
+          .search-category {
+            display: none;
+          }
+
+          .search-title {
+            margin-top: 1.5vw;
+            margin-bottom: 6.25vw;
+            color: #fff;
+            font-family: $OpenSans;
+            font-size: 1.3vw;
+            font-weight: 600;
+            line-height: 110%;
+          }
+        }
+      }
+    }
+  }
+}
