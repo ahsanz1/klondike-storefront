@@ -2,7 +2,7 @@ const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
   id: 'SearchFilter',
-  label: 'Search-Filter',
+  label: 'SearchFilter',
   isGlobal: false,
   description: 'Search component with filters',
   attributes: {
