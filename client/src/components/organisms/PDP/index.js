@@ -26,7 +26,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
 
   const { packagedata, bulk, text2, text1 } = RadioData
   const [value, setValue] = React.useState(1)
-  console.log(productData, 'productData')
+
   const onChange = e => {
     setValue(e.target.value)
     if (e.target.value === 1) {
@@ -94,13 +94,13 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
       .catch((e) => console.log({ e }))
     if (user) {
       setIsLoggedIn(true)
-    }
+    } else setIsLoggedIn(false)
   }, [])
 
   // eslint-disable-next-line space-before-function-paren
   const onQtyChange = (value, index) => {
     let { packagedOrderData } = productData
-    let newArray = []
+    let newArray = [...packagedOrderData]
     newArray[index] = {
       ...newArray[index],
       totalPrice: parseFloat(Number(packagedOrderData[index]?.price) * value).toFixed(2),
@@ -139,7 +139,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   )
 
   const onSubmit = () => {
-    let req = productData
+    let req = { ...productData, packagedOrder: packagedOrder, bulkOrder: packagedOrder ? true : false }
     let payload = {
       cartId: null,
       items: [req]
@@ -230,9 +230,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                   })
                 }
                 <div style={{ display: 'flex', justifyContent: 'end', }}>
-                  <div className="cell">{`${productData?.totalPackagedOrderPrice || '0.00'}`}</div>
+                  <div className="cell">{`$${productData?.totalPackagedOrderPrice || '0.00'}`}</div>
                 </div>
-                <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2,)', }} />
+                <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)', }} />
                 <div className="table">
                   <div className="cell">BULK</div>
                   <div className="cell">PRICE/LITER</div>
@@ -253,7 +253,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                     className='input'
                     disabled={packagedOrder}
                   /></div>
-                  <div className="cell">{`${productData?.bulkOrderData?.totalPrice || '0.00'}`}</div>
+                  <div className="cell">{`$${productData?.bulkOrderData?.totalPrice || '0.00'}`}</div>
                 </div>
                 <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)', }} />
                 {isLoggedIn && <div style={{ display: 'flex', justifyContent: 'end', }}>
