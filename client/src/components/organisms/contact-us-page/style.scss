@@ -1,58 +1,88 @@
 @import '~styles/globals';
 
-.contact-us-form {
-  .request-form__content {
-    display: grid;
-    grid-template-columns: 28.194vw 57.142vw;
-    flex-wrap: none;
-    justify-content: center;
-
-    @media (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
+.contact-us-wrapper {
+  .contact-us-form {
+    .request-form__content {
+      display: grid;
+      grid-template-columns: 28.194vw 57.142vw;
+      flex-wrap: none;
       justify-content: center;
+      margin-left: 425px;
+      padding: 0;
+
+      @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 0;
+      }
     }
-  }
 
-  .form-content {
-    width: 25.857vw !important;
-    font-family: $OpenSans;
-  }
-
-  .request-form__title {
-    padding-top: 40px;
-    padding-left: 40px;
-    font-size: 48px !important;
-    font-style: normal;
-    font-weight: bold;
-    line-height: 110%;
-
-    @media (max-width: 768px) {
-      display: none;
+    .form-content {
+      width: 25.857vw !important;
+      margin-bottom: 62px;
+      font-family: $OpenSans;
     }
-  }
 
-  .request-form__row {
-    display: flex;
-    flex-direction: row;
+    .request-form__title {
+      padding-top: 40px;
+      padding-left: 40px;
+      font-size: 48px !important;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 110%;
 
-    @media (max-width: 768px) {
-      flex-direction: column;
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
-  }
 
-  .request-form__subtitle {
-    margin-left: 2.857vw;
-  }
+    .request-form__row {
+      display: flex;
+      flex-direction: row;
 
-  .label-input {
-    width: 28.819vw;
-    padding: 24px;
-    padding-bottom: 10px;
-    padding-left: 0;
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
 
-    > input {
-      margin: 0 !important;
+    .request-form__subtitle {
+      margin-left: 2.857vw;
+    }
+
+    .label-input {
+      width: get-vw(384px);
+      margin-bottom: get-vw(30px);
+      margin-left: get-vw(24px);
+      padding-right: get-vw(8px);
+
+      @media (max-width: 768px) {
+        margin: 0 !important;
+        padding-bottom: 30px;
+        padding-left: 24px;
+      }
+
+      > input {
+        width: 100%;
+        margin: 0 !important;
+        border-radius: 0;
+        background: #002a3a;
+
+        @media (max-width: 768px) {
+          // width: 327px !important;
+        }
+      }
+
+      > textarea {
+        width: get-vw(792px);
+
+        @media (max-width: 768px) {
+          width: 327px;
+        }
+      }
+    }
+
+    .label-input__input {
       border-radius: 0;
       background: #002a3a;
 
@@ -61,40 +91,53 @@
       }
     }
 
-    > textarea {
-      width: 55vw;
+    .request-form__mobile-title {
+      width: 350px;
+      margin-top: 26px;
+      margin-bottom: 0;
+      padding-left: 24px;
+    }
 
-      @media (max-width: 768px) {
-        width: 327px;
+    .request-forms {
+      /* width: auto; */
+      @media (max-width: 500px) {
+        width: 375px;
+      }
+    }
+
+    .request-form__submit-button-wrapper {
+      @media (max-width: 500px) {
+        margin: 30px;
       }
     }
   }
 
-  .label-input__input {
-    border-radius: 0;
-    background: #002a3a;
-
+  .label-input__error-message {
     @media (max-width: 768px) {
-      width: 327px !important;
+      width: 350px;
     }
   }
 
-  .request-form__mobile-title {
-    width: 327px;
-    margin-top: 26px;
-    margin-bottom: 0;
-  }
-
-  .request-forms {
-    /* width: auto; */
-    @media (max-width: 500px) {
-      width: 375px;
+  .map {
+    @media (max-width: 768px) {
+      width: 327px;
     }
   }
 
-  .request-form__submit-button-wrapper {
-    @media (max-width: 500px) {
-      margin: 30px;
+  .map-location {
+    @media (max-width: 768px) {
+      padding: 60px 11px;
+    }
+  }
+
+  .map-map {
+    > div {
+      height: 588px !important;
+
+      @media (max-width: 768px) {
+        width: 327px;
+        height: 298px !important;
+      }
     }
   }
 }

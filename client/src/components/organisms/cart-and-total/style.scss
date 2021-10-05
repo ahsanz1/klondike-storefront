@@ -85,6 +85,13 @@
   }
 }
 
+.product-price-mobile {
+  @media screen and (max-width: 768px) {
+    display: block;
+    color: white;
+  }
+}
+
 .cart-products {
   display: grid;
   margin-right: 25px;
@@ -143,16 +150,6 @@
       .product-price {
         @media screen and (max-width: 768px) {
           color: #c2bbb7;
-        }
-      }
-
-      .product-price-mobile {
-        display: none;
-
-        @media screen and (max-width: 768px) {
-          display: block;
-          color: white;
-          font-weight: bold;
         }
       }
 

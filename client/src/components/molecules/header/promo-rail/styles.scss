@@ -16,6 +16,7 @@
   text-align: center;
 
   @media (max-width: 768px) {
+    z-index: 0;
     padding: 0 50px;
   }
 
