@@ -12,11 +12,10 @@ import Link from 'components/atoms/link'
 import { AppContext } from 'libs/context'
 import { constant } from 'lodash'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
-import PlpTabList from '../plp-tab-list';
+import PlpTabList from 'components/organisms/plp-tab-list';
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   const { data, imgdata, heading } = pdpdata
-  const [orderData, setOrderData] = useState(data)
   const [productData, setProductData] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [packagedOrder, setPackagedOrder] = useState(true)
@@ -165,8 +164,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
         </Row>
         <Row className="p-10">
           <Col style={{ width: '20%' }}>
-            <div style={style3}>Nano</div>
-            <div style={{ height: '100%', padding: 20, color: '#FFFFFF', background: '#05050563', margin: 5 }}>Sidebar Here</div>
+            <PlpTabList />
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'space-evenly', width: '80%', flexWrap: 'wrap' }}>
             <div className='flex-column'>
@@ -203,9 +201,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                   <div className="cell">SIZES</div>
                   <div className="cell">UNITS/CASE</div>
                   <div className="cell">PART NUM</div>
-                  <div className="cell">PRICE</div>
-                  <div className="cell">QTY</div>
-                  <div className="cell">TOTAL PRICE</div>
+                  <div className="cell">{isLoggedIn && 'PRICE'}</div>
+                  <div className="cell">{isLoggedIn && 'QTY'}</div>
+                  <div className="cell">{isLoggedIn && 'TOTAL PRICE'}</div>
                 </div>
                 {
                   productData?.packagedOrderData?.map((item, i) => {
@@ -213,9 +211,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                       <div className="cell" key={i}>{item?.size}</div>
                       <div className="cell" key={i}>{item?.units}</div>
                       <div className="cell" key={i}>{item?.partNum}</div>
-                      <div className="cell" key={i}>{item?.price}</div>
+                      <div className="cell" key={i}>{isLoggedIn && item?.price}</div>
                       <div className="cell" key={i}>
-                        <InputNumber
+                        {isLoggedIn && <InputNumber
                           min={0}
                           max={100}
                           defaultValue={0}
@@ -223,39 +221,48 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                           disabled={!packagedOrder}
                           size='middle'
                           className='input'
-                        />
+                        />}
                       </div>
-                      <div className="cell" key={i}>{`$${item?.totalPrice || '0.00'}`}</div>
+                      <div className="cell" key={i}>{isLoggedIn && `$${item?.totalPrice || '0.00'}`}</div>
                     </div>
                   })
                 }
                 <div style={{ display: 'flex', justifyContent: 'end' }}>
-                  <div className="cell">{`$${productData?.totalPackagedOrderPrice || '0.00'}`}</div>
+                  <div className="cell">{isLoggedIn && `$${productData?.totalPackagedOrderPrice || '0.00'}`}</div>
                 </div>
-                <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }} />
-                <div className="table">
+                {isLoggedIn && <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }} />}
+                {isLoggedIn ? <><div className="table">
                   <div className="cell">BULK</div>
                   <div className="cell">PRICE/LITER</div>
                   <div className="cell">PART NUM</div>
                   <div className="cell">LITRES</div>
                   <div className="cell"></div>
                 </div>
-                <div className="table">
-                  <div className="cell"></div>
-                  <div className="cell">{productData?.bulkOrderData?.price}</div>
-                  <div className="cell">{productData?.bulkOrderData?.partNum}</div>
-                  <div className="cell"><InputNumber
-                    min={0}
-                    max={100}
-                    defaultValue={0}
-                    onChange={(e) => onBulkQtyChange(e)}
-                    size='middle'
-                    className='input'
-                    disabled={packagedOrder}
-                  /></div>
-                  <div className="cell">{`$${productData?.bulkOrderData?.totalPrice || '0.00'}`}</div>
-                </div>
-                <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }} />
+                  <div className="table">
+                    <div className="cell"></div>
+                    <div className="cell">{productData?.bulkOrderData?.price}</div>
+                    <div className="cell">{productData?.bulkOrderData?.partNum}</div>
+                    <div className="cell"><InputNumber
+                      min={0}
+                      max={100}
+                      defaultValue={0}
+                      onChange={(e) => onBulkQtyChange(e)}
+                      size='middle'
+                      className='input'
+                      disabled={packagedOrder}
+                    /></div>
+                    <div className="cell">{`$${productData?.bulkOrderData?.totalPrice || '0.00'}`}</div>
+                  </div></> :
+                  <div className="table">
+                    <div className="cell">BULK</div>
+                    <div className="cell"></div>
+                    <div className="cell">{productData?.bulkOrderData?.partNum}</div>
+                    <div className="cell"></div>
+                    <div className="cell"></div>
+                    <div className="cell"></div>
+                  </div>
+                }
+                {isLoggedIn && <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }} />}
                 {isLoggedIn && <div style={{ display: 'flex', justifyContent: 'end' }}>
                   <Button className="customButton" onClick={onSubmit} >ADD TO CART</Button>
                 </div>}
