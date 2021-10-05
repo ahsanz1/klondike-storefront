@@ -93,7 +93,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   // eslint-disable-next-line space-before-function-paren
   const onQtyChange = (value, index) => {
     let { packagedOrderData } = productData
-    let newArray = [...packagedOrderData]
+    let newArray = []
     newArray[index] = {
       ...newArray[index],
       totalPrice: parseFloat(Number(packagedOrderData[index]?.price) * value).toFixed(2),
