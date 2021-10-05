@@ -92,7 +92,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
         console.log('producttt', res.response.data)
       })
       .catch((e) => console.log({ e }))
-    if (user) {
+    if (user?.accessToken) {
       setIsLoggedIn(true)
     } else setIsLoggedIn(false)
   }, [])
