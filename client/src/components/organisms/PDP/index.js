@@ -229,33 +229,42 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                     </div>
                   })
                 }
-                <div style={{ display: 'flex', justifyContent: 'end', }}>
+                {isLoggedIn && <div style={{ display: 'flex', justifyContent: 'end', }}>
                   <div className="cell">{`$${productData?.totalPackagedOrderPrice || '0.00'}`}</div>
-                </div>
-                <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)', }} />
-                <div className="table">
+                </div>}
+                {isLoggedIn && <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)', }} />}
+                {isLoggedIn ? <>
+                  <div className="table">
+                    <div className="cell">BULK</div>
+                    <div className="cell">PRICE/LITER</div>
+                    <div className="cell">PART NUM</div>
+                    <div className="cell">LITRES</div>
+                    <div className="cell"></div>
+                  </div>
+                  <div className="table">
+                    <div className="cell"></div>
+                    <div className="cell">{productData?.bulkOrderData?.price}</div>
+                    <div className="cell">{productData?.bulkOrderData?.partNum}</div>
+                    <div className="cell"><InputNumber
+                      min={0}
+                      max={100}
+                      defaultValue={0}
+                      onChange={(e) => onBulkQtyChange(e)}
+                      size='middle'
+                      className='input'
+                      disabled={packagedOrder}
+                    /></div>
+                    <div className="cell">{`$${productData?.bulkOrderData?.totalPrice || '0.00'}`}</div>
+                  </div>
+                </> : <div className="table">
                   <div className="cell">BULK</div>
-                  <div className="cell">PRICE/LITER</div>
-                  <div className="cell">PART NUM</div>
-                  <div className="cell">LITRES</div>
                   <div className="cell"></div>
-                </div>
-                <div className="table">
-                  <div className="cell"></div>
-                  <div className="cell">{productData?.bulkOrderData?.price}</div>
                   <div className="cell">{productData?.bulkOrderData?.partNum}</div>
-                  <div className="cell"><InputNumber
-                    min={0}
-                    max={100}
-                    defaultValue={0}
-                    onChange={(e) => onBulkQtyChange(e)}
-                    size='middle'
-                    className='input'
-                    disabled={packagedOrder}
-                  /></div>
-                  <div className="cell">{`$${productData?.bulkOrderData?.totalPrice || '0.00'}`}</div>
-                </div>
-                <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)', }} />
+                  <div className="cell"></div>
+                  <div className="cell"></div>
+                  <div className="cell"></div>
+                </div>}
+                {isLoggedIn && <Divider style={{ border: '1px solid rgba(255, 255, 255, 0.2)', }} />}
                 {isLoggedIn && <div style={{ display: 'flex', justifyContent: 'end', }}>
                   <Button className="customButton" onClick={onSubmit} >ADD TO CART</Button>
                 </div>}
