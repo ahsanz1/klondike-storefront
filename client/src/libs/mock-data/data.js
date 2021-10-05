@@ -190,6 +190,11 @@ const mockData = {
       params: searchFlow,
     },
   ],
+  '/search-filter': [
+    {
+      id: 'SearchFilter',
+    },
+  ],
 
   '/cart': [
     {
@@ -343,7 +348,7 @@ const mockData = {
       params: { ...category },
     },
   ],
-  '/collections/all-bars': [
+  '/plp-page': [
     {
       id: 'WebpageGlobalHeroBanner',
       params: shopBanner,

@@ -75,14 +75,20 @@
     }
   }
 
-  .toggleClass {
-    left: 0;
-    transform: rotate(180deg) !important;
-  }
+  // .left-image {
+  //   left: -30px;
+  //   transform: rotate(180deg);
+  // }
 
-  .toggleSomething {
-    .h-links {
-      margin-left: 30px;
-    }
-  }
+  // .toggleOptions {
+  //   display: block;
+  // }
+
+  // .hideToggleOptions {
+  //   display: block;
+
+  //   @media (max-width: 500px) {
+  //     display: none;
+  //   }
+  // }
 }

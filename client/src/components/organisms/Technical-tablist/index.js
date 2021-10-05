@@ -15,6 +15,7 @@ const Techtabllist = ({
   const productClickHandler = productName => {
     setProduct(productName)
   }
+  console.log('subitem', subItem)
   console.log('check categories:', categories)
   return (
     <div className={`categoryItem-tab trt ${className}`}>

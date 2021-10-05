@@ -42,7 +42,7 @@ const Navbar = ({
   }
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
-
+  console.log('check links:', links)
   return (
     <div
       className={
@@ -53,7 +53,9 @@ const Navbar = ({
         <CartDropdown />
         <CartPopUP />
         <div className="mobile-home-logo">
-          <Image width={75} src={mobileLogo.url} alt="logo" />
+          <Link to="/">
+            <Image width={75} src={mobileLogo.url} alt="logo" />
+          </Link>
         </div>
         <div className="header__mobile-menu-button">
           <Button

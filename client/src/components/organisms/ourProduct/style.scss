@@ -41,6 +41,7 @@
 
     li {
       margin-bottom: 2vw;
+      border: none;
       color: #6d6d6d;
       font-family: $OpenSans;
       font-size: 1.3vw;
@@ -49,12 +50,14 @@
       cursor: pointer;
 
       @media (max-width: 500px) {
-        margin-bottom: 8vw;
+        margin-bottom: 4vw;
         text-transform: uppercase;
       }
 
       &:hover {
-        color: #dc5e00;
+        button {
+          color: #dc5e00;
+        }
 
         img {
           width: 9.6vw;
@@ -69,10 +72,32 @@
         color: #fff;
         font-size: 16px;
       }
+
+      button {
+        width: 100%;
+        border: none;
+        background: none;
+        color: #000;
+        text-align: left;
+
+        @media (max-width: 500px) {
+          color: $white-color;
+        }
+
+        &:hover {
+          color: #dc5e00;
+        }
+      }
+
+      .h-links {
+        border: none !important;
+      }
     }
 
     .activeItem {
-      color: #dc5e00;
+      button {
+        color: #dc5e00;
+      }
     }
   }
 
@@ -120,6 +145,15 @@
         width: 89.8vw;
         height: 65.8vw;
         margin-bottom: 8.2vw;
+      }
+
+      button {
+        border: none;
+        background: none;
+      }
+
+      .h-links {
+        border: none !important;
       }
 
       img {
@@ -240,12 +274,30 @@
       cursor: pointer;
 
       &:hover {
-        color: #dc5e00;
+        button {
+          color: #dc5e00;
+        }
       }
 
       @media (max-width: 768px) {
         color: #fff;
         font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        border: none;
+        background: none;
+        color: #fff;
+        text-align: left;
+
+        &:hover {
+          color: #dc5e00;
+        }
+      }
+
+      .h-links {
+        border: none !important;
       }
     }
   }

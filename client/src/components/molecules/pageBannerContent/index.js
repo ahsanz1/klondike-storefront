@@ -21,7 +21,7 @@ const PageBannerContent = ({
             <img src={banerlogoimg.url} alt="" />
             <p>{heading}</p>
           </div>
-          <Link to={searchUrl}>
+          <Link to="/oats">
             <Button>{buttontxt}</Button>
           </Link>
         </div>

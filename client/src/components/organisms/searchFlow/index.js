@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
+import { AppContext } from 'libs/context'
 import Input from 'components/atoms/input'
 // import ProductItem from 'components/molecules/ProductItem'
 import SearchList from 'components/molecules/searchList'
@@ -8,6 +9,7 @@ import { fetchItems } from 'libs/services/algolia'
 import Suggestion from 'components/molecules/searchSuggestions'
 import Label from 'components/atoms/label'
 import Button from 'components/atoms/button'
+import { navigate } from '@reach/router'
 
 const SearchFlow = props => {
   const [searchValue, setSearchValue] = useState('')
@@ -15,9 +17,13 @@ const SearchFlow = props => {
   const [recent, setRecent] = useState([])
   const [showRecent, setShowRecent] = useState(false)
   const [localRecent, setLocalRecent] = useState([])
+  const { setSearchFilter } = useContext(AppContext)
 
   const searchValueHandler = async ({ value }) => {
     setSearchValue(value)
+    setShowRecent(false)
+    const list = await fetchItems(searchValue)
+    setItemList(list.hits)
   }
   const clear = () => {
     setSearchValue('')
@@ -35,13 +41,15 @@ const SearchFlow = props => {
     e.preventDefault()
     let recentArr = recent
     recentArr.push(searchValue)
+    setSearchFilter(searchValue)
     setRecent([...recentArr])
-    const list = await fetchItems(searchValue)
-    setItemList(list.hits)
+    // const list = await fetchItems(searchValue)
+    // setItemList(list.hits)
     setShowRecent(false)
     let storeData = [...new Set(recent)]
     localStorage.setItem('recentData', JSON.stringify([...storeData]))
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
+    navigate('/search-filter')
   }
   const focusInput = () => {
     setShowRecent(true)
@@ -55,7 +63,6 @@ const SearchFlow = props => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
 
-  console.log('localRecent:', localRecent)
   return (
     <>
       <div className="serach-flow">
@@ -69,7 +76,10 @@ const SearchFlow = props => {
             />
           </form>
           <Button onClick={clear} className="clear">
-            <img src={props.clearIcon} alt="clear Icon" />
+            <img
+              src={props.clearIcon && props.clearIcon.url}
+              alt={props.clearIcon && props.clearIcon.alt}
+            />
           </Button>
         </div>
         {itemList.length > 0 && (
@@ -82,7 +92,7 @@ const SearchFlow = props => {
           ''
         )} */}
         <div className="search-list">
-          {showRecent && localRecent.length > 0 && (
+          {showRecent && localRecent && localRecent.length > 0 && (
             <div className="recentSearch">
               <Label className="recent-heading">Recent Searches</Label>
               {localRecent.length > 0 &&
@@ -124,7 +134,7 @@ const SearchFlow = props => {
   )
 }
 SearchFlow.propTypes = {
-  clearIcon: PropTypes.string,
+  clearIcon: PropTypes.object,
   toggleSearch: PropTypes.func,
 }
 export default SearchFlow

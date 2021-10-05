@@ -345,7 +345,7 @@ $vw-viewport: 1440;
     @media (max-width: 768px) {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      // justify-content: space-between;
       width: 100%;
       margin-top: 12px;
       margin-left: 48px;

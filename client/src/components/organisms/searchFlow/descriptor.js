@@ -2,10 +2,9 @@ const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
   id: 'SearchFlow',
-  label: 'Search',
+  label: 'SearchFlow',
   isGlobal: true,
-  description:
-    'Header component with company logo, header nav links and promo rail options',
+  description: 'Search component with Clear Icon',
   attributes: {
     clearIcon: Types.Image({
       label: 'Clear Icon',

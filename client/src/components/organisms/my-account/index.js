@@ -7,9 +7,9 @@ import { AppContext } from 'libs/context'
 import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 import TabsDropdown from 'components/molecules/tab-dropdown'
-// import ModalOrdersReturns from 'components/molecules/modal-orders-returns'
 import PageHeader from './components/PageHeader'
 import AccountTabPane from './components/AccountTabPane'
+import Link from 'components/atoms/link'
 
 import { accountTabs } from './static'
 import {
@@ -127,19 +127,29 @@ const MyAccount = ({
               logoutBtnText={log}
               onClick={handleLogout}
             />
-            <TabsDropdown activeKey={tabKey} onTabClick={key => setTabKey(key)}>
-              {accountTabsData &&
-                accountTabsData.map((item, index) => (
-                  <TabPane tab={item.tabTitle} key={index}>
-                    <AccountTabPane
-                      data={item.data}
-                      user={personalInfo}
-                      title={item.tabTitle}
-                      userOrder={userOrder}
-                    />
-                  </TabPane>
-                ))}
-            </TabsDropdown>
+            <div className="accounts-tabs">
+              <div className="tabs-container">
+                <TabsDropdown
+                  activeKey={tabKey}
+                  onTabClick={key => setTabKey(key)}
+                >
+                  {accountTabsData &&
+                    accountTabsData.map((item, index) => (
+                      <TabPane tab={item.tabTitle} key={index}>
+                        <AccountTabPane
+                          data={item.data}
+                          user={personalInfo}
+                          title={item.tabTitle}
+                          userOrder={userOrder}
+                        />
+                      </TabPane>
+                    ))}
+                </TabsDropdown>
+              </div>
+              <div className="pricesheet-container">
+                <Link to="/faqs">View Price List</Link>
+              </div>
+            </div>
           </div>
         </>
       )}

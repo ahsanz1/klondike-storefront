@@ -20,6 +20,7 @@ exports.default = Types.Component({
           heading: Types.String({ label: 'Heading' }),
           text: Types.String({ label: 'Text' }),
           buttontxt: Types.String({ label: 'Button Content' }),
+          redirectUrl: Types.String({ label: 'Redirect URL' }),
           list: Types.Array({
             label: 'List Item',
             children: Types.Shape({

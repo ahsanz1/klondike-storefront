@@ -17,10 +17,14 @@
 
   h1 {
     margin-bottom: 21px;
-    margin-left: -97px;
+    // margin-left: -97px;
     padding-top: 90px;
     font-family: $OpenSans;
-    font-size: 31px;
+    font-size: 2.1vw;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 140%;
+    text-align: center;
 
     @media (max-width: 768px) {
       display: none;
@@ -38,22 +42,24 @@
   }
 
   .input_model {
-    width: 448px;
-    height: 64px;
-    margin-left: 261px;
-    padding: 20px;
-    border-radius: 16px;
+    width: 31.1vw;
+    height: 4.4vw;
+    margin-left: 22.9vw;
+    padding: 1.3vw;
+    border-radius: 1.1vw;
     outline: none;
     background: #e4eff4;
 
     @media (max-width: 768px) {
       flex-direction: column;
       justify-content: center;
-      width: 304px;
+      width: 82.6vw;
+      height: 17.4vw;
       // margin-right: 36px;
       margin-top: 119px;
       margin-left: 2px;
       padding: 12px;
+      border-radius: 4.2vw;
       outline: none;
     }
 
@@ -95,25 +101,30 @@
   }
 
   .search_bar {
-    left: 1038px;
+    // left: 1038px;
     width: 72px;
-    height: 64px;
+    height: 4.4vw;
 
     // border-radius: 16px;
     margin-left: 20px;
     padding-bottom: 25px;
 
     .img-icon {
-      width: 68px;
-      height: 64px;
+      width: 4.7vw;
+      height: 4.4vw;
       margin: -2px;
       object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      width: 19.2vw;
+      height: 17.4vw;
     }
   }
 
   .ant-select-selector {
     min-width: 165px !important;
-    height: 64px !important;
+    height: 4.4vw !important;
     margin: 0 10px !important;
     padding-top: 15px !important;
     border-radius: 16px !important;
@@ -121,7 +132,7 @@
 
     &.cars {
       top: 0;
-      width: 219px;
+      width: 15.2vw;
       margin-left: 20px;
       padding-bottom: 100px;
     }
@@ -135,6 +146,7 @@
     @media (max-width: 768px) {
       display: block;
       margin-left: 31px;
+      padding-top: 20px;
       padding-bottom: 23px;
     }
 
@@ -154,27 +166,40 @@
       }
 
       &.series {
-        min-width: 219px;
+        min-width: 15.2vw;
         // background: #E4EFF4;
+        @media (max-width: 768px) {
+          width: 58.4vw;
+          padding-bottom: 8.5vw;
+        }
       }
 
       &.year_range {
-        width: 286px;
+        width: 19.8vw;
 
         @media (max-width: 768px) {
-          padding-bottom: 30px;
+          width: 76.2vw;
+          padding-bottom: 8.5vw;
         }
         // border-radius: 16px;
       }
 
       &.family {
-        width: 186;
+        width: 12.9vw;
         // border-radius: 16px;
+        @media (max-width: 768px) {
+          width: 49.6vw;
+          padding-bottom: 8.5vw;
+        }
       }
 
       &.manufecturer {
-        width: 229px;
+        width: 15.9vw;
         // border-radius: 16px;
+        @media (max-width: 768px) {
+          width: 61.6vw;
+          padding-bottom: 8.5;
+        }
       }
     }
   }
@@ -207,10 +232,10 @@
     display: flex;
     justify-content: space-between;
     width: 1300px;
-  }
 
-  .title {
-    color: #f1a900;
+    .title {
+      color: #f1a900 !important;
+    }
   }
 
   .custom-grid {

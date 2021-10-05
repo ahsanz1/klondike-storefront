@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from 'components/atoms/button'
+import Link from 'components/atoms/link'
 import './style.scss'
 // import OrderList from '../OrderList'
 
@@ -30,7 +31,13 @@ const DowntimeCosting = ({
       </ul>
       <p className="last-item">{Paragraph}</p>
       {/* <OrderList {...list} /> */}
-      <Button>{buttontxt}</Button>
+      <Link
+        to={
+          buttontxt === 'HOW TO BUY' ? '/contact-us' : '/collections/all-bars'
+        }
+      >
+        <Button>{buttontxt}</Button>
+      </Link>
     </div>
   )
 }
@@ -41,5 +48,6 @@ DowntimeCosting.propTypes = {
   list: PropTypes.array,
   buttontxt: PropTypes.string,
   Paragraph: PropTypes.string,
+  redirectUrl: PropTypes.string,
 }
 export default DowntimeCosting

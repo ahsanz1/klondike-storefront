@@ -40,7 +40,7 @@ const Links = ({
         if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
           return (
             (!link.mobileOnly || mobile) && (
-              <>
+              <div>
                 <Link
                   key={i}
                   style={linkStyle}
@@ -51,29 +51,30 @@ const Links = ({
                     link.productDropDown[0].image.url !== ''
                       ? `screen ${linkClassName}`
                       : linkClassName
-                    // link.productDropDown[0].image.url
-                    //   ? `screen ${linkClassName}`
-                    //   :
                   }
                   to={link.url}
                 >
                   {link && link.label && link.label}
-                  <Image
-                    width={25}
-                    src={mobileMenu && mobileMenu.url}
-                    alt={mobileMenu.altText}
-                  />
 
-                  {link.productDropDown &&
-                    link.productDropDown.length > 0 &&
-                    link.productDropDown[0].label !== '' &&
-                    link.productDropDown[0].image.url !== '' && (
+                  <div>
+                    {
+                      // link.productDropDown &&
+                      //   link.productDropDown.length > 0 &&
+                      //   link.productDropDown[0].label !== '' &&
+                      //   link.productDropDown[0].image.url !== '' && (
                       <>
                         <Product ourProduct={link.productDropDown} />
                       </>
-                    )}
+                      // )
+                    }
+                  </div>
                 </Link>
-              </>
+                <Image
+                  width={25}
+                  src={mobileMenu && mobileMenu.url}
+                  alt={mobileMenu.altText}
+                />
+              </div>
             )
           )
         } else {
