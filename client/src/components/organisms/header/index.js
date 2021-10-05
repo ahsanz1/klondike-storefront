@@ -22,6 +22,7 @@ const Header = ({
   searchIcon = '',
   userIcon = '',
   cartIcon = '',
+  searchCloseIcon = {},
   mobileLogo = {},
   mobileMenu,
   mobileMenuOpen = {},
@@ -55,6 +56,7 @@ const Header = ({
   const searchToggle = () => {
     setToggle(!toggle)
   }
+  console.log('header prop:', searchCloseIcon)
   return (
     <div
       className={
@@ -84,7 +86,7 @@ const Header = ({
             />
           </>
         ) : (
-          <SearchFlow toggleSearch={searchToggle} />
+          <SearchFlow toggleSearch={searchToggle} clearIcon={searchCloseIcon} />
         )}
       </div>
     </div>
@@ -112,5 +114,6 @@ Header.propTypes = {
   mobileMenuOpen: PropTypes.object,
   mobileMenuClose: PropTypes.object,
   menuBottom: PropTypes.object,
+  searchCloseIcon: PropTypes.object,
 }
 export default Header
