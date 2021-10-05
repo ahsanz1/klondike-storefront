@@ -17,7 +17,7 @@ const SearchFlow = props => {
   const [recent, setRecent] = useState([])
   const [showRecent, setShowRecent] = useState(false)
   const [localRecent, setLocalRecent] = useState([])
-  const { setSearchFilter } = useContext(AppContext)
+  const { setSearchFilter, setSearchKey } = useContext(AppContext)
 
   const searchValueHandler = async ({ value }) => {
     setSearchValue(value)
@@ -52,6 +52,7 @@ const SearchFlow = props => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
     navigate('/search-filter')
     props.toggleSearch()
+    setSearchKey(searchValue)
   }
   const focusInput = () => {
     setShowRecent(true)
