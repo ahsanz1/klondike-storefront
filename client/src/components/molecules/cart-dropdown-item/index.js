@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 
 import './styles.scss'
 import Label from 'components/atoms/label'
-import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
 
 import { InputNumber } from 'antd'
@@ -28,7 +27,7 @@ const CartDropdownItem = ({ mainImage, title, size, price, quantity }) => {
     <div className="mini-cart-item">
       <div className="cart-item">
         <div>
-          <Image src={mainImage} className="cart-item-image" />
+          <img src={mainImage} className="cart-item-image" alt="" />
         </div>
         <div>
           <div className="item-desc-and-price">
@@ -104,7 +103,8 @@ const CartDropdownItem = ({ mainImage, title, size, price, quantity }) => {
           <div className="total-and-quantity-cart-and-remove-btn">
             <div className="product-price-info">
               <Label className="product-price">
-                <Label className="product-price-mobile">PRICE</Label>${price}
+                PRICE
+                <Label className="product-price-mobile">${price}</Label>
               </Label>
             </div>
             <div className="quantity-box">

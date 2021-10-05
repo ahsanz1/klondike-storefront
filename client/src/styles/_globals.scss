@@ -63,10 +63,26 @@ $Poppins: Poppins;
 $Raleway: Raleway;
 
 $vw-viewport: 1440;
+$vw-mobile-viewport: 375;
+$vh-mobile-viewport: 825;
 
 @function get-vw($font) {
   $vw-context: $vw-viewport * 0.01 * 1px;
 
   @return $font / $vw-context * 1vw;
+  @return $font;
+}
+
+@function getmb-vw($font) {
+  $vw-mbcontext: $vw-mobile-viewport * 0.01 * 1px;
+
+  @return $font / $vw-mbcontext * 1vw;
+  @return $font;
+}
+
+@function getmb-vh($font) {
+  $vh-mbcontext: $vh-mobile-viewport * 0.01 * 1px;
+
+  @return $font / $vh-mbcontext * 1vh;
   @return $font;
 }

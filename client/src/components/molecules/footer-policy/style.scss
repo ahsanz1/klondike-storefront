@@ -1,3 +1,5 @@
+@import '~styles/globals';
+
 .footer-bottom-menu {
   display: flex;
   align-items: center;
@@ -5,8 +7,11 @@
   margin-bottom: 0;
   padding: 0;
   color: #fff;
-  font-size: 16px;
-  line-height: 43px;
+  font-family: $OpenSans;
+  font-size: get-vw(14px);
+  font-weight: bold;
+  line-height: get-vw(19px);
+  text-transform: capitalize;
 
   @media screen and (max-width: 768px) {
     display: inline;

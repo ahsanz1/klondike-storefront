@@ -16,6 +16,7 @@
   text-align: center;
 
   @media (max-width: 768px) {
+    z-index: 0;
     padding: 0 50px;
   }
 
@@ -87,7 +88,7 @@
           top: 55%;
           right: 3.2vw !important;
           width: 1vw;
-          height: 2.1vw;
+          height: 2.222vh;
           margin-top: -1.6vw;
           font-size: 3.2vw;
         }
@@ -96,7 +97,7 @@
 
     .ant-select-selector {
       align-items: center;
-      width: 3.1vw !important;
+      width: get-vw(45px) !important;
       height: 1.6vw !important;
       padding: 0 !important;
       border: none !important;

@@ -73,6 +73,9 @@ Components['ReferEarn'] = require('components/organisms/refer-earn').default
 Components['Category'] = require('components/organisms/category').default
 Components['PLP'] = require('components/organisms/plp').default
 Components['SearchFlow'] = require('components/organisms/searchFlow').default
+Components[
+  'SearchFilter'
+] = require('components/organisms/searchFilter').default
 Components['AboutUs'] = require('components/organisms/about-us').default
 Components[
   'CategorySideBar'

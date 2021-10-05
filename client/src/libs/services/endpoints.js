@@ -4,6 +4,8 @@ const ENDPOINTS = {
     page: url => `/api-xpm/page/live?url=${url}`,
     productBySKU: sku => `/api-item/item/product/${sku}`,
     getUser: userId => `/user/${userId}`,
+    retreiveProductAttributes: sku =>
+      `/api-product/v1/product/attribute?itemId=${sku}`,
     getNavigation:
       process.env.NAVIGATION_DATA_API ||
       'https://abchome-config.s3.amazonaws.com/navigationqa.json',
