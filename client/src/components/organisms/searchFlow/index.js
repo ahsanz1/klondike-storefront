@@ -23,7 +23,9 @@ const SearchFlow = props => {
     setSearchValue(value)
     setShowRecent(false)
     const list = await fetchItems(searchValue)
+    console.log('check list:', list.hits)
     setItemList(list.hits)
+    setSearchFilter(list.hits)
   }
   const clear = () => {
     setSearchValue('')
@@ -41,7 +43,6 @@ const SearchFlow = props => {
     e.preventDefault()
     let recentArr = recent
     recentArr.push(searchValue)
-    setSearchFilter(searchValue)
     setRecent([...recentArr])
     // const list = await fetchItems(searchValue)
     // setItemList(list.hits)
@@ -50,6 +51,7 @@ const SearchFlow = props => {
     localStorage.setItem('recentData', JSON.stringify([...storeData]))
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
     navigate('/search-filter')
+    props.toggleSearch()
   }
   const focusInput = () => {
     setShowRecent(true)
@@ -85,12 +87,6 @@ const SearchFlow = props => {
         {itemList.length > 0 && (
           <Label className="suggestion-heading">Suggestion</Label>
         )}
-
-        {/* {itemList.length === 0 ? (
-          <Label className="empty-suggestion">No Suggestion Found!</Label>
-        ) : (
-          ''
-        )} */}
         <div className="search-list">
           {showRecent && localRecent && localRecent.length > 0 && (
             <div className="recentSearch">
@@ -100,7 +96,10 @@ const SearchFlow = props => {
                   <li key={i}>
                     <Button onClick={() => recentSelect(item)}>{item}</Button>
                     <Button onClick={() => clearRecent(item)} className="clear">
-                      <img src={props.clearIcon} alt="clear Icon" />
+                      <img
+                        src={props.clearIcon && props.clearIcon.url}
+                        alt="clear Icon"
+                      />
                     </Button>
                   </li>
                 ))}
