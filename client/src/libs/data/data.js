@@ -4033,6 +4033,16 @@ export const technicalBanner = {
     altText: 'desktop hero image',
   },
 }
+export const techresource = {
+  desktopImage: {
+    url: '/static/images/Logging_backgro.png',
+    altText: 'desktop hero image',
+  },
+  mobileImage: {
+    url: '/static/images/Logging_backgro.png',
+    altText: 'desktop hero image',
+  },
+}
 export const imgonbanner = {
   desktopImage: {
     url: '/static/images/small-page-group-RETINA.png',

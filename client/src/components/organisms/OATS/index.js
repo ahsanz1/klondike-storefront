@@ -1,24 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './style.scss'
 import axios from 'axios'
 
 import Dropdown from 'components/atoms/dropdown'
 import { tableOatsData } from './data'
 import Button from 'components/atoms/button'
+// import { object } from 'yup/lib/locale'
 
 const Oats = () => {
   const { mainHeading, listItem } = tableOatsData
 
   const [otsdata, setOtsdata] = useState([])
-  const [query, setQuery] = useState('')
-
+  let [query, setQuery] = useState('')
+  const [year, setYear] = useState()
+  console.log('year', year)
   const getproducts = () => {
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&token=LiEoiv0tqygb`,
     ]
     axios.get(url).then(response => {
-      let results = response.data.equipment_list
+      let results = response.data
       setOtsdata(results)
+      console.log('result', results)
+      console.log('family', setYear(results.facets.year.buckets))
     })
   }
   const filterData = e => {
@@ -29,7 +33,23 @@ const Oats = () => {
       getproducts()
     }
   }
+  useEffect(() => {
+    let droparray = []
+    for (const [key, value] of Object.entries(year)) {
+      console.log(`my key:${key}, my value ${value}`)
+      droparray.push(key)
+      console.log('push', droparray)
+    }
+  }, [year])
 
+  let yeararray = [
+    {
+      label: 'year',
+      value: year,
+    },
+  ]
+  let first = Object.entries(yeararray)
+  console.log(first, 'first')
   return (
     <>
       <div className="img">
