@@ -5,7 +5,6 @@ import Button from 'components/atoms/button'
 import './style.scss'
 
 const PCPBottom = ({ image, button, mobileButton }) => {
-  console.log('pcp-prop-bottom:', image)
   return (
     <div className="bottom-plp">
       <div className="plp-bottom">

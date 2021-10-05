@@ -231,14 +231,14 @@
   .Buy-Button {
     box-sizing: border-box;
     align-items: center;
-    width: 12vw;
-    height: 2.9vw;
+    width: get-vw(210px);
+    height: get-vw(64px);
     border: 0.06vw solid #f2a900;
-    border-radius: 9px;
+    border-radius: get-vw(9px);
     background: #f2a900;
     color: #fff;
     font-family: Open-Sans, Helvetica, Arial, sans-serif;
-    font-size: 1.5vw;
+    font-size: get-vw(23px);
     font-style: normal;
     font-weight: bold;
     line-height: 1.5vw;

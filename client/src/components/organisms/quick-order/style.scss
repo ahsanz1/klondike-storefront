@@ -42,6 +42,10 @@
     @media screen and (max-width: 768px) {
       grid-template-columns: auto auto;
       font-size: 28px;
+
+      :nth-child(2) {
+        margin-left: getmb-wv(150px);
+      }
     }
   }
 
@@ -251,12 +255,16 @@
   .partname-and-qty {
     display: grid;
     grid-template-columns: get-vw(500px) auto;
-    padding-top: get-vw(20px);
+    padding-top: get-vw(47px);
     padding-left: get-vw(30px);
     color: #fff;
     font-size: get-vw(16px);
-    font-weight: bold;
-    line-height: get-vw(28px);
+    // font-weight: 600;
+    line-height: get-vw(10px);
+
+    :first-child {
+      padding-left: get-vw(17px);
+    }
 
     @media screen and (max-width: 768px) {
       grid-template-columns: 220px auto;
@@ -264,6 +272,17 @@
       padding-left: 38px;
       font-size: 16px;
       line-height: 28px;
+    }
+  }
+
+  .accordion-image {
+    position: relative;
+    right: get-vw(90px);
+    width: 50px;
+
+    @media screen and (max-width: 768px) {
+      right: get-vw(0);
+      width: 20px;
     }
   }
 
