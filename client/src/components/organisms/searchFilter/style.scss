@@ -1,8 +1,6 @@
 @import '~styles/globals';
 
 .search-filter {
-  padding-top: 5.2vw;
-
   @media (max-width: 500px) {
     margin-top: 35.73vw;
     padding-top: 21.6vw;
@@ -10,10 +8,6 @@
 
   .products {
     margin: 0 8.3vw;
-
-    @media (max-width: 500px) {
-      margin: 0 6.4vw;
-    }
 
     ul {
       display: flex;
@@ -23,40 +17,17 @@
       list-style: none;
 
       li {
-        width: 17.6vw;
+        width: 13.8vw;
         margin-right: 2.2vw !important;
 
-        @media (max-width: 500px) {
-          width: 41.3vw;
-          height: 46.4vw;
-          margin-bottom: 18.4vw;
-        }
-
-        &:nth-child(odd) {
-          @media (max-width: 500px) {
-            margin-right: 2.2vw;
-          }
-        }
-
         img {
-          width: 100%;
-          height: 21.3vw;
+          width: 13.8vw;
+          height: 15.8vw;
           background: #fff;
           object-fit: contain;
-
-          @media (max-width: 500px) {
-            width: 100%;
-            height: 46.4vw;
-            object-fit: contain;
-          }
         }
 
         .search-Items {
-          @media (max-width: 500px) {
-            width: 41.3vw;
-            height: 46.4vw;
-          }
-
           .search-category {
             display: none;
           }
@@ -69,11 +40,6 @@
             font-size: 1.3vw;
             font-weight: 600;
             line-height: 110%;
-
-            @media (max-width: 500px) {
-              font-size: 3.7vw;
-              line-height: 140%;
-            }
           }
         }
       }
@@ -122,33 +88,15 @@
     .first-drop {
       width: 10.4vw !important;
       margin-right: 1.3vw;
-
-      @media (max-width: 500px) {
-        width: 40.26vw !important;
-        height: 17vw !important;
-        margin-bottom: 8.53vw;
-      }
     }
 
     .second-drop {
       width: 14.7vw !important;
       margin-right: 1.3vw;
-
-      @media (max-width: 500px) {
-        width: 56.8vw !important;
-        height: 17vw !important;
-        margin-bottom: 8.53vw;
-      }
     }
 
     .third-drop {
       width: 14.7vw !important;
-
-      @media (max-width: 500px) {
-        width: 56.8vw !important;
-        height: 17vw !important;
-        margin-bottom: 8.53vw;
-      }
     }
 
     .ant-select-selector {
@@ -157,23 +105,12 @@
       border-radius: 1.1vw !important;
       background: #002a3a !important;
 
-      @media (max-width: 500px) {
-        height: 17vw !important;
-        border-radius: 4.2vw !important;
-      }
-
       .ant-select-selection-item {
         position: relative;
         top: 1.3vw;
         margin-left: 1.6vw;
         color: #fff !important;
         font-size: 1.1vw;
-        text-transform: uppercase;
-
-        @media (max-width: 500px) {
-          top: 4.3vw;
-          font-size: 4.26vw;
-        }
       }
     }
 

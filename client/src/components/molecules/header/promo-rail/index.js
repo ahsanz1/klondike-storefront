@@ -6,7 +6,7 @@ import Link from 'components/atoms/link'
 import { SHOW, HIDE, SLIDER_CONFIG } from './constant'
 import rightImage from '/static/images/chevron right-black.png'
 import Button from 'components/atoms/button'
-// import Select from 'components/atoms/dropdown'
+import Select from 'components/atoms/dropdown'
 import './styles.scss'
 
 const PromoRail = ({
