@@ -16,9 +16,7 @@ const Dropdown = ({
   disabledOptionStyle = {},
   dropdownStyle = {},
   name = '',
-  year,
 }) => {
-  console.log('yeardata', year)
   return (
     <Select
       value={value}
@@ -40,7 +38,16 @@ const Dropdown = ({
             disabled={menuItem.disabled}
             style={menuItem.disabled ? disabledOptionStyle : {}}
           >
-            {menuItem.label}
+            {menuItem.label ||
+              ` Ship Every ${menuItem.frequency} ${
+                menuItem.frequencyType === 'Weekly'
+                  ? menuItem.frequency > 1
+                    ? 'Weeks'
+                    : 'Week'
+                  : menuItem.frequency > 1
+                  ? 'Months'
+                  : 'Month'
+              }`}
           </Option>
         )
       })}
@@ -58,7 +65,6 @@ Dropdown.propTypes = {
   disabledOptionStyle: PropTypes.object,
   dropdownStyle: PropTypes.object,
   name: PropTypes.string,
-  year: PropTypes.object,
 }
 
 export default Dropdown
