@@ -360,8 +360,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                           disabled={packagedOrder}
                         />
                       </div>
-                      <div className="cell">{`$${productData?.bulkOrderData
-                        ?.totalPrice || '0.00'}`}</div>
+                      <div className="cell">
+                        $ +{' '}
+                        {productData?.bulkOrderData?.totalPrice
+                          ? productData?.bulkOrderData?.totalPrice
+                          : '0.00'}
+                      </div>
                     </div>
                   </>
                 ) : (
