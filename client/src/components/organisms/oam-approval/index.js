@@ -35,7 +35,9 @@ const Oamspproval = ({ categories }) => {
                     <div className="descr-oam">{data.description}</div>
                     <Label className="arow-img">
                       Discover More
-                      <Image src={data.lebal} />
+                      <span>
+                        <Image className="img-arow" src={data.lebal} />
+                      </span>
                     </Label>
                   </div>
                 </div>
