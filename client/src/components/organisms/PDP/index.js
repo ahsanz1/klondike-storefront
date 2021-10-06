@@ -21,7 +21,7 @@ import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import PlpTabList from 'components/organisms/plp-tab-list'
-// import CartDropdown from '../cart-dropdown'
+import CartDropdown from '../cart-dropdown'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   // const { data, imgdata, heading } = pdpdata
@@ -29,10 +29,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   console.log({ user })
 
   const [productData, setProductData] = useState({})
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [packagedOrder, setPackagedOrder] = useState(true)
 
-  const { packagedata, bulk, text2, text1 } = RadioData
+  const { packagedata, text1 } = RadioData
   const [value, setValue] = React.useState(1)
 
   const onChange = e => {
@@ -47,10 +47,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   const packgedOrderData = [
     {
       size: '946 mL',
+      quantity: 0,
       units: '12',
       partNum: 'KL-HD0540',
       price: '20.00',
-      quantity: 0,
       totalPrice: '0.00',
     },
     {
@@ -85,6 +85,26 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
     litres: 0,
     totalPrice: '0.00',
   }
+
+  // dummycomment
+
+  useEffect(() => {
+    getProductBySKU('AUTO000', 1)
+      .then(res => {
+        let newObj = {
+          ...res?.response?.data?.product,
+          packagedOrderData: packgedOrderData,
+          bulkOrderData: bulkOrderData,
+        }
+        setProductData(newObj)
+
+        console.log('producttt', res.response.data)
+      })
+      .catch(e => console.log({ e }))
+    if (user?.accessToken) {
+      setIsLoggedIn(true)
+    } else setIsLoggedIn(false)
+  }, [])
 
   useEffect(() => {
     getProductBySKU('AUTO000', 1)
@@ -143,34 +163,36 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
       <p>{text1}</p>
     </div>
   )
-  const secondtext = (
-    <div className="toltip-container">
-      <h1>{bulk}</h1>
-      <p>{text2}</p>
-    </div>
-  )
+  // const secondtext = (
+  //   <div className="toltip-container">
+  //     <h1>{bulk}</h1>
+  //     <p>{text2}</p>
+  //   </div>
+  // )
 
   const onSubmit = () => {
-    let req = {
-      ...productData,
-      packagedOrder: packagedOrder,
-      bulkOrder: !packagedOrder,
-      quantity: 2,
-      extra: {},
-      size: false,
-    }
+    // let req = {
+    //   ...productData,
+    //   packagedOrder: packagedOrder,
+    //   bulkOrder: !packagedOrder,
+    //   quantity: 2,
+    //   extra: {},
+    //   size: false,
+    // }
 
     let payload = {
       cartId: null,
       items: [
         {
-          ...req,
+          group: productData?.group,
+          sku: productData?.sku,
           price: {
             base: 50,
             currency: 'USD',
             discount: { price: 0 },
             sale: false,
           },
+          itemId: productData?.itemId,
           extra: {},
           // group: ['611d5c693fea150008c941a5'],
           // itemId: 2795,
@@ -179,27 +201,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
           // sku: 'TYPEMESHING',
         },
       ],
+      registeredUser: false,
+      userAuthToken: null,
     }
-    // items: [
-    //   {price: {base: 50, sale: false, currency: "USD",}
-    //   itemId: 2795,
-    //   quantity: 2,
-    // },
-    //     extra: {},
-    //     group: ["611d5c693fea150008c941a5"],
-    //     itemId: 2795,
-    //     price: {base: 50, sale: false, currency: "USD", discount: {price: 0},},
-    //     quantity: 2,
-    //     size: false,
-    //     sku: "TYPEMESHING",
-    //   }
-    // ]
 
     addProductToCart(payload)
-      .then(res => {
-        console.log({ res })
-        showcartPOPModal()
-      })
+      .then(res => showcartPOPModal())
       .catch(e => console.log(e))
   }
 
@@ -280,7 +287,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                       PACKAGED ORDER
                     </Radio>
                   </Tooltip>
-                  <Tooltip placement="bottomRight" title={secondtext}>
+                  <Tooltip placement="bottomRight" title={text}>
                     <Radio value={2} style={{ color: 'white' }}>
                       BULK ORDER
                     </Radio>
@@ -324,17 +331,21 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                           />
                         )}
                       </div>
-                      <div className="cell" key={i}>
-                        {isLoggedIn &&
-                          (item?.totalPrice ? item?.totalPrice : '$0.00')}
+                      <div className="cell">
+                        {'$' + productData?.bulkOrderData?.totalPrice
+                          ? productData?.bulkOrderData?.totalPrice
+                          : '$0.00'}
                       </div>
                     </div>
                   )
                 })}
                 {isLoggedIn && (
                   <div style={{ display: 'flex', justifyContent: 'end' }}>
-                    <div className="cell">{`$${productData?.totalPackagedOrderPrice ||
-                      '0.00'}`}</div>
+                    <div className="cell">
+                      {'$' + productData?.totalPackagedOrderPrice
+                        ? productData?.totalPackagedOrderPrice
+                        : '$0.00'}
+                    </div>
                   </div>
                 )}
                 {isLoggedIn && (
@@ -370,8 +381,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                           disabled={packagedOrder}
                         />
                       </div>
-                      <div className="cell">{`$${productData?.bulkOrderData
-                        ?.totalPrice || '0.00'}`}</div>
+                      <div className="cell">
+                        {'$' + productData?.bulkOrderData?.totalPrice ||
+                          '$0.00'}
+                      </div>
                     </div>
                   </>
                 ) : (
@@ -404,7 +417,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             <PDPInformation pdpdatasheet={pdpdatasheet} />
           </Col>
         </Row>
-        {/* <CartDropdown productData={productData} /> */}
+        <CartDropdown productData={productData} />
       </div>
     </>
   )
