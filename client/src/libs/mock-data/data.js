@@ -519,7 +519,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/tect-resources/Technical-doucment': [
+  '/Technical-doucment': [
     {
       id: 'Technical',
       params: {},
@@ -538,13 +538,13 @@ const mockData = {
       params: {},
     },
   ],
-  '/tect-resources/warranty': [
+  '/warranty': [
     {
       id: 'WarrantyPage',
       params: {},
     },
   ],
-  '/tect-resources/video-gallery': [
+  '/video-gallery': [
     {
       id: 'VideoGallery',
       params: {},
@@ -556,7 +556,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/tect-resources/tech-news-blog': [
+  '/tech-news-blog': [
     {
       id: 'TechNews',
       params: {},
