@@ -65,7 +65,7 @@ const SearchFlow = props => {
   useEffect(() => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
-
+  console.log('bugssss...')
   return (
     <>
       <div className="serach-flow">
