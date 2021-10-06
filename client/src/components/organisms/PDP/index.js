@@ -29,7 +29,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   console.log({ user })
 
   const [productData, setProductData] = useState({})
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [packagedOrder, setPackagedOrder] = useState(true)
 
   const { packagedata, bulk, text2, text1 } = RadioData
@@ -155,14 +155,51 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
       ...productData,
       packagedOrder: packagedOrder,
       bulkOrder: !packagedOrder,
+      quantity: 2,
+      extra: {},
+      size: false,
     }
+
     let payload = {
       cartId: null,
-      items: [req],
+      items: [
+        {
+          ...req,
+          price: {
+            base: 50,
+            currency: 'USD',
+            discount: { price: 0 },
+            sale: false,
+          },
+          extra: {},
+          // group: ['611d5c693fea150008c941a5'],
+          // itemId: 2795,
+          quantity: 2,
+          size: false,
+          // sku: 'TYPEMESHING',
+        },
+      ],
     }
-    console.log('payload', payload)
+    // items: [
+    //   {price: {base: 50, sale: false, currency: "USD",}
+    //   itemId: 2795,
+    //   quantity: 2,
+    // },
+    //     extra: {},
+    //     group: ["611d5c693fea150008c941a5"],
+    //     itemId: 2795,
+    //     price: {base: 50, sale: false, currency: "USD", discount: {price: 0},},
+    //     quantity: 2,
+    //     size: false,
+    //     sku: "TYPEMESHING",
+    //   }
+    // ]
+
     addProductToCart(payload)
-      .then(res => showcartPOPModal())
+      .then(res => {
+        console.log({ res })
+        showcartPOPModal()
+      })
       .catch(e => console.log(e))
   }
 
@@ -288,9 +325,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                         )}
                       </div>
                       <div className="cell" key={i}>
-                        {isLoggedIn && item?.totalPrice
-                          ? item?.totalPrice
-                          : '$0.00'}
+                        {isLoggedIn &&
+                          (item?.totalPrice ? item?.totalPrice : '$0.00')}
                       </div>
                     </div>
                   )
