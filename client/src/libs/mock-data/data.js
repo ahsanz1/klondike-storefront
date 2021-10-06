@@ -562,12 +562,6 @@ const mockData = {
       params: {},
     },
   ],
-  '/overview': [
-    {
-      id: 'OverView',
-      params: {},
-    },
-  ],
   '/catlog': [
     {
       id: 'Catlog',

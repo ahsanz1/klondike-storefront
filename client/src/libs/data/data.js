@@ -4067,17 +4067,6 @@ export const policyData = {
 </div>`,
 }
 
-export const aboutUs = {
-  desktopImage: {
-    url: '/static/images/bg_about1.png',
-    altText: 'desktop hero image',
-  },
-  mobileImage: {
-    url: '/static/images/bg_about1-mobile.png',
-    altText: 'desktop hero image',
-  },
-}
-
 export const emptyCartData = {
   emptyCartPageTitle: 'SHOPPING CART',
   emptyCartPageSubtitle: 'Your cart is currently empty.',

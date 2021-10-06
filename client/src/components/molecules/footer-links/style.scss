@@ -29,16 +29,12 @@
   line-height: get-vw(18px);
   list-style: none;
 
-  li {
-    margin-top: 10px;
-  }
-
   a {
     color: #fff;
   }
 
   a:hover {
-    border-bottom: 1px solid #fff;
+    border-bottom: 3px solid #fff;
     color: #fff;
   }
 }
