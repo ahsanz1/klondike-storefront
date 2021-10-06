@@ -38,16 +38,19 @@ const Dropdown = ({
             disabled={menuItem.disabled}
             style={menuItem.disabled ? disabledOptionStyle : {}}
           >
-            {menuItem.label ||
-              ` Ship Every ${menuItem.frequency} ${
-                menuItem.frequencyType === 'Weekly'
-                  ? menuItem.frequency > 1
-                    ? 'Weeks'
-                    : 'Week'
-                  : menuItem.frequency > 1
-                  ? 'Months'
-                  : 'Month'
-              }`}
+            {
+              menuItem.label
+              // ||
+              //   ` Ship Every ${menuItem.frequency} ${
+              //     menuItem.frequencyType === 'Weekly'
+              //       ? menuItem.frequency > 1
+              //         ? 'Weeks'
+              //         : 'Week'
+              //       : menuItem.frequency > 1
+              //       ? 'Months'
+              //       : 'Month'
+              //   }`
+            }
           </Option>
         )
       })}
