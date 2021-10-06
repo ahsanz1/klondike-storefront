@@ -15,31 +15,31 @@ export const techdata = {
       lebal: '/static/images/vec.png',
     },
     {
-      img: '/static/images/DD3.png',
+      img: '/static/images/Catalog_web2.png',
       heading: 'Catalog',
       description:
-        'Detroit Diesel is well recognized world-wide especially in the heavy duty engine oils market. Detroit Diesel has an engine oil approvals program to certify that engine oils meet the technical requirements of the engines they manufacture.',
+        'We designed our new catalog to make the process of going through our extensive product range and finding the right lubricant easy and efficient for you, our customer and partner! Here you can download an electronic copy of the latest KLONDIKE catalog in English or French.',
       lebal: '/static/images/vec.png',
     },
     {
-      img: '/static/images/dexos.png',
-      heading: 'dexos1® Approved',
+      img: '/static/images/thumbs.png',
+      heading: 'Warranty',
       description:
-        ' dexos1® is a global specification from GM that represents a high quality, robust engine oil formulated to exceed the most rigorous specifications in the industry, and superseding all previous GM engine oil specifications.',
+        'We designed our new catalog to make the process of going through our extensive product range and finding the right lubricant easy and efficient for you, our customer and partner! Here you can download an electronic copy of the latest KLONDIKE catalog in English or French.',
       lebal: '/static/images/vec.png',
     },
     {
-      img: '/static/images/mac.png',
-      heading: 'Mack Approved',
+      img: '/static/images/kl-video.png',
+      heading: 'Video Gallery',
       description:
-        'Mack Trucks is one of North America’s largest manufacturers of heavy-duty Class 8 trucks, engines and transmissions. Founded in 1900 as the Mack Brothers Company, it manufactured its first truck in 1907.',
+        'From state-of-the-art production plants through unmatched distribution capabilities to a variety of industry applications and newly launched products, you can see KLONDIKE Lubricants in action here! Learn more about why KLONDIKE is becoming a leading player on the heavy duty oils and lubricants market in Canada!',
       lebal: '/static/images/vec.png',
     },
     {
-      img: '/static/images/Mercedes-Benz_productpage_rev.png',
-      heading: 'Mack Approved',
+      img: '/static/images/blog.png',
+      heading: 'Tech/News Blog',
       description:
-        'Mercedes-Benz is a German global automobile manufacturer known for luxury vehicles, vans, trucks, buses, coaches and ambulances. The company makes highly advanced, luxurious, and performance-oriented automobiles.',
+        'Oils and lubricants technology news, developments and trends as well as insightful analysis related to the main lubricant categories including engine oils, gear lubricants, transmission fluids, hydraulic fluids, industrial oils and greases.',
       lebal: '/static/images/vec.png',
     },
   ],

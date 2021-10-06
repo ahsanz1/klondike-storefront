@@ -5,6 +5,7 @@ import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
 import { techdata } from './data'
+
 const TechResource = () => {
   const { tech } = techdata
   return (
