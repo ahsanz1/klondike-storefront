@@ -574,11 +574,5 @@ const mockData = {
       params: {},
     },
   ],
-  '/overview': [
-    {
-      id: 'OverView',
-      params: {},
-    },
-  ],
 }
 export default mockData
