@@ -314,10 +314,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                         )}
                       </div>
                       <div className="cell">
-                        $ +{' '}
-                        {productData?.bulkOrderData?.totalPrice
+                        {'$' + productData?.bulkOrderData?.totalPrice
                           ? productData?.bulkOrderData?.totalPrice
-                          : '0.00'}
+                          : '$0.00'}
                       </div>
                     </div>
                   )
@@ -325,10 +324,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                 {isLoggedIn && (
                   <div style={{ display: 'flex', justifyContent: 'end' }}>
                     <div className="cell">
-                      $ +{' '}
-                      {productData?.totalPackagedOrderPrice
+                      {'$' + productData?.totalPackagedOrderPrice
                         ? productData?.totalPackagedOrderPrice
-                        : '0.00'}
+                        : '$0.00'}
                     </div>
                   </div>
                 )}
@@ -365,8 +363,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                           disabled={packagedOrder}
                         />
                       </div>
-                      <div className="cell">{`$${productData?.bulkOrderData
-                        ?.totalPrice || '0.00'}`}</div>
+                      <div className="cell">
+                        {'$' + productData?.bulkOrderData?.totalPrice ||
+                          '$0.00'}
+                      </div>
                     </div>
                   </>
                 ) : (
