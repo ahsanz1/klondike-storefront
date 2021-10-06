@@ -26,6 +26,7 @@ exports.default = Types.Component({
       children: Types.Shape({
         children: {
           heading: Types.String({ label: 'Links heading' }),
+          footerAccount: Types.String({ label: 'Footer Account' }),
           links: Types.Array({
             label: 'Links',
             children: Types.Shape({

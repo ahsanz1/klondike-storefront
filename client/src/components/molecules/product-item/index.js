@@ -114,7 +114,7 @@ const ProductItem = ({ item, id }) => {
     <div className="product">
       <div className="product-img">
         <Link
-          to={`/products?sku=${item.sku}`}
+          to={`/PDP?sku=${item.sku}`}
           onClick={() => productListingClick(item)}
         >
           <Image src={item && item['Image 1 URL'] && item['Image 1 URL']} />
