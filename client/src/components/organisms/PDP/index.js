@@ -17,11 +17,12 @@ import {
 import { ShareAltOutlined } from '@ant-design/icons'
 // import PDPMobile from '../PDPMobile'
 // import Link from 'components/atoms/link'
+
 import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import PlpTabList from 'components/organisms/plp-tab-list'
-// import CartDropdown from '../cart-dropdown'
+import CartDropdown from '../cart-dropdown'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   // const { data, imgdata, heading } = pdpdata
@@ -29,10 +30,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   console.log({ user })
 
   const [productData, setProductData] = useState({})
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [packagedOrder, setPackagedOrder] = useState(true)
 
-  const { packagedata, bulk, text2, text1 } = RadioData
+  const { packagedata, text1 } = RadioData
   const [value, setValue] = React.useState(1)
 
   const onChange = e => {
@@ -104,7 +105,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
     } else setIsLoggedIn(false)
   }, [])
 
-  // test coment
   // eslint-disable-next-line space-before-function-paren
   const onQtyChange = (value, index) => {
     let { packagedOrderData } = productData
@@ -143,12 +143,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
       <p>{text1}</p>
     </div>
   )
-  const secondtext = (
-    <div className="toltip-container">
-      <h1>{bulk}</h1>
-      <p>{text2}</p>
-    </div>
-  )
+  // const secondtext = (
+  //   <div className="toltip-container">
+  //     <h1>{bulk}</h1>
+  //     <p>{text2}</p>
+  //   </div>
+  // )
 
   const onSubmit = () => {
     // let req = {
@@ -186,10 +186,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
     }
 
     addProductToCart(payload)
-      .then(res => {
-        console.log({ res })
-        showcartPOPModal()
-      })
+      .then(res => showcartPOPModal())
       .catch(e => console.log(e))
   }
 
@@ -270,7 +267,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                       PACKAGED ORDER
                     </Radio>
                   </Tooltip>
-                  <Tooltip placement="bottomRight" title={secondtext}>
+                  <Tooltip placement="bottomRight" title={text}>
                     <Radio value={2} style={{ color: 'white' }}>
                       BULK ORDER
                     </Radio>
@@ -314,17 +311,23 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                           />
                         )}
                       </div>
-                      <div className="cell" key={i}>
-                        {isLoggedIn &&
-                          (item?.totalPrice ? item?.totalPrice : '$0.00')}
+                      <div className="cell">
+                        $ +{' '}
+                        {productData?.bulkOrderData?.totalPrice
+                          ? productData?.bulkOrderData?.totalPrice
+                          : '0.00'}
                       </div>
                     </div>
                   )
                 })}
                 {isLoggedIn && (
                   <div style={{ display: 'flex', justifyContent: 'end' }}>
-                    <div className="cell">{`$${productData?.totalPackagedOrderPrice ||
-                      '0.00'}`}</div>
+                    <div className="cell">
+                      $ +{' '}
+                      {productData?.totalPackagedOrderPrice
+                        ? productData?.totalPackagedOrderPrice
+                        : '0.00'}
+                    </div>
                   </div>
                 )}
                 {isLoggedIn && (
@@ -360,12 +363,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                           disabled={packagedOrder}
                         />
                       </div>
-                      <div className="cell">
-                        $ +{' '}
-                        {productData?.bulkOrderData?.totalPrice
-                          ? productData?.bulkOrderData?.totalPrice
-                          : '0.00'}
-                      </div>
+                      <div className="cell">{`$${productData?.bulkOrderData
+                        ?.totalPrice || '0.00'}`}</div>
                     </div>
                   </>
                 ) : (
@@ -398,7 +397,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
             <PDPInformation pdpdatasheet={pdpdatasheet} />
           </Col>
         </Row>
-        {/* <CartDropdown productData={productData} /> */}
+        <CartDropdown productData={productData} />
       </div>
     </>
   )
