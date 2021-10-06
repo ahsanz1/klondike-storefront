@@ -6,7 +6,7 @@ import Link from 'components/atoms/link'
 import { SHOW, HIDE, SLIDER_CONFIG } from './constant'
 import rightImage from '/static/images/chevron right-black.png'
 import Button from 'components/atoms/button'
-import Select from 'components/atoms/dropdown'
+// import Select from 'components/atoms/dropdown'
 import './styles.scss'
 
 const PromoRail = ({
@@ -41,12 +41,23 @@ const PromoRail = ({
       window.removeEventListener('scroll', handleScroll)
     }
   })
-  const selectItem = [{ label: 'Eng' }, { label: 'Fr' }]
+  // const selectItem = [{ label: 'Eng' }, { label: 'Fr' }]
 
   return (
     <div className={`promo-rail ${showPromo}`}>
       <div className="promo-rail__page-width">
-        <Select
+        <div
+          style={{
+            width: '100px',
+            color: '#000',
+            padding: 0,
+            lineHeight: '0px',
+            alignSelf: 'center',
+            outline: 'none',
+          }}
+          id="google_translate_element"
+        ></div>
+        {/* <Select
           items={selectItem}
           style={{
             width: '100px',
@@ -56,7 +67,7 @@ const PromoRail = ({
             alignSelf: 'center',
             outline: 'none',
           }}
-        />
+        /> */}
         <div className="promo-rail__wrapper">
           <Slider className="promo-rail__slider" {...SLIDER_CONFIG}>
             <div className="promo-rail__promo-item-slide">

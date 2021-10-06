@@ -1,0 +1,121 @@
+@import '~styles/globals';
+
+.search-filter {
+  @media (max-width: 500px) {
+    margin-top: 35.73vw;
+    padding-top: 21.6vw;
+  }
+
+  .products {
+    margin: 0 8.3vw;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        width: 13.8vw;
+        margin-right: 2.2vw !important;
+
+        img {
+          width: 13.8vw;
+          height: 15.8vw;
+          background: #fff;
+          object-fit: contain;
+        }
+
+        .search-Items {
+          .search-category {
+            display: none;
+          }
+
+          .search-title {
+            margin-top: 1.5vw;
+            margin-bottom: 6.25vw;
+            color: #fff;
+            font-family: $OpenSans;
+            font-size: 1.3vw;
+            font-weight: 600;
+            line-height: 110%;
+          }
+        }
+      }
+    }
+  }
+
+  .filter-search-heading {
+    margin-bottom: 0.9vw;
+    margin-left: 8.3vw;
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: 1.6vw;
+    font-weight: bold;
+    line-height: 2.2vw;
+
+    @media (max-width: 500px) {
+      margin-bottom: 2.66vw;
+      font-size: 4.26vw;
+    }
+  }
+
+  .search-key {
+    margin-bottom: 5.1vw;
+    margin-left: 8.3vw;
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: 3.3vw;
+    font-weight: bold;
+    line-height: 110%;
+
+    @media (max-width: 500px) {
+      font-size: 8vw;
+    }
+
+    p {
+      span {
+        margin-left: 1%;
+      }
+    }
+  }
+
+  .filter-dropdown {
+    margin-bottom: 9.4vw;
+    margin-left: 8.3vw;
+
+    .first-drop {
+      width: 10.4vw !important;
+      margin-right: 1.3vw;
+    }
+
+    .second-drop {
+      width: 14.7vw !important;
+      margin-right: 1.3vw;
+    }
+
+    .third-drop {
+      width: 14.7vw !important;
+    }
+
+    .ant-select-selector {
+      height: 4.6vw !important;
+      border: none !important;
+      border-radius: 1.1vw !important;
+      background: #002a3a !important;
+
+      .ant-select-selection-item {
+        position: relative;
+        top: 1.3vw;
+        margin-left: 1.6vw;
+        color: #fff !important;
+        font-size: 1.1vw;
+      }
+    }
+
+    .ant-select-arrow {
+      color: #fff !important;
+    }
+  }
+}
