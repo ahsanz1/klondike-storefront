@@ -63,7 +63,6 @@ import Techtabllist from 'components/organisms/Technical-tablist'
 import TechNews from 'components/organisms/tech-news-page'
 import Catlog from 'components/organisms/catlog-page'
 import TechResource from 'components/organisms/Tech-Resource'
-import OverView from 'components/organisms/company-overview'
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -136,5 +135,4 @@ export default {
   TechNews: params => <TechNews {...params} />,
   Catlog: params => <Catlog {...params} />,
   TechResource: params => <TechResource {...params} />,
-  OverView: params => <OverView {...params} />,
 }
