@@ -128,11 +128,13 @@ const Footer = ({
           </Row>
           <Row className="footer-text">
             <Col xs={12} sm={0} md={4} className="footer-logoborder">
-              <Image
-                alt="Footer logo"
-                className="footer-logo"
-                src={logoImage.url}
-              />
+              <Link to="/">
+                <Image
+                  alt="Footer logo"
+                  className="footer-logo"
+                  src={logoImage.url}
+                />
+              </Link>
             </Col>
             <Col xs={12} sm={0} md={12}>
               <Row className="footer-links">
