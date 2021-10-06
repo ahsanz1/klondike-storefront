@@ -47,10 +47,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   const packgedOrderData = [
     {
       size: '946 mL',
+      quantity: 0,
       units: '12',
       partNum: 'KL-HD0540',
       price: '20.00',
-      quantity: 0,
       totalPrice: '0.00',
     },
     {
@@ -151,26 +151,28 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   )
 
   const onSubmit = () => {
-    let req = {
-      ...productData,
-      packagedOrder: packagedOrder,
-      bulkOrder: !packagedOrder,
-      quantity: 2,
-      extra: {},
-      size: false,
-    }
+    // let req = {
+    //   ...productData,
+    //   packagedOrder: packagedOrder,
+    //   bulkOrder: !packagedOrder,
+    //   quantity: 2,
+    //   extra: {},
+    //   size: false,
+    // }
 
     let payload = {
       cartId: null,
       items: [
         {
-          ...req,
+          group: productData?.group,
+          sku: productData?.sku,
           price: {
             base: 50,
             currency: 'USD',
             discount: { price: 0 },
             sale: false,
           },
+          itemId: productData?.itemId,
           extra: {},
           // group: ['611d5c693fea150008c941a5'],
           // itemId: 2795,
@@ -179,21 +181,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
           // sku: 'TYPEMESHING',
         },
       ],
+      registeredUser: false,
+      userAuthToken: null,
     }
-    // items: [
-    //   {price: {base: 50, sale: false, currency: "USD",}
-    //   itemId: 2795,
-    //   quantity: 2,
-    // },
-    //     extra: {},
-    //     group: ["611d5c693fea150008c941a5"],
-    //     itemId: 2795,
-    //     price: {base: 50, sale: false, currency: "USD", discount: {price: 0},},
-    //     quantity: 2,
-    //     size: false,
-    //     sku: "TYPEMESHING",
-    //   }
-    // ]
 
     addProductToCart(payload)
       .then(res => {
