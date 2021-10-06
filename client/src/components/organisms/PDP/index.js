@@ -17,7 +17,6 @@ import {
 import { ShareAltOutlined } from '@ant-design/icons'
 // import PDPMobile from '../PDPMobile'
 // import Link from 'components/atoms/link'
-
 import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
@@ -107,6 +106,25 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
     } else setIsLoggedIn(false)
   }, [])
 
+  useEffect(() => {
+    getProductBySKU('AUTO000', 1)
+      .then(res => {
+        let newObj = {
+          ...res?.response?.data?.product,
+          packagedOrderData: packgedOrderData,
+          bulkOrderData: bulkOrderData,
+        }
+        setProductData(newObj)
+
+        console.log('producttt', res.response.data)
+      })
+      .catch(e => console.log({ e }))
+    if (user?.accessToken) {
+      setIsLoggedIn(true)
+    } else setIsLoggedIn(false)
+  }, [])
+
+  // test coment
   // eslint-disable-next-line space-before-function-paren
   const onQtyChange = (value, index) => {
     let { packagedOrderData } = productData

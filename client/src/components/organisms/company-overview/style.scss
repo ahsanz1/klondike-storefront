@@ -1,0 +1,193 @@
+@import '~styles/globals';
+
+.company-overview {
+  color: white;
+  font-family: $OpenSans;
+
+  .mobileImage {
+    @media screen and (max-width: 768px) {
+      padding-top: 120px;
+    }
+  }
+
+  .company-overview-detail-container {
+    margin: 0 get-vw(91px);
+    margin-top: get-vw(100px);
+    background: rgba(3, 41, 57, 0.5);
+
+    @media screen and (max-width: 768px) {
+      margin: 0;
+    }
+
+    .overview-details {
+      padding: 0 get-vw(69px);
+    }
+  }
+
+  .title {
+    margin-bottom: get-vw(9px);
+    padding-top: get-vw(56px);
+    color: #f1a900;
+    font-size: get-vw(24px);
+    font-weight: bold;
+    line-height: get-vw(33px);
+    text-transform: capitalize;
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 20px;
+      padding-top: 42px;
+      font-size: 24px;
+      line-height: 33px;
+    }
+  }
+
+  .overview-detail-section {
+    font-family: $OpenSans;
+
+    .details-title {
+      padding-bottom: get-vw(30px);
+      font-size: get-vw(24px);
+      font-weight: bold;
+      line-height: get-vw(33px);
+
+      @media screen and (max-width: 768px) {
+        padding-bottom: 30px;
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
+
+    .details-paragragh {
+      padding-bottom: get-vw(41px);
+      font-size: get-vw(14px);
+      font-weight: normal;
+      line-height: get-vw(20px);
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .overview-detail-section-mobile {
+      display: none;
+
+      @media screen and (max-width: 768px) {
+        display: block;
+        padding-bottom: 41px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .technical-bottom-section {
+    margin-top: 0;
+    margin-left: get-vw(50px);
+  }
+
+  .about-us-links {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: get-vw(112px);
+    margin-left: get-vw(172px);
+
+    @media screen and (max-width: 768px) {
+      margin-top: 39px;
+      margin-left: 29px;
+    }
+
+    .about-us-links-item {
+      display: flex;
+      flex-direction: row;
+      margin-right: get-vw(79px);
+      margin-bottom: get-vw(52px);
+
+      @media screen and (max-width: 768px) {
+        //   margin-right: 79px;
+        // margin-bottom: get-vw(52px);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .about-us-links-image {
+        .links-image {
+          width: get-vw(190px);
+          margin-right: get-vw(12px);
+
+          @media screen and (max-width: 768px) {
+            width: 190px;
+            margin-bottom: 12px;
+          }
+        }
+      }
+
+      .about-us-links-content {
+        .links-title {
+          color: #f1a900;
+          font-size: get-vw(18px);
+          font-style: normal;
+          font-weight: 600;
+          line-height: get-vw(25px);
+          text-transform: capitalize;
+
+          @media screen and (max-width: 768px) {
+            margin-bottom: 7px;
+            font-size: 18px;
+            line-height: 25px;
+          }
+        }
+
+        .links-paragraph {
+          width: get-vw(307px);
+          font-size: get-vw(14px);
+          font-style: normal;
+          font-weight: normal;
+          line-height: get-vw(20px);
+
+          @media screen and (max-width: 768px) {
+            width: 307px;
+            margin-bottom: 11px;
+            font-size: 14px;
+            line-height: 20px;
+          }
+        }
+
+        // display: flex;
+        // flex-direction: row;
+        .discover-more {
+          color: #f1a900;
+          font-size: get-vw(14px);
+          line-height: get-vw(19px);
+          text-transform: capitalize;
+
+          @media screen and (max-width: 768px) {
+            font-size: 14px;
+            line-height: 19px;
+          }
+
+          .discover-more-img {
+            margin-left: get-vw(4px);
+            padding-right: get-vw(5px);
+            padding-left: get-vw(5px);
+            background-color: #f1a900;
+            text-align: center;
+
+            @media screen and (max-width: 768px) {
+              margin-left: 5px;
+              padding-right: 5px;
+              padding-left: 5px;
+            }
+
+            img {
+              width: get-vw(9px);
+
+              @media screen and (max-width: 768px) {
+                width: 9px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
