@@ -21,7 +21,8 @@ const FooterLinks = ({ heading = '', footerAccount, links = [] }) => {
       )}
 
       <ul className="footer-menu">
-        {links.length &&
+        {links &&
+          links.length &&
           links.map(link => (
             <li key={link.text}>
               <Link to={link.url}>{link.text}</Link>
