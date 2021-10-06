@@ -2130,6 +2130,20 @@ export const shippingFormData = {
   ],
 }
 
+export const aboutUs = {
+  desktopImage: {
+    url: '/static/images/bg_about1.png',
+
+    altText: 'desktop hero image',
+  },
+
+  mobileImage: {
+    url: '/static/images/bg_about1-mobile.png',
+
+    altText: 'desktop hero image',
+  },
+}
+
 export const category = {
   title: 'VARIETIES + DEALS',
   bgColor: '#fff',
@@ -4030,6 +4044,16 @@ export const technicalBanner = {
   },
   mobileImage: {
     url: '/static/images/bg_tech-resources.png',
+    altText: 'desktop hero image',
+  },
+}
+export const techresource = {
+  desktopImage: {
+    url: '/static/images/Logging_backgro.png',
+    altText: 'desktop hero image',
+  },
+  mobileImage: {
+    url: '/static/images/Logging_backgro.png',
     altText: 'desktop hero image',
   },
 }

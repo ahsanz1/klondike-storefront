@@ -86,53 +86,90 @@
   }
 
   .logoTxt :first-child {
+    margin-bottom: 0;
     font-size: get-vw(12px);
     font-style: normal;
-    font-weight: normal;
+    font-weight: bold;
     line-height: get-vw(24px);
+
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 24px;
+    }
   }
 
   .logoTxt :nth-child(2) {
+    margin-bottom: 0;
     font-family: Roboto, Arial, Helvetica, sans-serif;
     font-size: get-vw(12px);
     font-style: normal;
     font-weight: bold;
     line-height: get-vw(24px);
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 48px;
+      font-size: 12px;
+      line-height: 24px;
+    }
   }
 
   .ant-row {
     display: flex;
     align-items: center;
     justify-content: left;
+
+    @media screen and (max-width: 768px) {
+      justify-content: center;
+    }
   }
 
   .footer-links {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .social-icons {
     margin-bottom: get-vw(20px);
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 0;
+    }
   }
 }
 
 .bottom-bar {
   display: flex;
+  align-items: center;
   height: 62px;
   background: #f0b800;
+  text-transform: capitalize;
 
   @media screen and (max-width: 768px) {
     display: inline-block;
+    align-items: flex-start;
+    justify-content: center;
     width: 100%;
     height: 100%;
+
+    // display: inline-block;
+
+    height: 90px;
+    font-weight: 600;
   }
 
   p {
+    margin-top: get-vw(13px);
     margin-right: 80px;
+    margin-right: get-vw(80px);
     padding-left: 20px;
+    padding-left: get-vw(20px);
+    font-size: get-vw(14px);
     line-height: 62px;
+    line-height: get-vw(19px);
 
     @media screen and (max-width: 768px) {
+      margin-top: 30px;
       margin-right: 0;
       font-size: 12px;
     }

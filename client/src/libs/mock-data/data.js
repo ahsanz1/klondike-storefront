@@ -562,5 +562,23 @@ const mockData = {
       params: {},
     },
   ],
+  '/catlog': [
+    {
+      id: 'Catlog',
+      params: {},
+    },
+  ],
+  '/tech-resource': [
+    {
+      id: 'TechResource',
+      params: {},
+    },
+  ],
+  '/overview': [
+    {
+      id: 'OverView',
+      params: {},
+    },
+  ],
 }
 export default mockData

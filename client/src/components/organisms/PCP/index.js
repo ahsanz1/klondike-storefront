@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
+// import { AppContext } from 'libs/context'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import HomeBanner from 'components/molecules/homebanner'
 
@@ -9,6 +10,7 @@ const Home = ({ desktopHeroImage, mobileHeroImage, bannercontent }) => {
     desktopImage: desktopHeroImage,
     mobileImage: mobileHeroImage,
   }
+  // const { setPlpRedirect } = useContext(AppContext)
   return (
     <>
       <WebpagesHeroImages {...heroBanner} />

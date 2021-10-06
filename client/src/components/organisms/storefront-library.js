@@ -191,4 +191,11 @@ Components[
   'Techtabllist'
 ] = require('components/organisms/Technical-tablist').default
 Components['TechNews'] = require('components/organisms/tech-news-page').default
+Components['Catlog'] = require('components/organisms/catlog-page').default
+Components[
+  'TechResource'
+] = require('components/organisms/Tech-Resource').default
+Components[
+  'OverView'
+] = require('components/organisms/company-overview').default
 export default Components
