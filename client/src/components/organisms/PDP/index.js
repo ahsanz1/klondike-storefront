@@ -87,6 +87,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
     totalPrice: '0.00',
   }
 
+  // dummycomment
+
   useEffect(() => {
     getProductBySKU('AUTO000', 1)
       .then(res => {
