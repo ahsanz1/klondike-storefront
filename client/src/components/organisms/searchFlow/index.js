@@ -108,7 +108,10 @@ const SearchFlow = props => {
             </div>
           )}
           <div className="suggestion-name">
-            <Suggestion itemList={searchValue ? itemList : []} />
+            <Suggestion
+              itemList={searchValue ? itemList : []}
+              close={props.toggleSearch}
+            />
           </div>
           <div className="products">
             <ul>
