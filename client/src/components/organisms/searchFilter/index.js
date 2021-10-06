@@ -11,7 +11,7 @@ const SearchFilter = ({ searchHeading }) => {
   return (
     <div className="search-filter">
       <div className="filter-search-heading">
-        <Label>{searchHeading}</Label>
+        <Label>Search For :</Label>
       </div>
       <div className="search-key">
         <Label>
