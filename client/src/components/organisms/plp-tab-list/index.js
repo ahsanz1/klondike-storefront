@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
+import Link from 'components/atoms/link'
 import './style.scss'
 
 const PlpTabList = ({
@@ -40,7 +41,7 @@ const PlpTabList = ({
                           onClick={() => productClickHandler(item.title)}
                           className={item.title === product && 'active-product'}
                         >
-                          {item.title}
+                          <Link to={`/PDP?sku=${item.sku}`}>{item.title}</Link>
                         </Label>
                       ))}
                   </div>
