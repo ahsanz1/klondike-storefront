@@ -124,6 +124,8 @@ const SearchFlow = props => {
                       }}
                       title={item.title}
                       category={item.Category}
+                      sku={item.sku}
+                      close={props.toggleSearch}
                     />
                   </li>
                 ))}

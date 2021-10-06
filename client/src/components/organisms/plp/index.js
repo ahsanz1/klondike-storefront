@@ -79,11 +79,7 @@ const PLP = props => {
           />
         )}
         <div className="productItem">
-          <Category
-            categoryName={contextPlp}
-            subItemHandler={subItemHandler}
-            // productList={productList}
-          />
+          <Category categoryName={contextPlp} subItemHandler={subItemHandler} />
         </div>
       </div>
       <div className="plp-bottom-section">
