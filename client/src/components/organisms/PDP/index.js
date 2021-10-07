@@ -137,7 +137,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
       })
     if (user?.accessToken) {
       setIsLoggedIn(true)
-    } else setIsLoggedIn(true)
+    } else setIsLoggedIn(false)
   }, [])
 
   // eslint-disable-next-line space-before-function-paren
@@ -332,24 +332,26 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                 </div>
               </div>
               <div style={{ marginBottom: 10 }}>
-                <Radio.Group
-                  onChange={onChange}
-                  value={value}
-                  defaultValue={1}
-                  size="large"
-                  optionType="button"
-                >
-                  <Tooltip placement="bottomLeft" title={text}>
-                    <Radio value={1} style={{ color: 'white' }}>
-                      PACKAGED ORDER
-                    </Radio>
-                  </Tooltip>
-                  <Tooltip placement="bottomRight" title={secondtext}>
-                    <Radio value={2} style={{ color: 'white' }}>
-                      BULK ORDER
-                    </Radio>
-                  </Tooltip>
-                </Radio.Group>
+                {isLoggedIn && (
+                  <Radio.Group
+                    onChange={onChange}
+                    value={value}
+                    defaultValue={1}
+                    size="large"
+                    optionType="button"
+                  >
+                    <Tooltip placement="bottomLeft" title={text}>
+                      <Radio value={1} style={{ color: 'white' }}>
+                        PACKAGED ORDER
+                      </Radio>
+                    </Tooltip>
+                    <Tooltip placement="bottomRight" title={secondtext}>
+                      <Radio value={2} style={{ color: 'white' }}>
+                        BULK ORDER
+                      </Radio>
+                    </Tooltip>
+                  </Radio.Group>
+                )}
               </div>
               <div>
                 <div className="table">
