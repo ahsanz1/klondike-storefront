@@ -11,7 +11,7 @@ const FooterLinks = ({ heading = '', footerAccount, links = [] }) => {
   userLoginInfo = JSON.parse(userLoginInfo)
   return (
     <div className="footer-column menu-column">
-      {!userLoginInfo && !userLoginInfo?.email && (
+      {!userLoginInfo && (
         <>
           <h3>{heading}</h3>{' '}
           <Link to="/account">
