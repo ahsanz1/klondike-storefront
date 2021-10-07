@@ -13,6 +13,7 @@ const CartDropdown = () => {
     isModalVisible,
     closeModal,
     subTotal,
+    cartProducts,
   } = useContext(AppContext)
 
   const cartItems = [
@@ -37,6 +38,8 @@ const CartDropdown = () => {
       quantity: 2,
     },
   ]
+
+  console.log({ cartProducts })
 
   return (
     isModalVisible && (

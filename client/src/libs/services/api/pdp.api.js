@@ -24,7 +24,7 @@ export const getProductBySKU = async (sku, count = 1) => {
 
 export const addProductToCart = async (payload, count = 1) => {
   try {
-    const response = await axios.special.post(ENDPOINTS.POST.addToCart, payload)
+    const response = await axios.common.post(ENDPOINTS.POST.addToCart, payload)
     return {
       hasError: false,
       response: response,
