@@ -367,45 +367,35 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                     <div className="table" key={i}>
                       <div
                         className={
-                          !packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          !packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {item?.size}
                       </div>
                       <div
                         className={
-                          !packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          !packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {item?.units}
                       </div>
                       <div
                         className={
-                          !packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          !packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {item?.partNum}
                       </div>
                       <div
                         className={
-                          !packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          !packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {isLoggedIn && productData?.price?.base}
                       </div>
                       <div
                         className={
-                          !packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          !packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {isLoggedIn && (
@@ -426,9 +416,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                       </div>
                       <div
                         className={
-                          !packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          !packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {isLoggedIn && '$' + (item?.totalPrice || '0.00')}
@@ -453,20 +441,23 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                     <div className="table">
                       <div className="cell-header">BULK</div>
                       <div
-                        className={`cell-header ${packagedOrder &&
-                          'color-disabled'}`}
+                        className={
+                          packagedOrder ? 'cell color-disabled' : 'cell'
+                        }
                       >
                         PRICE/LITER
                       </div>
                       <div
-                        className={`cell-header ${packagedOrder &&
-                          'color-disabled'}`}
+                        className={
+                          packagedOrder ? 'cell color-disabled' : 'cell'
+                        }
                       >
                         PART NUM
                       </div>
                       <div
-                        className={`cell-header ${packagedOrder &&
-                          'color-disabled'}`}
+                        className={
+                          packagedOrder ? 'cell color-disabled' : 'cell'
+                        }
                       >
                         LITRES
                       </div>
@@ -475,34 +466,26 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                     <div className="table">
                       <div
                         className={
-                          packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          packagedOrder ? 'cell' : 'cell color-disabled'
                         }
                       ></div>
                       <div
                         className={
-                          packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {productData?.price?.base}
                       </div>
                       <div
                         className={
-                          packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {productData?.bulkOrderData?.partNum}
                       </div>
                       <div
                         className={
-                          packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         <InputNumber
@@ -521,9 +504,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
                       </div>
                       <div
                         className={
-                          packagedOrder
-                            ? 'cell color-disabled'
-                            : 'cell color-disabled'
+                          packagedOrder ? 'cell color-disabled' : 'cell'
                         }
                       >
                         {'$' + productData?.bulkOrderData?.totalPrice || '0.00'}
