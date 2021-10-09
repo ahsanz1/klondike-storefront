@@ -66,6 +66,7 @@ const SearchFilter = ({ searchHeading }) => {
                   }}
                   title={item.title}
                   category={item.Category}
+                  sku={item.sku}
                 />
               </li>
             ))}

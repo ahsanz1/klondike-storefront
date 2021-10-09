@@ -11,11 +11,11 @@ import './style.scss'
 const CartPopUP = () => {
   const {
     //  cartItems,
+    cartData,
     cartPopupModal,
     closePopUpModal,
     showModal,
-
-    subTotal,
+    // subTotal,
   } = useContext(AppContext)
 
   const cartItems = [
@@ -46,6 +46,7 @@ const CartPopUP = () => {
     closePopUpModal()
     showModal()
   }
+  console.log({ cartData })
   return (
     cartPopupModal && (
       // size > 768 &&
@@ -65,9 +66,11 @@ const CartPopUP = () => {
           <div className="subtotal-and-free-delivery-info">
             <div className="subtotal-section">
               <Label className="subtotal-section-text">
-                Cart Subtotal ({cartItems.length} items):
+                Cart Subtotal ({cartData?.quantity} items):
               </Label>
-              <Label className="subtotal-section-price">${subTotal}</Label>
+              <Label className="subtotal-section-price">
+                ${cartData?.totalAmount?.amount}
+              </Label>
             </div>
             <Label className="free-shipping-banner">
               You are
