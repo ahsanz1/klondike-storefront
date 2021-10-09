@@ -1,13 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'libs/context'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import SearchList from 'components/molecules/searchList'
 import Dropdown from 'components/atoms/dropdown'
 import './style.scss'
+
 const SearchFilter = ({ searchHeading }) => {
   const { searchFilter, searchKey } = useContext(AppContext)
+  const [product, setProduct] = useState()
   console.log('check filter array11:', searchHeading, searchKey)
+  console.log(searchFilter, 'searchFilter')
+  // let productitem = []
+  useEffect(() => {
+    let newarr =
+      searchFilter &&
+      searchFilter.map(data => {
+        // productitem.push(data.sku)
+        return { value: data.sku }
+      })
+    console.log(newarr, 'dataa')
+    setProduct(newarr)
+  }, [searchFilter])
+  console.log(product, 'productitem')
   return (
     <div className="search-filter">
       <div className="filter-search-heading">
@@ -28,22 +43,13 @@ const SearchFilter = ({ searchHeading }) => {
           ]}
           className="first-drop"
         />
+        <Dropdown items={product} className="second-drop" />
         <Dropdown
           items={[
-            { label: 'part number 1' },
-            { label: 'part number 2' },
-            { label: 'part number 3' },
+            { label: 'Unit/case 1' },
+            { label: 'Unit/case 2' },
+            { label: 'Unit/case 3' },
           ]}
-          className="second-drop"
-        />
-        <Dropdown
-          items={
-            [
-              // { label: 'Unit/case 1' },
-              // { label: 'Unit/case 2' },
-              // { label: 'Unit/case 3' },
-            ]
-          }
           className="second-drop"
         />
       </div>
