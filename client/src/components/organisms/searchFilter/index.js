@@ -9,6 +9,8 @@ import './style.scss'
 const SearchFilter = ({ searchHeading }) => {
   const { searchFilter, searchKey } = useContext(AppContext)
   const [product, setProduct] = useState()
+  const [unit, setUnit] = useState()
+  const [size, setSize] = useState()
   console.log('check filter array11:', searchHeading, searchKey)
   console.log(searchFilter, 'searchFilter')
   // let productitem = []
@@ -21,6 +23,24 @@ const SearchFilter = ({ searchHeading }) => {
       })
     console.log(newarr, 'dataa')
     setProduct(newarr)
+  }, [searchFilter])
+  useEffect(() => {
+    let unitarr =
+      searchFilter &&
+      searchFilter.map(data => {
+        // productitem.push(data.sku)
+        return { value: data['Unit of Measurement'] }
+      })
+    setUnit(unitarr)
+  }, [searchFilter])
+  useEffect(() => {
+    let sizearr =
+      searchFilter &&
+      searchFilter.map(data => {
+        // productitem.push(data.sku)
+        return { value: data['Package Size'] }
+      })
+    setSize(sizearr)
   }, [searchFilter])
   console.log(product, 'productitem')
   return (
@@ -35,23 +55,9 @@ const SearchFilter = ({ searchHeading }) => {
         </Label>
       </div>
       <div className="filter-dropdown">
-        <Dropdown
-          items={[
-            { label: 'size 1' },
-            { label: 'size 2' },
-            { label: 'size 3' },
-          ]}
-          className="first-drop"
-        />
+        <Dropdown items={size} className="first-drop" />
         <Dropdown items={product} className="second-drop" />
-        <Dropdown
-          items={[
-            { label: 'Unit/case 1' },
-            { label: 'Unit/case 2' },
-            { label: 'Unit/case 3' },
-          ]}
-          className="second-drop"
-        />
+        <Dropdown items={unit} className="third-drop" />
       </div>
       <div className="products">
         <ul>

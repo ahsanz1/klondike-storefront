@@ -25,6 +25,7 @@ const Dropdown = ({
       className={`c-dropdown ${className}`}
       onChange={value => {
         onChange && onChange(value)
+        console.log(value, 'val')
       }}
       dropdownStyle={dropdownStyle}
       name={name}
