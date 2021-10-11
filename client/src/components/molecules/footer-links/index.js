@@ -5,18 +5,25 @@ import Link from 'components/atoms/link'
 
 import './style.scss'
 
-const FooterLinks = ({ heading = '', links = [] }) => {
+const FooterLinks = ({ heading = '', footerAccount, links = [] }) => {
   console.log('footer link check:', links)
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
-  let logout = userLoginInfo && userLoginInfo.email ? links : links.splice(0, 1)
-  console.log('check logout:', logout)
   return (
     <div className="footer-column menu-column">
-      <h3>{heading}</h3>
+      {!userLoginInfo && (
+        <>
+          <h3>{heading}</h3>{' '}
+          <Link to="/account">
+            <h5>{footerAccount}</h5>
+          </Link>
+        </>
+      )}
+
       <ul className="footer-menu">
-        {logout.length &&
-          logout.map(link => (
+        {links &&
+          links.length &&
+          links.map(link => (
             <li key={link.text}>
               <Link to={link.url}>{link.text}</Link>
             </li>
@@ -28,6 +35,7 @@ const FooterLinks = ({ heading = '', links = [] }) => {
 
 FooterLinks.propTypes = {
   heading: PropTypes.string,
+  footerAccount: PropTypes.string,
   links: PropTypes.array,
 }
 

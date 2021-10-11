@@ -6,7 +6,7 @@ import PCPBottom from 'components/organisms/pcpBottom'
 import { PcpBottom } from 'libs/data/data'
 
 const ProductItemList = ({ ProductList }) => {
-  console.log('plp', PcpBottom)
+  console.log('pcp check:', PcpBottom)
   return (
     <>
       <div className="Productitem-wrapper">

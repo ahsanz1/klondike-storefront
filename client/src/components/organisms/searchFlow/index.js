@@ -64,8 +64,9 @@ const SearchFlow = props => {
   }
   useEffect(() => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
+    setRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
-
+  console.log('bugssss...')
   return (
     <>
       <div className="serach-flow">
@@ -107,7 +108,10 @@ const SearchFlow = props => {
             </div>
           )}
           <div className="suggestion-name">
-            <Suggestion itemList={searchValue ? itemList : []} />
+            <Suggestion
+              itemList={searchValue ? itemList : []}
+              close={props.toggleSearch}
+            />
           </div>
           <div className="products">
             <ul>
@@ -123,6 +127,8 @@ const SearchFlow = props => {
                       }}
                       title={item.title}
                       category={item.Category}
+                      sku={item.sku}
+                      close={props.toggleSearch}
                     />
                   </li>
                 ))}

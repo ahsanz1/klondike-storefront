@@ -1,9 +1,9 @@
 @import '~styles/globals';
 
 .footer-bottom-menu {
-  display: flex;
-  align-items: center;
-  height: 100%;
+  // display: flex;
+  // align-items: center;
+  // height: 100%;
   margin-bottom: 0;
   padding: 0;
   color: #fff;
@@ -42,7 +42,6 @@
 
 @media (max-width: 875px) {
   .footer-bottom-menu {
-    padding-left: 20px;
-    font-size: 11px;
+    display: none;
   }
 }
