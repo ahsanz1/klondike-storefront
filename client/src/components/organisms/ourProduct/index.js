@@ -11,9 +11,10 @@ const OurProduct = props => {
   const [sectionWidth, setSectionWidth] = useState(false)
 
   useEffect(() => {
-    props.ourProduct.some(
-      item => item.image && item.image.url && setSectionWidth(true),
-    )
+    props.ourProduct &&
+      props.ourProduct.some(
+        item => item.image && item.image.url && setSectionWidth(true),
+      )
   })
   const { setPlpRedirect } = useContext(AppContext)
   console.log('products:', props.ourProduct)
