@@ -143,6 +143,7 @@ const Footer = ({
                     <Col xs={12} sm={8} md={8} key={i}>
                       <FooterLinks
                         heading={fLinks.heading}
+                        footerAccount={fLinks.footerAccount}
                         links={fLinks.links}
                       />
 

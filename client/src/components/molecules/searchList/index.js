@@ -4,11 +4,11 @@ import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 import './style.scss'
 
-const SearchList = ({ image, category, title }) => {
+const SearchList = ({ image, category, title, sku, close }) => {
   return (
     <div className="search-Items">
       <div className="search-img">
-        <Link>
+        <Link to={`/PDP?sku=${sku}`} onClick={close}>
           <img src={image.url} alt="" />
         </Link>
       </div>
@@ -23,5 +23,7 @@ SearchList.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   category: PropTypes.string,
+  sku: PropTypes.string,
+  close: PropTypes.func,
 }
 export default SearchList

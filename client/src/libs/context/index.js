@@ -20,6 +20,8 @@ const AppProvider = ({ children }) => {
   const [enableThirdStep, setEnableThirdStep] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [cartPopupModal, setCartPopupModal] = useState(false)
+  const [cartProducts, setCartProducts] = useState([])
+  const [cartData, setCartData] = useState({})
   const [pdpPurchaseType, setPdpPurchaseType] = useState(1)
   const [pdpSubscriptionType, setPdpSubscriptionType] = useState(
     'ShipEveryWeek',
@@ -217,7 +219,11 @@ const AppProvider = ({ children }) => {
         isModalVisible,
         showModal,
         cartPopupModal,
+        cartProducts,
+        setCartProducts,
         setCartPopupModal,
+        cartData,
+        setCartData,
         showcartPOPModal,
         closePopUpModal,
         closeModal,

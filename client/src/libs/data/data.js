@@ -476,6 +476,22 @@ export const TermsCondition = {
     },
   ],
 }
+export const PrivacyPolicy = {
+  heading: 'Privacy Policy',
+  subheading: 'Welcome to our Privacy Policy',
+  paragraph:
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.',
+  policyList: [
+    {
+      heading: 'Testing',
+      body: 'Content',
+    },
+    {
+      heading: 'Testing 2',
+      body: 'Content 2',
+    },
+  ],
+}
 export const Packagerorder = {
   order: {
     heading: 'PACKAGED ORDER STARTED',
@@ -2128,6 +2144,20 @@ export const shippingFormData = {
       },
     ],
   ],
+}
+
+export const aboutUs = {
+  desktopImage: {
+    url: '/static/images/bg_about1.png',
+
+    altText: 'desktop hero image',
+  },
+
+  mobileImage: {
+    url: '/static/images/bg_about1-mobile.png',
+
+    altText: 'desktop hero image',
+  },
 }
 
 export const category = {
@@ -4030,6 +4060,16 @@ export const technicalBanner = {
   },
   mobileImage: {
     url: '/static/images/bg_tech-resources.png',
+    altText: 'desktop hero image',
+  },
+}
+export const techresource = {
+  desktopImage: {
+    url: '/static/images/Logging_backgro.png',
+    altText: 'desktop hero image',
+  },
+  mobileImage: {
+    url: '/static/images/Logging_backgro.png',
     altText: 'desktop hero image',
   },
 }

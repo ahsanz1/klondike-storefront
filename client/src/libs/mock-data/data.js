@@ -45,6 +45,7 @@ import {
   LubricantComponent,
   distributionproduct,
   TermsCondition,
+  PrivacyPolicy,
   // customizedProductDescription,
   PressKit,
   // MainPageHeroData,
@@ -176,6 +177,12 @@ const mockData = {
     {
       id: 'TermsCondition',
       params: TermsCondition,
+    },
+  ],
+  '/privacy-policy': [
+    {
+      id: 'PrivacyPolicy',
+      params: PrivacyPolicy,
     },
   ],
   '/PLPBottom': [
@@ -559,6 +566,24 @@ const mockData = {
   '/tech-news-blog': [
     {
       id: 'TechNews',
+      params: {},
+    },
+  ],
+  '/catlog': [
+    {
+      id: 'Catlog',
+      params: {},
+    },
+  ],
+  '/tech-resource': [
+    {
+      id: 'TechResource',
+      params: {},
+    },
+  ],
+  '/overview': [
+    {
+      id: 'OverView',
       params: {},
     },
   ],
