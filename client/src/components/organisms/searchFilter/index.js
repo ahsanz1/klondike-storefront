@@ -5,21 +5,27 @@ import Label from 'components/atoms/label'
 import SearchList from 'components/molecules/searchList'
 import Dropdown from 'components/atoms/dropdown'
 import './style.scss'
+import { filterItems, fetchCategory } from 'libs/services/algolia'
 
 const SearchFilter = ({ searchHeading }) => {
   const { searchFilter, searchKey } = useContext(AppContext)
   const [product, setProduct] = useState()
   const [unit, setUnit] = useState()
   const [size, setSize] = useState()
+  const [selectedFilterList, setSelectFilterList] = useState([])
+  const [products, setProducts] = useState([])
+  const [filterCount, setFilterCount] = useState(0)
+  const [loading, setLoading] = useState(false)
+
   console.log('check filter array11:', searchHeading, searchKey)
-  console.log(searchFilter, 'searchFilter')
+  console.log(searchFilter, products, filterCount, loading, 'searcing')
   // let productitem = []
   useEffect(() => {
     let newarr =
       searchFilter &&
       searchFilter.map(data => {
         // productitem.push(data.sku)
-        return { value: data.sku }
+        return { value: data['Part Number'] }
       })
     console.log(newarr, 'dataa')
     setProduct(newarr)
@@ -43,6 +49,47 @@ const SearchFilter = ({ searchHeading }) => {
     setSize(sizearr)
   }, [searchFilter])
   console.log(product, 'productitem')
+
+  const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
+    try {
+      setLoading(true)
+      const results = await fetchCategory(category, pageNumber)
+      let serverResults = (results || { hits: [] }).hits
+      serverResults.sort((a, b) =>
+        a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
+      )
+      console.log(serverResults, 'serverResults')
+      // if (pageNumber === 0) {
+      //   productListing(results.nbHits, category)
+      // }
+      setProducts(serverResults)
+
+      setLoading(false)
+    } catch (e) {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    console.log(selectedFilterList, 'selectedFilterList')
+    let payload = []
+    if (selectedFilterList.length > 0) {
+      for (const filteredItem of selectedFilterList) {
+        payload.push(`${filteredItem.value}:true`)
+      }
+
+      filterItems(payload).then(results => {
+        const serverResults = results.hits || []
+        setProducts(serverResults)
+        let count = searchFilter.filter(item => item.sku === '628946213607')
+        console.log(count, 'count')
+        setFilterCount(count.length)
+      })
+    } else {
+      perfomeAlgoliaSearch('Category')
+      setFilterCount(0)
+    }
+  }, [selectedFilterList])
   return (
     <div className="search-filter">
       <div className="filter-search-heading">
@@ -55,8 +102,12 @@ const SearchFilter = ({ searchHeading }) => {
         </Label>
       </div>
       <div className="filter-dropdown">
-        <Dropdown items={size} className="first-drop" />
-        <Dropdown items={product} className="second-drop" />
+        <Dropdown items={size} className="first-drop" value="size" />
+        <Dropdown
+          items={product}
+          setSelectFilterList={setSelectFilterList}
+          className="second-drop"
+        />
         <Dropdown items={unit} className="third-drop" />
       </div>
       <div className="products">

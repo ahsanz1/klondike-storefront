@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable jsx-a11y/no-onchange */
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Select } from 'antd'
 import './style.scss'
@@ -16,7 +16,27 @@ const Dropdown = ({
   disabledOptionStyle = {},
   dropdownStyle = {},
   name = '',
+  setSelectFilterList,
 }) => {
+  const [change, setChange] = useState()
+  console.log(change)
+  // const handleChange = useCallback(
+  //   event => {
+  //     const list = items.map(item => {
+  //       if (item['Part Number'] === event['Part Number']) {
+  //         item.selected = event.selected
+  //       }
+  //       return item
+  //     })
+
+  //     const _selectedList = list.filter(item => item.selected === true)
+
+  //     setFilterList(list)
+  //     setSelectedList(_selectedList)
+  //     setSelectFilterList(_selectedList)
+  //   },
+  //   [filterList],
+  // )
   return (
     <Select
       value={value}
@@ -26,6 +46,16 @@ const Dropdown = ({
       onChange={value => {
         onChange && onChange(value)
         console.log(value, 'val')
+        const list = items.map(item => {
+          if (item['Part Number'] === value['Part Number']) {
+            item.Select = value
+          }
+          return item
+        })
+        const _selectedList = list.filter(item => item.Select === true)
+        console.log('selection', _selectedList)
+        setSelectFilterList(_selectedList)
+        setChange(value)
       }}
       dropdownStyle={dropdownStyle}
       name={name}
@@ -69,6 +99,7 @@ Dropdown.propTypes = {
   disabledOptionStyle: PropTypes.object,
   dropdownStyle: PropTypes.object,
   name: PropTypes.string,
+  setSelectFilterList: PropTypes.func,
 }
 
 export default Dropdown
