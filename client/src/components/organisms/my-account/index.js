@@ -1,103 +1,154 @@
 import React, { useEffect, useContext, useState } from 'react'
 import PropTypes from 'prop-types'
+import { navigate } from '@reach/router'
+import { Tabs } from 'antd'
 
+import { AppContext } from 'libs/context'
+import { getOrdersByUser } from 'libs/services/api/orders.api'
+
+import TabsDropdown from 'components/molecules/tab-dropdown'
+import PageHeader from './components/PageHeader'
+import AccountTabPane from './components/AccountTabPane'
 import Link from 'components/atoms/link'
-import Label from 'components/atoms/label'
-import Button from 'components/atoms/button'
+
+import { accountTabs } from './static'
+import {
+  getUserInfo,
+  getAllOrders,
+  //  getTrackOrderData
+} from './utils'
 
 import './style.scss'
-import useAddresses from 'libs/api-hooks/useAddresses'
-import { AppContext } from 'libs/context'
-import { navigate } from '@reach/router'
 
-import OrderHistory from 'components/molecules/subscription-order-history'
-import { myAccount } from 'libs/data/data'
+const { TabPane } = Tabs
 
 const MyAccount = ({
-  btnText = 'MANAGE SUBSCRIPTIONS',
-  btnLink = '/account/subscriptionOrderDetails',
-  orderLink = '/account/singleorderdetail',
-  addressesText = 'View Addresses',
-  addressesLink = '/account/address',
-  shopBtnText = 'SHOP NOW',
-  shopBtnLink = '/collections/all-bars',
+  title,
+  logoutBtnText,
+  accountTabsData,
+  accountOrderFormData,
+  accountAddress,
 }) => {
-  const [load, setLoad] = useState(false)
-  const { addresses } = useAddresses()
-  const {
-    user: { accessToken },
-    subscribed,
-  } = useContext(AppContext)
-  const defaultObject = addresses.find(el => el.isDefault === true)
+  console.log(
+    'acount adresssss muzzzaminksad111',
+    accountAddress,
+    accountTabsData,
+  )
+  const [loading, setLoading] = useState(false)
+  const [userName, setUserName] = useState('')
+  const [tabKey, setTabKey] = useState('0')
+  // const [showOrderModal, setShowOrderModal] = useState(false)
+  // const [trackData, setTrackData] = useState({})
+  const [allOrders, setAllOrders] = useState([])
+  const [userOrder, setUserOrder] = useState([])
+  const { user, logout, personalInfo } = useContext(AppContext)
+  console.log('user info', personalInfo)
 
   useEffect(() => {
-    if (accessToken) {
-      setLoad(true)
+    if (user.accessToken) {
+      setLoading(true)
+      const _name = getUserInfo(user)
+      setUserName(_name)
+
+      const fetchOrders = async () => {
+        const ordersByUser = await getOrdersByUser(user.accessToken)
+        const _allOrders = getAllOrders(ordersByUser)
+
+        console.log('ordersByUser: ', ordersByUser)
+        console.log('allOrders: ', _allOrders)
+
+        setUserOrder(
+          ordersByUser &&
+            ordersByUser.response &&
+            ordersByUser.response.data &&
+            ordersByUser.response.data.orders,
+        )
+        setAllOrders(_allOrders)
+        setLoading(false)
+      }
+
+      fetchOrders()
     } else {
       navigate('/account/login')
     }
-  }, [])
+  }, [user])
+  const logoutWord = logoutBtnText.split(' ')
+  const logoutCapital = []
+  logoutWord.forEach(element => {
+    logoutCapital.push(element.charAt(0).toUpperCase() + element.substring(1))
+  })
+  const log = logoutCapital.join(' ')
+
+  console.log('check join:', log)
+
+  console.log('orders: ', allOrders)
+  console.log('accountTabs: yesss   ', accountTabs)
+  console.log('response check: ', userOrder)
+  const handleLogout = () => {
+    logout()
+    navigate('account/login')
+  }
+
+  // const handleTabClick = tab => {
+  //   tab = tab + 1
+  //   tab = tab.toString()
+  //   setTabKey(tab)
+  // }
+
+  // const handleButtonClick = order => {
+  //   handleToggleOrderModal(order)
+  // }
+
+  // const handleToggleOrderModal = order => {
+  //   const data = order ? getTrackOrderData(order) : []
+  //   setShowOrderModal(!showOrderModal)
+  //   setTrackData(data)
+  //   console.log('modal order', data)
+  // }
+
+  // const handleCancelOrderModal = event => {
+  //   console.log('cancel modal event: ', event.currentTarget)
+  //   handleToggleOrderModal()
+  // }
+
+  // const handleOrderModalSave = event => {
+  //   console.log('ok modal event', event)
+  // }
+  console.log('trackData new update dasti bata bhaiu mughe', allOrders)
 
   return (
     <div className="account--container">
-      {load && (
+      {!loading && (
         <>
           <div className="outer-section">
-            <Label className="heading-title">{myAccount.title}</Label>
-            {subscribed && (
-              <div className="manage-subscription">
-                <Label className="manage-subscription-title">
-                  SUBSCRIPTIONS
-                </Label>
-                <Link
-                  className="manage-subscription-button"
-                  to={btnLink || '/account/subscriptionOrderDetails'}
+            <PageHeader
+              title={title}
+              userName={userName}
+              logoutBtnText={log}
+              onClick={handleLogout}
+            />
+            <div className="accounts-tabs">
+              <div className="tabs-container">
+                <TabsDropdown
+                  activeKey={tabKey}
+                  onTabClick={key => setTabKey(key)}
                 >
-                  {btnText}
-                </Link>
+                  {accountTabsData &&
+                    accountTabsData.map((item, index) => (
+                      <TabPane tab={item.tabTitle} key={index}>
+                        <AccountTabPane
+                          data={item.data}
+                          user={personalInfo}
+                          title={item.tabTitle}
+                          userOrder={userOrder}
+                        />
+                      </TabPane>
+                    ))}
+                </TabsDropdown>
               </div>
-            )}
-            <Label className="order-title">{myAccount.subTitle}</Label>
-            {/* <Label className="order-placed__text">
-              {myAccount.ordersPlaced}
-            </Label> */}
-            <OrderHistory orderLink={orderLink} {...myAccount.orderHistory} />
-            {!subscribed && (
-              <Label className="order-placed__text">
-                {myAccount.ordersPlaced}
-              </Label>
-            )}
-          </div>
-          <div className="inner-section">
-            <div className="inner-section__left">
-              <Label className="acc-details">{myAccount.accDetails}</Label>
-              {defaultObject && (
-                <>
-                  <Label className="details-lbl">
-                    {defaultObject.firstname} {''}
-                    {defaultObject.lastname}
-                  </Label>
-                  <Label className="details-lbl">
-                    {defaultObject.address1}
-                  </Label>
-                  <Label className="details-lbl">
-                    {defaultObject.city} {defaultObject.zipCode}
-                  </Label>
-                  <Label className="details-lbl">{defaultObject.country}</Label>
-                </>
-              )}
-
-              <Link to={addressesLink || myAccount.viewAddress.to}>
-                <Label className="view-address">
-                  {addressesText} ({addresses.length})
-                </Label>
-              </Link>
-            </div>
-            <div className="inner-section__right">
-              <Label className="view-store">{myAccount.viewStore}</Label>
-              <Link to={shopBtnLink || myAccount.shopNowButton.link}>
-                <Button className="view--store__btn">{shopBtnText}</Button>
-              </Link>
+              <div className="pricesheet-container">
+                <Link to="/faqs">View Price List</Link>
+              </div>
             </div>
           </div>
         </>
@@ -106,14 +157,19 @@ const MyAccount = ({
   )
 }
 
+MyAccount.defaultProps = {
+  title: 'Account',
+  logoutBtnText: 'Log out',
+  accountTabsData: [],
+  accountOrderFormData: [],
+}
+
 MyAccount.propTypes = {
-  btnText: PropTypes.string,
-  btnLink: PropTypes.string,
-  orderLink: PropTypes.string,
-  addressesText: PropTypes.string,
-  addressesLink: PropTypes.string,
-  shopBtnText: PropTypes.string,
-  shopBtnLink: PropTypes.string,
+  title: PropTypes.string,
+  logoutBtnText: PropTypes.string,
+  accountTabsData: PropTypes.array,
+  accountOrderFormData: PropTypes.array,
+  accountAddress: PropTypes.object,
 }
 
 export default MyAccount

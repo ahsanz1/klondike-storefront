@@ -11,13 +11,13 @@
     margin: 0 60px 16px;
 
     @media (max-width: 768px) {
-      margin: 0 20px 10px;
+      margin: 0;
     }
   }
 
   &.ant-tabs-top > .ant-tabs-nav::before,
   &.ant-tabs-top > div > .ant-tabs-nav::before {
-    border-bottom: 3px solid #999;
+    border-bottom: 2px solid #fff;
   }
 
   .ant-tabs-nav-list {
@@ -31,9 +31,9 @@
     flex: 1;
     justify-content: center;
     margin: 0;
-    padding: 12px 16px;
+    padding: 0.8vw 1.2vw;
     color: #999;
-    font-size: 21px;
+    font-size: 1.4vw;
     text-transform: uppercase;
 
     &:hover {
@@ -52,11 +52,11 @@
   }
 
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: $primary-color;
+    color: #fff;
   }
 
   .ant-tabs-ink-bar {
-    background: black;
+    background: #e25205;
   }
 
   &__dropdown {
@@ -79,8 +79,8 @@
     -moz-appearance: none;
 
     @media (max-width: 768px) {
-      padding: 6px 0;
-      border-bottom: 3px solid #999;
+      padding: 1.6vw 0;
+      border-bottom: 0.8vw solid #999;
     }
   }
 }

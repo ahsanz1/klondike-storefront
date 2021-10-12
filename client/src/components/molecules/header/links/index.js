@@ -1,7 +1,11 @@
+/* eslint-disable indent */
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/atoms/link'
+import Button from 'components/atoms/button'
 import { AppContext } from 'libs/context'
+import Product from 'components/organisms/ourProduct'
+import Image from 'components/atoms/image'
 import './styles.scss'
 
 const Links = ({
@@ -12,8 +16,17 @@ const Links = ({
   linkClassName = '',
   style = {},
   className,
+  mobileMenu = {},
+  buyButton = '',
+  menuBottom = '',
+  userIcon = '',
 }) => {
   const { user } = useContext(AppContext)
+  // let userLoginInfo = localStorage.getItem('userPersonalInfo')
+  // userLoginInfo = JSON.parse(userLoginInfo)
+  // console.log('check menu:', links)
+
+  const getToken = user && user.accessToken
   return (
     <div
       style={{
@@ -27,20 +40,55 @@ const Links = ({
         if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
           return (
             (!link.mobileOnly || mobile) && (
-              <Link
-                key={i}
-                style={linkStyle}
-                className={linkClassName}
-                to={link.url}
-              >
-                {link.label}
-              </Link>
+              <div>
+                <Link
+                  key={i}
+                  style={linkStyle}
+                  className={
+                    link.productDropDown &&
+                    link.productDropDown.length > 0 &&
+                    link.productDropDown[0].label !== '' &&
+                    link.productDropDown[0].image.url !== ''
+                      ? `screen ${linkClassName}`
+                      : linkClassName
+                  }
+                  to={link.url}
+                >
+                  {link && link.label && link.label}
+
+                  <div>
+                    {
+                      // link.productDropDown &&
+                      //   link.productDropDown.length > 0 &&
+                      //   link.productDropDown[0].label !== '' &&
+                      //   link.productDropDown[0].image.url !== '' && (
+                      <>
+                        <Product ourProduct={link.productDropDown} />
+                      </>
+                      // )
+                    }
+                  </div>
+                </Link>
+                <Image
+                  width={25}
+                  src={mobileMenu && mobileMenu.url}
+                  alt={mobileMenu.altText}
+                />
+              </div>
             )
           )
         } else {
           return null
         }
       })}
+      <Button className={!getToken ? 'quick-order' : 'Buy-Button'}>
+        {!getToken ? 'Quick Order' : buyButton}
+      </Button>
+      {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
+      <div className="bottom-section">
+        <Image width={20} src={userIcon.url} alt={userIcon.altText} />
+        {menuBottom}
+      </div>
     </div>
   )
 }
@@ -53,6 +101,10 @@ Links.propTypes = {
   linkClassName: PropTypes.string,
   style: PropTypes.object,
   className: PropTypes.string,
+  mobileMenu: PropTypes.object,
+  buyButton: PropTypes.string,
+  menuBottom: PropTypes.string,
+  userIcon: PropTypes.string,
 }
 
 export default Links

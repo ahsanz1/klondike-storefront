@@ -5,21 +5,21 @@ import PropTypes from 'prop-types'
 import { AppContext } from 'libs/context'
 import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
-import Link from 'components/atoms/link'
+// import Link from 'components/atoms/link'
 import './style.scss'
 
-const NavbarcartIcon = ({ linkCartPageIcon = false }) => {
+const NavbarcartIcon = ({ linkCartPageIcon = false, cartIcon = '' }) => {
   const { itemCount, showModal } = useContext(AppContext)
 
   return (
     <div className="cart-specific">
       <div className={linkCartPageIcon ? 'cartshow' : 'hide'}>
-        <Link to="/cart">
-          <Image height={26} src="/static/icons/header/cart.svg" alt="..." />
+        {/* <Link to="/cart">
+          <Image height={26} src={cartIcon.url} alt={cartIcon.altText} />
           {itemCount > 0 && (
             <Label className="navbar-cart-count">{itemCount}</Label>
           )}
-        </Link>
+        </Link> */}
       </div>
       {!linkCartPageIcon && (
         <div
@@ -28,7 +28,7 @@ const NavbarcartIcon = ({ linkCartPageIcon = false }) => {
           role="button"
           tabIndex={0}
         >
-          <Image height={26} src="/static/icons/header/cart.svg" alt="..." />
+          <Image height={26} src={cartIcon.url} alt={cartIcon.altText} />
           {itemCount > 0 && (
             <Label className="navbar-cart-count">{itemCount}</Label>
           )}
@@ -40,5 +40,6 @@ const NavbarcartIcon = ({ linkCartPageIcon = false }) => {
 
 NavbarcartIcon.propTypes = {
   linkCartPageIcon: PropTypes.bool,
+  cartIcon: PropTypes.string,
 }
 export default NavbarcartIcon

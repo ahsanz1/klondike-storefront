@@ -20,7 +20,7 @@ const Dropdown = ({
   return (
     <Select
       value={value}
-      defaultValue={items && items[0].label}
+      defaultValue={items && items[0] && items[0].label}
       style={style}
       className={`c-dropdown ${className}`}
       onChange={value => {
@@ -38,16 +38,19 @@ const Dropdown = ({
             disabled={menuItem.disabled}
             style={menuItem.disabled ? disabledOptionStyle : {}}
           >
-            {menuItem.label ||
-              ` Ship Every ${menuItem.frequency} ${
-                menuItem.frequencyType === 'Weekly'
-                  ? menuItem.frequency > 1
-                    ? 'Weeks'
-                    : 'Week'
-                  : menuItem.frequency > 1
-                  ? 'Months'
-                  : 'Month'
-              }`}
+            {
+              menuItem.label
+              // ||
+              //   ` Ship Every ${menuItem.frequency} ${
+              //     menuItem.frequencyType === 'Weekly'
+              //       ? menuItem.frequency > 1
+              //         ? 'Weeks'
+              //         : 'Week'
+              //       : menuItem.frequency > 1
+              //       ? 'Months'
+              //       : 'Month'
+              //   }`
+            }
           </Option>
         )
       })}

@@ -50,7 +50,6 @@ const App = () => {
   const handleGlobalLayout = gcData => {
     saveItem('gc', JSON.stringify(gcData))
   }
-  
 
   if (loading.splash) {
     return <Splash />

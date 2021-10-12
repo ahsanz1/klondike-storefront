@@ -6,7 +6,8 @@ export const algoliaClient = {
     process.env.FABRIC_ALGOLIA_API_KEY || '7ed14c7f1e3110fd6712b3e854a9fc86',
   searchIndex:
     process.env.FABRIC_ALGOLIA_SEARCH_INDEX ||
-    '5fc78dfc6135050007191290-sandbox-commerce-search-product',
+    '60b63d9e7ce90800085548cf-sandbox-commerce-search-product',
+  // '5fc78dfc6135050007191290-sandbox-commerce-search-product',
   suggestionsIndex:
     process.env.ALGOLIA_SUGGESTIONS_INDEX || 'abchomeSuggestions',
   categoriesIndex:

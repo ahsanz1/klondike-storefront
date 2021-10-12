@@ -11,8 +11,7 @@ const FooterPolicy = ({
   privacyLink = '',
   returnPolicyTitle = '',
   returnPolicyLink = '',
-  tosTitle = '',
-  tosLink = '',
+  connectKlondike = '',
 }) => {
   return (
     <ul className="footer-bottom-menu">
@@ -20,21 +19,17 @@ const FooterPolicy = ({
         <Link to={privacyLink}>{privacyTitle}</Link>
       </li>
       <li className="divider">
-        <span className="divider-dot">•</span>
+        <span className="divider-dot">|</span>
       </li>
       <li className="small--hide">
         <Link to={returnPolicyLink}>{returnPolicyTitle}</Link>
       </li>
       <li className="divider">
-        <span className="divider-dot">•</span>
+        <span className="divider-dot">|</span>
       </li>
       <li className="small--hide">
-        <Link to={tosLink}>{tosTitle}</Link>
+        <Link to="/contact-us">{connectKlondike}</Link>
       </li>
-      <li className="divider">
-        <span className="divider-dot">•</span>
-      </li>
-      <li>{policyText}</li>
     </ul>
   )
 }
@@ -45,6 +40,8 @@ FooterPolicy.propTypes = {
   privacyLink: PropTypes.string,
   returnPolicyTitle: PropTypes.string,
   returnPolicyLink: PropTypes.string,
+  connectKlondike: PropTypes.string,
+  connectKlondikeLink: PropTypes.string,
   tosTitle: PropTypes.string,
   tosLink: PropTypes.string,
 }

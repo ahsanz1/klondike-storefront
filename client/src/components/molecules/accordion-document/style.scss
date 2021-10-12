@@ -1,0 +1,138 @@
+@import '~styles/globals';
+$vw-viewport: 1440;
+
+@function get-vw($font) {
+  $vw-context: $vw-viewport * 0.01 * 1px;
+
+  @return $font / $vw-context * 1vw;
+  @return $font;
+}
+
+// .accordion-main:last-child .ant-row.accordion-item {
+//   border-bottom: 0.06vw solid #f1a900;
+// }
+
+.accordion-main {
+  .accordion-question {
+    position: relative;
+    // width: get-vw(405px);
+    // width: 480px;
+    height: auto;
+    margin-bottom: 0;
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 26.4px;
+    text-align: left;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .accordion-content {
+    // height: initial;
+    margin-bottom: 0;
+    transition: all 0.3s;
+    font-size: 16px;
+    line-height: 23px;
+
+    @media (max-width: 768px) {
+      overflow: auto;
+    }
+
+    p {
+      color: #fff;
+      font-family: $OpenSans;
+      font-size: 16px;
+      line-height: 22.4px;
+    }
+
+    .c-link {
+      width: get-vw(32px);
+      margin-left: get-vw(70px);
+      color: #f1a900;
+      font-size: get-vw(14px);
+      font-style: normal;
+      font-weight: normal;
+      line-height: 140%;
+    }
+  }
+
+  .accordion-show {
+    margin: 0 0 0;
+  }
+
+  .accordion-content.accordion-hide {
+    display: none;
+    max-height: 0;
+
+    p {
+      font-size: 0;
+    }
+  }
+
+  .ant-row.accordion-item {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0.06vw solid #f1a900;
+    border-bottom: none;
+
+    @media (max-width: 768px) {
+      width: 82.2vw;
+    }
+  }
+
+  .accordion-item {
+    position: relative;
+    margin-bottom: 15px;
+
+    .accordion-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 1.28vw;
+      margin-top: 5px;
+      margin-left: 1.8vw;
+      transition: all 0.3s ease-in-out;
+
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        width: 4.8vw;
+        margin-left: 7.2vw;
+        cursor: pointer;
+      }
+    }
+
+    .faq-answer {
+      color: #222;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 26px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .accordion-item {
+      padding-left: 0;
+    }
+
+    .accordion-question {
+      font-family: $OpenSans;
+      font-size: 3.73vw;
+    }
+
+    .footerLinks {
+      margin-bottom: 0.4rem;
+      font-size: small;
+    }
+  }
+}

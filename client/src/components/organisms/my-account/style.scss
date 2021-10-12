@@ -1,142 +1,593 @@
-.account--container {
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 40px;
+@import '~styles/globals';
 
-  .c-label {
-    margin: 0;
+.account--container {
+  max-width: 77.7vw;
+  margin: 0 auto;
+  padding: 2.7vw 2.2vw;
+
+  @media screen and (max-width: 500px) {
+    margin-top: 35.7vw;
+    padding: 2.7vw 0.2vw;
   }
 
-  .heading-title {
-    width: 100%;
-    margin-bottom: 60px;
-    padding: 90px 20px 0 20px;
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
+  .welcome-title {
+    margin-bottom: 0.94vw;
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: 1.6vw;
+    font-weight: bold;
     text-transform: uppercase;
   }
 
-  .manage-subscription {
-    margin-bottom: 24px;
+  .page-title {
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: 3.3vw;
+    font-weight: bold;
+    line-height: 110%;
+    text-transform: uppercase;
+  }
 
-    .manage-subscription-title {
-      display: block;
-      margin-bottom: 15px;
-      font-size: 24px;
+  .ant-tabs-nav {
+    margin: 0 !important;
+  }
+
+  .ant-tabs-nav-wrap {
+    flex: none !important;
+  }
+
+  .ant-tabs-tab {
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: 0.96vw;
+    font-weight: bold;
+  }
+
+  .accounts-tabs {
+    display: flex;
+  }
+
+  .tabs-container {
+    width: 90%;
+
+    @media (max-width: 500px) {
+      width: 60%;
+    }
+  }
+
+  .pricesheet-container {
+    width: 10%;
+    height: 3.12vw;
+    padding-bottom: 0.9vw;
+    border-bottom: 2px solid #fff;
+    color: #f1a900;
+
+    @media (max-width: 500px) {
+      width: 40%;
+      height: 8.2vw;
+      border-bottom: 3px solid #fff;
+      line-height: 4vw;
+    }
+
+    .c-link {
+      border-bottom: 1px solid #f1a900;
+      color: #f1a900;
+      font-family: $OpenSans;
+      font-size: 0.9vw;
+      font-weight: bold;
+      cursor: pointer;
+
+      @media (max-width: 500px) {
+        font-size: 3.7vw;
+      }
+    }
+  }
+}
+
+.account__masthead {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2.2vw;
+
+  @media (min-width: $mq-tablet-portrait) {
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    .account-head-buttons {
+      position: relative;
+      top: -0.2vw;
+      padding-left: 5.5vw;
+    }
+
+    .account-logout-button {
+      color: #f1a900;
+    }
+  }
+}
+
+.btn-switch-tab {
+  color: #000;
+  text-transform: uppercase;
+}
+
+.account-logout-button {
+  color: $primary-color-light;
+  color: #f1a900 !important;
+}
+
+.account-logout-button,
+.btn-switch-tab {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-family: $OpenSans;
+  font-size: 1.1vw;
+  font-weight: bold;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  @media screen and(max-width: 500px) {
+    font-size: 4.2vw;
+  }
+}
+
+.account-tabpane-content {
+  padding-top: 1.1vw;
+  padding-bottom: 1.1vw;
+  color: #fff;
+
+  .credit-price {
+    padding-top: 1.13vw !important;
+    color: #f1a900;
+    font-family: $OpenSans !important;
+    font-size: 1.6vw !important;
+    font-weight: bold !important;
+    line-height: 2.2vw !important;
+
+    @media screen and (max-width: 500px) {
+      padding-top: 3 0.53vw !important;
+      font-family: $OpenSans !important;
+      font-size: 5.8vw !important;
+      font-weight: bold !important;
+      line-height: 2.2vw !important;
+    }
+  }
+
+  .c-label {
+    align-items: center !important;
+    font-family: $OpenSans !important;
+    font-size: 0.97vw !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    line-height: 1.3vw !important;
+    text-transform: uppercase !important;
+
+    @media (max-width: 768px) {
+      flex: none;
+      flex-grow: 0;
+      align-items: center !important;
+      align-self: stretch;
+      order: 0;
+      margin: 2px 0;
+      font-family: $OpenSans !important;
+      font-size: 3.7vw !important;
+      font-style: normal !important;
+      font-weight: bold !important;
+      line-height: 5vw !important;
+      text-transform: uppercase !important;
+    }
+  }
+
+  .zip {
+    color: #f1a900;
+    font-family: $OpenSans;
+    font-size: 1.6vw;
+    font-weight: bold;
+
+    @media (max-width: 768px) {
+      color: #e25205;
+      font-size: 4.2vw;
+    }
+  }
+
+  .session {
+    font-family: $OpenSans;
+    font-size: 0.9vw;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .order-filter {
+    margin-bottom: 1.3vw;
+    padding-bottom: 1vw;
+    border-bottom: 0.006vw solid #fff;
+
+    @media screen and(max-width: 500px) {
+      padding-bottom: 4vw;
+    }
+
+    p {
+      font-family: $OpenSans;
+      font-size: 0.97vw;
+      font-weight: 700;
+
+      @media screen and(max-width: 500px) {
+        font-size: 3.7vw;
+      }
+
+      select {
+        width: 7.9vw;
+        height: 2.1vw;
+        margin-left: 0.69vw;
+        padding: 0 0.34vw;
+        border: none;
+        outline: none;
+        background: #002a3a !important;
+        color: #fff;
+        font-family: $Poppins;
+        font-size: 0.97vw;
+        // -webkit-appearance: none;
+        // -moz-appearance: none;
+        // appearance: none;
+        @media screen and (max-width: 500px) {
+          width: 30.6vw;
+          height: 8.2vw;
+          border-radius: 1.3vw;
+          font-size: 3.7vw;
+        }
+
+        option {
+          width: 115px;
+          height: 31px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.title-section {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #000;
+}
+
+.account-tab-title {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+@media (min-width: $mq-tablet-portrait) {
+  .account-tab-pane {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .title-section {
+      width: 25%;
+      padding-top: 1rem;
+      border-bottom: 0;
+    }
+
+    .account-tab-content {
+      width: 75%;
+    }
+  }
+
+  .no-data {
+    padding-top: 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+.account-detail-bar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #000;
+  // font-family: $font-family-primary;
+  font-size: 1.1rem;
+
+  @media (min-width: $mq-tablet-portrait) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .cell-wrapper {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    // .cell-preface {
+    //   max-width: 250px;
+    // }
+
+    .cell-email {
+      width: 200px;
+    }
+
+    .cell-phone {
+      flex: 1;
+    }
+
+    .cell-full {
+      width: 100%;
+    }
+
+    .button-bar {
+      padding-left: 30px;
+    }
+
+    .btn-bar {
+      min-width: 100px;
+    }
+  }
+
+  @media (min-width: $mq-tablet-landscape) {
+    .cell-email {
+      width: 300px;
+    }
+
+    .account-bar-button {
+      min-width: 150px;
+    }
+  }
+}
+
+.account-bar-button {
+  min-width: 100px;
+}
+
+.cell-label {
+  font-size: 12px;
+}
+
+.cell-id {
+  color: green;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.cell-amount {
+  color: $primary-color;
+}
+
+.button-bar {
+  text-align: right;
+}
+
+/*** TEMPORARY HEADER STYLE FIX ***/
+.main-header {
+  height: auto;
+
+  @media (max-width: 500px) {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+  }
+
+  .main-header__wrapper--fix {
+    position: relative;
+
+    .header {
+      position: relative;
+
+      @media (max-width: 768px) {
+        position: fixed;
+        top: 12.2vw;
+      }
+
+      @media (max-width: 500px) {
+        top: 16vw !important;
+        padding: 0;
+      }
+
+      .quick-order {
+        @media (max-width: 992px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+//Tauqeer Styling
+.ship-address {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-top: 30px;
+}
+
+.credit-limit {
+  font-family: $OpenSans !important;
+  font-size: 0.9vw !important;
+  font-weight: bold !important;
+
+  @media screen and (max-width: 500px) {
+    font-size: 3.7vw !important;
+  }
+}
+
+.order-image {
+  margin-bottom: 15px;
+
+  .image {
+    margin-right: 30px;
+    float: left;
+
+    img {
+      background: $white-color;
+    }
+  }
+
+  .product-info {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-family: $OpenSans;
+    }
+
+    .order-number {
+      margin-bottom: 60px;
       font-weight: 700;
     }
 
-    .manage-subscription-button {
-      display: inline-block;
-      padding: 10px 30px;
-      transition: all ease-in 0.15s;
-      border: none;
-      border-radius: 0.25rem;
-      background-color: #111;
-      color: white;
-      font-size: 20.5px;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-  }
-
-  .order-title {
-    width: 100%;
-    margin-bottom: 30px;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: left;
-    text-transform: uppercase;
-  }
-
-  .order-placed__text {
-    overflow: scroll;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 25px;
-  }
-
-  .inner-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 60px 0;
-
-    @media only screen and (max-width: 600px) {
+    .order {
+      display: flex;
       flex-direction: column;
-    }
+      justify-content: center;
 
-    .inner-section__left {
-      flex-direction: column;
-      text-transform: capitalize;
-
-      @media only screen and (max-width: 600px) {
-        padding-top: 60px;
+      .price {
+        color: #f1a900;
       }
 
-      .acc-details {
-        width: 100%;
-        margin-bottom: 30px;
-        font-size: 24px;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
-      .details-lbl {
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 25px;
-      }
-
-      .view-address {
-        color: #3b97ff;
-        font-size: 15px;
-        font-weight: 700;
-        text-decoration: none;
+      p {
+        &:nth-child(2) {
+          color: #ccc;
+          text-decoration: underline;
+          cursor: pointer;
+        }
       }
     }
 
-    .inner-section__right {
-      flex-direction: column;
-
-      @media only screen and (max-width: 600px) {
-        padding-top: 60px;
+    .status {
+      .price {
+        color: #f1a900;
       }
+    }
 
-      .view-store {
-        display: flex;
-        width: 100%;
-        margin-bottom: 30px;
-        color: #111;
-        font-size: 24px;
-        font-weight: 700;
-        text-align: left;
-        text-transform: uppercase;
+    div {
+      &:first-child {
+        float: left;
+
+        .price {
+          display: none;
+        }
       }
+    }
 
-      .view--store__btn {
-        display: inline-block;
-        width: 100%;
-        max-width: 175px;
-        padding: 10px 30px;
-        transition: all ease-in 0.15s;
-        border: none;
-        border-radius: 0.25rem;
-        background-color: #111;
+    .link {
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:first-child {
         color: #fff;
-        font-size: 20.5px;
-        font-weight: 700;
-        line-height: 1.2;
-        text-decoration: none;
-        text-transform: uppercase;
-        cursor: pointer;
       }
 
-      .view--store__btn:hover {
-        opacity: 0.6;
+      &:nth-child(3) {
+        color: #ccc;
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .account-tabpane-content {
+    padding-top: 0;
+  }
+
+  .ship-address {
+    display: block;
+    width: 100%;
+
+    div {
+      margin-bottom: 5.3vw;
+    }
+  }
+
+  .tabs-dropdown {
+    select {
+      background: #013a4e;
+      color: #fff;
+
+      @media screen and (max-width: 500px) {
+        background: url('../../../../static/images/arrowdown.png') no-repeat !important;
+        background-color: #0d394b !important;
+        font-family: $OpenSans;
+        font-size: 3.7vw;
+        font-weight: bold;
+        background-position-x: 16.8vw !important;
+        background-position-y: 2.6vw !important;
+      }
+
+      option {
+        input {
+          @media screen and (max-width: 500px) {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+
+  .tabs-dropdown__dropdown {
+    width: 100%;
+    border-bottom-color: #fff;
+    background-image: url('/static/images/arrow-down1.png') !important;
+    background-repeat: no-repeat !important;
+    background-position-x: right !important;
+    background-position-y: center !important;
+  }
+
+  .order-image {
+    display: flex;
+
+    .product-info {
+      display: block;
+
+      .order {
+        display: block;
+
+        .price {
+          display: none;
+        }
+      }
+
+      div {
+        &:first-child {
+          .price {
+            display: block;
+            color: #f1a900;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .order-number {
+        margin-bottom: 4vw;
+      }
+    }
+  }
+
+  .status {
+    display: none;
+  }
+
+  .page-title {
+    font-size: 8.5vw !important;
+  }
+
+  .welcome-title {
+    font-size: 5.3vw !important;
   }
 }

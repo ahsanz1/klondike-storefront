@@ -1,0 +1,36 @@
+.plp-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 0 50px;
+  background: #032939;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 425px) {
+    height: 150px;
+  }
+
+  .plp-bottom-img {
+    width: 100%;
+    margin-top: 20px !important;
+  }
+
+  button {
+    width: inherit;
+    margin-top: 20px;
+
+    @media (max-width: 768px) {
+      width: max-content !important;
+    }
+
+    &:hover {
+      transition: s;
+      background: #ddaf34;
+    }
+  }
+}

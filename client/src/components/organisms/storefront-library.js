@@ -5,16 +5,44 @@ Components[
 ] = require('components/organisms/instagram-section').default
 Components[
   'TermsCondition'
-] = require('Components/organisms/TermsCondition').default
+] = require('components/organisms/TermsCondition').default
 Components[
   'ProductSlider'
 ] = require('components/organisms/product-slider').default
+Components['PCPOverview'] = require('components/organisms/PCPOverview').default
+Components[
+  'ProductItemList'
+] = require('components/organisms/ProductItemList').default
 Components[
   'DiscountOrder'
 ] = require('components/organisms/discount-order').default
 Components[
   'MainPageHero'
 ] = require('components/organisms/mainpage-hero').default
+Components['Home'] = require('components/organisms/Home').default
+Components[
+  'ProductLubricant'
+] = require('components/organisms/LubricantProduct').default
+
+Components[
+  'DistributionProduct'
+] = require('components/organisms/DistributionProduct').default
+Components['DownTime'] = require('components/organisms/DownTime').default
+Components['HomeBanner'] = require('components/organisms/HomeBanner').default
+Components['OurProduct'] = require('components/organisms/ourProduct').default
+Components['Header'] = require('components/organisms/header').default
+Components[
+  'ClientTestimonial'
+] = require('components/organisms/ClientTestimonial').default
+Components[
+  'CommitedSuccess'
+] = require('components/organisms/CommitedSuccess').default
+Components[
+  'ProductInvotationSlider'
+] = require('components/organisms/ProductInvotationSlider').default
+Components[
+  'HomeLubricant'
+] = require('components/organisms/HomeLubricant').default
 Components[
   'WebpageGlobalHeroBanner'
 ] = require('components/organisms/webpages-hero-image-banner').default
@@ -24,8 +52,13 @@ Components[
 Components[
   'Testimonials'
 ] = require('components/organisms/testimonials').default
-Components['CardsGroup'] = require('components/organisms/cards-group').default
-Components['CartPage'] = require('components/organisms/cart-page').default
+Components[
+  'ContactAddres'
+] = require('components/organisms/ContactAddres').default
+Components['PDP'] = require('components/organisms/PDP').default
+Components['order'] = require('components/organisms/PackageOrder').default
+Components['cardsGroup'] = require('components/organisms/cards-group').default
+Components['cartPage'] = require('components/organisms/cart-page').default
 Components['Faqs'] = require('components/organisms/faqs').default
 Components[
   'RequestForms'
@@ -39,7 +72,15 @@ Components['AuthForm'] = require('components/organisms/auth-form').default
 Components['ReferEarn'] = require('components/organisms/refer-earn').default
 Components['Category'] = require('components/organisms/category').default
 Components['PLP'] = require('components/organisms/plp').default
+Components['SearchFlow'] = require('components/organisms/searchFlow').default
+Components[
+  'SearchFilter'
+] = require('components/organisms/searchFilter').default
 Components['AboutUs'] = require('components/organisms/about-us').default
+Components[
+  'CategorySideBar'
+] = require('components/organisms/plp-tab-list').default
+
 Components[
   'ProductDescription'
 ] = require('components/organisms/product-description').default
@@ -118,4 +159,43 @@ Components[
   'SliderTabbable'
 ] = require('components/organisms/slider-tabable').default
 
+Components['Oats'] = require('components/organisms/OATS/index').default
+Components['PlpTabList'] = require('components/organisms/plp-tab-list').default
+Components[
+  'ProductOrderList'
+] = require('components/organisms/productorderlist').default
+
+Components['PCPBottom'] = require('components/organisms/pcpBottom').default
+Components[
+  'Checkoutsection'
+] = require('components/organisms/checkout-section').default
+
+Components['QuickOrder'] = require('components/organisms/quick-order').default
+Components[
+  'Technical'
+] = require('components/organisms/Technical-document').default
+Components[
+  'ContactUs'
+] = require('components/organisms/contact-us-page').default
+Components['Oamspproval'] = require('components/organisms/oam-approval').default
+Components[
+  'Confirmation'
+] = require('components/organisms/confirmation').default
+Components[
+  'WarrantyPage'
+] = require('components/organisms/warranty-page').default
+Components[
+  'VideoGallery'
+] = require('components/organisms/video-gallery').default
+Components[
+  'Techtabllist'
+] = require('components/organisms/Technical-tablist').default
+Components['TechNews'] = require('components/organisms/tech-news-page').default
+Components['Catlog'] = require('components/organisms/catlog-page').default
+Components[
+  'TechResource'
+] = require('components/organisms/Tech-Resource').default
+Components[
+  'OverView'
+] = require('components/organisms/company-overview').default
 export default Components

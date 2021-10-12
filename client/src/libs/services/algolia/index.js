@@ -25,7 +25,7 @@ export const fetchCategory = async (categoryName, page = 0) => {
 export const fetchItems = async (query, pageSize = 10, page = 0) => {
   try {
     let response = await INDEX.search(query, {
-      restrictSearchableAttributes: ['title', 'description', 'Ingredients'],
+      restrictSearchableAttributes: ['title', 'description'],
       hitsPerPage: pageSize,
       page,
     })

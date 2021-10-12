@@ -4,117 +4,117 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Image from 'components/atoms/image'
-import Label from 'components/atoms/label'
-import StyledButton from 'components/atoms/styled-button'
-import ProdItemDropdown from 'components/atoms/product-item-dropdown'
+// import Label from 'components/atoms/label'
+// import StyledButton from 'components/atoms/styled-button'
+// import ProdItemDropdown from 'components/atoms/product-item-dropdown'
 import Link from 'components/atoms/link'
 
 // import { subscribeItems } from 'libs/data/data'
-import useAddToCart from 'libs/api-hooks/useAddToCart'
+// import useAddToCart from 'libs/api-hooks/useAddToCart'
 import { productListingClick } from 'libs/utils/gtm'
 
 import './style.scss'
 
 const ProductItem = ({ item, id }) => {
-  const { addToCartApiCall } = useAddToCart()
-  const [adding, setAdding] = useState(false)
+  // const { addToCartApiCall } = useAddToCart()
+  // const [adding, setAdding] = useState(false)
   const [addToCartButtonText, setAddToCartButtonText] = useState('ADDING...')
-  const [selectSubscription, setSelectSubscription] = useState(false)
-  const [subDiscount, setSubDiscount] = useState(0)
-  const [subscriptionData, setSubscriptionData] = useState({})
+  // const [selectSubscription, setSelectSubscription] = useState(false)
+  // const [subDiscount, setSubDiscount] = useState(0)
+  // const [subscriptionData, setSubscriptionData] = useState({})
 
-  const colors = (item && item.themeColor && item.themeColor.split('|')) || []
-  const isCustom = item && item.isCustom
-  const subscription = item.Category !== 'Swag'
+  // const colors = (item && item.themeColor && item.themeColor.split('|')) || []
+  // const isCustom = item && item.isCustom
+  // const subscription = item.Category !== 'Swag'
   const titles = item.title && item.title.split('&')
-  const subscribeItems = [
-    {
-      label: 'One-Time Purchase',
-      disabled: false,
-    },
-    {
-      label: 'Subscribe & Save 10%',
-      disabled: true,
-    },
-  ]
+  // const subscribeItems = [
+  //   {
+  //     label: 'One-Time Purchase',
+  //     disabled: false,
+  //   },
+  //   {
+  //     label: 'Subscribe & Save 10%',
+  //     disabled: true,
+  //   },
+  // ]
 
   useEffect(() => {
     setAddToCartButtonText(addToCartButtonText)
   }, [addToCartButtonText])
 
-  const subscriptionPrice = obj => {
-    if (obj.discount) {
-      setSubDiscount(obj.discount)
-      setSubscriptionData(obj)
-      setSelectSubscription(true)
-    } else {
-      setSubDiscount(0)
-      setSubscriptionData({})
-      setSelectSubscription(false)
-    }
-  }
+  // const subscriptionPrice = obj => {
+  //   if (obj.discount) {
+  //     setSubDiscount(obj.discount)
+  //     setSubscriptionData(obj)
+  //     setSelectSubscription(true)
+  //   } else {
+  //     setSubDiscount(0)
+  //     setSubscriptionData({})
+  //     setSelectSubscription(false)
+  //   }
+  // }
 
-  const addedItemToCart = async Data => {
-    setAdding(true)
-    const resData = await addToCartApiCall(Data)
-    if (resData.error) {
-      setAddToCartButtonText('FAILED')
-      setTimeout(() => {
-        setAdding(false)
-        setAddToCartButtonText('ADDING...')
-      }, 500)
-    } else {
-      if (resData && resData.data) {
-        setAddToCartButtonText('ADDED')
-        setTimeout(() => {
-          setAdding(false)
-          setAddToCartButtonText('ADDING...')
-        }, 500)
-      }
-    }
-  }
+  // const addedItemToCart = async Data => {
+  //   setAdding(true)
+  //   const resData = await addToCartApiCall(Data)
+  //   if (resData.error) {
+  //     setAddToCartButtonText('FAILED')
+  //     setTimeout(() => {
+  //       setAdding(false)
+  //       setAddToCartButtonText('ADDING...')
+  //     }, 500)
+  //   } else {
+  //     if (resData && resData.data) {
+  //       setAddToCartButtonText('ADDED')
+  //       setTimeout(() => {
+  //         setAdding(false)
+  //         setAddToCartButtonText('ADDING...')
+  //       }, 500)
+  //     }
+  //   }
+  // }
 
-  const handleChangeSubscription = event => {
-    subscriptionPrice(event)
-  }
+  // const handleChangeSubscription = event => {
+  //   subscriptionPrice(event)
+  // }
 
-  const renderSubcriptionPrice = () => {
-    const basePrice = item['Base Price']
-    const discountPercent = (100 - subDiscount) / 100
+  // const renderSubcriptionPrice = () => {
+  //   const basePrice = item['Base Price']
+  //   const discountPercent = (100 - subDiscount) / 100
 
-    const calcPrice = `$${(basePrice * discountPercent).toFixed(2)}`
+  //   const calcPrice = `$${(basePrice * discountPercent).toFixed(2)}`
 
-    return calcPrice
-  }
+  //   return calcPrice
+  // }
 
-  const handleAddToCart = () => {
-    if (item.hasInventory) {
-      const _item = { ...item }
-      const priceListId = item.subscriptions.length
-        ? +subscriptionData.products[0].priceListId
-        : 0
-      priceListId && (_item.priceListId = priceListId)
+  // const handleAddToCart = () => {
+  //   if (item.hasInventory) {
+  //     const _item = { ...item }
+  //     const priceListId = item.subscriptions.length
+  //       ? +subscriptionData.products[0].priceListId
+  //       : 0
+  //     priceListId && (_item.priceListId = priceListId)
 
-      const cartItem = {
-        ..._item,
-        ...(selectSubscription && subscriptionData),
-      }
+  //     const cartItem = {
+  //       ..._item,
+  //       ...(selectSubscription && subscriptionData),
+  //     }
 
-      addedItemToCart({ ...cartItem })
-    }
-  }
+  //     addedItemToCart({ ...cartItem })
+  //   }
+  // }
 
-  const renderSalePrice = () => {
-    if (item && item['Sale Price']) {
-      return `$${parseFloat(item['Sale Price']).toFixed(2)}`
-    }
-  }
+  // const renderSalePrice = () => {
+  //   if (item && item['Sale Price']) {
+  //     return `$${parseFloat(item['Sale Price']).toFixed(2)}`
+  //   }
+  // }
 
   return (
     <div className="product">
       <div className="product-img">
         <Link
-          to={`/products?sku=${item.sku}`}
+          to={`/PDP?sku=${item.sku}`}
           onClick={() => productListingClick(item)}
         >
           <Image src={item && item['Image 1 URL'] && item['Image 1 URL']} />
@@ -137,10 +137,10 @@ const ProductItem = ({ item, id }) => {
         </h3>
       )}
 
-      <Label className="product-p">
+      {/* <Label className="product-p">
         <Link to="/">
           <span className={item && item['Sale Price'] ? `stroke-discount` : ''}>
-            {/* {currencySymbol} */}
+            {currencySymbol}
             {item &&
               item['Order Price'] &&
               `$${parseFloat(item['Base Price']).toFixed(2)}`}
@@ -158,9 +158,9 @@ const ProductItem = ({ item, id }) => {
         >
           {item && item.TotalBars && `( ${item.TotalBars} BARS )`}
         </span>
-      </Label>
+      </Label> */}
       {/* {!viewProduct && ( */}
-      {subscription && (
+      {/* {subscription && (
         <div className="drop-section">
           {isCustom || item.subscriptions.length < 1 ? (
             <div className="oneTime_btn">
@@ -180,13 +180,13 @@ const ProductItem = ({ item, id }) => {
             />
           )}
         </div>
-      )}
+      )} */}
       {/* )} */}
 
       {/* {importantNote && (
         <Label className="plp-important-note">{importantNote}</Label>
       )}  */}
-      {item && !item.hasVariants && !isCustom && item.Category !== 'Swag' ? (
+      {/* {item && !item.hasVariants && !isCustom && item.Category !== 'Swag' ? (
         <StyledButton
           className="product-btn"
           disabled={adding}
@@ -220,7 +220,7 @@ const ProductItem = ({ item, id }) => {
               : 'CUSTOMIZE'}
           </StyledButton>
         </Link>
-      )}
+      )} */}
     </div>
   )
 }

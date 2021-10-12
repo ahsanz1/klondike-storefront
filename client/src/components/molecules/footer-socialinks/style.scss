@@ -4,9 +4,21 @@
 }
 
 .social-icons {
+  // margin-top: 40px;
   margin-bottom: 0;
   padding-top: 7px;
   text-align: right;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+    text-align: left;
+
+    :nth-child(5) {
+      :first-child {
+        margin-right: 0;
+      }
+    }
+  }
 
   li {
     display: inline-block;
@@ -17,6 +29,20 @@
 
 .social-icons__link {
   padding: 0 10px;
+
+  .s-icon {
+    width: get-vw(32px);
+    height: get-vw(32px);
+
+    @media screen and (max-width: 768px) {
+      width: 31px;
+      height: 31px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-right: 10px;
+  }
 }
 
 .social-icon-label {
@@ -33,10 +59,10 @@
 
 @media (max-width: 576px) {
   .s-icon {
-    height: 25px;
+    height: 30px;
   }
 
   .social-icons__link {
-    padding: 0;
+    padding: 30;
   }
 }

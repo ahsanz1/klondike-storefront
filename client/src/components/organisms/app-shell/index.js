@@ -69,6 +69,7 @@ const AppShell = ({ children = null }) => {
     >
       {location.pathname !== '/checkout' && <Header {...headetGc.params} />}
       {children}
+
       {location.pathname !== '/checkout' && <Footer {...footerGc.params} />}
     </div>
   )

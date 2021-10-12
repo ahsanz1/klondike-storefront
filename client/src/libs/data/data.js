@@ -22,6 +22,443 @@ export const merchandiseOptions = {
   imageMaxWidth: '100%',
   cardItemsInRow: 4,
 }
+
+export const heroBannerdata = {
+  desktopHeroImage: {
+    url: '/static/images/bannerhome.png',
+    altText: 'alt',
+  },
+
+  mobileHeroImage: {
+    url: '/static/images/mobile.png',
+    altText: 'alt',
+  },
+  bannerheading:
+    'OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
+
+  bannerbutton: 'HOW TO BUY',
+}
+// export const bannerlubricants = {
+//   bannersubheading:
+//     'Get your lubricants quickly  |  Run your equipment longer  |  Complete your jobs faster',
+//   bannerparagraph:
+//     'Every one of our oils and lubricants is built to do the hard work required to keep your engines running smoothly and reliably when your equipment is stretched to the limit by the temperatures or operating conditions. KLONDIKE products are specially formulated to help increase fuel efficiency, reduce emissions and keep engines running longer, delivering the long-lasting protection that only a premium product can. You’ll be thankful you chose KLONDIKE knowing you’ve got the backing of our comprehensive KLONDIKE warranty',
+// }
+export const ProductLubricant = {
+  headingtext: {
+    headingtext:
+      'Products Lubricants Built to Withstand the Extremes of Your Operations',
+  },
+
+  LubricantContent: [
+    {
+      image: {
+        url:
+          'https://klondikelubricants.com/wp-content/uploads/2020/11/EP-1.5_large.png',
+        altText: 'alt',
+      },
+      text:
+        'Our wide range of oils, lubricants and greases are field tested and designed specifically for the application and industry you operate in. These highly engineered specialty productsfluids are designed with input from customers, based on their real-life experiences, making them a risk-free way of protecting your expensive machinery.',
+      paragraph: true,
+      heading: 'oil lubricants and greases',
+      buttontext: 'Button',
+    },
+    {
+      image: {
+        url:
+          'https://klondikelubricants.com/wp-content/uploads/2020/11/KL-HD0580_15W-40_CK-4_18.9L_Pail_website3-Copy-e1605210454711.png',
+        altText: 'alt',
+      },
+      text:
+        'Advanced base stocks and proven additives characterize our heavy duty, industrial and automotive oils and lubricants. These are products customers have grown to trust, based on performance, efficiency and protection after years of heavy loads and demanding use. Let KLONDIKE keep your engines running longer and stronger than you ever expected.',
+      paragraph: true,
+      heading: 'for heavy duty, industrial and automotive markets',
+      buttontext: 'Button',
+    },
+    {
+      image: {
+        url:
+          'https://klondikelubricants.com/wp-content/uploads/2019/01/nav-KL-LD1280-5W-30-SN-PLUS-Synthetic-Blend_Jug.png',
+        altText: 'alt',
+      },
+      text:
+        'Heat, cold, water, dirt. All are enemies of your equipment running smoothly and efficiently for long periods of time. Find out how KLONDIKE’s dedicated research can help you vanquish those enemies and cut downtime in tough terrain and remote areas by more than 40%.',
+      paragraph: true,
+      heading: 'For all your jobs in tough terrains and extreme climates',
+      buttontext: 'Button',
+    },
+  ],
+}
+export const faqsData = {
+  desktopHeading: 'PRODUCT PRICE LIST & ORDER FORM',
+  mobileHeading: 'PRODUCT PRICE LIST & ORDER FORM',
+  faqsData: [
+    {
+      question: 'Nano',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'Heavy duty engine oils',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'Auto Engine Oils',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'gear lubricants',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'Transmission Fluids',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'hydraulic fluids',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'industrial oils',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'Greases',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'biodegradable lubricants',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'food grade lubricants',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+    {
+      question: 'chemicals',
+      answer:
+        'Follow us on Instagram and Twitter and all deals will be posted daily.',
+      table: true,
+    },
+  ],
+}
+export const LubricantComponent = {
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
+
+  LubricantContent: [
+    {
+      image: {
+        url: '/static/images/klondike1.png',
+        altText: 'alt',
+      },
+      text:
+        'Our wide range of oils, lubricants and greases are field tested and designed specifically for the application and industry you operate in. These highly engineered specialty productsfluids are designed with input from customers, based on their real-life experiences, making them a risk-free way of protecting your expensive machinery.',
+      paragraph: true,
+      headingtext: 'OIL LUBRICANTS AND GREASES',
+      btntext: 'LEARN MORE',
+    },
+    {
+      image: {
+        url: '/static/images/klondike2.png',
+        altText: 'alt',
+      },
+      text:
+        'Advanced base stocks and proven additives characterize our heavy duty, industrial and automotive oils and lubricants. These are products customers have grown to trust, based on performance, efficiency and protection after years of heavy loads and demanding use. Let KLONDIKE keep your engines running longer and stronger than you ever expected.',
+      paragraph: true,
+      headingtext: 'for heavy duty, industrial and automotive markets',
+      btntext: 'LEARN MORE',
+    },
+    {
+      image: {
+        url: '/static/images/klondike3.png',
+        altText: 'alt',
+      },
+      text:
+        'Heat, cold, water, dirt. All are enemies of your equipment running smoothly and efficiently for long periods of time. Find out how KLONDIKE’s dedicated research can help you vanquish those enemies and cut downtime in tough terrain and remote areas by more than 40%.',
+      paragraph: true,
+      headingtext: 'For all your jobs in tough terrains and extreme climates',
+      btntext: 'LEARN MORE',
+    },
+  ],
+}
+
+export const distributionSecond = {
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
+
+  LubricantContent: [
+    {
+      image: {
+        url: '/static/images/klondike1.png',
+        altText: 'alt',
+      },
+      text:
+        'You’ll find our roots firmly planted in the cold harsh conditions of the Canadian North, where our business began. As a Canadian company, we’re big believers in honesty, loyalty and hard work – traditional Canadian values that define our approach to everything we do. ',
+      paragraph: true,
+      headingtext: 'Canadian Brand',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike2.png',
+        altText: 'alt',
+      },
+      text:
+        'Rigorous testing ensures KLONDIKE’S products meet or exceed warranty requirements of all international engine manufacturers who adhere to the major global standards. Our products meet OEM requirements, individual industry certification standards and comply with the environmental and safety standards outlined by industry regulators.',
+      paragraph: true,
+      headingtext: 'OEM Approved',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike3.png',
+        altText: 'alt',
+      },
+      text:
+        'Our in-depth knowledge of the North American market comes from decades in the oils and lubricants business and pays dividends in terms of focused product development and innovation for all heavy duty, industrial and automotive.',
+      paragraph: true,
+      headingtext: 'North American-Made',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/klondike4.png',
+        altText: 'alt',
+      },
+      text:
+        'Take advantage of the stability and longer-term outlook that go along with our independence. From increased loyalty and commitment to a unified vision of success, we thrive on the flexibility and innovation that comes from being a growing, independently owned company. ',
+      paragraph: true,
+      headingtext: 'Independent',
+      btntext: 'LEARN MORE',
+      outerboreder: '1px solid orange',
+    },
+  ],
+}
+export const distributionproduct = {
+  distributionheading:
+    'Products Lubricants Built to Withstand the Extremes of Your Operations',
+
+  LubricantContent: [
+    {
+      image: {
+        url: '/static/images/mask.png',
+        alt: '',
+      },
+      headingtext: '15 million litres in stock ',
+      text:
+        'Our 15 million litres of in-stock oils and lubricants mean we’ve got the inventory you need on hand, as soon as you need it. From specialty greases to bulk oils, you’ll find what you need close to your worksite, no matter how remote',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/distribute2.png',
+        alt: '',
+      },
+      headingtext:
+        'Lubricants available in our multiple warehouses across North America ',
+      text:
+        'We take distribution seriously, knowing you want the oils and lubricants you need in a hurry, regardless of where your worksite is. Availability and expedited delivery are just a couple of the key differences between us and our competitors.',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
+    },
+    {
+      image: {
+        url: '/static/images/distribute3.png',
+        alt: '',
+      },
+      headingtext: '99.2% order fulfillment rate ',
+      text:
+        'Solid inventory forecasting and quick replenishment cycles are vital parts of our exceptional order fulfillment rate. This customer-friendly measure helps avoid back orders and reduces equipment downtime for all of our customers. ',
+      btntext: 'HOW TO BUY',
+      outerboreder: '1px solid orange',
+    },
+  ],
+}
+export const DownTime = {
+  downTimeCosting: [
+    {
+      image: {
+        url: '/static/images/Rectangle.png',
+        alt: '',
+      },
+      heading: 'How Much is Downtime Costing You?',
+      text:
+        'Got equipment sitting idle because you’re not getting lubricants fast enough?',
+      list: [
+        {
+          text: 'Wasting time ordering from multiple vendors?',
+        },
+        {
+          text:
+            'Frustrated trying to find and buy the right oil for your entire fleet?',
+        },
+        {
+          text:
+            'Too many oils to keep track of for your diverse and various equipment?',
+        },
+        {
+          text:
+            'Squandering money replacing parts for vehicles, equipment, and machinery?',
+        },
+        {
+          text:
+            'Are you losing work because of too much downtime with your equipment?',
+        },
+      ],
+      Paragraph:
+        'Your KLONDIKE dealer is part of a North American distribution system with more than 15 million litres of oils and lubricants in stock, so you can get the products you need, when you need them. Availability and selection are two ways we make sure your equipment is in the field, not in the shop.',
+      buttontxt: 'HOW TO BUY',
+    },
+
+    {
+      image: {
+        url: '/static/images/Rectangle.png',
+        alt: '',
+      },
+      heading: 'Increasing Equipment Uptime',
+      list: [
+        {
+          heading: '1: Find a KLONDIKE Dealer',
+          text:
+            ' Choose from one of the many distributors dealers located across North America',
+        },
+        {
+          heading: '2: Choose Your KLONDIKE Lubricants',
+          text:
+            ' Ask your dealer for a specific product or use our LUBE-LINK oil search toolapplication',
+        },
+        {
+          heading: ' 3: Reduce Your Equipment Downtime',
+          text: ' Use our high-quality performance oil or lub',
+        },
+      ],
+      text: '',
+      buttontxt: 'BECOME A DEALER',
+    },
+  ],
+}
+export const homebanneer = {
+  bannerComponent: [
+    {
+      backgroundimg: {
+        url: '/static/images/MaskGroup.png',
+        alt: 'alt',
+      },
+      banerlogoimg: {
+        url: '/static/images/lubelogobanner.png',
+        alt: 'alt',
+      },
+      heading: 'Lubricants Built to Withstand the Extremes of Your Operations',
+      buttontxt: 'SEARCH NOW',
+      headingbanner:
+        'Why KLONDIKE? Because We Know the Needs of the North American market?',
+    },
+  ],
+}
+export const Testimonial = {
+  testimonial: [
+    {
+      image: {
+        url: '/static/images/client.png',
+        alt: '',
+      },
+
+      headingtext: 'Paul Lawrence',
+      text:
+        ' “KLONDIKE has a huge range of products and amazing support. If you can dream it, they can make it happen. With access to the owners and a focus on the end customer, KLONDIKE Lubricants is a great Service First partner!” ',
+      buyklondike: 'Why I buy KLONDIKE',
+    },
+    {
+      image: {
+        url: '/static/images/client.png',
+        alt: '',
+      },
+
+      headingtext: 'Paul Lawrence',
+      text:
+        ' “KLONDIKE has a huge range of products and amazing support. If you can dream it, they can make it happen. With access to the owners and a focus on the end customer, KLONDIKE Lubricants is a great Service First partner!” ',
+    },
+  ],
+}
+export const CommitedSuccess = {
+  commited: [
+    {
+      heading: '100% COMMITTED TO YOUR SUCCESS',
+      paragraph:
+        'The KLONDIKE Quality Assurance Guarantee is how we back our products, underlining our promise to stand behind our oils, lubricants, greases and chemicals. Our American Petroleum Institute (API) and International Lubricating Standardization & Approval Committee (ILSAC) product certifications make it clear our products meet and exceed the requirements of this stringent global testing.',
+      subheading:
+        'KLONDIKE will repair or replace equipment parts that have been damaged as a direct result of the failure of any of our products. *',
+      butontext: 'SEE WARRANTY',
+    },
+  ],
+}
+export const ProductInovationslider = {
+  productHeading:
+    'Innovation and customer demand fuel new specialty product growth',
+
+  productInovation: [
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+    {
+      image: {
+        url: '/static/images/Product.png',
+        alt: '',
+      },
+      detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+    },
+  ],
+}
+
 export const TermsCondition = {
   heading: 'Terms & Conditionns',
   subheading: 'Egestas in libero ',
@@ -39,31 +476,370 @@ export const TermsCondition = {
     },
   ],
 }
-export const faqsData = {
-  desktopHeading: 'FREQUENTLY ASKED QUESTIONS',
-  mobileHeading: 'FAQ',
-  faqsData: [
+export const Packagerorder = {
+  order: {
+    heading: 'PACKAGED ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be for packaged delivery.',
+    paragraph2:
+      'Please complete your order before placing an order with packaged items.',
+  },
+}
+export const bulkorder = {
+  order: {
+    heading: 'BULK ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be ordered in bulk. ',
+    paragraph2: 'Please complete your order before placing a bulk order.',
+  },
+}
+// export const faqsData = {
+//   desktopHeading: 'FREQUENTLY ASKED QUESTIONS',
+//   mobileHeading: 'FAQ',
+//   faqsData: [
+//     {
+//       question: 'What are IQBARs?',
+//       answer:
+//         'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+//     },
+//     {
+//       question: 'Why is the product called “IQBAR”?',
+//       answer:
+//         'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+//     },
+//     {
+//       question: 'What are IQBARs?',
+//       answer:
+//         'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+//     },
+//     {
+//       question: 'Why is the product called “IQBAR”?',
+//       answer:
+//         'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+//     },
+//   ],
+// }
+export const ProductOverview = {
+  heading: 'QUALITY OILS & LUBRICANTS',
+  productcontent: [
     {
-      question: 'What are IQBARs?',
-      answer:
-        'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+      text:
+        'Whether it’s heavy duty, industrial, or automotive, KLONDIKE has you covered. We provide a comprehensive range of packaged and bulk oils, lubricants, greases and chemicals ready to be shipped to you from our strategically located distribution facilities throughout Canada and the USA. Our vast blending and custom formulation capabilities enable us to fulfill your industry’s most challenging requirements.',
     },
     {
-      question: 'Why is the product called “IQBAR”?',
-      answer:
-        'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+      text:
+        'Our oils, greases and fluids are subject to strict testing requirements and quality assurance processes. In addition to our in-depth internal technical process, our products are tested in a variety of world-class technical institutions to meet and exceed top performance requirements in any given industry. The KLONDIKE Quality Assurance Guarantee underpins the standard of excellence in our product formulations.',
     },
     {
-      question: 'What are IQBARs?',
-      answer:
-        'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+      text:
+        'The KLONDIKE lubricating oils and greases are formulated from the finest mineral and synthetic base oils with highly advanced additive technology. This ensures high performance, maximum efficiency, and total equipment protection.',
     },
     {
-      question: 'Why is the product called “IQBAR”?',
-      answer:
-        'IQBARs are protein bars meticulously formulated with nutrient-dense, clean-label ingredients that fuel the brain and body. Each IQBAR contains 6 brain nutrients, 12g plant protein, 1-1g sugar, and 3g net carbs.',
+      text:
+        'KLONDIKE is a registered international member of the American Petroleum Institute (API) and the International Lubricating Standardization & Approval Committee (ILSAC). These trademark certifications are clearly stated on our applicable products, ensuring that they meet and exceed all warranty requirements of international engine manufactures that subscribe to these stringent global testing institutions.',
     },
   ],
+}
+export const ProductItem = {
+  ProductList: [
+    {
+      image: {
+        url: '/static/images/pi1.png',
+        alt: '',
+      },
+      title: 'Nano',
+    },
+    {
+      image: {
+        url: '/static/images/pi2.png',
+        alt: '',
+      },
+      title: 'heavy duty engine oils',
+    },
+    {
+      image: {
+        url: '/static/images/pi3.png',
+        alt: '',
+      },
+      title: 'automotive engine oils',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi6.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'transmission fluids',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi7.png',
+        alt: '',
+      },
+      title: 'gear lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi9.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+    {
+      image: {
+        url: '/static/images/pi10.png',
+        alt: '',
+      },
+      title: 'Food grade lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi10.png',
+        alt: '',
+      },
+      title: 'Food grade lubricants',
+    },
+    {
+      image: {
+        url: '/static/images/pi11.png',
+        alt: '',
+      },
+      title: 'Chemicals',
+    },
+    {
+      image: {
+        url: '/static/images/pi8.png',
+        alt: '',
+      },
+      title: 'Your Product Name',
+    },
+  ],
+}
+export const Productbanner = {
+  banner: [
+    {
+      image: {
+        url: '/static/images/Productbaner.png',
+        alt: '',
+      },
+      btntxt: 'How to buy',
+    },
+    {
+      image: {
+        url: '/static/images/Productbaner.png',
+        alt: '',
+      },
+      btntxt: 'Become a Dealer',
+    },
+  ],
+}
+
+// export const faqsData = {
+//   desktopHeading: 'PRODUCT PRICE LIST & ORDER FORM',
+//   mobileHeading: 'PRODUCT PRICE LIST & ORDER FORM',
+//   faqsData: [
+//     {
+//       short: true,
+//       question: 'How quick do I get my deal?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How do I find out what the next deal is?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How can I pay?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How do I track my order?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How do I make a return?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'Can I order more than just one of the items?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'My item was delivered to me broken, now what?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//     {
+//       question: 'How do I contact you?',
+//       answer:
+//         'Follow us on Instagram and Twitter and all deals will be posted daily.',
+//     },
+//   ],
+// }
+export const contactaddress = {
+  Addresdata: [
+    {
+      heading: 'British Columbia – Serving BC',
+
+      label: 'Head Office ',
+
+      street: '3078 275th Street',
+
+      postal: 'Langley, BC  V4W 3L4',
+    },
+    {
+      heading: 'Alberta – Serving Northern BC, AB, SK, YT and NT',
+
+      label: 'Oils & Lubricants Warehouse',
+
+      street: '101-1005 Derwent Way',
+
+      postal: 'Annacis Island, BC  V3M 5R4',
+    },
+    {
+      heading: 'Manitoba – Serving MB, Northwestern ON and NU',
+
+      label: 'Oils & Lubricants Warehouse',
+
+      street: '1510 Wall Street NW',
+
+      postal: 'Winnipeg, MB  R3G 2T3',
+    },
+    {
+      heading: 'Ontario – Serving ON and QC',
+
+      label: 'Oils & Lubricants Warehouse',
+
+      street: '1615 Clark Blvd',
+
+      postal: 'Brampton, ON  L6T 4W1',
+    },
+    {
+      heading: 'Quebec – Serving Eastern Canada',
+
+      label: 'Office',
+
+      street: '390 Notre-Dame Street West',
+
+      postal: 'Montreal, QC  H2Y 1T9',
+    },
+    {
+      heading: 'New Brunswick – Serving the Atlantic Provinces',
+
+      label: 'Oils & Lubricants Warehouse',
+
+      street: '350 English Dr',
+
+      postal: 'Moncton, NB  E1E 3Y9',
+    },
+  ],
+}
+
+export const pdpdata = {
+  heading: '15W-40 CK-4 Advanced Formula',
+  imgdata: [
+    {
+      image: {
+        url: '/static/images/klondike4.png',
+        alt: '',
+      },
+      btntxt: 'HOW TO BUY',
+    },
+  ],
+  data: [
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+      totalprice: '$34',
+    },
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+    },
+    {
+      size: '946 mL',
+      unit: '12',
+      part: 'KL-HD0540',
+      price: 20,
+    },
+  ],
+}
+
+export const pdpdatasheet = {
+  heading: 'TECHNICAL INFORMATION',
+  subheading: 'KLONDIKE - BRAVING THE FORCE OF MOVEMENT®',
+  pds: 'Product Data Sheet',
+  sds: 'Safety Data Sheet',
+  paragraph: [
+    {
+      text:
+        'KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology LONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology LONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation ',
+    },
+    // {
+    //   text:
+    //     'KLONDIKE Full Synthetic CVT Fluid is a premium performance, fully synthetic formulation designed for modern Continuously Variable Transmission designs in passenger cars. This specially formulated combination of 100% synthetic base oils and state-of-the-art additive technology ensures peak performance and outstanding fuel economy across a broad range of applications using belt or chain driven technology.',
+    // },
+  ],
+  Readmore: 'Read more',
+}
+export const RadioData = {
+  packagedata: 'Note on Ordering',
+  text1:
+    'This order already has an item for bulk delivery in cart. To order products that are not in bulk, please place a separate order.',
+
+  bulk: 'Bulk Orders',
+  text2:
+    'When ordering a product to be delivered in bulk, all items within your order must be ordered in bulk, too. Packaged shipments and bulk deliveries have to be placed as separate orders.',
 }
 
 export const benefits = {
@@ -483,29 +1259,144 @@ export const whatSectionData = {
   answer:
     'IQBARs are protein bars formulated with clean-label ingredients rich in compounds shown to benefit the brain and body. Each bar contains 6 brain nutrients, 12g plant protein, 3g net carbs, and 1-1g sugar. IQBARs are keto, paleo friendly, vegan, kosher, and free from GMOs, gluten, dairy, soy, and sugar alcohols.',
 }
-export const myAccount = {
-  title: 'MY ACCOUNT',
-  subTitle: 'ORDER HISTORY',
-  ordersPlaced: "You haven't placed any orders yet",
-  accDetails: 'ACCOUNT DETAILS',
-  viewStore: 'VIEW STORE',
-  viewAddress: {
-    text: 'View Addresses',
-    to: 'account/address',
-  },
-  shopNowButton: {
-    link: '/collections/all-bars',
-    text: 'SHOP NOW',
-  },
-  orderHistory: {
-    orderId: '42335',
-    date: 'January 18, 2021',
-    paymentStatus: 'Paid',
-    fulfilmentStatus: 'unfulfilled',
-    totalCost: '60.72',
-  },
-}
+// export const myAccount = {
+//   title: 'MY ACCOUNT',
+//   subTitle: 'ORDER HISTORY',
+//   ordersPlaced: "You haven't placed any orders yet",
+//   accDetails: 'ACCOUNT DETAILS',
+//   viewStore: 'VIEW STORE',
+//   viewAddress: {
+//     text: 'View Addresses',
+//     to: 'account/address',
+//   },
+//   shopNowButton: {
+//     link: '/collections/all-bars',
+//     text: 'SHOP NOW',
+//   },
+//   orderHistory: {
+//     orderId: '42335',
+//     date: 'January 18, 2021',
+//     paymentStatus: 'Paid',
+//     fulfilmentStatus: 'unfulfilled',
+//     totalCost: '60.72',
+//   },
+// }
+export const accountTabsData = [
+  {
+    tabTitle: 'Profile',
 
+    data: {
+      session: 'Current Session',
+
+      zip: 'A1234-Joe',
+
+      email: 'jhon@example.com',
+
+      heading: 'Shipping Address',
+
+      dropHeading: 'Drop Ship Address',
+
+      shipAddress: {
+        heading: 'Shipping Address',
+
+        name: 'Lorem Ipesum',
+
+        building: '123',
+
+        street: 'Neque, odio purus, Id duis',
+
+        code: '123456789',
+      },
+
+      dropShip: {
+        heading: 'Drop Shipping Address',
+
+        name: 'Lorem Ipesum',
+
+        building: '123',
+
+        street: 'Neque, odio purus, Id duis',
+
+        code: '123456789',
+      },
+    },
+  },
+  {
+    tabTitle: 'All Orders',
+    data: {
+      cart: 'ADD TO CART',
+
+      review: 'WRITE A REVIEW',
+
+      reorder: 'REORDER',
+
+      orderArray: [
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+
+          orderNumber: 'Order Number',
+
+          cart: 'ADD TO CART',
+
+          review: 'WRITE A REVIEW',
+
+          order: {
+            price: '$8.00',
+
+            text: 'REORDER',
+          },
+
+          status: {
+            date: 'DEC 13,2021',
+
+            price: '$160.00',
+
+            status: {
+              text: 'STATUS',
+
+              value: 'SHIPPED',
+            },
+          },
+        },
+
+        {
+          image: { url: '/static/images/oil.png', altText: '' },
+
+          orderNumber: 'Order Number',
+
+          cart: 'ADD TO CART',
+
+          review: 'WRITE A REVIEW',
+
+          order: {
+            price: '$8.00',
+
+            text: 'REORDER',
+          },
+
+          status: {
+            date: 'DEC 13,2021',
+
+            price: '$160.00',
+
+            status: {
+              text: 'STATUS',
+
+              value: 'SHIPPED',
+            },
+          },
+        },
+      ],
+    },
+  },
+  {
+    tabTitle: 'Credit Limit',
+    data: {
+      limit: 'CREDIT LIMIT',
+      price: '$44533',
+    },
+  },
+]
 export const shippingAddress = {
   form: {
     formInputs: [
@@ -866,12 +1757,38 @@ export const accountAddress = {
 
 export const mapLocationData = {
   apiKey: 'AIzaSyAtjWF9aNg_twldLxczJc___MluwCaRFkA',
-  positionLat: '37.772',
-  positionLng: '-122.214',
-  title: `WHERE WE'RE AT`,
-  description: `<p class="big-margin-b">
-  Team IQBAR currently works out of the <a href="https://masschallenge.org/" target="_blank" rel="noreferrer">MassChallenge</a> office at <span class="bold">21 Drydock Ave, Boston, MA 02210.</span>
+  locations: [
+    {
+      positionLat: '49.058289',
+      positionLng: '-122.462019',
+      title: `WHERE WE'RE AT`,
+      description: `<p class="big-margin-b">
+  Head Office, <br/><br/>
+ 3078 275th Street<br/><br/>
+Langley, BC V4W 3L4
 </p>`,
+    },
+    {
+      positionLat: '49.172050',
+      positionLng: '-122.940670',
+    },
+    {
+      positionLat: '49.905300',
+      positionLng: '-97.181830',
+    },
+    {
+      positionLat: '43.733730',
+      positionLng: '-79.687400',
+    },
+    {
+      positionLat: '45.501750',
+      positionLng: '-73.558850',
+    },
+    {
+      positionLat: '46.088340',
+      positionLng: '-64.847780',
+    },
+  ],
 }
 
 export const locationsData = {
@@ -945,13 +1862,13 @@ export const locationsData = {
 
 export const authLoginFormData = {
   formId: 1,
-  formBgColor: '#ffffff',
+  formBgColor: 'green',
   links: [
     { text: 'CREATE ACCOUNT', to: '/account/register' },
     { text: 'FORGOT YOUR PASSWORD', to: '/account/forgetpassword' },
   ],
 
-  formTitle: 'LOGIN',
+  formTitle: 'Log In Here,',
   mobileFormTitle: 'LOGIN',
   buttonLabel: 'SIGN IN',
   formInputs: [
@@ -1211,6 +2128,20 @@ export const shippingFormData = {
       },
     ],
   ],
+}
+
+export const aboutUs = {
+  desktopImage: {
+    url: '/static/images/bg_about1.png',
+
+    altText: 'desktop hero image',
+  },
+
+  mobileImage: {
+    url: '/static/images/bg_about1-mobile.png',
+
+    altText: 'desktop hero image',
+  },
 }
 
 export const category = {
@@ -1719,84 +2650,361 @@ export const usStates = {
   ],
 }
 
-export const aboutUsPage = {
-  desktopHeroImage: {
-    url:
-      'https://cdn.shopify.com/s/files/1/1682/9837/files/hero_images_artboardabout_us_1eb84790-8817-479e-84f7-8fbba181d1d5_1600x.jpg?v=1594396303',
-    altText: 'alt',
-  },
-  mobileHeroImage: {
-    url:
-      'https://cdn.shopify.com/s/files/1/1682/9837/files/hero_images_artboardabout_us_mobile_8d59196a-4bda-4900-a6b9-bf15b67c4264_700x.jpg?v=1594396315',
-    altText: 'alt',
-  },
-  aboutUsContent: [
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About1.svg?v=14209667136057949764',
-        altText: 'alt',
-      },
-      text:
-        'While studying psychology and neuroscience as a Harvard undergrad, I became fascinated with the human brain and how it functions.',
-      paragraph: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About2.svg?v=17241191729928395287',
-        altText: 'alt',
-      },
-      text:
-        'After graduating and settling into long workdays selling and marketing software, I experienced failings with my own brain. Mental fatigue and headaches became daily struggles.',
-      paragraph: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About3.svg?v=6141588718709028390',
-        altText: 'alt',
-      },
-      text:
-        'Eventually, I identified my carb-packed diet as the culprit. By eliminating high-carb staples from my regimen and consuming vastly more fats and anti-inflammatory compounds, I experienced an astounding recovery in my mental energy and clarity.',
-      paragraph: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About4.svg?v=7779015416736652260',
-        altText: 'alt',
-      },
-      text:
-        'Elation soon gave way to frustration as I struggled to find ready-to-eat options that fit my new diet and my hectic lifestyle. The fact that no food product centering on brain and body nutrition existed astounded me.',
-      paragraph: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About5.svg?v=3561270368287852354',
-        altText: 'alt',
-      },
-      firstText:
-        'After hearing similar frustrations from others on a low-carb regimen, I thought:',
-      secondText: '“Why don’t I create that product?"',
-      thirdText:
-        'Before long, I was spending nights and weekends researching esoteric nutrients and “prototyping” in my apartment kitchen.',
-      dialogue: true,
-    },
-    {
-      image: {
-        url:
-          'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/OurStory-Six.png?v=14126893207822201278',
-        altText: 'alt',
-      },
-      text:
-        'After countless iterations over the course of a year, I launched a Kickstarter campaign in late 2017 and the first version of IQBAR was born.',
-      alt: 'alt',
-      paragraph: true,
-    },
-  ],
-}
+// export const aboutUsPage = {
+//   desktopHeroImage: {
+//     url: '/static/images/bannerhome.png',
+//     altText: 'alt',
+//   },
+
+//   mobileHeroImage: {
+//     url: '/static/images/mobile.png',
+//     altText: 'alt',
+//   },
+//   bannercontent: {
+//     bannerheading:
+//       '594 OILS & LUBRICANTS POWERING YOUR HEAVY DUTY FLEETS & OPERATIONS',
+
+//     bannerbutton: 'Learn more',
+//   },
+//   bannerlubricants: {
+//     bannersubheading:
+//       'Get your lubricants quickly  |  Run your equipment longer  |  Complete your jobs faster',
+//     bannerparagraph:
+//       'Every one of our oils and lubricants is built to do the hard work required to keep your engines running smoothly and reliably when your equipment is stretched to the limit by the temperatures or operating conditions. KLONDIKE products are specially formulated to help increase fuel efficiency, reduce emissions and keep engines running longer, delivering the long-lasting protection that only a premium product can. You’ll be thankful you chose KLONDIKE knowing you’ve got the backing of our comprehensive KLONDIKE warranty',
+//   },
+//   headingtext: {
+//     headingtext:
+//       'Products Lubricants Built to Withstand the Extremes of Your Operations',
+//   },
+
+//   aboutUsContent: [
+//     {
+//       image: {
+//         url:
+//           'https://klondikelubricants.com/wp-content/uploads/2020/11/EP-1.5_large.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Our wide range of oils, lubricants and greases are field tested and designed specifically for the application and industry you operate in. These highly engineered specialty productsfluids are designed with input from customers, based on their real-life experiences, making them a risk-free way of protecting your expensive machinery.',
+//       paragraph: true,
+//       heading: 'oil lubricants and greases',
+//       buttontext: 'Button',
+//     },
+//     {
+//       image: {
+//         url:
+//           'https://klondikelubricants.com/wp-content/uploads/2020/11/KL-HD0580_15W-40_CK-4_18.9L_Pail_website3-Copy-e1605210454711.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Advanced base stocks and proven additives characterize our heavy duty, industrial and automotive oils and lubricants. These are products customers have grown to trust, based on performance, efficiency and protection after years of heavy loads and demanding use. Let KLONDIKE keep your engines running longer and stronger than you ever expected.',
+//       paragraph: true,
+//       heading: 'for heavy duty, industrial and automotive markets',
+//       buttontext: 'Button',
+//     },
+//     {
+//       image: {
+//         url:
+//           'https://klondikelubricants.com/wp-content/uploads/2019/01/nav-KL-LD1280-5W-30-SN-PLUS-Synthetic-Blend_Jug.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Heat, cold, water, dirt. All are enemies of your equipment running smoothly and efficiently for long periods of time. Find out how KLONDIKE’s dedicated research can help you vanquish those enemies and cut downtime in tough terrain and remote areas by more than 40%.',
+//       paragraph: true,
+//       heading: 'For all your jobs in tough terrains and extreme climates',
+//       buttontext: 'Button',
+//     },
+
+//     // {
+//     //   image: {
+//     //     url:
+//     //       'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About5.svg?v=3561270368287852354',
+//     //     altText: 'alt',
+//     //   },
+//     //   firstText:
+//     //     'After hearing similar frustrations from others on a low-carb regimen, I thought:',
+//     //   secondText: '“Why don’t I create that product?"',
+//     //   thirdText:
+//     //     'Before long, I was spending nights and weekends researching esoteric nutrients and “prototyping” in my apartment kitchen.',
+//     //   dialogue: true,
+//     // },
+//     // {
+//     //   image: {
+//     //     url:
+//     //       'https://klondikelubricants.com/wp-content/uploads/2020/11/small-page-group-RETINA.png',
+//     //     altText: 'alt',
+//     //   },
+//     //   text:
+//     //     'At KLONDIKE we pride ourselves in manufacturing globally certified products ranging from packaged and bulk oils to industrial lubricants and chemicals.',
+//     //   alt: 'alt',
+//     //   paragraph: true,
+//     // },
+//   ],
+
+//   aboutUsSecondContent: [
+//     {
+//       image: {
+//         url: '/static/images/klondike1.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'You’ll find our roots firmly planted in the cold harsh conditions of the Canadian North, where our business began. As a Canadian company, we’re big believers in honesty, loyalty and hard work – traditional Canadian values that define our approach to everything we do. ',
+//       paragraph: true,
+//       headingtext: 'Canadian Brand',
+//       btntext: 'LEARN MORE',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/klondike2.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Rigorous testing ensures KLONDIKE’S products meet or exceed warranty requirements of all international engine manufacturers who adhere to the major global standards. Our products meet OEM requirements, individual industry certification standards and comply with the environmental and safety standards outlined by industry regulators.',
+//       paragraph: true,
+//       headingtext: 'OEM Approved',
+//       btntext: 'LEARN MORE',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/klondike3.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Our in-depth knowledge of the North American market comes from decades in the oils and lubricants business and pays dividends in terms of focused product development and innovation for all heavy duty, industrial and automotive.',
+//       paragraph: true,
+//       headingtext: 'North American-Made',
+//       btntext: 'LEARN MORE',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/klondike4.png',
+//         altText: 'alt',
+//       },
+//       text:
+//         'Take advantage of the stability and longer-term outlook that go along with our independence. From increased loyalty and commitment to a unified vision of success, we thrive on the flexibility and innovation that comes from being a growing, independently owned company. ',
+//       paragraph: true,
+//       headingtext: 'Independent',
+//       btntext: 'LEARN MORE',
+//     },
+
+//     // {
+//     //   image: {
+//     //     url:
+//     //       'https://cdn.shopify.com/s/files/1/1682/9837/t/94/assets/About5.svg?v=3561270368287852354',
+//     //     altText: 'alt',
+//     //   },
+//     //   firstText:
+//     //     'After hearing similar frustrations from others on a low-carb regimen, I thought:',
+//     //   secondText: '“Why don’t I create that product?"',
+//     //   thirdText:
+//     //     'Before long, I was spending nights and weekends researching esoteric nutrients and “prototyping” in my apartment kitchen.',
+//     //   dialogue: true,
+//     // },
+//     // {
+//     //   image: {
+//     //     url:
+//     //       'https://klondikelubricants.com/wp-content/uploads/2020/11/small-page-group-RETINA.png',
+//     //     altText: 'alt',
+//     //   },
+//     //   text:
+//     //     'At KLONDIKE we pride ourselves in manufacturing globally certified products ranging from packaged and bulk oils to industrial lubricants and chemicals.',
+//     //   alt: 'alt',
+//     //   paragraph: true,
+//     // },
+//   ],
+//   distributionheading: {
+//     headingtext:
+//       'Distribution That Spans the Continent, Gets Products To You Faster',
+//   },
+//   distributionProduct: [
+//     {
+//       image: {
+//         url: '/static/images/mask.png',
+//         alt: '',
+//       },
+//       headingtext: '15 million litres in stock ',
+//       text:
+//         'Our 15 million litres of in-stock oils and lubricants mean we’ve got the inventory you need on hand, as soon as you need it. From specialty greases to bulk oils, you’ll find what you need close to your worksite, no matter how remote',
+//       btntext: 'HOW TO BUY',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/distribute2.png',
+//         alt: '',
+//       },
+//       headingtext:
+//         'Lubricants available in our multiple warehouses across North America ',
+//       text:
+//         'We take distribution seriously, knowing you want the oils and lubricants you need in a hurry, regardless of where your worksite is. Availability and expedited delivery are just a couple of the key differences between us and our competitors.',
+//       btntext: 'HOW TO BUY',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/distribute3.png',
+//         alt: '',
+//       },
+//       headingtext: '99.2% order fulfillment rate ',
+//       text:
+//         'Solid inventory forecasting and quick replenishment cycles are vital parts of our exceptional order fulfillment rate. This customer-friendly measure helps avoid back orders and reduces equipment downtime for all of our customers. ',
+//       btntext: 'HOW TO BUY',
+//     },
+//   ],
+
+//   downTimeCosting: [
+//     {
+//       image: {
+//         url: '/static/images/Rectangle.png',
+//         alt: '',
+//       },
+//       heading: 'How Much is Downtime Costing You?',
+//       text:
+//         'Got equipment sitting idle because you’re not getting lubricants fast enough?',
+//       list: [
+//         {
+//           text: 'Wasting time ordering from multiple vendors?',
+//         },
+//         {
+//           text:
+//             'Frustrated trying to find and buy the right oil for your entire fleet?',
+//         },
+//         {
+//           text:
+//             'Too many oils to keep track of for your diverse and various equipment?',
+//         },
+//         {
+//           text:
+//             'Squandering money replacing parts for vehicles, equipment, and machinery?',
+//         },
+//         {
+//           text:
+//             'Are you losing work because of too much downtime with your equipment?',
+//         },
+//       ],
+//       Paragraph:
+//         'Your KLONDIKE dealer is part of a North American distribution system with more than 15 million litres of oils and lubricants in stock, so you can get the products you need, when you need them. Availability and selection are two ways we make sure your equipment is in the field, not in the shop.',
+//       buttontxt: 'HOW TO BUY',
+//     },
+
+//     {
+//       image: {
+//         url: '/static/images/Rectangle.png',
+//         alt: '',
+//       },
+//       heading: 'Increasing Equipment Uptime',
+//       list: [
+//         {
+//           heading: '1: Find a KLONDIKE Dealer',
+//           text:
+//             ' Choose from one of the many distributors dealers located across North America',
+//         },
+//         {
+//           heading: '2: Choose Your KLONDIKE Lubricants',
+//           text:
+//             ' Ask your dealer for a specific product or use our LUBE-LINK oil search toolapplication',
+//         },
+//         {
+//           heading: ' 3: Reduce Your Equipment Downtime',
+//           text: ' Use our high-quality performance oil or lub',
+//         },
+//       ],
+//       text: '',
+//       buttontxt: 'BECOME A DEALER',
+//     },
+//   ],
+//   bannerComponent: [
+//     {
+//       backgroundimg: {
+//         url: '/static/images/MaskGroup.png',
+//         alt: 'alt',
+//       },
+//       banerlogoimg: {
+//         url: '/static/images/lubelogobanner.png',
+//         alt: 'alt',
+//       },
+//       heading: 'Lubricants Built to Withstand the Extremes of Your Operations',
+//       buttontxt: 'SEARCH NOW',
+//       headingbanner:
+//         'Why KLONDIKE? Because We Know the Needs of the North American market?',
+//     },
+//   ],
+//   commited: [
+//     {
+//       heading: '100% COMMITTED TO YOUR SUCCESS',
+//       paragraph:
+//         'The KLONDIKE Quality Assurance Guarantee is how we back our products, underlining our promise to stand behind our oils, lubricants, greases and chemicals. Our American Petroleum Institute (API) and International Lubricating Standardization & Approval Committee (ILSAC) product certifications make it clear our products meet and exceed the requirements of this stringent global testing.',
+//       subheading:
+//         'KLONDIKE will repair or replace equipment parts that have been damaged as a direct result of the failure of any of our products. *',
+//       butontext: 'SEE WARRANTY',
+//     },
+//   ],
+
+//   testimonial: [
+//     {
+//       image: {
+//         url: '/static/images/client.png',
+//         alt: '',
+//       },
+
+//       headingtext: 'Paul Lawrence',
+//       text:
+//         ' “KLONDIKE has a huge range of products and amazing support. If you can dream it, they can make it happen. With access to the owners and a focus on the end customer, KLONDIKE Lubricants is a great Service First partner!” ',
+//       buyklondike: 'Why I buy KLONDIKE',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/client.png',
+//         alt: '',
+//       },
+
+//       headingtext: 'Paul Lawrence',
+//       text:
+//         ' “KLONDIKE has a huge range of products and amazing support. If you can dream it, they can make it happen. With access to the owners and a focus on the end customer, KLONDIKE Lubricants is a great Service First partner!” ',
+//     },
+//   ],
+
+//   productHeading: {
+//     productHeading:
+//       'Innovation and customer demand fuel new specialty product growth',
+//   },
+
+//   productInovation: [
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//     {
+//       image: {
+//         url: '/static/images/Product.png',
+//         alt: '',
+//       },
+//       detail: 'Heavy Duty Engine Oils 10W-30 CK-4 Commercial',
+//     },
+//   ],
+// }
 export const pdpSkuData = {
   sku: '',
 }
@@ -2240,6 +3448,19 @@ export const PProductsData = [
     },
   },
 ]
+export const PcpBottom = [
+  {
+    image:
+      'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+    button: 'DOWNLOAD PDS & MSDS',
+    mobileButton: 'DOWNLOAD PDS & MSDS',
+  },
+  {
+    image: '/static/images/productfooter.png',
+    button: 'BECOME A DEALER',
+    mobileButton: 'BECOME A DEALER',
+  },
+]
 
 export const PSusbcribeNewItem = {
   id: 'fake-item-id',
@@ -2269,7 +3490,22 @@ export const PSusbcribeNewItem = {
     },
   ],
 }
-
+export const PlpBottom = {
+  bottomSection: [
+    {
+      image: '/static/klondike3',
+      button: 'DOWNLOAD PDS & MSDS',
+    },
+    {
+      image: '/static/klondike3',
+      button: 'BECOME A DEALER',
+    },
+  ],
+}
+export const searchFlow = {
+  backgroundImage: '/static/images/search.png',
+  // clearIcon: '/static/images/Union.png',
+}
 export const PurchaseHistory = {
   label: 'PURCHASE HISTORY',
   orders: [
@@ -2631,23 +3867,25 @@ export const subscriptionOrderDetails = {
 
 export const simpleFormData = {
   buttonLabel: 'Send Message',
-  formTitle: 'Contact Us',
-  mobileFormTitle: 'Contact Us',
-  subtitle: `<p class="big-margin-b">Use the form below, or feel free to reach out to us any time at <a class="bold" href="mailto:info@eatiqbar.com">info@eatiqbar.com</a>, even just to say "hey"!</p>`,
+  formTitle: 'We’d love to hear from you',
+  mobileFormTitle: 'We’d love to hear from you',
+  subtitle: `<p class="big-margin-b">To contact a KLONDIKE sales rep call <br/> <a class="sumbit-anchor" href="tel:1-877-293-4691 ">1-877-293-4691 </a> (office hours) or use the form below.</p>`,
   formInputs: [
     {
       formRow: [
         {
           id: 'firstName',
-          label: 'FIRST NAME',
+          // label: 'FIRST NAME',
+          placeholder: 'NAME',
           validations_isRequired: true,
           validations_isEmail: false,
           validations_isPhoneNo: false,
           asterisk: true,
         },
         {
-          id: 'lastName',
-          label: 'LAST NAME',
+          id: 'Company',
+          // label: 'Company',
+          placeholder: 'COMPANY',
           validations_isRequired: true,
           validations_isEmail: false,
           validations_isPhoneNo: false,
@@ -2659,7 +3897,8 @@ export const simpleFormData = {
       formRow: [
         {
           id: 'email',
-          label: 'EMAIL',
+          // label: 'EMAIL',
+          placeholder: 'EMAIL',
           validations_isRequired: true,
           validations_isEmail: true,
           validations_isPhoneNo: false,
@@ -2667,7 +3906,8 @@ export const simpleFormData = {
         },
         {
           id: 'phoneNumber',
-          label: 'PHONE NUMBER',
+          // label: 'PHONE NUMBER',
+          placeholder: 'TELEPHONE',
           validations_isRequired: false,
           validations_isEmail: false,
           validations_isPhoneNo: true,
@@ -2675,25 +3915,26 @@ export const simpleFormData = {
         },
       ],
     },
-    {
-      formRow: [
-        {
-          id: 'reasonForMsg',
-          label: 'REASON FOR MESSAGE',
-          fieldType: 'select',
-          optionsType: 'message-reasons',
-          validations_isRequired: true,
-          validations_isEmail: false,
-          validations_isPhoneNo: false,
-          asterisk: true,
-        },
-      ],
-    },
+    // {
+    //   formRow: [
+    //     {
+    //       id: 'reasonForMsg',
+    //       label: 'REASON FOR MESSAGE',
+    //       fieldType: 'select',
+    //       optionsType: 'message-reasons',
+    //       validations_isRequired: true,
+    //       validations_isEmail: false,
+    //       validations_isPhoneNo: false,
+    //       asterisk: true,
+    //     },
+    //   ],
+    // },
     {
       formRow: [
         {
           id: 'message',
-          label: 'MESSAGE',
+          // label: 'MESSAGE',
+          placeholder: 'COMMENTS',
           fieldType: 'textarea',
           validations_isRequired: false,
           validations_isEmail: false,
@@ -2704,20 +3945,128 @@ export const simpleFormData = {
     },
   ],
 }
-
+export const ourProduct = [
+  {
+    name: 'Products Overview',
+    image: '/static/images/nanoil.png',
+  },
+  {
+    name: 'nano',
+    image: '/static/images/klondike1.png',
+  },
+  {
+    name: 'Heavy Duty Engine Oils',
+    image: '/static/images/klondike2.png',
+  },
+  {
+    name: 'Automotive Engine Oils',
+    image: '/static/images/klondike3.png',
+  },
+  {
+    name: 'Gear Lubricants',
+    image: '/static/images/klondike1.png',
+  },
+  {
+    name: 'Transmission Fluids',
+    image: '/static/images/klondike2.png',
+  },
+  {
+    name: 'Hydraulic Fluids',
+    image: '/static/images/klondike3.png',
+  },
+  {
+    name: 'Industrial Oils',
+    image: '/static/images/klondike1.png',
+  },
+  {
+    name: 'Greases',
+    image: '/static/images/klondike2.png',
+  },
+  {
+    name: 'Biodegradable Lubricants',
+    image: '/static/images/klondike3.png',
+  },
+]
+export const aboutHeader = [
+  {
+    name: 'Overview',
+  },
+  {
+    name: 'our story',
+  },
+  {
+    name: 'why klondike',
+  },
+  {
+    name: 'indusrty applications',
+  },
+  {
+    name: 'Safety & environment',
+  },
+  {
+    name: 'work at klondike',
+  },
+]
+export const techResources = [
+  {
+    name: 'Technical Documents',
+  },
+  {
+    name: 'OEM Approvals',
+  },
+  {
+    name: 'Catalog',
+  },
+  {
+    name: 'Warranty',
+  },
+  {
+    name: 'Video Gallery',
+  },
+  {
+    name: 'Tech/News Blog',
+  },
+]
 export const contactUsBanner = {
   desktopImage: {
-    url:
-      'https://cdn.shopify.com/s/files/1/1682/9837/files/hero_images_artboardCONTACT_a7bbfb38-067c-4ed5-8298-962a160c8354_1600x.jpg?v=1594396470',
+    url: 'static/images/pcpbanner.png',
     altText: 'Desktop hero image',
   },
   mobileImage: {
-    url:
-      'https://cdn.shopify.com/s/files/1/1682/9837/files/hero_images_artboardcontact_us_mobile_4284eafc-d172-43d4-9635-8a4925454e98_700x.jpg?v=1594396483',
+    url: 'static/images/pcpmobilebanner.png',
     altText: 'Mobile hero image',
   },
 }
-
+export const technicalBanner = {
+  desktopImage: {
+    url: '/static/images/bg_tech-resources.png',
+    altText: 'desktop hero image',
+  },
+  mobileImage: {
+    url: '/static/images/bg_tech-resources.png',
+    altText: 'desktop hero image',
+  },
+}
+export const techresource = {
+  desktopImage: {
+    url: '/static/images/Logging_backgro.png',
+    altText: 'desktop hero image',
+  },
+  mobileImage: {
+    url: '/static/images/Logging_backgro.png',
+    altText: 'desktop hero image',
+  },
+}
+export const imgonbanner = {
+  desktopImage: {
+    url: '/static/images/small-page-group-RETINA.png',
+    altText: 'on Banner img',
+  },
+  mobileImage: {
+    url: '/static/images/small-page-group-RETINA.png',
+    altText: 'on Banner img',
+  },
+}
 export const policyData = {
   page: `<div class="shopify-policy__container">
   <div class="shopify-policy__title">

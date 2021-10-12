@@ -1,8 +1,20 @@
+@import '~styles/globals';
+
 .map-location {
-  max-width: 920px;
-  margin: 60px auto;
-  padding: 60px 20px;
-  border-top: 3px solid #ccc;
+  // max-width: 920px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 120px;
+  background: #013a4e;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 60px 25px;
+  }
 
   &__heading {
     margin-bottom: 20px;
@@ -15,7 +27,14 @@
   }
 
   &__description {
-    font-size: 24px;
+    width: 356px;
+    color: white;
+    font-family: $OpenSans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 140%;
+    text-align: center;
 
     @media (max-width: 768px) {
       font-size: 18px;
@@ -27,6 +46,15 @@
 
     a:hover {
       color: black;
+    }
+  }
+
+  .map {
+    width: 588px;
+
+    @media screen and(max-width: 768px) {
+      width: 360px;
+      margin-bottom: 36px;
     }
   }
 }

@@ -6,6 +6,9 @@ import { CartReducer, sumItems } from './app-reducer'
 
 const AppContext = React.createContext({})
 const AppProvider = ({ children }) => {
+  const [searchKey, setSearchKey] = useState('')
+  const [searchFilter, setSearchFilter] = useState([])
+  const [plpredirect, setPlpRedirect] = useState('nano')
   const [step, setStep] = useState(1)
   const [checked, setChecked] = useState(0)
   const [shippingServicePrice, setShippingServicePrice] = useState('')
@@ -16,6 +19,9 @@ const AppProvider = ({ children }) => {
   const [enableSecondStep, setEnableSecondStep] = useState(false)
   const [enableThirdStep, setEnableThirdStep] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [cartPopupModal, setCartPopupModal] = useState(false)
+  const [cartProducts, setCartProducts] = useState([])
+  const [cartData, setCartData] = useState({})
   const [pdpPurchaseType, setPdpPurchaseType] = useState(1)
   const [pdpSubscriptionType, setPdpSubscriptionType] = useState(
     'ShipEveryWeek',
@@ -72,6 +78,14 @@ const AppProvider = ({ children }) => {
     if (size > 768) {
       document.body.style.overflow = 'hidden'
     }
+  }
+  const showcartPOPModal = () => {
+    setCartPopupModal(true)
+    document.body.style.overflow = 'visible'
+  }
+  const closePopUpModal = () => {
+    setCartPopupModal(false)
+    document.body.style.overflow = 'visible'
   }
 
   const closeModal = () => {
@@ -174,6 +188,12 @@ const AppProvider = ({ children }) => {
       value={{
         removeProduct,
         addProduct,
+        searchKey,
+        setSearchKey,
+        searchFilter,
+        setSearchFilter,
+        plpredirect,
+        setPlpRedirect,
         step,
         setStep,
         goToNextStep,
@@ -198,6 +218,14 @@ const AppProvider = ({ children }) => {
         setEnableThirdStep,
         isModalVisible,
         showModal,
+        cartPopupModal,
+        cartProducts,
+        setCartProducts,
+        setCartPopupModal,
+        cartData,
+        setCartData,
+        showcartPOPModal,
+        closePopUpModal,
         closeModal,
         pdpPurchaseType,
         setPdpPurchaseType,

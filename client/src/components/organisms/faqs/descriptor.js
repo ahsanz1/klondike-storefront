@@ -12,12 +12,13 @@ exports.default = Types.Component({
     }),
     desktopHeading: Types.String({ label: 'faqs heading' }),
     mobileHeading: Types.String({ label: 'faqs mobile heading' }),
+    introduction: Types.String({ label: 'main intro' }),
     faqsData: Types.Array({
       label: 'faqs',
       children: Types.Shape({
         children: {
           question: Types.String({ label: 'question' }),
-          answer: Types.RichText({ label: 'answer' }),
+          answer: Types.String({ label: 'answer' }),
         },
       }),
     }),

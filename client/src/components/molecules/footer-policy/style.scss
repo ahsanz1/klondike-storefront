@@ -1,20 +1,35 @@
+@import '~styles/globals';
+
 .footer-bottom-menu {
-  display: flex;
-  align-items: center;
-  height: 100%;
+  // display: flex;
+  // align-items: center;
+  // height: 100%;
   margin-bottom: 0;
   padding: 0;
   color: #fff;
-  font-size: 16px;
-  line-height: 43px;
+  font-family: $OpenSans;
+  font-size: get-vw(14px);
+  font-weight: bold;
+  line-height: get-vw(19px);
+  text-transform: capitalize;
+
+  @media screen and (max-width: 768px) {
+    display: inline;
+  }
 
   li {
     display: inline-flex;
     align-items: center;
-    margin-right: 25px;
+    margin-right: 10px;
 
     a {
-      color: #fff;
+      color: rgb(5, 5, 5);
+    }
+  }
+
+  .divider {
+    .divider-dot {
+      color: black;
     }
   }
 }
@@ -27,6 +42,6 @@
 
 @media (max-width: 875px) {
   .footer-bottom-menu {
-    font-size: 13px;
+    display: none;
   }
 }

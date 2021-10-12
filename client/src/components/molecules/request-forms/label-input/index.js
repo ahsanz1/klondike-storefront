@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import InputTextField from 'components/atoms/input'
-import NativeDropdown from 'components/atoms/native-dropdown'
+// import NativeDropdown from 'components/atoms/native-dropdown'
 import './styles.scss'
 import { Checkbox } from 'antd'
 import TextArea from 'components/atoms/text-area'
@@ -26,17 +26,17 @@ const LabelInput = ({
 }) => {
   const renderInput = type => {
     switch (type) {
-      case 'select':
-        return (
-          <NativeDropdown
-            value={value}
-            onChange={value => {
-              onChangeHandler(id, value)
-            }}
-            items={items}
-            className={`label-input__input ${inputClass}`}
-          />
-        )
+      // case 'select':
+      //   return (
+      //     <NativeDropdown
+      //       value={value}
+      //       onChange={value => {
+      //         onChangeHandler(id, value)
+      //       }}
+      //       items={items}
+      //       className={`label-input__input ${inputClass} `}
+      //     />
+      //   )
       case 'checkbox':
         return (
           <Checkbox
@@ -63,28 +63,30 @@ const LabelInput = ({
         )
       default:
         return (
-          <InputTextField
-            placeholder={placeholder}
-            value={value}
-            type={validations.validations_isPassword ? 'password' : type}
-            className={`label-input__input ${inputClass}`}
-            onBlur={e => {
-              onBlurHandler(validations, id)
-            }}
-            onChange={({ value }) => {
-              onChangeHandler(id, value)
-            }}
-          />
+          <>
+            <InputTextField
+              placeholder={placeholder}
+              value={value}
+              type={validations.validations_isPassword ? 'password' : type}
+              className={`label-input__input ${inputClass} `}
+              onBlur={e => {
+                onBlurHandler(validations, id)
+              }}
+              onChange={({ value }) => {
+                onChangeHandler(id, value)
+              }}
+            />
+          </>
         )
     }
   }
 
   return (
     <div className={`label-input ${parentClass}`}>
-      <Label className={`label-input__label ${labelClass}`}>
+      {/* <Label className={`label-input__label ${labelClass}`}>
         {label}
         {label && validations.asterisk ? '*' : ''}
-      </Label>
+      </Label> */}
       <Label className={secondaryLabelClass}>{secondaryLabel}</Label>
       {renderInput(fieldType)}
       {/* <InputTextField

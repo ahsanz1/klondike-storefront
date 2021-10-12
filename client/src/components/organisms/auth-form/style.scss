@@ -3,29 +3,48 @@
 .generic--form--container {
   display: flex;
   flex-direction: column;
-  width: 450px;
-  max-width: 1120px;
-  margin: 0 auto;
+  width: 31.2vw;
+  max-width: 77.7vw;
   padding: 0;
 
-  @media (max-width: 460px) {
+  .eeFuwj {
+    padding: 5.5vw 0 !important;
+
+    .cs--page-width {
+      @media screen and(max-width: 500px) {
+        max-width: auto !important;
+        padding: 0 !important;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
     width: 100%;
-    padding: 20px 20px;
+    max-width: 298.6vw;
+    padding: 5.3vw 5.3vw;
   }
 
   .request-form {
+    margin-bottom: 18vw;
     padding-bottom: 0;
+
+    @media (max-width: 500px) {
+      margin-top: 26.6vw;
+      margin-bottom: 23.2vw !important;
+    }
 
     .request-form__content {
       .request-form__title {
         width: 100%;
-        margin-bottom: 32px;
-        padding: 0 20px;
+        margin-bottom: 2.2vw;
+        padding: 0 0.34vw;
         font-family: $font-futura;
-        font-size: 36px;
         font-weight: 700;
-        text-align: center;
         text-transform: uppercase;
+
+        @media screen and(max-width: 500px) {
+          margin-bottom: 8.5vw;
+        }
       }
     }
   }
@@ -36,8 +55,12 @@
 
   input {
     border: 3px solid #000;
-    font-size: 18px;
+    font-size: 1.1vw;
     font-weight: 700;
+
+    @media screen and(max-width: 500px) {
+      font-size: 4.8vw;
+    }
   }
 
   .request-form__submit-button-wrapper {
@@ -51,15 +74,18 @@
       max-width: unset;
       margin: 0;
       margin-top: 0;
-      margin-bottom: 30px;
-      padding: 10px 30px;
+      margin-bottom: 2vw;
+      padding: 0.6vw 2vw;
       transition: all ease-in 0.15s;
-      border: 2px solid #111;
+      border: 0.13vw solid #111;
       background-color: #fff;
-      color: #111;
-      font-size: 20.5px;
-      font-weight: 700;
-      line-height: 1.2;
+      color: #fff;
+      font-family: $OpenSans;
+      font-size: 1.1vw;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.75px;
+      line-height: 1.9vw;
       text-decoration: none;
       text-transform: uppercase;
       cursor: pointer;
@@ -67,6 +93,14 @@
       &:hover {
         background-color: #111;
         color: #fff;
+      }
+
+      @media screen and(max-width: 500px) {
+        margin-bottom: 8vw;
+        padding: 2.6vw 8vw;
+        border: 0.5vw solid #111;
+        font-size: 4.2vw;
+        line-height: 7.4vw;
       }
     }
   }

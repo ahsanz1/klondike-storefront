@@ -22,11 +22,26 @@
   src: url('/static/fonts/FuturaNewBook-Reg.ttf');
 }
 
-$primary-color: #000;
-$primary-color-dark: #1356a3;
+@font-face {
+  font-family: OpenSans;
+  src: url('/static/fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url('/static/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url('/static/fonts/Raleway-Regular.ttf');
+}
+
+$primary-color: #013a4e;
+$primary-color-dark: #002a3a;
 $primary-color-light: #212529;
 $secondary-color: #a2cf7c;
-$accent-color: #ffa726;
+$accent-color: #f2a900;
 $disable: #a5a5a5;
 $error-color: #c0392b;
 $white-color: #fff;
@@ -43,3 +58,31 @@ $font-futura-black: FuturaPTBold, Helvetica, Arial, sans-serif;
 $font-futura-heavy: FuturaPTHeavy, Helvetica, Arial, sans-serif;
 $font-intro: Intro, Arial, Helvetica, sans-serif;
 $font-apple-system: -apple-system, Roboto, Helvetica, Arial, sans-serif;
+$OpenSans: OpenSans;
+$Poppins: Poppins;
+$Raleway: Raleway;
+
+$vw-viewport: 1440;
+$vw-mobile-viewport: 375;
+$vh-mobile-viewport: 825;
+
+@function get-vw($font) {
+  $vw-context: $vw-viewport * 0.01 * 1px;
+
+  @return $font / $vw-context * 1vw;
+  @return $font;
+}
+
+@function getmb-vw($font) {
+  $vw-mbcontext: $vw-mobile-viewport * 0.01 * 1px;
+
+  @return $font / $vw-mbcontext * 1vw;
+  @return $font;
+}
+
+@function getmb-vh($font) {
+  $vh-mbcontext: $vh-mobile-viewport * 0.01 * 1px;
+
+  @return $font / $vh-mbcontext * 1vh;
+  @return $font;
+}

@@ -11,6 +11,7 @@ const SimpleForm = ({
   mobileFormTitle = '',
   formInputs = [],
   subtitle,
+  className,
 }) => {
   const [openAlert, setOpenAlert] = useState(false)
   const [alertData, setAlertData] = useState({})
@@ -86,10 +87,11 @@ const SimpleForm = ({
           formInputs,
           subtitle,
         }}
-        formBgColor={'#fff'}
+        formBgColor={'#002a3a'}
         onFormSubmit={onFormSubmit}
         alertData={alertData}
         openAlert={openAlert}
+        className={className}
       />
     </div>
   )
@@ -101,6 +103,7 @@ SimpleForm.propTypes = {
   mobileFormTitle: PropTypes.string,
   formInputs: PropTypes.array,
   subtitle: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default SimpleForm

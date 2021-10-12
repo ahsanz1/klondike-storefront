@@ -1,0 +1,59 @@
+.plp-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 1.4vw !important;
+  background: #032939;
+
+  div {
+    &:first-child {
+      width: 37.7vw;
+      height: 12.8vw;
+    }
+
+    @media (max-width: 500px) {
+      width: 32.8vw;
+      height: 36.5vw;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 5.3vw;
+  }
+
+  @media (max-width: 500px) {
+    justify-content: center;
+    width: 87.2vw;
+    height: 41.8vw;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    margin-top: 0 !important;
+    object-fit: contain;
+
+    @media screen and (max-width: 500px) {
+      width: 32.8vw;
+      height: 36.5vw;
+      object-fit: contain;
+    }
+  }
+
+  button {
+    width: inherit;
+    margin-top: 0 !important;
+
+    @media (max-width: 768px) {
+      width: initial;
+    }
+
+    &:hover {
+      transition: 1s;
+      background: #ddaf34;
+    }
+  }
+}

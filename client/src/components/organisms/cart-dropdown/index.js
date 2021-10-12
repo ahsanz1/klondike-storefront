@@ -3,21 +3,54 @@
 import React, { useContext } from 'react'
 import { AppContext } from 'libs/context'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
-import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
-import Link from 'components/atoms/link'
 import './style.scss'
 
 const CartDropdown = () => {
-  const { cartItems, isModalVisible, closeModal, subTotal } = useContext(
-    AppContext,
-  )
-  const [size] = useWindowSize()
+  const {
+    //  cartItems,
+    isModalVisible,
+    closeModal,
+    subTotal,
+    cartProducts,
+  } = useContext(AppContext)
+
+  const cartItems = [
+    {
+      mainImage: 'static/images/klondike4.png',
+      itemId: 0,
+      title: '15W-40 CK-4 Advanced Formula',
+      size: 208,
+      price: 110,
+      partnum: 'KL-GL1390',
+      percase: 12,
+      quantity: 3,
+    },
+    {
+      mainImage: 'static/images/klondike2.png',
+      itemId: 1,
+      title: '85W-140 GL-5',
+      size: 946,
+      partnum: 'KL-HD0540',
+      percase: 12,
+      price: 110,
+      quantity: 2,
+    },
+  ]
+
+  console.log({ cartProducts })
+
   return (
-    isModalVisible &&
-    size > 768 && (
+    isModalVisible && (
+      // size > 768 &&
       <>
+        <img
+          className="mobile-nav-logo"
+          src="static/images/mbl-logo.png"
+          alt=""
+        />
+        <div className="cart-header"></div>
         <div
           className="cart-overlay"
           onClick={() => {
@@ -25,16 +58,32 @@ const CartDropdown = () => {
           }}
         ></div>
         <div className="cart-dropdown">
+          <div className="cart-header"></div>
           <div className="cart-dropdown-header">
-            <Link className="cart-dropdown-header-label" to="/cart">
-              Your Cart
-            </Link>
+            <div className="cart-name-and-no-of-items">
+              <div className="cart-name-and-no-of-items">
+                <div>
+                  <Label className="cart-text">CART</Label>
+                </div>
+                <div className="cart-dropdown-header-item-no">
+                  {/* <p> */}
+                  {cartItems.length} Items
+                  {/* </p> */}
+                </div>
+              </div>
+            </div>
             <Image
-              src="/static/icons/close-cross.svg"
+              src="/static/icons/closecrosswhite.svg"
               alt="close-cross"
               className="cart-dropdown-header-icon"
               onClick={closeModal}
             />
+          </div>
+          <div className="free-shipping-banner">
+            <p className="free-shipping-banner-text">
+              You are <p className="free-shipping-banner-text-price">$20</p>
+              away from free shipping
+            </p>
           </div>
           <div className="cart-dropdown-items">
             {cartItems && cartItems.length > 0 ? (
@@ -45,30 +94,31 @@ const CartDropdown = () => {
               <Label className="no-item">No items are in your cart.</Label>
             )}
           </div>
-          {subTotal && parseFloat(subTotal) > 0 && (
-            <div className="cart-dropdown-total">
-              <span className="cart-dd-total-label">Total</span>
-              <span className="cart-dropdown-total-amount">$ {subTotal}</span>
-            </div>
-          )}
 
           {cartItems && cartItems.length > 0 ? (
-            <Link className="cart-dropdown-checkout" to="/checkout">
-              Checkout
-            </Link>
-          ) : (
-            <Link
-              className="cart-dropdown-checkout"
-              to="/collections/all-bars"
-              onClick={() => closeModal()}
-            >
-              SHOP NOW
-            </Link>
-          )}
+            <div className="cart-dropdown-checkout-container">
+              <div className="cart-dropdown-checkout-details">
+                <div className="order-subtotal-and-checkout-btn">
+                  <p className="subtotal-title">Subtotal</p>
+                  <p className="subtotal-price">${subTotal}</p>
+                </div>
+                <div className="cart-dropdown-checkout">CHECKOUT</div>
+              </div>
+            </div>
+          ) : null
+          // (
+          //   <Link
+          //     className="cart-dropdown-checkout"
+          //     to="/collections/all-bars"
+          //     onClick={() => closeModal()}
+          //   >
+          //     SHOP NOW
+          //   </Link>
+          // )
+          }
         </div>
       </>
     )
   )
 }
-
 export default CartDropdown

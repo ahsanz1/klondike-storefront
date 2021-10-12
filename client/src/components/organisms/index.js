@@ -37,8 +37,43 @@ import CheckoutSuccess from 'components/molecules/checkout/checkout-success'
 import SingleOrderDetails from 'components/organisms/single-order-details'
 import OrderDetails from 'components/organisms/order-details'
 import SliderTabbable from 'components/organisms/slider-tabable'
-
+import ProductInvotationSlider from 'component/organisms/ProductInvotationSlider'
+import Home from 'component/organisms/Home'
+import HomeLubricant from 'components/organisms/HomeLubricant'
+import DistributionProduct from 'components/organisms/DistributionProduct'
+import DownTime from 'components/organisms/DownTime'
+import HomeBanner from 'components/organisms/HomeBanner'
+import CommitedSuccess from 'components/organisms/CommitedSuccess'
+import ClientTestimonial from 'components/organisms/ClientTestimonial'
+import ContactAddres from 'components/organisms/ContactAddres'
+import Oats from 'components/organisms/OATS/index'
+import PlpTabList from 'components/organisms/plp-tab-list'
+import PCPOverview from 'components/organisms/PCPOverview'
+import ProductItemList from 'components/organisms/ProductItemList'
+import ProductOrderList from 'components/organisms/productorderlist'
+import QuickOrder from 'components/organisms/quick-order'
+import ContactUs from 'components/organisms/contact-us-page'
+import Checkoutsection from 'components/organisms/checkout-section'
+import Technical from 'components/organisms/Technical-document'
+import Oamspproval from 'components/organisms/oam-approval'
+import Confirmation from 'components/organisms/confirmation'
+import WarrantyPage from 'components/organisms/warranty-page'
+import VideoGallery from 'components/organisms/video-gallery'
+import Techtabllist from 'components/organisms/Technical-tablist'
+import TechNews from 'components/organisms/tech-news-page'
+import Catlog from 'components/organisms/catlog-page'
+import TechResource from 'components/organisms/Tech-Resource'
+import OverView from 'components/organisms/company-overview'
 export default {
+  ContactAddres: params => <ContactAddres {...params} />,
+  ClientTestimonial: params => <ClientTestimonial {...params} />,
+  CommitedSuccess: params => <CommitedSuccess {...params} />,
+  HomeBanner: params => <HomeBanner {...params} />,
+  DownTime: params => <DownTime {...params} />,
+  DistributionProduct: params => <DistributionProduct {...params} />,
+  HomeLubricant: params => <HomeLubricant {...params} />,
+  Home: params => <Home {...params} />,
+  ProductInvotationSlider: params => <ProductInvotationSlider {...params} />,
   Faqs: params => <Faqs {...params} />,
   Reviews: params => <Reviews {...params} />,
   CardsGroup: params => <CardsGroup {...params} />,
@@ -84,4 +119,22 @@ export default {
   SubscriptionOrderDetails: params => <subscriptionOrderDetails {...params} />,
   OrderDetails: params => <OrderDetails {...params} />,
   SliderTabbable: params => <SliderTabbable {...params} />,
+  Oats: params => <Oats {...params} />,
+  PlpTabList: params => <PlpTabList {...params} />,
+  PCPOverview: params => <PCPOverview {...params} />,
+  ProductItemList: params => <ProductItemList {...params} />,
+  ProductOrderList: params => <ProductOrderList {...params} />,
+  Checkoutsection: params => <Checkoutsection {...params} />,
+  QuickOrder: params => <QuickOrder {...params} />,
+  Technical: params => <Technical {...params} />,
+  ContactUs: params => <ContactUs {...params} />,
+  Oamspproval: params => <Oamspproval {...params} />,
+  Confirmation: params => <Confirmation {...params} />,
+  WarrantyPage: params => <WarrantyPage {...params} />,
+  VideoGallery: params => <VideoGallery {...params} />,
+  Techtabllist: params => <Techtabllist {...params} />,
+  TechNews: params => <TechNews {...params} />,
+  Catlog: params => <Catlog {...params} />,
+  TechResource: params => <TechResource {...params} />,
+  OverView: params => <OverView {...params} />,
 }

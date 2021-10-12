@@ -9,6 +9,7 @@ const InputTextField = ({
   style = {},
   onChange,
   onBlur,
+  onFocus,
   required = false,
   type = '',
   minLength = '',
@@ -24,6 +25,9 @@ const InputTextField = ({
       required={required}
       maxLength={maxLength}
       type={type}
+      onFocus={e => {
+        onFocus && onFocus(e)
+      }}
       onBlur={e => {
         onBlur && onBlur(e)
       }}
@@ -41,6 +45,7 @@ InputTextField.propTypes = {
   style: PropTypes.object,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
   required: PropTypes.bool,
   type: PropTypes.string,
   minLength: PropTypes.string,

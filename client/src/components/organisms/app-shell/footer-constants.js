@@ -1,78 +1,98 @@
 export const footerConstants = {
   footerLinks: [
     {
-      heading: 'Shop',
+      heading: 'Account',
       links: [
         {
-          text: 'Our Bars',
+          text: 'Sign in',
           url: '/',
         },
-        {
-          text: 'Find Us',
-          url: '/',
-        },
-        {
-          text: 'Whole Sale',
-          url: '/',
-        },
+        // {
+        //   text: 'Find Us',
+        //   url: '/',
+        // },
+        // {
+        //   text: 'Whole Sale',
+        //   url: '/',
+        // },
       ],
     },
     {
-      heading: 'IQBAR',
+      heading: 'Tech resources',
       links: [
         {
-          text: 'Why IQBAR',
+          text: 'Technical documents',
           url: '/',
         },
         {
-          text: 'Press',
-          url: '/press',
-        },
-      ],
-    },
-    {
-      heading: 'HELP',
-      links: [
-        {
-          text: 'Contact Us',
+          text: 'OEM approvals',
           url: '/',
         },
         {
-          text: 'Faqs',
-          url: '/faqs',
+          text: 'warranty',
+          url: '/',
         },
       ],
     },
+    // {
+    //   heading: 'HELP',
+    //   links: [
+    //     {
+    //       text: 'Contact Us',
+    //       url: '/',
+    //     },
+    //     {
+    //       text: 'Faqs',
+    //       url: '/faqs',
+    //     },
+    //   ],
+    // },
   ],
   socialLinks: [
     {
-      icon: { url: '/static/icons/facebook-app.svg' },
+      icon: { url: '/static/images/facebook.png' },
       link: '/',
     },
     {
-      icon: { url: '/static/icons/instagram.svg' },
+      icon: { url: '/static/images/instagram.png' },
       link: '/',
     },
     {
-      icon: { url: '/static/icons/twitter.svg' },
+      icon: { url: '/static/images/twitter.png' },
       link: '/',
     },
     {
-      icon: { url: '/static/icons/pinterest.svg' },
+      icon: { url: '/static/images/linkedin.png' },
+      link: '/',
+    },
+    {
+      icon: { url: '/static/images/youtube.png' },
       link: '/',
     },
   ],
 
   logoImage: {
-    url: '/static/icons/footer-logo.svg',
+    url: '/static/images/logo.png',
   },
-
-  policyText: '© 2021 IQBAR, Inc.',
+  Productimg: {
+    url: '/static/images/productfooter.png',
+  },
+  footerimg: { url: '/static/images/footerimg.png' },
+  policyText: '©2021 KLONDIKE Lubricants Corporation. All Rights Reserved.',
   privacyTitle: 'Privacy Policy',
   privacyLink: '/',
-  returnPolicyTitle: 'Return Policy',
+  returnPolicyTitle: 'Terms & Conditions',
   returnPolicyLink: '/',
+  connectKlondike: 'Connect with KLONDIKE',
+  connectKlondikeLink: '/',
 
   newsLetterTitle: 'Sign up and get 15% OFF your next order!',
   newsLetterDesc: 'We share tips, headlines, recipes, and more.',
+  logoDescription:
+    'KLONDIKE Lubricants Corporation is an independent Canadian company with oils and lubricants distribution facilities in:',
+  logoDescriptionValues:
+    'Greater Vancouver, BC  Edmonton, AB  Winnipeg, MB  Greater Toronto, ON  Moncton, NB',
+  nanOilFooter:
+    'Erat egestas facilisis consequat vitae vitae id sit augue odio.',
+  dealer: 'Become a dealer',
 }

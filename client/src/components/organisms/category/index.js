@@ -8,7 +8,8 @@ import './style.scss'
 import useSubscriptionItems from 'libs/api-hooks/useSubscriptionItems'
 // import { subscribeItems } from 'libs/data/data'
 
-const Category = ({ categoryName, tproducts }) => {
+const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
+  console.log('fetch', fetchCategory)
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const { subscriptionItems, getSubscriptionItems } = useSubscriptionItems()
@@ -21,6 +22,9 @@ const Category = ({ categoryName, tproducts }) => {
       setProducts(tproducts)
     }
   }, [])
+  useEffect(() => {
+    setProducts(productList)
+  }, [productList])
 
   const dData = {
     isDeleted: false,
@@ -49,7 +53,8 @@ const Category = ({ categoryName, tproducts }) => {
   }
 
   useEffect(() => {
-    categoryName && console.log({ categoryName })
+    categoryName && console.log('check category', { categoryName })
+    perfomeAlgoliaSearch(categoryName, 0)
   }, [categoryName])
 
   const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
@@ -66,6 +71,8 @@ const Category = ({ categoryName, tproducts }) => {
       setProducts(serverResults)
 
       setLoading(false)
+      console.log('check results:', results)
+      subItemHandler(results)
     } catch (e) {
       setLoading(false)
     }
@@ -95,10 +102,11 @@ const Category = ({ categoryName, tproducts }) => {
           : 'product-contanier'
       }
     >
-      <h2 className="category-title">{categoryName}</h2>
-      <Row>
+      {/* <h2 className="category-title">{categoryName}</h2> */}
+      <div className="image-container"></div>
+      <Row gutter={[6, 6]}>
         {loading ? (
-          [1, 2, 3].map((skelton, index) => (
+          [1, 2, 3, 4].map((skelton, index) => (
             <Col
               span={24}
               md={12}
@@ -116,7 +124,7 @@ const Category = ({ categoryName, tproducts }) => {
           <>
             {products &&
               products.map((product, index) => (
-                <Col span={24} md={12} lg={8} key={index}>
+                <Col span={12} md={12} lg={6} key={index}>
                   <ProductItem
                     item={{
                       ...product,
@@ -138,6 +146,8 @@ const Category = ({ categoryName, tproducts }) => {
 Category.propTypes = {
   categoryName: PropTypes.string,
   tproducts: PropTypes.array,
+  subItemHandler: PropTypes.func,
+  productList: PropTypes.array,
 }
 
 export default Category

@@ -1,48 +1,130 @@
 export const Header = {
   links: [
     {
-      label: 'Shop',
-      url: '/collections/all-bars',
+      label: 'About KLONDIKE',
+      url: '/',
       mobileOnly: false,
       loggedInOnly: false,
+      dropDown: [
+        {
+          name: 'Overview',
+        },
+        {
+          name: 'our story',
+        },
+        {
+          name: 'why klondike',
+        },
+        {
+          name: 'indusrty applications',
+        },
+        {
+          name: 'Safety & environment',
+        },
+        {
+          name: 'work at klondike',
+        },
+      ],
     },
+    // {
+    //   label: 'OUR PRODUCTS',
+    //   url: '/account',
+    //   mobileOnly: true,
+    //   loggedInOnly: false,
+    // },
+    // { label: 'Refer + Earn', url: '/', mobileOnly: true, loggedInOnly: false },
     {
-      label: 'Account',
-      url: '/account',
-      mobileOnly: true,
-      loggedInOnly: false,
-    },
-    { label: 'Refer + Earn', url: '/', mobileOnly: true, loggedInOnly: false },
-    {
-      label: 'Get 50% Off',
+      label: 'OUR PRODUCTS',
       url: '/#discount',
       mobileOnly: false,
       loggedInOnly: false,
+      dropDown: [
+        {
+          name: 'Products Overview',
+          image: '/static/images/nanoil.png',
+        },
+        {
+          name: 'nano',
+          image: '/static/images/klondike1.png',
+        },
+        {
+          name: 'Heavy Duty Engine Oils',
+          image: '/static/images/klondike2.png',
+        },
+        {
+          name: 'Automotive Engine Oils',
+          image: '/static/images/klondike3.png',
+        },
+        {
+          name: 'Gear Lubricants',
+          image: '/static/images/klondike1.png',
+        },
+        {
+          name: 'Transmission Fluids',
+          image: '/static/images/klondike2.png',
+        },
+        {
+          name: 'Hydraulic Fluids',
+          image: '/static/images/klondike3.png',
+        },
+        {
+          name: 'Industrial Oils',
+          image: '/static/images/klondike1.png',
+        },
+        {
+          name: 'Greases',
+          image: '/static/images/klondike2.png',
+        },
+        {
+          name: 'Biodegradable Lubricants',
+          image: '/static/images/klondike3.png',
+        },
+      ],
     },
     {
-      label: 'Find Us',
+      label: 'TECH RESOURCES',
       url: '/find-us',
       mobileOnly: false,
       loggedInOnly: false,
+      dropDown: [
+        {
+          name: 'Technical Documents',
+        },
+        {
+          name: 'OEM Approvals',
+        },
+        {
+          name: 'Catalog',
+        },
+        {
+          name: 'Warranty',
+        },
+        {
+          name: 'Video Gallery',
+        },
+        {
+          name: 'Tech/News Blog',
+        },
+      ],
     },
-    {
-      label: 'Wholesale',
-      url: '/wholesale',
-      mobileOnly: false,
-      loggedInOnly: false,
-    },
-    {
-      label: 'Office',
-      url: '/office',
-      mobileOnly: false,
-      loggedInOnly: false,
-    },
-    {
-      label: 'Why IQBAR',
-      url: '/why-iqbar',
-      mobileOnly: false,
-      loggedInOnly: false,
-    },
+    // {
+    //   label: 'CONTACT KLONDIKE',
+    //   url: '/wholesale',
+    //   mobileOnly: false,
+    //   loggedInOnly: false,
+    // },
+    // {
+    //   label: 'Office',
+    //   url: '/office',
+    //   mobileOnly: false,
+    //   loggedInOnly: false,
+    // },
+    // {
+    //   label: 'Why IQBAR',
+    //   url: '/why-iqbar',
+    //   mobileOnly: false,
+    //   loggedInOnly: false,
+    // },
     {
       label: 'About Us',
       url: '/about-us',
@@ -93,10 +175,15 @@ export const Header = {
   //     link: '/refer-earn',
   //   },
   // },
-  offerLabel: 'Try 7 Flavors For $14.99!',
-  offerLink: '/products?sku=7BARSAMPLER',
-  promoBanner: 'Free Shipping on All U.S. Orders!',
-  referLabel: 'Refer + Earn',
-  referLink: '/refer-earn',
-  logo: { url: '/static/logo.svg' },
+  offerLabel: 'FIND THE RIGHT OIL FOR YOUR APPLICATION',
+  buyButton: 'Quick Order',
+  promoButton: 'Search Now',
+  promoLogo: { url: '/static/images/promologo.png' },
+  url: '/account/login?logout=true',
+
+  // offerLink: '/products?sku=7BARSAMPLER',
+  // promoBanner: 'Free Shipping on All U.S. Orders!',
+  // referLabel: 'Refer + Earn',
+  // referLink: '/refer-earn',
+  logo: { url: '/static/images/logo.png' },
 }

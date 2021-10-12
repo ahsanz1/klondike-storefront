@@ -1,0 +1,161 @@
+.ant-tooltip-inner {
+  box-sizing: border-box;
+  width: 422px;
+  height: 144px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  background: #013a4e !important;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.toltip-container {
+  h1 {
+    color: #f2a900;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.039px;
+    line-height: 18px;
+    text-align: left;
+  }
+
+  p {
+    margin-top: 20px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.039px;
+    line-height: 18px;
+    text-align: left;
+  }
+}
+
+//New Css
+
+.table {
+  display: table;
+  width: 50vw;
+  margin: auto;
+  border-collapse: separate;
+  word-wrap: break-word;
+}
+
+.cell {
+  display: table-cell;
+  width: 8vw;
+  min-width: 2vw;
+  padding: 1vw;
+  color: #fff;
+  font-size: 1vw;
+  text-align: center;
+  // border: 1px solid gray;
+}
+
+.total-price {
+  color: #f2a900 !important;
+}
+
+.color-disabled {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.cell-header {
+  display: table-cell;
+  width: 8vw;
+  min-width: 2vw;
+  padding: 1vw;
+  color: #fff;
+  font-size: 1.1vw;
+  text-align: center;
+  // border: 1px solid gray;
+}
+
+.input {
+  width: 5vw !important;
+}
+
+.customContainer {
+  // margin: auto;
+  // justify-content: center;
+  width: 100%;
+  padding: 1vw;
+}
+
+.breadCrumbStyle {
+  color: #fff !important;
+  font-size: 1.5vw !important;
+  font-weight: bold !important;
+  line-height: 1vw;
+  text-transform: uppercase !important;
+}
+
+.image-background {
+  width: 20vw;
+  height: 23vw;
+  margin-top: 2.3vw;
+  background-color: #fff;
+}
+
+.imageStyle {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.customButton {
+  box-sizing: border-box;
+  width: 15vw;
+  height: 4vw;
+  margin-top: 1vw;
+  border: 1px solid #f1a900;
+  border-radius: 9px;
+  background-color: #f1a900;
+  color: #fff;
+  font-size: 1.5vw;
+  font-weight: 700;
+}
+
+.customButton:disabled {
+  border: '1px solid gray';
+  background: gray;
+}
+
+.customButton :hover {
+  background-color: #fa9200;
+}
+
+.p-10 {
+  padding: 1.5vw;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.share-icon {
+  width: 4vw;
+  height: 4vw;
+  padding: 1vw;
+  border: 1px solid #013a4e;
+  border-radius: 50%;
+  background: #002a3a;
+}
+
+.ant-breadcrumb > span:last-child {
+  color: #f1a900 !important;
+}
+
+.spinner {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

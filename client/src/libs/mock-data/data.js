@@ -1,22 +1,24 @@
-import MissionStatementData from 'components/organisms/mission-statement/data'
+// import MissionStatementData from 'components/organisms/mission-statement/data'
 import WebpageGlobalHeroBannerData from 'components/organisms/webpages-hero-image-banner/data'
-import discountOrderData from 'components/organisms/discount-order/data'
+// import discountOrderData from 'components/organisms/discount-order/data'
 // import testimonialsData from 'components/organisms/testimonials/data'
-import productSliderData from 'components/organisms/product-slider/data'
-import instagramPosts from 'components/organisms/instagram-section/data'
+// import productSliderData from 'components/organisms/product-slider/data'
+// import instagramPosts from 'components/organisms/instagram-section/data'
 import { categoriesXPM as categories } from 'components/organisms/plp/data'
 import SliderTabbableData from 'components/organisms/slider-tabable/data'
+// import tableAccoData from 'components/organisms/faqs/data'
 
 import {
   merchandiseOptions,
   benefits,
   review,
-  reviews,
+  // reviews,
   requestFormData,
   faqsData,
   whyEatIQBAR,
   whatSectionData,
-  myAccount,
+  // myAccount,
+  accountTabsData,
   accountAddress,
   locationsData,
   findUsBanner,
@@ -29,10 +31,23 @@ import {
   shopBanner,
   authResetPasswordFormData,
   aboutUsPage,
+  ProductOverview,
+  ProductItem,
+  heroBannerdata,
+  bannerlubricants,
+  DownTime,
+  Testimonial,
+  ProductInovationslider,
+  CommitedSuccess,
+  homebanneer,
+  distributionSecond,
+  // ProductLubricant,
+  LubricantComponent,
+  distributionproduct,
   TermsCondition,
   // customizedProductDescription,
   PressKit,
-  MainPageHeroData,
+  // MainPageHeroData,
   DeliveryStatus,
   subscriptionBillingInfo,
   PurchaseHistory,
@@ -49,36 +64,112 @@ import {
   requestFormOfficeData,
   // simpleFormData,
   contactUsBanner,
-  mapLocationData,
   policyData,
-  simpleFormData,
   emptyCartData,
+  ourProduct,
+  pdpdata,
+  pdpdatasheet,
+  RadioData,
+  Packagerorder,
+  bulkorder,
+  PlpBottom,
+  PcpBottom,
+  searchFlow,
 } from 'libs/data/data'
 const mockData = {
+  // '/': [
+  //   {
+  //     id: 'MainPageHero',
+  //     params: MainPageHeroData,
+  //   },
+  //   {
+  //     id: 'MissionStatement',
+  //     params: MissionStatementData,
+  //   },
+  //   {
+  //     id: 'ProductSlider',
+  //     params: productSliderData,
+  //   },
+  //   {
+  //     id: 'DiscountOrder',
+  //     params: discountOrderData,
+  //   },
+  //   {
+  //     id: 'Testimonials',
+  //     params: reviews,
+  //   },
+  //   {
+  //     id: 'InstagramSection',
+  //     params: instagramPosts,
+  //   },
+  // ],
+
   '/': [
     {
-      id: 'MainPageHero',
-      params: MainPageHeroData,
+      id: 'Home',
+      params: heroBannerdata,
     },
     {
-      id: 'MissionStatement',
-      params: MissionStatementData,
+      id: 'HomeLubricant',
+      params: bannerlubricants,
+    },
+    // {
+    //   id: 'ProductLubricant',
+    //   params: ProductLubricant,
+    // },
+    {
+      id: 'DistributionProduct',
+      params: LubricantComponent,
     },
     {
-      id: 'ProductSlider',
-      params: productSliderData,
+      id: 'DownTime',
+      params: DownTime,
     },
     {
-      id: 'DiscountOrder',
-      params: discountOrderData,
+      id: 'HomeBanner',
+      params: homebanneer,
     },
     {
-      id: 'Testimonials',
-      params: reviews,
+      id: 'DistributionProduct',
+      params: distributionSecond,
     },
     {
-      id: 'InstagramSection',
-      params: instagramPosts,
+      id: 'DistributionProduct',
+      params: distributionproduct,
+    },
+    {
+      id: 'CommitedSuccess',
+      params: CommitedSuccess,
+    },
+    {
+      id: 'ClientTestimonial',
+      params: Testimonial,
+    },
+    {
+      id: 'ProductInvotationSlider',
+      params: ProductInovationslider,
+    },
+    {
+      id: 'DownTime',
+      params: DownTime,
+    },
+  ],
+  '/PCP': [
+    {
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...contactUsBanner, key: '112233446677' },
+    },
+    {
+      id: 'PCPOverview',
+      params: ProductOverview,
+    },
+    {
+      id: 'ProductItemList',
+      params: ProductItem,
+    },
+    {
+      id: 'PCPBottom',
+      params: PcpBottom,
     },
   ],
   '/terms-condition': [
@@ -87,6 +178,24 @@ const mockData = {
       params: TermsCondition,
     },
   ],
+  '/PLPBottom': [
+    {
+      id: 'PLPBottom',
+      params: PlpBottom,
+    },
+  ],
+  '/SearchFlow': [
+    {
+      id: 'SearchFlow',
+      params: searchFlow,
+    },
+  ],
+  '/search-filter': [
+    {
+      id: 'SearchFilter',
+    },
+  ],
+
   '/cart': [
     {
       id: 'CartPage',
@@ -96,7 +205,8 @@ const mockData = {
   '/account': [
     {
       id: 'MyAccount',
-      params: { myAccount },
+      // params: { myAccount },
+      params: { accountTabsData },
     },
   ],
   '/account/address': [
@@ -226,13 +336,19 @@ const mockData = {
       id: 'Reviews',
     },
   ],
+  '/ourProduct': [
+    {
+      id: 'OurProduct',
+      params: ourProduct,
+    },
+  ],
   '/collections': [
     {
       id: 'Category',
       params: { ...category },
     },
   ],
-  '/collections/all-bars': [
+  '/plp-page': [
     {
       id: 'WebpageGlobalHeroBanner',
       params: shopBanner,
@@ -345,16 +461,8 @@ const mockData = {
   ],
   '/contact-us': [
     {
-      id: 'WebpageGlobalHeroBanner',
-      params: { ...contactUsBanner, key: '112233446677' },
-    },
-    {
-      id: 'SimpleForm',
-      params: simpleFormData,
-    },
-    {
-      id: 'MapLocation',
-      params: mapLocationData,
+      id: 'ContactUs',
+      params: {},
     },
   ],
   '/policies/privacy-policy': [
@@ -369,6 +477,108 @@ const mockData = {
       params: {},
     },
   ],
-}
+  '/oats': [
+    {
+      id: 'Oats',
+      params: {},
+    },
+  ],
+  '/PDP': [
+    {
+      id: 'PDP',
+      params: { pdpdata, pdpdatasheet, RadioData },
+    },
+  ],
+  '/Order': [
+    {
+      id: 'order',
+      params: { ...Packagerorder },
+    },
+  ],
+  '/bulk': [
+    {
+      id: 'order',
+      params: { ...bulkorder },
+    },
+  ],
+  '/productorderform': [
+    {
+      id: 'ProductOrderList',
+      params: {},
+    },
+  ],
+  '/quickorder': [
+    {
+      id: 'QuickOrder',
+      params: {},
+    },
+  ],
+  '/Checkoutsection': [
+    {
+      id: 'Checkoutsection',
+      params: {},
+    },
+  ],
+  '/Technical-doucment': [
+    {
+      id: 'Technical',
+      params: {},
+    },
+  ],
 
+  '/oamapprovals': [
+    {
+      id: 'Oamspproval',
+      params: {},
+    },
+  ],
+  '/confirmation-order': [
+    {
+      id: 'Confirmation',
+      params: {},
+    },
+  ],
+  '/warranty': [
+    {
+      id: 'WarrantyPage',
+      params: {},
+    },
+  ],
+  '/video-gallery': [
+    {
+      id: 'VideoGallery',
+      params: {},
+    },
+  ],
+  '/Techtabllist': [
+    {
+      id: 'Techtabllist',
+      params: {},
+    },
+  ],
+  '/tech-news-blog': [
+    {
+      id: 'TechNews',
+      params: {},
+    },
+  ],
+  '/catlog': [
+    {
+      id: 'Catlog',
+      params: {},
+    },
+  ],
+  '/tech-resource': [
+    {
+      id: 'TechResource',
+      params: {},
+    },
+  ],
+  '/overview': [
+    {
+      id: 'OverView',
+      params: {},
+    },
+  ],
+}
 export default mockData

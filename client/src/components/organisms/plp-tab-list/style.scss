@@ -1,0 +1,72 @@
+@import '~styles/globals';
+
+.categoryItem {
+  width: 20%;
+
+  .active-category {
+    border-color: #f2a900 !important;
+    color: #f2a900 !important;
+
+    @media (max-width: 768px) {
+      margin-bottom: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      background: none !important;
+    }
+  }
+
+  .c-label {
+    margin-bottom: 1vw;
+    padding: 1vw;
+    background: rgba(5, 5, 5, 0.39);
+    color: rgba(236, 234, 233, 0.69);
+    font-family: $OpenSans;
+    font-size: 0.67vw;
+    font-weight: bold;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      border: none !important;
+      font-size: 2.6vw;
+    }
+
+    @media (max-width: 500px) {
+      margin-bottom: 2.6vw;
+      padding: 2.6vw;
+    }
+
+    &:hover {
+      color: #f2a900;
+    }
+  }
+
+  .subItem {
+    margin-bottom: 1vw;
+    padding: 0.69vw 0;
+
+    .c-label {
+      margin-bottom: 1vw;
+      padding: 0;
+      border: none;
+      background: none;
+
+      .h-links {
+        color: #fff;
+      }
+    }
+
+    .active-product {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0;
+      border: none;
+      background: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
