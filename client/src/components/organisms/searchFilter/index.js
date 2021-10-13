@@ -25,22 +25,19 @@ const SearchFilter = ({ searchHeading }) => {
   const [filterCount, setFilterCount] = useState(0)
   const [loading, setLoading] = useState(false)
 
-  console.log('check filter array11:', searchHeading, searchKey)
-  console.log(searchFilter, products, filterCount, loading, 'searcing')
   // let productitem = []
   useEffect(() => {
     let newarr =
-      searchFilter &&
+      searchFilter.length > 0 &&
       searchFilter.map(data => {
         // productitem.push(data.sku)
         return { value: data['Part Number'] }
       })
-    console.log(newarr, 'dataa')
     setProduct(newarr)
   }, [searchFilter])
   useEffect(() => {
     let unitarr =
-      searchFilter &&
+      searchFilter.length > 0 &&
       searchFilter.map(data => {
         // productitem.push(data.sku)
         return { value: data['Unit of Measurement'] }
@@ -49,14 +46,13 @@ const SearchFilter = ({ searchHeading }) => {
   }, [searchFilter])
   useEffect(() => {
     let sizearr =
-      searchFilter &&
+      searchFilter.length > 0 &&
       searchFilter.map(data => {
         // productitem.push(data.sku)
         return { value: data['Package Size'] }
       })
     setSize(sizearr)
   }, [searchFilter])
-  console.log(product, 'productitem')
 
   const changePN = async e => {
     setPN(e)
@@ -86,7 +82,6 @@ const SearchFilter = ({ searchHeading }) => {
 
     await searchFilters(payload).then(res => {
       setSearchFilter(res)
-      console.log(res, 'sk')
     })
   }
 
@@ -98,7 +93,6 @@ const SearchFilter = ({ searchHeading }) => {
       serverResults.sort((a, b) =>
         a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
       )
-      console.log(serverResults, 'serverResults')
       // if (pageNumber === 0) {
       //   productListing(results.nbHits, category)
       // }
@@ -111,7 +105,6 @@ const SearchFilter = ({ searchHeading }) => {
   }
 
   useEffect(() => {
-    console.log(selectedFilterList, 'selectedFilterList')
     let payload = []
     if (selectedFilterList.length > 0) {
       for (const filteredItem of selectedFilterList) {
@@ -122,7 +115,6 @@ const SearchFilter = ({ searchHeading }) => {
         const serverResults = results.hits || []
         setProducts(serverResults)
         let count = searchFilter.filter(item => item.sku === '628946213607')
-        console.log(count, 'count')
         setFilterCount(count.length)
       })
     } else {

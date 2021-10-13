@@ -19,7 +19,6 @@ const Dropdown = ({
   setSelectFilterList,
 }) => {
   const [change, setChange] = useState()
-  console.log(change)
   // const handleChange = useCallback(
   //   event => {
   //     const list = items.map(item => {
