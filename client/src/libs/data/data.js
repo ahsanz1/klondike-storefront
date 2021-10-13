@@ -4047,6 +4047,7 @@ export const technicalBanner = {
     altText: 'desktop hero image',
   },
 }
+
 export const techresource = {
   desktopImage: {
     url: '/static/images/Logging_backgro.png',

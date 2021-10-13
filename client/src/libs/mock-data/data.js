@@ -297,7 +297,7 @@ const mockData = {
       params: faqsData,
     },
   ],
-  '/faqs': [
+  '/price-list': [
     {
       id: 'Faqs',
       params: faqsData,
