@@ -7,7 +7,7 @@ import './style.scss'
 const PCPBottom = ({ image, button, mobileButton }) => {
   return (
     <div className="bottom-plp">
-      <div className="plp-bottom">
+      <div className="pcp-bottom">
         <div className="plp-bottom-image">
           <Image
             src={image}

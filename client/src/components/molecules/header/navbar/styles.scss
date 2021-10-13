@@ -29,7 +29,7 @@
     align-items: center;
     justify-content: space-between;
     height: 7.6vw;
-    padding: 0 4.1vw;
+    padding: 0 1.66vw;
     box-shadow: rgba(0, 0, 0, 0.1) 0 0 0.625rem 0;
 
     @media (max-width: 992px) {
@@ -70,7 +70,7 @@
   }
 
   &__logo {
-    width: 15.3vw;
+    width: 14.6vw;
     height: 5.4vw;
 
     @media (max-width: 768px) {
@@ -100,6 +100,8 @@
   &__icons {
     display: flex;
     align-items: center;
+    margin-top: 3.4vw;
+    margin-bottom: 3.33vw;
 
     @media (max-width: 992px) {
       justify-content: end;
@@ -119,6 +121,11 @@
     button {
       @media (max-width: 320px) {
         padding-right: 0 !important;
+      }
+
+      img {
+        width: 1.66vw;
+        height: 1.66vw;
       }
     }
   }
@@ -183,11 +190,12 @@
 
     .c-image {
       position: absolute;
-      top: 15px;
+      // top: 15px;
       right: 0;
 
       @media (max-width: 500px) {
-        top: 1.3vw;
+        top: 3.6vw;
+        right: 9.33vw;
       }
     }
   }
@@ -200,11 +208,9 @@
     }
 
     .header-link {
-      display: flex;
-      align-items: center;
-      height: 7.5vw;
-      margin: 0 1.25vw;
-      padding: 0.48vw 0;
+      margin: 2.899vw 0;
+      // display: flex;
+      // align-items: center;
       color: $white-color;
       font-family: Open-Sans, Helvetica, Arial, sans-serif;
       font-size: 1.3vw;
@@ -212,13 +218,7 @@
       font-weight: normal;
       // border-bottom: 3px solid transparent;
       letter-spacing: 0.015em;
-      line-height: 1.8vw;
       text-transform: uppercase;
-
-      &:hover {
-        padding-bottom: 6px;
-        // border-bottom: 3px solid $white-color;
-      }
     }
   }
 
@@ -253,6 +253,10 @@
   .quick-order {
     position: relative;
     left: 1.3vw;
+    margin-top: 3.19vw;
+    // width: 9.93vw;
+    margin-right: 1.1vw;
+    margin-bottom: 2.36vw;
     border: none;
     background: none;
     color: $white-color;
@@ -278,11 +282,11 @@
 
   .header__icons {
     .c-link {
-      padding-right: 2vw !important;
+      margin-right: 2.77vw !important;
       border: none;
 
       @media screen and(max-width: 500px) {
-        padding-right: 5.3vw !important;
+        margin-right: 5.3vw !important;
       }
 
       .h-links {

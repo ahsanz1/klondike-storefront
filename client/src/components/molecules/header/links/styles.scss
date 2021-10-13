@@ -1,7 +1,20 @@
+/* stylelint-disable */
 @import '~styles/globals';
 
 .links {
   display: flex;
+
+  div {
+    margin-right: 3.055vw;
+
+    &:nth-child(3) {
+      margin-right: 0 !important;
+    }
+
+    @media (max-width: 500px) {
+      margin-right: 0 !important;
+    }
+  }
 
   a {
     color: $primary-color;
@@ -91,4 +104,10 @@
   //     display: none;
   //   }
   // }
+  .c-image {
+    @media (min-width: 992px) {
+      display: none !important;
+    }
+  }
 }
+/* stylelint-enable */

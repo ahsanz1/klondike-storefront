@@ -45,6 +45,7 @@ import {
   LubricantComponent,
   distributionproduct,
   TermsCondition,
+  PrivacyPolicy,
   // customizedProductDescription,
   PressKit,
   // MainPageHeroData,
@@ -178,6 +179,12 @@ const mockData = {
       params: TermsCondition,
     },
   ],
+  '/privacy-policy': [
+    {
+      id: 'PrivacyPolicy',
+      params: PrivacyPolicy,
+    },
+  ],
   '/PLPBottom': [
     {
       id: 'PLPBottom',
@@ -297,7 +304,8 @@ const mockData = {
       params: faqsData,
     },
   ],
-  '/faqs': [
+
+  '/Price-List': [
     {
       id: 'Faqs',
       params: faqsData,
