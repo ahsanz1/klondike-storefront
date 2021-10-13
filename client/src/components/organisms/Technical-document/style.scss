@@ -28,7 +28,9 @@ $vw-viewport: 1440;
     margin-top: get-vw(34px);
 
     @media (max-width: 768px) {
-      margin-top: 100px;
+      width: 100vw;
+      margin: 0;
+      margin-top: 21vw !important;
     }
   }
 

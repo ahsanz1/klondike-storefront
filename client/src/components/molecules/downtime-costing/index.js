@@ -16,7 +16,7 @@ const DowntimeCosting = ({
   return (
     <div className="internal">
       <div className="downtime_img_wraper">
-        {/* <img src={image.url} alt="alt" className="downtime-img" /> */}
+        <img src={image.url} alt="alt" className="downtime-img" />
       </div>
       <h1>{heading}</h1>
       <p>{text}</p>

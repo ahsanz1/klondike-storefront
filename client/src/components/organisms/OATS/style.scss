@@ -16,9 +16,10 @@
   }
 
   h1 {
+    margin-top: 0;
     margin-bottom: 21px;
     // margin-left: -97px;
-    padding-top: 90px;
+    padding-top: 53px;
     font-family: $OpenSans;
     font-size: 2.1vw;
     font-style: normal;
@@ -69,9 +70,15 @@
   }
 
   .btn-search {
-    width: 68px;
+    // width: 68px;
     padding: 0;
     border-radius: 21px;
+    background-color: #f1a900;
+
+    @media (max-width: 768px) {
+      height: 17vw !important;
+      background-color: #f1a900;
+    }
   }
 
   .wrapper-oats {
@@ -114,6 +121,12 @@
       height: 4.4vw;
       margin: -2px;
       object-fit: cover;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        height: 100%;
+        object-fit: revert;
+      }
     }
 
     @media (max-width: 768px) {
@@ -130,6 +143,10 @@
     border-radius: 16px !important;
     background-color: #e4eff4 !important;
 
+    @media (max-width: 768px) {
+      height: 17vw !important;
+    }
+
     &.cars {
       top: 0;
       width: 15.2vw;
@@ -145,8 +162,8 @@
 
     @media (max-width: 768px) {
       display: block;
+      margin-top: 20px;
       margin-left: 31px;
-      padding-top: 20px;
       padding-bottom: 23px;
     }
 
@@ -231,7 +248,8 @@
   .flex {
     display: flex;
     justify-content: space-between;
-    width: 1300px;
+    width: 1177px;
+    margin-left: 49px;
 
     .title {
       color: #f1a900 !important;
@@ -242,8 +260,39 @@
     width: 20%;
   }
 
-  @media (max-width: 768px) {
-    flex-direction: column;
+  .custom-grid.tiles {
+    color: #f1a900 !important;
+    font-family: $OpenSans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  .table-content {
+    font-family: $OpenSans;
+    font-size: 0.97vw;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.94vw;
+
+    @media (max-width: 768px) {
+      font-family: $OpenSans;
+      font-size: 3.73vw;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 5.6vw;
+    }
+  }
+  // @media (max-width: 768px) {
+  //   flex-direction: column;
+  //   max-width: 90%;
+  // }
+  .table-content:nth-child(even) {
+    background: #094256;
+  }
+
+  .table-content:nth-child(odd) {
+    background: #1f586c;
   }
 }
 

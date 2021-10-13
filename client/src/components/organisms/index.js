@@ -61,7 +61,10 @@ import WarrantyPage from 'components/organisms/warranty-page'
 import VideoGallery from 'components/organisms/video-gallery'
 import Techtabllist from 'components/organisms/Technical-tablist'
 import TechNews from 'components/organisms/tech-news-page'
-
+import Catlog from 'components/organisms/catlog-page'
+import TechResource from 'components/organisms/Tech-Resource'
+import OverView from 'components/organisms/company-overview'
+import PrivacyPolicy from 'components/organisms/privacy-policy'
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -132,4 +135,8 @@ export default {
   VideoGallery: params => <VideoGallery {...params} />,
   Techtabllist: params => <Techtabllist {...params} />,
   TechNews: params => <TechNews {...params} />,
+  Catlog: params => <Catlog {...params} />,
+  TechResource: params => <TechResource {...params} />,
+  OverView: params => <OverView {...params} />,
+  PrivacyPolicy: params => <PrivacyPolicy {...params} />,
 }

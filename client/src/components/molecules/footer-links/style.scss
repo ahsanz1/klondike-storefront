@@ -11,6 +11,13 @@
     line-height: 19px;
     text-transform: uppercase;
   }
+
+  h5 {
+    color: #fff !important;
+    font-family: $OpenSans !important;
+    font-size: 0.83vw;
+    font-weight: bold !important;
+  }
 }
 
 .menu-column {
@@ -29,12 +36,16 @@
   line-height: get-vw(18px);
   list-style: none;
 
+  li {
+    margin-top: 10px;
+  }
+
   a {
     color: #fff;
   }
 
   a:hover {
-    border-bottom: 3px solid #fff;
+    border-bottom: 1px solid #fff;
     color: #fff;
   }
 }
