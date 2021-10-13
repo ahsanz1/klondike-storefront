@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
 import './style.scss'
-import { Radio } from 'antd'
+import { Radio, InputNumber } from 'antd'
 import Label from 'components/atoms/label'
 import PackageOrder from 'components/organisms/quick-order/package-order/index'
 import BulkOrder from 'components/organisms/quick-order/bulk-order/index'
 import AccordionComponent from 'components/molecules/accordionComponent'
 import DesktopCartPageItem from 'components/organisms/cart-and-total'
 import Link from 'components/atoms/link'
-
 import { fetchItems } from 'libs/services/algolia'
 
 import useAddToCart from 'libs/api-hooks/useAddToCart'
@@ -28,7 +27,7 @@ const QuickOrder = () => {
   const [accordianisActive, setAccordianIsActive] = useState(true)
 
   const { addToCartApiCall } = useAddToCart()
-
+  console.log(productstitle, 'productstitle')
   useEffect(() => {
     const data = async () => {
       const items = await fetchItems('')
@@ -37,7 +36,10 @@ const QuickOrder = () => {
     }
     data()
   }, [])
-
+  function onChange (value) {
+    console.log('changed', value)
+  }
+  console.log('pp', fetcheditems)
   const handleAccordianClick = () => {
     setAccordianIsActive(!accordianisActive)
   }
@@ -57,7 +59,8 @@ const QuickOrder = () => {
     const titleArray = items.hits.map(item => {
       return item.title
     })
-    setProductstitle(titleArray)
+    console.log(titleArray, 'titleArray')
+    // setProductstitle(titleArray)
     const inputs = Object.values(inputList[0])
     console.log('arraaayy', inputs)
     if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
@@ -73,12 +76,12 @@ const QuickOrder = () => {
     list[index][name] = value
     setInputList(list)
 
-    const items = await fetchItems(value)
+    // const items = await fetchItems(value)
 
-    const titleArray = items.hits.map(item => {
-      return item.title
-    })
-    setProductstitle(titleArray)
+    // const titleArray = items.hits.map(item => {
+    //   return item.title
+    // })
+    // setProductstitle(titleArray)
     const inputs = Object.values(inputList[0])
     console.log('arraaayy', inputs)
     if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
@@ -87,6 +90,16 @@ const QuickOrder = () => {
       setRadioStateBulk(false)
     }
   }
+
+  useEffect(() => {
+    let packageorder =
+      fetcheditems &&
+      fetcheditems.map((datas, i) => {
+        return { value: datas['Part Number'] }
+      })
+    console.log(packageorder, 'packageorder')
+    setProductstitle(packageorder)
+  }, [fetcheditems])
 
   const handleAddRow = () => {
     if (inputList[0].partnumber.length > 0 && inputList[0].quantity > 0) {
@@ -250,7 +263,57 @@ const QuickOrder = () => {
               </div>
             )}
             {cartItem}
+
+            {cartItems && (
+              <div className="quickorder-wrapper">
+                <div className="item-wraper">
+                  <div>
+                    <div className="img-wraper">
+                      <img src="/static/images/quick.png" alt="img" />
+                    </div>
+                    <button className="quick-orde_btn">Remove Item</button>
+                  </div>
+                  <div className="part-wraper">
+                    <div className="quik-product-heading">
+                      <p>heading product name</p>
+                    </div>
+                    <div>
+                      <p>
+                        Part Num <span>Kl-1420</span>
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        Size <span>Kl-1420</span>
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        Per case <span>Kl-1420</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <p>$24.0</p>
+                </div>
+                <div>
+                  <InputNumber
+                    min={0}
+                    max={100}
+                    defaultValue={0}
+                    onChange={onChange}
+                    size="middle"
+                    className="input"
+                  />
+                </div>
+                <div>
+                  <p>$24.0</p>
+                </div>
+              </div>
+            )}
           </div>
+
           {cartItems && <TotalCartPrice />}
         </div>
       </div>
