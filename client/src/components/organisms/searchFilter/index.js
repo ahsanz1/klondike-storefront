@@ -5,10 +5,18 @@ import Label from 'components/atoms/label'
 import SearchList from 'components/molecules/searchList'
 import Dropdown from 'components/atoms/dropdown'
 import './style.scss'
-import { filterItems, fetchCategory } from 'libs/services/algolia'
+import {
+  filterItems,
+  fetchCategory,
+  searchFilters,
+} from 'libs/services/algolia'
 
 const SearchFilter = ({ searchHeading }) => {
-  const { searchFilter, searchKey } = useContext(AppContext)
+  const filters = {}
+  let [ps, setPS] = useState()
+  let [pn, setPN] = useState()
+  let [uom, setUOM] = useState()
+  let { searchFilter, setSearchFilter, searchKey } = useContext(AppContext)
   const [product, setProduct] = useState()
   const [unit, setUnit] = useState()
   const [size, setSize] = useState()
@@ -49,6 +57,38 @@ const SearchFilter = ({ searchHeading }) => {
     setSize(sizearr)
   }, [searchFilter])
   console.log(product, 'productitem')
+
+  const changePN = async e => {
+    setPN(e)
+    filters['Part Number'] = e
+    algoliaApi()
+  }
+
+  const changeSize = async e => {
+    setPS(e)
+    filters['Package Size'] = e
+    algoliaApi()
+  }
+
+  const changeUOM = async e => {
+    setUOM(e)
+    filters['Unit of Measurement'] = e
+    algoliaApi()
+  }
+
+  const algoliaApi = async () => {
+    let payload = []
+    let res = Object.entries(filters)
+
+    await res.map(v => {
+      payload.push(`${v[0]}:${v[1]}`)
+    })
+
+    await searchFilters(payload).then(res => {
+      setSearchFilter(res)
+      console.log(res, 'sk')
+    })
+  }
 
   const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
     try {
@@ -97,18 +137,29 @@ const SearchFilter = ({ searchHeading }) => {
       </div>
       <div className="search-key">
         <Label>
-          {searchKey}
-          <span>({searchFilter.length})</span>
+          Keywords: {searchKey},<span>items found: {searchFilter.length}</span>
         </Label>
       </div>
       <div className="filter-dropdown">
-        <Dropdown items={size} className="first-drop" value="size" />
+        <Dropdown
+          onChange={e => changeSize(e)}
+          items={size}
+          className="first-drop"
+          value={ps !== undefined ? ps : 'Size'}
+        />
         <Dropdown
           items={product}
+          value={pn !== undefined ? pn : 'Part Number'}
           setSelectFilterList={setSelectFilterList}
+          onChange={e => changePN(e)}
           className="second-drop"
         />
-        <Dropdown items={unit} className="third-drop" />
+        <Dropdown
+          onChange={e => changeUOM(e)}
+          value={uom !== undefined ? uom : 'Unit of Measurement'}
+          items={unit}
+          className="third-drop"
+        />
       </div>
       <div className="products">
         <ul>
