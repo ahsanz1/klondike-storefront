@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Modal } from 'antd'
+import { Row, Col, Modal, InputNumber } from 'antd'
 // import { tableProAccoData } from './data'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
@@ -32,6 +32,10 @@ const ProductAccordion = ({ question }) => {
 
   const handleCancel = () => {
     setIsModalVisible(false)
+  }
+
+  function onChange (value) {
+    console.log('changed', value)
   }
 
   // const showModal = () => {
@@ -139,15 +143,24 @@ const ProductAccordion = ({ question }) => {
                 </div>
                 <div>
                   <p className="products-sizes">Part Num</p>
-                  <p className="products-sizes">medium</p>
+                  <p className="products-sizes">KL-567</p>
                 </div>
                 <div>
                   <p className="products-sizes">Price</p>
-                  <p className="products-sizes">medium</p>
+                  <p className="products-sizes">$40</p>
                 </div>
                 <div>
                   <p className="products-sizes">QTY</p>
-                  <p className="products-sizes">medium</p>
+                  <p className="products-sizes">
+                    <InputNumber
+                      min={0}
+                      max={100}
+                      defaultValue={0}
+                      onChange={onChange}
+                      size="middle"
+                      className="input"
+                    />
+                  </p>
                 </div>
                 <div>
                   <p className="products-sizes">Total Price</p>
