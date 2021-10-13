@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'antd'
+import { Row, Col, Modal, InputNumber } from 'antd'
 // import { tableProAccoData } from './data'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
 import { fetchCategory } from 'libs/services/algolia'
-import ProductAccordionModal from './product-pop/addtocartmodel'
+// import ProductAccordionModal from './product-pop/addtocartmodel'
 // import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 // import Label from 'components/atoms/label'
 import './style.scss'
@@ -29,6 +29,18 @@ const ProductAccordion = ({ question }) => {
   const showModal = () => {
     setIsModalVisible(true)
   }
+
+  const handleCancel = () => {
+    setIsModalVisible(false)
+  }
+
+  function onChange (value) {
+    console.log('changed', value)
+  }
+
+  // const showModal = () => {
+  //   setIsModalVisible(true)
+  // }
   // const onOk = () => {
   //   setIsModalVisible(false)
   // }
@@ -106,12 +118,60 @@ const ProductAccordion = ({ question }) => {
           })}
       </div>
 
-      {isModalVisible && (
+      {/* {isModalVisible && (
         <ProductAccordionModal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
         />
-      )}
+      )} */}
+      <div className="Price-list-modal">
+        <Modal visible={isModalVisible} onCancel={handleCancel}>
+          <div className="model-parent">
+            <div className="product-img">
+              <img src="/static/images/pricelistimg.png" alt="img" />
+            </div>
+            <div className="prodct-data">
+              <h1>ISO 680 EP Full Synthetic</h1>
+              <div className="product-detail">
+                <div>
+                  <p className="products-sizes">Size</p>
+                  <p className="products-sizes">1000 L / 275 GAL</p>
+                </div>
+                <div>
+                  <p className="products-sizes">UNITS/CASE</p>
+                  <p className="products-sizes">12</p>
+                </div>
+                <div>
+                  <p className="products-sizes">Part Num</p>
+                  <p className="products-sizes">KL-567</p>
+                </div>
+                <div>
+                  <p className="products-sizes">Price</p>
+                  <p className="products-sizes">$40</p>
+                </div>
+                <div>
+                  <p className="products-sizes">QTY</p>
+                  <p className="products-sizes">
+                    <InputNumber
+                      min={0}
+                      max={100}
+                      defaultValue={0}
+                      onChange={onChange}
+                      size="middle"
+                      className="input"
+                    />
+                  </p>
+                </div>
+                <div>
+                  <p className="products-sizes">Total Price</p>
+                  <p className="products-sizes">$109.10</p>
+                </div>
+              </div>
+              <Button className="pricelist-addcart">Add TO CART</Button>
+            </div>
+          </div>
+        </Modal>
+      </div>
     </>
   )
 }
