@@ -112,9 +112,6 @@ const Navbar = ({
           <Link
             // to="/SearchFlow"
             className="header__search-icon"
-            style={{
-              paddingRight: '30px',
-            }}
           >
             <Button onClick={toggleSearch}>
               <Image
@@ -124,13 +121,7 @@ const Navbar = ({
               />
             </Button>
           </Link>
-          <Link
-            to="/account"
-            className="header__User-icon"
-            style={{
-              paddingRight: '30px',
-            }}
-          >
+          <Link to="/account" className="header__User-icon">
             <Image height={26} src={userIcon.url} alt={userIcon.altText} />
           </Link>
           {userLoginInfo && userLoginInfo.email && (

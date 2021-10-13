@@ -261,7 +261,7 @@
 .show-products-image {
   ul {
     margin: 0;
-    padding: 0.69vw;
+    padding: 0;
     list-style: none;
   }
 
@@ -271,6 +271,7 @@
       color: $white-color;
       font-family: $OpenSans;
       font-size: 1.1vw;
+      line-height: 1.52vw;
       cursor: pointer;
 
       &:hover {
