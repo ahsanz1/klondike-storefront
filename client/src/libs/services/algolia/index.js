@@ -30,7 +30,7 @@ export const searchFilters = async query => {
         facetFilters: query,
       })
         .then(({ hits }) => {
-          return resolveOnChange(hits)
+          return resolve(hits)
         })
         .catch(err => {
           reject(err)
