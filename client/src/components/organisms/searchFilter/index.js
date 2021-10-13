@@ -28,7 +28,7 @@ const SearchFilter = ({ searchHeading }) => {
   // let productitem = []
   useEffect(() => {
     let newarr =
-      searchFilter.length > 0 &&
+      searchFilter &&
       searchFilter.map(data => {
         // productitem.push(data.sku)
         return { value: data['Part Number'] }
@@ -37,7 +37,7 @@ const SearchFilter = ({ searchHeading }) => {
   }, [searchFilter])
   useEffect(() => {
     let unitarr =
-      searchFilter.length > 0 &&
+      searchFilter &&
       searchFilter.map(data => {
         // productitem.push(data.sku)
         return { value: data['Unit of Measurement'] }
@@ -46,7 +46,7 @@ const SearchFilter = ({ searchHeading }) => {
   }, [searchFilter])
   useEffect(() => {
     let sizearr =
-      searchFilter.length > 0 &&
+      searchFilter &&
       searchFilter.map(data => {
         // productitem.push(data.sku)
         return { value: data['Package Size'] }
