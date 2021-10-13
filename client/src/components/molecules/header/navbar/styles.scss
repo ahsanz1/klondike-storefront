@@ -159,6 +159,7 @@
 
       @media (max-width: 500px) {
         height: calc(100vh - 34.6vw);
+        padding-right: 0;
       }
 
       .Buy-Button {
@@ -194,7 +195,7 @@
       right: 0;
 
       @media (max-width: 500px) {
-        top: 3.6vw;
+        top: 0.6vw;
         right: 9.33vw;
       }
     }

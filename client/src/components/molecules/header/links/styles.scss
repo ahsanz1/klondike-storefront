@@ -18,7 +18,7 @@
 
   a {
     color: $primary-color;
-    font-size: 18px;
+    // font-size: 18px;
     text-decoration: none;
 
     &:hover {
@@ -67,7 +67,12 @@
     .c-image {
       position: relative;
       top: -3px;
+      right: 0;
       margin-right: 10px;
+
+      @media (max-width: 500px) {
+        margin-right: 4.8vw;
+      }
     }
 
     @media (max-width: 768px) {
