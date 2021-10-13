@@ -7,6 +7,9 @@ Components[
   'TermsCondition'
 ] = require('components/organisms/TermsCondition').default
 Components[
+  'PrivacyPolicy'
+] = require('components/organisms/privacy-policy').default
+Components[
   'ProductSlider'
 ] = require('components/organisms/product-slider').default
 Components['PCPOverview'] = require('components/organisms/PCPOverview').default
