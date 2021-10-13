@@ -1,0 +1,26 @@
+@import '~styles/globals';
+
+.privacy-body {
+  position: relative;
+  top: 50px;
+  height: auto;
+  margin: 0 69px 0 69px;
+  padding: 50px;
+  background: rgba(3, 41, 57, 0.5);
+}
+
+.main-heading {
+  color: #f1ab3a;
+  font-family: $OpenSans;
+}
+
+.sub-heading {
+  color: #ffff;
+  font-family: $OpenSans;
+}
+
+.privacy-body > p {
+  color: #ffff;
+  font-family: $OpenSans;
+  font-size: 14px;
+}
