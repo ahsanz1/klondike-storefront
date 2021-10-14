@@ -11,15 +11,12 @@ const FooterLinks = ({ heading = '', footerAccount, links = [] }) => {
   userLoginInfo = JSON.parse(userLoginInfo)
   return (
     <div className="footer-column menu-column">
+      <h3>{heading}</h3>{' '}
       {!userLoginInfo && (
-        <>
-          <h3>{heading}</h3>{' '}
-          <Link to="/account">
-            <h5>{footerAccount}</h5>
-          </Link>
-        </>
+        <Link to="/account">
+          <h5>{footerAccount}</h5>
+        </Link>
       )}
-
       <ul className="footer-menu">
         {links &&
           links.length &&
