@@ -18,6 +18,10 @@
       width: 334px;
     }
 
+    // @media screen and (min-width: 1920px) {
+    //   width: 534px;
+    // }
+
     h1 {
       margin: 0;
       color: white;
@@ -42,7 +46,7 @@
 
     p {
       color: white;
-      font-family: $OpenSans;
+      font-family: $Raleway;
       font-size: 14px;
       font-style: normal;
       font-weight: normal;
