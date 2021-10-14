@@ -19,6 +19,7 @@ const Dropdown = ({
   setSelectFilterList = '',
 }) => {
   console.log(items, 'itttt')
+  // const [change, setChange] = useState()
   // const handleChange = useCallback(
   //   event => {
   //     const list = items.map(item => {
@@ -45,16 +46,17 @@ const Dropdown = ({
       onChange={value => {
         onChange && onChange(value)
         console.log(value, 'val')
-        // const list = items.map(item => {
-        //   if (item['Part Number'] === value) {
-        //     item.Select = value
-        //   }
-        //   return item
-        // })
+        const list = items.map(item => {
+          if (item['Part Number'] === value) {
+            item.Select = value
+          }
+          return item
+        })
 
-        // const _selectedList = list.filter(item => item.Select === true)
-        // console.log('selection', _selectedList)
-        // setSelectFilterList &&  setSelectFilterList(_selectedList)
+        const _selectedList = list.filter(item => item.Select === true)
+        console.log('selection', _selectedList)
+        setSelectFilterList(_selectedList)
+        // setChange(value)
       }}
       dropdownStyle={dropdownStyle}
       name={name}

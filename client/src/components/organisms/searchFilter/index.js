@@ -89,7 +89,7 @@ const SearchFilter = ({ searchHeading }) => {
 
   // const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
   //   try {
-  //     setLoading(true)
+  //     // setLoading(true)
   //     const results = await fetchCategory(category, pageNumber)
   //     let serverResults = (results || { hits: [] }).hits
   //     serverResults.sort((a, b) =>
@@ -100,9 +100,9 @@ const SearchFilter = ({ searchHeading }) => {
   //     // }
   //     setProducts(serverResults)
 
-  //     setLoading(false)
-  //   } catch (e) {
-  //     setLoading(false)
+  // setLoading(false)
+  // } catch (e) {
+  // setLoading(false)
   //   }
   // }
 
