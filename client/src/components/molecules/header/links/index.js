@@ -22,10 +22,6 @@ const Links = ({
   userIcon = '',
 }) => {
   const { user } = useContext(AppContext)
-  // let userLoginInfo = localStorage.getItem('userPersonalInfo')
-  // userLoginInfo = JSON.parse(userLoginInfo)
-  // console.log('check menu:', links)
-
   const getToken = user && user.accessToken
   return (
     <div
