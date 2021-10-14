@@ -16,7 +16,7 @@ const Dropdown = ({
   disabledOptionStyle = {},
   dropdownStyle = {},
   name = '',
-  setSelectFilterList,
+  setSelectFilterList = '',
 }) => {
   console.log(items, 'itttt')
   // const [change, setChange] = useState()
@@ -40,14 +40,14 @@ const Dropdown = ({
   return (
     <Select
       value={value}
-      defaultValue={items && items[0] && items[0].label}
+      defaultValue={value}
       style={style}
       className={`c-dropdown ${className}`}
       onChange={value => {
         onChange && onChange(value)
         console.log(value, 'val')
         const list = items.map(item => {
-          if (item['Part Number'] === value['Part Number']) {
+          if (item['Part Number'] === value) {
             item.Select = value
           }
           return item
