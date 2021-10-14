@@ -11,12 +11,14 @@ const PackageOrder = ({
   productstitle,
   inputList,
   handleRemoveClick,
+  // caceqty,
 }) => {
   const handleSubmit = e => {
     e.preventDefault()
   }
   let titleArray = productstitle
   let InputList = inputList
+
   return (
     <div>
       <div className="partname-and-qty">
@@ -53,6 +55,7 @@ const PackageOrder = ({
                     className="quantity-number"
                     type="number"
                     value={x.quantity}
+                    step={1}
                     onChange={e => handleChangePackage(e, i)}
                   />
                 </div>
@@ -90,6 +93,7 @@ PackageOrder.propTypes = {
   productstitle: PropTypes.array,
   inputList: PropTypes.array,
   handleRemoveClick: PropTypes.func,
+  caceqty: PropTypes.func,
 }
 
 export default PackageOrder

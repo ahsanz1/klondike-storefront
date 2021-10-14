@@ -359,41 +359,45 @@
 }
 
 .quickorder-wrapper {
-  display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
-  margin-left: 2.91vw;
-  color: white;
+  .orders {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    margin-left: 2.91vw;
+    color: white;
 
-  .item-wraper {
-    display: flex;
+    .item-wraper {
+      display: flex;
 
-    .img-wraper {
-      background: white;
+      .img-wraper {
+        width: 110px;
+        background: white;
 
-      img {
-        object-fit: cover;
+        img {
+          object-fit: cover;
+          width: 100%;
+        }
       }
-    }
 
-    .quick-orde_btn {
-      width: 150px;
-      margin-top: 20px;
-      padding: 10px;
-      border: 1px solid $accent-color;
-      background: transparent;
-    }
+      .quick-orde_btn {
+        width: 150px;
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid $accent-color;
+        background: transparent;
+      }
 
-    .part-wraper {
-      margin-left: 2.91vw;
+      .part-wraper {
+        margin-left: 2.91vw;
 
-      .quik-product-heading {
-        color: white;
-        font-family: $OpenSans;
-        font-size: 1.38vw;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 1.52vw;
-        text-align: left;
+        .quik-product-heading {
+          color: white;
+          font-family: $OpenSans;
+          font-size: 1.38vw;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 1.52vw;
+          text-align: left;
+        }
       }
     }
   }

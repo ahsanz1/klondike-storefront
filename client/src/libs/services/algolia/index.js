@@ -1,7 +1,6 @@
 // Algolia Search module
 
 import algoliasearch from 'algoliasearch'
-import { resolveOnChange } from 'antd/lib/input/Input'
 // import { algoliaClient } from 'libs/general-config-juicy'
 // algoliaClient.HITS_PER_PAGE;
 import { algoliaClient } from 'libs/general-config'
@@ -42,7 +41,7 @@ export const searchFilters = async query => {
   }
 }
 
-export const fetchItems = async (query, pageSize = 10, page = 0) => {
+export const fetchItems = async (query, pageSize = 100, page = 0) => {
   try {
     let response = await INDEX.search(query, {
       restrictSearchableAttributes: ['title', 'description'],
