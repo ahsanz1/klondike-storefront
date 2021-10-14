@@ -81,8 +81,8 @@ const Links = ({
           return null
         }
       })}
-      <Button className={!getToken ? 'quick-order' : 'Buy-Button'}>
-        {!getToken ? 'Quick Order' : buyButton}
+      <Button className={!getToken ? 'Buy-Button' : 'Buy-Button'}>
+        {!getToken ? 'HOW TO BUY' : 'Quick Order'}
       </Button>
       {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
       <div className="bottom-section">
