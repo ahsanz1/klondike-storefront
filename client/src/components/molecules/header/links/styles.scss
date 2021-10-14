@@ -91,6 +91,10 @@
       line-height: 7.2vw;
       text-transform: uppercase;
     }
+
+    @media (max-width: 500px) {
+      padding: 7.46vw;
+    }
   }
 
   // .left-image {
