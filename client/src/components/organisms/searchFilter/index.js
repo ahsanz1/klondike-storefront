@@ -5,60 +5,61 @@ import Label from 'components/atoms/label'
 import SearchList from 'components/molecules/searchList'
 import Dropdown from 'components/atoms/dropdown'
 import './style.scss'
-import {
-  filterItems,
-  fetchCategory,
-  searchFilters,
-} from 'libs/services/algolia'
+import { searchFilters } from 'libs/services/algolia'
 
 const SearchFilter = ({ searchHeading }) => {
   const filters = {}
   let [ps, setPS] = useState()
-  let [pn, setPN] = useState()
+  let [pn, setPN] = useState('Part Number')
   let [uom, setUOM] = useState()
   let { searchFilter, setSearchFilter, searchKey } = useContext(AppContext)
   const [product, setProduct] = useState()
   const [unit, setUnit] = useState()
   const [size, setSize] = useState()
-  const [selectedFilterList, setSelectFilterList] = useState([])
-  const [products, setProducts] = useState([])
-  const [filterCount, setFilterCount] = useState(0)
-  const [loading, setLoading] = useState(false)
+  // const [selectedFilterList, setSelectFilterList] = useState([])
+  // const [products, setProducts] = useState([])
+  // const [filterCount, setFilterCount] = useState(0)
+  // const [loading, setLoading] = useState(false)
 
   // let productitem = []
   useEffect(() => {
-    let newarr =
-      searchFilter &&
-      searchFilter.map(data => {
-        // productitem.push(data.sku)
-        return { value: data['Part Number'] }
+    let arrProduct = []
+    let arrSize = []
+    let arrUnit = []
+
+    searchFilter &&
+      searchFilter.map((data, index) => {
+        let objProduct = {
+          label: data['Part Number'],
+          value: data['Part Number'],
+        }
+        let objSize = {
+          label: data['Unit of Measurement'],
+          value: data['Unit of Measurement'],
+        }
+        let objUnit = {
+          label: data['Package Size'],
+          value: data['Package Size'],
+        }
+        arrProduct.push(objProduct)
+        arrSize.push(objSize)
+        arrUnit.push(objUnit)
       })
-    setProduct(newarr)
-  }, [searchFilter])
-  useEffect(() => {
-    let unitarr =
-      searchFilter &&
-      searchFilter.map(data => {
-        // productitem.push(data.sku)
-        return { value: data['Unit of Measurement'] }
-      })
-    setUnit(unitarr)
-  }, [searchFilter])
-  useEffect(() => {
-    let sizearr =
-      searchFilter &&
-      searchFilter.map(data => {
-        // productitem.push(data.sku)
-        return { value: data['Package Size'] }
-      })
-    setSize(sizearr)
+    setProduct(arrProduct)
+    setUnit(arrSize)
+    setSize(arrUnit)
   }, [searchFilter])
 
   const changePN = async e => {
     setPN(e)
+    console.log(e, 'partnub')
     filters['Part Number'] = e
     algoliaApi()
   }
+
+  useEffect(() => {
+    console.log('TESTING', pn)
+  }, [pn])
 
   const changeSize = async e => {
     setPS(e)
@@ -75,6 +76,7 @@ const SearchFilter = ({ searchHeading }) => {
   const algoliaApi = async () => {
     let payload = []
     let res = Object.entries(filters)
+    console.log(pn, uom, ps, 'aaaddd')
 
     await res.map(v => {
       payload.push(`${v[0]}:${v[1]}`)
@@ -85,43 +87,43 @@ const SearchFilter = ({ searchHeading }) => {
     })
   }
 
-  const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
-    try {
-      setLoading(true)
-      const results = await fetchCategory(category, pageNumber)
-      let serverResults = (results || { hits: [] }).hits
-      serverResults.sort((a, b) =>
-        a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
-      )
-      // if (pageNumber === 0) {
-      //   productListing(results.nbHits, category)
-      // }
-      setProducts(serverResults)
+  // const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
+  //   try {
+  //     // setLoading(true)
+  //     const results = await fetchCategory(category, pageNumber)
+  //     let serverResults = (results || { hits: [] }).hits
+  //     serverResults.sort((a, b) =>
+  //       a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
+  //     )
+  //     // if (pageNumber === 0) {
+  //     //   produconsolectListing(results.nbHits, category)
+  //     // }
+  //     setProducts(serverResults)
 
-      setLoading(false)
-    } catch (e) {
-      setLoading(false)
-    }
-  }
+  // setLoading(false)
+  // } catch (e) {
+  // setLoading(false)
+  //   }
+  // }
 
-  useEffect(() => {
-    let payload = []
-    if (selectedFilterList.length > 0) {
-      for (const filteredItem of selectedFilterList) {
-        payload.push(`${filteredItem.value}:true`)
-      }
+  // useEffect(() => {
+  //   let payload = []
+  //   if (selectedFilterList.length > 0) {
+  //     for (const filteredItem of selectedFilterList) {
+  //       payload.push(`${filteredItem.value}:true`)
+  //     }
 
-      filterItems(payload).then(results => {
-        const serverResults = results.hits || []
-        setProducts(serverResults)
-        let count = searchFilter.filter(item => item.sku === '628946213607')
-        setFilterCount(count.length)
-      })
-    } else {
-      perfomeAlgoliaSearch('Category')
-      setFilterCount(0)
-    }
-  }, [selectedFilterList])
+  //     filterItems(payload).then(results => {
+  //       const serverResults = results.hits || []
+  //       setProducts(serverResults)
+  //       let count = searchFilter.filter(item => item.sku === '628946213607')
+  //       setFilterCount(count.length)
+  //     })
+  //   } else {
+  //     perfomeAlgoliaSearch('Category')
+  //     setFilterCount(0)
+  //   }
+  // }, [selectedFilterList])
   return (
     <div className="search-filter">
       <div className="filter-search-heading">
@@ -129,7 +131,7 @@ const SearchFilter = ({ searchHeading }) => {
       </div>
       <div className="search-key">
         <Label>
-          Keywords: {searchKey},<span>items found: {searchFilter.length}</span>
+          {searchKey} ({searchFilter.length})
         </Label>
       </div>
       <div className="filter-dropdown">
@@ -141,8 +143,8 @@ const SearchFilter = ({ searchHeading }) => {
         />
         <Dropdown
           items={product}
-          value={pn !== undefined ? pn : 'Part Number'}
-          setSelectFilterList={setSelectFilterList}
+          value={pn}
+          // setSelectFilterList={setSelectFilterList}
           onChange={e => changePN(e)}
           className="second-drop"
         />

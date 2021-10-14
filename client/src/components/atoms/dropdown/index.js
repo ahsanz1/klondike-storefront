@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable jsx-a11y/no-onchange */
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Select } from 'antd'
 import './style.scss'
@@ -16,10 +16,10 @@ const Dropdown = ({
   disabledOptionStyle = {},
   dropdownStyle = {},
   name = '',
-  setSelectFilterList,
+  setSelectFilterList = '',
 }) => {
   console.log(items, 'itttt')
-  const [change, setChange] = useState()
+  // const [change, setChange] = useState()
   // const handleChange = useCallback(
   //   event => {
   //     const list = items.map(item => {
@@ -40,23 +40,23 @@ const Dropdown = ({
   return (
     <Select
       value={value}
-      defaultValue={items && items[0] && items[0].label}
+      defaultValue={value}
       style={style}
       className={`c-dropdown ${className}`}
       onChange={value => {
         onChange && onChange(value)
         console.log(value, 'val')
         const list = items.map(item => {
-        if (item['Part Number'] === value['Part Number']) {
-          item.Select = value
-        }
-        return item
-      })
-      
-      const _selectedList = list.filter(item => item.Select === true)
-      console.log('selection', _selectedList)
-      setSelectFilterList(_selectedList)
-      setChange(value)
+          if (item['Part Number'] === value) {
+            item.Select = value
+          }
+          return item
+        })
+
+        const _selectedList = list.filter(item => item.Select === true)
+        console.log('selection', _selectedList)
+        setSelectFilterList(_selectedList)
+        // setChange(value)
       }}
       dropdownStyle={dropdownStyle}
       name={name}

@@ -118,6 +118,7 @@ const Footer = ({
                   <Accordion
                     key={index}
                     question={fLinks.heading}
+                    footerAccount={fLinks.footerAccount}
                     links={fLinks.links}
                     isOpen={fLinks.isOpen}
                     isOpenHandler={isOpenHandler}

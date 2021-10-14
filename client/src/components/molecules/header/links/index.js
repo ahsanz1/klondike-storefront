@@ -22,10 +22,6 @@ const Links = ({
   userIcon = '',
 }) => {
   const { user } = useContext(AppContext)
-  // let userLoginInfo = localStorage.getItem('userPersonalInfo')
-  // userLoginInfo = JSON.parse(userLoginInfo)
-  // console.log('check menu:', links)
-
   const getToken = user && user.accessToken
   return (
     <div
@@ -81,8 +77,8 @@ const Links = ({
           return null
         }
       })}
-      <Button className={!getToken ? 'quick-order' : 'Buy-Button'}>
-        {!getToken ? 'Quick Order' : buyButton}
+      <Button className={!getToken ? 'Buy-Button' : 'Buy-Button'}>
+        {!getToken ? 'HOW TO BUY' : 'Quick Order'}
       </Button>
       {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
       <div className="bottom-section">
