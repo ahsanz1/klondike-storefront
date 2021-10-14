@@ -5,7 +5,7 @@
   position: relative;
   z-index: 999;
   height: 3.6vw;
-  padding: 0 6.25vw;
+  padding: 0 3.4vw;
   overflow: hidden;
   background-color: #fff;
   color: $white-color;
@@ -13,17 +13,16 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 15px;
-  text-align: center;
 
   @media (max-width: 768px) {
     z-index: 0;
-    padding: 0 50px;
+    padding: 0 6.5vw;
   }
 
   @media (max-width: 500px) {
     display: flex !important;
     height: 16vw;
-    padding: 0 1.3vw;
+    padding: 0 13.33vw;
   }
 
   &:active {
@@ -298,6 +297,25 @@
   @media (max-width: 768px) {
     .promo-rail__slider {
       display: none;
+    }
+  }
+
+  .goog-te-combo {
+    width: 3.125vw;
+    height: 1.67vw;
+    border-radius: 3px;
+    font-size: 0.625vw;
+
+    @media (max-width: 768px) {
+      width: 5.85vw;
+      height: 3.25vw;
+      font-size: 1.17vw;
+    }
+
+    @media (max-width: 500px) {
+      width: 12vw;
+      height: 6.4vw;
+      font-size: 2.4vw;
     }
   }
 }
