@@ -21,9 +21,9 @@ const SearchFilter = ({ searchHeading }) => {
   const [unit, setUnit] = useState()
   const [size, setSize] = useState()
   const [selectedFilterList, setSelectFilterList] = useState([])
-  const [products, setProducts] = useState([])
-  const [filterCount, setFilterCount] = useState(0)
-  const [loading, setLoading] = useState(false)
+  // const [products, setProducts] = useState([])
+  // const [filterCount, setFilterCount] = useState(0)
+  // const [loading, setLoading] = useState(false)
 
   // let productitem = []
   useEffect(() => {
@@ -87,7 +87,7 @@ const SearchFilter = ({ searchHeading }) => {
 
   const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
     try {
-      setLoading(true)
+      // setLoading(true)
       const results = await fetchCategory(category, pageNumber)
       let serverResults = (results || { hits: [] }).hits
       serverResults.sort((a, b) =>
@@ -96,11 +96,11 @@ const SearchFilter = ({ searchHeading }) => {
       // if (pageNumber === 0) {
       //   productListing(results.nbHits, category)
       // }
-      setProducts(serverResults)
+      // setProducts(serverResults)
 
-      setLoading(false)
+      // setLoading(false)
     } catch (e) {
-      setLoading(false)
+      // setLoading(false)
     }
   }
 
@@ -112,14 +112,14 @@ const SearchFilter = ({ searchHeading }) => {
       }
 
       filterItems(payload).then(results => {
-        const serverResults = results.hits || []
-        setProducts(serverResults)
-        let count = searchFilter.filter(item => item.sku === '628946213607')
-        setFilterCount(count.length)
+        // const serverResults = results.hits || []
+        // setProducts(serverResults)
+        // let count = searchFilter.filter(item => item.sku === '628946213607')
+        // setFilterCount(count.length)
       })
     } else {
       perfomeAlgoliaSearch('Category')
-      setFilterCount(0)
+      // setFilterCount(0)
     }
   }, [selectedFilterList])
   return (
