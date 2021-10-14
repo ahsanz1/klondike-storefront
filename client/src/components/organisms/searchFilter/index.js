@@ -10,7 +10,7 @@ import { searchFilters } from 'libs/services/algolia'
 const SearchFilter = ({ searchHeading }) => {
   const filters = {}
   let [ps, setPS] = useState()
-  let [pn, setPN] = useState()
+  let [pn, setPN] = useState('Part Number')
   let [uom, setUOM] = useState()
   let { searchFilter, setSearchFilter, searchKey } = useContext(AppContext)
   const [product, setProduct] = useState()
@@ -23,38 +23,43 @@ const SearchFilter = ({ searchHeading }) => {
 
   // let productitem = []
   useEffect(() => {
-    let newarr =
-      searchFilter &&
-      searchFilter.map(data => {
-        // productitem.push(data.sku)
-        return { value: data['Part Number'] }
+    let arrProduct = []
+    let arrSize = []
+    let arrUnit = []
+
+    searchFilter &&
+      searchFilter.map((data, index) => {
+        let objProduct = {
+          label: data['Part Number'],
+          value: data['Part Number'],
+        }
+        let objSize = {
+          label: data['Unit of Measurement'],
+          value: data['Unit of Measurement'],
+        }
+        let objUnit = {
+          label: data['Package Size'],
+          value: data['Package Size'],
+        }
+        arrProduct.push(objProduct)
+        arrSize.push(objSize)
+        arrUnit.push(objUnit)
       })
-    setProduct(newarr)
-  }, [searchFilter])
-  useEffect(() => {
-    let unitarr =
-      searchFilter &&
-      searchFilter.map(data => {
-        // productitem.push(data.sku)
-        return { value: data['Unit of Measurement'] }
-      })
-    setUnit(unitarr)
-  }, [searchFilter])
-  useEffect(() => {
-    let sizearr =
-      searchFilter &&
-      searchFilter.map(data => {
-        // productitem.push(data.sku)
-        return { value: data['Package Size'] }
-      })
-    setSize(sizearr)
+    setProduct(arrProduct)
+    setUnit(arrSize)
+    setSize(arrUnit)
   }, [searchFilter])
 
   const changePN = async e => {
     setPN(e)
+    console.log(e, 'partnub')
     filters['Part Number'] = e
     algoliaApi()
   }
+
+  useEffect(() => {
+    console.log('TESTING', pn)
+  }, [pn])
 
   const changeSize = async e => {
     setPS(e)
@@ -71,6 +76,7 @@ const SearchFilter = ({ searchHeading }) => {
   const algoliaApi = async () => {
     let payload = []
     let res = Object.entries(filters)
+    console.log(pn, uom, ps, 'aaaddd')
 
     await res.map(v => {
       payload.push(`${v[0]}:${v[1]}`)
@@ -83,20 +89,20 @@ const SearchFilter = ({ searchHeading }) => {
 
   // const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
   //   try {
-  //     setLoading(true)
+  //     // setLoading(true)
   //     const results = await fetchCategory(category, pageNumber)
   //     let serverResults = (results || { hits: [] }).hits
   //     serverResults.sort((a, b) =>
   //       a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
   //     )
   //     // if (pageNumber === 0) {
-  //     //   productListing(results.nbHits, category)
+  //     //   produconsolectListing(results.nbHits, category)
   //     // }
-  //     // setProducts(serverResults)
+  //     setProducts(serverResults)
 
-  //     setLoading(false)
-  //   } catch (e) {
-  //     setLoading(false)
+  // setLoading(false)
+  // } catch (e) {
+  // setLoading(false)
   //   }
   // }
 
@@ -125,7 +131,7 @@ const SearchFilter = ({ searchHeading }) => {
       </div>
       <div className="search-key">
         <Label>
-          Keywords: {searchKey},<span>items found: {searchFilter.length}</span>
+          {searchKey} ({searchFilter.length})
         </Label>
       </div>
       <div className="filter-dropdown">
@@ -137,7 +143,8 @@ const SearchFilter = ({ searchHeading }) => {
         />
         <Dropdown
           items={product}
-          value={pn !== undefined ? pn : 'Part Number'}
+          value={pn}
+          // setSelectFilterList={setSelectFilterList}
           onChange={e => changePN(e)}
           className="second-drop"
         />

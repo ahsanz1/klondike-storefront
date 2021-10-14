@@ -41,7 +41,7 @@ const SearchFlow = props => {
   }
   const recentSearch = async e => {
     e.preventDefault()
-    let recentArr = recent
+    let recentArr = []
     recentArr.push(searchValue)
     setRecent([...recentArr])
     // const list = await fetchItems(searchValue)

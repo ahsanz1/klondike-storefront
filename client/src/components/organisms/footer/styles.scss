@@ -158,6 +158,11 @@
     font-weight: 600;
   }
 
+  @media (max-width: 500px) {
+    height: 24vw;
+    padding: 0 2.93vw;
+  }
+
   p {
     margin-top: get-vw(13px);
     margin-right: 80px;
@@ -173,13 +178,20 @@
       margin-right: 0;
       font-size: 12px;
     }
+
+    @media (max-width: 500px) {
+      font-family: $OpenSans;
+      font-size: 3.06vw;
+      font-weight: 600;
+      line-height: 4.26vw;
+    }
   }
 }
 
 .page-width {
   margin: 0 auto;
   padding-right: 60px;
-  padding-left: 60px;
+  padding-left: 5.97vw;
 
   .ant-row {
     @media screen and (max-width: 768px) {

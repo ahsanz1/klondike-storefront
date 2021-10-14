@@ -159,6 +159,7 @@
 
       @media (max-width: 500px) {
         height: calc(100vh - 34.6vw);
+        padding-right: 0;
       }
 
       .Buy-Button {
@@ -168,7 +169,7 @@
           height: 12.2vw !important;
           margin-top: 7.2vw;
           font-family: $OpenSans !important;
-          font-size: 5.3vw !important;
+          font-size: 5.33vw !important;
         }
       }
 
@@ -194,7 +195,7 @@
       right: 0;
 
       @media (max-width: 500px) {
-        top: 3.6vw;
+        top: 0.6vw;
         right: 9.33vw;
       }
     }
@@ -293,8 +294,8 @@
         border: none;
 
         img {
-          width: 1.1vw;
-          height: 1.1vw;
+          width: 1.66vw;
+          height: 1.66vw;
 
           @media screen and(max-width: 500px) {
             width: 4.8vw;
