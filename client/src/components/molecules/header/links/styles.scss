@@ -1,11 +1,24 @@
+/* stylelint-disable */
 @import '~styles/globals';
 
 .links {
   display: flex;
 
+  div {
+    margin-right: 3.055vw;
+
+    &:nth-child(3) {
+      margin-right: 0 !important;
+    }
+
+    @media (max-width: 500px) {
+      margin-right: 0 !important;
+    }
+  }
+
   a {
     color: $primary-color;
-    font-size: 18px;
+    // font-size: 18px;
     text-decoration: none;
 
     &:hover {
@@ -54,7 +67,12 @@
     .c-image {
       position: relative;
       top: -3px;
+      right: 0;
       margin-right: 10px;
+
+      @media (max-width: 500px) {
+        margin-right: 4.8vw;
+      }
     }
 
     @media (max-width: 768px) {
@@ -91,4 +109,10 @@
   //     display: none;
   //   }
   // }
+  .c-image {
+    @media (min-width: 992px) {
+      display: none !important;
+    }
+  }
 }
+/* stylelint-enable */

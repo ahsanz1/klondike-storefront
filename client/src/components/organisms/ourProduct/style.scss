@@ -81,6 +81,7 @@
         text-align: left;
 
         @media (max-width: 500px) {
+          padding: 0;
           color: $white-color;
         }
 
@@ -150,6 +151,10 @@
       button {
         border: none;
         background: none;
+
+        @media (max-width: 500px) {
+          text-transform: uppercase;
+        }
       }
 
       .h-links {
@@ -261,17 +266,28 @@
 .show-products-image {
   ul {
     margin: 0;
-    padding: 0.69vw;
+    padding: 0;
     list-style: none;
   }
 
   .product-list {
+    margin-right: 0;
+
+    @media (max-width: 500px) {
+      margin-top: 8vw;
+    }
+
     li {
       margin-bottom: 1.1vw;
       color: $white-color;
       font-family: $OpenSans;
       font-size: 1.1vw;
+      line-height: 1.52vw;
       cursor: pointer;
+
+      @media (max-width: 500px) {
+        margin-bottom: 4vw;
+      }
 
       &:hover {
         button {
@@ -290,6 +306,11 @@
         background: none;
         color: #fff;
         text-align: left;
+        text-transform: uppercase;
+
+        @media (max-width: 500px) {
+          padding: 0;
+        }
 
         &:hover {
           color: #dc5e00;

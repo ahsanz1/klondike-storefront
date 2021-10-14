@@ -40,7 +40,7 @@ const Links = ({
         if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
           return (
             (!link.mobileOnly || mobile) && (
-              <div>
+              <div className="menu-link-item">
                 <Link
                   key={i}
                   style={linkStyle}

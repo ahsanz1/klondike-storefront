@@ -1,7 +1,7 @@
 const { Types } = require('@teamfabric/xpm')
 exports.default = Types.Component({
   id: 'PrivacyPolicy',
-  label: 'Legal',
+  label: 'Privacy Policy',
   isGlobal: false,
   description: `Legal component where each child has 4 text options and boolean attributes for 
   displaying text as paragraph or list`,
