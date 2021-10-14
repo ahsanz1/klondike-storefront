@@ -38,6 +38,11 @@
       width: 31px;
       height: 31px;
     }
+
+    @media (max-width: 500px) {
+      width: 8.533vw;
+      height: 8.533vw;
+    }
   }
 
   @media screen and (max-width: 768px) {
