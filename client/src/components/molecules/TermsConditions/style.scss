@@ -5,10 +5,14 @@
     li {
       color: white;
       font-family: $Raleway;
-      font-size: 14px;
+      font-size: 0.97vw;
       font-style: normal;
       font-weight: normal;
       line-height: 140%;
+
+      @media screen and (max-width: 768px) {
+        font-size: 3.73vw;
+      }
     }
   }
 

@@ -1,7 +1,7 @@
 @import '~styles/globals';
 
 .TermsConditions-wrapper {
-  padding: 8rem;
+  padding: 2.4vw;
   background: #013a4e;
 
   @media screen and (max-width: 768px) {
@@ -11,46 +11,54 @@
   }
 
   .Termscondition-container {
-    width: 792px;
+    width: 55vw;
     margin: 0 auto;
 
     @media screen and (max-width: 768px) {
       width: 334px;
     }
 
-    // @media screen and (min-width: 1920px) {
-    //   width: 534px;
-    // }
-
     h1 {
       margin: 0;
       color: white;
       font-family: $OpenSans;
-      font-size: 28px;
+      font-size: 1.94vw;
       font-style: normal;
       font-weight: bold;
       line-height: 110%;
+
+      @media screen and (max-width: 768px) {
+        font-size: 6.4vw;
+      }
     }
 
     h3 {
       padding: 2rem 0;
       color: white;
       font-family: $OpenSans;
-      font-size: 13px;
+      font-size: 0.9vw;
       font-style: normal;
       font-weight: bold;
       letter-spacing: 0.08em;
       line-height: 18px;
       text-transform: uppercase;
+
+      @media screen and (max-width: 768px) {
+        font-size: 3.46vw;
+      }
     }
 
     p {
       color: white;
       font-family: $Raleway;
-      font-size: 14px;
+      font-size: 0.97vw;
       font-style: normal;
       font-weight: normal;
       line-height: 140%;
+
+      @media screen and (max-width: 768px) {
+        font-size: 3.73vw;
+      }
     }
   }
 }
