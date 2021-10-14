@@ -85,20 +85,20 @@ const SearchFilter = ({ searchHeading }) => {
 
   // const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
   //   try {
-  //     setLoading(true)
+  //     // setLoading(true)
   //     const results = await fetchCategory(category, pageNumber)
   //     let serverResults = (results || { hits: [] }).hits
   //     serverResults.sort((a, b) =>
   //       a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
   //     )
-  //     // if (pageNumber === 0) {
-  //     //   productListing(results.nbHits, category)
-  //     // }
-  //     setProducts(serverResults)
+  // if (pageNumber === 0) {
+  //   productListing(results.nbHits, category)
+  // }
+  // setProducts(serverResults)
 
-  //     setLoading(false)
-  //   } catch (e) {
-  //     setLoading(false)
+  // setLoading(false)
+  // } catch (e) {
+  // setLoading(false)
   //   }
   // }
 

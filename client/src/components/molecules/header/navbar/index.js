@@ -121,7 +121,14 @@ const Navbar = ({
               />
             </Button>
           </Link>
-          <Link to="/account" className="header__User-icon">
+          <Link
+            to={
+              userLoginInfo && userLoginInfo.email
+                ? '/account'
+                : 'account/login'
+            }
+            className="header__User-icon"
+          >
             <Image height={26} src={userIcon.url} alt={userIcon.altText} />
           </Link>
           {userLoginInfo && userLoginInfo.email && (
