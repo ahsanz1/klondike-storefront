@@ -16,7 +16,7 @@ const Dropdown = ({
   disabledOptionStyle = {},
   dropdownStyle = {},
   name = '',
-  setSelectFilterList,
+  setSelectFilterList = '',
 }) => {
   console.log(items, 'itttt')
   // const handleChange = useCallback(
@@ -39,22 +39,22 @@ const Dropdown = ({
   return (
     <Select
       value={value}
-      defaultValue={items && items[0] && items[0].label}
+      defaultValue={value}
       style={style}
       className={`c-dropdown ${className}`}
       onChange={value => {
         onChange && onChange(value)
         console.log(value, 'val')
-        const list = items.map(item => {
-          if (item['Part Number'] === value['Part Number']) {
-            item.Select = value
-          }
-          return item
-        })
+        // const list = items.map(item => {
+        //   if (item['Part Number'] === value) {
+        //     item.Select = value
+        //   }
+        //   return item
+        // })
 
-        const _selectedList = list.filter(item => item.Select === true)
-        console.log('selection', _selectedList)
-        setSelectFilterList(_selectedList)
+        // const _selectedList = list.filter(item => item.Select === true)
+        // console.log('selection', _selectedList)
+        // setSelectFilterList &&  setSelectFilterList(_selectedList)
       }}
       dropdownStyle={dropdownStyle}
       name={name}
