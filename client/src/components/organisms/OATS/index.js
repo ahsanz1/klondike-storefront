@@ -210,7 +210,7 @@ const Oats = () => {
                       <p className="custom-grid">{data && data.productgroup}</p>
                       <p className="custom-grid">{data && data.manufacturer}</p>
                       <p className="custom-grid">{data && data.model}</p>
-                      <p className="custom-grid">{data && data.year}</p>
+                      <p className="custom-grid">{data && data.yearto}</p>
                       <p className="custom-grid">{data && data.alt_fueltype}</p>
                     </div>
                   )
