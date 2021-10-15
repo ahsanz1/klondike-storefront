@@ -31,11 +31,7 @@ const DowntimeCosting = ({
       </ul>
       <p className="last-item">{Paragraph}</p>
       {/* <OrderList {...list} /> */}
-      <Link
-        to={
-          buttontxt === 'HOW TO BUY' ? '/contact-us' : '/collections/all-bars'
-        }
-      >
+      <Link to={buttontxt === 'HOW TO BUY' ? '/contact-us' : '/'}>
         <Button>{buttontxt}</Button>
       </Link>
     </div>

@@ -47,13 +47,14 @@
 
   .accounts-tabs {
     display: flex;
+    position: relative;
   }
 
   .tabs-container {
     width: 90%;
 
     @media (max-width: 500px) {
-      width: 60%;
+      width: 100%;
     }
   }
 
@@ -65,9 +66,12 @@
     color: #f1a900;
 
     @media (max-width: 500px) {
-      width: 40%;
+      position: absolute;
+      right: 0;
+      width: auto;
       height: 8.2vw;
-      border-bottom: 3px solid #fff;
+      margin-right: 5.6vw;
+      border-bottom: none;
       line-height: 4vw;
     }
 
@@ -171,7 +175,7 @@
     font-style: normal !important;
     font-weight: bold !important;
     line-height: 1.3vw !important;
-    text-transform: uppercase !important;
+    text-transform: uppercase;
 
     @media (max-width: 768px) {
       flex: none;
@@ -185,7 +189,13 @@
       font-style: normal !important;
       font-weight: bold !important;
       line-height: 5vw !important;
-      text-transform: uppercase !important;
+    }
+
+    @media (max-width: 500px) {
+      margin-top: 0.53vw;
+      font-family: $Raleway !important;
+      font-weight: normal;
+      text-transform: lowercase;
     }
   }
 
@@ -199,6 +209,18 @@
       color: #e25205;
       font-size: 4.2vw;
     }
+
+    @media (max-width: 500px) {
+      height: 5.86vw;
+      margin-top: 2.66vw;
+      font-size: 4.26vw !important;
+      font-weight: bold !important;
+      text-transform: uppercase !important;
+    }
+  }
+
+  .profile-mail {
+    font-weight: normal !important;
   }
 
   .session {
@@ -218,7 +240,9 @@
     border-bottom: 0.006vw solid #fff;
 
     @media screen and(max-width: 500px) {
+      margin-top: 8vw;
       padding-bottom: 4vw;
+      border: none;
     }
 
     p {
@@ -228,6 +252,7 @@
 
       @media screen and(max-width: 500px) {
         font-size: 3.7vw;
+        text-transform: uppercase;
       }
 
       select {
@@ -247,6 +272,7 @@
         @media screen and (max-width: 500px) {
           width: 30.6vw;
           height: 8.2vw;
+          padding-left: 3.73vw;
           border-radius: 1.3vw;
           font-size: 3.7vw;
         }
@@ -429,7 +455,9 @@
     height: 10.13vw !important;
     margin-top: 2.66vw !important;
     font-size: 3.7vw !important;
+    font-weight: bold !important;
     line-height: 5.06vw !important;
+    text-transform: uppercase !important;
   }
 }
 
@@ -542,6 +570,10 @@
             display: none !important;
           }
         }
+      }
+
+      option::after {
+        content: 'yes';
       }
     }
   }

@@ -13,7 +13,7 @@ const FooterLinks = ({ heading = '', footerAccount, links = [] }) => {
     <div className="footer-column menu-column">
       <h3>{heading}</h3>{' '}
       {!userLoginInfo && (
-        <Link to="/account">
+        <Link to="/account/login">
           <h5>{footerAccount}</h5>
         </Link>
       )}

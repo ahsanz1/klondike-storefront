@@ -191,7 +191,6 @@
 
     .c-image {
       position: absolute;
-      // top: 15px;
       right: 0;
 
       @media (max-width: 500px) {
@@ -202,32 +201,22 @@
   }
 
   &__links {
-    // flex-wrap: wrap;
-
     @media (max-width: 992px) {
       display: none;
     }
 
     .header-link {
-      margin: 2.899vw 0;
-      // display: flex;
-      // align-items: center;
+      margin-top: 3.12vw;
+      margin-bottom: 2.49vw;
       color: $white-color;
       font-family: Open-Sans, Helvetica, Arial, sans-serif;
       font-size: 1.3vw;
       font-style: normal;
       font-weight: normal;
-      // border-bottom: 3px solid transparent;
       letter-spacing: 0.015em;
       text-transform: uppercase;
     }
   }
-
-  // &__User-icon {
-  //   @media (max-width: 992px) {
-  //     display: none;
-  //   }
-  // }
 
   .Buy-Button {
     box-sizing: border-box;
