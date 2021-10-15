@@ -12,9 +12,11 @@ import './style.scss'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
+  let [totalPrice, setTotalPrice] = useState('')
+  let [modalData, setModalData] = useState('')
+
   const [itemdata, setItemData] = useState([])
 
-  console.log('question', question)
   useEffect(() => {
     const data = async () => {
       const items = await fetchCategory(question)
@@ -26,7 +28,27 @@ const ProductAccordion = ({ question }) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const showModal = () => {
+  const showModal = data => {
+    let payload = {}
+    let perCase =
+      data['Weight'] !== undefined ? data['Weight'] : data['QTY PER CASE']
+    data = JSON.parse(data)
+    payload = {
+      img: data['Image 1 URL'],
+      title: data['title'],
+      size: data['Package Size'],
+      partNumber: data['Part Number'],
+      totalPrice: data['Order Price'],
+      price: data['Order Price'],
+      unit: `${data['Unit of Measurement']}${
+        perCase !== undefined ? '/' + perCase : ''
+      }`,
+      originalJson: JSON.stringify(data),
+    }
+
+    setModalData(payload)
+    setTotalPrice(payload.totalPrice)
+
     setIsModalVisible(true)
   }
 
@@ -35,7 +57,8 @@ const ProductAccordion = ({ question }) => {
   }
 
   function onChange (value) {
-    console.log('changed', value)
+    let data = modalData
+    setTotalPrice(data.price * value)
   }
 
   // const showModal = () => {
@@ -107,7 +130,10 @@ const ProductAccordion = ({ question }) => {
                       />
                     </div>
                     <div className="table-button">
-                      <Button onClick={showModal} className="hover-button">
+                      <Button
+                        onClick={e => showModal(JSON.stringify(data))}
+                        className="hover-button"
+                      >
                         ADD TO CART
                       </Button>
                     </div>
@@ -128,34 +154,34 @@ const ProductAccordion = ({ question }) => {
         <Modal visible={isModalVisible} onCancel={handleCancel}>
           <div className="model-parent">
             <div className="product-img">
-              <img src="/static/images/pricelistimg.png" alt="img" />
+              <img src={modalData.img} alt="img" />
             </div>
             <div className="prodct-data">
-              <h1>ISO 680 EP Full Synthetic</h1>
+              <h1>{modalData.title}</h1>
               <div className="product-detail">
                 <div>
                   <p className="products-sizes">Size</p>
-                  <p className="products-sizes">1000 L / 275 GAL</p>
+                  <p className="products-sizes">{modalData.size}</p>
                 </div>
                 <div>
                   <p className="products-sizes">UNITS/CASE</p>
-                  <p className="products-sizes">12</p>
+                  <p className="products-sizes">{modalData.unit}</p>
                 </div>
                 <div>
                   <p className="products-sizes">Part Num</p>
-                  <p className="products-sizes">KL-567</p>
+                  <p className="products-sizes">{modalData.partNumber}</p>
                 </div>
                 <div>
                   <p className="products-sizes">Price</p>
-                  <p className="products-sizes">$40</p>
+                  <p className="products-sizes">${modalData.price}</p>
                 </div>
                 <div>
                   <p className="products-sizes">QTY</p>
                   <p className="products-sizes">
                     <InputNumber
-                      min={0}
-                      max={100}
-                      defaultValue={0}
+                      min={1}
+                      value={1}
+                      defaultValue={1}
                       onChange={onChange}
                       size="middle"
                       className="input"
@@ -164,7 +190,7 @@ const ProductAccordion = ({ question }) => {
                 </div>
                 <div>
                   <p className="products-sizes">Total Price</p>
-                  <p className="products-sizes">$109.10</p>
+                  <p className="products-sizes">${totalPrice}</p>
                 </div>
               </div>
               <Button className="pricelist-addcart">Add TO CART</Button>
