@@ -9,6 +9,7 @@ const Oats = () => {
   const { mainHeading } = tableOatsData
   const [otsdata, setOtsdata] = useState([])
   let [query, setQuery] = useState('')
+  const [abale, setAble] = useState(false)
   const [year, setYear] = useState([])
   const [series, setSeries] = useState([])
   const [family, setFamily] = useState([])
@@ -30,33 +31,62 @@ const Oats = () => {
       let familyArray = [{ label: 'FAMILY' }]
       let manufacturerArray = [{ label: 'MANUFACTURER' }]
       response &&
-        Object.entries(response.data.facets.year.buckets).map(year => {
-          yearsArray.push({ label: year[0], value: year[0] })
-        })
-      response &&
-        Object.entries(response.data.facets.series.buckets).map(year => {
-          seriesArray.push({ label: year[0], value: year[0] })
-        })
-      response &&
-        Object.entries(response.data.facets.family.buckets).map(year => {
-          familyArray.push({ label: year[0], value: year[0] })
-        })
-      response &&
-        Object.entries(response.data.facets.manufacturer.buckets).map(year => {
-          manufacturerArray.push({ label: year[0], value: year[0] })
+        Object.entries(
+          response &&
+            response.data &&
+            response.data.facets &&
+            response.data.facets.year &&
+            response.data.facets.year.buckets &&
+            response.data.facets.year.buckets,
+        ).map(year => {
+          yearsArray && yearsArray.push({ label: year[0], value: year[0] })
         })
       setYear(yearsArray)
+      Object.entries(
+        response &&
+          response.data &&
+          response.data.facets &&
+          response.data.facets.series &&
+          response.data.facets.series.buckets &&
+          response.data.facets.series.buckets,
+      ).map(year => {
+        seriesArray && seriesArray.push({ label: year[0], value: year[0] })
+      })
       setSeries(seriesArray)
-      setFamily(familyArray)
+      Object.entries(
+        response &&
+          response.data &&
+          response.data.facets &&
+          response.data.facets.manufacturer &&
+          response.data.facets.manufacturer.buckets &&
+          response.data.facets.manufacturer.buckets,
+      ).map(year => {
+        manufacturerArray &&
+          manufacturerArray.push({ label: year[0], value: year[0] })
+      })
       setManufacturer(manufacturerArray)
+      Object.entries(
+        response &&
+          response.data &&
+          response.data.facets &&
+          response.data.facets.family &&
+          response.data.facets.family.buckets &&
+          response.data.facets.family.buckets,
+      ).map(year => {
+        familyArray && familyArray.push({ label: year[0], value: year[0] })
+      })
+      setFamily(familyArray)
     })
   }
   const filterData = e => {
     setQuery(e.target.value)
   }
+  const [bgImg, setBgimg] = useState(false)
   const searchQuery = () => {
+    setBgimg(true)
     if (query) {
       getproducts()
+      setAble(true)
     }
   }
   const manuFunc = value => {
@@ -81,7 +111,7 @@ const Oats = () => {
 
   return (
     <>
-      <div className="img">
+      <div className={`${bgImg ? 'bg-search' : 'img'}`}>
         <div className="oats">
           <h1 className="heading">{mainHeading}</h1>
           <div className="wrapper-oats">
@@ -116,7 +146,7 @@ const Oats = () => {
             </div>
           </div>
 
-          {otsdata && otsdata.equipment && (
+          {abale && otsdata && otsdata.equipment && (
             <div className="dropdown-wrapper">
               <Dropdown
                 onChange={yearFunc}
@@ -142,7 +172,7 @@ const Oats = () => {
           )}
           <div className="overflow">
             <div className="table-wrapper">
-              {otsdata && otsdata.equipment && (
+              {abale && otsdata && otsdata.equipment && (
                 <div className="title flex">
                   <h3 className="custom-grid tiles">Category</h3>
                   <h3 className="custom-grid tiles">Manufacturer</h3>
