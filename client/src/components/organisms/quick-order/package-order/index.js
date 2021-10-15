@@ -16,6 +16,7 @@ const PackageOrder = ({
   const handleSubmit = e => {
     e.preventDefault()
   }
+  console.log(productstitle, 'productstitle')
   let titleArray = productstitle
   let InputList = inputList
 
