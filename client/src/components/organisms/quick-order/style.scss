@@ -361,8 +361,14 @@
 .quickorder-wrapper {
   .orders {
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr;
-    margin-left: 2.91vw;
+    grid-template-columns: 3.2fr 1fr 1fr 1fr;
+    width: 95%;
+    margin-top: 1%;
+    margin-left: 0.61vw;
+    margin-left: 1%;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    border-top: 1px solid white;
     color: white;
 
     .item-wraper {

@@ -42,6 +42,7 @@ const QuickOrder = () => {
   }, [])
   function onChange (value) {
     console.log('changed', value)
+    setCaseqty(caseqty)
   }
 
   const handleAccordianClick = () => {
@@ -136,22 +137,28 @@ const QuickOrder = () => {
   }
 
   useEffect(() => {
-    let packageorder =
-      fetcheditems &&
-      fetcheditems.map((datas, i) => {
-        return { value: datas['Part Number'] }
-      })
-    console.log(packageorder, 'packageorder')
-    setProductstitle(packageorder)
-  }, [fetcheditems])
+    let packagearr = []
+    let bulkararr = []
 
-  useEffect(() => {
-    let bulkorder =
-      fetcheditems &&
+    fetcheditems &&
       fetcheditems.map((datas, i) => {
-        return { value: datas['Part Number'] }
+        if (datas['Packaged Order'] === true) {
+          let packageorder = {
+            label: datas['Part Number'],
+            value: datas['Part Number'],
+          }
+          packagearr.push(packageorder)
+        } else {
+          let bulkorder = {
+            label: datas['Part Number'],
+            value: datas['Part Number'],
+          }
+          bulkararr.push(bulkorder)
+        }
       })
-    console.log(bulkorder, 'packageorder')
+    console.log(packagearr, 'packageorder')
+    console.log(bulkararr, 'bulkararr')
+    setProductstitle(packagearr)
   }, [fetcheditems])
 
   const handleAddRow = () => {
@@ -375,7 +382,7 @@ const QuickOrder = () => {
                         />
                       </div>
                       <div>
-                        <p>$24.0</p>
+                        <p>${data['Base Price'] * caseqty}</p>
                       </div>
                     </div>
                   ))}
