@@ -9,6 +9,7 @@ import { fetchCategory } from 'libs/services/algolia'
 // import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 // import Label from 'components/atoms/label'
 import './style.scss'
+import { addToCart } from 'libs/utils/gtm'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
@@ -53,6 +54,12 @@ const ProductAccordion = ({ question }) => {
   }
 
   const handleCancel = () => {
+    setIsModalVisible(false)
+  }
+
+  const addItemToCart = async () => {
+    let item = modalData
+    addToCart(item)
     setIsModalVisible(false)
   }
 
@@ -193,7 +200,12 @@ const ProductAccordion = ({ question }) => {
                   <p className="products-sizes">${totalPrice}</p>
                 </div>
               </div>
-              <Button className="pricelist-addcart">Add TO CART</Button>
+              <Button
+                className="pricelist-addcart"
+                onClick={e => addItemToCart(e)}
+              >
+                Add TO CART
+              </Button>
             </div>
           </div>
         </Modal>
