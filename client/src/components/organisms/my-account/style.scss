@@ -425,7 +425,11 @@
   font-weight: bold !important;
 
   @media screen and (max-width: 500px) {
+    display: flex !important;
+    height: 10.13vw !important;
+    margin-top: 2.66vw !important;
     font-size: 3.7vw !important;
+    line-height: 5.06vw !important;
   }
 }
 
