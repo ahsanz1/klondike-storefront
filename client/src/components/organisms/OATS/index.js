@@ -8,13 +8,20 @@ import Button from 'components/atoms/button'
 const Oats = () => {
   const { mainHeading } = tableOatsData
   const [otsdata, setOtsdata] = useState([])
+  const [mu, setMu] = useState()
+  const [fa, setFa] = useState()
+  const [se, setSe] = useState()
+  const [ya, setYa] = useState()
+  const [gr, setGr] = useState()
   let [query, setQuery] = useState('')
+
   const [abale, setAble] = useState(false)
   const [year, setYear] = useState([])
   const [series, setSeries] = useState([])
   const [family, setFamily] = useState([])
   const [manufacturer, setManufacturer] = useState([])
   const [manuquery, setManuQuery] = useState('')
+
   const [familyquery, setFamilyQuery] = useState('')
   const [seriesQuery, setSeriesQuery] = useState('')
   const [yearQuery, setYearQuery] = useState('')
@@ -26,10 +33,11 @@ const Oats = () => {
       let results = response.data.equipment_list
       console.log('res', results)
       setOtsdata(results)
-      let yearsArray = [{ label: 'WITHIN YEAR RANGE' }]
-      let seriesArray = [{ label: 'SERIES' }]
-      let familyArray = [{ label: 'FAMILY' }]
-      let manufacturerArray = [{ label: 'MANUFACTURER' }]
+      let yearsArray = [{ label: ' ' }]
+      let seriesArray = [{ label: ' ' }]
+      let familyArray = [{ label: ' ' }]
+      let manufacturerArray = [{ label: ' ' }]
+
       response &&
         Object.entries(
           response &&
@@ -90,19 +98,26 @@ const Oats = () => {
     }
   }
   const manuFunc = value => {
+    setMu(value)
     setManuQuery(value)
     getproducts()
   }
   const searchFamily = value => {
     console.log('family:', value)
     setFamilyQuery(value)
+    setFa(value)
     getproducts()
   }
   const seriesFunc = value => {
     setSeriesQuery(value)
+    setSe(value)
   }
   const yearFunc = value => {
     setYearQuery(value)
+    setYa(value)
+  }
+  const familygroup = value => {
+    setGr(value)
   }
   useEffect(() => {
     getproducts()
@@ -123,6 +138,8 @@ const Oats = () => {
             />
             <div className="wrapper-two">
               <Dropdown
+                value={gr !== undefined ? gr : 'All'}
+                onChange={familygroup}
                 className="cars"
                 items={[
                   { label: 'All' },
@@ -152,21 +169,25 @@ const Oats = () => {
                 onChange={yearFunc}
                 className="year_range"
                 items={year}
+                value={ya !== undefined ? ya : ' WITHIN YEAR RANGE'}
               />
               <Dropdown
                 onChange={seriesFunc}
                 className="series "
                 items={series}
+                value={se !== undefined ? se : ' SERIES'}
               />
               <Dropdown
                 className="family "
                 items={family}
                 onChange={searchFamily}
+                value={fa !== undefined ? fa : ' FAMILY'}
               />
               <Dropdown
                 onChange={manuFunc}
                 className="manufecturer "
                 items={manufacturer}
+                value={mu !== undefined ? mu : ' MANUFACTURER'}
               />
             </div>
           )}
