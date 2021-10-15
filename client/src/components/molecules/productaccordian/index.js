@@ -59,7 +59,7 @@ const ProductAccordion = ({ question }) => {
 
   const addItemToCart = async () => {
     let item = modalData
-    addToCart(item)
+    addToCart(JSON.parse(item.originalJson))
     setIsModalVisible(false)
   }
 
