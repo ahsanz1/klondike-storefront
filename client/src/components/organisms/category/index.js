@@ -69,7 +69,6 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
         productListing(results.nbHits, category)
       }
       setProducts(serverResults)
-
       setLoading(false)
       console.log('check results:', results)
       subItemHandler(results)

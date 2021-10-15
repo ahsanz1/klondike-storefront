@@ -11,6 +11,7 @@ const PackageOrder = ({
   productstitle,
   inputList,
   handleRemoveClick,
+  // caceqty,
 }) => {
   const handleSubmit = e => {
     e.preventDefault()
@@ -26,6 +27,7 @@ const PackageOrder = ({
       </div>
       <form onSubmit={e => handleSubmit(e)}>
         {InputList.map((x, i) => {
+          console.log(x, 'vv')
           return (
             <div key={i}>
               <div className="text-fields">
@@ -34,14 +36,15 @@ const PackageOrder = ({
                     list="partnumber"
                     name="partnumber"
                     className="part-number"
-                    placeholder="Enter Part Name"
+                    placeholder="Enter Part Number"
                     value={x.partnumber}
                     onChange={e => handleChangePackage(e, i)}
                   />
 
                   <datalist id="partnumber">
                     {titleArray.map((item, i) => {
-                      return <option key={i} value={item} />
+                      console.log('it', item)
+                      return <option key={i} value={item.value} />
                     })}
                   </datalist>
                 </div>
@@ -52,6 +55,7 @@ const PackageOrder = ({
                     className="quantity-number"
                     type="number"
                     value={x.quantity}
+                    step={1}
                     onChange={e => handleChangePackage(e, i)}
                   />
                 </div>
@@ -89,6 +93,7 @@ PackageOrder.propTypes = {
   productstitle: PropTypes.array,
   inputList: PropTypes.array,
   handleRemoveClick: PropTypes.func,
+  caceqty: PropTypes.func,
 }
 
 export default PackageOrder
