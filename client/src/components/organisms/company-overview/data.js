@@ -27,6 +27,36 @@ export const overviewData = {
         'Our selection of product blends covers almost any on- and off-road vehicle and equipment application. Uses for this family of specialty fluids, lubrication products and chemicals include: mining, exploration, forestry, construction, agriculture, on-road heavy duty transportation, foreign and domestic cars, light duty trucks, and most industrial applications. Certifications from globally accredited organizations like API (American Petroleum Institute) and ILSAC (International Lubricant Standardization and Approval Committee), ensure the KLONDIKE oils and lubricants meet and exceed the demands of many universal applications and specifications.',
     },
   ],
+  whyKlondikeData: [
+    {
+      title: 'Dedication to Quality Oils, Lubricants and Chemicals',
+
+      paragragh:
+        'Our customers enjoy the satisfaction of knowing that KLONDIKE’s world-class virgin base oils, greases and specialty fluids are formulated from the finest base stocks from global lubricant suppliers. In addition, KLONDIKE’s API and ILSAC registered lubricants are designed to guarantee OEM acceptance, improve fuel economy, and extend engine life. Our innovative range of virgin base oils which include premium synthetic blends, advanced full synthetic lubricants and high performance European synthetic oils formulated with globally certified technology gives you optimum operating conditions whether you are in the position of driving a vehicle or operating industrial equipment. Additionally, KLONDIKE’s exclusive Arctic Performance Technology delivers outstanding engine and equipment productivity in the most extreme weather conditions.',
+    },
+    {
+      title: 'Full Range of Oils, Greases and Specialty Fluids',
+
+      paragragh:
+        'Our KLONDIKE oils, lubricants and chemicals cover almost every vehicle and equipment category found in today’s industries. These include our world-class retail product line through to a complete range of bulk industrial oils, greases and specialty fluids. Additionally, KLONDIKE custom designs and blends small batch formulations through to large-scale bulk batch formulations based on the specific requirements of your market.',
+    },
+    {
+      title: 'Premium Service for the Mobile and Stationary Industries',
+
+      paragragh:
+        'Our team provides consulting and training sessions and programs to ensure products are used correctly and for their intended applications. In educating our distributors and industry partners, we give the competitive advantage of a deeper knowledge and understanding of our oils, lubricants and chemicals. At KLONDIKE, we are dedicated to meeting the delivery needs of our customers through providing marketing materials, technical data and services nationwide. Our offices and distribution facilities are strategically placed across North America to facilitate the time-sensitive delivery of your industry. Our commitment is to provide the satisfaction you deserve and have come to expect.',
+    },
+  ],
+  workAtKlondikeData: [
+    {
+      title: 'Work at Klondike',
+
+      paragraph:
+        'As an independent and privately owned company, KLONDIKE Lubricants Corporation embodies a strong sense of entrepreneurial spirit. This spirit is ingrained in each and every one of us and is what makes KLONDIKE the success it is today.',
+      paragraph2:
+        'Year after year, we grow at a double-digit rate, so we are always looking for new talent. If you are interested in joining one of the fastest growing Canadian companies and want to help in making KLONDIKE a leading global oils and lubricants company, then we’d love to hear from you.',
+    },
+  ],
 
   aboutUsLinks: [
     {

@@ -357,3 +357,54 @@
     }
   }
 }
+
+.quickorder-wrapper {
+  .orders {
+    display: grid;
+    grid-template-columns: 3.2fr 1fr 1fr 1fr;
+    width: 95%;
+    margin-top: 1%;
+    margin-left: 0.61vw;
+    margin-left: 1%;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    border-top: 1px solid white;
+    color: white;
+
+    .item-wraper {
+      display: flex;
+
+      .img-wraper {
+        width: 110px;
+        background: white;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+        }
+      }
+
+      .quick-orde_btn {
+        width: 150px;
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid $accent-color;
+        background: transparent;
+      }
+
+      .part-wraper {
+        margin-left: 2.91vw;
+
+        .quik-product-heading {
+          color: white;
+          font-family: $OpenSans;
+          font-size: 1.38vw;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 1.52vw;
+          text-align: left;
+        }
+      }
+    }
+  }
+}

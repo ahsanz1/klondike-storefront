@@ -65,6 +65,9 @@ import Catlog from 'components/organisms/catlog-page'
 import TechResource from 'components/organisms/Tech-Resource'
 import OverView from 'components/organisms/company-overview'
 import PrivacyPolicy from 'components/organisms/privacy-policy'
+import WhyKlondike from 'components/organisms/why-klondike'
+import WorkAtKlonedike from 'components/organisms/work-at-klondike'
+
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -139,4 +142,6 @@ export default {
   TechResource: params => <TechResource {...params} />,
   OverView: params => <OverView {...params} />,
   PrivacyPolicy: params => <PrivacyPolicy {...params} />,
+  WhyKlondike: params => <WhyKlondike {...params} />,
+  WorkAtKlonedike: params => <WorkAtKlonedike {...params} />,
 }

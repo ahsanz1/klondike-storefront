@@ -207,6 +207,12 @@ $vw-viewport: 1440;
   padding-bottom: get-vw(60px);
   padding-left: 30px;
 
+  @media (max-width: 768px) {
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 0;
+  }
+
   .c-button {
     // margin-bottom: 20px;
     padding: 5px;
@@ -230,6 +236,8 @@ $vw-viewport: 1440;
 
     @media (max-width: 768px) {
       flex-direction: row;
+      margin-top: 0;
+      margin-left: 0;
     }
 
     @media (max-width: 425px) {
@@ -242,6 +250,8 @@ $vw-viewport: 1440;
 
       @media (max-width: 425px) {
         width: 100%;
+        margin-left: 0;
+        padding-bottom: 20px;
       }
 
       .mob-button {
