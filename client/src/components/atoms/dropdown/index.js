@@ -52,7 +52,6 @@ const Dropdown = ({
           }
           return item
         })
-
         const _selectedList = list.filter(item => item.Select === true)
         console.log('selection', _selectedList)
         setSelectFilterList(_selectedList)
