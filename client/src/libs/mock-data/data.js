@@ -588,5 +588,17 @@ const mockData = {
       params: {},
     },
   ],
+  '/why-klondike': [
+    {
+      id: 'WhyKlondike',
+      params: {},
+    },
+  ],
+  '/work-at-klondike': [
+    {
+      id: 'WorkAtKlonedike',
+      params: {},
+    },
+  ],
 }
 export default mockData

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
-import './style.scss'
-import { categoriesXPM } from './data'
-const Techtabllist = ({
+// import './style.scss'
+import { AboutUsXPM } from 'components/organisms/Technical-tablist/data'
+
+const AboutUsTablist = ({
   categories,
   itemName,
   clickCategoryHandler,
@@ -19,9 +20,9 @@ const Techtabllist = ({
   console.log('check categories:', categories)
   return (
     <div className={`categoryItem-tab trt ${className}`}>
-      {categoriesXPM &&
-        categoriesXPM.length &&
-        categoriesXPM.map((item, index) => (
+      {AboutUsXPM &&
+        AboutUsXPM.length &&
+        AboutUsXPM.map((item, index) => (
           <>
             {item.categoryName.length > 0 && (
               <Label
@@ -58,7 +59,7 @@ const Techtabllist = ({
     </div>
   )
 }
-Techtabllist.DefaultProps = {
+AboutUsTablist.DefaultProps = {
   categories: [],
   itemName: '',
   clickCategoryHandler: {},
@@ -66,11 +67,11 @@ Techtabllist.DefaultProps = {
   className: '',
 }
 
-Techtabllist.propTypes = {
+AboutUsTablist.propTypes = {
   categories: PropTypes.array,
   itemName: PropTypes.string,
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
   className: PropTypes.string,
 }
-export default Techtabllist
+export default AboutUsTablist

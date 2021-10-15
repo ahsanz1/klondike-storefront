@@ -37,3 +37,31 @@ export const categoriesXPM = [
   //     categoryName: 'Chemicals',
   //   },
 ]
+
+export const AboutUsXPM = [
+  {
+    title: 'Company Overview',
+    categoryName: 'Company Overview',
+    subItem: 'Company Overview',
+  },
+  {
+    title: 'Our Story',
+    categoryName: 'Our Story',
+  },
+  {
+    title: 'Why Choose KLONDIKE?',
+    categoryName: 'Why Choose KLONDIKE?',
+  },
+  {
+    title: 'Industry Applications',
+    categoryName: 'Industry Applications',
+  },
+  {
+    title: 'Safety & Environment',
+    categoryName: 'Safety & Environment',
+  },
+  {
+    title: 'Work At Klondike',
+    categoryName: 'Work At Klondike',
+  },
+]

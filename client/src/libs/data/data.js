@@ -2148,7 +2148,7 @@ export const shippingFormData = {
 
 export const aboutUs = {
   desktopImage: {
-    url: '/static/images/bg_about1.png',
+    url: '/static/images/bg_about.png',
 
     altText: 'desktop hero image',
   },
@@ -2156,7 +2156,7 @@ export const aboutUs = {
   mobileImage: {
     url: '/static/images/bg_about1-mobile.png',
 
-    altText: 'desktop hero image',
+    altText: 'mobile hero image',
   },
 }
 

@@ -201,4 +201,8 @@ Components[
 Components[
   'OverView'
 ] = require('components/organisms/company-overview').default
+Components['WhyKlondike'] = require('components/organisms/why-klondike').default
+Components[
+  'WorkAtKlonedike'
+] = require('components/organisms/work-at-klondike').default
 export default Components
