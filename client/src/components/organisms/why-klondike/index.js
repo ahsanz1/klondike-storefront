@@ -73,7 +73,7 @@ const WhyklondikePage = () => {
 const WhyKlondike = () => {
   const size = useWindowSize()
   // const [size, setSize] = useState(useWindowSize)
-  console.log('size', size)
+
   return size[0] > 768 ? (
     <>
       <div className="whyklondike-page-wrapper">

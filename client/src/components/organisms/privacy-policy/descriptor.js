@@ -19,7 +19,8 @@ exports.default = Types.Component({
       label: 'List item',
       children: Types.Shape({
         children: {
-          text: Types.String({ label: 'Text' }),
+          heading: Types.String({ label: 'heading' }),
+          body: Types.String({ label: 'body' }),
         },
       }),
     }),

@@ -16,12 +16,10 @@ const MobileTabList = ({
   children = null,
 }) => {
   const [product, setProduct] = useState('')
-  console.log('props:', categories)
   const productClickHandler = productName => {
     setProduct(productName)
   }
-  console.log('subitem', subItem)
-  console.log('check categories:', categories)
+
   return (
     <div className="mobile-tab-list">
       <div>
