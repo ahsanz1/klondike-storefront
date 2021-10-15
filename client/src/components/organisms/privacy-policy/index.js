@@ -4,7 +4,6 @@ import './style.scss'
 import Privacy from '../../molecules/privacy-policy'
 
 const PrivacyPolicy = ({ heading, subheading, paragraph, policyList }) => {
-  console.log('policylist', policyList)
   return (
     <div className="PrivacyPolicy-wrapper">
       <div className="PrivacyPolicy-container">
