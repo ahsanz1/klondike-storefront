@@ -77,12 +77,13 @@
 
     @media (max-width: 768px) {
       display: block;
-      position: absolute;
+      position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
       padding: 10px;
       padding-left: 8.5vw;
+      background: #013a4e;
       color: #fff;
       font-family: $OpenSans;
       font-size: 5.3vw;
