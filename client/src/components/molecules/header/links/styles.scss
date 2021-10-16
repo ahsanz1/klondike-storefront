@@ -97,25 +97,36 @@
     }
   }
 
-  // .left-image {
-  //   left: -30px;
-  //   transform: rotate(180deg);
-  // }
-
-  // .toggleOptions {
-  //   display: block;
-  // }
-
-  // .hideToggleOptions {
-  //   display: block;
-
-  //   @media (max-width: 500px) {
-  //     display: none;
-  //   }
-  // }
   .c-image {
     @media (min-width: 992px) {
       display: none !important;
+    }
+  }
+
+  .toggle-sub-menu {
+    strong {
+      margin-left: 5.06vw;
+      color: $white-color;
+      font-family: OpenSans;
+      font-size: 6.4vw;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .c-image {
+      top: 5.33vw;
+      left: 2.66vw;
+      transform: rotate(180deg);
+    }
+
+    .show-products .product-list {
+      margin-top: 8vw;
+
+      li {
+        button {
+          text-transform: uppercase;
+        }
+      }
     }
   }
 }
