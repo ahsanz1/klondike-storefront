@@ -158,7 +158,7 @@
         }
 
         @media (max-width: 500px) {
-          display: block !important;
+          display: none !important;
           justify-content: unset !important;
           padding: 4vw 4vw !important;
           padding-bottom: 0 !important;
@@ -167,6 +167,10 @@
 
       .show-products-image {
         display: block;
+
+        @media (max-width: 500px) {
+          display: none;
+        }
       }
 
       .h-links {
