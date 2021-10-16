@@ -527,14 +527,14 @@ const mockData = {
       params: {},
     },
   ],
-  '/Technical-doucment': [
+  '/tech-resources/Technical-doucment': [
     {
       id: 'Technical',
       params: {},
     },
   ],
 
-  '/oamapprovals': [
+  '/tech-resources/oamapprovals': [
     {
       id: 'Oamspproval',
       params: {},
@@ -546,13 +546,13 @@ const mockData = {
       params: {},
     },
   ],
-  '/warranty': [
+  '/tech-resources/warranty': [
     {
       id: 'WarrantyPage',
       params: {},
     },
   ],
-  '/video-gallery': [
+  '/tech-resources/video-gallery': [
     {
       id: 'VideoGallery',
       params: {},
@@ -564,7 +564,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/tech-news-blog': [
+  '/tech-resources/tech-news-blog': [
     {
       id: 'TechNews',
       params: {},
