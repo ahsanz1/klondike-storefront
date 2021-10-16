@@ -8,15 +8,17 @@ const BulkOrder = ({
   handleChangePackage,
   handleAddtoCart,
   handleAddRow,
-  productstitle,
+  bulkdata,
   inputList,
   handleRemoveClick,
 }) => {
   const handleSubmit = e => {
     e.preventDefault()
   }
-  let titleArray = productstitle
+  console.log(bulkdata, 'productsbulk')
+  let titleArray = bulkdata
   let InputList = inputList
+  console.log(titleArray, 'titleArray')
 
   return (
     <div>
@@ -41,7 +43,8 @@ const BulkOrder = ({
 
                   <datalist id="partnumber">
                     {titleArray.map((item, i) => {
-                      return <option key={i} value={item} />
+                      console.log('itbulk', item)
+                      return <option key={i} value={item.value} />
                     })}
                   </datalist>
                 </div>
@@ -86,7 +89,7 @@ BulkOrder.propTypes = {
   handleChange2Package: PropTypes.func,
   handleAddtoCart: PropTypes.func,
   handleAddRow: PropTypes.func,
-  productstitle: PropTypes.array,
+  bulkdata: PropTypes.array,
   inputList: PropTypes.array,
   handleRemoveClick: PropTypes.func,
 }

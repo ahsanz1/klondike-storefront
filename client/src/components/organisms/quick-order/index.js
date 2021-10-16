@@ -26,11 +26,13 @@ const QuickOrder = () => {
   const [fetcheditems, setFetcheditems] = useState([])
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
   const [accordianisActive, setAccordianIsActive] = useState(true)
-  // const [acctive, setAcctive] = useState(true)
+  const [bulkdata, setBulkdata] = useState([])
   let [pn, setPN] = useState()
   let [caseqty, setCaseqty] = useState([])
 
   const { addToCartApiCall } = useAddToCart()
+  console.log(fetcheditems, 'fetcheditems')
+  console.log(inputList, 'inputList')
 
   useEffect(() => {
     const data = async () => {
@@ -40,9 +42,9 @@ const QuickOrder = () => {
     }
     data()
   }, [])
-  function onChange (value) {
+  const onChangeqty = async (value, index) => {
     console.log('changed', value)
-    setCaseqty(caseqty)
+    setCaseqty(value)
   }
 
   const handleAccordianClick = () => {
@@ -60,6 +62,7 @@ const QuickOrder = () => {
     handleRemoveClick(i)
   }
   const handleChange = async (e, index) => {
+    console.log('eeed', e, index)
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
@@ -120,7 +123,14 @@ const QuickOrder = () => {
     const list = [...inputList]
     list[index][name] = value
     setInputList(list)
-
+    if (name === 'partnumber') {
+      setPN(value)
+      filters['Part Number'] = value
+      algoliaApi()
+    } else {
+      setCaseqty(value)
+      console.log(value, 'vvvv')
+    }
     // const items = await fetchItems(value)
 
     // const titleArray = items.hits.map(item => {
@@ -156,9 +166,10 @@ const QuickOrder = () => {
           bulkararr.push(bulkorder)
         }
       })
+    setProductstitle(packagearr)
+    setBulkdata(bulkararr)
     console.log(packagearr, 'packageorder')
     console.log(bulkararr, 'bulkararr')
-    setProductstitle(packagearr)
   }, [fetcheditems])
 
   const handleAddRow = () => {
@@ -237,6 +248,7 @@ const QuickOrder = () => {
       return (
         <div className="wrapper">
           <AccordionComponent
+            value={pn !== undefined ? pn : 'Part Number'}
             text="Order by Part Number"
             className="accordian"
             isActive={accordianisActive}
@@ -245,7 +257,7 @@ const QuickOrder = () => {
             <BulkOrder
               handleChangePackage={handleChangeBulk}
               handleAddtoCart={handleAddtoCart}
-              productstitle={productstitle}
+              bulkdata={bulkdata}
               inputList={inputList}
               handleAddRow={handleAddRow}
               handleRemoveClick={handleRemoveClick}
@@ -311,7 +323,7 @@ const QuickOrder = () => {
               </Radio.Group>
             </div>
             <div className="price-list-btn">
-              <Link className="price-list-text" to="/faqs">
+              <Link className="price-list-text" to="/Price-List">
                 View Price List
               </Link>
             </div>
@@ -376,7 +388,7 @@ const QuickOrder = () => {
                           max={100}
                           defaultValue={0}
                           value={caseqty}
-                          onChange={onChange}
+                          onChange={e => onChangeqty(e, i)}
                           size="middle"
                           className="input"
                         />
