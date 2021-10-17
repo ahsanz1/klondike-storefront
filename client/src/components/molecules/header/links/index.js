@@ -23,7 +23,7 @@ const Links = ({
 }) => {
   const [clickedName, setClickedName] = useState('')
   const [clickedArray, setClickedArray] = useState([])
-  const { user } = useContext(AppContext)
+  const { user, loginBottom } = useContext(AppContext)
   const getToken = user && user.accessToken
   const toggleFunc = (name, data) => {
     setClickedName(name)
@@ -111,11 +111,12 @@ const Links = ({
           {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
         </>
       )}
-
-      <div className="bottom-section">
-        <Image width={20} src={userIcon.url} alt={userIcon.altText} />
-        {menuBottom}
-      </div>
+      {loginBottom && (
+        <div className="bottom-section">
+          <Image width={20} src={userIcon.url} alt={userIcon.altText} />
+          {menuBottom}
+        </div>
+      )}
     </div>
   )
 }
