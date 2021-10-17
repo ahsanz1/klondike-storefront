@@ -114,7 +114,6 @@ const MyAccount = ({
   // const handleOrderModalSave = event => {
   //   console.log('ok modal event', event)
   // }
-  console.log('trackData new update dasti bata bhaiu mughe', allOrders)
 
   return (
     <div className="account--container">
