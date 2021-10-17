@@ -9,6 +9,10 @@
   .products {
     margin: 0 8.3vw;
 
+    @media (max-width: 500px) {
+      margin: 0 6.4vw;
+    }
+
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -20,11 +24,34 @@
         width: 13.8vw;
         margin-right: 2.2vw !important;
 
+        @media (max-width: 500px) {
+          width: 41.33vw;
+          height: 46.4vw;
+          margin-bottom: 18.4vw;
+        }
+
+        &:nth-child(even) {
+          @media (max-width: 500px) {
+            margin-right: 0 !important;
+          }
+        }
+
+        &:nth-child(odd) {
+          @media (max-width: 500px) {
+            margin-right: 4.5vw !important;
+          }
+        }
+
         img {
           width: 13.8vw;
           height: 15.8vw;
           background: #fff;
           object-fit: contain;
+
+          @media (max-width: 500px) {
+            width: 41.33vw;
+            height: 46.4vw;
+          }
         }
 
         .search-Items {
@@ -40,6 +67,11 @@
             font-size: 1.3vw;
             font-weight: 600;
             line-height: 110%;
+
+            @media (max-width: 500px) {
+              font-size: 3.73vw;
+              line-height: 140%;
+            }
           }
         }
       }
@@ -88,15 +120,32 @@
     .first-drop {
       width: 10.4vw !important;
       margin-right: 1.3vw;
+
+      @media (max-width: 500px) {
+        width: 40.26vw !important;
+        height: 17.06vw !important;
+        margin-bottom: 8.53vw;
+      }
     }
 
     .second-drop {
       width: 14.7vw !important;
       margin-right: 1.3vw;
+
+      @media (max-width: 500px) {
+        width: 56.8vw !important;
+        height: 17.06vw !important;
+        margin-bottom: 8.53vw;
+      }
     }
 
     .third-drop {
       width: 14.7vw !important;
+
+      @media (max-width: 500px) {
+        width: 56.8vw !important;
+        height: 17.06vw !important;
+      }
     }
 
     .ant-select-selector {
@@ -105,12 +154,26 @@
       border-radius: 1.1vw !important;
       background: #002a3a !important;
 
+      @media (max-width: 500px) {
+        height: 17.06vw !important;
+        border-radius: 4.26vw !important;
+      }
+
       .ant-select-selection-item {
         position: relative;
         top: 1.3vw;
         margin-left: 1.6vw;
         color: #fff !important;
         font-size: 1.1vw;
+
+        @media (max-width: 500px) {
+          top: 4.46vw;
+          font-family: $OpenSans;
+          font-size: 4.26vw;
+          font-weight: bold;
+          letter-spacing: 0.2vw;
+          text-transform: uppercase;
+        }
       }
     }
 
