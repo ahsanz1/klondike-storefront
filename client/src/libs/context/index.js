@@ -9,6 +9,7 @@ const AppProvider = ({ children }) => {
   const [searchKey, setSearchKey] = useState('')
   const [searchFilter, setSearchFilter] = useState([])
   const [plpredirect, setPlpRedirect] = useState('nano')
+  const [loginBottom, setLoginBottom] = useState(false)
   const [step, setStep] = useState(1)
   const [checked, setChecked] = useState(0)
   const [shippingServicePrice, setShippingServicePrice] = useState('')
@@ -194,6 +195,8 @@ const AppProvider = ({ children }) => {
         setSearchFilter,
         plpredirect,
         setPlpRedirect,
+        loginBottom,
+        setLoginBottom,
         step,
         setStep,
         goToNextStep,
