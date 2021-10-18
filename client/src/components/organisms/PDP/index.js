@@ -142,7 +142,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
 
   // eslint-disable-next-line space-before-function-paren
   const onQtyChange = async (value, index) => {
-    console.log(value, 'productData')
     let { packagedOrderData, requestArray } = productData
     let newArray = [...packagedOrderData]
     newArray[index] = {

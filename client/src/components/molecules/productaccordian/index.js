@@ -17,7 +17,6 @@ const ProductAccordion = ({ question }) => {
   let [modalData, setModalData] = useState('')
 
   const [itemdata, setItemData] = useState([])
-  console.log(modalData, 'modalData')
   useEffect(() => {
     const data = async () => {
       const items = await fetchCategory(question)

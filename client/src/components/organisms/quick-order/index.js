@@ -76,18 +76,14 @@ const QuickOrder = () => {
     handleRemoveClick(i)
   }
   const handleChangePackageqty = async (e, index) => {
-    console.log('ded', inputqty, index)
     const { name, value } = e.target
-    console.log(name, 'name')
     const list = [...inputList]
     list[index][name] = value
     // setInputList(list)
     setCaseqty({ index, value })
   }
   const handleChange = async (e, index) => {
-    console.log('eeed', e, index)
     const { name, value } = e.target
-    console.log(name, 'name')
     const list = [...inputList]
     list[index][name] = value
     setInputList(list)

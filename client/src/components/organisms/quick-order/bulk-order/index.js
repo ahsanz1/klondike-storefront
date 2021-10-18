@@ -15,11 +15,8 @@ const BulkOrder = ({
   const handleSubmit = e => {
     e.preventDefault()
   }
-  console.log(bulkdata, 'productsbulk')
   let titleArray = bulkdata
   let InputList = inputList
-  console.log(titleArray, 'titleArray')
-
   return (
     <div>
       <div className="partname-and-qty">
