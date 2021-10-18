@@ -63,7 +63,7 @@ const ProductAccordion = ({ question }) => {
     setIsModalVisible(false)
   }
 
-  function onChange (value) {
+  const onChange = value => {
     let data = modalData
     setTotalPrice(data.price * value)
   }
@@ -84,10 +84,10 @@ const ProductAccordion = ({ question }) => {
             <p>PRODUCT</p>
           </Col>
           <Col lg={4}>
-            <p className="text-class-center">PACKAGE SIZE</p>
+            <p>PACKAGE SIZE</p>
           </Col>
           <Col lg={3}>
-            <p className="text-class-center">PART #</p>
+            <p>PART #</p>
           </Col>
           <Col lg={3}>
             <p className="text-class-center">PER CASE</p>
