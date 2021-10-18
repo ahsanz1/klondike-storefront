@@ -41,7 +41,7 @@ const CartPopUP = () => {
     },
   ]
 
-  const latestItem = cartItems.at(-1)
+  const latestItem = cartItems[cartItems.length - 1]
   const handleClick = () => {
     closePopUpModal()
     showModal()
