@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Modal, InputNumber } from 'antd'
 // import { tableProAccoData } from './data'
@@ -9,10 +9,13 @@ import { fetchCategory } from 'libs/services/algolia'
 // import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 // import Label from 'components/atoms/label'
 import './style.scss'
-import { addToCart } from 'libs/utils/gtm'
+import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
+import { AppContext } from 'libs/context'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
+  const { user } = useContext(AppContext)
+  let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
 
@@ -43,7 +46,7 @@ const ProductAccordion = ({ question }) => {
       unit: `${data['Unit of Measurement']}${
         perCase !== undefined ? '/' + perCase : ''
       }`,
-      originalJson: JSON.stringify(data),
+      sku: data['SKU'],
     }
 
     setModalData(payload)
@@ -57,13 +60,48 @@ const ProductAccordion = ({ question }) => {
   }
 
   const addItemToCart = async () => {
-    let item = modalData
-    addToCart(JSON.parse(item.originalJson))
-    setIsModalVisible(false)
+    let data = modalData
+    getProductBySKU(data.sku).then(res => {
+      res = res.response.data
+      let product = res.product
+      let payload = {
+        cartId: null,
+        items: [
+          {
+            extra: {},
+            group: product.group,
+            itemId: product.itemId,
+            sku: product.sku,
+            quantity: qty,
+            price: {
+              base: Number(totalPrice),
+              currency: 'USD',
+              sale: false,
+              discount: {
+                price: 0,
+              },
+            },
+            size: false,
+          },
+        ],
+
+        registeredUser: true,
+        userAuthToken: user.accessToken,
+      }
+      addProductToCart(payload)
+        .then(res => {
+          console.log('sucres', res)
+        })
+        .catch(err => {
+          console.log('errres', err)
+        })
+      setIsModalVisible(false)
+    })
   }
 
-  function onChange (value) {
+  const onChange = value => {
     let data = modalData
+    setQty(value)
     setTotalPrice(data.price * value)
   }
 
@@ -83,10 +121,10 @@ const ProductAccordion = ({ question }) => {
             <p>PRODUCT</p>
           </Col>
           <Col lg={4}>
-            <p className="text-class-center">PACKAGE SIZE</p>
+            <p>PACKAGE SIZE</p>
           </Col>
           <Col lg={3}>
-            <p className="text-class-center">PART #</p>
+            <p>PART #</p>
           </Col>
           <Col lg={3}>
             <p className="text-class-center">PER CASE</p>

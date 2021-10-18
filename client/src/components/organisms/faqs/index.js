@@ -41,7 +41,7 @@ const Faqs = ({
   }
   return (
     <>
-      <div className="accordion-heading-container">
+      <div>
         <Heading className="accordion-heading desktop-heading">
           {desktopHeading}
         </Heading>
