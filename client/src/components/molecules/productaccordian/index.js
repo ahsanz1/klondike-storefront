@@ -20,7 +20,6 @@ const ProductAccordion = ({ question }) => {
   let [modalData, setModalData] = useState('')
 
   const [itemdata, setItemData] = useState([])
-
   useEffect(() => {
     const data = async () => {
       const items = await fetchCategory(question)
@@ -206,7 +205,7 @@ const ProductAccordion = ({ question }) => {
               <div className="product-detail">
                 <div>
                   <p className="products-sizes">Size</p>
-                  <p className="products-sizes">{modalData.size}</p>
+                  <p className="products-sizes detail">{modalData.size}</p>
                 </div>
                 <div>
                   <p className="products-sizes">UNITS/CASE</p>
@@ -214,15 +213,17 @@ const ProductAccordion = ({ question }) => {
                 </div>
                 <div>
                   <p className="products-sizes">Part Num</p>
-                  <p className="products-sizes">{modalData.partNumber}</p>
+                  <p className="products-sizes detail">
+                    {modalData.partNumber}
+                  </p>
                 </div>
                 <div>
                   <p className="products-sizes">Price</p>
-                  <p className="products-sizes">${modalData.price}</p>
+                  <p className="products-sizes detail ">${modalData.price}</p>
                 </div>
                 <div>
                   <p className="products-sizes">QTY</p>
-                  <p className="products-sizes">
+                  <p className="products-sizes detail">
                     <InputNumber
                       min={1}
                       value={1}
@@ -235,11 +236,11 @@ const ProductAccordion = ({ question }) => {
                 </div>
                 <div>
                   <p className="products-sizes">Total Price</p>
-                  <p className="products-sizes">${totalPrice}</p>
+                  <p className="products-sizes detail">${totalPrice}</p>
                 </div>
               </div>
               <Button
-                className="pricelist-addcart"
+                className="pricelist-addcart "
                 onClick={e => addItemToCart(e)}
               >
                 Add TO CART
