@@ -23,7 +23,7 @@ const OurProduct = props => {
       <div className="product-list">
         <ul>
           {props.ourProduct &&
-            props.ourProduct.length &&
+            props.ourProduct.length > 0 &&
             props.ourProduct.map((item, i) => (
               <>
                 <li
