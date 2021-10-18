@@ -36,11 +36,11 @@ const Techtabllist = ({
                 }
               >
                 {item.categoryName}
-                {subItem && itemName === item.categoryName && (
+                {item.subItem && itemName === item.categoryName && (
                   <div className="subItem">
-                    {subItem &&
-                      subItem.hits &&
-                      subItem.hits.map((item, index) => (
+                    {item.subItem &&
+                      item.subItem.hits &&
+                      item.subItem.hits.map((item, index) => (
                         <Label
                           key={index}
                           onClick={() => productClickHandler(item.title)}

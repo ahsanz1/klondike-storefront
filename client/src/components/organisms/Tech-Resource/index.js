@@ -1,9 +1,10 @@
 import React from 'react'
 import './style.scss'
-import { techresource } from 'libs/data/data'
+import { PcpBottom, techresource } from 'libs/data/data'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
+import PCPBottom from 'components/organisms/pcpBottom'
 import { techdata } from './data'
 
 const TechResource = () => {
@@ -45,6 +46,20 @@ const TechResource = () => {
               </>
             )
           })}
+        </div>
+      </div>
+      <div className="technical-bottom">
+        <div className="technical-bottom-section">
+          {PcpBottom &&
+            PcpBottom.map((item, i) => (
+              <>
+                <PCPBottom
+                  image={item.image}
+                  button={item.button}
+                  mobileButton={item.mobileButton}
+                />
+              </>
+            ))}
         </div>
       </div>
     </>
