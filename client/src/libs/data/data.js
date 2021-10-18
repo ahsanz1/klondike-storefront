@@ -1299,7 +1299,8 @@ export const whatSectionData = {
 // }
 export const accountTabsData = [
   {
-    tabTitle: 'Profile',
+    tabTitle: `Profile`,
+    arrow: { url: '/static/images/arrowdown.png', altText: '' },
 
     data: {
       session: 'Current Session',
@@ -1339,6 +1340,7 @@ export const accountTabsData = [
   },
   {
     tabTitle: 'All Orders',
+    arrow: { url: '/static/images/arrowdown.png', altText: '' },
     data: {
       cart: 'ADD TO CART',
 
@@ -1407,6 +1409,7 @@ export const accountTabsData = [
   },
   {
     tabTitle: 'Credit Limit',
+    arrow: { url: '/static/images/arrowdown.png', altText: '' },
     data: {
       limit: 'CREDIT LIMIT',
       price: '$44533',

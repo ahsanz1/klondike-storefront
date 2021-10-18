@@ -32,7 +32,7 @@ const Navbar = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
-  const { user } = useContext(AppContext)
+  const { user, loginBottom, setLoginBottom } = useContext(AppContext)
   const wholesaleLinks =
     dynamicLinks ||
     dynamicLinks.find(item => item.id === 'Wholesale').linksArray ||
@@ -65,9 +65,19 @@ const Navbar = ({
             }}
           >
             {isOpen ? (
-              <Image width={25} src={mobileMenuClose.url} alt="..." />
+              <Image
+                width={25}
+                src={mobileMenuClose.url}
+                alt="..."
+                onClick={() => setLoginBottom(!loginBottom)}
+              />
             ) : (
-              <Image width={25} src={mobileMenuOpen.url} alt="..." />
+              <Image
+                width={25}
+                src={mobileMenuOpen.url}
+                alt="..."
+                onClick={() => setLoginBottom(!loginBottom)}
+              />
             )}
           </Button>
         </div>

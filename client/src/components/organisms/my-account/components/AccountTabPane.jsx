@@ -13,7 +13,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
             {`${user.firstName && user.firstName} ${user.lastName &&
               user.lastName}`}
           </Label>
-          <Label>{user.email && user.email}</Label>
+          <Label className="profile-mail">{user.email && user.email}</Label>
           {userOrder &&
             userOrder.map(
               (row, i) =>

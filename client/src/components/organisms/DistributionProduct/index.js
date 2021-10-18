@@ -29,7 +29,7 @@ const DistributionProduct = ({ LubricantContent, distributionheading }) => {
           <div className="text-wrapper">
             <h1>{content.headingtext}</h1>
             <p>{content.text}</p>
-            <Link to={content.btnUrl}>
+            <Link to={content.redirecturl}>
               <button
                 onClick={() =>
                   setPlpRedirect(
