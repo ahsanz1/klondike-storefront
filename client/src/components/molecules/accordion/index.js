@@ -18,7 +18,7 @@ const Accordion = ({
   // perPallet,
   // unitPrice,
   // tableData = [],
-  links,
+  links = [],
   isOpen = false,
   question = '',
   answer = '',
