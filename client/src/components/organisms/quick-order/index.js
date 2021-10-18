@@ -26,11 +26,18 @@ const QuickOrder = () => {
   const [fetcheditems, setFetcheditems] = useState([])
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
   const [accordianisActive, setAccordianIsActive] = useState(true)
-  // const [acctive, setAcctive] = useState(true)
+  const [bulkdata, setBulkdata] = useState([])
   let [pn, setPN] = useState()
-  let [caseqty, setCaseqty] = useState([])
+  let [caseqty, setCaseqty] = useState({
+    index: 0,
+    value: 1,
+  })
+
+  let [inputqty, setInputQty] = useState('')
 
   const { addToCartApiCall } = useAddToCart()
+  console.log(fetcheditems, 'fetcheditems')
+  console.log(inputqty, 'inputList')
 
   useEffect(() => {
     const data = async () => {
@@ -40,9 +47,18 @@ const QuickOrder = () => {
     }
     data()
   }, [])
-  function onChange (value) {
+  const onChangeqty = async (value, index) => {
     console.log('changed', value)
-    setCaseqty(caseqty)
+
+    let obj = {
+      index,
+      value,
+    }
+
+    if (value !== '' && value !== undefined) {
+      setCaseqty(obj)
+      setInputQty(obj)
+    }
   }
 
   const handleAccordianClick = () => {
@@ -59,6 +75,13 @@ const QuickOrder = () => {
     setPackgdata(a)
     handleRemoveClick(i)
   }
+  const handleChangePackageqty = async (e, index) => {
+    const { name, value } = e.target
+    const list = [...inputList]
+    list[index][name] = value
+    // setInputList(list)
+    setCaseqty({ index, value })
+  }
   const handleChange = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
@@ -70,7 +93,7 @@ const QuickOrder = () => {
       filters['Part Number'] = value
       algoliaApi()
     } else {
-      setCaseqty(value)
+      setCaseqty({ index, value })
     }
 
     const items = await fetchItems(value)
@@ -120,7 +143,14 @@ const QuickOrder = () => {
     const list = [...inputList]
     list[index][name] = value
     setInputList(list)
-
+    if (name === 'partnumber') {
+      setPN(value)
+      filters['Part Number'] = value
+      algoliaApi()
+    } else {
+      setCaseqty({ index, value })
+      console.log(value, 'vvvv')
+    }
     // const items = await fetchItems(value)
 
     // const titleArray = items.hits.map(item => {
@@ -156,9 +186,10 @@ const QuickOrder = () => {
           bulkararr.push(bulkorder)
         }
       })
+    setProductstitle(packagearr)
+    setBulkdata(bulkararr)
     console.log(packagearr, 'packageorder')
     console.log(bulkararr, 'bulkararr')
-    setProductstitle(packagearr)
   }, [fetcheditems])
 
   const handleAddRow = () => {
@@ -224,6 +255,7 @@ const QuickOrder = () => {
               value={pn !== undefined ? pn : 'Part Number'}
               handleChangePackage={handleChange}
               // caceqty={caceqty}
+              handleChangePackageqty={handleChangePackageqty}
               handleAddtoCart={handleAddtoCart}
               productstitle={productstitle}
               inputList={inputList}
@@ -237,6 +269,7 @@ const QuickOrder = () => {
       return (
         <div className="wrapper">
           <AccordionComponent
+            value={pn !== undefined ? pn : 'Part Number'}
             text="Order by Part Number"
             className="accordian"
             isActive={accordianisActive}
@@ -245,7 +278,7 @@ const QuickOrder = () => {
             <BulkOrder
               handleChangePackage={handleChangeBulk}
               handleAddtoCart={handleAddtoCart}
-              productstitle={productstitle}
+              bulkdata={bulkdata}
               inputList={inputList}
               handleAddRow={handleAddRow}
               handleRemoveClick={handleRemoveClick}
@@ -311,7 +344,7 @@ const QuickOrder = () => {
               </Radio.Group>
             </div>
             <div className="price-list-btn">
-              <Link className="price-list-text" to="/faqs">
+              <Link className="price-list-text" to="/Price-List">
                 View Price List
               </Link>
             </div>
@@ -375,8 +408,8 @@ const QuickOrder = () => {
                           min={0}
                           max={100}
                           defaultValue={0}
-                          value={caseqty}
-                          onChange={onChange}
+                          value={caseqty.index === 1 ? caseqty.value : ''}
+                          onChange={e => onChangeqty(e, i)}
                           size="middle"
                           className="input"
                         />
