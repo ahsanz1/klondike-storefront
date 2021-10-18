@@ -408,7 +408,7 @@ const QuickOrder = () => {
                           min={0}
                           max={100}
                           defaultValue={0}
-                          value={caseqty.index === i ? caseqty.value : ''}
+                          value={caseqty.index === 1 ? caseqty.value : ''}
                           onChange={e => onChangeqty(e, i)}
                           size="middle"
                           className="input"
