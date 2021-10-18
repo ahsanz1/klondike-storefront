@@ -45,7 +45,7 @@ const SearchFlow = props => {
   const recentSearch = async e => {
     e.preventDefault()
     console.log('check.. recentArr:', recentArr)
-    recentArr.push(...recentArr, searchValue)
+    recentArr.push(searchValue)
     // setRecent([...recentArr])
     console.log('check.. recent:', recentArr, recent)
     setShowRecent(false)
