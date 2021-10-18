@@ -6,6 +6,7 @@ import Button from 'components/atoms/button'
 
 const PackageOrder = ({
   handleChangePackage,
+  handleChangePackageqty,
   handleAddtoCart,
   handleAddRow,
   productstitle,
@@ -57,7 +58,7 @@ const PackageOrder = ({
                     type="number"
                     value={x.quantity}
                     step={1}
-                    onChange={e => handleChangePackage(e, i)}
+                    onChange={e => handleChangePackageqty(e, i)}
                   />
                 </div>
                 <div className="remove-rowbtn">
@@ -94,6 +95,7 @@ PackageOrder.propTypes = {
   productstitle: PropTypes.array,
   inputList: PropTypes.array,
   handleRemoveClick: PropTypes.func,
+  handleChangePackageqty: PropTypes.func,
   caceqty: PropTypes.func,
 }
 

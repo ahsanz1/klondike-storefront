@@ -55,7 +55,7 @@
 
   .outer-border {
     margin-right: 8.8vw;
-    margin-left: 3.3vw;
+    margin-left: 4vw;
     // outline: 1px solid #ddaf34;
 
     // @media screen and (min-width: 1600px) {
@@ -107,8 +107,8 @@
   }
 
   .deleteouter-border {
-    margin-right: 4.4vw;
-    margin-left: 2.3vw;
+    margin-right: 8.8vw;
+    margin-left: 2vw;
 
     // @media screen and (min-width: 1600px) {
     //   margin-right: 0;
@@ -222,6 +222,8 @@
     }
 
     p {
+      padding-top: 1.38vw;
+      padding-bottom: 1.38vw;
       color: white;
       font-family: $OpenSans;
       font-size: 0.9vw;
@@ -237,10 +239,14 @@
 
     button {
       box-sizing: border-box;
-      width: 25.1vw !important;
+      width: 26.6vw !important;
       height: 3.3vw;
+      padding-top: 0.69vw;
+      padding-right: 9.47vw;
+      padding-bottom: 0.69vw;
+      padding-left: 9.47vw;
       border: 0.13vw solid #f2a900;
-      border-radius: 0.3vw;
+      border-radius: 0.34vw;
       background: #f2a900;
       color: white;
       font-family: $OpenSans;
