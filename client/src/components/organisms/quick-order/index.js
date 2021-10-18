@@ -32,6 +32,7 @@ const QuickOrder = () => {
     index: 0,
     value: 1,
   })
+
   let [inputqty, setInputQty] = useState('')
 
   const { addToCartApiCall } = useAddToCart()
@@ -48,10 +49,12 @@ const QuickOrder = () => {
   }, [])
   const onChangeqty = async (value, index) => {
     console.log('changed', value)
+
     let obj = {
       index,
       value,
     }
+
     if (value !== '' && value !== undefined) {
       setCaseqty(obj)
       setInputQty(obj)
@@ -78,11 +81,8 @@ const QuickOrder = () => {
     console.log(name, 'name')
     const list = [...inputList]
     list[index][name] = value
-    setInputList(list)
-    setCaseqty(...value)
-    if (index === inputqty) {
-      console.log('helo')
-    }
+    // setInputList(list)
+    setCaseqty({ index, value })
   }
   const handleChange = async (e, index) => {
     console.log('eeed', e, index)
@@ -97,7 +97,7 @@ const QuickOrder = () => {
       filters['Part Number'] = value
       algoliaApi()
     } else {
-      setCaseqty(value)
+      setCaseqty({ index, value })
     }
 
     const items = await fetchItems(value)
@@ -152,7 +152,7 @@ const QuickOrder = () => {
       filters['Part Number'] = value
       algoliaApi()
     } else {
-      setCaseqty(value)
+      setCaseqty({ index, value })
       console.log(value, 'vvvv')
     }
     // const items = await fetchItems(value)
@@ -412,7 +412,7 @@ const QuickOrder = () => {
                           min={0}
                           max={100}
                           defaultValue={0}
-                          value={caseqty.index === i ? caseqty.value : 1}
+                          value={caseqty.index === i ? caseqty.value : ''}
                           onChange={e => onChangeqty(e, i)}
                           size="middle"
                           className="input"
