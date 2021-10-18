@@ -85,6 +85,7 @@
         background: $accent-color;
         color: white;
         font-size: 14px;
+        text-transform: none;
       }
 
       @media screen and (max-width: 500px) {
@@ -98,7 +99,6 @@
         color: #032939;
         font-size: 3.7vw;
         line-height: 6.4vw;
-        text-transform: lowercase;
       }
     }
   }
