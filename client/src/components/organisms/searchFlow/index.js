@@ -17,7 +17,7 @@ const SearchFlow = props => {
     : []
   const [searchValue, setSearchValue] = useState('')
   const [itemList, setItemList] = useState([])
-  const [recent, setRecent] = useState([])
+  // const [recent, setRecent] = useState([])
   const [showRecent, setShowRecent] = useState(false)
   const [localRecent, setLocalRecent] = useState([])
   const { setSearchFilter, setSearchKey } = useContext(AppContext)
@@ -47,7 +47,7 @@ const SearchFlow = props => {
     console.log('check.. recentArr:', recentArr)
     recentArr.push(searchValue)
     // setRecent([...recentArr])
-    console.log('check.. recent:', recentArr, recent)
+    console.log('check.. recent:', recentArr)
     setShowRecent(false)
     let storeData = [...new Set(recentArr)]
     localStorage.setItem('recentData', JSON.stringify([...storeData]))
@@ -66,7 +66,7 @@ const SearchFlow = props => {
   }
   useEffect(() => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
-    setRecent(JSON.parse(localStorage.getItem('recentData')))
+    // setRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
   console.log('bugssss...')
   return (
