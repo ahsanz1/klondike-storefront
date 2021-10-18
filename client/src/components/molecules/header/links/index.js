@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'components/atoms/link'
 import Button from 'components/atoms/button'
@@ -21,8 +21,17 @@ const Links = ({
   menuBottom = '',
   userIcon = '',
 }) => {
-  const { user } = useContext(AppContext)
+  const [clickedName, setClickedName] = useState('')
+  const [clickedArray, setClickedArray] = useState([])
+  const { user, loginBottom } = useContext(AppContext)
   const getToken = user && user.accessToken
+  const toggleFunc = (name, data) => {
+    setClickedName(name)
+    setClickedArray([...data])
+  }
+  const toggleSubMenu = () => {
+    setClickedName('')
+  }
   return (
     <div
       style={{
@@ -32,59 +41,82 @@ const Links = ({
       }}
       className={`links ${className}`}
     >
-      {links.map((link, i) => {
-        if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
-          return (
-            (!link.mobileOnly || mobile) && (
-              <div className="menu-link-item">
-                <Link
-                  key={i}
-                  style={linkStyle}
-                  className={
-                    link.productDropDown &&
-                    link.productDropDown.length > 0 &&
-                    link.productDropDown[0].label !== '' &&
-                    link.productDropDown[0].image.url !== ''
-                      ? `screen ${linkClassName}`
-                      : linkClassName
-                  }
-                  to={link.url}
-                >
-                  {link && link.label && link.label}
+      {clickedName ? (
+        <div className="toggle-sub-menu">
+          <Image
+            width={25}
+            src={mobileMenu && mobileMenu.url}
+            alt={mobileMenu.altText}
+            onClick={toggleSubMenu}
+          />
+          <strong>{clickedName}</strong>
 
-                  <div>
-                    {
-                      // link.productDropDown &&
-                      //   link.productDropDown.length > 0 &&
-                      //   link.productDropDown[0].label !== '' &&
-                      //   link.productDropDown[0].image.url !== '' && (
-                      <>
-                        <Product ourProduct={link.productDropDown} />
-                      </>
-                      // )
-                    }
+          <>
+            <Product ourProduct={clickedArray} />
+          </>
+        </div>
+      ) : (
+        <>
+          {links.map((link, i) => {
+            if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
+              return (
+                (!link.mobileOnly || mobile) && (
+                  <div className="menu-link-item">
+                    <Link
+                      key={i}
+                      style={linkStyle}
+                      className={
+                        link.productDropDown &&
+                        link.productDropDown.length > 0 &&
+                        link.productDropDown[0].label !== '' &&
+                        link.productDropDown[0].image.url !== ''
+                          ? `screen ${linkClassName}`
+                          : linkClassName
+                      }
+                      to={link.url}
+                    >
+                      {link && link.label && link.label}
+
+                      <div>
+                        {
+                          // link.productDropDown &&
+                          //   link.productDropDown.length > 0 &&
+                          //   link.productDropDown[0].label !== '' &&
+                          //   link.productDropDown[0].image.url !== '' && (
+                          <>
+                            <Product ourProduct={link.productDropDown} />
+                          </>
+                          // )
+                        }
+                      </div>
+                    </Link>
+                    <Image
+                      width={25}
+                      src={mobileMenu && mobileMenu.url}
+                      alt={mobileMenu.altText}
+                      onClick={() =>
+                        toggleFunc(link.label, link.productDropDown)
+                      }
+                    />
                   </div>
-                </Link>
-                <Image
-                  width={25}
-                  src={mobileMenu && mobileMenu.url}
-                  alt={mobileMenu.altText}
-                />
-              </div>
-            )
-          )
-        } else {
-          return null
-        }
-      })}
-      <Button className={!getToken ? 'Buy-Button' : 'Buy-Button'}>
-        {!getToken ? 'HOW TO BUY' : 'Quick Order'}
-      </Button>
-      {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
-      <div className="bottom-section">
-        <Image width={20} src={userIcon.url} alt={userIcon.altText} />
-        {menuBottom}
-      </div>
+                )
+              )
+            } else {
+              return null
+            }
+          })}
+          <Button className={!getToken ? 'Buy-Button' : 'Buy-Button'}>
+            {!getToken ? 'HOW TO BUY' : 'Quick Order'}
+          </Button>
+          {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
+        </>
+      )}
+      {loginBottom && (
+        <div className="bottom-section">
+          <Image width={20} src={userIcon.url} alt={userIcon.altText} />
+          {menuBottom}
+        </div>
+      )}
     </div>
   )
 }

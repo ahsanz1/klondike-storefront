@@ -20,6 +20,7 @@ exports.default = Types.Component({
           }),
           heading: Types.String({ label: 'Heading' }),
           detail: Types.String({ label: 'Text' }),
+          sku: Types.String({ label: 'SKU' }),
         },
       }),
     }),

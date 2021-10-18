@@ -41,9 +41,10 @@ const SearchFlow = props => {
   }
   const recentSearch = async e => {
     e.preventDefault()
-    let recentArr = []
+    let recentArr = recent && recent
     recentArr.push(searchValue)
     setRecent([...recentArr])
+    console.log('check recent:', recent)
     // const list = await fetchItems(searchValue)
     // setItemList(list.hits)
     setShowRecent(false)

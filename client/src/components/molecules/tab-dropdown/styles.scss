@@ -82,5 +82,9 @@
       padding: 1.6vw 0;
       border-bottom: 0.8vw solid #999;
     }
+
+    @media (max-width: 500px) {
+      margin-bottom: 0;
+    }
   }
 }

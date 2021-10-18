@@ -18,7 +18,7 @@ const Accordion = ({
   // perPallet,
   // unitPrice,
   // tableData = [],
-  links = [],
+  links,
   isOpen = false,
   question = '',
   answer = '',
@@ -86,7 +86,7 @@ const Accordion = ({
                 links.map((obj, index) => {
                   return (
                     <Link
-                      to={obj.url === '' ? '/account' : obj.url}
+                      to={obj.url === '' ? '/account/login' : obj.url}
                       key={index}
                     >
                       <div className="footerLinks">

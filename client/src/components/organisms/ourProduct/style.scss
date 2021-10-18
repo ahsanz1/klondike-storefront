@@ -11,7 +11,7 @@
   @media (max-width: 768px) {
     display: block;
     justify-content: unset;
-    max-height: 200px;
+    max-height: 100%;
     overflow: scroll;
     background: #013a4e;
   }
@@ -143,7 +143,7 @@
       }
 
       @media (max-width: 500px) {
-        width: 89.8vw;
+        width: 86.6vw;
         height: 65.8vw;
         margin-bottom: 8.2vw;
       }
@@ -153,6 +153,7 @@
         background: none;
 
         @media (max-width: 500px) {
+          width: 100%;
           text-transform: uppercase;
         }
       }
