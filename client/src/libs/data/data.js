@@ -4059,7 +4059,7 @@ export const technicalBanner = {
     altText: 'desktop hero image',
   },
   mobileImage: {
-    url: '/static/images/bg_tech-resources.png',
+    url: '/static/images/bg_tech.png',
     altText: 'desktop hero image',
   },
 }
@@ -4070,7 +4070,7 @@ export const techresource = {
     altText: 'desktop hero image',
   },
   mobileImage: {
-    url: '/static/images/Logging_backgro.png',
+    url: '/static/images/Loggin.png',
     altText: 'desktop hero image',
   },
 }

@@ -133,7 +133,7 @@ const Oats = () => {
             <input
               onChange={filterData}
               className="input_model"
-              placeholder="Enter code  model"
+              placeholder="ENTER CODE  & MODEL"
               value={query}
             />
             <div className="wrapper-two">
