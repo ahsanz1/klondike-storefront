@@ -44,6 +44,7 @@ const SearchFlow = props => {
     e.preventDefault()
     recentArr.push(searchValue)
     setRecent([...recentArr])
+    console.log('check recent:', recent)
     // const list = await fetchItems(searchValue)
     // setItemList(list.hits)
     setShowRecent(false)
