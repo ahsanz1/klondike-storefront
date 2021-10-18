@@ -28,11 +28,15 @@ const QuickOrder = () => {
   const [accordianisActive, setAccordianIsActive] = useState(true)
   const [bulkdata, setBulkdata] = useState([])
   let [pn, setPN] = useState()
-  let [caseqty, setCaseqty] = useState([])
+  let [caseqty, setCaseqty] = useState({
+    index: 0,
+    value: 1,
+  })
+  let [inputqty, setInputQty] = useState('')
 
   const { addToCartApiCall } = useAddToCart()
   console.log(fetcheditems, 'fetcheditems')
-  console.log(inputList, 'inputList')
+  console.log(inputqty, 'inputList')
 
   useEffect(() => {
     const data = async () => {
@@ -44,7 +48,14 @@ const QuickOrder = () => {
   }, [])
   const onChangeqty = async (value, index) => {
     console.log('changed', value)
-    setCaseqty(value)
+    let obj = {
+      index,
+      value,
+    }
+    if (value !== '' && value !== undefined) {
+      setCaseqty(obj)
+      setInputQty(obj)
+    }
   }
 
   const handleAccordianClick = () => {
@@ -61,9 +72,22 @@ const QuickOrder = () => {
     setPackgdata(a)
     handleRemoveClick(i)
   }
+  const handleChangePackageqty = async (e, index) => {
+    console.log('ded', inputqty, index)
+    const { name, value } = e.target
+    console.log(name, 'name')
+    const list = [...inputList]
+    list[index][name] = value
+    setInputList(list)
+    setCaseqty(...value)
+    if (index === inputqty) {
+      console.log('helo')
+    }
+  }
   const handleChange = async (e, index) => {
     console.log('eeed', e, index)
     const { name, value } = e.target
+    console.log(name, 'name')
     const list = [...inputList]
     list[index][name] = value
     setInputList(list)
@@ -235,6 +259,7 @@ const QuickOrder = () => {
               value={pn !== undefined ? pn : 'Part Number'}
               handleChangePackage={handleChange}
               // caceqty={caceqty}
+              handleChangePackageqty={handleChangePackageqty}
               handleAddtoCart={handleAddtoCart}
               productstitle={productstitle}
               inputList={inputList}
@@ -387,7 +412,7 @@ const QuickOrder = () => {
                           min={0}
                           max={100}
                           defaultValue={0}
-                          value={caseqty}
+                          value={caseqty.index === i ? caseqty.value : 1}
                           onChange={e => onChangeqty(e, i)}
                           size="middle"
                           className="input"
