@@ -20,17 +20,20 @@ $vw-viewport: 1440;
   background-color: #013a4e;
 }
 
-.accordion-heading-container {
-  // margin-top: get-vw(84px);
-  padding-top: 5.3vw;
-}
+// .accordion-heading-container {
+//   // margin-top: get-vw(84px);
+//   //padding-top: 5.3vw;
+// }
 
 .accordion-heading {
   position: absolute;
   width: get-vw(983px);
   height: get-vw(53px);
-  margin-top: 50px;
-  margin-left: get-vw(235px);
+  //margin-top: 50px;
+  margin-top: 5.21vw;
+  margin-right: 15.41vw;
+  margin-left: 16.31vw;
+  //margin-bottom: 5.55vw;
   color: #eceae9;
 
   /* margin-bottom: 40px; */
@@ -55,7 +58,8 @@ $vw-viewport: 1440;
 }
 
 .privacy-intro {
-  margin-bottom: 40px;
+  //margin-bottom: 40px;
+  margin-top: 5.55vw;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
