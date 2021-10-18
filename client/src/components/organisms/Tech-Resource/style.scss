@@ -1,117 +1,192 @@
 @import '~styles/globals';
 
-.tech-heading {
-  width: 87.3vw;
-  margin-top: 6.3vw;
-  margin-left: 6.3vw;
-  background-color: #03293980;
-
-  .main-heading {
-    padding-top: 3.7vw;
-    padding-left: 4.7vw;
-    color: #f1a900;
-
-    /* identical to box height */
-    font-family: $OpenSans;
-    font-size: 1.6vw;
-    font-style: normal;
-    font-weight: bold;
-    line-height: 2.2vw;
-    text-transform: capitalize;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-  }
-
-  .dec-tech {
-    padding-top: 2vw;
-    padding-right: 4.4vw;
-    padding-bottom: 3vw;
-    padding-left: 4.7vw;
-    opacity: 0.9;
-    color: #fff;
-
-    /* or 20px */
-    font-family: $OpenSans;
-    font-size: 0.97vw;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1.3vw;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-  }
-}
-
-.oms {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 5.2vw;
-  margin-left: 11.94vw;
-
+.tech-resource {
   @media (max-width: 768px) {
-    display: flex;
+    padding-top: 134px;
   }
 
-  .section-one {
-    .tech-rec {
-      display: flex;
-      flex-direction: row;
-      width: 34.3vw;
-      margin-bottom: 3.19vw;
+  .tech-heading {
+    width: 87.3vw;
+    margin-top: 6.3vw;
+    margin-left: 6.3vw;
+    background-color: #03293980;
 
-      .tech-data {
-        margin-left: 0.83vw;
+    @media (max-width: 768px) {
+      width: 100vw;
+      margin-top: 0;
+      margin-left: 0;
+    }
 
-        .tech-h {
-          color: #f1a900;
-          font-family: $OpenSans;
-          font-size: 1.2vw;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 1.7vw;
-          text-transform: capitalize;
-          font-feature-settings: 'pnum' on, 'lnum' on;
-        }
+    .main-heading {
+      padding-top: 3.7vw;
+      padding-left: 4.7vw;
+      color: #f1a900;
 
-        .parah {
-          opacity: 0.9;
-          color: #fff;
-          font-family: $OpenSans;
-          font-size: 0.97vw;
-          font-style: normal;
-          font-weight: normal;
-          line-height: 140%;
-          font-feature-settings: 'pnum' on, 'lnum' on;
-        }
-
-        .more {
-          color: #f1a900;
-
-          /* identical to box height */
-          font-family: $OpenSans;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 19px;
-          text-transform: capitalize;
-          font-feature-settings: 'pnum' on, 'lnum' on;
-
-          .img-arow {
-            width: 1.04vw;
-            height: 1.04vw;
-            background-color: #f1a900;
-            object-fit: scale-down;
-          }
-        }
-      }
-
-      .img-tech {
-        > .c-image {
-          max-width: none;
-        }
-      }
+      /* identical to box height */
+      font-family: $OpenSans;
+      font-size: 1.6vw;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 2.2vw;
+      text-transform: capitalize;
+      font-feature-settings: 'pnum' on, 'lnum' on;
 
       @media (max-width: 768px) {
+        padding-top: 11.2vw;
+        // padding-bottom: 6.93vw;
+        padding-left: 7.73vw;
+        font-family: $OpenSans;
+        font-size: 4.4vw;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 8.8vw;
+        text-transform: capitalize;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
+    }
+
+    .dec-tech {
+      padding-top: 2vw;
+      padding-right: 4.4vw;
+      padding-bottom: 3vw;
+      padding-left: 4.7vw;
+      opacity: 0.9;
+      color: #fff;
+
+      /* or 20px */
+      font-family: $OpenSans;
+      font-size: 0.97vw;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1.3vw;
+      font-feature-settings: 'pnum' on, 'lnum' on;
+
+      @media (max-width: 768px) {
+        // padding-top: 6.66vw;
+        padding-right: 6.93vw;
+        padding-bottom: 6.93vw;
+        padding-left: 7.73vw;
+        opacity: 0.9;
+        color: #fff;
+
+        /* or 20px */
+        font-family: $OpenSans;
+        font-size: 3.73vw;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 5.22vw;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
+    }
+  }
+
+  .oms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 5.2vw;
+    margin-left: 11.94vw;
+
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-one {
+      .tech-rec {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        width: 34.3vw;
+        margin-bottom: 3.19vw;
+
+        .tech-data {
+          margin-left: 0.83vw;
+
+          .tech-h {
+            color: #f1a900;
+            font-family: $OpenSans;
+            font-size: 1.2vw;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.7vw;
+            text-transform: capitalize;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+
+            @media (max-width: 768px) {
+              color: #f1a900;
+              font-family: $OpenSans;
+              font-size: 4.8vw;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 6.66vw;
+              text-transform: capitalize;
+              font-feature-settings: 'pnum' on, 'lnum' on;
+            }
+          }
+
+          .parah {
+            opacity: 0.9;
+            color: #fff;
+            font-family: $OpenSans;
+            font-size: 0.97vw;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 140%;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+
+            @media (max-width: 768px) {
+              opacity: 0.9;
+              color: #fff;
+              font-family: $OpenSans;
+              font-size: 3.73vw;
+              font-style: normal;
+              font-weight: normal;
+              line-height: 5.22vw;
+              font-feature-settings: 'pnum' on, 'lnum' on;
+            }
+          }
+
+          .more {
+            color: #f1a900;
+
+            /* identical to box height */
+            font-family: $OpenSans;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 19px;
+            text-transform: capitalize;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+
+            .img-arow {
+              width: 1.04vw;
+              height: 1.04vw;
+              margin-left: 3px;
+              background-color: #f1a900;
+              object-fit: scale-down;
+
+              @media (max-width: 768px) {
+                width: 4vw;
+                height: 4vw;
+                margin-left: 3px;
+                background-color: #f1a900;
+                object-fit: scale-down;
+              }
+            }
+          }
+        }
+
+        .img-tech {
+          > .c-image {
+            max-width: none;
+          }
+        }
+
+        @media (max-width: 768px) {
+          display: flex;
+          flex-direction: column;
+          width: 81.8vw;
+        }
       }
     }
   }

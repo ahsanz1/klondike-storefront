@@ -12,6 +12,7 @@ import Button from 'components/atoms/button'
 import { navigate } from '@reach/router'
 
 const SearchFlow = props => {
+  let recentArr = []
   const [searchValue, setSearchValue] = useState('')
   const [itemList, setItemList] = useState([])
   const [recent, setRecent] = useState([])
@@ -41,9 +42,9 @@ const SearchFlow = props => {
   }
   const recentSearch = async e => {
     e.preventDefault()
-    let recentArr = []
     recentArr.push(searchValue)
     setRecent([...recentArr])
+    console.log('check recent:', recent)
     // const list = await fetchItems(searchValue)
     // setItemList(list.hits)
     setShowRecent(false)
