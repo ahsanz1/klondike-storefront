@@ -50,6 +50,7 @@ const SearchFlow = props => {
     console.log('check.. recent:', recentArr)
     setShowRecent(false)
     let storeData = [...new Set(recentArr)]
+    console.log('check store Data:', storeData)
     localStorage.setItem('recentData', JSON.stringify(storeData))
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
     navigate('/search-filter')
