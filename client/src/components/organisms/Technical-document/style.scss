@@ -236,7 +236,7 @@ $vw-viewport: 1440;
 
     @media (max-width: 768px) {
       flex-direction: row;
-      margin-top: 0;
+      margin-top: 39px;
       margin-left: 0;
     }
 
@@ -258,8 +258,8 @@ $vw-viewport: 1440;
         display: none;
         margin-top: 20px;
         padding: 7px;
-        border: 1px solid #e25205;
-        border-radius: 40px;
+        border: 1px solid #f1a900;
+        border-radius: 5px;
         color: #fff;
         text-transform: uppercase;
 

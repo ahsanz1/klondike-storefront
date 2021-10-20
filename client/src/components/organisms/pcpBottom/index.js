@@ -18,7 +18,7 @@ const PCPBottom = ({ image, button, mobileButton }) => {
         <div>
           <Button className="dealer-botton">{button}</Button>
         </div>
-        <div>
+        <div className="mob">
           <Button className="mob-button">{mobileButton}</Button>
         </div>
       </div>
