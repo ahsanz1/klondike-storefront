@@ -570,7 +570,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/catlog': [
+  '/tech-resources/catlog': [
     {
       id: 'Catlog',
       params: {},
@@ -597,6 +597,18 @@ const mockData = {
   '/work-at-klondike': [
     {
       id: 'WorkAtKlonedike',
+      params: {},
+    },
+  ],
+  '/industry-applications': [
+    {
+      id: 'IndustryApplications',
+      params: {},
+    },
+  ],
+  '/safety-environment': [
+    {
+      id: 'SafetyEnvironment',
       params: {},
     },
   ],
