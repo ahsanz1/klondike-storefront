@@ -13,8 +13,6 @@ import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import { AppContext } from 'libs/context'
 // import useAddToCart from 'libs/api-hooks/useAddToCart'
 import Button from 'components/atoms/button'
-
-// import useAddToCart from 'libs/api-hooks/useAddToCart'
 let qtyIndex = []
 
 /* eslint-disable indent */
