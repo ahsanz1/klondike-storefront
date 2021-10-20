@@ -11,10 +11,10 @@ import Link from 'components/atoms/link'
 import { fetchItems, searchFilters } from 'libs/services/algolia'
 
 import useAddToCart from 'libs/api-hooks/useAddToCart'
-let qtyIndex = []
 
 /* eslint-disable indent */
 
+let qtyIndex = []
 const QuickOrder = () => {
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
@@ -65,7 +65,14 @@ const QuickOrder = () => {
     setPackgdata(a)
     handleRemoveClick(i)
   }
-
+  const handleRemoveClick = index => {
+    console.log(index, 'indexing')
+    const list = [...inputList]
+    list.splice(index, 1)
+    setInputList(list)
+    itemremove(index)
+    // setAcctive(false)
+  }
   const handleChangePackageqty = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
@@ -198,13 +205,6 @@ const QuickOrder = () => {
     }
   }
 
-  const handleRemoveClick = index => {
-    console.log(index, 'indexing')
-    const list = [...inputList]
-    list.splice(index, 1)
-    setInputList(list)
-    // setAcctive(false)
-  }
   // -----------------------------------
   const handleAddtoCart = async () => {
     const partnumberlist = inputList.map(item => {
