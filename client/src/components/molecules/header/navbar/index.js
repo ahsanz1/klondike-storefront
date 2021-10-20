@@ -42,7 +42,10 @@ const Navbar = ({
   }
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
-  console.log('check links:', links)
+  const searchClick = () => {
+    toggleSearch()
+    setLoginBottom(false)
+  }
   return (
     <div
       className={
@@ -123,7 +126,7 @@ const Navbar = ({
             // to="/SearchFlow"
             className="header__search-icon"
           >
-            <Button onClick={toggleSearch}>
+            <Button onClick={searchClick}>
               <Image
                 height={26}
                 src={searchIcon.url}
@@ -139,7 +142,12 @@ const Navbar = ({
             }
             className="header__User-icon"
           >
-            <Image height={26} src={userIcon.url} alt={userIcon.altText} />
+            <Image
+              height={26}
+              src={userIcon.url}
+              alt={userIcon.altText}
+              onClick={() => setLoginBottom(false)}
+            />
           </Link>
           {userLoginInfo && userLoginInfo.email && (
             <Button

@@ -111,7 +111,7 @@ const Links = ({
           {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
         </>
       )}
-      {loginBottom && (
+      {loginBottom && getToken && (
         <div className="bottom-section">
           <Image width={20} src={userIcon.url} alt={userIcon.altText} />
           {menuBottom}
