@@ -58,6 +58,29 @@ export const overviewData = {
     },
   ],
 
+  SafetyEnvironmentData: [
+    {
+      title: 'Safety',
+
+      paragraph:
+        'As an independent and privately owned company, KLONDIKE Lubricants Corporation embodies a strong sense of entrepreneurial spirit. This spirit is ingrained in each and every one of us and is what makes KLONDIKE the success it is today.',
+      paragraph2:
+        'Year after year, we grow at a double-digit rate, so we are always looking for new talent. If you are interested in joining one of the fastest growing Canadian companies and want to help in making KLONDIKE a leading global oils and lubricants company, then we’d love to hear from you.',
+    },
+    {
+      title: 'Environmental Responsibility',
+
+      paragraph:
+        "One of KLONDIKE's unprecedented environmental achievements was seen in the formulation of our industrial mill and forestry chain lubricant, which has consistently reduced oil consumption by over 25% compared to any other lubricant of its kind. This has resulted in reduction of waste oil, improving equipment operation and hastening efficiencies in equipment processing. Additionally, it has given enhanced protection to equipment and wear parts from unnecessary premature replacement and disposal while substantially reducing lubricant consumption costs.",
+      paragraph2:
+        'In addition to conserving your usage, our range of inherently biodegradable oils and lubricants are designed to work in the most environmentally sensitive areas including watersheds and marine environments. Visit Our Products page for more information.',
+      paragraph3:
+        'The KLONDIKE product range includes oils and lubricants such as OW-20 SN/GF-5 Full Synthetic, 5W-20 SN/GF-5 Synthetic Blend and 5W-20 SN/GF-5 Full Synthetic, 5W-30 SN/GF-5 Synthetic Blend and 5W-30 SN/GF-5 Full Synthetic, 10W-30 SN/GF-5 Synthetic Blend passenger car motor oils that are designed and certified to conserve resources.',
+      paragraph4:
+        'Much like our industrial chain lubricant, our virgin base oils maximize the longevity of your assets and ensure smoother and more efficient engine and equipment operation while effectively reducing emissions and fuel consumption. Additionally, part of our environmentally responsible efforts include bulk packaging solutions that are collapsible and recyclable to simplify disposal, particularly helpful for use in remote regions, as well as reducing the environmental impact. This is just one of the ways we are honoring our commitment to maximize the use of recycled content in our packaging material.',
+    },
+  ],
+
   aboutUsLinks: [
     {
       image: 'static/images/thumb_company-overview.png',
