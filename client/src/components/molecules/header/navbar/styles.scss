@@ -119,10 +119,6 @@
     }
 
     button {
-      @media (max-width: 320px) {
-        padding-right: 0 !important;
-      }
-
       img {
         width: 1.66vw;
         height: 1.66vw;
@@ -247,6 +243,7 @@
     // width: 9.93vw;
     margin-right: 1.1vw;
     margin-bottom: 2.36vw;
+    animation: quickColor 1s infinite;
     border: none;
     background: none;
     color: $white-color;
@@ -318,6 +315,16 @@
         width: 50px;
       }
     }
+  }
+}
+
+@keyframes quickColor {
+  from {
+    color: #fff;
+  }
+
+  to {
+    color: #f7921e;
   }
 }
 /* stylelint-enable */
