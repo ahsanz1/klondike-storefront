@@ -66,6 +66,10 @@
     border-radius: 1.1vw;
     outline: none;
     background: #e4eff4;
+    font-family: $OpenSans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -78,6 +82,10 @@
       padding: 12px;
       border-radius: 4.2vw;
       outline: none;
+      font-family: $OpenSans;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: bold;
     }
 
     .input_model:focus {
@@ -181,6 +189,10 @@
     font-weight: bold;
   }
 
+  .ant-select-arrow {
+    color: black !important;
+  }
+
   .dropdown-wrapper {
     display: flex;
     justify-content: center;
@@ -266,16 +278,17 @@
 }
 
 .table-wrapper {
-  max-width: 90%;
-  margin: 0 auto;
+  // max-width: 90%;
+
   padding-top: 36px;
   color: #fff;
 
   .flex {
     display: flex;
     justify-content: space-between;
-    width: 1177px;
-    margin-left: 49px;
+    width: 93.34vw;
+    margin: 0 auto;
+    // margin-left: 49px;
     padding-left: 20px;
 
     .title {
@@ -283,7 +296,9 @@
     }
 
     @media (max-width: 768px) {
+      width: 1301px;
       margin-left: 0;
+      padding-left: 20px;
     }
   }
 
@@ -343,6 +358,15 @@
   @media (max-width: 768px) {
     width: 90%;
     margin-left: 0;
+  }
+
+  .not-found {
+    margin-top: -24px;
+    margin-left: 22.98vw;
+
+    @media (max-width: 768px) {
+      margin-left: 7.73vw;
+    }
   }
 }
 

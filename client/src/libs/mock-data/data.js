@@ -570,7 +570,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/catlog': [
+  '/tech-resources/catlog': [
     {
       id: 'Catlog',
       params: {},
