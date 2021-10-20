@@ -243,6 +243,7 @@
     // width: 9.93vw;
     margin-right: 1.1vw;
     margin-bottom: 2.36vw;
+    animation: quickColor 1s infinite;
     border: none;
     background: none;
     color: $white-color;
@@ -314,6 +315,16 @@
         width: 50px;
       }
     }
+  }
+}
+
+@keyframes quickColor {
+  from {
+    color: #fff;
+  }
+
+  to {
+    color: #f7921e;
   }
 }
 /* stylelint-enable */
