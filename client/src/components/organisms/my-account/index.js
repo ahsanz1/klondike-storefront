@@ -146,7 +146,7 @@ const MyAccount = ({
                 </TabsDropdown>
               </div>
               <div className="pricesheet-container">
-                <Link to="/faqs">View Price List</Link>
+                <Link to="/Price-List">View Price List</Link>
               </div>
             </div>
           </div>
