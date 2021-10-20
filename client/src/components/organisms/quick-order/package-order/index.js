@@ -29,7 +29,6 @@ const PackageOrder = ({
       </div>
       <form onSubmit={e => handleSubmit(e)}>
         {InputList.map((x, i) => {
-          console.log(x, 'vv')
           return (
             <div key={i}>
               <div className="text-fields">

@@ -14,6 +14,7 @@ import useAddToCart from 'libs/api-hooks/useAddToCart'
 
 /* eslint-disable indent */
 
+let qtyIndex = []
 const QuickOrder = () => {
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
@@ -28,16 +29,13 @@ const QuickOrder = () => {
   const [accordianisActive, setAccordianIsActive] = useState(true)
   const [bulkdata, setBulkdata] = useState([])
   let [pn, setPN] = useState()
-  let [caseqty, setCaseqty] = useState({
-    index: 0,
-    value: 1,
-  })
+  let [caseqty, setCaseqty] = useState([])
 
-  let [inputqty, setInputQty] = useState('')
+  // let [inputqty, setInputQty] = useState('')
 
   const { addToCartApiCall } = useAddToCart()
   console.log(fetcheditems, 'fetcheditems')
-  console.log(inputqty, 'inputList')
+  // console.log(inputqty, 'inputList')
 
   useEffect(() => {
     const data = async () => {
@@ -49,16 +47,8 @@ const QuickOrder = () => {
   }, [])
   const onChangeqty = async (value, index) => {
     console.log('changed', value)
-
-    let obj = {
-      index,
-      value,
-    }
-
-    if (value !== '' && value !== undefined) {
-      setCaseqty(obj)
-      setInputQty(obj)
-    }
+    qtyIndex[`index-${index}`] = value
+    setCaseqty(qtyIndex)
   }
 
   const handleAccordianClick = () => {
@@ -75,12 +65,29 @@ const QuickOrder = () => {
     setPackgdata(a)
     handleRemoveClick(i)
   }
+  const handleRemoveClick = index => {
+    console.log(index, 'indexing')
+    const list = [...inputList]
+    list.splice(index, 1)
+    setInputList(list)
+    itemremove(index)
+    // setAcctive(false)
+  }
   const handleChangePackageqty = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
     // setInputList(list)
-    setCaseqty({ index, value })
+
+    if (qtyIndex.length > 0 && qtyIndex[`index-${index}`] === undefined) {
+      let newIndex = []
+      newIndex[`index-${index}`] = value
+      qtyIndex.push(newIndex)
+    } else {
+      qtyIndex[`index-${index}`] = value
+    }
+
+    setCaseqty(qtyIndex)
   }
   const handleChange = async (e, index) => {
     const { name, value } = e.target
@@ -93,7 +100,7 @@ const QuickOrder = () => {
       filters['Part Number'] = value
       algoliaApi()
     } else {
-      setCaseqty({ index, value })
+      // setCaseqty({ index, value })
     }
 
     const items = await fetchItems(value)
@@ -198,13 +205,6 @@ const QuickOrder = () => {
     }
   }
 
-  const handleRemoveClick = index => {
-    console.log(index, 'indexing')
-    const list = [...inputList]
-    list.splice(index, 1)
-    setInputList(list)
-    // setAcctive(false)
-  }
   // -----------------------------------
   const handleAddtoCart = async () => {
     const partnumberlist = inputList.map(item => {
@@ -407,8 +407,8 @@ const QuickOrder = () => {
                         <InputNumber
                           min={0}
                           max={100}
-                          defaultValue={0}
-                          value={caseqty.index === 1 ? caseqty.value : ''}
+                          defaultValue={1}
+                          value={caseqty[`index-${i}`]}
                           onChange={e => onChangeqty(e, i)}
                           size="middle"
                           className="input"
