@@ -600,5 +600,17 @@ const mockData = {
       params: {},
     },
   ],
+  '/industry-applications': [
+    {
+      id: 'IndustryApplications',
+      params: {},
+    },
+  ],
+  '/safety-environment': [
+    {
+      id: 'SafetyEnvironment',
+      params: {},
+    },
+  ],
 }
 export default mockData

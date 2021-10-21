@@ -205,4 +205,10 @@ Components['WhyKlondike'] = require('components/organisms/why-klondike').default
 Components[
   'WorkAtKlonedike'
 ] = require('components/organisms/work-at-klondike').default
+Components[
+  'IndustryApplications'
+] = require('components/organisms/industry-applications').default
+Components[
+  'SafetyEnvironment'
+] = require('components/organisms/safety-environment').default
 export default Components

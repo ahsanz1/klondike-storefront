@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 
 import './style.scss'
 import { Radio, InputNumber } from 'antd'
@@ -9,13 +9,16 @@ import AccordionComponent from 'components/molecules/accordionComponent'
 import DesktopCartPageItem from 'components/organisms/cart-and-total'
 import Link from 'components/atoms/link'
 import { fetchItems, searchFilters } from 'libs/services/algolia'
-
-import useAddToCart from 'libs/api-hooks/useAddToCart'
+import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
+import { AppContext } from 'libs/context'
+// import useAddToCart from 'libs/api-hooks/useAddToCart'
+import Button from 'components/atoms/button'
+let qtyIndex = []
 
 /* eslint-disable indent */
 
-let qtyIndex = []
 const QuickOrder = () => {
+  const { user } = useContext(AppContext)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
@@ -33,7 +36,10 @@ const QuickOrder = () => {
 
   // let [inputqty, setInputQty] = useState('')
 
-  const { addToCartApiCall } = useAddToCart()
+  // const { addToCartApiCall } = useAddToCart()
+
+  // console.log(inputqty, 'inputList')
+  // const { addToCartApiCall } = useAddToCart()
   console.log(fetcheditems, 'fetcheditems')
   // console.log(inputqty, 'inputList')
 
@@ -56,8 +62,48 @@ const QuickOrder = () => {
   }
 
   const addedItemToCart = async Data => {
-    const resData = await addToCartApiCall(Data)
-    console.log('addto', resData)
+    // const resData = await addToCartApiCall(Data)
+    // console.log('addto', resData)
+    let data = packgdata.map((data, i) => {
+      console.log(data.sku, 'dtatt')
+      return getProductBySKU(data.sku).then(res => {
+        res = res.response.data
+        console.log(res, 'response')
+        let product = res.product
+        let payload = {
+          cartId: null,
+          items: [
+            {
+              extra: {},
+              group: product.group,
+              itemId: product.itemId,
+              sku: product.sku,
+              quantity: 1, // qty,
+              price: {
+                base: 0,
+                currency: 'USD',
+                sale: false,
+                discount: {
+                  price: 0,
+                },
+              },
+              size: false,
+            },
+          ],
+
+          registeredUser: true,
+          userAuthToken: user.accessToken,
+        }
+        addProductToCart(payload)
+          .then(res => {
+            console.log('sucres', res)
+          })
+          .catch(err => {
+            console.log('errres', err)
+          })
+      })
+    })
+    console.log(data, 'ddd')
   }
   const itemremove = async i => {
     let a = packgdata
@@ -230,6 +276,45 @@ const QuickOrder = () => {
     setAccordianIsActive(false)
   }
   // -------------------------------------
+  // const addItemToCart = async () => {
+  //   let data = cart
+  //   getProductBySKU(data.sku).then(res => {
+  //     res = res.response.data
+  //     let product = res.product
+  //     let payload = {
+  //       cartId: null,
+  //       items: [
+  //         {
+  //           extra: {},
+  //           group: product.group,
+  //           itemId: product.itemId,
+  //           sku: product.sku,
+  //           quantity: qty,
+  //           price: {
+  //             base: 0,
+  //             currency: 'USD',
+  //             sale: false,
+  //             discount: {
+  //               price: 0,
+  //             },
+  //           },
+  //           size: false,
+  //         },
+  //       ],
+
+  //       registeredUser: true,
+  //       userAuthToken: user.accessToken,
+  //     }
+  //     addProductToCart(payload)
+  //       .then(res => {
+  //         console.log('sucres', res)
+  //       })
+  //       .catch(err => {
+  //         console.log('errres', err)
+  //       })
+  //   })
+  // }
+  // -------------------------------------
 
   const radioChangeBULK = () => {
     setPackageComponent(false)
@@ -269,13 +354,13 @@ const QuickOrder = () => {
       return (
         <div className="wrapper">
           <AccordionComponent
-            value={pn !== undefined ? pn : 'Part Number'}
             text="Order by Part Number"
             className="accordian"
             isActive={accordianisActive}
             onClick={handleAccordianClick}
           >
             <BulkOrder
+              value={pn !== undefined ? pn : 'Part Number'}
               handleChangePackage={handleChangeBulk}
               handleAddtoCart={handleAddtoCart}
               bulkdata={bulkdata}
@@ -302,7 +387,8 @@ const QuickOrder = () => {
               PROCEED TO CHECK OUT
             </Link>
             <Link className="view-btn" to="/cart">
-              VIEW CART
+              {/* <Button>VIEW CART </Button> */}
+              <Button onClick={e => addedItemToCart(e)}>VIEW CART </Button>
             </Link>
           </div>
         </div>
