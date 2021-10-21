@@ -11,6 +11,10 @@
     &:first-child {
       width: 37.7vw;
       height: 12.8vw;
+
+      @media (max-width: 500px) {
+        width: 68.5vw;
+      }
     }
 
     @media (max-width: 500px) {
@@ -37,7 +41,7 @@
     object-fit: contain;
 
     @media screen and (max-width: 500px) {
-      width: 32.8vw;
+      width: 68.5vw;
       height: 36.5vw;
       object-fit: contain;
     }
