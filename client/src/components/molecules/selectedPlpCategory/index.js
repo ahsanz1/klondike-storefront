@@ -3,7 +3,7 @@ import Button from 'components/atoms/button'
 import PropTypes from 'prop-types'
 import './style.scss'
 
-const SelectedPlpCategory = ({ name, desc }) => {
+const SelectedPlpCategory = ({ name = '', desc = '' }) => {
   const [readMore, setReadMore] = useState(200)
   const truncate = (str, maxlength) => {
     return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str
@@ -23,6 +23,6 @@ const SelectedPlpCategory = ({ name, desc }) => {
 }
 SelectedPlpCategory.propTypes = {
   name: PropTypes.string,
-  desc: PropTypes.array,
+  desc: PropTypes.string,
 }
 export default SelectedPlpCategory
