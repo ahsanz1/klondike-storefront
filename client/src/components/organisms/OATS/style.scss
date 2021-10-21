@@ -135,7 +135,7 @@
       // margin-left: -29px;
 
       .ant-select {
-        width: 58.4vw;
+        width: 60vw !important;
       }
     }
   }
@@ -166,6 +166,8 @@
     @media (max-width: 768px) {
       width: 17.4vw;
       height: 19.2vw;
+      margin-left: 0;
+      padding-left: 36px;
     }
   }
 
@@ -178,12 +180,14 @@
     padding-left: 2vw !important;
     border-radius: 1.11vw !important;
     background-color: #e4eff4 !important;
+    font-family: $OpenSans;
 
     @media (max-width: 768px) {
       height: 64px !important;
       padding-top: 4vw !important;
       padding-left: 6.4vw !important;
       border-radius: 16px !important;
+      font-family: $OpenSans;
       font-size: 3.5vw !important;
     }
 
@@ -236,12 +240,14 @@
         padding-left: 2vw !important;
         border-radius: 1.11vw !important;
         background-color: #e4eff4 !important;
+        font-family: $OpenSans;
 
         @media (max-width: 768px) {
           height: 64px !important;
           padding-top: 4vw !important;
           padding-left: 6.4vw !important;
           border-radius: 16px !important;
+          font-family: $OpenSans;
           font-size: 3.5vw !important;
         }
       }

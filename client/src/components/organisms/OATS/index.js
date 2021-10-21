@@ -154,11 +154,11 @@ const Oats = () => {
             />
             <div className="wrapper-two">
               <Dropdown
-                value={gr !== undefined ? gr : 'All'}
+                value={gr !== undefined ? gr : 'ALL'}
                 onChange={familygroup}
                 className="cars"
                 items={[
-                  { label: 'All' },
+                  { label: 'ALL' },
                   { label: 'Cars, SUVs & Pickups' },
                   { label: 'Light Trucks' },
                   { label: 'Trucks' },

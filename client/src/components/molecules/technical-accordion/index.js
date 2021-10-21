@@ -32,7 +32,7 @@ const Technicaldata = () => {
             <p className="text-class-center">SDS ENGLISH</p>
           </Col>
           <Col lg={3}>
-            <p className="text-class-center">SDS FRENCH</p>
+            <p className="text-class-right">SDS FRENCH</p>
           </Col>
           {/* <Col lg={3}>
             <p className="text-class-right">UNIT PRICE</p>
