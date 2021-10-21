@@ -6,7 +6,9 @@ import './style.scss'
 const SelectedPlpCategory = ({ name = '', desc = '' }) => {
   const [readMore, setReadMore] = useState(200)
   const truncate = (str, maxlength) => {
-    return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str
+    return str && str.length > maxlength
+      ? str.slice(0, maxlength - 1) + '…'
+      : str
   }
   const more = () => {
     setReadMore(desc.length)
