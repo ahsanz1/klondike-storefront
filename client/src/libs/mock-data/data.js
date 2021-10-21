@@ -534,7 +534,7 @@ const mockData = {
     },
   ],
 
-  '/tech-resources/oamapprovals': [
+  '/tech-resources/OEMApprovals': [
     {
       id: 'Oamspproval',
       params: {},
