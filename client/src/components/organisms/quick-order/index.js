@@ -39,7 +39,6 @@ const QuickOrder = () => {
   // console.log(inputqty, 'inputList')
   // const { addToCartApiCall } = useAddToCart()
   console.log(fetcheditems, 'fetcheditems')
-
   useEffect(() => {
     const data = async () => {
       const items = await fetchItems('')
@@ -192,28 +191,27 @@ const QuickOrder = () => {
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
-    setInputList(list)
-    if (name === 'partnumber') {
-      setPN(value)
-      filters['Part Number'] = value
-      algoliaApi()
-    } else {
-      setCaseqty({ index, value })
-      console.log(value, 'vvvv')
-    }
-    // const items = await fetchItems(value)
 
-    // const titleArray = items.hits.map(item => {
-    //   return item.title
-    // })
-    // setProductstitle(titleArray)
-    const inputs = Object.values(inputList[0])
-    console.log('arraaayy', inputs)
-    if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
-      setRadioStateBulk(true)
+    if (qtyIndex.length > 0 && qtyIndex[`index-${index}`] === undefined) {
+      qtyIndex = {
+        ...caseqty,
+        [`index-${index}`]: value,
+      }
     } else {
-      setRadioStateBulk(false)
+      qtyIndex = {
+        ...caseqty,
+        [`index-${index}`]: value,
+      }
+      const inputs = Object.values(inputList[0])
+      console.log('arraaayy', inputs)
+      if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
+        setRadioStateBulk(true)
+      } else {
+        setRadioStateBulk(false)
+      }
     }
+
+    setCaseqty(qtyIndex)
   }
 
   useEffect(() => {
@@ -358,7 +356,8 @@ const QuickOrder = () => {
           >
             <BulkOrder
               value={pn !== undefined ? pn : 'Part Number'}
-              handleChangePackage={handleChangeBulk}
+              handleChangePackage={handleChange}
+              handleChangePackageqty={handleChangeBulk}
               handleAddtoCart={handleAddtoCart}
               bulkdata={bulkdata}
               inputList={inputList}
@@ -499,7 +498,10 @@ const QuickOrder = () => {
                       </div>
                       <div>
                         <p>
-                          ${data['Base Price'] * Number(caseqty[`index-${i}`])}
+                          $
+                          {(
+                            data['Base Price'] * Number(caseqty[`index-${i}`])
+                          ).toFixed(2)}
                         </p>
                       </div>
                     </div>
