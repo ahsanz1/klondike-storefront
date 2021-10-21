@@ -13,6 +13,7 @@ const SelectedPlpCategory = ({ name = '', desc = '' }) => {
   const more = () => {
     setReadMore(desc.length)
   }
+  console.log('loo g krlo check...')
   return (
     <div className="selected-category">
       <h2>{name}</h2>
