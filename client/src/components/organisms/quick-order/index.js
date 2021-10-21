@@ -14,7 +14,7 @@ import useAddToCart from 'libs/api-hooks/useAddToCart'
 
 /* eslint-disable indent */
 
-let qtyIndex = []
+// let qtyIndex = []
 const QuickOrder = () => {
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
@@ -30,12 +30,10 @@ const QuickOrder = () => {
   const [bulkdata, setBulkdata] = useState([])
   let [pn, setPN] = useState()
   let [caseqty, setCaseqty] = useState([])
-
-  // let [inputqty, setInputQty] = useState('')
+  let qtyIndex = {}
 
   const { addToCartApiCall } = useAddToCart()
   console.log(fetcheditems, 'fetcheditems')
-  // console.log(inputqty, 'inputList')
 
   useEffect(() => {
     const data = async () => {
@@ -46,8 +44,10 @@ const QuickOrder = () => {
     data()
   }, [])
   const onChangeqty = async (value, index) => {
-    console.log('changed', value)
-    qtyIndex[`index-${index}`] = value
+    qtyIndex = {
+      ...caseqty,
+      [`index-${index}`]: value,
+    }
     setCaseqty(qtyIndex)
   }
 
@@ -71,20 +71,22 @@ const QuickOrder = () => {
     list.splice(index, 1)
     setInputList(list)
     itemremove(index)
-    // setAcctive(false)
   }
   const handleChangePackageqty = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
-    // setInputList(list)
 
     if (qtyIndex.length > 0 && qtyIndex[`index-${index}`] === undefined) {
-      let newIndex = []
-      newIndex[`index-${index}`] = value
-      qtyIndex.push(newIndex)
+      qtyIndex = {
+        ...caseqty,
+        [`index-${index}`]: value,
+      }
     } else {
-      qtyIndex[`index-${index}`] = value
+      qtyIndex = {
+        ...caseqty,
+        [`index-${index}`]: value,
+      }
     }
 
     setCaseqty(qtyIndex)
@@ -100,7 +102,6 @@ const QuickOrder = () => {
       filters['Part Number'] = value
       algoliaApi()
     } else {
-      // setCaseqty({ index, value })
     }
 
     const items = await fetchItems(value)
@@ -109,7 +110,6 @@ const QuickOrder = () => {
       return item.title
     })
     console.log(titleArray, 'titleArray')
-    // setProductstitle(titleArray)
     const inputs = Object.values(inputList[0])
     console.log('arraaayy', inputs)
     if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
@@ -118,9 +118,7 @@ const QuickOrder = () => {
       setRadioStatePackage(false)
     }
   }
-  //   const caceqty = async (e) => {
-  // console.log(e.target.value, 'case')
-  //   }
+
   const filters = {}
 
   const algoliaApi = async () => {
@@ -415,7 +413,9 @@ const QuickOrder = () => {
                         />
                       </div>
                       <div>
-                        <p>${data['Base Price'] * caseqty}</p>
+                        <p>
+                          ${data['Base Price'] * Number(caseqty[`index-${i}`])}
+                        </p>
                       </div>
                     </div>
                   ))}
