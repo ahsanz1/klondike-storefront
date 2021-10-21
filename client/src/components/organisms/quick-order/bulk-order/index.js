@@ -6,6 +6,7 @@ import Button from 'components/atoms/button'
 
 const BulkOrder = ({
   handleChangePackage,
+  handleChangePackageqty,
   handleAddtoCart,
   handleAddRow,
   bulkdata,
@@ -52,7 +53,7 @@ const BulkOrder = ({
                     className="quantity-number"
                     type="number"
                     value={x.quantity}
-                    onChange={e => handleChangePackage(e, i)}
+                    onChange={e => handleChangePackageqty(e, i)}
                   />
                 </div>
                 <div className="remove-rowbtn">
@@ -89,6 +90,7 @@ BulkOrder.propTypes = {
   bulkdata: PropTypes.array,
   inputList: PropTypes.array,
   handleRemoveClick: PropTypes.func,
+  handleChangePackageqty: PropTypes.func,
 }
 
 export default BulkOrder
