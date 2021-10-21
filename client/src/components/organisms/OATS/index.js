@@ -4,6 +4,7 @@ import axios from 'axios'
 import Dropdown from 'components/atoms/dropdown'
 import { tableOatsData } from './data'
 import Button from 'components/atoms/button'
+import Label from 'components/atoms/label'
 // import { object } from 'yup/lib/locale'
 const Oats = () => {
   const { mainHeading } = tableOatsData
@@ -25,14 +26,19 @@ const Oats = () => {
   const [familyquery, setFamilyQuery] = useState('')
   const [seriesQuery, setSeriesQuery] = useState('')
   const [yearQuery, setYearQuery] = useState('')
+  const [notFound, setNotFound] = useState(false)
   const getproducts = () => {
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
     ]
     axios.get(url).then(response => {
+      if (response.data.equipment_list.equipment.length > 0) {
+        setNotFound(false)
+      }
       let results = response.data.equipment_list
       console.log('res', results)
       setOtsdata(results)
+
       let yearsArray = [{ label: ' ' }]
       let seriesArray = [{ label: ' ' }]
       let familyArray = [{ label: ' ' }]
@@ -88,9 +94,13 @@ const Oats = () => {
   }
   const filterData = e => {
     setQuery(e.target.value)
+    setNotFound(false)
   }
+  // eslint-disable-next-line no-unused-vars
   const [bgImg, setBgimg] = useState(false)
+
   const searchQuery = () => {
+    setNotFound(true)
     setBgimg(true)
     if (query) {
       getproducts()
@@ -126,7 +136,13 @@ const Oats = () => {
 
   return (
     <>
-      <div className={`${bgImg ? 'bg-search' : 'img'}`}>
+      <div
+        className={`${
+          otsdata && otsdata.equipment && otsdata.equipment.length === 0
+            ? 'img'
+            : 'bg-search'
+        }`}
+      >
         <div className="oats">
           <h1 className="heading">{mainHeading}</h1>
           <div className="wrapper-oats">
@@ -161,9 +177,12 @@ const Oats = () => {
                 </Button>
               </div>
             </div>
+            {/* {abale && <h1>heloo</h1>} */}
           </div>
-
-          {abale && otsdata && otsdata.equipment && (
+          {abale &&
+            otsdata &&
+            otsdata.equipment &&
+            otsdata.equipment.length > 0 && (
             <div className="dropdown-wrapper">
               <Dropdown
                 onChange={yearFunc}
@@ -193,7 +212,10 @@ const Oats = () => {
           )}
           <div className="overflow">
             <div className="table-wrapper">
-              {abale && otsdata && otsdata.equipment && (
+              {abale &&
+                otsdata &&
+                otsdata.equipment &&
+                otsdata.equipment.length > 0 && (
                 <div className="title flex">
                   <h3 className="custom-grid tiles">Category</h3>
                   <h3 className="custom-grid tiles">Manufacturer</h3>
@@ -202,19 +224,30 @@ const Oats = () => {
                   <h3 className="custom-grid tiles">Fuel</h3>
                 </div>
               )}
-              {otsdata &&
-                otsdata.equipment &&
-                otsdata.equipment.map((data, i) => {
+              {otsdata && otsdata.equipment && otsdata.equipment.length > 0
+                ? otsdata.equipment.map((data, i) => {
                   return (
                     <div className="table-content flex" key={i}>
-                      <p className="custom-grid">{data && data.productgroup}</p>
-                      <p className="custom-grid">{data && data.manufacturer}</p>
+                      <p className="custom-grid">
+                        {data && data.productgroup}
+                      </p>
+                      <p className="custom-grid">
+                        {data && data.manufacturer}
+                      </p>
                       <p className="custom-grid">{data && data.model}</p>
                       <p className="custom-grid">{data && data.yearto}</p>
-                      <p className="custom-grid">{data && data.alt_fueltype}</p>
+                      <p className="custom-grid">
+                        {data && data.alt_fueltype}
+                      </p>
                     </div>
                   )
-                })}
+                })
+                : ''}
+              {notFound && query && (
+                <Label className="not-found">
+                  Sorry, no results matched your search
+                </Label>
+              )}
             </div>
           </div>
         </div>
