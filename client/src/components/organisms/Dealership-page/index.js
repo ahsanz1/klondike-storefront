@@ -5,11 +5,13 @@ import { PcpBottom, techresource } from 'libs/data/data'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 import PCPBottom from 'components/organisms/pcpBottom'
+import Image from 'components/atoms/image'
 const Dealership = () => {
   return (
     <>
       <div className="Dealership-wraper">
         <WebpagesHeroImages {...techresource} />
+        <Image className="banner-img" src="/static/images/you.png" />
         <div className="Dealership-heading">
           <Label>Dealership Opportunity</Label>
         </div>

@@ -6,9 +6,9 @@
   background-size: cover;
 
   @media (max-width: 768px) {
-    background-image: url('/static/images/bg.png');
     // width: 100vw;
-    // // height: 495px;
+    height: 495px;
+    background-image: url('/static/images/bg.png');
     background-size: cover;
   }
 }
