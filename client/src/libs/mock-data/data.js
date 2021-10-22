@@ -618,5 +618,11 @@ const mockData = {
       params: {},
     },
   ],
+  '/dealership-opportunity': [
+    {
+      id: 'Dealership',
+      params: {},
+    },
+  ],
 }
 export default mockData

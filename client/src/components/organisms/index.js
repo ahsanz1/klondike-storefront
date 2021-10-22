@@ -71,6 +71,7 @@ import IndustryApplications from 'components/organisms/industry-applications'
 import SafetyEnvironment from 'components/organisms/safety-environment'
 import OurStory from 'components/organisms/our-story'
 
+import Dealership from 'components/organisms/Dealership-page'
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -150,4 +151,5 @@ export default {
   IndustryApplications: params => <IndustryApplications {...params} />,
   SafetyEnvironment: params => <SafetyEnvironment {...params} />,
   OurStory: params => <OurStory {...params} />,
+  Dealership: params => <Dealership {...params} />,
 }
