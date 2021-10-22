@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Button from 'components/atoms/button'
+import Label from 'components/atoms/label'
 
 const BulkOrder = ({
   handleChangePackage,
@@ -21,9 +22,14 @@ const BulkOrder = ({
   return (
     <div>
       <div className="partname-and-qty">
-        <p>Part Number</p>
-        <p>Liters</p>
+        <p>
+          Part Number<Label className="quick-order-asterisk">*</Label>
+        </p>
+        <p>
+          Liters<Label className="quick-order-asterisk">*</Label>
+        </p>
       </div>
+
       <form onSubmit={e => handleSubmit(e)}>
         {InputList.map((x, i) => {
           return (
