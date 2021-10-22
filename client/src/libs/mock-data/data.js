@@ -612,6 +612,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/our-story': [
+    {
+      id: 'OurStory',
+      params: {},
+    },
+  ],
   '/dealership-opportunity': [
     {
       id: 'Dealership',
