@@ -225,6 +225,16 @@
     @media screen and (min-width: 768px) {
       display: none;
     }
+
+    .accordion-arrow {
+      @media (max-width: 500px) {
+        justify-content: center;
+        width: 6.4vw;
+        height: 6.4vw;
+        float: right;
+        background: #0c3445;
+      }
+    }
   }
 
   .footer-text {

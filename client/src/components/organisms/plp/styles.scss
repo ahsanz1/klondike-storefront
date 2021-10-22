@@ -13,13 +13,19 @@
   .navigation-button {
     display: none;
     text-align: center;
+
+    @media (max-width: 500px) {
+      display: flex !important;
+      margin-top: 10.93vw !important;
+      margin-bottom: 10.93vw !important;
+    }
   }
 
   .c-button {
     width: 15.6vw;
     height: 2.7vw;
     padding: 0.3vw;
-    border: 0.06vw solid #ddaf34;
+    border: 0.53vw solid #ddaf34;
     background: none;
     color: #fff;
     font-family: $OpenSans;
@@ -28,9 +34,14 @@
     text-transform: uppercase;
 
     @media (max-width: 500px) {
-      width: 45.6vw;
-      height: 7.7vw;
-      font-size: 2.7vw;
+      // width: 45.6vw;
+      // height: 7.7vw;
+      // font-size: 2.7vw;
+      width: 100%;
+      height: auto;
+      padding: 5.33vw 1.866vw;
+      border-radius: 1.33vw;
+      font-size: 23px;
     }
   }
 

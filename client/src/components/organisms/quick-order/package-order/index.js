@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Button from 'components/atoms/button'
+import Label from 'components/atoms/label'
 
 const PackageOrder = ({
   handleChangePackage,
@@ -24,8 +25,12 @@ const PackageOrder = ({
   return (
     <div>
       <div className="partname-and-qty">
-        <p>Part Number</p>
-        <p>Case Qty</p>
+        <p>
+          Part Number<Label className="quick-order-asterisk"> *</Label>
+        </p>
+        <p>
+          Case Qty<Label className="quick-order-asterisk"> *</Label>
+        </p>
       </div>
       <form onSubmit={e => handleSubmit(e)}>
         {InputList.map((x, i) => {

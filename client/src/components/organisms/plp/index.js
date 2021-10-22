@@ -1,25 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
-// import { Tabs } from 'antd'
 import Category from 'components/organisms/category'
 import PlpTabList from 'components/organisms/plp-tab-list'
-// import PlpFilter from 'components/molecules/Plp-filter'
 import PLPBottomSection from 'components/organisms/plpBottom'
 import SelectedCategory from 'components/molecules/selectedPlpCategory'
 import Button from 'components/atoms/button'
-// import { PlpBottom } from './data'
-// import { sortProducts } from 'libs/services/algolia'
 import PropTypes from 'prop-types'
 import RightArrow from 'images/right-arrow.png'
+import Image from 'components/atoms/image'
 import './styles.scss'
-// import { categoriesXPM as categories } from 'components/organisms/plp/data'
-
-// const { TabPane } = Tabs
 
 const PLP = props => {
   const { setStep, plpredirect } = useContext(AppContext)
-  // const [tabKey, setTabKey] = useState('0')
-  // const [itemName, setItemName] = useState('')
   const [desc, setDesc] = useState('')
   const [subItem, setSubItem] = useState({})
   const [showTab, setShowtab] = useState(true)
@@ -45,7 +37,7 @@ const PLP = props => {
   //   console.log('check resp:', response.hits)
   //   setProductList(response.hits)
   // }
-  console.log('PLPBottom:', props)
+  console.log('PLP-props:', props.mobileBanner)
   return (
     <div className="plp">
       <div className="navigation-button">
@@ -58,16 +50,11 @@ const PLP = props => {
           <img src={RightArrow} alt="pic" />
         </Button>
       </div>
-      {/* <div className="filter-section">
-        <PlpFilter
-          filterSelect={filterSelect}
-          sizeProp={size}
-          partNumberProp={partNumber}
-          unitProp={unit}
-          untitledProp={untitled}
-          changeHandler={changeHandler}
-        />
-      </div> */}
+      <Image
+        src={props.mobileBanner.url}
+        alt={props.mobileBanner.alt}
+        style={{ marginBottom: '23px' }}
+      />
       <SelectedCategory name={contextPlp} desc={desc} />
       <div className="custom-plp">
         {showTab && (
@@ -107,6 +94,7 @@ PLP.propTypes = {
   unit: PropTypes.array,
   untitled: PropTypes.array,
   plpBottom: PropTypes.array,
+  mobileBanner: PropTypes.object,
 }
 
 export default PLP
