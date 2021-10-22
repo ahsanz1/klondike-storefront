@@ -53,8 +53,11 @@
 
       img {
         object-fit: contain;
-        width: 25vw;
-        height: 32vw;
+        max-width: 100%;
+
+        // width: auto;
+
+        // height: 100%;
       }
     }
 

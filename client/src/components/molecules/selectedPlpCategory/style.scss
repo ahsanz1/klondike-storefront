@@ -23,12 +23,16 @@
 
     @media (max-width: 500px) {
       font-size: 3.2vw;
+      font-weight: normal;
     }
   }
 
   button {
+    padding-top: 3.46vw !important;
     border: none !important;
-    font-size: 3.73vw !important;
+    color: #fff !important;
+    font-family: $OpenSans !important;
+    font-size: 3.2vw !important;
     font-weight: normal !important;
     text-align: left !important;
     text-transform: none !important;
