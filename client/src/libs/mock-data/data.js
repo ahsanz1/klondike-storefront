@@ -612,5 +612,11 @@ const mockData = {
       params: {},
     },
   ],
+  '/our-story': [
+    {
+      id: 'OurStory',
+      params: {},
+    },
+  ],
 }
 export default mockData

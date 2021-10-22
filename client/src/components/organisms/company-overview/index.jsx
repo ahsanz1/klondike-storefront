@@ -59,7 +59,7 @@ const OverView = () => {
 
                   <Label className="links-paragraph">{item.paragragh}</Label>
 
-                  <Link className="discover-more">
+                  <Link className="discover-more" to={`/${item.link}`}>
                     Discover More
                     <span className="discover-more-img">
                       <img

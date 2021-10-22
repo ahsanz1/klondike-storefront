@@ -49,25 +49,31 @@ export const AboutUsXPM = [
     title: 'Company Overview',
     categoryName: 'Company Overview',
     subItem: 'Company Overview',
+    link: 'overview',
   },
   {
     title: 'Our Story',
     categoryName: 'Our Story',
+    link: 'our-story',
   },
   {
     title: 'Why Choose KLONDIKE?',
     categoryName: 'Why Choose KLONDIKE?',
+    link: 'why-klondike',
   },
   {
     title: 'Industry Applications',
     categoryName: 'Industry Applications',
+    link: 'industry-applications',
   },
   {
     title: 'Safety & Environment',
     categoryName: 'Safety & Environment',
+    link: 'safety-environment',
   },
   {
     title: 'Work At Klondike',
     categoryName: 'Work At Klondike',
+    link: 'work-at-klondike',
   },
 ]

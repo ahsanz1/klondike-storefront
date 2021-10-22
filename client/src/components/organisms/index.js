@@ -69,6 +69,7 @@ import WhyKlondike from 'components/organisms/why-klondike'
 import WorkAtKlonedike from 'components/organisms/work-at-klondike'
 import IndustryApplications from 'components/organisms/industry-applications'
 import SafetyEnvironment from 'components/organisms/safety-environment'
+import OurStory from 'components/organisms/our-story'
 
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
@@ -148,4 +149,5 @@ export default {
   WorkAtKlonedike: params => <WorkAtKlonedike {...params} />,
   IndustryApplications: params => <IndustryApplications {...params} />,
   SafetyEnvironment: params => <SafetyEnvironment {...params} />,
+  OurStory: params => <OurStory {...params} />,
 }
