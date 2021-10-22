@@ -152,12 +152,25 @@
 
             /* identical to box height */
             font-family: $OpenSans;
-            font-size: 14px;
+            font-size: 0.97vw;
             font-style: normal;
             font-weight: 600;
             line-height: 19px;
             text-transform: capitalize;
             font-feature-settings: 'pnum' on, 'lnum' on;
+
+            @media (max-width: 768px) {
+              color: #f1a900;
+
+              /* identical to box height */
+              font-family: $OpenSans;
+              font-size: 3.73vw;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 5.06vw;
+              text-transform: capitalize;
+              font-feature-settings: 'pnum' on, 'lnum' on;
+            }
 
             .img-arow {
               width: 1.04vw;

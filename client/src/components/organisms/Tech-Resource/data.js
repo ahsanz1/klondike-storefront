@@ -2,7 +2,7 @@ export const techdata = {
   tech: [
     {
       img: '/static/images/technical.png',
-      heading: 'Tech Resources',
+      heading: 'Technical Documents',
       description:
         'At KLONDIKE our products are backed by a dedicated team of experts who are available to you with educational information and a commitment to ensuring technical excellence across all our innovations.',
       lebal: '/static/images/vec.png',
