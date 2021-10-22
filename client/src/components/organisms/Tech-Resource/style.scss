@@ -1,6 +1,18 @@
 @import '~styles/globals';
 
 .tech-resource {
+  .banner-img {
+    position: absolute;
+    top: 22.64vw;
+    left: 51.45vw;
+
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 37.33vw;
+      left: 45.33vw;
+    }
+  }
+
   @media (max-width: 768px) {
     padding-top: 134px;
   }
