@@ -582,37 +582,37 @@ const mockData = {
       params: {},
     },
   ],
-  '/overview': [
+  '/about-klondike/overview': [
     {
       id: 'OverView',
       params: {},
     },
   ],
-  '/why-klondike': [
+  '/about-klondike/why-klondike': [
     {
       id: 'WhyKlondike',
       params: {},
     },
   ],
-  '/work-at-klondike': [
+  '/about-klondike/work-at-klondike': [
     {
       id: 'WorkAtKlonedike',
       params: {},
     },
   ],
-  '/industry-applications': [
+  '/about-klondike/industry-applications': [
     {
       id: 'IndustryApplications',
       params: {},
     },
   ],
-  '/safety-environment': [
+  '/about-klondike/safety-environment': [
     {
       id: 'SafetyEnvironment',
       params: {},
     },
   ],
-  '/our-story': [
+  '/about-klondike/our-story': [
     {
       id: 'OurStory',
       params: {},
