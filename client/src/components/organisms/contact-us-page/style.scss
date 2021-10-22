@@ -25,7 +25,6 @@
     }
 
     .request-form__title {
-      padding-top: 40px;
       padding-left: 40px;
       font-size: 48px !important;
       font-style: normal;
@@ -132,7 +131,8 @@
 
   .map-map {
     > div {
-      height: 588px !important;
+      width: 40.83vw;
+      height: 37.22vw !important;
 
       @media (max-width: 768px) {
         width: 327px;
