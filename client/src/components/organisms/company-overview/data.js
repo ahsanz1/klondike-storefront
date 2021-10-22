@@ -81,6 +81,43 @@ export const overviewData = {
     },
   ],
 
+  OurStoryData: [
+    {
+      title: 'Our Story',
+
+      paragraph:
+        'Since the company’s beginnings in 1987, we have remained a family-owned, independent, Canadian corporation. With an entrepreneurial spirit and an opportunity-driven mindset, we have always been passionate about the service we deliver to our customers.',
+    },
+    {
+      title: 'How We Started Out',
+
+      paragraph:
+        'The company started as a chemical and lubricants supplier to the OEM Dealer Networks and professional service and repair facilities throughout Canada. Known by a demanding customer base for our dedication to quality and outstanding service, we earned a great amount of trust and confidence by providing solutions to a broad range of industries. This led to a rapid level of growth that would be exemplary in today’s marketplace.',
+      paragraph2:
+        'Throughout the late 80’s and early 90’s, we maintained a high level of service while meeting the ever-expanding technical requirements in the chemical and lubrication industry. As distribution requirements increased throughout the late 90’s and early 2000’s, the entrepreneurial drive of ownership saw the opportunity to expand our warehousing and delivery capacity, to answer the wide-ranging and specialized needs of the marketplace throughout Canada',
+      highlightedParagraph:
+        'In 2009 we used our ambition, knowledge, and expertise to capitalize on a once in a lifetime challenge known as the ‘Mountain Pine Beetle Epidemic’',
+    },
+    {
+      title: 'The Opportunity that Led to the Creation of KLONDIKE',
+
+      paragraph:
+        'The Mountain Pine Beetle Epidemic catastrophe was wide-ranging in its destruction and infected many forests along the west coast of Canada, specifically in British Columbia. Millions of hectares of infected trees had to be removed quickly throughout the mountainous terrain, one of the most extreme climates in this region of the world.',
+      paragraph2:
+        'Contractors tasked with the harvest were faced with a host of unexpected problems. In addition to extreme weather conditions, this softwood species was dead and extremely dry. Continuously warping bars and chains due to lack of moisture and extraordinarily high frictional temperatures made for a difficult and costly cutting operation. Traditional chain oil blends were not up to the rigorous needs of the immense operation at hand.',
+      paragraph3:
+        'The advanced viscosity requirements formulated by our technical team and other global technical experts gave birth to KLONDIKE – BRAVING THE FORCE OF MOVEMENT. KLONDIKE was able to cut lubricant consumption by over 25% by eliminating waste, improving equipment operation and hastening efficiencies in the cutting process, thus improving environmental conditions and preserving the natural heritage of the British Columbia landscape.',
+    },
+    {
+      title: 'KLONDIKE Today',
+
+      paragraph:
+        'Today, KLONDIKE provides packaged lubricants and bulk oil delivery to various areas of the Canadian market, as we continue to expand our facilities throughout North America. Our warehousing and distribution centers have increased significantly in Vancouver, BC, and have grown to include facilities in Edmonton, AB; Winnipeg, MB; Toronto, ON; and Moncton, NB; to name a few.',
+      paragraph2:
+        'We are dedicated to the technical advancement and quality assurance requirements of the ever-expanding industrial marketplace. Armed with a wealth of knowledge and expertise, the KLONDIKE technical team continuously strives to meet and exceed the demands for improved and advanced specifications in complex applications.',
+    },
+  ],
+
   aboutUsLinks: [
     {
       image: 'static/images/thumb_company-overview.png',
@@ -89,6 +126,7 @@ export const overviewData = {
 
       paragragh:
         'KLONDIKE started under the Westec banner in 1987 as a chemical and lubricants supplier to the OEM Dealer Networks and professional service and repair facilities throughout Canada. Known by a demanding customer base for our dedication to quality and outstanding service we earned a great amount of trust and confidence by providing solutions to a broad range of industries. This led to a rapid level of growth that would be exemplary in today’s marketplace.',
+      link: 'our-story',
     },
 
     {
@@ -98,6 +136,7 @@ export const overviewData = {
 
       paragragh:
         'At KLONDIKE, we understand that reliability, durability, improved engine life and up-time are vital to your success. With an in-depth understanding of the unique needs and challenges of the lubrication world today our premium quality product range of certified packaged and bulk oils, greases, industrial lubricants and chemicals are designed to optimize performance and provide exceptional value in all automotive and heavy duty industries.',
+      link: 'why-klondike',
     },
 
     {
@@ -125,6 +164,7 @@ export const overviewData = {
 
       paragragh:
         'At KLONDIKE Lubricants Corporation safety is a top priority. To maintain the highest level of work-place protection, we enforce a safety first policy throughout our ISO certified blending and packaging plants as well as our KLONDIKE distribution centers.',
+      link: 'safety-environment',
     },
 
     {
@@ -143,6 +183,7 @@ export const overviewData = {
 
       paragragh:
         'Empower your independence in your marketplace with our unique business opportunity. Designed to enable you to gain immediate access to your key markets and build a highly profitable business with market leading customer retention.',
+      link: 'work-at-klondike',
     },
   ],
 }

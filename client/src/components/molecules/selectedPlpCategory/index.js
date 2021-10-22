@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useWindowSize } from 'libs/custom-hooks'
 import Button from 'components/atoms/button'
 import './style.scss'
 
 const SelectedPlpCategory = ({ name = '', desc = '' }) => {
-  const [readMore, setReadMore] = useState(200)
+  const size = useWindowSize()
+  const [readMore, setReadMore] = useState(size[0] < 768 ? 200 : desc.length)
   const [string, setString] = useState('')
   const truncate = (str, maxlength) => {
     console.log('check str:', str, maxlength)
-    str.length > maxlength
+    str.length > maxlength && size[0] < 768
       ? setString(str.slice(0, maxlength - 1) + '…')
       : setString(str)
   }
@@ -19,13 +21,15 @@ const SelectedPlpCategory = ({ name = '', desc = '' }) => {
     setReadMore(desc.length)
     setString(desc)
   }
+
   return (
     <div className="selected-category">
       <h2>{name}</h2>
       <p>{string}</p>
-      {desc.length > 0 && readMore !== desc.length && (
-        <Button onClick={more}>Read more</Button>
-      )}
+      {desc.length > 0 &&
+        desc.length > readMore &&
+        readMore !== desc.length &&
+        size[0] < 768 && <Button onClick={more}>Read more</Button>}
     </div>
   )
 }
