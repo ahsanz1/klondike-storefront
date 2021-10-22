@@ -9,13 +9,25 @@ $vw-viewport: 1440;
 }
 
 .table-wrapper-technical {
-  @media (max-width: 768px) {
-    width: 82.4vw;
-    overflow-x: auto;
-  }
+  // max-width: 100%;
+  // margin: 0 auto;
+  // padding-top: 36px;
+  // color: #fff;
+  // @media (max-width: 768px) {
+  //   min-width: 800px;
+  //   overflow-x: auto;
+  // }
 
   .text-class-center {
+    font-family: $OpenSans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
     text-align: center;
+
+    @media screen and (max-width: 500px) {
+      font-size: 3.7vw;
+    }
   }
 
   .text-class-right {
@@ -53,7 +65,7 @@ $vw-viewport: 1440;
     &.text-setting-table {
       color: #fff;
       font-family: $OpenSans;
-      font-size: get-vw(14px);
+      font-size: 14px;
       font-style: normal;
       font-weight: 700;
       line-height: 140%;
@@ -65,33 +77,19 @@ $vw-viewport: 1440;
   }
 
   .title {
-    margin-top: get-vw(22px);
+    margin-top: 22px;
     color: #fff;
     font-family: $OpenSans;
-    font-size: get-vw(14px);
+    font-size: 14px;
     font-style: normal;
     font-weight: bold;
-    line-height: get-vw(19.6px);
+    line-height: 19.6px;
   }
 
   .table-button {
     position: absolute;
     top: -1%;
     right: -12%;
-  }
-
-  .hover-button {
-    box-sizing: border-box;
-    margin-bottom: 30px;
-    padding: 12px;
-    border: 1px solid #f1a900;
-    border-radius: 5px;
-    background-color: #013a4e;
-    font-family: $OpenSans;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
   }
 }
 

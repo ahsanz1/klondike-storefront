@@ -145,7 +145,7 @@ $vw-viewport: 1440;
     line-height: 22.4px;
   }
 
-  .table-wrapper-faqs {
+  .table-wrapper-technical {
     max-width: 100%;
     margin: 0 auto;
     padding-top: 36px;
@@ -161,7 +161,7 @@ $vw-viewport: 1440;
     }
 
     @media (max-width: 768px) {
-      min-width: 800px;
+      min-width: 900px;
       overflow-x: auto;
     }
   }

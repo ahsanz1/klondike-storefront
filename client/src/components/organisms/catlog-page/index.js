@@ -63,8 +63,7 @@ const Catlog = () => {
           <div className="custom-tech">
             <Techtabllist
               className="catlog-tablist"
-              it
-              emName="Catalog"
+              itemName="Catalog"
               // categories={categories}
             />
           </div>
