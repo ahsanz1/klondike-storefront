@@ -84,7 +84,7 @@ const CartDropdownItem = ({ mainImage, title, size, price, quantity }) => {
               />
             </div> */}
 
-              <p className="product-quantity-mobile">QTY:</p>
+              <Label className="product-quantity-mobile">QTY:</Label>
               <InputNumber
                 className="product-quantity-spinner"
                 min={1}
