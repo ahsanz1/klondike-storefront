@@ -13,6 +13,7 @@ const TechResource = () => {
     <>
       <div className="tech-resource">
         <WebpagesHeroImages {...techresource} />
+        <Image className="banner-img" src="/static/images/you.png" />
         <div className="tech-heading">
           <Label className="main-heading">Tech Resources</Label>
           <Label className="dec-tech">
@@ -57,6 +58,7 @@ const TechResource = () => {
                   image={item.image}
                   button={item.button}
                   mobileButton={item.mobileButton}
+                  url={item.url}
                 />
               </>
             ))}
