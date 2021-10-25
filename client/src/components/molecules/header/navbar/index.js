@@ -46,6 +46,9 @@ const Navbar = ({
     toggleSearch()
     setLoginBottom(false)
   }
+  const menuToggle = () => {
+    setIsOpen(!isOpen)
+  }
   return (
     <div
       className={
@@ -98,6 +101,7 @@ const Navbar = ({
           linkClassName="header-link"
           mobile={false}
           links={links}
+          toggleMenu={menuToggle}
         />
         <Button
           className={
@@ -182,6 +186,7 @@ const Navbar = ({
           buyButton={buyButton}
           menuBottom={menuBottom}
           userIcon={userIcon}
+          toggleMenu={menuToggle}
         />
       </div>
     </div>

@@ -34,8 +34,8 @@
       }
 
       .show-products {
-        // display: flex !important;
-        // justify-content: space-between !important;
+        display: flex !important;
+        justify-content: space-between !important;
 
         @media (max-width: 768px) {
           display: block !important;
