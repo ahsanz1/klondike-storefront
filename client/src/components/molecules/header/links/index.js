@@ -20,12 +20,13 @@ const Links = ({
   buyButton = '',
   menuBottom = '',
   userIcon = '',
+  toggleMenu,
 }) => {
   const [clickedName, setClickedName] = useState('')
   const [clickedArray, setClickedArray] = useState([])
   const [hoverSection, setHoverSection] = useState(false)
   const [hoverName, setHoverName] = useState('')
-  const { user, loginBottom } = useContext(AppContext)
+  const { user, loginBottom, setLoginBottom } = useContext(AppContext)
   const getToken = user && user.accessToken
   const toggleFunc = (name, data) => {
     setClickedName(name)
@@ -33,6 +34,7 @@ const Links = ({
   }
   const toggleSubMenu = () => {
     setClickedName('')
+    setHoverName('')
   }
   const hoverFunc = name => {
     console.log('hover state 1:', hoverSection, name)
@@ -41,7 +43,9 @@ const Links = ({
     console.log('hover state 2:', hoverSection, name)
   }
   const hoverClickHandler = name => {
+    toggleMenu()
     setHoverName(name)
+    setLoginBottom(false)
   }
   return (
     <div
@@ -63,7 +67,10 @@ const Links = ({
           <strong>{clickedName}</strong>
 
           <>
-            <Product ourProduct={clickedArray} />
+            <Product
+              ourProduct={clickedArray}
+              clickHandler={hoverClickHandler}
+            />
           </>
         </div>
       ) : (
@@ -123,7 +130,6 @@ const Links = ({
           <Button className={!getToken ? 'Buy-Button' : 'Buy-Button'}>
             {!getToken ? 'HOW TO BUY' : 'Quick Order'}
           </Button>
-          {/* <Button className="Buy-Button mobile-button">{buyButton}</Button> */}
         </>
       )}
       {loginBottom && getToken && (
@@ -148,6 +154,7 @@ Links.propTypes = {
   buyButton: PropTypes.string,
   menuBottom: PropTypes.string,
   userIcon: PropTypes.string,
+  toggleMenu: PropTypes.func,
 }
 
 export default Links

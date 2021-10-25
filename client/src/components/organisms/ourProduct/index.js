@@ -90,5 +90,6 @@ const OurProduct = props => {
 OurProduct.propTypes = {
   ourProduct: PropTypes.array,
   clickHandler: PropTypes.func,
+  menuToggle: PropTypes.func,
 }
 export default OurProduct
