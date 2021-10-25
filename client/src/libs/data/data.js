@@ -3472,7 +3472,7 @@ export const PcpBottom = [
     image:
       'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
     button: 'DOWNLOAD PDS & MSDS',
-    url: '/tech-resources',
+    url: '/tech-resource',
     mobileButton: 'DOWNLOAD PDS & MSDS',
   },
   {
