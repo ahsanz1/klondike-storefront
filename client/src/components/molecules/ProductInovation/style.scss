@@ -87,6 +87,10 @@
 
             .img-design {
               width: 11.8vw;
+
+              @media (max-width: 500px) {
+                width: 45.33vw;
+              }
             }
           }
 
