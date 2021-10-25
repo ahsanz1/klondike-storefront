@@ -29,7 +29,7 @@ $vw-viewport: 1440;
     margin-top: 20px;
 
     > img {
-      margin-left: 100px;
+      margin-left: 9.86vw;
     }
 
     > h1 {
@@ -91,6 +91,11 @@ $vw-viewport: 1440;
     text-transform: uppercase;
   }
 
+  .ant-radio-inner {
+    border: 1px solid #d99e08;
+    background: none;
+  }
+
   .checkout-data {
     width: 64.02vw;
   }
@@ -108,6 +113,7 @@ $vw-viewport: 1440;
     }
 
     > h1 {
+      width: 53.75vw;
       margin: get-vw(16px);
       color: #eceae9;
       font-family: $OpenSans;
@@ -160,6 +166,14 @@ $vw-viewport: 1440;
       margin-top: 39px;
       margin-right: 24px;
       margin-left: 24px;
+    }
+  }
+
+  span.checkout-value {
+    margin-left: 8.75vw;
+
+    @media (max-width: 768px) {
+      margin-left: 24.26vw;
     }
   }
 
@@ -235,7 +249,7 @@ $vw-viewport: 1440;
     > p {
       padding: 24px;
       color: #fff;
-      font-family: $OpenSans;
+      font-family: '$OpenSans';
       font-size: 14px;
       font-style: normal;
       font-weight: bold;
@@ -260,6 +274,12 @@ $vw-viewport: 1440;
     margin-left: 8.33vw;
     background: #002a3a;
 
+    @media (max-width: 768px) {
+      /*  padding-left: 6.4vw;
+        padding-top: 6.4vw;
+        padding-right: 6.4vw; */
+    }
+
     > p {
       padding: 24px;
       color: #fff;
@@ -268,6 +288,13 @@ $vw-viewport: 1440;
       font-style: normal;
       font-weight: bold;
       line-height: 140%;
+
+      @media (max-width: 768px) {
+        padding: 0;
+        padding-top: 4.5vw;
+        padding-right: 6.4vw;
+        padding-left: 6.4vw;
+      }
     }
 
     > .input-po {
@@ -278,14 +305,20 @@ $vw-viewport: 1440;
       margin-top: 11px;
       margin-right: 10px;
       background: #f5f5f5;
+      color: #8c8885;
       font-family: $OpenSans;
       font-size: get-vw(14px);
+      font-weight: 600;
 
       @media (max-width: 768px) {
-        width: 38vw;
-        margin-top: 2px;
-        margin-bottom: 4px;
+        width: 45.33vw;
+        height: 9.6vw;
+        margin-bottom: 6.4vw;
         margin-left: 134px;
+        border-radius: 0.8vw;
+        background: #f5f5f5;
+        color: #8c8885;
+        font-size: 3.2vw;
       }
     }
 
@@ -312,6 +345,7 @@ $vw-viewport: 1440;
     outline: none;
     background: #f2a900;
     color: white;
+    font-family: $OpenSans;
     font-size: get-vw(23px);
     font-weight: bold;
     letter-spacing: -1px;
@@ -347,8 +381,8 @@ $vw-viewport: 1440;
       flex-direction: row;
       // justify-content: space-between;
       width: 100%;
-      margin-top: 12px;
-      margin-left: 48px;
+      margin-top: 10.4vw;
+
       // margin-top: 150px;
       // margin-right: 28px;
     }
@@ -441,14 +475,24 @@ $vw-viewport: 1440;
       > p {
         justify-content: space-between;
         color: #f1a900;
-        font-size: 16px;
+        font-size: 1.66vw;
         font-style: normal;
         font-weight: bold;
         line-height: 140%;
+
+        @media (max-width: 768px) {
+          font-size: 6.4vw;
+        }
       }
 
       .total {
+        width: 10.34vw;
+        height: 2.22vw;
         color: #fff;
+
+        @media (max-width: 768px) {
+          font-size: 6.4vw;
+        }
       }
     }
 
@@ -494,6 +538,27 @@ $vw-viewport: 1440;
 
   .ant-radio-inner::after {
     background-color: #d99e08;
+  }
+
+  span.ant-radio + * {
+    height: 1.59vw;
+    padding-top: 1.11vw;
+    padding-right: 3vw;
+    padding-left: 0.81vw;
+    font-family: $OpenSans;
+    font-size: 1.18vw;
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    line-height: 1.59vw;
+
+    @media (max-width: 768px) {
+      height: 6.13vw;
+      padding-right: 1.8vw;
+      padding-left: 1.13vw;
+      font-size: 4.53vw;
+      line-height: 6.17vw;
+    }
   }
 
   // .ant-radio-wrapper {

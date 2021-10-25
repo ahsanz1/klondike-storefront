@@ -21,15 +21,27 @@
 }
 
 .warp-bottom {
-  padding: 60px 30px;
+  padding: 4.1vw 6vw;
 
   .c-button {
+    width: 15.69vw;
+    height: 2.77vw;
     margin-bottom: 20px;
     padding: 5px;
-    border: 1px solid #ddaf34;
+    border: 2px solid #f1a900;
+    border-radius: 0.34vw;
     background: none;
     color: #fff;
     text-transform: uppercase;
+  }
+
+  a.download-Pds_link {
+    color: white;
+    font-family: $OpenSans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 24px;
   }
 
   img {

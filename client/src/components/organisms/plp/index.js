@@ -7,7 +7,7 @@ import SelectedCategory from 'components/molecules/selectedPlpCategory'
 import Button from 'components/atoms/button'
 import PropTypes from 'prop-types'
 import RightArrow from 'images/right-arrow.png'
-// import Image from 'components/atoms/image'
+import Image from 'components/atoms/image'
 import './styles.scss'
 
 const PLP = props => {
@@ -50,11 +50,12 @@ const PLP = props => {
           <img src={RightArrow} alt="pic" />
         </Button>
       </div>
-      {/* <Image
+      <Image
         src={props.mobileBanner.url}
         alt={props.mobileBanner.alt}
         style={{ marginBottom: '23px' }}
-      /> */}
+        className="mobile-banner"
+      />
       <SelectedCategory name={contextPlp} desc={desc} />
       <div className="custom-plp">
         {showTab && (
