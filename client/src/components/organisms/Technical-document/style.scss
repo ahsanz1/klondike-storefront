@@ -144,7 +144,7 @@ $vw-viewport: 1440;
     line-height: 22.4px;
   }
 
-  .table-wrapper-faqs {
+  .table-wrapper-technical {
     max-width: 100%;
     margin: 0 auto;
     padding-top: 36px;
@@ -160,7 +160,7 @@ $vw-viewport: 1440;
     }
 
     @media (max-width: 768px) {
-      min-width: 800px;
+      min-width: 900px;
       overflow-x: auto;
     }
   }
@@ -224,6 +224,7 @@ $vw-viewport: 1440;
   img {
     position: relative;
     bottom: 2px;
+    margin-top: 2.01vw;
   }
 
   .technical-bottom-section {
@@ -270,8 +271,8 @@ $vw-viewport: 1440;
 
       .dealer-botton {
         width: get-vw(226px);
-        margin-top: get-vw(40px) !important;
-        margin-bottom: 1vw;
+        margin-top: 3.05vw;
+        margin-bottom: 1.45vw;
         border-radius: 5px;
         font-size: get-vw(14px);
         font-weight: bold;
@@ -280,6 +281,10 @@ $vw-viewport: 1440;
 
         @media (max-width: 425px) {
           display: none;
+        }
+
+        a {
+          color: white;
         }
       }
     }

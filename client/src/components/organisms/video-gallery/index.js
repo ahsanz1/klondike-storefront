@@ -1,5 +1,6 @@
 import './style.scss'
 import React from 'react'
+import { useWindowSize } from 'libs/custom-hooks'
 import PCPBottom from 'components/organisms/pcpBottom'
 import { PcpBottom, technicalBanner } from 'libs/data/data'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
@@ -8,23 +9,14 @@ import PropTypes from 'prop-types'
 // import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
 // import Link from 'components/atoms/link'
-
+import MobileTabListTech from '../Technical-tablist/mobile-tab'
 import { bigVideodata, smallVideodata } from './data'
 
-const VideoGallery = ({ categories }) => {
+const VideoGallerydata = () => {
   return (
     <>
       <div className="video-gallery-page">
-        <WebpagesHeroImages {...technicalBanner} />
-
         <div className="technacil-wriper">
-          <div className="custom-tech">
-            <Techtabllist
-              className="warranty-tablist"
-              itemName="Video Gallery"
-              categories={categories}
-            />
-          </div>
           <div className="technical-data">
             <div className="video-gallery-wrap">
               <Label className="video-gallery-title">Video Gallery</Label>
@@ -80,7 +72,28 @@ const VideoGallery = ({ categories }) => {
             </div>
           </div>
         </div>
-
+      </div>
+    </>
+  )
+}
+const VideoGallery = () => {
+  const size = useWindowSize()
+  // const [size, setSize] = useState(useWindowSize)
+  console.log('size', size)
+  return size[0] > 768 ? (
+    <>
+      <WebpagesHeroImages {...technicalBanner} />
+      <div className="video-page">
+        <div className="technacil-wriper">
+          <div className="custom-tech">
+            <Techtabllist
+              className="viedo-gallery"
+              itemName="Video Gallery"
+              // categories={categories}
+            />
+          </div>
+          <VideoGallerydata />
+        </div>
         <div className="technical-bottom">
           <div className="technical-bottom-section">
             {PcpBottom &&
@@ -97,9 +110,21 @@ const VideoGallery = ({ categories }) => {
         </div>
       </div>
     </>
+  ) : (
+    <>
+      <div className="custom-tech">
+        <MobileTabListTech
+          className="warranty-tablist"
+          itemName="Video Gallery"
+        >
+          <div className="video-page">
+            <VideoGallerydata />
+          </div>
+        </MobileTabListTech>
+      </div>
+    </>
   )
 }
-
 VideoGallery.DefaultProps = {
   categories: [],
 }

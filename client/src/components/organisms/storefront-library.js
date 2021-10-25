@@ -211,4 +211,8 @@ Components[
 Components[
   'SafetyEnvironment'
 ] = require('components/organisms/safety-environment').default
+Components['OurStory'] = require('components/organisms/our-story').default
+Components[
+  'Dealership'
+] = require('components/organisms/Dealership-page').default
 export default Components

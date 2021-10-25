@@ -23,6 +23,8 @@ const Links = ({
 }) => {
   const [clickedName, setClickedName] = useState('')
   const [clickedArray, setClickedArray] = useState([])
+  const [hoverSection, setHoverSection] = useState(false)
+  const [hoverName, setHoverName] = useState('')
   const { user, loginBottom } = useContext(AppContext)
   const getToken = user && user.accessToken
   const toggleFunc = (name, data) => {
@@ -31,6 +33,15 @@ const Links = ({
   }
   const toggleSubMenu = () => {
     setClickedName('')
+  }
+  const hoverFunc = name => {
+    console.log('hover state 1:', hoverSection, name)
+    setHoverSection(!hoverSection)
+    setHoverName(name)
+    console.log('hover state 2:', hoverSection, name)
+  }
+  const hoverClickHandler = name => {
+    setHoverName(name)
   }
   return (
     <div
@@ -61,7 +72,11 @@ const Links = ({
             if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
               return (
                 (!link.mobileOnly || mobile) && (
-                  <div className="menu-link-item">
+                  <div
+                    className="menu-link-item"
+                    onMouseEnter={() => hoverFunc(link.label)}
+                    onMouseLeave={hoverFunc}
+                  >
                     <Link
                       key={i}
                       style={linkStyle}
@@ -77,18 +92,18 @@ const Links = ({
                     >
                       {link && link.label && link.label}
 
-                      <div>
-                        {
-                          // link.productDropDown &&
-                          //   link.productDropDown.length > 0 &&
-                          //   link.productDropDown[0].label !== '' &&
-                          //   link.productDropDown[0].image.url !== '' && (
-                          <>
-                            <Product ourProduct={link.productDropDown} />
-                          </>
-                          // )
-                        }
-                      </div>
+                      {hoverName === link.label && (
+                        <div>
+                          {
+                            <>
+                              <Product
+                                ourProduct={link.productDropDown}
+                                clickHandler={hoverClickHandler}
+                              />
+                            </>
+                          }
+                        </div>
+                      )}
                     </Link>
                     <Image
                       width={25}

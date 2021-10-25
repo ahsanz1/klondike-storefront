@@ -6,6 +6,11 @@ exports.default = Types.Component({
   isGlobal: false,
   description: 'Product Listing Page',
   attributes: {
+    mobileBanner: Types.Image({
+      label: 'Mobile Banner',
+      url: Types.String({ label: 'URL' }),
+      altText: Types.String({ label: 'Alt text' }),
+    }),
     categories: Types.Array({
       label: 'Categories',
       children: Types.Shape({

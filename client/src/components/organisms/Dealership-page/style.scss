@@ -1,0 +1,48 @@
+@import '~styles/globals';
+
+.Dealership-wraper {
+  .banner-img {
+    position: absolute;
+    top: 22.64vw;
+
+    /* margin-right: 20vw; */
+
+    /* margin-left: 51.45vw; */
+    left: 51.45vw;
+  }
+
+  right: 21.18vw;
+
+  .Dealership-heading {
+    margin-right: 34vw;
+    margin-left: 32vw;
+    padding-top: 5vw;
+    color: #f1a900;
+    font-family: $OpenSans;
+    font-size: 2.5vw;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 3.4vw;
+
+    /* identical to box height */
+
+    text-transform: uppercase;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+  }
+
+  .description {
+    margin-right: 20vw;
+    margin-left: 20vw;
+    opacity: 0.9;
+    color: #fff;
+    font-family: $OpenSans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 140%;
+
+    /* or 20px */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+  }
+}
