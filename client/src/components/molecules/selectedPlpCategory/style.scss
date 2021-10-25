@@ -4,8 +4,6 @@
   margin-bottom: 3.4vw;
 
   h2 {
-    margin-right: 37.91vw;
-    margin-left: 8.33vw;
     color: #eceae9;
     font-family: $OpenSans;
     font-size: 3.3vw;
@@ -18,12 +16,9 @@
   }
 
   p {
-    margin-right: 8.19vw;
-    margin-left: 8.33vw;
     color: #eceae9;
     font-family: $OpenSans;
     font-size: 0.8vw;
-    font-weight: normal;
     line-height: 157%;
 
     @media (max-width: 500px) {
