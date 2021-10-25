@@ -69,6 +69,7 @@ const TechNews = ({ categories }) => {
                   image={item.image}
                   button={item.button}
                   mobileButton={item.mobileButton}
+                  url={item.url}
                 />
               </>
             ))}
