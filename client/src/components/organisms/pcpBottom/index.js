@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
 import './style.scss'
+import { Link } from '@reach/router'
 
-const PCPBottom = ({ image, button, mobileButton }) => {
+const PCPBottom = ({ image, button, mobileButton, url }) => {
   return (
     <div className="bottom-plp">
       <div className="pcp-bottom">
@@ -16,10 +17,16 @@ const PCPBottom = ({ image, button, mobileButton }) => {
           />
         </div>
         <div>
-          <Button className="dealer-botton">{button}</Button>
+          <Button className="dealer-botton">
+            <Link to={url} className="download-Pds_link">
+              {button}
+            </Link>
+          </Button>
         </div>
         <div className="mob">
-          <Button className="mob-button">{mobileButton}</Button>
+          <Button className="mob-button">
+            <Link to={url}>{mobileButton}</Link>
+          </Button>
         </div>
       </div>
     </div>
@@ -29,5 +36,6 @@ PCPBottom.propTypes = {
   image: PropTypes.string,
   button: PropTypes.string,
   mobileButton: PropTypes.string,
+  url: PropTypes.string,
 }
 export default PCPBottom

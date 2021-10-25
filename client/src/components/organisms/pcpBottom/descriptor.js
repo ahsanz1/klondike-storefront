@@ -16,6 +16,7 @@ exports.default = Types.Component({
             altText: Types.String({ label: 'Alt text' }),
           }),
           button: Types.String({ label: 'Button Text' }),
+          url: Types.String({ label: 'URL' }),
           mobileButton: Types.String({ label: 'Mobile Button Text' }),
         },
       }),

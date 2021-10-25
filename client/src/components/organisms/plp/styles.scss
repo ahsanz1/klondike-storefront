@@ -1,8 +1,9 @@
 @import '~styles/globals';
 
 .plp {
-  padding: 4.1vw 9.3vw;
+  //padding: 4.1vw 9.3vw;
   padding-top: 1.6vw;
+  padding-bottom: 5.41vw;
 
   @media screen and (max-width: 500px) {
     margin-top: 13.3vw;
@@ -25,11 +26,11 @@
     width: 15.6vw;
     height: 2.7vw;
     padding: 0.3vw;
-    border: 0.26vw solid #ddaf34;
+    border: 0.13vw solid #f1a900;
     background: none;
     color: #fff;
     font-family: $OpenSans;
-    font-size: 0.9vw;
+    font-size: 0.97vw;
     font-weight: bold;
     text-transform: uppercase;
 
@@ -91,6 +92,8 @@
     display: flex;
     justify-content: space-between;
     margin-top: 3.4vw;
+    margin-right: 6.66vw;
+    margin-left: 8.33vw;
 
     @media (max-width: 768px) {
       flex-direction: row;

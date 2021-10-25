@@ -99,6 +99,7 @@ const IndustryApplications = () => {
                     image={item.image}
                     button={item.button}
                     mobileButton={item.mobileButton}
+                    url={item.url}
                   />
                 </>
               ))}
