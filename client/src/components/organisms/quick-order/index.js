@@ -33,11 +33,8 @@ const QuickOrder = () => {
   let [pn, setPN] = useState()
   let [caseqty, setCaseqty] = useState([])
   let qtyIndex = {}
-
-  // const { addToCartApiCall } = useAddToCart()
-
-  // console.log(inputqty, 'inputList')
-  // const { addToCartApiCall } = useAddToCart()
+  let [totalqty, setTotalQty] = useState()
+  let total = []
   console.log(fetcheditems, 'fetcheditems')
   useEffect(() => {
     const data = async () => {
@@ -62,46 +59,66 @@ const QuickOrder = () => {
   const addedItemToCart = async Data => {
     // const resData = await addToCartApiCall(Data)
     // console.log('addto', resData)
-    let data = packgdata.map((data, i) => {
-      console.log(data.sku, 'dtatt')
-      return getProductBySKU(data.sku).then(res => {
-        res = res.response.data
-        console.log(res, 'response')
-        let product = res.product
-        let payload = {
-          cartId: null,
-          items: [
-            {
-              extra: {},
-              group: product.group,
-              itemId: product.itemId,
-              sku: product.sku,
-              quantity: 1, // qty,
-              price: {
-                base: 0,
-                currency: 'USD',
-                sale: false,
-                discount: {
-                  price: 0,
-                },
-              },
-              size: false,
+    let data =
+      packgdata &&
+      packgdata.map((data, i) => {
+        let baseprice = data['Base Price']
+        console.log(data.sku, 'dtatt')
+        let amount = baseprice * Number(caseqty[`index-${i}`])
+        total.push(amount)
+        const itemtotalamount = () => {
+          let sum = total.reduce(
+            (previousValue, currentValue, currentIndex, array) => {
+              return previousValue + currentValue
             },
-          ],
-
-          registeredUser: true,
-          userAuthToken: user.accessToken,
+            0,
+          )
+          let totalamount = sum.toFixed(2)
+          setTotalQty(totalamount)
         }
-        addProductToCart(payload)
+        itemtotalamount()
+        return getProductBySKU(data.sku)
           .then(res => {
-            console.log('sucres', res)
+            let response = res.response.data
+            console.log(response, 'response')
+            let product = response && response.product
+            let payload = {
+              cartId: null,
+              items: [
+                {
+                  extra: {},
+                  group: product.group,
+                  itemId: product.itemId,
+                  sku: product.sku,
+                  quantity: 1, // qty,
+                  price: {
+                    base: 0,
+                    currency: 'USD',
+                    sale: false,
+                    discount: {
+                      price: 0,
+                    },
+                  },
+                  size: false,
+                },
+              ],
+
+              registeredUser: true,
+              userAuthToken: user.accessToken,
+            }
+            addProductToCart(payload)
+              .then(res => {
+                console.log('sucres', res)
+              })
+              .catch(err => {
+                console.log('errres', err)
+              })
           })
           .catch(err => {
-            console.log('errres', err)
+            console.log('error', err)
           })
       })
-    })
-    console.log(data, 'ddd')
+    console.log(data, 'data')
   }
   const itemremove = async i => {
     let a = packgdata
@@ -132,7 +149,6 @@ const QuickOrder = () => {
         [`index-${index}`]: value,
       }
     }
-
     setCaseqty(qtyIndex)
   }
   const handleChange = async (e, index) => {
@@ -169,22 +185,26 @@ const QuickOrder = () => {
     let payload = []
     let res = Object.entries(filters)
 
-    await res.map(v => {
+    res.map(v => {
       payload.push(`${v[0]}:${v[1]}`)
     })
 
-    await searchFilters(payload).then(res => {
-      let payload = []
-      if (packgdata.length < 1) {
-        payload.push(res[0])
-      } else {
-        payload = packgdata
-        payload.push(res[0])
-      }
+    searchFilters(payload)
+      .then(res => {
+        let payload = []
+        if (packgdata.length < 1) {
+          payload.push(res[0])
+        } else {
+          payload = packgdata
+          payload.push(res[0])
+        }
 
-      console.log(payload, 'payload')
-      setPackgdata(payload)
-    })
+        console.log(payload, 'payload')
+        setPackgdata(payload)
+      })
+      .catch(err => {
+        console.log(err, 'error')
+      })
   }
 
   const handleChangeBulk = async (e, index) => {
@@ -274,46 +294,6 @@ const QuickOrder = () => {
       // show invalid sku error from here
     }
   }
-  // -------------------------------------
-  // const addItemToCart = async () => {
-  //   let data = cart
-  //   getProductBySKU(data.sku).then(res => {
-  //     res = res.response.data
-  //     let product = res.product
-  //     let payload = {
-  //       cartId: null,
-  //       items: [
-  //         {
-  //           extra: {},
-  //           group: product.group,
-  //           itemId: product.itemId,
-  //           sku: product.sku,
-  //           quantity: qty,
-  //           price: {
-  //             base: 0,
-  //             currency: 'USD',
-  //             sale: false,
-  //             discount: {
-  //               price: 0,
-  //             },
-  //           },
-  //           size: false,
-  //         },
-  //       ],
-
-  //       registeredUser: true,
-  //       userAuthToken: user.accessToken,
-  //     }
-  //     addProductToCart(payload)
-  //       .then(res => {
-  //         console.log('sucres', res)
-  //       })
-  //       .catch(err => {
-  //         console.log('errres', err)
-  //       })
-  //   })
-  // }
-  // -------------------------------------
 
   const radioChangeBULK = () => {
     setPackageComponent(false)
@@ -380,7 +360,7 @@ const QuickOrder = () => {
         <div className="checkout">
           <div className="order-price">
             <Label className="sub-total">Order Total</Label>
-            <Label className="total">$ 350.00</Label>
+            <Label className="total">{totalqty}</Label>
           </div>
           <div className="checkout-links">
             <Link className="checkout-btn" to="/checkout">
@@ -514,7 +494,7 @@ const QuickOrder = () => {
             )}
           </div>
 
-          {cartItems && <TotalCartPrice />}
+          {cartItems && <TotalCartPrice value={totalqty} />}
         </div>
       </div>
     </>
