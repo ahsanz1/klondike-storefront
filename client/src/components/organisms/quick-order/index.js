@@ -287,8 +287,12 @@ const QuickOrder = () => {
     }
     addedItemToCart({ ...cartItem[0] })
 
-    setCartItems(searchedCartitems)
-    setAccordianIsActive(false)
+    if (searchedCartitems.length > 0) {
+      setCartItems(searchedCartitems)
+      setAccordianIsActive(false)
+    } else {
+      // show invalid sku error from here
+    }
   }
 
   const radioChangeBULK = () => {
