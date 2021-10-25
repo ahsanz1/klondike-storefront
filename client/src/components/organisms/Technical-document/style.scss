@@ -30,7 +30,6 @@ $vw-viewport: 1440;
     @media (max-width: 768px) {
       width: 100vw;
       margin: 0;
-      margin-top: 21vw !important;
     }
   }
 
@@ -92,7 +91,7 @@ $vw-viewport: 1440;
     @media (max-width: 768px) {
       // margin-left: 8.3vw;
       width: 100vw;
-      margin-top: 45vw;
+      margin-top: 11.2vw;
     }
   }
 
@@ -266,6 +265,7 @@ $vw-viewport: 1440;
 
         @media (max-width: 425px) {
           display: block;
+          border: 0.53vw solid #f1a900;
         }
       }
 
