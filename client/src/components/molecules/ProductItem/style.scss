@@ -16,6 +16,7 @@
 
     .productimg-wraper {
       display: flex;
+      align-items: center;
       justify-content: center;
       width: 266.89px;
       height: 304.63px;
@@ -28,7 +29,7 @@
       }
 
       img {
-        padding: 27px;
+        // padding: 27px;
 
         @media screen and (max-width: 768px) {
           padding: 20px;
