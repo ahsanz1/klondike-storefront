@@ -17,7 +17,7 @@ const ProductItem = ({ image, title }) => {
           </div>
         </div>
         <div className="title-wrapper">
-          <p>{title}</p>
+          <p className="notranslate">{title}</p>
         </div>
       </div>
     </>
