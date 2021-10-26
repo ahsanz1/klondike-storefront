@@ -1,5 +1,5 @@
 import './style.scss'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PCPBottom from 'components/organisms/pcpBottom'
 import { PcpBottom, technicalBanner } from 'libs/data/data'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
@@ -10,7 +10,25 @@ import Link from 'components/atoms/link'
 
 import { techBlogData } from 'components/organisms/tech-news-page/data'
 import TechBlogItem from 'components/organisms/tech-news-page/tech-blog-item'
+import { Pagination } from 'antd'
+
 const TechNews = ({ categories }) => {
+  const perPageItems = 2
+  let [activeItems, setActiveItems] = useState([])
+
+  useEffect(() => {
+    setPaginationData(1)
+  }, [])
+
+  const setPaginationData = page => {
+    let data = techBlogData
+    let startIndex = page * perPageItems - perPageItems
+    let endIndex = startIndex + perPageItems
+
+    data = data.slice(startIndex, endIndex)
+    setActiveItems(data)
+  }
+
   return (
     <>
       <WebpagesHeroImages {...technicalBanner} />
@@ -38,20 +56,14 @@ const TechNews = ({ categories }) => {
               </div>
               <div className="blog-item">
                 <div className="page-no">
-                  <div className="page-no-box">
-                    <Label>1</Label>
-                  </div>
-                  <div className="page-no-box">
-                    <Label>2</Label>
-                  </div>
-                  <div className="page-no-box">
-                    <Label>3</Label>
-                  </div>
-                  <div className="page-no-box">
-                    <Label>4</Label>
-                  </div>
+                  <Pagination
+                    defaultCurrent={1}
+                    pageSize={perPageItems}
+                    total={techBlogData.length}
+                    onChange={e => setPaginationData(e)}
+                  />
                 </div>
-                {techBlogData.map((item, i) => (
+                {activeItems.map((item, i) => (
                   <TechBlogItem key={i} {...item} />
                 ))}
               </div>
