@@ -1,4 +1,4 @@
-.plp-bottom {
+.pcp-bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,22 +7,21 @@
   background: #032939;
 
   @media (max-width: 768px) {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  @media (max-width: 425px) {
-    height: 150px;
+    width: 94.4vw;
+    //padding: 0;
+    height: 62.13vw;
+    margin-top: 8vw;
   }
 
   .plp-bottom-img {
     width: 100%;
-    margin-top: 20px !important;
+    height: 11.52vw;
+    margin-top: 2.01vw;
   }
 
   button {
     width: inherit;
-    margin-top: 20px;
+    margin-top: 3.05vw;
 
     @media (max-width: 768px) {
       width: max-content !important;
@@ -31,6 +30,12 @@
     &:hover {
       transition: s;
       background: #ddaf34;
+    }
+
+    .dealer-botton {
+      a {
+        color: white;
+      }
     }
   }
 }

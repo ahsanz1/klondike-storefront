@@ -1,7 +1,8 @@
 @import '~styles/globals';
 
 .product-wrapper {
-  padding: 3.4vw 0;
+  padding-top: 2.5vw;
+  padding-bottom: 2.7vw;
   background: #032939;
 
   .swiper-container {
@@ -9,14 +10,19 @@
     margin: 0 auto;
     padding-bottom: 4.1vw;
 
+    @media (max-width: 500px) {
+      padding-bottom: 33.1vw;
+    }
+
     .swiper-scrollbar {
-      // position: absolute;
-      // top: 23.3vw;
+      position: relative;
+      top: 26.87vw;
       width: 100%;
       height: 0.3vw;
       background: white;
 
       @media (max-width: 500px) {
+        top: 108.87vw;
         height: 1vw;
       }
     }
@@ -77,6 +83,18 @@
             @media (max-width: 500px) {
               width: 76vw;
               height: 80vw;
+            }
+
+            .img-design {
+              width: 11.8vw;
+              height: 15.13vw;
+              margin: 1.12vw 3.42vw;
+
+              @media (max-width: 500px) {
+                width: 45.33vw;
+                height: 58.13vw;
+                margin: 9.06vw 15.46vw;
+              }
             }
           }
 

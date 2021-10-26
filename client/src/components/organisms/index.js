@@ -64,6 +64,14 @@ import TechNews from 'components/organisms/tech-news-page'
 import Catlog from 'components/organisms/catlog-page'
 import TechResource from 'components/organisms/Tech-Resource'
 import OverView from 'components/organisms/company-overview'
+import PrivacyPolicy from 'components/organisms/privacy-policy'
+import WhyKlondike from 'components/organisms/why-klondike'
+import WorkAtKlonedike from 'components/organisms/work-at-klondike'
+import IndustryApplications from 'components/organisms/industry-applications'
+import SafetyEnvironment from 'components/organisms/safety-environment'
+import OurStory from 'components/organisms/our-story'
+
+import Dealership from 'components/organisms/Dealership-page'
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -137,4 +145,11 @@ export default {
   Catlog: params => <Catlog {...params} />,
   TechResource: params => <TechResource {...params} />,
   OverView: params => <OverView {...params} />,
+  PrivacyPolicy: params => <PrivacyPolicy {...params} />,
+  WhyKlondike: params => <WhyKlondike {...params} />,
+  WorkAtKlonedike: params => <WorkAtKlonedike {...params} />,
+  IndustryApplications: params => <IndustryApplications {...params} />,
+  SafetyEnvironment: params => <SafetyEnvironment {...params} />,
+  OurStory: params => <OurStory {...params} />,
+  Dealership: params => <Dealership {...params} />,
 }

@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 
 import './style.scss'
-import { Radio } from 'antd'
+import { Radio, InputNumber } from 'antd'
 import Label from 'components/atoms/label'
 import PackageOrder from 'components/organisms/quick-order/package-order/index'
 import BulkOrder from 'components/organisms/quick-order/bulk-order/index'
 import AccordionComponent from 'components/molecules/accordionComponent'
 import DesktopCartPageItem from 'components/organisms/cart-and-total'
 import Link from 'components/atoms/link'
-
-import { fetchItems } from 'libs/services/algolia'
-
-import useAddToCart from 'libs/api-hooks/useAddToCart'
+import { fetchItems, searchFilters } from 'libs/services/algolia'
+import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
+import { AppContext } from 'libs/context'
+// import useAddToCart from 'libs/api-hooks/useAddToCart'
+import Button from 'components/atoms/button'
 
 /* eslint-disable indent */
 
 const QuickOrder = () => {
+  const { user } = useContext(AppContext)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
@@ -23,12 +25,17 @@ const QuickOrder = () => {
   const [qty, setQty] = useState([])
   const [cartItems, setCartItems] = useState()
   const [productstitle, setProductstitle] = useState([])
+  const [packgdata, setPackgdata] = useState([])
   const [fetcheditems, setFetcheditems] = useState([])
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
   const [accordianisActive, setAccordianIsActive] = useState(true)
-
-  const { addToCartApiCall } = useAddToCart()
-
+  const [bulkdata, setBulkdata] = useState([])
+  let [pn, setPN] = useState()
+  let [caseqty, setCaseqty] = useState([])
+  let qtyIndex = {}
+  let [totalqty, setTotalQty] = useState()
+  let total = []
+  console.log(fetcheditems, 'fetcheditems')
   useEffect(() => {
     const data = async () => {
       const items = await fetchItems('')
@@ -37,14 +44,112 @@ const QuickOrder = () => {
     }
     data()
   }, [])
+  const onChangeqty = async (value, index) => {
+    qtyIndex = {
+      ...caseqty,
+      [`index-${index}`]: value,
+    }
+    setCaseqty(qtyIndex)
+  }
 
   const handleAccordianClick = () => {
     setAccordianIsActive(!accordianisActive)
   }
 
   const addedItemToCart = async Data => {
-    const resData = await addToCartApiCall(Data)
-    console.log('addto', resData)
+    // const resData = await addToCartApiCall(Data)
+    // console.log('addto', resData)
+    let data =
+      packgdata &&
+      packgdata.map((data, i) => {
+        let baseprice = data['Base Price']
+        console.log(data.sku, 'dtatt')
+        let amount = baseprice * Number(caseqty[`index-${i}`])
+        total.push(amount)
+        const itemtotalamount = () => {
+          let sum = total.reduce(
+            (previousValue, currentValue, currentIndex, array) => {
+              return previousValue + currentValue
+            },
+            0,
+          )
+          let totalamount = sum.toFixed(2)
+          setTotalQty(totalamount)
+        }
+        itemtotalamount()
+        return getProductBySKU(data.sku)
+          .then(res => {
+            let response = res.response.data
+            console.log(response, 'response')
+            let product = response && response.product
+            let payload = {
+              cartId: null,
+              items: [
+                {
+                  extra: {},
+                  group: product.group,
+                  itemId: product.itemId,
+                  sku: product.sku,
+                  quantity: 1, // qty,
+                  price: {
+                    base: 0,
+                    currency: 'USD',
+                    sale: false,
+                    discount: {
+                      price: 0,
+                    },
+                  },
+                  size: false,
+                },
+              ],
+
+              registeredUser: true,
+              userAuthToken: user.accessToken,
+            }
+            addProductToCart(payload)
+              .then(res => {
+                console.log('sucres', res)
+              })
+              .catch(err => {
+                console.log('errres', err)
+              })
+          })
+          .catch(err => {
+            console.log('error', err)
+          })
+      })
+    console.log(data, 'data')
+  }
+  const itemremove = async i => {
+    let a = packgdata
+    a.splice(i, 1)
+    setPackgdata(a)
+    handleRemoveClick(i)
+  }
+  const handleRemoveClick = index => {
+    console.log(index, 'indexing')
+    const list = [...inputList]
+    list.splice(index, 1)
+    setInputList(list)
+    itemremove(index)
+  }
+  const handleChangePackageqty = async (e, index) => {
+    const { name, value } = e.target
+    const list = [...inputList]
+    list[index][name] = value
+
+    if (qtyIndex.length > 0 && qtyIndex[`index-${index}`] === undefined) {
+      qtyIndex = {
+        ...caseqty,
+        [`index-${index}`]: value,
+      }
+    } else {
+      qtyIndex = {
+        ...caseqty,
+        [`index-${index}`]: value,
+      }
+    }
+    setCaseqty(qtyIndex)
   }
   const handleChange = async (e, index) => {
     const { name, value } = e.target
@@ -52,12 +157,19 @@ const QuickOrder = () => {
     list[index][name] = value
     setInputList(list)
 
+    if (name === 'partnumber') {
+      setPN(value)
+      filters['Part Number'] = value
+      algoliaApi()
+    } else {
+    }
+
     const items = await fetchItems(value)
 
     const titleArray = items.hits.map(item => {
       return item.title
     })
-    setProductstitle(titleArray)
+    console.log(titleArray, 'titleArray')
     const inputs = Object.values(inputList[0])
     console.log('arraaayy', inputs)
     if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
@@ -67,26 +179,86 @@ const QuickOrder = () => {
     }
   }
 
+  const filters = {}
+
+  const algoliaApi = async () => {
+    let payload = []
+    let res = Object.entries(filters)
+
+    res.map(v => {
+      payload.push(`${v[0]}:${v[1]}`)
+    })
+
+    searchFilters(payload)
+      .then(res => {
+        let payload = []
+        if (packgdata.length < 1) {
+          payload.push(res[0])
+        } else {
+          payload = packgdata
+          payload.push(res[0])
+        }
+
+        console.log(payload, 'payload')
+        setPackgdata(payload)
+      })
+      .catch(err => {
+        console.log(err, 'error')
+      })
+  }
+
   const handleChangeBulk = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
-    setInputList(list)
 
-    const items = await fetchItems(value)
-
-    const titleArray = items.hits.map(item => {
-      return item.title
-    })
-    setProductstitle(titleArray)
-    const inputs = Object.values(inputList[0])
-    console.log('arraaayy', inputs)
-    if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
-      setRadioStateBulk(true)
+    if (qtyIndex.length > 0 && qtyIndex[`index-${index}`] === undefined) {
+      qtyIndex = {
+        ...caseqty,
+        [`index-${index}`]: value,
+      }
     } else {
-      setRadioStateBulk(false)
+      qtyIndex = {
+        ...caseqty,
+        [`index-${index}`]: value,
+      }
+      const inputs = Object.values(inputList[0])
+      console.log('arraaayy', inputs)
+      if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
+        setRadioStateBulk(true)
+      } else {
+        setRadioStateBulk(false)
+      }
     }
+
+    setCaseqty(qtyIndex)
   }
+
+  useEffect(() => {
+    let packagearr = []
+    let bulkararr = []
+
+    fetcheditems &&
+      fetcheditems.map((datas, i) => {
+        if (datas['Packaged Order'] === true) {
+          let packageorder = {
+            label: datas['Part Number'],
+            value: datas['Part Number'],
+          }
+          packagearr.push(packageorder)
+        } else {
+          let bulkorder = {
+            label: datas['Part Number'],
+            value: datas['Part Number'],
+          }
+          bulkararr.push(bulkorder)
+        }
+      })
+    setProductstitle(packagearr)
+    setBulkdata(bulkararr)
+    console.log(packagearr, 'packageorder')
+    console.log(bulkararr, 'bulkararr')
+  }, [fetcheditems])
 
   const handleAddRow = () => {
     if (inputList[0].partnumber.length > 0 && inputList[0].quantity > 0) {
@@ -94,11 +266,6 @@ const QuickOrder = () => {
     }
   }
 
-  const handleRemoveClick = index => {
-    const list = [...inputList]
-    list.splice(index, 1)
-    setInputList(list)
-  }
   // -----------------------------------
   const handleAddtoCart = async () => {
     const partnumberlist = inputList.map(item => {
@@ -120,10 +287,13 @@ const QuickOrder = () => {
     }
     addedItemToCart({ ...cartItem[0] })
 
-    setCartItems(searchedCartitems)
-    setAccordianIsActive(false)
+    if (searchedCartitems.length > 0) {
+      setCartItems(searchedCartitems)
+      setAccordianIsActive(false)
+    } else {
+      // show invalid sku error from here
+    }
   }
-  // -------------------------------------
 
   const radioChangeBULK = () => {
     setPackageComponent(false)
@@ -146,7 +316,10 @@ const QuickOrder = () => {
             onClick={handleAccordianClick}
           >
             <PackageOrder
+              value={pn !== undefined ? pn : 'Part Number'}
               handleChangePackage={handleChange}
+              // caceqty={caceqty}
+              handleChangePackageqty={handleChangePackageqty}
               handleAddtoCart={handleAddtoCart}
               productstitle={productstitle}
               inputList={inputList}
@@ -166,9 +339,11 @@ const QuickOrder = () => {
             onClick={handleAccordianClick}
           >
             <BulkOrder
-              handleChangePackage={handleChangeBulk}
+              value={pn !== undefined ? pn : 'Part Number'}
+              handleChangePackage={handleChange}
+              handleChangePackageqty={handleChangeBulk}
               handleAddtoCart={handleAddtoCart}
-              productstitle={productstitle}
+              bulkdata={bulkdata}
               inputList={inputList}
               handleAddRow={handleAddRow}
               handleRemoveClick={handleRemoveClick}
@@ -185,14 +360,15 @@ const QuickOrder = () => {
         <div className="checkout">
           <div className="order-price">
             <Label className="sub-total">Order Total</Label>
-            <Label className="total">$ 350.00</Label>
+            <Label className="total">{totalqty}</Label>
           </div>
           <div className="checkout-links">
             <Link className="checkout-btn" to="/checkout">
               PROCEED TO CHECK OUT
             </Link>
             <Link className="view-btn" to="/cart">
-              VIEW CART
+              {/* <Button>VIEW CART </Button> */}
+              <Button onClick={e => addedItemToCart(e)}>VIEW CART </Button>
             </Link>
           </div>
         </div>
@@ -234,7 +410,7 @@ const QuickOrder = () => {
               </Radio.Group>
             </div>
             <div className="price-list-btn">
-              <Link className="price-list-text" to="/faqs">
+              <Link className="price-list-text" to="/Price-List">
                 View Price List
               </Link>
             </div>
@@ -250,8 +426,75 @@ const QuickOrder = () => {
               </div>
             )}
             {cartItem}
+
+            {cartItems && (
+              <div className="quickorder-wrapper">
+                {packgdata &&
+                  packgdata.map((data, i) => (
+                    <div key={i} className="orders">
+                      <div className="item-wraper">
+                        <div>
+                          <div className="img-wraper">
+                            <img src={data['Image URL']} alt="img" />
+                          </div>
+                          <button
+                            className="quick-orde_btn"
+                            onClick={e => itemremove(i)}
+                          >
+                            Remove Item
+                          </button>
+                        </div>
+                        <div className="part-wraper">
+                          <div className="quik-product-heading">
+                            <p>{data['product title']}</p>
+                          </div>
+                          <div>
+                            <p>
+                              Part Num <span>{data['Part Number']}</span>
+                            </p>
+                          </div>
+                          <div>
+                            <p>
+                              Size <span>{data['Package Size']}</span>
+                            </p>
+                          </div>
+                          <div>
+                            <p>
+                              Per case <span>{data['QTY PER CASE']}</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <p>{data['Base Price']}</p>
+                      </div>
+                      <div>
+                        <InputNumber
+                          min={0}
+                          max={100}
+                          defaultValue={1}
+                          value={caseqty[`index-${i}`]}
+                          onChange={e => onChangeqty(e, i)}
+                          size="middle"
+                          className="input"
+                        />
+                      </div>
+                      <div>
+                        <p>
+                          $
+                          {(
+                            data['Base Price'] * Number(caseqty[`index-${i}`])
+                          ).toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            )}
           </div>
-          {cartItems && <TotalCartPrice />}
+
+          {cartItems && <TotalCartPrice value={totalqty} />}
         </div>
       </div>
     </>

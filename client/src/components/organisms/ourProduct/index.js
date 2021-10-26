@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { AppContext } from 'libs/context'
@@ -11,9 +13,10 @@ const OurProduct = props => {
   const [sectionWidth, setSectionWidth] = useState(false)
 
   useEffect(() => {
-    props.ourProduct.some(
-      item => item.image && item.image.url && setSectionWidth(true),
-    )
+    props.ourProduct &&
+      props.ourProduct.some(
+        item => item.image && item.image.url && setSectionWidth(true),
+      )
   })
   const { setPlpRedirect } = useContext(AppContext)
   console.log('products:', props.ourProduct)
@@ -22,7 +25,7 @@ const OurProduct = props => {
       <div className="product-list">
         <ul>
           {props.ourProduct &&
-            props.ourProduct.length &&
+            props.ourProduct.length > 0 &&
             props.ourProduct.map((item, i) => (
               <>
                 <li
@@ -32,6 +35,7 @@ const OurProduct = props => {
                   className={i === imgHover && 'activeItem'}
                   onMouseEnter={() => setItemHover(i)}
                   onMouseLeave={() => setItemHover('')}
+                  onClick={props.clickHandler}
                 >
                   <Link to={item.url}>
                     <Button
@@ -61,6 +65,7 @@ const OurProduct = props => {
 
                     onMouseEnter={() => setImgHover(i)}
                     onMouseLeave={() => setImgHover('')}
+                    onClick={() => props.clickHandler('')}
                   >
                     <div className={i === itemHover ? 'activeImg' : 'img-div'}>
                       <Link to={item.url}>
@@ -84,5 +89,7 @@ const OurProduct = props => {
 }
 OurProduct.propTypes = {
   ourProduct: PropTypes.array,
+  clickHandler: PropTypes.func,
+  menuToggle: PropTypes.func,
 }
 export default OurProduct

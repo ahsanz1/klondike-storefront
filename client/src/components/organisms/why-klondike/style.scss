@@ -1,0 +1,138 @@
+@import '~styles/globals';
+
+.whyklondike-page-wrapper {
+  color: white;
+  font-family: $OpenSans;
+
+  .why-klondike-wrapper {
+    margin-top: get-vw(82px);
+    margin-right: get-vw(91px);
+    padding-top: get-vw(66px);
+    padding-right: get-vw(69px);
+    padding-bottom: get-vw(101px);
+    padding-left: get-vw(69px);
+    background-color: #03293980;
+
+    @media screen and (max-width: 768px) {
+      margin: 0;
+      padding: 15px;
+      background-color: rgba(2, 50, 68, 1);
+    }
+
+    .text-with-video {
+      display: flex;
+      flex-direction: row;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column-reverse;
+      }
+
+      .text {
+        @media screen and (max-width: 768px) {
+          margin-top: 31px;
+          padding-left: 15px;
+        }
+
+        .title {
+          margin-bottom: get-vw(30px);
+          font-size: get-vw(24px);
+          font-style: normal;
+          font-weight: bold;
+          line-height: get-vw(33px);
+          text-transform: uppercase;
+
+          @media screen and (max-width: 768px) {
+            margin-bottom: 30px;
+            font-size: 20px;
+            line-height: 27px;
+          }
+        }
+
+        .paragraph {
+          margin-bottom: 41px;
+          font-size: get-vw(14px);
+          font-weight: normal;
+          line-height: get-vw(20px);
+
+          @media screen and (max-width: 768px) {
+            margin-bottom: 42px;
+            font-size: 14px;
+            line-height: 20px;
+          }
+        }
+      }
+
+      .video {
+        margin-top: get-vw(10px);
+
+        @media screen and (max-width: 768px) {
+          margin-top: 0;
+        }
+
+        .why-klondike-video {
+          width: get-vw(344px);
+          height: get-vw(195px);
+          margin-left: get-vw(36px);
+
+          @media screen and (max-width: 768px) {
+            width: 344px;
+            height: 195px;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .why-klondike-content {
+    @media screen and (max-width: 768px) {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+
+  .overview-detail-section {
+    color: white;
+    font-family: $OpenSans;
+
+    .details-title {
+      padding-bottom: get-vw(30px);
+      font-size: get-vw(24px);
+      font-weight: bold;
+      line-height: get-vw(33px);
+
+      @media screen and (max-width: 768px) {
+        padding-bottom: 30px;
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
+
+    .details-paragragh {
+      padding-bottom: get-vw(41px);
+      font-size: get-vw(14px);
+      font-weight: normal;
+      line-height: get-vw(20px);
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .overview-detail-section-mobile {
+      display: none;
+
+      @media screen and (max-width: 768px) {
+        display: block;
+        padding-bottom: 41px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .technical-bottom-section {
+    margin-top: get(88px);
+    margin-left: get-vw(70px);
+  }
+}

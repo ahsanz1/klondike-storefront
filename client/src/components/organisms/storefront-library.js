@@ -7,6 +7,9 @@ Components[
   'TermsCondition'
 ] = require('components/organisms/TermsCondition').default
 Components[
+  'PrivacyPolicy'
+] = require('components/organisms/privacy-policy').default
+Components[
   'ProductSlider'
 ] = require('components/organisms/product-slider').default
 Components['PCPOverview'] = require('components/organisms/PCPOverview').default
@@ -198,4 +201,18 @@ Components[
 Components[
   'OverView'
 ] = require('components/organisms/company-overview').default
+Components['WhyKlondike'] = require('components/organisms/why-klondike').default
+Components[
+  'WorkAtKlonedike'
+] = require('components/organisms/work-at-klondike').default
+Components[
+  'IndustryApplications'
+] = require('components/organisms/industry-applications').default
+Components[
+  'SafetyEnvironment'
+] = require('components/organisms/safety-environment').default
+Components['OurStory'] = require('components/organisms/our-story').default
+Components[
+  'Dealership'
+] = require('components/organisms/Dealership-page').default
 export default Components

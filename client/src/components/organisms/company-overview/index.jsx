@@ -1,19 +1,11 @@
 import React from 'react'
-
 import './style.scss'
-
 import Label from 'components/atoms/label'
-
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
-
 import PCPBottom from '../pcpBottom'
-
 import { PcpBottom, aboutUs } from 'libs/data/data'
-
 import { overviewData } from 'components/organisms/company-overview/data'
-
 import ReactReadMoreReadLess from 'react-read-more-read-less'
-
 import Link from 'components/atoms/link'
 
 const OverView = () => {
@@ -67,7 +59,10 @@ const OverView = () => {
 
                   <Label className="links-paragraph">{item.paragragh}</Label>
 
-                  <Link className="discover-more">
+                  <Link
+                    className="discover-more"
+                    to={`about-klondike/${item.link}`}
+                  >
                     Discover More
                     <span className="discover-more-img">
                       <img
@@ -92,6 +87,7 @@ const OverView = () => {
                     image={item.image}
                     button={item.button}
                     mobileButton={item.mobileButton}
+                    url={item.url}
                   />
                 </>
               ))}

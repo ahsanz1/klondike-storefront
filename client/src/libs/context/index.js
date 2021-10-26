@@ -9,6 +9,7 @@ const AppProvider = ({ children }) => {
   const [searchKey, setSearchKey] = useState('')
   const [searchFilter, setSearchFilter] = useState([])
   const [plpredirect, setPlpRedirect] = useState('nano')
+  const [loginBottom, setLoginBottom] = useState(false)
   const [step, setStep] = useState(1)
   const [checked, setChecked] = useState(0)
   const [shippingServicePrice, setShippingServicePrice] = useState('')
@@ -20,6 +21,8 @@ const AppProvider = ({ children }) => {
   const [enableThirdStep, setEnableThirdStep] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [cartPopupModal, setCartPopupModal] = useState(false)
+  const [cartProducts, setCartProducts] = useState([])
+  const [cartData, setCartData] = useState({})
   const [pdpPurchaseType, setPdpPurchaseType] = useState(1)
   const [pdpSubscriptionType, setPdpSubscriptionType] = useState(
     'ShipEveryWeek',
@@ -192,6 +195,8 @@ const AppProvider = ({ children }) => {
         setSearchFilter,
         plpredirect,
         setPlpRedirect,
+        loginBottom,
+        setLoginBottom,
         step,
         setStep,
         goToNextStep,
@@ -217,7 +222,11 @@ const AppProvider = ({ children }) => {
         isModalVisible,
         showModal,
         cartPopupModal,
+        cartProducts,
+        setCartProducts,
         setCartPopupModal,
+        cartData,
+        setCartData,
         showcartPOPModal,
         closePopUpModal,
         closeModal,

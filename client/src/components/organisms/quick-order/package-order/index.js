@@ -3,26 +3,34 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Button from 'components/atoms/button'
+import Label from 'components/atoms/label'
 
 const PackageOrder = ({
   handleChangePackage,
+  handleChangePackageqty,
   handleAddtoCart,
   handleAddRow,
   productstitle,
   inputList,
   handleRemoveClick,
+  // caceqty,
 }) => {
   const handleSubmit = e => {
     e.preventDefault()
   }
+  console.log(productstitle, 'productstitle')
   let titleArray = productstitle
   let InputList = inputList
 
   return (
     <div>
       <div className="partname-and-qty">
-        <p>Part Number</p>
-        <p>Case Qty</p>
+        <p>
+          Part Number<Label className="quick-order-asterisk"> *</Label>
+        </p>
+        <p>
+          Case Qty<Label className="quick-order-asterisk"> *</Label>
+        </p>
       </div>
       <form onSubmit={e => handleSubmit(e)}>
         {InputList.map((x, i) => {
@@ -34,14 +42,15 @@ const PackageOrder = ({
                     list="partnumber"
                     name="partnumber"
                     className="part-number"
-                    placeholder="Enter Part Name"
+                    placeholder="Enter Part Number"
                     value={x.partnumber}
                     onChange={e => handleChangePackage(e, i)}
                   />
 
                   <datalist id="partnumber">
                     {titleArray.map((item, i) => {
-                      return <option key={i} value={item} />
+                      console.log('it', item)
+                      return <option key={i} value={item.value} />
                     })}
                   </datalist>
                 </div>
@@ -52,7 +61,8 @@ const PackageOrder = ({
                     className="quantity-number"
                     type="number"
                     value={x.quantity}
-                    onChange={e => handleChangePackage(e, i)}
+                    step={1}
+                    onChange={e => handleChangePackageqty(e, i)}
                   />
                 </div>
                 <div className="remove-rowbtn">
@@ -89,6 +99,8 @@ PackageOrder.propTypes = {
   productstitle: PropTypes.array,
   inputList: PropTypes.array,
   handleRemoveClick: PropTypes.func,
+  handleChangePackageqty: PropTypes.func,
+  caceqty: PropTypes.func,
 }
 
 export default PackageOrder

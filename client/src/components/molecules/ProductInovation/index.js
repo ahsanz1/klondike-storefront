@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import './style.scss'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import SwiperCore, { Scrollbar, A11y } from 'swiper'
-
 import { Swiper, SwiperSlide } from 'swiper/react'
+import Link from 'components/atoms/link'
 
 // Import Swiper styles
 import 'swiper/swiper.scss'
@@ -34,7 +34,13 @@ const ProductInovation = ({ productInovation }) => {
             <SwiperSlide key={i}>
               <div className="Product-content">
                 <div className="product_img_wraper">
-                  <img src={content.image.url} alt="" />
+                  <Link to={`/PDP?sku=${content.sku}`}>
+                    <img
+                      className="img-design"
+                      src={content.image.url}
+                      alt=""
+                    />
+                  </Link>
                 </div>
                 <p>{content.detail}</p>
               </div>

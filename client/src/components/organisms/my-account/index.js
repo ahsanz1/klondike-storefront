@@ -114,7 +114,6 @@ const MyAccount = ({
   // const handleOrderModalSave = event => {
   //   console.log('ok modal event', event)
   // }
-  console.log('trackData new update dasti bata bhaiu mughe', allOrders)
 
   return (
     <div className="account--container">
@@ -147,7 +146,7 @@ const MyAccount = ({
                 </TabsDropdown>
               </div>
               <div className="pricesheet-container">
-                <Link to="/faqs">View Price List</Link>
+                <Link to="/Price-List">View Price List</Link>
               </div>
             </div>
           </div>

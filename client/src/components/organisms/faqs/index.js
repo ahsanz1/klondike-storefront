@@ -24,6 +24,7 @@ const Faqs = ({
   const [faqs, setFaqs] = useState([...faqsData])
 
   // const { tableData } = faqsData
+  // console.log(faqsData)
 
   useEffect(() => {
     let newFaqs = [...faqs]
@@ -40,7 +41,7 @@ const Faqs = ({
   }
   return (
     <>
-      <div className="accordion-heading-container">
+      <div>
         <Heading className="accordion-heading desktop-heading">
           {desktopHeading}
         </Heading>

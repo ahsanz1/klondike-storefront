@@ -26,7 +26,11 @@ const Accordion = ({
   isOpenHandler,
   faqId = 0,
   short = false,
+  footerAccount = '',
 }) => {
+  console.log('check links footer:', links)
+  let userLoginInfo = localStorage.getItem('userPersonalInfo')
+  userLoginInfo = JSON.parse(userLoginInfo)
   return (
     <>
       <div className="accordion-faqs">
@@ -81,8 +85,16 @@ const Accordion = ({
               {links &&
                 links.map((obj, index) => {
                   return (
-                    <Link to={obj.url} key={index}>
-                      <div className="footerLinks"> {obj.text}</div>
+                    <Link
+                      to={obj.url === '' ? '/account/login' : obj.url}
+                      key={index}
+                    >
+                      <div className="footerLinks">
+                        {' '}
+                        {obj.text === '' && !userLoginInfo
+                          ? footerAccount
+                          : obj.text}
+                      </div>
                     </Link>
                   )
                 })}
@@ -109,6 +121,7 @@ Accordion.propTypes = {
   short: PropTypes.bool,
   links: PropTypes.array,
   table: PropTypes.bool,
+  footerAccount: PropTypes.string,
 }
 
 export default Accordion

@@ -45,6 +45,7 @@ import {
   LubricantComponent,
   distributionproduct,
   TermsCondition,
+  PrivacyPolicy,
   // customizedProductDescription,
   PressKit,
   // MainPageHeroData,
@@ -75,6 +76,7 @@ import {
   PlpBottom,
   PcpBottom,
   searchFlow,
+  delarship,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -176,6 +178,12 @@ const mockData = {
     {
       id: 'TermsCondition',
       params: TermsCondition,
+    },
+  ],
+  '/privacy-policy': [
+    {
+      id: 'PrivacyPolicy',
+      params: PrivacyPolicy,
     },
   ],
   '/PLPBottom': [
@@ -297,7 +305,8 @@ const mockData = {
       params: faqsData,
     },
   ],
-  '/faqs': [
+
+  '/Price-List': [
     {
       id: 'Faqs',
       params: faqsData,
@@ -519,14 +528,14 @@ const mockData = {
       params: {},
     },
   ],
-  '/Technical-doucment': [
+  '/tech-resources/Technical-doucment': [
     {
       id: 'Technical',
       params: {},
     },
   ],
 
-  '/oamapprovals': [
+  '/tech-resources/OEMApprovals': [
     {
       id: 'Oamspproval',
       params: {},
@@ -538,13 +547,13 @@ const mockData = {
       params: {},
     },
   ],
-  '/warranty': [
+  '/tech-resources/warranty': [
     {
       id: 'WarrantyPage',
       params: {},
     },
   ],
-  '/video-gallery': [
+  '/tech-resources/video-gallery': [
     {
       id: 'VideoGallery',
       params: {},
@@ -556,13 +565,13 @@ const mockData = {
       params: {},
     },
   ],
-  '/tech-news-blog': [
+  '/tech-resources/tech-news-blog': [
     {
       id: 'TechNews',
       params: {},
     },
   ],
-  '/catlog': [
+  '/tech-resources/catlog': [
     {
       id: 'Catlog',
       params: {},
@@ -574,10 +583,46 @@ const mockData = {
       params: {},
     },
   ],
-  '/overview': [
+  '/about-klondike/overview': [
     {
       id: 'OverView',
       params: {},
+    },
+  ],
+  '/about-klondike/why-klondike': [
+    {
+      id: 'WhyKlondike',
+      params: {},
+    },
+  ],
+  '/about-klondike/work-at-klondike': [
+    {
+      id: 'WorkAtKlonedike',
+      params: {},
+    },
+  ],
+  '/about-klondike/industry-applications': [
+    {
+      id: 'IndustryApplications',
+      params: {},
+    },
+  ],
+  '/about-klondike/safety-environment': [
+    {
+      id: 'SafetyEnvironment',
+      params: {},
+    },
+  ],
+  '/about-klondike/our-story': [
+    {
+      id: 'OurStory',
+      params: {},
+    },
+  ],
+  '/dealership-opportunity': [
+    {
+      id: 'Dealership',
+      params: delarship,
     },
   ],
 }

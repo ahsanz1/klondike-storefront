@@ -10,7 +10,7 @@ import 'normalize.css'
 import 'styles/index.scss'
 
 console.log(`Version: ${APP_VERSION} - ${GIT_COMMIT_HASH}`)
-
+// BuildTest
 initAxiosInterceptors()
 
 const store = configureStore()

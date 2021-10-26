@@ -9,7 +9,6 @@
     position: relative;
     top: 0;
     height: 100vh;
-    padding-top: 168px;
   }
 
   .clear {
@@ -20,7 +19,8 @@
     cursor: pointer;
 
     @media (max-width: 500px) {
-      padding-left: 5.8vw;
+      margin-right: 6.4vw;
+      margin-left: 5.86vw;
     }
 
     img {
@@ -28,8 +28,8 @@
       height: 0.8vw;
 
       @media (max-width: 500px) {
-        width: 3.4vw;
-        height: 3.4vw;
+        width: 3.42vw;
+        height: 3.39vw;
       }
     }
   }
@@ -74,6 +74,7 @@
         text-align: left;
 
         @media (max-width: 500px) {
+          font-family: $OpenSans;
           font-size: 4.8vw;
         }
 
@@ -108,14 +109,8 @@
     background: #002a3a;
 
     @media (max-width: 500px) {
-      padding: 4vw 4.8vw;
+      padding: 4vw 6.4vw !important;
       background: #013a4e;
-    }
-
-    @media (max-width: 500px) {
-      display: flex;
-      justify-content: space-between;
-      padding-left: 6.4vw;
     }
 
     input {
@@ -133,20 +128,14 @@
       font-size: 1.1vw;
       background-position-y: 1.3vw;
 
-      // @media (max-width: 1250px) {
-      //   width: 90%;
-      // }
-
-      // @media (max-width: 992px) {
-      //   width: 88%;
-      // }
-
       @media (max-width: 768px) {
         width: 85%;
       }
 
       @media (max-width: 500px) {
-        width: 88vw;
+        display: flex;
+        justify-content: space-between;
+        width: 77.91vw;
         height: 13.8vw;
         padding-left: 10.6vw;
         border-radius: 1.3vw;
@@ -155,13 +144,6 @@
         font-size: 4.2vw;
         background-position-y: 4vw;
         background-position-x: 4vw;
-      }
-
-      @media (max-width: 500px) {
-        display: flex;
-        justify-content: space-between;
-        width: 77.3vw;
-        height: 13.8vw;
       }
     }
   }
@@ -224,7 +206,8 @@
 
     @media (max-width: 500px) {
       height: 100%;
-      padding: 6.4vw;
+      padding: 4.4vw;
+      padding-right: 12.13vw;
       padding-bottom: 26.6vw;
       overflow-y: scroll;
     }
@@ -313,7 +296,7 @@
             @media screen and(max-width: 500px) {
               display: block;
               margin-bottom: 1.3vw;
-              font-size: 3.4vw;
+              font-size: 3.46vw;
               line-height: 4.8vw;
             }
           }
@@ -326,7 +309,7 @@
             line-height: 110%;
 
             @media (max-width: 500px) {
-              font-size: 3.7vw;
+              font-size: 3.73vw;
               font-weight: bold;
             }
           }

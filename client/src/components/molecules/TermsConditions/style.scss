@@ -3,12 +3,20 @@
 .Terms-wrapper {
   ul {
     li {
+      margin: 1.04vw 0;
       color: white;
-      font-family: $OpenSans;
-      font-size: 14px;
+      font-family: $Raleway;
+      font-size: 0.97vw;
       font-style: normal;
       font-weight: normal;
       line-height: 140%;
+
+      @media screen and (max-width: 768px) {
+        margin-top: 4vw;
+        margin-right: 5.36vw;
+        margin-bottom: 4vw;
+        font-size: 3.73vw;
+      }
     }
   }
 

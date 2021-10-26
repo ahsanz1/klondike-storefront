@@ -20,7 +20,11 @@ const Commited = ({
       </div>
       <div className="commited-buton">
         <Link to={redirectUrl}>
-          <Button>{butontext}</Button>
+          {window.innerWidth < 768 ? (
+            <Button>Learn more</Button>
+          ) : (
+            <Button>{butontext}</Button>
+          )}
         </Link>
       </div>
     </div>

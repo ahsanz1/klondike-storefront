@@ -16,15 +16,46 @@ const Dropdown = ({
   disabledOptionStyle = {},
   dropdownStyle = {},
   name = '',
+  setSelectFilterList = '',
 }) => {
+  console.log(items, 'itttt')
+  // const [change, setChange] = useState()
+  // const handleChange = useCallback(
+  //   event => {
+  //     const list = items.map(item => {
+  //       if (item['Part Number'] === event['Part Number']) {
+  //         item.selected = event.selected
+  //       }
+  //       return item
+  //     })
+
+  //     const _selectedList = list.filter(item => item.selected === true)
+
+  //     setFilterList(list)
+  //     setSelectedList(_selectedList)
+  //     setSelectFilterList(_selectedList)
+  //   },
+  //   [filterList],
+  // )
   return (
     <Select
       value={value}
-      defaultValue={items && items[0] && items[0].label}
+      defaultValue={value}
       style={style}
       className={`c-dropdown ${className}`}
       onChange={value => {
         onChange && onChange(value)
+        console.log(value, 'val')
+        const list = items.map(item => {
+          if (item['Part Number'] === value) {
+            item.Select = value
+          }
+          return item
+        })
+        const _selectedList = list.filter(item => item.Select === true)
+        console.log('selection', _selectedList)
+        setSelectFilterList(_selectedList)
+        // setChange(value)
       }}
       dropdownStyle={dropdownStyle}
       name={name}
@@ -68,6 +99,7 @@ Dropdown.propTypes = {
   disabledOptionStyle: PropTypes.object,
   dropdownStyle: PropTypes.object,
   name: PropTypes.string,
+  setSelectFilterList: PropTypes.func,
 }
 
 export default Dropdown

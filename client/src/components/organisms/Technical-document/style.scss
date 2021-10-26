@@ -28,7 +28,8 @@ $vw-viewport: 1440;
     margin-top: get-vw(34px);
 
     @media (max-width: 768px) {
-      margin-top: 100px;
+      width: 100vw;
+      margin: 0;
     }
   }
 
@@ -90,7 +91,7 @@ $vw-viewport: 1440;
     @media (max-width: 768px) {
       // margin-left: 8.3vw;
       width: 100vw;
-      margin-top: 45vw;
+      margin-top: 11.2vw;
     }
   }
 
@@ -143,7 +144,7 @@ $vw-viewport: 1440;
     line-height: 22.4px;
   }
 
-  .table-wrapper-faqs {
+  .table-wrapper-technical {
     max-width: 100%;
     margin: 0 auto;
     padding-top: 36px;
@@ -159,7 +160,7 @@ $vw-viewport: 1440;
     }
 
     @media (max-width: 768px) {
-      min-width: 800px;
+      min-width: 900px;
       overflow-x: auto;
     }
   }
@@ -205,6 +206,12 @@ $vw-viewport: 1440;
   padding-bottom: get-vw(60px);
   padding-left: 30px;
 
+  @media (max-width: 768px) {
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 0;
+  }
+
   .c-button {
     // margin-bottom: 20px;
     padding: 5px;
@@ -217,6 +224,7 @@ $vw-viewport: 1440;
   img {
     position: relative;
     bottom: 2px;
+    margin-top: 2.01vw;
   }
 
   .technical-bottom-section {
@@ -228,6 +236,8 @@ $vw-viewport: 1440;
 
     @media (max-width: 768px) {
       flex-direction: row;
+      margin-top: 39px;
+      margin-left: 0;
     }
 
     @media (max-width: 425px) {
@@ -240,25 +250,29 @@ $vw-viewport: 1440;
 
       @media (max-width: 425px) {
         width: 100%;
+        margin-left: 0;
+        padding-bottom: 20px;
       }
 
       .mob-button {
         display: none;
         margin-top: 20px;
         padding: 7px;
-        border: 1px solid #e25205;
-        border-radius: 40px;
+        border: 1px solid #f1a900;
+        border-radius: 5px;
         color: #fff;
         text-transform: uppercase;
 
         @media (max-width: 425px) {
           display: block;
+          border: 0.53vw solid #f1a900;
         }
       }
 
       .dealer-botton {
         width: get-vw(226px);
-        margin-top: get-vw(40px) !important;
+        margin-top: 3.05vw;
+        margin-bottom: 1.45vw;
         border-radius: 5px;
         font-size: get-vw(14px);
         font-weight: bold;
@@ -267,6 +281,10 @@ $vw-viewport: 1440;
 
         @media (max-width: 425px) {
           display: none;
+        }
+
+        a {
+          color: white;
         }
       }
     }

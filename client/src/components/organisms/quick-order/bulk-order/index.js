@@ -3,27 +3,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Button from 'components/atoms/button'
+import Label from 'components/atoms/label'
 
 const BulkOrder = ({
   handleChangePackage,
+  handleChangePackageqty,
   handleAddtoCart,
   handleAddRow,
-  productstitle,
+  bulkdata,
   inputList,
   handleRemoveClick,
 }) => {
   const handleSubmit = e => {
     e.preventDefault()
   }
-  let titleArray = productstitle
+  let titleArray = bulkdata
   let InputList = inputList
-
   return (
     <div>
       <div className="partname-and-qty">
-        <p>Part Number</p>
-        <p>Liters</p>
+        <p>
+          Part Number<Label className="quick-order-asterisk">*</Label>
+        </p>
+        <p>
+          Liters<Label className="quick-order-asterisk">*</Label>
+        </p>
       </div>
+
       <form onSubmit={e => handleSubmit(e)}>
         {InputList.map((x, i) => {
           return (
@@ -41,7 +47,8 @@ const BulkOrder = ({
 
                   <datalist id="partnumber">
                     {titleArray.map((item, i) => {
-                      return <option key={i} value={item} />
+                      console.log('itbulk', item)
+                      return <option key={i} value={item.value} />
                     })}
                   </datalist>
                 </div>
@@ -52,7 +59,7 @@ const BulkOrder = ({
                     className="quantity-number"
                     type="number"
                     value={x.quantity}
-                    onChange={e => handleChangePackage(e, i)}
+                    onChange={e => handleChangePackageqty(e, i)}
                   />
                 </div>
                 <div className="remove-rowbtn">
@@ -86,9 +93,10 @@ BulkOrder.propTypes = {
   handleChange2Package: PropTypes.func,
   handleAddtoCart: PropTypes.func,
   handleAddRow: PropTypes.func,
-  productstitle: PropTypes.array,
+  bulkdata: PropTypes.array,
   inputList: PropTypes.array,
   handleRemoveClick: PropTypes.func,
+  handleChangePackageqty: PropTypes.func,
 }
 
 export default BulkOrder

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import './style.scss'
 import { categoriesXPM } from './data'
+import Link from 'components/atoms/link'
+
 const Techtabllist = ({
   categories,
   itemName,
@@ -25,18 +27,27 @@ const Techtabllist = ({
           <>
             {item.categoryName.length > 0 && (
               <Label
-                className={itemName === item.categoryName && 'active-category'}
+                className={
+                  'tablist-heading' +
+                  ' ' +
+                  (itemName === item.categoryName && 'active-category')
+                }
                 key={index}
                 onClick={() =>
                   clickCategoryHandler(item.categoryName, item.categoryDesc)
                 }
               >
-                {item.categoryName}
-                {subItem && itemName === item.categoryName && (
+                <Link
+                  className="catagory-link"
+                  to={`tech-resources/${item.link}`}
+                >
+                  {item.categoryName}
+                </Link>
+                {item.subItem && itemName === item.categoryName && (
                   <div className="subItem">
-                    {subItem &&
-                      subItem.hits &&
-                      subItem.hits.map((item, index) => (
+                    {item.subItem &&
+                      item.subItem.hits &&
+                      item.subItem.hits.map((item, index) => (
                         <Label
                           key={index}
                           onClick={() => productClickHandler(item.title)}

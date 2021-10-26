@@ -13,7 +13,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
             {`${user.firstName && user.firstName} ${user.lastName &&
               user.lastName}`}
           </Label>
-          <Label>{user.email && user.email}</Label>
+          <Label className="profile-mail">{user.email && user.email}</Label>
           {userOrder &&
             userOrder.map(
               (row, i) =>
@@ -60,7 +60,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                 {data.orderArray && (
                   <div className="order-filter">
                     <Label>
-                      FITER BY STATUS{' '}
+                      FILTER BY STATUS{' '}
                       <select>
                         <option>All</option>
                       </select>

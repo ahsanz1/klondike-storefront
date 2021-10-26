@@ -25,7 +25,8 @@
   }
 
   .request-form {
-    margin-bottom: 18vw;
+    margin-bottom: 24.16vw;
+    padding-top: 3.47vw !important;
     padding-bottom: 0;
 
     @media (max-width: 500px) {
@@ -36,7 +37,7 @@
     .request-form__content {
       .request-form__title {
         width: 100%;
-        margin-bottom: 2.2vw;
+        margin-bottom: 3.26vw;
         padding: 0 0.34vw;
         font-family: $font-futura;
         font-weight: 700;

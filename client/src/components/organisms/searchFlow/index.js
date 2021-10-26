@@ -12,9 +12,12 @@ import Button from 'components/atoms/button'
 import { navigate } from '@reach/router'
 
 const SearchFlow = props => {
+  let recentArr = JSON.parse(localStorage.getItem('recentData'))
+    ? JSON.parse(localStorage.getItem('recentData'))
+    : []
   const [searchValue, setSearchValue] = useState('')
   const [itemList, setItemList] = useState([])
-  const [recent, setRecent] = useState([])
+  // const [recent, setRecent] = useState([])
   const [showRecent, setShowRecent] = useState(false)
   const [localRecent, setLocalRecent] = useState([])
   const { setSearchFilter, setSearchKey } = useContext(AppContext)
@@ -41,14 +44,17 @@ const SearchFlow = props => {
   }
   const recentSearch = async e => {
     e.preventDefault()
-    let recentArr = recent
+    console.log('check.. recentArr:', recentArr)
     recentArr.push(searchValue)
-    setRecent([...recentArr])
-    // const list = await fetchItems(searchValue)
-    // setItemList(list.hits)
+    // setRecent([...recentArr])
+    console.log('check.. recent:', recentArr)
     setShowRecent(false)
-    let storeData = [...new Set(recent)]
-    localStorage.setItem('recentData', JSON.stringify([...storeData]))
+    let storeData = recentArr.filter((item, index) => {
+      return recentArr.indexOf(item) === index
+    })
+    // let storeData = [...new Set(recentArr)]
+    console.log('check store Data:', storeData)
+    localStorage.setItem('recentData', JSON.stringify(storeData))
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
     navigate('/search-filter')
     props.toggleSearch()
@@ -64,7 +70,7 @@ const SearchFlow = props => {
   }
   useEffect(() => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
-    setRecent(JSON.parse(localStorage.getItem('recentData')))
+    // setRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
   console.log('bugssss...')
   return (

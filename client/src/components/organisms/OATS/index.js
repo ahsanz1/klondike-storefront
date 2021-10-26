@@ -1,87 +1,164 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './style.scss'
 import axios from 'axios'
-
 import Dropdown from 'components/atoms/dropdown'
 import { tableOatsData } from './data'
 import Button from 'components/atoms/button'
+import Label from 'components/atoms/label'
 // import { object } from 'yup/lib/locale'
-
 const Oats = () => {
   const { mainHeading } = tableOatsData
-
   const [otsdata, setOtsdata] = useState([])
+  const [mu, setMu] = useState()
+  const [fa, setFa] = useState()
+  const [se, setSe] = useState()
+  const [ya, setYa] = useState()
+  const [gr, setGr] = useState()
   let [query, setQuery] = useState('')
-  const [year, setYear] = useState()
-  // console.log('year', year)
+
+  const [abale, setAble] = useState(false)
+  const [year, setYear] = useState([])
+  const [series, setSeries] = useState([])
+  const [family, setFamily] = useState([])
+  const [manufacturer, setManufacturer] = useState([])
+  const [manuquery, setManuQuery] = useState('')
+
+  const [familyquery, setFamilyQuery] = useState('')
+  const [seriesQuery, setSeriesQuery] = useState('')
+  const [yearQuery, setYearQuery] = useState('')
+  const [notFound, setNotFound] = useState(false)
   const getproducts = () => {
     const url = [
-      `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query} & year=2020 &token=LiEoiv0tqygb`,
+      `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
     ]
     axios.get(url).then(response => {
+      if (response.data.equipment_list.equipment.length > 0) {
+        setNotFound(false)
+      }
       let results = response.data.equipment_list
+      console.log('res', results)
       setOtsdata(results)
-      console.log('result', results)
-      console.log('family', setYear(results.facets.year.buckets))
+
+      let yearsArray = [{ label: ' ' }]
+      let seriesArray = [{ label: ' ' }]
+      let familyArray = [{ label: ' ' }]
+      let manufacturerArray = [{ label: ' ' }]
+
+      response &&
+        Object.entries(
+          response &&
+            response.data &&
+            response.data.facets &&
+            response.data.facets.year &&
+            response.data.facets.year.buckets &&
+            response.data.facets.year.buckets,
+        ).map(year => {
+          yearsArray && yearsArray.push({ label: year[0], value: year[0] })
+        })
+      setYear(yearsArray)
+      Object.entries(
+        response &&
+          response.data &&
+          response.data.facets &&
+          response.data.facets.series &&
+          response.data.facets.series.buckets &&
+          response.data.facets.series.buckets,
+      ).map(year => {
+        seriesArray && seriesArray.push({ label: year[0], value: year[0] })
+      })
+      setSeries(seriesArray)
+      Object.entries(
+        response &&
+          response.data &&
+          response.data.facets &&
+          response.data.facets.manufacturer &&
+          response.data.facets.manufacturer.buckets &&
+          response.data.facets.manufacturer.buckets,
+      ).map(year => {
+        manufacturerArray &&
+          manufacturerArray.push({ label: year[0], value: year[0] })
+      })
+      setManufacturer(manufacturerArray)
+      Object.entries(
+        response &&
+          response.data &&
+          response.data.facets &&
+          response.data.facets.family &&
+          response.data.facets.family.buckets &&
+          response.data.facets.family.buckets,
+      ).map(year => {
+        familyArray && familyArray.push({ label: year[0], value: year[0] })
+      })
+      setFamily(familyArray)
     })
   }
   const filterData = e => {
     setQuery(e.target.value)
+    setNotFound(false)
   }
+  // eslint-disable-next-line no-unused-vars
+  const [bgImg, setBgimg] = useState(false)
+
   const searchQuery = () => {
+    setNotFound(true)
+    setBgimg(true)
     if (query) {
       getproducts()
+      setAble(true)
     }
   }
-  const searchFamily = e => {
-    if (year) {
-      getproducts()
-    }
+  const manuFunc = value => {
+    setMu(value)
+    setManuQuery(value)
+    getproducts()
   }
-  // let droparray
-  // setTimeout(() => {
-  //   droparray = []
-  //   for (const [key, value] of Object.entries(year)) {
-  //     console.log(`my key:${key}, my value ${value}`)
-  //     droparray.push({ label: key })
-  //     console.log('push', droparray)
-  //   }
-  // }, 3000)
+  const searchFamily = value => {
+    console.log('family:', value)
+    setFamilyQuery(value)
+    setFa(value)
+    getproducts()
+  }
+  const seriesFunc = value => {
+    setSeriesQuery(value)
+    setSe(value)
+  }
+  const yearFunc = value => {
+    setYearQuery(value)
+    setYa(value)
+  }
+  const familygroup = value => {
+    setGr(value)
+  }
+  useEffect(() => {
+    getproducts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [manuquery, familyquery, seriesQuery, yearQuery])
 
-  // useEffect(() => {
-  //   let droparray = []
-  //   for (const [key, value] of Object.entries(year)) {
-  //     console.log(`my key:${key}, my value ${value}`)
-  //     droparray.push(key)
-  //     console.log('push', droparray)
-  //   }
-  // }, [year])
-
-  // let yeararray = [
-  //   {
-  //     label: 'year',
-  //     value: year,
-  //   },
-  // ]
-  // let first = Object.entries(yeararray)
-  // console.log(first, 'first')
   return (
     <>
-      <div className="img">
+      <div
+        className={`${
+          otsdata && otsdata.equipment && otsdata.equipment.length === 0
+            ? 'img'
+            : 'bg-search'
+        }`}
+      >
         <div className="oats">
           <h1 className="heading">{mainHeading}</h1>
           <div className="wrapper-oats">
             <input
               onChange={filterData}
               className="input_model"
-              placeholder="Enter code  model"
+              placeholder="ENTER CODE  & MODEL"
               value={query}
             />
             <div className="wrapper-two">
               <Dropdown
+                value={gr !== undefined ? gr : 'ALL'}
+                onChange={familygroup}
                 className="cars"
                 items={[
-                  { label: 'All' },
+                  { label: 'ALL' },
                   { label: 'Cars, SUVs & Pickups' },
                   { label: 'Light Trucks' },
                   { label: 'Trucks' },
@@ -90,7 +167,6 @@ const Oats = () => {
                   { label: 'Industrial' },
                 ]}
               />
-
               <div className="search_bar">
                 <Button className="btn-search" onClick={searchQuery}>
                   <img
@@ -101,91 +177,77 @@ const Oats = () => {
                 </Button>
               </div>
             </div>
+            {/* {abale && <h1>heloo</h1>} */}
           </div>
-
-          <div className="dropdown-wrapper">
-            <Dropdown
-              onChange={searchFamily}
-              className="year_range"
-              items={[
-                { label: '2022' },
-                { label: '2021' },
-                { label: '2020' },
-                { label: '2019' },
-                { label: '2018' },
-                { label: '2017' },
-                { label: '2015' },
-                { label: '2014' },
-                { label: '2013' },
-                { label: '2012' },
-                { label: '2011' },
-                { label: '2010' },
-              ]}
-            />
-            <Dropdown
-              onChange={searchQuery}
-              className="series "
-              items={[
-                { label: 'Accord' },
-                { label: 'CR-V' },
-                { label: 'CR-Z' },
-                { label: 'Civic' },
-                { label: 'Clarity' },
-                { label: 'Crosstour' },
-                { label: 'Element' },
-                { label: 'Fit' },
-                { label: 'HR-V' },
-                { label: 'Insight' },
-                { label: 'Odyssey' },
-                { label: 'Passport' },
-              ]}
-            />
-            <Dropdown
-              className="family "
-              items={[
-                { label: 'Family group' },
-                { label: 'Cars, SUVs & Pickups' },
-                { label: 'Agricultural' },
-                { label: 'Trucks' },
-                { label: 'Off-Highway' },
-                { label: 'Industrial' },
-              ]}
-            />
-            <Dropdown
-              onChange={searchQuery}
-              className="manufecturer "
-              items={[
-                { label: 'Manufacturer' },
-                { label: 'AMMANN' },
-                { label: 'DITCH WITCH' },
-                { label: 'HONDA' },
-                { label: 'STONE' },
-                { label: 'WACKER NEUSON' },
-              ]}
-            />
-          </div>
+          {abale &&
+            otsdata &&
+            otsdata.equipment &&
+            otsdata.equipment.length > 0 && (
+            <div className="dropdown-wrapper">
+              <Dropdown
+                onChange={yearFunc}
+                className="year_range"
+                items={year}
+                value={ya !== undefined ? ya : ' WITHIN YEAR RANGE'}
+              />
+              <Dropdown
+                onChange={seriesFunc}
+                className="series "
+                items={series}
+                value={se !== undefined ? se : ' SERIES'}
+              />
+              <Dropdown
+                className="family "
+                items={family}
+                onChange={searchFamily}
+                value={fa !== undefined ? fa : ' FAMILY'}
+              />
+              <Dropdown
+                onChange={manuFunc}
+                className="manufecturer "
+                items={manufacturer}
+                value={mu !== undefined ? mu : ' MANUFACTURER'}
+              />
+            </div>
+          )}
           <div className="overflow">
             <div className="table-wrapper">
-              <div className="title flex">
-                <h3 className="custom-grid">Category</h3>
-                <h3 className="custom-grid">Manufacturer</h3>
-                <h3 className="custom-grid">Model</h3>
-                <h3 className="custom-grid">Year</h3>
-                <h3 className="custom-grid">Fuel</h3>
-              </div>
-              {otsdata &&
+              {abale &&
+                otsdata &&
                 otsdata.equipment &&
-                otsdata.equipment.map((data, i) => {
+                otsdata.equipment.length > 0 && (
+                <div className="title flex">
+                  <h3 className="custom-grid tiles">Category</h3>
+                  <h3 className="custom-grid tiles">Manufacturer</h3>
+                  <h3 className="custom-grid tiles">Model</h3>
+                  <h3 className="custom-grid tiles">Year</h3>
+                  <h3 className="custom-grid tiles">Fuel</h3>
+                </div>
+              )}
+              {otsdata && otsdata.equipment && otsdata.equipment.length > 0
+                ? otsdata.equipment.map((data, i) => {
                   return (
                     <div className="table-content flex" key={i}>
-                      <p className="custom-grid">{data && data.productgroup}</p>
-                      <p className="custom-grid">{data && data.manufacturer}</p>
+                      <p className="custom-grid">
+                        {data && data.productgroup}
+                      </p>
+                      <p className="custom-grid">
+                        {data && data.manufacturer}
+                      </p>
                       <p className="custom-grid">{data && data.model}</p>
-                      <p className="custom-grid">{data && data.year}</p>
-                      <p className="custom-grid">{data && data.alt_fueltype}</p>
+                      <p className="custom-grid">{data && data.yearto}</p>
+                      <p className="custom-grid">
+                        {data && data.alt_fueltype}
+                      </p>
                     </div>
                   )
-                })}
+                })
+                : ''}
+              {notFound && query && (
+                <Label className="not-found">
+                  Sorry, no results matched your search
+                </Label>
+              )}
             </div>
           </div>
         </div>

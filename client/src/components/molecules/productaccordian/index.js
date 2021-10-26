@@ -1,20 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'antd'
+import { Row, Col, Modal, InputNumber } from 'antd'
 // import { tableProAccoData } from './data'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
 import { fetchCategory } from 'libs/services/algolia'
-import ProductAccordionModal from './product-pop/addtocartmodel'
+// import ProductAccordionModal from './product-pop/addtocartmodel'
 // import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 // import Label from 'components/atoms/label'
 import './style.scss'
+import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
+import { AppContext } from 'libs/context'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
-  const [itemdata, setItemData] = useState([])
+  const { user } = useContext(AppContext)
+  let [qty, setQty] = useState(1)
+  let [totalPrice, setTotalPrice] = useState('')
+  let [modalData, setModalData] = useState('')
 
-  console.log('question', question)
+  const [itemdata, setItemData] = useState([])
   useEffect(() => {
     const data = async () => {
       const items = await fetchCategory(question)
@@ -26,9 +31,83 @@ const ProductAccordion = ({ question }) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const showModal = () => {
+  const showModal = data => {
+    let payload = {}
+    let perCase =
+      data['Weight'] !== undefined ? data['Weight'] : data['QTY PER CASE']
+    data = JSON.parse(data)
+    payload = {
+      img: data['Image 1 URL'],
+      title: data['title'],
+      size: data['Package Size'],
+      partNumber: data['Part Number'],
+      totalPrice: data['Order Price'],
+      price: data['Order Price'],
+      unit: `${data['Unit of Measurement']}${
+        perCase !== undefined ? '/' + perCase : ''
+      }`,
+      sku: data['SKU'],
+    }
+
+    setModalData(payload)
+    setTotalPrice(payload.totalPrice)
+
     setIsModalVisible(true)
   }
+
+  const handleCancel = () => {
+    setIsModalVisible(false)
+  }
+
+  const addItemToCart = async () => {
+    let data = modalData
+    getProductBySKU(data.sku).then(res => {
+      res = res.response.data
+      let product = res.product
+      let payload = {
+        cartId: null,
+        items: [
+          {
+            extra: {},
+            group: product.group,
+            itemId: product.itemId,
+            sku: product.sku,
+            quantity: qty,
+            price: {
+              base: Number(totalPrice),
+              currency: 'USD',
+              sale: false,
+              discount: {
+                price: 0,
+              },
+            },
+            size: false,
+          },
+        ],
+
+        registeredUser: true,
+        userAuthToken: user.accessToken,
+      }
+      addProductToCart(payload)
+        .then(res => {
+          console.log('sucres', res)
+        })
+        .catch(err => {
+          console.log('errres', err)
+        })
+      setIsModalVisible(false)
+    })
+  }
+
+  const onChange = value => {
+    let data = modalData
+    setQty(value)
+    setTotalPrice(data.price * value)
+  }
+
+  // const showModal = () => {
+  //   setIsModalVisible(true)
+  // }
   // const onOk = () => {
   //   setIsModalVisible(false)
   // }
@@ -42,10 +121,10 @@ const ProductAccordion = ({ question }) => {
             <p>PRODUCT</p>
           </Col>
           <Col lg={4}>
-            <p className="text-class-center">PACKAGE SIZE</p>
+            <p>PACKAGE SIZE</p>
           </Col>
           <Col lg={3}>
-            <p className="text-class-center">PART #</p>
+            <p>PART #</p>
           </Col>
           <Col lg={3}>
             <p className="text-class-center">PER CASE</p>
@@ -95,7 +174,10 @@ const ProductAccordion = ({ question }) => {
                       />
                     </div>
                     <div className="table-button">
-                      <Button onClick={showModal} className="hover-button">
+                      <Button
+                        onClick={e => showModal(JSON.stringify(data))}
+                        className="hover-button"
+                      >
                         ADD TO CART
                       </Button>
                     </div>
@@ -106,12 +188,67 @@ const ProductAccordion = ({ question }) => {
           })}
       </div>
 
-      {isModalVisible && (
+      {/* {isModalVisible && (
         <ProductAccordionModal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
         />
-      )}
+      )} */}
+      <div className="Price-list-modal">
+        <Modal visible={isModalVisible} onCancel={handleCancel}>
+          <div className="model-parent">
+            <div className="product-img">
+              <img src={modalData.img} alt="img" />
+            </div>
+            <div className="prodct-data">
+              <h1>{modalData.title}</h1>
+              <div className="product-detail">
+                <div>
+                  <p className="products-sizes">Size</p>
+                  <p className="products-sizes detail">{modalData.size}</p>
+                </div>
+                <div>
+                  <p className="products-sizes">UNITS/CASE</p>
+                  <p className="products-sizes">{modalData.unit}</p>
+                </div>
+                <div>
+                  <p className="products-sizes">Part Num</p>
+                  <p className="products-sizes detail">
+                    {modalData.partNumber}
+                  </p>
+                </div>
+                <div>
+                  <p className="products-sizes">Price</p>
+                  <p className="products-sizes detail ">${modalData.price}</p>
+                </div>
+                <div>
+                  <p className="products-sizes">QTY</p>
+                  <p className="products-sizes detail">
+                    <InputNumber
+                      min={1}
+                      value={1}
+                      defaultValue={1}
+                      onChange={onChange}
+                      size="middle"
+                      className="input"
+                    />
+                  </p>
+                </div>
+                <div>
+                  <p className="products-sizes">Total Price</p>
+                  <p className="products-sizes detail">${totalPrice}</p>
+                </div>
+              </div>
+              <Button
+                className="pricelist-addcart "
+                onClick={e => addItemToCart(e)}
+              >
+                Add TO CART
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      </div>
     </>
   )
 }

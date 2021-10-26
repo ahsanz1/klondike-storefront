@@ -14,6 +14,51 @@
     }
   }
 
+  .menu-link-item {
+    line-height: 7.46vw;
+
+    @media (max-width: 500px) {
+      display: block;
+      position: relative;
+      flex-direction: row;
+      margin-bottom: 5.33vw;
+    }
+
+    &:hover {
+      .h-links {
+        border-bottom: 2px solid #f2a900;
+
+        @media (max-width: 500px) {
+          border: none;
+        }
+      }
+
+      .show-products {
+        display: flex !important;
+        justify-content: space-between !important;
+
+        @media (max-width: 768px) {
+          display: block !important;
+          justify-content: unset !important;
+        }
+
+        @media (max-width: 500px) {
+          display: none !important;
+          justify-content: unset !important;
+          padding: 4vw 0 !important;
+          padding-bottom: 0 !important;
+        }
+      }
+
+      .show-products-image {
+        // display: block;
+        @media (max-width: 500px) {
+          display: none;
+        }
+      }
+    }
+  }
+
   .c-link {
     position: relative;
     margin: 0;
@@ -24,8 +69,14 @@
       color: $white-color;
     }
 
+    @media (max-width: 500px) {
+      font-family: $OpenSans;
+      font-size: 6.4vw;
+      text-transform: uppercase;
+    }
+
     .show-products {
-      display: none;
+      // display: none;
       position: absolute;
       z-index: 999;
       top: 7.6vw;
@@ -56,12 +107,15 @@
     }
 
     .show-products-image {
-      display: none;
+      // display: block;
       position: absolute;
       z-index: 999;
-      top: 7.4vw;
+      top: 4.6vw;
       width: 17.4vw;
       height: 19vw;
+      margin-right: 0;
+      padding-top: 1.59vw;
+      padding-left: 1.22vw;
       background: #002a3a;
 
       @media (max-width: 768px) {
@@ -74,7 +128,7 @@
         height: 100%;
         max-height: 46.6vw;
         margin-bottom: 4vw;
-        padding: 0 4vw;
+        padding: 0 0;
         overflow-y: scroll;
         background: none;
       }
@@ -107,7 +161,7 @@
         }
 
         @media (max-width: 500px) {
-          display: block !important;
+          display: none !important;
           justify-content: unset !important;
           padding: 4vw 4vw !important;
           padding-bottom: 0 !important;
@@ -116,6 +170,10 @@
 
       .show-products-image {
         display: block;
+
+        @media (max-width: 500px) {
+          display: none;
+        }
       }
 
       .h-links {

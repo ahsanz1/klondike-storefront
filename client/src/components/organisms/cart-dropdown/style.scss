@@ -28,21 +28,6 @@
 }
 
 .cart-dropdown {
-  .cart-header {
-    display: none;
-
-    @media screen and (max-width: 768px) {
-      display: block;
-      position: fixed;
-      top: 0%;
-      right: 0%;
-      bottom: getmb-vw(83px);
-      width: 200%;
-      height: getmb-vh(70px);
-      background-color: #002a3a;
-    }
-  }
-
   position: absolute;
   z-index: 3;
   top: 100%;
@@ -62,6 +47,21 @@
     height: 100%;
     padding-right: getmb-vw(25px);
     padding-left: getmb-vw(25px);
+  }
+
+  .cart-header {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+      position: fixed;
+      top: 0%;
+      right: 0%;
+      bottom: getmb-vw(83px);
+      width: 200%;
+      height: getmb-vh(70px);
+      background-color: #002a3a;
+    }
   }
 
   .cart-dropdown-header {
@@ -114,6 +114,7 @@
     .cart-dropdown-header-icon {
       width: get-vw(12.83px);
       height: get-vw(12.73px);
+      margin-top: 1vw;
       margin-left: auto;
       transition: 0.2s ease-in-out;
       fill: #111;
@@ -124,7 +125,11 @@
         width: 12.83px;
         height: 12.83px;
         height: 12.73px;
-        margin-top: 7px;
+        margin-top: 2vw;
+      }
+
+      @media screen and (max-width: 500px) {
+        margin-top: 1.6vw;
       }
     }
 
@@ -220,6 +225,9 @@
           line-height: get-vw(30px);
 
           @media screen and (max-width: 768px) {
+            width: getmb-vw(149px);
+            height: getmb-vw(32px);
+            padding-left: getmb-vw(86px);
             font-size: getmb-vw(24px);
             line-height: getmb-vw(30px);
           }
@@ -245,8 +253,9 @@
         line-height: get-vw(24px);
 
         @media screen and (max-width: 768px) {
-          width: getmb-vw(300px);
+          width: getmb-vw(290px);
           height: getmb-vw(64px);
+          margin-left: 2.8vw;
           border-radius: getmb-vw(5px);
           font-size: getmb-vw(23px);
           line-height: getmb-vw(24px);

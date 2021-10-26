@@ -1,0 +1,104 @@
+@import '~styles/globals';
+
+.our-story-page-wrapper {
+  color: white;
+  font-family: $OpenSans;
+
+  .overview-detail-section-mobile {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+      padding-bottom: 41px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .overview-detail-section-mobile {
+      display: none;
+
+      @media screen and (max-width: 768px) {
+        display: block;
+        padding-bottom: 41px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .our-story-wrapper {
+    margin-top: get-vw(100px);
+    margin-right: get-vw(91px);
+    padding-top: get-vw(66px);
+    padding-right: get-vw(77px);
+    padding-bottom: get-vw(101px);
+    padding-left: get-vw(61px);
+    background: rgba(3, 41, 57, 0.5);
+
+    @media screen and (max-width: 768px) {
+      margin-top: 0;
+      margin-right: 0;
+      padding-top: 53px;
+      padding-right: 30px;
+      padding-bottom: 75px;
+      padding-left: 30px;
+    }
+
+    .our-story-content {
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .title {
+      margin-bottom: get-vw(30px);
+      color: #f1a900;
+      font-size: get-vw(24px);
+      font-weight: bold;
+      line-height: get-vw(33px);
+      text-transform: capitalize;
+
+      @media screen and (max-width: 768px) {
+        margin-bottom: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 33px;
+      }
+    }
+
+    .paragraph {
+      font-size: get-vw(14px);
+      font-weight: normal;
+      line-height: get-vw(20px);
+      //   color: rgba(38, 70, 83, 0.5);
+      @media screen and (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    .highlighted-paragraph {
+      margin-top: get-vw(30px);
+      margin-bottom: get-vw(20px);
+      font-size: get-vw(20px);
+      font-weight: bold;
+      line-height: get-vw(27px);
+
+      @media screen and (max-width: 768px) {
+        margin-top: 30px;
+        margin-bottom: 42px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 25px;
+      }
+    }
+
+    .more {
+      margin-top: get-vw(20px);
+
+      @media screen and (max-width: 768px) {
+        margin-top: 20px;
+      }
+    }
+  }
+}

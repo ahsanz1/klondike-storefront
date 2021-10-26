@@ -1,0 +1,59 @@
+@import '~styles/globals';
+
+.work-at-klondike-page-wrapper {
+  color: white;
+  font-family: $OpenSans;
+
+  .work-at-klondike-wrapper {
+    margin-top: get-vw(100px);
+    margin-right: get-vw(91px);
+    padding-top: get-vw(66px);
+    padding-right: get-vw(77px);
+    padding-bottom: get-vw(101px);
+    padding-left: get-vw(61px);
+    background: rgba(3, 41, 57, 0.5);
+
+    @media screen and (max-width: 768px) {
+      margin-top: 0;
+      margin-right: 0;
+      padding-top: 53px;
+      padding-right: 30px;
+      padding-bottom: 75px;
+      padding-left: 30px;
+    }
+
+    .title {
+      margin-bottom: get-vw(14px);
+      color: #f1a900;
+      font-size: get-vw(36px);
+      font-weight: bold;
+      line-height: get-vw(49px);
+      text-transform: capitalize;
+
+      @media screen and (max-width: 768px) {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 33px;
+      }
+    }
+
+    .paragraph {
+      font-size: get-vw(14px);
+      font-weight: normal;
+      line-height: get-vw(20px);
+      //   color: rgba(38, 70, 83, 0.5);
+      @media screen and (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    .more {
+      margin-top: get-vw(20px);
+
+      @media screen and (max-width: 768px) {
+        margin-top: 20px;
+      }
+    }
+  }
+}

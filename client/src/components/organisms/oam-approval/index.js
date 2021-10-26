@@ -5,22 +5,16 @@ import PCPBottom from 'components/organisms/pcpBottom'
 import { PcpBottom, technicalBanner } from 'libs/data/data'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import PropTypes from 'prop-types'
+import { useWindowSize } from 'libs/custom-hooks'
 import Image from 'components/atoms/image'
 import Techtabllist from 'components/organisms/Technical-tablist'
+import MobileTabListTech from '../Technical-tablist/mobile-tab'
 import Label from 'components/atoms/label'
-const Oamspproval = ({ categories }) => {
+const Oamspprovaldata = () => {
   const { oam } = oamdata
   return (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
       <div className="oam-main">
-        <div className="oam-tab">
-          <Techtabllist
-            className="list"
-            itemName="OEM Approvals"
-            categories={categories}
-          />
-        </div>
         <div className="oam-wrap">
           <h1>OEM Approvals</h1>
           {oam.map(data => {
@@ -46,19 +40,53 @@ const Oamspproval = ({ categories }) => {
           })}
         </div>
       </div>
-      <div className="technical-bottom">
-        <div className="technical-bottom-section">
-          {PcpBottom &&
-            PcpBottom.map((item, i) => (
-              <>
-                <PCPBottom
-                  image={item.image}
-                  button={item.button}
-                  mobileButton={item.mobileButton}
-                />
-              </>
-            ))}
+    </>
+  )
+}
+const Oamspproval = () => {
+  const size = useWindowSize()
+  return size[0] > 768 ? (
+    <>
+      <WebpagesHeroImages {...technicalBanner} />
+      <div className="oaem-page-wrapper">
+        <div className="technacil-wriper">
+          <div className="custom-tech">
+            <Techtabllist
+              className="catlog-tablist"
+              itemName="OEM Approvals"
+              // categories={categories}
+            />
+          </div>
+          <Oamspprovaldata />
         </div>
+        <div className="technical-bottom">
+          <div className="technical-bottom-section">
+            {PcpBottom &&
+              PcpBottom.map((item, i) => (
+                <>
+                  <PCPBottom
+                    image={item.image}
+                    button={item.button}
+                    mobileButton={item.mobileButton}
+                    url={item.url}
+                  />
+                </>
+              ))}
+          </div>
+        </div>
+      </div>
+    </>
+  ) : (
+    <>
+      <div className="custom-tech">
+        <MobileTabListTech
+          className="warranty-tablist"
+          itemName="OEM Approvals"
+        >
+          <div className="oaem-page-wrapper">
+            <Oamspprovaldata />
+          </div>
+        </MobileTabListTech>
       </div>
     </>
   )

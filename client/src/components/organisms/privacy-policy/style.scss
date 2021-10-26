@@ -1,0 +1,61 @@
+@import '~styles/globals';
+
+.privacy-body {
+  position: relative;
+  top: 50px;
+  height: auto;
+  margin: 0 6.319vw 0 6.319vw;
+  padding: 50px;
+  padding-top: 3.75vw;
+  padding-right: 7.22vw;
+  padding-bottom: 3.75vw;
+  padding-left: 4.79vw;
+  background: rgba(3, 41, 57, 0.5);
+
+  @media (max-width: 767px) {
+    width: 100vw;
+    margin-top: 22vw;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+.main-heading {
+  color: #f1a900;
+  font-family: $OpenSans;
+  font-size: 24px;
+  font-weight: 700;
+
+  @media (max-width: 767px) {
+    padding-bottom: 4vw;
+    padding-left: 8vw;
+  }
+}
+
+.sub-heading {
+  color: #ffff;
+  font-family: $OpenSans;
+  font-size: 24px;
+  font-weight: 700;
+
+  @media (max-width: 767px) {
+    padding-top: 5.33vw;
+    padding-bottom: 12vw;
+    padding-left: 8vw;
+  }
+}
+
+.privacy-body > p {
+  width: 75.34vw;
+  padding-top: 0.625vw;
+  padding-bottom: 2.77vw;
+  color: #ffff;
+  font-family: $OpenSans;
+  font-size: 14px;
+
+  @media (max-width: 767px) {
+    width: 82.78vw;
+    padding-bottom: 5.33vw;
+    padding-left: 8vw;
+  }
+}
