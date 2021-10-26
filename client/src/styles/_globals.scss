@@ -106,3 +106,22 @@ $vh-mobile-viewport: 825;
 body {
   top: 0 !important;
 }
+
+// div#goog-gt-tt {
+//   display: none !important;
+//   visibility: hidden !important;
+//   top: 0 !important;
+//   left: 0 !important;
+// }
+.skiptranslate {
+  display: none !important;
+  visibility: hidden !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.goog-text-highlight {
+  outline: 0 !important;
+  background-color: transparent !important;
+  box-shadow: unset !important;
+}
