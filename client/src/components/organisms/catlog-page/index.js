@@ -3,6 +3,8 @@ import PCPBottom from 'components/organisms/pcpBottom'
 import PropTypes from 'prop-types'
 import Techtabllist from 'components/organisms/Technical-tablist'
 import './style.scss'
+import ReadMoreReact from 'read-more-react'
+import { cataogData } from './data'
 import { useWindowSize } from 'libs/custom-hooks'
 import { technicalBanner, PcpBottom } from 'libs/data/data'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
@@ -11,6 +13,8 @@ import Image from 'components/atoms/image'
 import Link from 'components/atoms/link'
 import MobileTabListTech from '../Technical-tablist/mobile-tab'
 const Catlogdata = () => {
+  const { catData } = cataogData
+  const size = useWindowSize()
   return (
     <>
       <div className="catlog-main">
@@ -19,18 +23,26 @@ const Catlogdata = () => {
           <Label className="catlog-label">Catalog</Label>
           <div className="img-deading">
             <div className="imge-catlog">
-              <Image src="static/images/Catalogue.png" />
+              <Image src="/static/images/Catalog.png" />
             </div>
             <div className="heading-catlog">
-              KLONDIKE has a comprehensive range of 530 oils and greases
-              covering 9 product categories and 15 package sizes. We designed
-              our new catalog to make the process of going through this
-              extensive product range and finding the right lubricant easy and
-              efficient for you, our customer and partner! The new KLONDIKE
-              catalog features all our SKUs organized by product and product
-              category. You will also find package sizes, part numbers, OEM
-              approvals, industry applications, warranty and cross reference
-              documents. <br />
+              {catData.map((data, i) => {
+                return size[0] > 768 ? (
+                  <> {data.text}</>
+                ) : (
+                  <>
+                    <ReadMoreReact
+                      text={data.text}
+                      dangerouslySetInnerHTML={{ __html: data.text }}
+                      min={150}
+                      ideal={300}
+                      max={500}
+                      readMoreText={data.read}
+                    />
+                  </>
+                )
+              })}
+              <br />
               <br />
               Download an electronic copy of the
               <Link className="english-link"> ENGLISH catalog </Link>
