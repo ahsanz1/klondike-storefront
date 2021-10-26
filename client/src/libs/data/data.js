@@ -22,6 +22,25 @@ export const merchandiseOptions = {
   imageMaxWidth: '100%',
   cardItemsInRow: 4,
 }
+export const delarship = {
+  heading: 'DEALERSHIP OPPORTUNITY',
+  oppertunity: [
+    {
+      title:
+        'At KLONDIKE, our strengths are in our people and the commitment to our customers. We take a collaborative approach with our dealers, staying engaged with them and responsive to demands within their industry. We are there every step of the way by providing proactive on-the-ground support and tailored marketing solutions for each specific market.',
+    },
+    {
+      title:
+        'Empower your independence in your marketplace with our unique business opportunity. Designed to enable you to gain immediate access to your key markets and build a highly profitable business with market leading customer retention.',
+    },
+    {
+      title:
+        '<p>We are currently seeking distribution partners in key regions of North America. If you feel you are the right company to represent our fast-growing brand and extensive line of oils, lubricants and chemicals,<a href="/contact-us"> Contact Us </a> to find out how to join our dealer network.</p>',
+    },
+  ],
+  imageMaxWidth: '100%',
+  cardItemsInRow: 4,
+}
 
 export const heroBannerdata = {
   desktopHeroImage: {
@@ -3472,11 +3491,13 @@ export const PcpBottom = [
     image:
       'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
     button: 'DOWNLOAD PDS & MSDS',
+    url: '/tech-resource',
     mobileButton: 'DOWNLOAD PDS & MSDS',
   },
   {
     image: '/static/images/productfooter.png',
     button: 'BECOME A DEALER',
+    url: '/dealership-opportunity',
     mobileButton: 'BECOME A DEALER',
   },
 ]

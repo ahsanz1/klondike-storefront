@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import './style.scss'
 import { categoriesXPM } from './data'
+import Link from 'components/atoms/link'
+
 const Techtabllist = ({
   categories,
   itemName,
@@ -35,7 +37,12 @@ const Techtabllist = ({
                   clickCategoryHandler(item.categoryName, item.categoryDesc)
                 }
               >
-                {item.categoryName}
+                <Link
+                  className="catagory-link"
+                  to={`tech-resources/${item.link}`}
+                >
+                  {item.categoryName}
+                </Link>
                 {item.subItem && itemName === item.categoryName && (
                   <div className="subItem">
                     {item.subItem &&

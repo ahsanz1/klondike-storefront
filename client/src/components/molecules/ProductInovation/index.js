@@ -35,7 +35,11 @@ const ProductInovation = ({ productInovation }) => {
               <div className="Product-content">
                 <div className="product_img_wraper">
                   <Link to={`/PDP?sku=${content.sku}`}>
-                    <img src={content.image.url} alt="" />
+                    <img
+                      className="img-design"
+                      src={content.image.url}
+                      alt=""
+                    />
                   </Link>
                 </div>
                 <p>{content.detail}</p>

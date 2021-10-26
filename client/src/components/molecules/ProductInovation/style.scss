@@ -84,6 +84,18 @@
               width: 76vw;
               height: 80vw;
             }
+
+            .img-design {
+              width: 11.8vw;
+              height: 15.13vw;
+              margin: 1.12vw 3.42vw;
+
+              @media (max-width: 500px) {
+                width: 45.33vw;
+                height: 58.13vw;
+                margin: 9.06vw 15.46vw;
+              }
+            }
           }
 
           p {

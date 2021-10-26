@@ -59,7 +59,10 @@ const OverView = () => {
 
                   <Label className="links-paragraph">{item.paragragh}</Label>
 
-                  <Link className="discover-more" to={`/${item.link}`}>
+                  <Link
+                    className="discover-more"
+                    to={`about-klondike/${item.link}`}
+                  >
                     Discover More
                     <span className="discover-more-img">
                       <img
@@ -84,6 +87,7 @@ const OverView = () => {
                     image={item.image}
                     button={item.button}
                     mobileButton={item.mobileButton}
+                    url={item.url}
                   />
                 </>
               ))}

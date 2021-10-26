@@ -54,6 +54,7 @@ const PLP = props => {
         src={props.mobileBanner.url}
         alt={props.mobileBanner.alt}
         style={{ marginBottom: '23px' }}
+        className="mobile-banner"
       />
       <SelectedCategory name={contextPlp} desc={desc} />
       <div className="custom-plp">

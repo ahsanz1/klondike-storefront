@@ -108,9 +108,8 @@
       }
 
       .product-price-info {
-        display: grid;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         margin-top: get-vw(5px);
         font-size: get-vw(11px);
         font-style: normal;
@@ -131,12 +130,20 @@
           display: none;
         }
 
-        .product-quantity-mobile {
-          display: none;
+        .product-price {
+          color: rgba(194, 187, 183, 1);
+          font-size: get-vw(11px);
+          font-style: normal;
+          font-weight: 800;
+          line-height: get-vw(15px);
 
           @media screen and (max-width: 768px) {
-            display: block;
-            font-weight: bold;
+            padding-left: 5.33vw;
+          }
+
+          .product-price-mobile {
+            margin-bottom: 2px;
+            color: white;
           }
         }
       }
@@ -157,6 +164,16 @@
 
         @media screen and (max-width: 768px) {
           display: none;
+        }
+
+        .product-quantity-mobile {
+          margin-right: get-vw(11px);
+          font-size: get-vw(11px);
+
+          @media screen and (max-width: 768px) {
+            display: block;
+            font-weight: bold;
+          }
         }
       }
 
@@ -192,6 +209,10 @@
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        .ant-input-number-handler-wrap {
+          opacity: 1;
         }
       }
 
@@ -260,23 +281,6 @@
         flex-direction: row;
         justify-content: space-between;
         padding-top: 25px;
-      }
-
-      .product-price {
-        color: white;
-        font-size: 11px;
-        font-style: normal;
-        font-weight: 800;
-        // line-height: 15px;
-        @media screen and (max-width: 768px) {
-          padding-left: 5.33vw;
-        }
-
-        .product-price-mobile {
-          color: grey;
-          font-size: 12px;
-          font-weight: bold;
-        }
       }
 
       .quantity-box {

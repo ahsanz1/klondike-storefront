@@ -34,7 +34,10 @@ const AboutUsTablist = ({
                   clickCategoryHandler(item.categoryName, item.categoryDesc)
                 }
               >
-                <Link className="catagory-link" to={`/${item.link}`}>
+                <Link
+                  className="catagory-link"
+                  to={`about-klondike/${item.link}`}
+                >
                   {item.categoryName}
                 </Link>
                 {subItem && itemName === item.categoryName && (

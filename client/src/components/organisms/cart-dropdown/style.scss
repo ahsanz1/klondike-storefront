@@ -28,21 +28,6 @@
 }
 
 .cart-dropdown {
-  .cart-header {
-    display: none;
-
-    @media screen and (max-width: 768px) {
-      display: block;
-      position: fixed;
-      top: 0%;
-      right: 0%;
-      bottom: getmb-vw(83px);
-      width: 200%;
-      height: getmb-vh(70px);
-      background-color: #002a3a;
-    }
-  }
-
   position: absolute;
   z-index: 3;
   top: 100%;
@@ -62,6 +47,21 @@
     height: 100%;
     padding-right: getmb-vw(25px);
     padding-left: getmb-vw(25px);
+  }
+
+  .cart-header {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+      position: fixed;
+      top: 0%;
+      right: 0%;
+      bottom: getmb-vw(83px);
+      width: 200%;
+      height: getmb-vh(70px);
+      background-color: #002a3a;
+    }
   }
 
   .cart-dropdown-header {
