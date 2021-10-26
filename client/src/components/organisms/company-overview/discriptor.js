@@ -2,7 +2,7 @@ const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
   id: 'OverView',
-  label: 'Company Over View Component',
+  label: 'OverView',
   isGlobal: false,
   description: `Company Over-View component contains the description about each heading and the bottom section contains button that will redirect you to specific page for futher details`,
 
