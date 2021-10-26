@@ -86,7 +86,7 @@ const Accordion = ({
                 links.map((obj, index) => {
                   return (
                     <Link
-                      to={obj.url === '' ? '/account/login' : obj.url}
+                      to={obj.url === '' ? '/account' : obj.url}
                       key={index}
                     >
                       <div className="footerLinks">
