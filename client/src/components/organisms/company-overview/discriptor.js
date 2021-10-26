@@ -15,14 +15,12 @@ exports.default = Types.Component({
           subHeading: Types.String({ label: 'Sub Heading' }),
           subSection: Types.Array({
             label: 'Description-Section',
-            Children: Types.Shape({
+            children: Types.Shape({
               children: {
                 paragraph: Types.String({ label: 'Description' }),
               },
             }),
           }),
-          // butontext: Types.String({ label: 'Button Text' }),
-          // redirectUrl: Types.String({ label: 'Redirect URL' }),
         },
       }),
     }),
