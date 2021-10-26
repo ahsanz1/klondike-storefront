@@ -76,6 +76,7 @@ import {
   PlpBottom,
   PcpBottom,
   searchFlow,
+  delarship,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -621,7 +622,7 @@ const mockData = {
   '/dealership-opportunity': [
     {
       id: 'Dealership',
-      params: {},
+      params: delarship,
     },
   ],
 }
