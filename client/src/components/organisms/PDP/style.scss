@@ -52,6 +52,28 @@
   padding: 1vw;
   color: #fff;
   font-size: 1vw;
+  font-size: 1.1vw;
+  font-weight: bold;
+  text-align: center;
+  // border: 1px solid gray;
+}
+
+.total-price {
+  color: #f2a900 !important;
+}
+
+.color-disabled {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.cell-header {
+  display: table-cell;
+  width: 8vw;
+  min-width: 2vw;
+  padding: 1vw;
+  color: #fff;
+  font-size: 1.1vw;
+  font-weight: bold;
   text-align: center;
   // border: 1px solid gray;
 }
@@ -130,4 +152,25 @@
 
 .ant-breadcrumb > span:last-child {
   color: #f1a900 !important;
+}
+
+.spinner {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: #f2a900 !important;
+}
+
+.ant-radio-checked .ant-radio-inner::after {
+  background-color: #f2a900 !important;
+}
+
+.ant-radio:hover .ant-radio-inner {
+  border-color: #f2a900 !important;
 }
