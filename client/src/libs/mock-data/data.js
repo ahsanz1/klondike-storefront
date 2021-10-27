@@ -77,6 +77,7 @@ import {
   PcpBottom,
   searchFlow,
   delarship,
+  cataogData,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -574,7 +575,7 @@ const mockData = {
   '/tech-resources/catlog': [
     {
       id: 'Catlog',
-      params: {},
+      params: cataogData,
     },
   ],
   '/tech-resource': [
