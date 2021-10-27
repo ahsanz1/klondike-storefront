@@ -78,6 +78,7 @@ import {
   searchFlow,
   delarship,
   cataogData,
+  indusrtyapplication,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -605,7 +606,7 @@ const mockData = {
   '/about-klondike/industry-applications': [
     {
       id: 'IndustryApplications',
-      params: {},
+      params: indusrtyapplication,
     },
   ],
   '/about-klondike/safety-environment': [
