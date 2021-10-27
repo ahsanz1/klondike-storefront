@@ -225,3 +225,30 @@
     }
   }
 }
+
+.ant-pagination-item-active {
+  border-color: #ffa500 !important;
+  background: #ffa500 !important;
+}
+
+.ant-pagination-item-active a {
+  color: white !important;
+}
+
+.ant-pagination-item a {
+  color: white !important;
+}
+
+.ant-pagination-item {
+  border: 1px solid #f0a51f !important;
+  background-color: transparent !important;
+}
+
+.ant-pagination-next .ant-pagination-item-link {
+  border: 1px solid #f0a51f !important;
+  background-color: transparent !important;
+}
+
+.anticon-right svg {
+  color: white;
+}

@@ -4,6 +4,34 @@ import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 
 const TechBlogItem = ({ date, catagory, title, text, image }) => {
+  // const [textState, setTextState] = useState('')
+
+  // useEffect(() => {
+  //   setTextState({
+  //     text: 'Read More',
+  //     showText: text.length > 20,
+  //     paragraph: text.length > 20 ? text.substring(0, 20) + '...' : text,
+  //   })
+  // }, [])
+
+  // const changeState = (e) => {
+  //   let activeState = textState
+
+  //   if (activeState === 'Read More') {
+  //     setTextState({
+  //       text: 'View Less',
+  //       showText: true,
+  //       paragraph: e,
+  //     })
+  //   } else {
+  //     setTextState({
+  //       text: 'Read More',
+  //       showText: false,
+  //       paragraph: e.substring(0, 20) + '...',
+  //     })
+  //   }
+  // }
+
   return (
     <div className="tech-blog-item">
       <div>
@@ -21,6 +49,9 @@ const TechBlogItem = ({ date, catagory, title, text, image }) => {
           <Label className="paragragh-text">
             {text} <Link className="read-more">Read More</Link>
           </Label>
+          {/* <span className="read-more" onClick={e => changeState(e)}>
+            {textState.showText ? textState.text : ''}
+          </span> */}
         </div>
       </div>
     </div>
