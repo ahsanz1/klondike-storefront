@@ -35,12 +35,12 @@ $vw-viewport: 1440;
 
   .technical-data {
     width: 69.4vw;
-    height: 63vw;
+    height: 100%;
     margin-top: get-vw(50px);
     background-color: #03293980;
 
     @media (max-width: 768px) {
-      height: 253.75vw;
+      height: 100%;
       margin-top: 0;
       background-color: #023244;
     }
@@ -114,7 +114,7 @@ $vw-viewport: 1440;
       // margin-left: 8.3vw;
       width: 100vw;
       //margin-top: 11.2vw;
-      margin-bottom: 9.6vw;
+      margin-bottom: 5.6vw;
     }
   }
 
