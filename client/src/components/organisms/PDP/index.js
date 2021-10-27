@@ -196,7 +196,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
   }
   const text = (
     <div className="toltip-container" style={{ border: '1px dashed #013A4E' }}>
-      <h1>{packagedata}</h1>
+      <h1 className="notranslate">{packagedata}</h1>
       <p>{text1}</p>
     </div>
   )
@@ -268,7 +268,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
               <Breadcrumb.Item>Our Products</Breadcrumb.Item>
               <Breadcrumb.Item>{productData?.category}</Breadcrumb.Item>
               {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
-              <Breadcrumb.Item>{productData?.title}</Breadcrumb.Item>
+              <Breadcrumb.Item className="notranslate">
+                {productData?.title}
+              </Breadcrumb.Item>
             </Breadcrumb>
           </Col>
         </Row>
