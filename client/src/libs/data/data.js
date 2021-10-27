@@ -41,7 +41,14 @@ export const delarship = {
   imageMaxWidth: '100%',
   cardItemsInRow: 4,
 }
-
+export const indusrtyapplication = {
+  heading: 'DEALERSHIP OPPORTUNITY',
+  videourl: '',
+  text:
+    'At KLONDIKE, our strengths are in our people and the commitment to our customers.',
+  paragraph:
+    'At KLONDIKE, our strengths are in our people and the commitment to our customers.',
+}
 export const heroBannerdata = {
   desktopHeroImage: {
     url: '/static/images/bannerhome.png',
