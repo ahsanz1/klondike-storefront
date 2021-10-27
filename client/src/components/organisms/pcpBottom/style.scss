@@ -17,6 +17,12 @@
     width: 100%;
     height: 11.52vw;
     margin-top: 2.01vw;
+
+    @media (max-width: 768px) {
+      width: auto;
+      height: 30vw;
+      margin-top: 8vw;
+    }
   }
 
   button {
