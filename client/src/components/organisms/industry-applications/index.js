@@ -42,7 +42,9 @@ const IndustryApplications = () => {
                     </div>
                   </div>
 
-                  <Label className="details-paragragh">{item.paragragh2}</Label>
+                  <Label className="details-paragragh2">
+                    {item.paragragh2}
+                  </Label>
 
                   <div className="overview-detail-section-mobile">
                     <ReactReadMoreReadLess
