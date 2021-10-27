@@ -66,7 +66,9 @@ const MobileTabListTech = ({
                                 item.title === product && 'active-product'
                               }
                             >
-                              {item.title}
+                              <ul>
+                                <li>{item.title}</li>
+                              </ul>
                             </Label>
                           ))}
                       </div>

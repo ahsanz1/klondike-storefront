@@ -17,7 +17,7 @@ exports.default = Types.Component({
             label: 'Description-Section',
             children: Types.Shape({
               children: {
-                paragraph: Types.String({ label: 'Description' }),
+                paragraph: Types.RichText({ label: 'Description' }),
               },
             }),
           }),
