@@ -24,5 +24,26 @@ exports.default = Types.Component({
         },
       }),
     }),
+    aboutUsLinks: Types.Array({
+      label: 'Mid Over-View Section Content',
+      children: Types.Shape({
+        children: {
+          image: Types.Image({
+            label: 'Section Image',
+            url: Types.String({ label: 'URL' }),
+            altText: Types.String({ label: 'Alt text' }),
+          }),
+          title: Types.String({ label: 'Title' }),
+          paragraph: Types.RichText({ label: 'Description' }),
+          buttonText: Types.String({ label: 'Button Text' }),
+          redirectUrl: Types.String({ label: 'Redirect URL' }),
+          buttonImage: Types.Image({
+            label: 'Button Image',
+            url: Types.String({ label: 'URL' }),
+            altText: Types.String({ label: 'Alt text' }),
+          }),
+        },
+      }),
+    }),
   },
 })
