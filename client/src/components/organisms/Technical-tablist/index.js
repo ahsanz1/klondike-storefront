@@ -53,9 +53,7 @@ const Techtabllist = ({
                           onClick={() => productClickHandler(item.title)}
                           className={item.title === product && 'active-product'}
                         >
-                          <ul>
-                            <li>{item.title}</li>
-                          </ul>
+                          {item.title}
                         </Label>
                       ))}
                   </div>

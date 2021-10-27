@@ -9,7 +9,7 @@ import { useWindowSize } from 'libs/custom-hooks'
 import Image from 'components/atoms/image'
 import Techtabllist from 'components/organisms/Technical-tablist'
 import MobileTabListTech from '../Technical-tablist/mobile-tab'
-import Link from 'components/atoms/link'
+import Label from 'components/atoms/label'
 const Oamspprovaldata = () => {
   const { oam } = oamdata
   return (
@@ -27,12 +27,12 @@ const Oamspprovaldata = () => {
                   <div className="data-warp">
                     <div className="heading-oam">{data.heading}</div>
                     <div className="descr-oam">{data.description}</div>
-                    <Link className="arow-img">
+                    <Label className="arow-img">
                       Discover More
                       <span>
                         <Image className="img-arow" src={data.lebal} />
                       </span>
-                    </Link>
+                    </Label>
                   </div>
                 </div>
               </>

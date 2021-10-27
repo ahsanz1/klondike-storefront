@@ -8,40 +8,6 @@ export const categoriesXPM = [
     title: 'OEM Approvals',
     categoryName: 'OEM Approvals',
     link: 'OEMApprovals',
-    subItem: {
-      hits: [
-        {
-          title: 'Audi Approved',
-        },
-        {
-          title: 'Cummins Approved',
-        },
-        {
-          title: 'Detroit Diesel ',
-        },
-        {
-          title: 'Approved dexos1®',
-        },
-        {
-          title: 'Approved Mack',
-        },
-        {
-          title: 'Mercedes-Benz Approved',
-        },
-        {
-          title: 'NMMA Approvedlo',
-        },
-        {
-          title: 'Renault Approved',
-        },
-        {
-          title: ' Volkswagen Approved',
-        },
-        {
-          title: 'Volvo Approved',
-        },
-      ],
-    },
   },
   {
     title: 'Catalog',
