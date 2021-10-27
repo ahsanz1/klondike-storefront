@@ -6,13 +6,15 @@ exports.default = Types.Component({
   isGlobal: false,
   description: 'pcp bottom section',
   attributes: {
-    image: Types.Image({
-      label: 'Image',
-      url: Types.String({ label: 'URL' }),
-      altText: Types.String({ label: 'Alt text' }),
+    PCPBottom: Types.Array({
+      image: Types.Image({
+        label: 'Image',
+        url: Types.String({ label: 'URL' }),
+        altText: Types.String({ label: 'Alt text' }),
+      }),
+      button: Types.String({ label: 'Button Text' }),
+      url: Types.String({ label: 'Button URL' }),
+      mobileButton: Types.String({ label: 'Mobile Button Text' }),
     }),
-    button: Types.String({ label: 'Button Text' }),
-    url: Types.String({ label: 'Button URL' }),
-    mobileButton: Types.String({ label: 'Mobile Button Text' }),
   },
 })
