@@ -62,7 +62,8 @@ const Checkoutsection = () => {
                   <p>{data.name}</p>
                 </div>
                 <div className="ckeckout-po">
-                  <p>PO Number:{data.ponumber}</p>
+                  <p>PO Number:</p>
+                  <p>{data.ponumber}</p>
                 </div>
               </>
             )

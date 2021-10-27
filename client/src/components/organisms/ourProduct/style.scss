@@ -6,7 +6,7 @@
   max-height: 56.7vw;
   float: left;
   overflow-y: scroll;
-  background: #fff;
+  background: $white-color;
 
   @media (max-width: 768px) {
     display: block;
@@ -63,7 +63,6 @@
           width: 9.6vw;
           height: 12.3vw;
           border: 0.06vw solid #000;
-          background: #dc5e00;
           box-shadow: inset 0 0 0.2vw 0.2vw #fff;
         }
       }
@@ -164,7 +163,7 @@
 
       img {
         width: 9.6vw;
-        height: 12.2vw;
+        height: 12.3vw;
 
         @media (max-width: 768px) {
           width: 100%;

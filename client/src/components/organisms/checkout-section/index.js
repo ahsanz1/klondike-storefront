@@ -96,7 +96,10 @@ const Checkoutsection = () => {
                   )}
                 </div>
                 <div className="ckeckout-po">
-                  <p>PO Number: {data.ponumber}</p>
+                  <p>
+                    PO Number:{' '}
+                    <span className="checkout-value">{data.ponumber}</span>
+                  </p>
                 </div>
               </>
             )

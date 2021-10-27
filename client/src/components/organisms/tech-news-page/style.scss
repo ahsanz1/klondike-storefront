@@ -18,6 +18,14 @@
       font-weight: bold;
       line-height: get-vw(49px);
       text-transform: uppercase;
+
+      @media (max-width: 768px) {
+        width: 86.6vw;
+        height: 8.8vw;
+        margin-left: 2vw;
+        font-size: 6.4vw;
+        line-height: 32px;
+      }
     }
 
     .pages-title {
@@ -27,6 +35,14 @@
       font-weight: bold;
       line-height: get-vw(33px);
       text-transform: uppercase;
+
+      @media (max-width: 768px) {
+        width: 39.46vw;
+        height: 6.66vw;
+        margin-left: 2vw;
+        font-size: 4.8vw;
+        line-height: 6.53vw;
+      }
     }
 
     .catagory-links {
@@ -34,6 +50,11 @@
       flex-direction: row;
       flex-wrap: wrap;
       width: get-vw(555px);
+
+      @media (max-width: 768px) {
+        width: 91.46vw;
+        margin-left: 2vw;
+      }
 
       .links {
         margin-top: get-vw(8px);
@@ -48,6 +69,16 @@
         line-height: get-vw(19px);
         text-transform: uppercase;
         font-feature-settings: 'pnum' on, 'lnum' on;
+
+        @media (max-width: 768px) {
+          height: 5.06vw;
+          margin-top: 2.13vw;
+          margin-bottom: 3.2vw;
+          padding-right: 3.2vw;
+          padding-left: 3.2vw;
+          font-size: 3.73vw;
+          line-height: 5.08vw;
+        }
       }
     }
 
@@ -60,6 +91,7 @@
         display: flex;
         flex-direction: row;
         margin-bottom: get-vw(39px);
+        // margin-left: 2vw;
 
         .page-no-box {
           display: flex;
@@ -70,6 +102,15 @@
           border: get-vw(1px) solid #ffa500;
           font-size: get-vw(16px);
           line-height: get-vw(22px);
+
+          @media (max-width: 768px) {
+            width: 7.46vw;
+            height: 7.46vw;
+            margin-top: 6vw;
+            margin-right: 1.33vw;
+            font-size: 4.26vw;
+            line-height: 5.81vw;
+          }
         }
       }
 
@@ -77,9 +118,19 @@
         display: flex;
         flex-direction: row;
 
+        @media (max-width: 768px) {
+          display: contents;
+        }
+
         .item-image {
           width: get-vw(150px);
           height: get-vw(150px);
+
+          @media (max-width: 768px) {
+            width: 40vw;
+            height: 40vw;
+            margin-bottom: 3.2vw;
+          }
         }
 
         .item-descriptions {
@@ -99,6 +150,13 @@
               font-weight: 600;
               line-height: get-vw(16px);
               text-transform: uppercase;
+
+              @media (max-width: 768px) {
+                width: 20.26vw;
+                height: 4.26vw;
+                margin-right: 2.93vw;
+                font-size: 3.2vw;
+              }
             }
 
             .links {
@@ -113,6 +171,14 @@
               font-weight: 600;
               line-height: get-vw(16px);
               text-transform: uppercase;
+
+              @media (max-width: 768px) {
+                width: 26.66vw;
+                height: 4.26vw;
+                margin-right: 2.93vw;
+                padding-left: 2.93vw;
+                font-size: 3.2vw;
+              }
             }
           }
 
@@ -126,6 +192,13 @@
               font-weight: bold;
               line-height: get-vw(17px);
               text-transform: uppercase;
+
+              @media (max-width: 768px) {
+                width: 83.46vw;
+                margin-top: 2.13vw;
+                font-size: 4.26vw;
+                line-height: 4.4vw;
+              }
             }
           }
 
@@ -135,6 +208,13 @@
             font-style: normal;
             font-weight: 600;
             line-height: get-vw(19px);
+
+            @media (max-width: 768px) {
+              width: 84.26vw;
+              margin-top: 2.13vw;
+              font-size: 3.73vw;
+              line-height: 5.08vw;
+            }
           }
 
           .read-more {
@@ -144,4 +224,31 @@
       }
     }
   }
+}
+
+.ant-pagination-item-active {
+  border-color: #ffa500 !important;
+  background: #ffa500 !important;
+}
+
+.ant-pagination-item-active a {
+  color: white !important;
+}
+
+.ant-pagination-item a {
+  color: white !important;
+}
+
+.ant-pagination-item {
+  border: 1px solid #f0a51f !important;
+  background-color: transparent !important;
+}
+
+.ant-pagination-next .ant-pagination-item-link {
+  border: 1px solid #f0a51f !important;
+  background-color: transparent !important;
+}
+
+.anticon-right svg {
+  color: white;
 }

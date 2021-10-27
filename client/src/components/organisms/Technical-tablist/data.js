@@ -2,33 +2,32 @@ export const categoriesXPM = [
   {
     title: 'Technical Documents',
     categoryName: 'Technical Documents',
-    // subItem: {
-    //   hits: [
-    //     {
-    //       title: 'hello',
-    //     },
-    //   ],
-    // },
+    link: 'Technical-doucment',
   },
   {
     title: 'OEM Approvals',
     categoryName: 'OEM Approvals',
+    link: 'OEMApprovals',
   },
   {
     title: 'Catalog',
     categoryName: 'Catalog',
+    link: 'catlog',
   },
   {
     title: 'Warranty',
     categoryName: 'Warranty',
+    link: 'warranty',
   },
   {
     title: 'Video Gallery',
     categoryName: 'Video Gallery',
+    link: 'video-gallery',
   },
   {
     title: 'Tech/News Blog',
     categoryName: 'Tech/News Blog',
+    link: 'tech-news-blog',
   },
   //   {
   //     title: 'Greases',
