@@ -1,36 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 
 const TechBlogItem = ({ date, catagory, title, text, image }) => {
-  // const [textState, setTextState] = useState('')
+  const [textVal, setTextVal] = useState('')
+  const [textState, setTextState] = useState(false)
+  const [btnText, setBtnText] = useState('')
 
-  // useEffect(() => {
-  //   setTextState({
-  //     text: 'Read More',
-  //     showText: text.length > 20,
-  //     paragraph: text.length > 20 ? text.substring(0, 20) + '...' : text,
-  //   })
-  // }, [])
+  useEffect(() => {
+    setTextState(!(text.length > 20))
+    setBtnText(text.length > 20 ? 'Read More' : '')
+    setTextVal(text.length > 20 ? text.substring(0, 20) + '... ' : text)
+  }, [])
 
-  // const changeState = (e) => {
-  //   let activeState = textState
+  const changeState = text => {
+    let activeState = textState
 
-  //   if (activeState === 'Read More') {
-  //     setTextState({
-  //       text: 'View Less',
-  //       showText: true,
-  //       paragraph: e,
-  //     })
-  //   } else {
-  //     setTextState({
-  //       text: 'Read More',
-  //       showText: false,
-  //       paragraph: e.substring(0, 20) + '...',
-  //     })
-  //   }
-  // }
+    if (activeState === false) {
+      setTextVal(text)
+      setTextState(true)
+      setBtnText('View Less')
+    } else {
+      setTextState(false)
+      setBtnText('Read More')
+      setTextVal(text.substring(0, 20) + '... ')
+    }
+  }
 
   return (
     <div className="tech-blog-item">
@@ -47,11 +43,11 @@ const TechBlogItem = ({ date, catagory, title, text, image }) => {
         </div>
         <div>
           <Label className="paragragh-text">
-            {text} <Link className="read-more">Read More</Link>
+            {textVal}
+            <button className="read-more" onClick={e => changeState(text)}>
+              {btnText}
+            </button>
           </Label>
-          {/* <span className="read-more" onClick={e => changeState(e)}>
-            {textState.showText ? textState.text : ''}
-          </span> */}
         </div>
       </div>
     </div>
