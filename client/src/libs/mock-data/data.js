@@ -74,7 +74,7 @@ import {
   Packagerorder,
   bulkorder,
   PlpBottom,
-  PcpBottom,
+  pcp,
   searchFlow,
   delarship,
   cataogData,
@@ -176,7 +176,17 @@ const mockData = {
     },
     {
       id: 'PCPBottom',
-      params: PcpBottom,
+      params: pcp,
+    },
+    {
+      id: 'DownTime',
+      params: DownTime,
+    },
+  ],
+  '/pds': [
+    {
+      id: 'PDS',
+      params: pcp,
     },
   ],
   '/terms-condition': [
