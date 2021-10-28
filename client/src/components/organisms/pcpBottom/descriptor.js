@@ -6,11 +6,11 @@ exports.default = Types.Component({
   isGlobal: false,
   description: 'pcp bottom section',
   attributes: {
-    plpBottom: Types.Array({
+    pcpBottom: Types.Array({
       label: 'PCP-Bottom',
       children: Types.Shape({
         children: {
-          plpBottomImage: Types.Image({
+          pcpBottomImage: Types.Image({
             label: 'Image',
             url: Types.String({ label: 'URL' }),
             altText: Types.String({ label: 'Alt text' }),

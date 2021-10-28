@@ -338,6 +338,20 @@ export const cataogData = {
     },
   ],
 }
+export const warrantyData = {
+  heading: 'Warranty',
+  image: {
+    url: '/static/images/KL_Warranty_Icon1.png',
+    altText: 'alt',
+  },
+  warData: [
+    {
+      text:
+        'In keeping with our goal to produce the highest quality oils and lubricants, we provide warranty on all products bearing the KLONDIKE lubricants brand. To view the KLONDIKE Lubricants Corporation Warranty document, please',
+      read: 'Read more',
+    },
+  ],
+}
 export const DownTime = {
   downTimeCosting: [
     {
