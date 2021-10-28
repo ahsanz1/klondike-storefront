@@ -41,7 +41,14 @@ export const delarship = {
   imageMaxWidth: '100%',
   cardItemsInRow: 4,
 }
-
+export const indusrtyapplication = {
+  heading: 'DEALERSHIP OPPORTUNITY',
+  videourl: '',
+  text:
+    'At KLONDIKE, our strengths are in our people and the commitment to our customers.',
+  paragraph:
+    'At KLONDIKE, our strengths are in our people and the commitment to our customers.',
+}
 export const heroBannerdata = {
   desktopHeroImage: {
     url: '/static/images/bannerhome.png',
@@ -314,6 +321,20 @@ export const distributionproduct = {
         'Solid inventory forecasting and quick replenishment cycles are vital parts of our exceptional order fulfillment rate. This customer-friendly measure helps avoid back orders and reduces equipment downtime for all of our customers. ',
       btntext: 'HOW TO BUY',
       outerboreder: '1px solid orange',
+    },
+  ],
+}
+export const cataogData = {
+  heading: 'Catalog',
+  image: {
+    url: '/static/images/Catalog.png',
+    altText: 'alt',
+  },
+  catData: [
+    {
+      text:
+        'KLONDIKE has a comprehensive range of 530 oils and greases covering 9 product categories and 15 package sizes. We designed our new catalog to make the process of going through this extensive product range and finding the right lubricant easy and efficient for you, our customer and partner! The new KLONDIKE catalog features all our SKUs organized by product and product category. You will also find package sizes, part numbers, OEM approvals, industry applications, warranty and cross reference documents.',
+      read: 'Read more',
     },
   ],
 }

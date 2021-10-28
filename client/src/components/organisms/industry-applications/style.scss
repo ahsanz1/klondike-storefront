@@ -25,7 +25,7 @@
   }
 
   .title {
-    margin-bottom: get-vw(9px);
+    margin-bottom: get-vw(30px);
     padding-top: get-vw(56px);
     color: #f1a900;
     font-size: get-vw(24px);
@@ -76,7 +76,18 @@
     }
 
     .details-paragragh {
-      padding-bottom: get-vw(41px);
+      padding-bottom: get-vw(22px);
+      font-size: get-vw(14px);
+      font-weight: normal;
+      line-height: get-vw(20px);
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .details-paragragh2 {
+      padding-bottom: get-vw(71px);
       font-size: get-vw(14px);
       font-weight: normal;
       line-height: get-vw(20px);
@@ -100,7 +111,13 @@
 
   .technical-bottom-section {
     margin-top: 0;
-    margin-left: get-vw(50px);
+    margin-right: get-vw(108px);
+    margin-left: get-vw(108px);
+
+    @media screen and (max-width: 768px) {
+      margin-right: get-vw(10px);
+      margin-left: get-vw(11px);
+    }
   }
 
   .about-us-links {
@@ -159,6 +176,8 @@
 
         .links-paragraph {
           width: get-vw(307px);
+          margin-top: 0.41vw;
+          margin-bottom: 0.76vw;
           font-size: get-vw(14px);
           font-style: normal;
           font-weight: normal;
@@ -166,7 +185,8 @@
 
           @media screen and (max-width: 768px) {
             width: 307px;
-            margin-bottom: 11px;
+            margin-top: 1.6vw;
+            margin-bottom: 2.93vw;
             font-size: 14px;
             line-height: 20px;
           }

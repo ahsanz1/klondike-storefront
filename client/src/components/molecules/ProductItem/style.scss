@@ -18,8 +18,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 266.89px;
-      height: 304.63px;
+      width: 18.53vw;
+      height: 21.15vw;
       background: white;
       box-shadow: 8px 8px 10px 0 #0000004d inset;
 
@@ -29,9 +29,11 @@
       }
 
       img {
-        // padding: 27px;
+        //padding: 27px;
+        width: 15.72vw;
 
         @media screen and (max-width: 768px) {
+          width: 42.4vw;
           padding: 20px;
         }
       }
@@ -43,7 +45,7 @@
       margin-top: 15px;
       color: #f2a900;
       font-family: $OpenSans;
-      font-size: 20px;
+      font-size: 1.38vw;
       font-style: normal;
       font-weight: 600;
       line-height: 110%;

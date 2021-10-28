@@ -240,11 +240,11 @@
     button {
       box-sizing: border-box;
       width: 26.6vw !important;
-      height: 3.3vw;
+      min-height: 3.3vw;
       padding-top: 0.69vw;
-      padding-right: 9.47vw;
+      // padding-right: 9.47vw;
       padding-bottom: 0.69vw;
-      padding-left: 9.47vw;
+      // padding-left: 9.47vw;
       border: 0.13vw solid #f2a900;
       border-radius: 0.34vw;
       background: #f2a900;
