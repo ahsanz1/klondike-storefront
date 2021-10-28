@@ -271,8 +271,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     let payload = {
       cartId: null,
       items: packagedOrder ? getPackagedOrder() : getBulkOrderData(),
-      registeredUser: !isLoggedIn,
-      userAuthToken: !isLoggedIn ? user?.accessToken : null,
+      registeredUser: isLoggedIn,
+      userAuthToken: isLoggedIn ? user?.accessToken : null,
     }
 
     addProductToCart(payload)
