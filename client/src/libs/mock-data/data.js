@@ -495,7 +495,7 @@ const mockData = {
   '/PDP': [
     {
       id: 'PDP',
-      params: { pdpdata, pdpdatasheet, RadioData },
+      params: { pdpdata, pdpdatasheet, RadioData, categories },
     },
   ],
   '/Order': [

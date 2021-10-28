@@ -5,6 +5,7 @@ import './style.scss'
 // import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
 import PDPInformation from 'components/molecules/pdpinforamation'
+import { fetchCategory } from 'libs/services/algolia'
 import {
   Radio,
   InputNumber,
@@ -17,18 +18,19 @@ import {
   Spin,
 } from 'antd'
 import { ShareAltOutlined } from '@ant-design/icons'
-// import PDPMobile from '../PDPMobile'
+import { productListing } from 'libs/utils/gtm'
+import PDPMobile from '../PDPMobile'
 // import Link from 'components/atoms/link'
 
 import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
-// import PlpTabList from 'components/organisms/plp-tab-list'
+import PlpTabList from 'components/organisms/plp-tab-list'
 import CartDropdown from '../cart-dropdown'
 import { useLocation } from '@reach/router'
 import queryString from 'query-string'
 
-const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
+const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   // const { data, imgdata, heading } = pdpdata
   const { showcartPOPModal, user, setCartData } = useContext(AppContext)
   console.log({ user })
@@ -45,6 +47,62 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
 
   const { packagedata, text1, bulk, text2 } = RadioData
   const [value, setValue] = React.useState(1)
+
+  const { setStep, plpredirect } = useContext(AppContext)
+  const [desc, setDesc] = useState('')
+  const [subItem, setSubItem] = useState({})
+  const [contextPlp, setContextPlp] = useState(plpredirect)
+  const [loading, setLoading] = useState(false)
+  const [products, setProducts] = useState([])
+  console.log({ loading })
+  console.log({ products })
+  console.log({ desc })
+
+  useEffect(() => {
+    setStep(1)
+  }, [])
+  useEffect(() => {
+    setContextPlp(plpredirect)
+  }, [plpredirect])
+
+  useEffect(() => {
+    const data = []
+    if (!data) {
+      perfomeAlgoliaSearch(contextPlp, 0)
+    } else {
+      setProducts([])
+    }
+  }, [contextPlp])
+
+  const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
+    try {
+      setLoading(true)
+      const results = await fetchCategory(category, pageNumber)
+      let serverResults = (results || { hits: [] }).hits
+      serverResults.sort((a, b) =>
+        a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
+      )
+      if (pageNumber === 0) {
+        productListing(results.nbHits, category)
+      }
+      setProducts(serverResults)
+      setLoading(false)
+      console.log('check results:', results)
+      subItemHandler(results)
+    } catch (e) {
+      setLoading(false)
+    }
+  }
+
+  const clickCategoryHandler = (name, desc) => {
+    // setItemName(name)
+    setContextPlp(name)
+    setDesc(desc)
+  }
+  const subItemHandler = list => {
+    console.log('list check:', list)
+    setSubItem(list)
+  }
 
   const onChange = e => {
     setValue(e.target.value)
@@ -258,16 +316,13 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
         </Row>
         <Row className="p-10">
           <Col style={{ width: '20%' }}>
-            <div
-              style={{
-                height: '100%',
-                background: 'rgba(5, 5, 5, 0.39)',
-                padding: 10,
-                fontSize: '1vw',
-              }}
-            >
-              <h5 style={{ color: 'white' }}>Categories</h5>
-            </div>
+            <PlpTabList
+              categories={categories}
+              itemName={contextPlp}
+              clickCategoryHandler={clickCategoryHandler}
+              subItem={subItem}
+              width="100%"
+            />
           </Col>
           <Col
             style={{
@@ -561,6 +616,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData }) => {
         </Row>
         <CartDropdown productData={productData} />
       </div>
+      <PDPMobile
+        pdpdata={items}
+        productData={productData}
+        isLoggedIn={isLoggedIn}
+        onQtyChange={onQtyChange}
+        onRadioChange={onChange}
+        value={value}
+        packagedOrder={packagedOrder}
+        onBulkQtyChange={onBulkQtyChange}
+      />
     </>
   )
 }
@@ -574,5 +639,6 @@ PDP.propTypes = {
   pdpdatasheet: PropTypes.string,
   pdpdata: PropTypes.string,
   RadioData: PropTypes.string,
+  categories: PropTypes.array,
 }
 export default PDP

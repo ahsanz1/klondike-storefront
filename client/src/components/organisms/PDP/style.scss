@@ -86,6 +86,10 @@
   // justify-content: center;
   width: 100%;
   padding: 1vw;
+
+  @media screen and (max-width: 500px) {
+    visibility: hidden;
+  }
 }
 
 .breadCrumbStyle {

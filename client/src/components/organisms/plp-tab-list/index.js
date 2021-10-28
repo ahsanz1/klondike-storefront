@@ -9,6 +9,7 @@ const PlpTabList = ({
   itemName,
   clickCategoryHandler,
   subItem,
+  width = '20%',
 }) => {
   const [product, setProduct] = useState('')
   console.log('props:', categories)
@@ -17,7 +18,7 @@ const PlpTabList = ({
   }
   console.log('check categories:', categories)
   return (
-    <div className="categoryItem trt">
+    <div className="categoryItem trt" style={{ width: width }}>
       {categories &&
         categories.length &&
         categories.map((item, index) => (
@@ -58,5 +59,7 @@ PlpTabList.propTypes = {
   itemName: PropTypes.string,
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
+  width: PropTypes.string,
 }
+
 export default PlpTabList
