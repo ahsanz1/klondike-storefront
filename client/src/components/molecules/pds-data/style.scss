@@ -1,0 +1,50 @@
+.pcp-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-top: 3.33vw;
+  padding: 0 50px;
+  background: #032939;
+
+  @media (max-width: 768px) {
+    width: 94.4vw;
+    //padding: 0;
+    height: 62.13vw;
+    margin-bottom: 8vw;
+  }
+
+  .plp-bottom-img {
+    width: 100%;
+    height: 11.52vw;
+    margin-top: 2.01vw;
+
+    @media (max-width: 768px) {
+      width: auto;
+      height: 30vw;
+      margin-top: 8vw;
+    }
+  }
+
+  button {
+    width: inherit;
+    margin-top: 3.05vw;
+
+    @media (max-width: 768px) {
+      //width: max-content !important;
+      width: 60.26vw;
+      height: 10.66vw;
+    }
+
+    &:hover {
+      transition: s;
+      background: #ddaf34;
+    }
+
+    .dealer-botton {
+      a {
+        color: white;
+      }
+    }
+  }
+}

@@ -75,7 +75,7 @@ import {
   Packagerorder,
   bulkorder,
   PlpBottom,
-  PcpBottom,
+  pcp,
   searchFlow,
   delarship,
   cataogData,
@@ -84,6 +84,7 @@ import {
   overviewData,
   bigVideodata,
   smallVideodata,
+  oamdata,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -178,7 +179,17 @@ const mockData = {
     },
     {
       id: 'PCPBottom',
-      params: PcpBottom,
+      params: pcp,
+    },
+    {
+      id: 'DownTime',
+      params: DownTime,
+    },
+  ],
+  '/pds': [
+    {
+      id: 'PDS',
+      params: pcp,
     },
   ],
   '/terms-condition': [
@@ -545,7 +556,7 @@ const mockData = {
   '/tech-resources/OEMApprovals': [
     {
       id: 'Oamspproval',
-      params: {},
+      params: oamdata,
     },
   ],
   '/confirmation-order': [
