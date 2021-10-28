@@ -19,6 +19,8 @@ exports.default = Types.Component({
       children: Types.Shape({
         children: {
           text: Types.RichText({ label: 'Paragraph' }),
+          english: Types.String({ label: ' ENGLISH catalog' }),
+          franch: Types.String({ label: ' FRENCH catalog' }),
         },
       }),
     }),

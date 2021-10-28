@@ -96,8 +96,19 @@ const Catlog = ({ heading, catData, image }) => {
                 <br />
                 <br />
                 Download an electronic copy of the
-                <Link className="english-link"> ENGLISH catalog </Link>
-                or the<Link className="english-link"> FRENCH catalog.</Link>
+                <Link
+                  className="english-link"
+                  to="https://klondikelubricants.com/wp-content/uploads/2021/07/2021.06.01_KLONDIKE-Catalogue-Spring_Summer-2021-Edition_English_website.pdf"
+                >
+                  ENGLISH catalog
+                </Link>
+                or the
+                <Link
+                  className="english-link"
+                  to="https://klondikelubricants.com/wp-content/uploads/2021/07/2021.06.01_KLONDIKE-Catalogue-Spring_Summer-2021-Edition_English_website.pdf"
+                >
+                  FRENCH catalog.
+                </Link>
                 <br />
                 <br />
                 Request your free printed catalog at
@@ -164,6 +175,8 @@ const Catlog = ({ heading, catData, image }) => {
 Catlog.propTypes = {
   catData: PropTypes.object,
   heading: PropTypes.string,
+  franch: PropTypes.string,
+  english: PropTypes.string,
   categories: PropTypes.array,
   itemName: PropTypes.string,
   image: PropTypes.string,

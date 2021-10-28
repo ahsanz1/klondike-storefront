@@ -80,6 +80,7 @@ import {
   cataogData,
   indusrtyapplication,
   warrantyData,
+  overviewData,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -603,7 +604,7 @@ const mockData = {
   '/about-klondike/why-klondike': [
     {
       id: 'WhyKlondike',
-      params: {},
+      params: overviewData,
     },
   ],
   '/about-klondike/work-at-klondike': [
