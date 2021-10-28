@@ -6,7 +6,7 @@ exports.default = Types.Component({
   isGlobal: false,
   description: 'PDS bottom section',
   attributes: {
-    PCPBottom: Types.Array({
+    pcpbottom: Types.Array({
       label: 'Paragraph',
       children: Types.Shape({
         children: {
