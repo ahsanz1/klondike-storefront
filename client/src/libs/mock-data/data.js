@@ -81,6 +81,7 @@ import {
   indusrtyapplication,
   warrantyData,
   overviewData,
+  oamdata,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -542,7 +543,7 @@ const mockData = {
   '/tech-resources/OEMApprovals': [
     {
       id: 'Oamspproval',
-      params: {},
+      params: oamdata,
     },
   ],
   '/confirmation-order': [
