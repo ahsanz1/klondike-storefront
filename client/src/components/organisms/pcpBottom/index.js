@@ -11,8 +11,8 @@ const PCPBottom = ({ image, button, mobileButton, url }) => {
       <div className="pcp-bottom">
         <div className="plp-bottom-image">
           <Image
-            src={image}
-            // alt={image.altText}
+            src={image.url}
+            alt={image.altText}
             className="plp-bottom-img"
           />
         </div>
