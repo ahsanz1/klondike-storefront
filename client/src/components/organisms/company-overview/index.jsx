@@ -24,7 +24,7 @@ const OverView = ({ commited }) => {
         <div className="company-overview-detail-container">
           <div className="overview-details">
             <Label className="title">Company Overview</Label>
-            <OverViewContent overviewWrapper={commited} />
+            <OverViewContent />
             {/* {overviewWrapper.map((item, i) => {
               return (
                 <div key={i} className="overview-detail-section">
