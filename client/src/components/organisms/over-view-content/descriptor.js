@@ -8,7 +8,7 @@ exports.default = Types.Component({
 
   attributes: {
     mainHeading: Types.String({ label: 'Main Heading' }),
-    commited: Types.Array({
+    overviewWrapper: Types.Array({
       label: 'Company Over-View Section Content',
       children: Types.Shape({
         children: {
@@ -20,27 +20,6 @@ exports.default = Types.Component({
                 paragraph: Types.RichText({ label: 'Description' }),
               },
             }),
-          }),
-        },
-      }),
-    }),
-    aboutUsLinks: Types.Array({
-      label: 'Mid Over-View Section Content',
-      children: Types.Shape({
-        children: {
-          image: Types.Image({
-            label: 'Section Image',
-            url: Types.String({ label: 'URL' }),
-            altText: Types.String({ label: 'Alt text' }),
-          }),
-          title: Types.String({ label: 'Title' }),
-          paragraph: Types.RichText({ label: 'Description' }),
-          buttonText: Types.String({ label: 'Button Text' }),
-          redirectUrl: Types.String({ label: 'Redirect URL' }),
-          buttonImage: Types.Image({
-            label: 'Button Image',
-            url: Types.String({ label: 'URL' }),
-            altText: Types.String({ label: 'Alt text' }),
           }),
         },
       }),
