@@ -125,7 +125,7 @@ const ProductItem = ({ item, id }) => {
           className="product-title"
           style={{ marginBottom: titles.length > 1 && '0' }}
         >
-          <Link to={`/products?sku=${item.sku}`}>
+          <Link className="notranslate" to={`/products?sku=${item.sku}`}>
             {titles[0] && titles[0]}
             {titles.length > 1 ? ' & ' : ''}
           </Link>
