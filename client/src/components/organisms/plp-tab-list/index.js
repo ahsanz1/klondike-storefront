@@ -42,7 +42,12 @@ const PlpTabList = ({
                           onClick={() => productClickHandler(item.title)}
                           className={item.title === product && 'active-product'}
                         >
-                          <Link to={`/PDP?sku=${item.sku}`}>{item.title}</Link>
+                          <Link
+                            to={`/PDP?sku=${item.sku}`}
+                            className="notranslate"
+                          >
+                            {item.title}
+                          </Link>
                         </Label>
                       ))}
                   </div>

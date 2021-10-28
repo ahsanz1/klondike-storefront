@@ -200,7 +200,10 @@ Components[
 ] = require('components/organisms/Tech-Resource').default
 Components[
   'OverView'
-] = require('components/organisms/company-overview').default
+] = require('components/organisms/over-view-content').default
+Components[
+  'OverViewLinks'
+] = require('components/organisms/over-view-links').default
 Components['WhyKlondike'] = require('components/organisms/why-klondike').default
 Components[
   'WorkAtKlonedike'

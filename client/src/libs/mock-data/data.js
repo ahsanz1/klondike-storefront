@@ -589,7 +589,15 @@ const mockData = {
   ],
   '/about-klondike/overview': [
     {
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...contactUsBanner, key: '112233446677' },
+    },
+    {
       id: 'OverView',
+      params: {},
+    },
+    {
+      id: 'OverViewLinks',
       params: {},
     },
   ],
