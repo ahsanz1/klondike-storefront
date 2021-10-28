@@ -79,7 +79,7 @@ const Catlog = ({ heading, catData, image }) => {
                 {catData &&
                   catData.map((data, i) => {
                     return size[0] > 768 ? (
-                      <> {data.text}</>
+                      <p dangerouslySetInnerHTML={{ __html: data.text }}></p>
                     ) : (
                       <>
                         <ReadMoreReact

@@ -79,6 +79,7 @@ import {
   delarship,
   cataogData,
   indusrtyapplication,
+  warrantyData,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -497,7 +498,7 @@ const mockData = {
   '/PDP': [
     {
       id: 'PDP',
-      params: { pdpdata, pdpdatasheet, RadioData },
+      params: { pdpdata, pdpdatasheet, RadioData, categories },
     },
   ],
   '/Order': [
@@ -552,7 +553,7 @@ const mockData = {
   '/tech-resources/warranty': [
     {
       id: 'WarrantyPage',
-      params: {},
+      params: warrantyData,
     },
   ],
   '/tech-resources/video-gallery': [
