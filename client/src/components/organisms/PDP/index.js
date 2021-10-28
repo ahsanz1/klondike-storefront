@@ -216,24 +216,27 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const getPackagedOrder = () => {
     var newData = []
+    console.log({ items })
     if (packagedOrder && items?.packagedOrderItems?.length) {
       items?.packagedOrderItems?.map(item => {
-        newData?.push({
-          extra: {},
-          group: item?.group,
-          itemId: item?.itemId,
-          sku: item?.sku,
-          quantity: item?.bulkOrderData?.litres,
-          price: {
-            base: Number(item?.price?.base),
-            currency: 'USD',
-            sale: false,
-            discount: {
-              price: 0,
+        if (item?.quantity > 0) {
+          newData?.push({
+            extra: {},
+            group: item?.group,
+            itemId: item?.itemId,
+            sku: item?.sku,
+            quantity: item?.quantity,
+            price: {
+              base: Number(item?.price?.base),
+              currency: 'USD',
+              sale: false,
+              discount: {
+                price: 0,
+              },
             },
-          },
-          size: item?.mappedAttributes['Package Size'],
-        })
+            size: item?.mappedAttributes['Package Size'],
+          })
+        }
       })
     }
     return newData
@@ -249,7 +252,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
           group: bulkOrderItem[0]?.group,
           itemId: bulkOrderItem[0]?.itemId,
           sku: bulkOrderItem[0]?.sku,
-          quantity: bulkOrderItem[0]?.bulkOrderData?.litres,
+          quantity: bulkOrderItem[0]?.bulkOrderData?.quantity,
           price: {
             base: Number(bulkOrderItem[0]?.price?.base),
             currency: 'USD',
@@ -281,7 +284,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
           setCartData(res?.response?.data)
           showcartPOPModal()
           setAddingToCart(false)
-        }
+        } else setAddingToCart(false)
       })
       .catch(e => {
         alert('No Data Found')
