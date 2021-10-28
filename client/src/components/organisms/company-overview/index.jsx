@@ -1,16 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './style.scss'
 import Label from 'components/atoms/label'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import PCPBottom from '../pcpBottom'
 import { PcpBottom, aboutUs } from 'libs/data/data'
 import { overviewData } from 'components/organisms/company-overview/data'
-import ReactReadMoreReadLess from 'react-read-more-read-less'
+// import ReactReadMoreReadLess from 'react-read-more-read-less'
 import Link from 'components/atoms/link'
+import OverViewContent from 'components/molecules/over-view-content'
 
-const OverView = () => {
-  const { overviewWrapper, aboutUsLinks } = overviewData
-
+const OverView = ({ commited }) => {
+  const {
+    // overviewWrapper,
+    aboutUsLinks,
+  } = overviewData
+  console.log('check overview props:', commited)
   return (
     <>
       <div className="company-overview">
@@ -19,8 +24,8 @@ const OverView = () => {
         <div className="company-overview-detail-container">
           <div className="overview-details">
             <Label className="title">Company Overview</Label>
-
-            {overviewWrapper.map((item, i) => {
+            <OverViewContent overviewWrapper={commited} />
+            {/* {overviewWrapper.map((item, i) => {
               return (
                 <div key={i} className="overview-detail-section">
                   <Label className="details-title">{item.title}</Label>
@@ -42,7 +47,7 @@ const OverView = () => {
                   </div>
                 </div>
               )
-            })}
+            })} */}
           </div>
         </div>
 
@@ -97,5 +102,8 @@ const OverView = () => {
     </>
   )
 }
-
+OverView.propTypes = {
+  mainHeading: PropTypes.string,
+  commited: PropTypes.array,
+}
 export default OverView

@@ -77,6 +77,8 @@ import {
   PcpBottom,
   searchFlow,
   delarship,
+  cataogData,
+  indusrtyapplication,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -574,7 +576,7 @@ const mockData = {
   '/tech-resources/catlog': [
     {
       id: 'Catlog',
-      params: {},
+      params: cataogData,
     },
   ],
   '/tech-resource': [
@@ -604,7 +606,7 @@ const mockData = {
   '/about-klondike/industry-applications': [
     {
       id: 'IndustryApplications',
-      params: {},
+      params: indusrtyapplication,
     },
   ],
   '/about-klondike/safety-environment': [
