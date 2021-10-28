@@ -293,11 +293,17 @@ $vw-viewport: 1440;
 
         @media (max-width: 500px) {
           display: block;
+          margin-top: 4.26vw;
+          margin-bottom: 5.6vw;
           border: 0.53vw solid #f1a900;
 
           a {
             margin: 0 4.26vw;
             color: #fff;
+            font-size: 3.73vw;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 6.4vw;
           }
         }
 
@@ -308,6 +314,7 @@ $vw-viewport: 1440;
 
       .dealer-botton {
         width: get-vw(226px);
+        height: 2.77vw;
         margin-top: 3.05vw;
         margin-bottom: 1.45vw;
         border-radius: 5px;
@@ -322,6 +329,10 @@ $vw-viewport: 1440;
 
         a {
           color: white;
+          font-size: 0.97vw;
+          font-style: normal;
+          font-weight: bold;
+          line-height: 1.66vw;
         }
       }
     }
