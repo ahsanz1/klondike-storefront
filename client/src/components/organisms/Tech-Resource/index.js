@@ -3,6 +3,7 @@ import './style.scss'
 import { PcpBottom, techresource } from 'libs/data/data'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import Label from 'components/atoms/label'
+import Link from 'components/atoms/link'
 import Image from 'components/atoms/image'
 import PCPBottom from 'components/organisms/pcpBottom'
 import { techdata } from './data'
@@ -34,13 +35,13 @@ const TechResource = () => {
                     <div className="tech-data">
                       <Label className="tech-h">{data.heading}</Label>
                       <Label className="parah">{data.description}</Label>
-                      <Label className="more">
+                      <Link className="more" to={`tech-resources/${data.link}`}>
                         Discover More
                         <Image
                           className="img-arow"
                           src="/static/images/vec.png"
                         />
-                      </Label>
+                      </Link>
                     </div>
                   </div>
                 </div>
