@@ -3826,21 +3826,23 @@ export const PProductsData = [
     },
   },
 ]
-export const PcpBottom = [
-  {
-    image:
-      'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
-    button: 'DOWNLOAD PDS & MSDS',
-    url: '/tech-resource',
-    mobileButton: 'DOWNLOAD PDS & MSDS',
-  },
-  {
-    image: '/static/images/productfooter.png',
-    button: 'BECOME A DEALER',
-    url: '/dealership-opportunity',
-    mobileButton: 'BECOME A DEALER',
-  },
-]
+export const pcp = {
+  pcpbottom: [
+    {
+      image:
+        'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+      button: 'DOWNLOAD PDS & MSDS',
+      url: '/tech-resource',
+      mobileButton: 'DOWNLOAD PDS & MSDS',
+    },
+    {
+      image: '/static/images/productfooter.png',
+      button: 'BECOME A DEALER',
+      url: '/dealership-opportunity',
+      mobileButton: 'BECOME A DEALER',
+    },
+  ],
+}
 
 export const PSusbcribeNewItem = {
   id: 'fake-item-id',
