@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Label from 'components/atoms/label'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
-import PCPBottom from '../pcpBottom'
-import { PcpBottom, aboutUs } from 'libs/data/data'
+// import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
+// import PCPBottom from '../pcpBottom'
+// import { PcpBottom, aboutUs } from 'libs/data/data'
 import { overviewData } from 'components/organisms/company-overview/data'
 // import ReactReadMoreReadLess from 'react-read-more-read-less'
 import Link from 'components/atoms/link'
-import OverViewContent from 'components/molecules/over-view-content'
+import OverViewContent from 'components/organisms/over-view-content'
 
 const OverView = ({ commited }) => {
   const {
@@ -19,7 +19,7 @@ const OverView = ({ commited }) => {
   return (
     <>
       <div className="company-overview">
-        <WebpagesHeroImages className="Heroimage" {...aboutUs} />
+        {/* <WebpagesHeroImages className="Heroimage" {...aboutUs} /> */}
 
         <div className="company-overview-detail-container">
           <div className="overview-details">
@@ -83,7 +83,7 @@ const OverView = ({ commited }) => {
           })}
         </div>
 
-        <div className="technical-bottom">
+        {/* <div className="technical-bottom">
           <div className="technical-bottom-section">
             {PcpBottom &&
               PcpBottom.map((item, i) => (
@@ -97,7 +97,7 @@ const OverView = ({ commited }) => {
                 </>
               ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )
