@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+  margin-top: 3.33vw;
   padding: 0 50px;
   background: #032939;
 
@@ -10,7 +11,7 @@
     width: 94.4vw;
     //padding: 0;
     height: 62.13vw;
-    margin-top: 8vw;
+    margin-bottom: 8vw;
   }
 
   .plp-bottom-img {
@@ -30,7 +31,9 @@
     margin-top: 3.05vw;
 
     @media (max-width: 768px) {
-      width: max-content !important;
+      //width: max-content !important;
+      width: 60.26vw;
+      height: 10.66vw;
     }
 
     &:hover {

@@ -8,7 +8,7 @@ exports.default = Types.Component({
 
   attributes: {
     mainHeading: Types.String({ label: 'Main Heading' }),
-    commited: Types.Array({
+    overviewWrapper: Types.Array({
       label: 'Company Over-View Section Content',
       children: Types.Shape({
         children: {
