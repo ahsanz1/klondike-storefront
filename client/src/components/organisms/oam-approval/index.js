@@ -1,8 +1,5 @@
 import React from 'react'
 import './style.scss'
-import PCPBottom from 'components/organisms/pcpBottom'
-import { PcpBottom, technicalBanner } from 'libs/data/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import PropTypes from 'prop-types'
 import { useWindowSize } from 'libs/custom-hooks'
 import Image from 'components/atoms/image'
@@ -54,7 +51,6 @@ const Oamspproval = ({ oam, heading }) => {
 
   return size[0] > 768 ? (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
       <div className="oaem-page-wrapper">
         <div className="technacil-wriper">
           <div className="custom-tech">
@@ -65,21 +61,6 @@ const Oamspproval = ({ oam, heading }) => {
             />
           </div>
           {renderOamspprovaldata()}
-        </div>
-        <div className="technical-bottom">
-          <div className="technical-bottom-section">
-            {PcpBottom &&
-              PcpBottom.map((item, i) => (
-                <>
-                  <PCPBottom
-                    image={item.image}
-                    button={item.button}
-                    mobileButton={item.mobileButton}
-                    url={item.url}
-                  />
-                </>
-              ))}
-          </div>
         </div>
       </div>
     </>
