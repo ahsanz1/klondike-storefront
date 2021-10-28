@@ -252,7 +252,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
           group: bulkOrderItem[0]?.group,
           itemId: bulkOrderItem[0]?.itemId,
           sku: bulkOrderItem[0]?.sku,
-          quantity: bulkOrderItem[0]?.bulkOrderData?.quantity,
+          quantity: bulkOrderItem[0]?.quantity,
           price: {
             base: Number(bulkOrderItem[0]?.price?.base),
             currency: 'USD',
