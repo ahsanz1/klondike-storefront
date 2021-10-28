@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 20.83vw;
-  // margin-top: 3.33vw;
+  height: 100%;
+  margin-top: 3.33vw;
   padding: 0 50px;
   background: #032939;
 
@@ -16,14 +16,13 @@
 
   .plp-bottom-img {
     width: 100%;
-    width: 24.72vw;
     height: 11.52vw;
     margin-top: 2.01vw;
 
     @media (max-width: 768px) {
-      width: 68.53vw;
-      height: 33.86vw;
-      margin-top: 7.73vw;
+      width: auto;
+      height: 30vw;
+      margin-top: 8vw;
     }
   }
 
