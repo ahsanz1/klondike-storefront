@@ -1,12 +1,12 @@
 const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
-  id: 'PCPBottom',
-  label: 'pcp bottom section',
+  id: 'PDS',
+  label: 'PDS',
   isGlobal: false,
-  description: 'pcp bottom section',
+  description: 'PDS bottom section',
   attributes: {
-    PCPBottom: Types.Array({
+    pcpbottom: Types.Array({
       label: 'Paragraph',
       children: Types.Shape({
         children: {

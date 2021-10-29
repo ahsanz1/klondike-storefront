@@ -33,7 +33,12 @@ const WarrantyPage = ({ heading, warData, image }) => {
                               <p
                                 dangerouslySetInnerHTML={{ __html: data.text }}
                               ></p>
-                              <Link className="warranty-link">click here.</Link>
+                              <Link
+                                className="warranty-link"
+                                to="https://klondikelubricants.com/wp-content/uploads/2015/05/KLONDIKE_Lubricants_Corporation_Warranty.pdf"
+                              >
+                                click here.
+                              </Link>
                             </>
                           )
                         })}
