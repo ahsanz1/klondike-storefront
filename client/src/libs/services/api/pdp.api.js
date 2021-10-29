@@ -29,9 +29,16 @@ export const resetPasswordEmail = async email => {
       ENDPOINTS.PATCH.resetPassword,
       email,
     )
-    console.log('reset response', response)
+
+    return {
+      hasError: false,
+      response: response,
+    }
   } catch (e) {
-    console.log('errorfound ', e)
+    return {
+      hasError: true,
+      error: e,
+    }
   }
 }
 
