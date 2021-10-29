@@ -10,7 +10,11 @@ const PdsData = ({ image, url, button, mobileButton }) => {
     <div className="bottom-plp">
       <div className="pcp-bottom">
         <div className="plp-bottom-image">
-          <Image src={image} alt="hii" className="plp-bottom-img" />
+          <Image
+            src={image.url}
+            alt={image.altText}
+            className="plp-bottom-img"
+          />
         </div>
         <div>
           <Button className="dealer-botton">
