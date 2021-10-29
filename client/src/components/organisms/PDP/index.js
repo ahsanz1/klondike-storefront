@@ -47,6 +47,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const { packagedata, text1, bulk, text2 } = RadioData
   const [value, setValue] = React.useState(1)
+  const [btnDisabled, setButtonDisabled] = useState(true)
 
   const { setStep, plpredirect } = useContext(AppContext)
   const [desc, setDesc] = useState('')
@@ -66,6 +67,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   }, [plpredirect])
 
   useEffect(() => {
+    console.log('category changed')
     const data = []
     if (!data) {
       perfomeAlgoliaSearch(contextPlp, 0)
@@ -166,6 +168,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     for (var i = 0; i < newArray?.length; i++) {
       totalCost += parseFloat(newArray[i]?.totalPrice)
     }
+    if (totalCost > 0) {
+      setButtonDisabled(false)
+    } else setButtonDisabled(true)
     return totalCost
   }
 
@@ -196,6 +201,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         2,
       ),
     }
+    if (newObj?.totalPrice > 0) {
+      setButtonDisabled(false)
+    } else setButtonDisabled(true)
     setItems({
       ...items,
       bulkOrderItem: [newObj],
@@ -216,24 +224,27 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const getPackagedOrder = () => {
     var newData = []
+    console.log({ items })
     if (packagedOrder && items?.packagedOrderItems?.length) {
       items?.packagedOrderItems?.map(item => {
-        newData?.push({
-          extra: {},
-          group: item?.group,
-          itemId: item?.itemId,
-          sku: item?.sku,
-          quantity: item?.bulkOrderData?.litres,
-          price: {
-            base: Number(item?.price?.base),
-            currency: 'USD',
-            sale: false,
-            discount: {
-              price: 0,
+        if (item?.quantity > 0) {
+          newData?.push({
+            extra: {},
+            group: item?.group,
+            itemId: item?.itemId,
+            sku: item?.sku,
+            quantity: item?.quantity,
+            price: {
+              base: Number(item?.price?.base),
+              currency: 'USD',
+              sale: false,
+              discount: {
+                price: 0,
+              },
             },
-          },
-          size: item?.mappedAttributes['Package Size'],
-        })
+            size: item?.mappedAttributes['Package Size'],
+          })
+        }
       })
     }
     return newData
@@ -249,7 +260,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
           group: bulkOrderItem[0]?.group,
           itemId: bulkOrderItem[0]?.itemId,
           sku: bulkOrderItem[0]?.sku,
-          quantity: bulkOrderItem[0]?.bulkOrderData?.litres,
+          quantity: bulkOrderItem[0]?.quantity,
           price: {
             base: Number(bulkOrderItem[0]?.price?.base),
             currency: 'USD',
@@ -281,7 +292,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
           setCartData(res?.response?.data)
           showcartPOPModal()
           setAddingToCart(false)
-        }
+        } else setAddingToCart(false)
       })
       .catch(e => {
         alert('No Data Found')
@@ -605,7 +616,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 )}
                 {isLoggedIn && (
                   <div style={{ display: 'flex', justifyContent: 'end' }}>
-                    <Button className="customButton" onClick={onSubmit}>
+                    <Button
+                      className="customButton"
+                      disabled={btnDisabled}
+                      onClick={onSubmit}
+                    >
                       {addingToCart ? 'Adding...' : 'ADD TO CART'}
                     </Button>
                   </div>
@@ -627,6 +642,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         value={value}
         packagedOrder={packagedOrder}
         onBulkQtyChange={onBulkQtyChange}
+        btnDisabled={btnDisabled}
       />
     </>
   )
