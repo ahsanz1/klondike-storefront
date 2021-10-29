@@ -3843,6 +3843,19 @@ export const pcp = {
     },
   ],
 }
+export const rendersubpage = {
+  datasubpage: [
+    {
+      heading: 'audi',
+      Paragraph:
+        'At KLONDIKE our products are backed by a dedicated team of experts who are available to you with educational information and a commitment to ensuring technical<span class="sku-link"> SAE 5W-30 Euro Low SAPS Full Synthetic, 5W-30 Euro Mid SAPS</span> excellence across all our innovations. Below you will find technical documents including Product Data Sheets (PDSs) and Material Safety Data Sheets (MSDSs) available for download.',
+      image: {
+        url: '/static/images/image 1.png',
+        altText: 'alt',
+      },
+    },
+  ],
+}
 
 export const PSusbcribeNewItem = {
   id: 'fake-item-id',
