@@ -2,7 +2,7 @@
 
 .mini-cart-item {
   padding-top: get-vw(15px);
-  padding-bottom: get-vw(40px);
+  padding-bottom: get-vw(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   font-family: $OpenSans;
@@ -131,19 +131,24 @@
         }
 
         .product-price {
+          margin-top: 3.19vw;
           color: rgba(194, 187, 183, 1);
-          font-size: get-vw(11px);
+          font-size: get-vw(12px);
           font-style: normal;
           font-weight: 800;
           line-height: get-vw(15px);
 
           @media screen and (max-width: 768px) {
             padding-left: 5.33vw;
+            font-size: 11px !important;
           }
 
           .product-price-mobile {
+            width: 6.11vw;
+            height: 1.31vw;
             margin-bottom: 2px;
             color: white;
+            font-size: 0.76vw;
           }
         }
       }
@@ -178,6 +183,8 @@
       }
 
       .remove-button {
+        margin-top: 2.08vw;
+        margin-left: -61vw;
         border: none;
         background: #013a4e;
         color: #c2bbb7;
@@ -281,6 +288,10 @@
         flex-direction: row;
         justify-content: space-between;
         padding-top: 25px;
+
+        @media screen and (max-width: 768px) {
+          font-size: 2.93vw;
+        }
       }
 
       .quantity-box {
