@@ -22,6 +22,26 @@ export const getProductBySKU = async (sku, count = 1) => {
   }
 }
 
+export const resetPasswordEmail = async email => {
+  try {
+    console.log('emailll', email)
+    const response = await axios.common.patch(
+      ENDPOINTS.PATCH.resetPassword,
+      email,
+    )
+
+    return {
+      hasError: false,
+      response: response,
+    }
+  } catch (e) {
+    return {
+      hasError: true,
+      error: e,
+    }
+  }
+}
+
 export const addProductToCart = async (payload, count = 1) => {
   try {
     const response = await axios.common.post(ENDPOINTS.POST.addToCart, payload)
