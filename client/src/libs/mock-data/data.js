@@ -82,6 +82,7 @@ import {
   warrantyData,
   overviewData,
   oamdata,
+  rendersubpage,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -187,6 +188,12 @@ const mockData = {
     {
       id: 'PDS',
       params: pcp,
+    },
+  ],
+  '/SubItem': [
+    {
+      id: 'SubItem',
+      params: rendersubpage,
     },
   ],
   '/terms-condition': [
