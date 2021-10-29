@@ -74,9 +74,14 @@ import {
   Packagerorder,
   bulkorder,
   PlpBottom,
-  PcpBottom,
+  pcp,
   searchFlow,
   delarship,
+  cataogData,
+  indusrtyapplication,
+  warrantyData,
+  overviewData,
+  oamdata,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -171,7 +176,17 @@ const mockData = {
     },
     {
       id: 'PCPBottom',
-      params: PcpBottom,
+      params: pcp,
+    },
+    {
+      id: 'DownTime',
+      params: DownTime,
+    },
+  ],
+  '/pds': [
+    {
+      id: 'PDS',
+      params: pcp,
     },
   ],
   '/terms-condition': [
@@ -495,7 +510,7 @@ const mockData = {
   '/PDP': [
     {
       id: 'PDP',
-      params: { pdpdata, pdpdatasheet, RadioData },
+      params: { pdpdata, pdpdatasheet, RadioData, categories },
     },
   ],
   '/Order': [
@@ -538,7 +553,7 @@ const mockData = {
   '/tech-resources/OEMApprovals': [
     {
       id: 'Oamspproval',
-      params: {},
+      params: oamdata,
     },
   ],
   '/confirmation-order': [
@@ -550,7 +565,7 @@ const mockData = {
   '/tech-resources/warranty': [
     {
       id: 'WarrantyPage',
-      params: {},
+      params: warrantyData,
     },
   ],
   '/tech-resources/video-gallery': [
@@ -574,7 +589,7 @@ const mockData = {
   '/tech-resources/catlog': [
     {
       id: 'Catlog',
-      params: {},
+      params: cataogData,
     },
   ],
   '/tech-resource': [
@@ -585,14 +600,22 @@ const mockData = {
   ],
   '/about-klondike/overview': [
     {
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...contactUsBanner, key: '112233446677' },
+    },
+    {
       id: 'OverView',
+      params: {},
+    },
+    {
+      id: 'OverViewLinks',
       params: {},
     },
   ],
   '/about-klondike/why-klondike': [
     {
       id: 'WhyKlondike',
-      params: {},
+      params: overviewData,
     },
   ],
   '/about-klondike/work-at-klondike': [
@@ -604,7 +627,7 @@ const mockData = {
   '/about-klondike/industry-applications': [
     {
       id: 'IndustryApplications',
-      params: {},
+      params: indusrtyapplication,
     },
   ],
   '/about-klondike/safety-environment': [

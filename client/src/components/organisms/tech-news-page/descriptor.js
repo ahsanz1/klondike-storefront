@@ -1,23 +1,23 @@
 const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
-  id: 'PCPBottom',
-  label: 'pcp bottom section',
+  id: 'TechNews',
+  label: 'TechNews',
   isGlobal: false,
-  description: 'pcp bottom section',
+  description: `Tech News component contains the description about each heading`,
+
   attributes: {
-    PCPBottom: Types.Array({
-      label: 'Paragraph',
+    techBlogData: Types.Array({
+      label: 'Tech Blog Data',
       children: Types.Shape({
         children: {
           image: Types.Image({
-            label: 'Image',
+            label: 'Section Image',
             url: Types.String({ label: 'URL' }),
             altText: Types.String({ label: 'Alt text' }),
           }),
-          button: Types.String({ label: 'Button Text' }),
-          url: Types.String({ label: 'Button URL' }),
-          mobileButton: Types.String({ label: 'Mobile Button Text' }),
+          date: Types.String({ label: 'Date' }),
+          text: Types.RichText({ label: 'Description' }),
         },
       }),
     }),

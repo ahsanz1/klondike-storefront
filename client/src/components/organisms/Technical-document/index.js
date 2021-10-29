@@ -5,18 +5,18 @@ import './style.scss'
 import React, { useState, useEffect } from 'react'
 import PCPBottom from 'components/organisms/pcpBottom'
 import Accordiondocment from 'components/molecules/accordion-document'
-import { PcpBottom, technicalBanner, imgonbanner } from 'libs/data/data'
+import { PcpBottom, technicalBanner } from 'libs/data/data'
+import { useWindowSize } from 'libs/custom-hooks'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import Techtabllist from '../Technical-tablist'
 import PropTypes from 'prop-types'
 import { faqsDatadoc } from './data'
-import Image from 'components/atoms/image'
+import MobileTabListTech from '../Technical-tablist/mobile-tab'
 
-const Technical = ({
+const Technicaldata = ({
   isOpen = false,
 
   short = false,
-  categories,
 }) => {
   const { faq } = faqsDatadoc
 
@@ -37,27 +37,10 @@ const Technical = ({
     newFaqs[faqId].isOpen = !newFaqs[faqId].isOpen
     setFaqs([...newFaqs])
   }
+
   return (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
-      <Image {...imgonbanner} />
-
       <div className="technacil-wriper">
-        <div className="custom-tech">
-          <Techtabllist
-            itemName="Technical Documents"
-            categories={categories}
-            // subItem={subItem}
-          />
-
-          {/* <div className="productItem">
-          <Category
-            // categoryName={itemName}
-            subItemHandler={subItemHandler}
-            // productList={productList}
-          />
-        </div> */}
-        </div>
         <div className="technical-data">
           <div className="accordin-warp">
             <div className="heading-tech">
@@ -88,26 +71,60 @@ const Technical = ({
           </div>
         </div>
       </div>
-
-      <div className="technical-bottom">
-        <div className="technical-bottom-section">
-          {PcpBottom &&
-            PcpBottom.map((item, i) => (
-              <>
-                <PCPBottom
-                  image={item.image}
-                  button={item.button}
-                  mobileButton={item.mobileButton}
-                  url={item.url}
-                />
-              </>
-            ))}
+    </>
+  )
+}
+const Technical = () => {
+  const size = useWindowSize()
+  // const [size, setSize] = useState(useWindowSize)
+  console.log('size', size)
+  return size[0] > 768 ? (
+    <>
+      <WebpagesHeroImages {...technicalBanner} />
+      <div className="">
+        <div className="technacil-wriper">
+          <div className="custom-tech">
+            <Techtabllist
+              className="technical-document"
+              itemName="Technical Documents"
+              // categories={categories}
+            />
+          </div>
+          <Technicaldata />
         </div>
+        <div className="technical-bottom">
+          <div className="technical-bottom-section">
+            {PcpBottom &&
+              PcpBottom.map((item, i) => (
+                <>
+                  <PCPBottom
+                    image={item.image}
+                    button={item.button}
+                    mobileButton={item.mobileButton}
+                    url={item.url}
+                  />
+                </>
+              ))}
+          </div>
+        </div>
+      </div>
+    </>
+  ) : (
+    <>
+      <div className="custom-tech">
+        <MobileTabListTech
+          className="warranty-tablist"
+          itemName="Technical Documents"
+        >
+          <div className="technacil-wriper">
+            <Technicaldata />
+          </div>
+        </MobileTabListTech>
       </div>
     </>
   )
 }
-Technical.propTypes = {
+Technicaldata.propTypes = {
   categories: PropTypes.array,
   size: PropTypes.array,
   partNumber: PropTypes.array,

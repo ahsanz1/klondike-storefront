@@ -7,7 +7,6 @@ import Techtabllist from '../Technical-tablist'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
-
 import { techBlogData } from 'components/organisms/tech-news-page/data'
 import TechBlogItem from 'components/organisms/tech-news-page/tech-blog-item'
 import { Pagination } from 'antd'

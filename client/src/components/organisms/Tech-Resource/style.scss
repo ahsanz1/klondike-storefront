@@ -8,8 +8,9 @@
 
     @media (max-width: 768px) {
       position: absolute;
-      top: 37.33vw;
       left: 45.33vw;
+      width: 44.26vw;
+      margin-top: 47.2vw;
     }
   }
 
@@ -126,6 +127,7 @@
             font-feature-settings: 'pnum' on, 'lnum' on;
 
             @media (max-width: 768px) {
+              margin-top: 2.66vw;
               color: #f1a900;
               font-family: $OpenSans;
               font-size: 4.8vw;
@@ -138,6 +140,8 @@
           }
 
           .parah {
+            margin-top: 0.41vw;
+            margin-bottom: 0.76vw;
             opacity: 0.9;
             color: #fff;
             font-family: $OpenSans;
@@ -148,6 +152,8 @@
             font-feature-settings: 'pnum' on, 'lnum' on;
 
             @media (max-width: 768px) {
+              margin-top: 1.6vw;
+              margin-bottom: 2.93vw;
               opacity: 0.9;
               color: #fff;
               font-family: $OpenSans;
@@ -204,7 +210,15 @@
 
         .img-tech {
           > .c-image {
+            width: 13.19vw;
             max-width: none;
+            height: 6.94vw;
+
+            @media (max-width: 768px) {
+              width: 50.66vw;
+              height: 26.66vw;
+              margin-top: 10.4vw;
+            }
           }
         }
 
