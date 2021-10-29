@@ -7,12 +7,11 @@ import Techtabllist from '../Technical-tablist'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
-
-import { techBlogData } from 'components/organisms/tech-news-page/data'
+// import { techBlogData } from 'components/organisms/tech-news-page/data'
 import TechBlogItem from 'components/organisms/tech-news-page/tech-blog-item'
 import { Pagination } from 'antd'
 
-const TechNews = ({ categories }) => {
+const TechNews = ({ categories, techBlogData }) => {
   const perPageItems = 2
   let [activeItems, setActiveItems] = useState([])
 
@@ -28,7 +27,7 @@ const TechNews = ({ categories }) => {
     data = data.slice(startIndex, endIndex)
     setActiveItems(data)
   }
-
+  console.log('check response:', techBlogData)
   return (
     <>
       <WebpagesHeroImages {...technicalBanner} />
@@ -97,6 +96,7 @@ TechNews.DefaultProps = {
 
 TechNews.propTypes = {
   categories: PropTypes.array,
+  techBlogData: PropTypes.array,
 }
 
 export default TechNews

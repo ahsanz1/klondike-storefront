@@ -7,6 +7,8 @@ import Image from 'components/atoms/image'
 import { Radio, InputNumber, Button, Breadcrumb, Space, Divider } from 'antd'
 // import { ShareAltOutlined } from '@ant-design/icons'
 import Heading from 'components/atoms/heading'
+// import Button from 'components/atoms/button'
+import { ShareAltOutlined } from '@ant-design/icons'
 
 const PDPMobile = ({
   pdpdata,
@@ -18,15 +20,10 @@ const PDPMobile = ({
   onSubmit,
   addingToCart,
   onBulkQtyChange,
+  value,
+  btnDisabled,
 }) => {
   console.log('responsive', pdpdata)
-  const [value, setValue] = React.useState(1)
-
-  const onChange = e => {
-    console.log('radio checked', e.target.value)
-    setValue(e.target.value)
-    // setDisab(!disab)
-  }
 
   return (
     <div className="pdp_mobile-wraper">
@@ -57,13 +54,16 @@ const PDPMobile = ({
               />
             ))}
           </div>
+          <div className="shareIcon">
+            <ShareAltOutlined size="32px" style={{ color: '#FFFFFF' }} />
+          </div>
         </div>
         <Heading className="pdp_mobile-heading">
           {productData && productData?.title}
         </Heading>
         <div className="radioGroup">
           <Radio.Group
-            onChange={onChange}
+            onChange={onRadioChange}
             value={value}
             defaultValue={1}
             size="large"
@@ -178,13 +178,13 @@ const PDPMobile = ({
                       max={100}
                       defaultValue={0}
                       onChange={e => onBulkQtyChange(e)}
-                      disabled={!packagedOrder}
+                      disabled={packagedOrder}
                       size="middle"
                       className="input"
                       style={{
                         minWidth: '50%',
                         backgroundColor:
-                            !packagedOrder && 'rgba(255, 255, 255, 0.3)',
+                            packagedOrder && 'rgba(255, 255, 255, 0.3)',
                       }}
                     />
                   </div>
@@ -211,7 +211,11 @@ const PDPMobile = ({
         </div>
         {isLoggedIn ? (
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button className="add-to-cart" onClick={onSubmit}>
+            <Button
+              className="add-to-cart"
+              disabled={btnDisabled}
+              onClick={onSubmit}
+            >
               {addingToCart ? 'Adding...' : 'ADD TO CART'}
             </Button>
           </div>
@@ -309,5 +313,6 @@ PDPMobile.propTypes = {
   onSubmit: PropTypes.func,
   addingToCart: PropTypes.bool,
   onBulkQtyChange: PropTypes.func,
+  btnDisabled: PropTypes.bool,
 }
 export default PDPMobile
