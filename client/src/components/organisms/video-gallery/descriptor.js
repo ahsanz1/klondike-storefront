@@ -15,17 +15,21 @@ exports.default = Types.Component({
     bigVideodata: Types.Array({
       label: 'bigger sized video',
       children: Types.Shape({
-        title: Types.String({ label: 'video title' }),
-        src: Types.String({ label: 'video URL' }),
-        details: Types.RichText({ label: 'about the video' }),
+        children: {
+          title: Types.String({ label: 'video title' }),
+          src: Types.String({ label: 'video URL' }),
+          details: Types.RichText({ label: 'about the video' }),
+        },
       }),
     }),
     smallVideodata: Types.Array({
       label: 'bigger sized video',
       children: Types.Shape({
-        title: Types.String({ label: 'video title' }),
-        src: Types.String({ label: 'video URL' }),
-        details: Types.RichText({ label: 'about the video' }),
+        children: {
+          title: Types.String({ label: 'video title' }),
+          src: Types.String({ label: 'video URL' }),
+          details: Types.RichText({ label: 'about the video' }),
+        },
       }),
     }),
   },
