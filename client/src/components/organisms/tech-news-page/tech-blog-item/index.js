@@ -31,7 +31,7 @@ const TechBlogItem = ({ date, catagory, title, text, image }) => {
   return (
     <div className="tech-blog-item">
       <div>
-        <img className="item-image" src={image} alt="" />
+        <img className="item-image" src={image.url} alt="" />
       </div>
       <div className="item-descriptions">
         <div className="item-top-bar">
@@ -43,7 +43,7 @@ const TechBlogItem = ({ date, catagory, title, text, image }) => {
         </div>
         <div>
           <Label className="paragragh-text">
-            {textVal}
+            {textVal.slice(3, textVal.length - 5)}
             <button className="read-more" onClick={e => changeState(text)}>
               {btnText}
             </button>
