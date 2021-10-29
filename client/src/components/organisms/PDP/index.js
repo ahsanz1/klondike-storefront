@@ -47,6 +47,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const { packagedata, text1, bulk, text2 } = RadioData
   const [value, setValue] = React.useState(1)
+  const [btnDisabled, setButtonDisabled] = useState(true)
 
   const { setStep, plpredirect } = useContext(AppContext)
   const [desc, setDesc] = useState('')
@@ -66,6 +67,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   }, [plpredirect])
 
   useEffect(() => {
+    console.log('category changed')
     const data = []
     if (!data) {
       perfomeAlgoliaSearch(contextPlp, 0)
@@ -166,6 +168,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     for (var i = 0; i < newArray?.length; i++) {
       totalCost += parseFloat(newArray[i]?.totalPrice)
     }
+    if (totalCost > 0) {
+      setButtonDisabled(false)
+    } else setButtonDisabled(true)
     return totalCost
   }
 
@@ -196,6 +201,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         2,
       ),
     }
+    if (newObj?.totalPrice > 0) {
+      setButtonDisabled(false)
+    } else setButtonDisabled(true)
     setItems({
       ...items,
       bulkOrderItem: [newObj],
@@ -608,7 +616,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 )}
                 {isLoggedIn && (
                   <div style={{ display: 'flex', justifyContent: 'end' }}>
-                    <Button className="customButton" onClick={onSubmit}>
+                    <Button
+                      className="customButton"
+                      disabled={btnDisabled}
+                      onClick={onSubmit}
+                    >
                       {addingToCart ? 'Adding...' : 'ADD TO CART'}
                     </Button>
                   </div>
@@ -630,6 +642,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         value={value}
         packagedOrder={packagedOrder}
         onBulkQtyChange={onBulkQtyChange}
+        btnDisabled={btnDisabled}
       />
     </>
   )
