@@ -94,7 +94,6 @@ const Catlog = ({ heading, catData, image }) => {
                     )
                   })}
                 <br />
-                <br />
                 Download an electronic copy of the
                 <Link
                   className="english-link"
