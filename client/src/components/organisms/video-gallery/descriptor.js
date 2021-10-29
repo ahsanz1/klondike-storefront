@@ -23,7 +23,7 @@ exports.default = Types.Component({
       }),
     }),
     smallVideodata: Types.Array({
-      label: 'bigger sized video',
+      label: 'smaller sized video',
       children: Types.Shape({
         children: {
           title: Types.String({ label: 'video title' }),

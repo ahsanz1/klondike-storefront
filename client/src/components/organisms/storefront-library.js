@@ -37,6 +37,7 @@ Components['Header'] = require('components/organisms/header').default
 Components[
   'ClientTestimonial'
 ] = require('components/organisms/ClientTestimonial').default
+Components['PDS'] = require('components/organisms/PDS').default
 Components[
   'CommitedSuccess'
 ] = require('components/organisms/CommitedSuccess').default

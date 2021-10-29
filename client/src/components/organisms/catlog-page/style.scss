@@ -19,7 +19,7 @@
       .img-deading {
         display: flex;
         flex-direction: row;
-        padding-bottom: 5.9vw;
+        padding-bottom: 5.97vw;
         padding-left: 4.7vw;
 
         .imge-catlog {
@@ -68,7 +68,13 @@
         font-weight: normal;
         line-height: 1.3vw;
 
+        p {
+          margin-bottom: 0.347vw;
+        }
+
         .english-link {
+          padding-right: 0.347vw;
+          padding-left: 0.347vw;
           color: #f1a900;
         }
 
