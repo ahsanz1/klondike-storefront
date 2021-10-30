@@ -1,7 +1,7 @@
 const { Types } = require('@teamfabric/xpm')
 
 exports.default = Types.Component({
-  id: 'Our Story',
+  id: 'OurStory',
   label: 'Our Story',
   isGlobal: false,
   description: `Our Story component contains details which are to be printed on the our story page, it contains title, paragraphs and seperate highlighted paragraph`,
