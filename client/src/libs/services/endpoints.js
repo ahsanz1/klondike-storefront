@@ -56,6 +56,7 @@ const ENDPOINTS = {
     updateSubscription: subId => `/subscriptions/${subId}`,
   },
   PATCH: {
+    resetPassword: '/api-commerceIdentity/auth/local/reset',
     updateShipTo: cartId => `/api-cart/cart/${cartId}/ship-to`,
     AddAttributeToCart: cartId => `/api-cart/cart/${cartId}/item/attribute`,
   },

@@ -219,4 +219,5 @@ Components['OurStory'] = require('components/organisms/our-story').default
 Components[
   'Dealership'
 ] = require('components/organisms/Dealership-page').default
+Components['SubItem'] = require('components/organisms/sub-page').default
 export default Components

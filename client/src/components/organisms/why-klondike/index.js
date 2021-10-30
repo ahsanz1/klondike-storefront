@@ -1,14 +1,9 @@
 import './style.scss'
 import React from 'react'
 import AboutUsTablist from 'components/organisms/about-us-tablist'
-import PCPBottom from 'components/organisms/pcpBottom'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
-
 import ReactReadMoreReadLess from 'react-read-more-read-less'
-
-import { PcpBottom, aboutUs } from 'libs/data/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import { useWindowSize } from 'libs/custom-hooks'
 import MobileTabList from '../mobile-tablist'
 const WhyKlondike = ({ whyKlondikeData, heading, paragragh }) => {
@@ -63,13 +58,9 @@ const WhyKlondike = ({ whyKlondikeData, heading, paragragh }) => {
     )
   }
 
-  // const [size, setSize] = useState(useWindowSize)
-
   return size[0] > 768 ? (
     <>
       <div className="whyklondike-page-wrapper">
-        <WebpagesHeroImages {...aboutUs} />
-
         <div className="technacil-wriper">
           <div className="custom-tech">
             <AboutUsTablist
@@ -79,21 +70,6 @@ const WhyKlondike = ({ whyKlondikeData, heading, paragragh }) => {
             />
           </div>
           {renderWhyklondikePage()}
-        </div>
-        <div className="technical-bottom">
-          <div className="technical-bottom-section">
-            {PcpBottom &&
-              PcpBottom.map((item, i) => (
-                <>
-                  <PCPBottom
-                    image={item.image}
-                    button={item.button}
-                    mobileButton={item.mobileButton}
-                    url={item.url}
-                  />
-                </>
-              ))}
-          </div>
         </div>
       </div>
     </>
