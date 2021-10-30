@@ -82,9 +82,6 @@ import {
   warrantyData,
   overviewData,
   oamdata,
-  technicalBanner,
-  bigVideodata,
-  smallVideodata,
   rendersubpage,
 } from 'libs/data/data'
 const mockData = {
@@ -580,19 +577,10 @@ const mockData = {
   ],
   '/tech-resources/video-gallery': [
     {
-      id: 'WebpageGlobalHeroBanner',
-      params: { ...technicalBanner, key: '112233446677' },
-    },
-    {
       id: 'VideoGallery',
-      params: { bigVideodata, smallVideodata },
+      params: {},
     },
-    // {
-    //   id: 'PCPBottom',
-    //   params: { ...PcpBottom },
-    // },
   ],
-
   '/Techtabllist': [
     {
       id: 'Techtabllist',
