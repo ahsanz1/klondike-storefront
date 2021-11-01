@@ -16,26 +16,40 @@
       font-weight: bold;
       line-height: get-vw(49px);
       text-transform: uppercase;
+
+      @media only screen and (max-width: 500px) {
+        font-size: 6.4vw;
+      }
     }
 
     .image-and-text {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      flex-wrap: wrap;
 
       .warranty-image {
-        width: get-vw(236px);
-        height: get-vw(244px);
+        .c-image {
+          width: 16.38vw;
+          height: 16.94vw;
+
+          @media (max-width: 768px) {
+            width: 62.93vw;
+            height: 65.06vw;
+            margin-top: 3.73vw;
+          }
+        }
       }
 
       .heading-tech {
         width: get-vw(591px);
         padding-left: get-vw(28px);
+        font-family: $OpenSans;
         font-size: get-vw(14px);
         font-style: normal;
         font-weight: normal;
         line-height: 140%;
 
-        .warranty-link {
+        a {
           color: #f1a900;
         }
       }
