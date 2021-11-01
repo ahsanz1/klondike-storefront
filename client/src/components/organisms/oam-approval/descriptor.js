@@ -20,6 +20,8 @@ exports.default = Types.Component({
           }),
           heading: Types.String({ label: 'Paragraph' }),
           description: Types.RichText({ label: 'Paragraph' }),
+          headingLink: Types.String({ label: 'Link Heading' }),
+          discoverLink: Types.String({ label: 'Link Discover' }),
           lebal: Types.Image({
             label: 'arrow ',
             url: Types.String({ label: 'URL' }),
