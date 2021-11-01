@@ -82,6 +82,10 @@ import {
   warrantyData,
   overviewData,
   oamdata,
+  technicalBanner,
+  bigVideodata,
+  smallVideodata,
+  rendersubpage,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -187,6 +191,12 @@ const mockData = {
     {
       id: 'PDS',
       params: pcp,
+    },
+  ],
+  '/SubItem': [
+    {
+      id: 'SubItem',
+      params: rendersubpage,
     },
   ],
   '/terms-condition': [
@@ -570,10 +580,19 @@ const mockData = {
   ],
   '/tech-resources/video-gallery': [
     {
-      id: 'VideoGallery',
-      params: {},
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...technicalBanner, key: '112233446677' },
     },
+    {
+      id: 'VideoGallery',
+      params: { bigVideodata, smallVideodata },
+    },
+    // {
+    //   id: 'PCPBottom',
+    //   params: { ...PcpBottom },
+    // },
   ],
+
   '/Techtabllist': [
     {
       id: 'Techtabllist',
