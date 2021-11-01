@@ -1,9 +1,19 @@
+.banner {
+  position: relative;
+}
+
 .desktopImage {
   width: 100%;
 }
 
 .mobileImage {
   display: none;
+}
+
+.overLapImage {
+  position: absolute;
+  top: 14.1vw;
+  right: 21.1vw;
 }
 
 @media (max-width: 768px) {
