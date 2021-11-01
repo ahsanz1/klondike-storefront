@@ -24,8 +24,13 @@
 
     .image-and-text {
       display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
+      flex-direction: row;
+
+      @media (max-width: 500px) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
 
       .warranty-image {
         .c-image {

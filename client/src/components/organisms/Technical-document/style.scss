@@ -233,7 +233,7 @@ $vw-viewport: 1440;
 .technical-bottom {
   padding-top: 0;
   //padding-right: 60px;
-  padding-bottom: get-vw(60px);
+  //padding-bottom: get-vw(60px);
   //padding-left: 30px;
 
   @media (max-width: 768px) {
