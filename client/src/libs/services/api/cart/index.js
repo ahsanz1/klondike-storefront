@@ -65,7 +65,7 @@ export const getCartByUserId = async (authToken, count = 1) => {
     response = { error: false, data: response.data, message: null }
   } catch (e) {
     // console.log(e.message);
-    // console.log(e.response);
+    console.log('error', e.response)
     if (e.request.response && e.response.status) {
       const statusCode = e.response.status
       if (statusCode === 500 && count < 4) {
