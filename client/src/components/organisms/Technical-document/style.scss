@@ -25,7 +25,9 @@ $vw-viewport: 1440;
   .custom-tech {
     width: get-vw(249px);
     margin: get-vw(61px);
-    margin-top: get-vw(34px);
+    margin-top: get-vw(51px);
+    margin-right: 1.39vw;
+    margin-left: 4.2vw;
 
     @media (max-width: 768px) {
       width: 100vw;
