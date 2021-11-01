@@ -92,7 +92,7 @@ $vw-viewport: 1440;
         opacity: 0.9;
         color: #fff;
         font-family: $OpenSans;
-        font-size: 14px;
+        font-size: 0.97vw;
         font-style: normal;
         font-weight: normal;
         line-height: 140%;
@@ -106,6 +106,7 @@ $vw-viewport: 1440;
           height: 42.4vw;
           margin-top: 6.66vw;
           margin-bottom: 8.53vw;
+          font-size: 3.73vw;
         }
       }
     }
@@ -232,7 +233,7 @@ $vw-viewport: 1440;
 .technical-bottom {
   padding-top: 0;
   //padding-right: 60px;
-  padding-bottom: get-vw(60px);
+  //padding-bottom: get-vw(60px);
   //padding-left: 30px;
 
   @media (max-width: 768px) {
