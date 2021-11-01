@@ -19,9 +19,14 @@ const OurStory = ({ OurStoryData }) => {
               <div className="our-story-content">
                 {item.subSection.map((data, i) => (
                   <>
-                    <Label className="details-paragragh" key={i}>
+                    {/* <Label className="details-paragragh" key={i}>
                       {data.paragraph.slice(3, data.paragraph.length - 5)}
-                    </Label>
+                    </Label> */}
+                    <p
+                      className="details-paragragh"
+                      key={i}
+                      dangerouslySetInnerHTML={{ __html: data.paragraph }}
+                    ></p>
                     <Label className="highlighted-paragraph">
                       {item.highlightedParagraph}
                     </Label>
