@@ -24,10 +24,14 @@
 
         .imge-catlog {
           > .c-image {
+            width: 16.38vw;
             max-width: none;
+            height: 16.38vw;
 
             @media (max-width: 768px) {
+              width: 62.93vw;
               max-width: none;
+              height: 62.93vw;
             }
           }
         }
