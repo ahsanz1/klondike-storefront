@@ -7,6 +7,8 @@ exports.default = Types.Component({
   description: `Tech News component contains the description about each heading`,
 
   attributes: {
+    mainHeading: Types.String({ label: 'Main Heading' }),
+    categoryHeading: Types.String({ label: 'Categories Heading' }),
     techBlogData: Types.Array({
       label: 'Tech Blog Data',
       children: Types.Shape({
