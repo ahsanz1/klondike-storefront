@@ -375,6 +375,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                       wordWrap: 'break-word',
                       maxWidth: '35vw',
                     }}
+                    className="notranslate"
                   >
                     {productData?.title}
                   </h1>
