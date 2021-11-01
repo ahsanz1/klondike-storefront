@@ -14,8 +14,7 @@ exports.default = Types.Component({
       children: Types.Shape({
         children: {
           title: Types.String({ label: 'Heading Text' }),
-          paragragh: Types.String({ label: 'Button URL' }),
-          mobileButton: Types.String({ label: 'Mobile Button Text' }),
+          paragragh: Types.String({ label: 'Paragraph' }),
         },
       }),
     }),
