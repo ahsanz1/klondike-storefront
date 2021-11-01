@@ -20,5 +20,12 @@ exports.default = Types.Component({
         label: 'alternative text of the mobile hero image',
       }),
     }),
+    overLapImage: Types.Image({
+      label: 'OverLap Image',
+      url: Types.String({ label: 'url of Overlap image' }),
+      altText: Types.String({
+        label: 'alternative text of the Overlap image',
+      }),
+    }),
   },
 })

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 
-const TechBlogItem = ({ date, catagory, title, text, image }) => {
+const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
   const [textVal, setTextVal] = useState('')
   const [textState, setTextState] = useState(false)
   const [btnText, setBtnText] = useState('')
@@ -39,7 +39,7 @@ const TechBlogItem = ({ date, catagory, title, text, image }) => {
           <Link className="links">{catagory}</Link>
         </div>
         <div className="item-desc-box">
-          <Label className="item-title">{title}</Label>
+          <Label className="item-title">{descHeading}</Label>
         </div>
         <div>
           <Label className="paragragh-text">
@@ -68,6 +68,7 @@ TechBlogItem.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
   image: PropTypes.string,
+  descHeading: PropTypes.string,
 }
 
 export default TechBlogItem
