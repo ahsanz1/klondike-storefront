@@ -1,8 +1,11 @@
 import './style.scss'
 import React, { useEffect, useState } from 'react'
 import PCPBottom from 'components/organisms/pcpBottom'
-import { PcpBottom, technicalBanner } from 'libs/data/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
+import {
+  PcpBottom,
+  //  technicalBanner
+} from 'libs/data/data'
+// import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import Techtabllist from '../Technical-tablist'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
@@ -30,8 +33,6 @@ const TechNews = ({ categories, techBlogData }) => {
   console.log('check response:', techBlogData)
   return (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
-
       <div className="technacil-wriper">
         <div className="custom-tech">
           <Techtabllist
