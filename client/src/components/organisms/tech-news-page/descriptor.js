@@ -19,6 +19,7 @@ exports.default = Types.Component({
             altText: Types.String({ label: 'Alt text' }),
           }),
           date: Types.String({ label: 'Date' }),
+          descHeading: Types.String({ label: 'Description Heading' }),
           text: Types.RichText({ label: 'Description' }),
           catagory: Types.String({ label: 'Category' }),
         },
