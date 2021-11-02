@@ -2,10 +2,10 @@ import React from 'react'
 import './style.scss'
 import PropTypes from 'prop-types'
 import { useWindowSize } from 'libs/custom-hooks'
+import Link from 'components/atoms/link'
 import Image from 'components/atoms/image'
 import Techtabllist from 'components/organisms/Technical-tablist'
 import MobileTabListTech from '../Technical-tablist/mobile-tab'
-import Label from 'components/atoms/label'
 const Oamspproval = ({ oam, heading }) => {
   const size = useWindowSize()
   const renderOamspprovaldata = () => {
@@ -23,12 +23,14 @@ const Oamspproval = ({ oam, heading }) => {
                         <Image src={data.image.url} alt={data.image.altText} />
                       </div>
                       <div className="data-warp">
-                        <div className="heading-oam">{data.heading}</div>
+                        <Link className="heading-oam" to={data.headingLink}>
+                          {data.heading}
+                        </Link>
                         <div
                           className="descr-oam"
                           dangerouslySetInnerHTML={{ __html: data.description }}
                         ></div>
-                        <Label className="arow-img">
+                        <Link className="arow-img" to={data.discoverLink}>
                           Discover More
                           <span>
                             <Image
@@ -37,7 +39,7 @@ const Oamspproval = ({ oam, heading }) => {
                               alt={data.lebal.altText}
                             />
                           </span>
-                        </Label>
+                        </Link>
                       </div>
                     </div>
                   </>

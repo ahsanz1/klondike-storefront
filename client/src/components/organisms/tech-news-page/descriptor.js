@@ -7,6 +7,8 @@ exports.default = Types.Component({
   description: `Tech News component contains the description about each heading`,
 
   attributes: {
+    mainHeading: Types.String({ label: 'Main Heading' }),
+    categoryHeading: Types.String({ label: 'Categories Heading' }),
     techBlogData: Types.Array({
       label: 'Tech Blog Data',
       children: Types.Shape({
@@ -17,6 +19,7 @@ exports.default = Types.Component({
             altText: Types.String({ label: 'Alt text' }),
           }),
           date: Types.String({ label: 'Date' }),
+          descHeading: Types.String({ label: 'Description Heading' }),
           text: Types.RichText({ label: 'Description' }),
           catagory: Types.String({ label: 'Category' }),
         },

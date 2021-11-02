@@ -1,8 +1,10 @@
 import './style.scss'
 import React, { useEffect, useState } from 'react'
-import PCPBottom from 'components/organisms/pcpBottom'
-import { PcpBottom, technicalBanner } from 'libs/data/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
+// import PCPBottom from 'components/organisms/pcpBottom'
+import // PcpBottom,
+//  technicalBanner
+'libs/data/data'
+// import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import Techtabllist from '../Technical-tablist'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
@@ -11,7 +13,12 @@ import Link from 'components/atoms/link'
 import TechBlogItem from 'components/organisms/tech-news-page/tech-blog-item'
 import { Pagination } from 'antd'
 
-const TechNews = ({ categories, techBlogData }) => {
+const TechNews = ({
+  categories,
+  techBlogData,
+  mainHeading,
+  categoryHeading,
+}) => {
   const perPageItems = 2
   let [activeItems, setActiveItems] = useState([])
 
@@ -30,8 +37,6 @@ const TechNews = ({ categories, techBlogData }) => {
   console.log('check response:', techBlogData)
   return (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
-
       <div className="technacil-wriper">
         <div className="custom-tech">
           <Techtabllist
@@ -43,8 +48,8 @@ const TechNews = ({ categories, techBlogData }) => {
         <div className="technical-data">
           <div className="tech-news-page-wrap">
             <div className="tech-news-titles">
-              <Label className="tech-news-title">TECH/NEWS BLOG</Label>
-              <Label className="pages-title">TOPICS</Label>
+              <Label className="tech-news-title">{mainHeading}</Label>
+              <Label className="pages-title">{categoryHeading}</Label>
               <div className="catagory-links">
                 <Link className="links">Uncategorized</Link>
                 <Link className="links">Industry News</Link>
@@ -71,7 +76,7 @@ const TechNews = ({ categories, techBlogData }) => {
         </div>
       </div>
 
-      <div className="technical-bottom">
+      {/* <div className="technical-bottom">
         <div className="technical-bottom-section">
           {PcpBottom &&
             PcpBottom.map((item, i) => (
@@ -85,7 +90,7 @@ const TechNews = ({ categories, techBlogData }) => {
               </>
             ))}
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
@@ -97,6 +102,8 @@ TechNews.DefaultProps = {
 TechNews.propTypes = {
   categories: PropTypes.array,
   techBlogData: PropTypes.array,
+  mainHeading: PropTypes.string,
+  categoryHeading: PropTypes.string,
 }
 
 export default TechNews
