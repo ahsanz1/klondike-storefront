@@ -114,7 +114,7 @@ const Checkoutsection = () => {
         {
           transactionDetails: {
             paymentType: 'NON_CARD',
-            tokenizedPaymentMethod: '123',
+            tokenizedPaymentMethod: null,
           },
           paymentIdentifier: {
             cardIdentifier: 'QWfXNQNFXWp07Xu2',
