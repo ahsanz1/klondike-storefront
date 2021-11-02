@@ -1,5 +1,9 @@
 .banner {
   position: relative;
+
+  @media (max-width: 500px) {
+    margin-top: 35.73vw;
+  }
 }
 
 .desktopImage {
@@ -14,6 +18,21 @@
   position: absolute;
   top: 14.1vw;
   right: 21.1vw;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.overLapMobile {
+  display: none;
+  position: absolute;
+  top: 36.8vw;
+  right: 10.93vw;
+
+  @media (max-width: 500px) {
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {

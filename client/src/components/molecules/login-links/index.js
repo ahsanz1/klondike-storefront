@@ -40,6 +40,7 @@ const LoginLinks = ({ links = [] }) => {
             key={index}
             className="links"
             type="button"
+            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
             onClick={e => callModal(e)}
           >
             {el.text}
