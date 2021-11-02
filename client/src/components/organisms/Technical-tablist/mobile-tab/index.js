@@ -45,7 +45,7 @@ const MobileTabListTech = ({
                       clickCategoryHandler(item.categoryName, item.categoryDesc)
                     }
                   >
-                    <Link className="catagory-link" to={item.links}>
+                    <Link className="catagory-link" to={item.categoryLink}>
                       {item.categoryName}
                     </Link>
 
