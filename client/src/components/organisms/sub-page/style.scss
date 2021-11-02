@@ -1,0 +1,26 @@
+.sub-pages-container {
+  display: flex;
+
+  .sub-pages__techtablist {
+    width: 40%;
+    margin-top: 3.54vw;
+    margin-left: 4.2vw;
+  }
+
+  .sub-pages__subpages {
+    padding-top: 3.5vw;
+
+    .main-heading-subpage {
+      margin-left: 1.45vw;
+    }
+
+    .data-warp-subpage {
+      margin-right: 8vw;
+      margin-left: 1.45vw;
+
+      .Paragraph {
+        padding-right: 3vw;
+      }
+    }
+  }
+}
