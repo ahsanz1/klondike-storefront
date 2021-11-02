@@ -4,7 +4,7 @@ import { checkoutData } from './data'
 import './style.scss'
 import Label from 'components/atoms/label'
 
-import { Radio, Button, Input, Modal } from 'antd'
+import { Radio, Button, Input, Modal, Result } from 'antd'
 import { Link } from '@reach/router'
 import {
   addShippingWithLineItems,
@@ -25,6 +25,7 @@ const Checkoutsection = () => {
   const [visible, setVisible] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [cartId] = useState('617fb67c3d8494000801e3f0')
+  const [isSuccess, setIsSuccess] = useState(false)
 
   // const [isActive, setIsAcive] = useState(true)
   // const [pickup, setPickup] = useState(false)
@@ -88,7 +89,7 @@ const Checkoutsection = () => {
     await items?.map((item, i) => {
       newArray.push({
         lineItemId: item?.lineItemId,
-        amount: item?.totalPrice?.amount,
+        amount: 0,
       })
     })
     return newArray
@@ -99,13 +100,13 @@ const Checkoutsection = () => {
     await items?.map((item, i) => {
       newArray.push({
         shipToId: item?.shipTo?._id,
-        amount: item?.shipTo?.shipMethod?.cost?.amount,
+        amount: 0,
       })
     })
     return newArray
   }
 
-  const finalCheckout = async shipToResponse => {
+  const finalCheckout = async (shipToResponse, shipMethodCost) => {
     console.log({ shipToResponse })
     let req = {
       cartId: cartPayload?._id,
@@ -121,7 +122,9 @@ const Checkoutsection = () => {
           },
           paymentMethod: 'PURCHASE_ORDER',
           paymentKind: 'PURCHASE_ORDER',
-          amount: shipToResponse?.data?.totalAmount?.amount,
+          amount: Math.floor(
+            shipToResponse?.data?.totalAmount?.amount + shipMethodCost,
+          ),
           currency: 'USD',
           conversion: 1,
           billToAddress: {
@@ -150,6 +153,9 @@ const Checkoutsection = () => {
     }
     let finalResponse = await checkout(req)
     console.log({ finalResponse })
+    if (finalResponse?.data?.checkoutComplete) {
+      setIsSuccess(true)
+    }
   }
 
   const createShipping = async () => {
@@ -187,10 +193,11 @@ const Checkoutsection = () => {
     let response = await createShipTo(cartId, req)
     console.log({ response })
     let shipToId = response?.data?._id
+    let shipMethodCost = response?.data?.shipMethod?.cost?.amount
     console.log({ shipToId })
     let responseofLineItems = await mapItemsWithShipping(shipToId)
     console.log({ responseofLineItems })
-    await finalCheckout(responseofLineItems)
+    await finalCheckout(responseofLineItems, shipMethodCost)
   }
 
   // const [value, setValue] = useState(1)
@@ -210,9 +217,26 @@ const Checkoutsection = () => {
   //   setDelivery(false)
   //   setPickup(true)
   // }
+  const handleClose = () => {
+    setIsSuccess(false)
+  }
 
   return (
     <>
+      {isSuccess && (
+        <Modal
+          title="Basic Modal"
+          visible={isSuccess}
+          // onOk={handleOk}
+          onCancel={handleClose}
+        >
+          <Result
+            status="success"
+            title="Order Placed Successfully!"
+            subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+          />
+        </Modal>
+      )}
       <div className="checkout-header">
         <img src="static\images\klondike.png" alt="pic" />
         <Link className="link" to="/collections/all-bars">
