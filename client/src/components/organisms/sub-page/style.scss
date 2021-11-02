@@ -18,6 +18,12 @@
   .sub-pages__subpages {
     padding-top: 3.5vw;
 
+    .subpage-warp {
+      @media (max-width: 768px) {
+        padding-left: 31px;
+      }
+    }
+
     .main-heading-subpage {
       margin-left: 1.45vw;
     }

@@ -1,11 +1,13 @@
 export const categoriesXPM = [
   {
     title: 'Technical Documents',
+    categoryLink: '/tech-resource',
     categoryName: 'Technical Documents',
     link: 'Technical-doucment',
   },
   {
     title: 'OEM Approvals',
+    categoryLink: '/tech-resources/OEMApprovals',
     categoryName: 'OEM Approvals',
     link: 'OEMApprovals',
     subItem: {
@@ -55,21 +57,25 @@ export const categoriesXPM = [
   },
   {
     title: 'Catalog',
+    categoryLink: '/tech-resources/catlog',
     categoryName: 'Catalog',
     link: 'catlog',
   },
   {
     title: 'Warranty',
+    categoryLink: '/tech-resources/warranty',
     categoryName: 'Warranty',
     link: 'warranty',
   },
   {
     title: 'Video Gallery',
+    categoryLink: '/tech-resources/video-gallery',
     categoryName: 'Video Gallery',
     link: 'video-gallery',
   },
   {
     title: 'Tech/News Blog',
+    categoryLink: '/tech-resources/tech-news-blog',
     categoryName: 'Tech/News Blog',
     link: 'tech-news-blog',
   },
