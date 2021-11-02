@@ -24,14 +24,14 @@ $vw-viewport: 1440;
       width: get-vw(1000px);
       margin-top: 6.5vw;
       margin-right: get-vw(109px);
-      margin-left: 1.3vw;
+      // margin-left: 1.3vw;
       background-color: #03293980;
 
       > h1 {
         margin-top: 0;
         margin-bottom: 0.97222vw;
         padding-top: 4.6vw;
-        padding-left: 87px;
+        padding-left: 6.04vw;
         color: #f1a900;
         font-family: $OpenSans;
         font-size: 2.5vw;
@@ -98,13 +98,14 @@ $vw-viewport: 1440;
       .descr-oam {
         /* or 20px */
         left: calc(50% - 591px / 2 + 277.5px);
+        padding-right: 2.63vw;
         opacity: 0.9;
         color: #fff;
         font-family: $OpenSans;
-        font-size: 0.7vw;
+        font-size: 0.97vw;
         font-style: normal;
         font-weight: normal;
-        line-height: 1.3vw;
+        line-height: 1.36vw;
         font-feature-settings: 'pnum' on, 'lnum' on;
 
         @media (max-width: 768px) {
@@ -125,16 +126,18 @@ $vw-viewport: 1440;
         padding-left: 1.6vw;
 
         .heading-oam {
+          margin-bottom: 0.21vw;
           color: #f1a900;
           font-family: $OpenSans;
-          font-size: 1.6vw;
+          font-size: 1.67vw;
           font-style: normal;
           font-weight: 600;
-          line-height: 2.2vw;
+          line-height: 2.26vw;
           text-transform: capitalize;
           font-feature-settings: 'pnum' on, 'lnum' on;
 
           @media (max-width: 768px) {
+            margin-bottom: 3px;
             padding-top: 2.6vw;
 
             /* identical to box height */
@@ -149,7 +152,7 @@ $vw-viewport: 1440;
         }
 
         .arow-img {
-          padding-top: 0.7vw;
+          margin-top: 0.97vw;
           color: #f1a900;
           font-size: 0.97vw;
           font-style: normal;
