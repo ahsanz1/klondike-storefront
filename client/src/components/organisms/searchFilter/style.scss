@@ -14,8 +14,8 @@
     }
 
     ul {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       margin: 0;
       padding: 0;
       list-style: none;
@@ -43,8 +43,8 @@
         }
 
         img {
-          width: 13.8vw;
-          height: 15.8vw;
+          width: 18.68vw;
+          height: 21.31vw;
           background: #fff;
           object-fit: contain;
 
@@ -131,6 +131,8 @@
     .second-drop {
       width: 14.7vw !important;
       margin-right: 1.3vw;
+      font-size: $OpenSans;
+      text-transform: uppercase;
 
       @media (max-width: 500px) {
         width: 56.8vw !important;
@@ -162,9 +164,11 @@
       .ant-select-selection-item {
         position: relative;
         top: 1.3vw;
-        margin-left: 1.6vw;
+        margin-left: 0.902vw;
         color: #fff !important;
-        font-size: 1.1vw;
+        font-family: $OpenSans;
+        font-size: 1.11vw;
+        font-weight: 700;
 
         @media (max-width: 500px) {
           top: 4.46vw;
@@ -178,6 +182,7 @@
     }
 
     .ant-select-arrow {
+      padding-right: 2.08vw;
       color: #fff !important;
     }
   }
