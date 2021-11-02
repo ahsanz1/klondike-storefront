@@ -139,7 +139,7 @@ const SearchFilter = ({ searchHeading }) => {
           onChange={e => changeSize(e)}
           items={size}
           className="first-drop"
-          value={ps !== undefined ? ps : 'Size'}
+          value={ps !== undefined ? ps : 'SIZE'}
         />
         <Dropdown
           items={product}
@@ -150,7 +150,7 @@ const SearchFilter = ({ searchHeading }) => {
         />
         <Dropdown
           onChange={e => changeUOM(e)}
-          value={uom !== undefined ? uom : 'Unit of Measurement'}
+          value={uom !== undefined ? uom : 'UNIT / CASE'}
           items={unit}
           className="third-drop"
         />

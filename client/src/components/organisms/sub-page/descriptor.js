@@ -10,7 +10,7 @@ exports.default = Types.Component({
       label: 'Text ',
       children: Types.Shape({
         children: {
-          heading: Types.RichText({ label: 'heading' }),
+          heading: Types.String({ label: 'heading' }),
           Paragraph: Types.RichText({ label: 'Paragraph' }),
           image: Types.Image({
             label: 'Image',

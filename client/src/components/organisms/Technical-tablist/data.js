@@ -12,33 +12,43 @@ export const categoriesXPM = [
       hits: [
         {
           title: 'Audi Approved',
+          links: '/tech-resources/oemapprovals/audi-approved',
         },
         {
           title: 'Cummins Approved',
+          links: '/tech-resources/oem-approvals/cummins-approval',
         },
         {
           title: 'Detroit Diesel ',
+          links: '/tech-resources/oem-approvals/detroit-diesel-approved',
         },
         {
           title: 'Approved dexos1®',
+          links: '/tech-resources/oem-approvals/dexos1-approved',
         },
         {
           title: 'Approved Mack',
+          links: '/tech-resources/oem-approvals/mack-approved',
         },
         {
           title: 'Mercedes-Benz Approved',
+          links: '/tech-resources/oem-approvals/mercedes-benz-approved',
         },
         {
           title: 'NMMA Approvedlo',
+          links: '/tech-resources/oem-approvals/nmma-approved',
         },
         {
           title: 'Renault Approved',
+          links: '/tech-resources/oem-approvals/renault-approved',
         },
         {
           title: ' Volkswagen Approved',
+          links: '/tech-resources/oem-approvals/volkswagen-approved',
         },
         {
           title: 'Volvo Approved',
+          links: '/tech-resources/oem-approvals/volvo-approved',
         },
       ],
     },

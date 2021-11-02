@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import Image from 'components/atoms/image'
 import MobileTabListTech from '../Technical-tablist/mobile-tab'
 import Label from 'components/atoms/label'
-import Link from 'components/atoms/link'
+// import Link from 'components/atoms/link'
 import { useWindowSize } from 'libs/custom-hooks'
 const WarrantyPage = ({ heading, warData, image }) => {
   const size = useWindowSize()
@@ -33,24 +33,23 @@ const WarrantyPage = ({ heading, warData, image }) => {
                               <p
                                 dangerouslySetInnerHTML={{ __html: data.text }}
                               ></p>
-                              <Link
+                              {/* <Link
                                 className="warranty-link"
                                 to="https://klondikelubricants.com/wp-content/uploads/2015/05/KLONDIKE_Lubricants_Corporation_Warranty.pdf"
                               >
                                 click here.
-                              </Link>
+                              </Link> */}
                             </>
                           )
                         })}
                       <br />
-                      <br />
-                      <Label className="warranty-refer">
+                      {/* <Label className="warranty-refer">
                         For specific warranty details and procedures, please
                         contact us at{' '}
                         <Link className="warranty-link">
                           info@klondikelubricants.com.
                         </Link>
-                      </Label>
+                      </Label> */}
                     </Label>
                   </div>
                 </div>
