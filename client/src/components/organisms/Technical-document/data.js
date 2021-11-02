@@ -7,6 +7,30 @@ export const faqsDatadoc = {
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
       table: true,
+      tableData: [
+        {
+          product: 'KLONDIKE nano Full Synthetic EP-1.5',
+          PSDENGLISH:
+            'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf',
+          PSDFRENCH:
+            'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf ',
+          SDSENGLISH:
+            'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf',
+          SDSFRENCH:
+            '5https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf6',
+        },
+        {
+          product: 'KLONDIKE nano Full Synthetic EP-',
+          PSDENGLISH:
+            'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf',
+          PSDFRENCH:
+            'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf ',
+          SDSENGLISH:
+            'https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf',
+          SDSFRENCH:
+            '5https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf6',
+        },
+      ],
     },
     {
       question: 'Heavy duty engine oils',
