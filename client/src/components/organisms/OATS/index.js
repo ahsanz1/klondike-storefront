@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState, useEffect } from 'react'
 import './style.scss'
 import axios from 'axios'
@@ -129,6 +130,11 @@ const Oats = () => {
   const familygroup = value => {
     setGr(value)
   }
+  const handleKeyPress = event => {
+    if (event.key === 'Enter') {
+      searchQuery()
+    }
+  }
   useEffect(() => {
     getproducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -151,14 +157,15 @@ const Oats = () => {
               className="input_model"
               placeholder="ENTER CODE  & MODEL"
               value={query}
+              onKeyPress={handleKeyPress}
             />
             <div className="wrapper-two">
               <Dropdown
-                value={gr !== undefined ? gr : 'All'}
+                value={gr !== undefined ? gr : 'ALL'}
                 onChange={familygroup}
                 className="cars"
                 items={[
-                  { label: 'All' },
+                  { label: 'ALL' },
                   { label: 'Cars, SUVs & Pickups' },
                   { label: 'Light Trucks' },
                   { label: 'Trucks' },
@@ -183,65 +190,65 @@ const Oats = () => {
             otsdata &&
             otsdata.equipment &&
             otsdata.equipment.length > 0 && (
-            <div className="dropdown-wrapper">
-              <Dropdown
-                onChange={yearFunc}
-                className="year_range"
-                items={year}
-                value={ya !== undefined ? ya : ' WITHIN YEAR RANGE'}
-              />
-              <Dropdown
-                onChange={seriesFunc}
-                className="series "
-                items={series}
-                value={se !== undefined ? se : ' SERIES'}
-              />
-              <Dropdown
-                className="family "
-                items={family}
-                onChange={searchFamily}
-                value={fa !== undefined ? fa : ' FAMILY'}
-              />
-              <Dropdown
-                onChange={manuFunc}
-                className="manufecturer "
-                items={manufacturer}
-                value={mu !== undefined ? mu : ' MANUFACTURER'}
-              />
-            </div>
-          )}
+              <div className="dropdown-wrapper">
+                <Dropdown
+                  onChange={yearFunc}
+                  className="year_range"
+                  items={year}
+                  value={ya !== undefined ? ya : ' WITHIN YEAR RANGE'}
+                />
+                <Dropdown
+                  onChange={seriesFunc}
+                  className="series "
+                  items={series}
+                  value={se !== undefined ? se : ' SERIES'}
+                />
+                <Dropdown
+                  className="family "
+                  items={family}
+                  onChange={searchFamily}
+                  value={fa !== undefined ? fa : ' FAMILY'}
+                />
+                <Dropdown
+                  onChange={manuFunc}
+                  className="manufecturer "
+                  items={manufacturer}
+                  value={mu !== undefined ? mu : ' MANUFACTURER'}
+                />
+              </div>
+            )}
           <div className="overflow">
             <div className="table-wrapper">
               {abale &&
                 otsdata &&
                 otsdata.equipment &&
                 otsdata.equipment.length > 0 && (
-                <div className="title flex">
-                  <h3 className="custom-grid tiles">Category</h3>
-                  <h3 className="custom-grid tiles">Manufacturer</h3>
-                  <h3 className="custom-grid tiles">Model</h3>
-                  <h3 className="custom-grid tiles">Year</h3>
-                  <h3 className="custom-grid tiles">Fuel</h3>
-                </div>
-              )}
+                  <div className="title flex">
+                    <h3 className="custom-grid tiles">Category</h3>
+                    <h3 className="custom-grid tiles">Manufacturer</h3>
+                    <h3 className="custom-grid tiles">Model</h3>
+                    <h3 className="custom-grid tiles">Year</h3>
+                    <h3 className="custom-grid tiles">Fuel</h3>
+                  </div>
+                )}
               {otsdata && otsdata.equipment && otsdata.equipment.length > 0
                 ? otsdata.equipment.map((data, i) => {
-                  return (
-                    <div className="table-content flex" key={i}>
-                      <p className="custom-grid">
-                        {data && data.productgroup}
-                      </p>
-                      <p className="custom-grid">
-                        {data && data.manufacturer}
-                      </p>
-                      <p className="custom-grid">{data && data.model}</p>
-                      <p className="custom-grid">{data && data.yearto}</p>
-                      <p className="custom-grid">
-                        {data && data.alt_fueltype}
-                      </p>
-                    </div>
-                  )
-                })
+                    return (
+                      <div className="table-content flex" key={i}>
+                        <p className="custom-grid">
+                          {data && data.productgroup}
+                        </p>
+                        <p className="custom-grid">
+                          {data && data.manufacturer}
+                        </p>
+                        <p className="custom-grid">{data && data.model}</p>
+                        <p className="custom-grid">{data && data.yearto}</p>
+                        <p className="custom-grid">
+                          {data && data.alt_fueltype}
+                        </p>
+                      </div>
+                    )
+                  })
                 : ''}
               {notFound && query && (
                 <Label className="not-found">

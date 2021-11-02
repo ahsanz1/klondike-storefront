@@ -1,19 +1,59 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { checkoutData } from './data'
 import './style.scss'
 import Label from 'components/atoms/label'
 
 import { Radio, Button, Input, Modal } from 'antd'
 import { Link } from '@reach/router'
+import {
+  // addShippingWithLineItems,
+  getCartByUserId,
+} from 'libs/services/api/cart'
+import { AppContext } from 'libs/context'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 const Checkoutsection = () => {
+  // let cart
+  const { user } = useContext(AppContext)
   const { checkData } = checkoutData
-  // const [isActive, setIsAcive] = useState(true)
-  console.log('datacheckout', checkData)
-  // const [pickup, setPickup] = useState(false)
-  // const [delivery, setDelivery] = useState(false)
+  let [cartPayload, setCartPayloadState] = useState('')
   const [visible, setVisible] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
+
+  // const [isActive, setIsAcive] = useState(true)
+  // const [pickup, setPickup] = useState(false)
+  // const [delivery, setDelivery] = useState(false)
+
+  useEffect(async () => {
+    if (user !== null) {
+      let res = await getCartByUserId(user.accessToken)
+
+      // cart = res.data
+      let data = {
+        itemsTotal: res.data.totalAmount.amount,
+        currency: res.data.totalAmount.currency,
+        totalItems: res.data.quantity,
+        totalPrice: '12,000',
+      }
+
+      setCartPayloadState(data)
+    }
+  }, [])
+
+  // const mapItemsWithShipping = async () => {
+  //   let data = []
+
+  //   cart.map((i, v) => {
+  //     data.push({
+  //       itemId: 1000000012,
+  //       lineItemId: 1,
+  //       shipToId: '5e99dd58fcef0314e06b64fe',
+  //     })
+  //   })
+
+  //   let res = await addShippingWithLineItems(cart.cartId, data)
+  //   console.log('line items res', res)
+  // }
+
   const showModal = () => {
     setIsModalVisible(true)
   }
@@ -96,7 +136,10 @@ const Checkoutsection = () => {
                   )}
                 </div>
                 <div className="ckeckout-po">
-                  <p>PO Number: {data.ponumber}</p>
+                  <p>
+                    PO Number:{' '}
+                    <span className="checkout-value">{data.ponumber}</span>
+                  </p>
                 </div>
               </>
             )
@@ -117,8 +160,10 @@ const Checkoutsection = () => {
             <p>Order summary</p>
           </Label>
           <Label className="order-handling">
-            <p> Items (3)</p>
-            <p>$3,450.00</p>
+            <p> Items ({cartPayload.totalItems})</p>
+            <p>
+              {cartPayload.itemsTotal} {cartPayload.currency}
+            </p>
           </Label>
           <Label className="order-credit">
             <p> SHIPPING & Handling</p>
@@ -132,7 +177,9 @@ const Checkoutsection = () => {
 
           <Label className="order-total">
             <p className="total">Total </p>
-            <p>$1,970.00</p>
+            <p>
+              {cartPayload.totalPrice} {cartPayload.currency}
+            </p>
           </Label>
           <Button className="mobile-btn">PLACE ORDER</Button>
         </div>

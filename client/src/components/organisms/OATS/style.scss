@@ -6,9 +6,9 @@
   background-size: cover;
 
   @media (max-width: 768px) {
-    background-image: url('/static/images/bg.png');
     // width: 100vw;
-    // // height: 495px;
+    height: 495px;
+    background-image: url('/static/images/bg.png');
     background-size: cover;
   }
 }
@@ -93,18 +93,19 @@
   }
 
   .btn-search {
-    width: 5.06vw;
-    // width: 68px;
-    height: 4.44vw;
+    width: 3.5vw;
+    height: 3vw;
     padding: 0;
     border-radius: 1.11vw;
     background-color: #f1a900;
+    object-fit: cover;
 
     @media (max-width: 768px) {
-      height: 4.44vw;
+      width: 18vw;
+      height: 64px;
       border-radius: 4.26vw;
-      // height: 17vw !important;
       background-color: #f1a900;
+      object-fit: cover;
     }
   }
 
@@ -134,7 +135,7 @@
       // margin-left: -29px;
 
       .ant-select {
-        width: 58.4vw;
+        width: 60vw !important;
       }
     }
   }
@@ -149,21 +150,24 @@
     padding-bottom: 25px;
 
     .img-icon {
-      // width: 4.7vw;
-      // height: 4.4vw;
+      width: 4.7vw;
+      height: 4.4vw;
       margin: -2px;
       object-fit: cover;
 
       @media (max-width: 768px) {
-        // width: 100%;
+        width: 19.46vw;
+        height: 64px;
         // height: 100%;
         object-fit: revert;
       }
     }
 
     @media (max-width: 768px) {
-      width: 19.2vw;
-      height: 17.4vw;
+      width: 17.4vw;
+      height: 19.2vw;
+      margin-left: 0;
+      padding-left: 36px;
     }
   }
 
@@ -171,17 +175,19 @@
     min-width: 11.45vw !important;
     height: 4.44vw !important;
     margin: 0 10px !important;
-    padding-top: 15px !important;
+    // padding-top: 15px !important;
     padding-top: 1.2vw !important;
     padding-left: 2vw !important;
     border-radius: 1.11vw !important;
     background-color: #e4eff4 !important;
+    font-family: $OpenSans;
 
     @media (max-width: 768px) {
       height: 64px !important;
       padding-top: 4vw !important;
       padding-left: 6.4vw !important;
       border-radius: 16px !important;
+      font-family: $OpenSans;
       font-size: 3.5vw !important;
     }
 
@@ -234,12 +240,14 @@
         padding-left: 2vw !important;
         border-radius: 1.11vw !important;
         background-color: #e4eff4 !important;
+        font-family: $OpenSans;
 
         @media (max-width: 768px) {
           height: 64px !important;
           padding-top: 4vw !important;
           padding-left: 6.4vw !important;
           border-radius: 16px !important;
+          font-family: $OpenSans;
           font-size: 3.5vw !important;
         }
       }

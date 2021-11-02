@@ -263,7 +263,22 @@
     line-height: get-vw(10px);
 
     :first-child {
+      display: flex;
       padding-left: get-vw(17px);
+
+      .quick-order-asterisk {
+        padding-left: 0;
+        color: rgb(192, 17, 17);
+      }
+    }
+
+    :nth-child(2) {
+      display: flex;
+
+      .quick-order-asterisk {
+        padding-left: 0;
+        color: rgb(192, 17, 17);
+      }
     }
 
     @media screen and (max-width: 768px) {
@@ -302,6 +317,10 @@
       height: 28px;
       font-size: 14px;
     }
+  }
+
+  .ant-radio-inner {
+    background: none;
   }
 
   .ant-radio-checked .ant-radio-inner {
@@ -345,6 +364,7 @@
 
     .price-list-text {
       color: #f1a900;
+      text-decoration: underline;
     }
 
     @media screen and (max-width: 768px) {

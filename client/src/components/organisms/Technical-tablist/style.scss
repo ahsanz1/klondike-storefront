@@ -23,7 +23,10 @@ $vw-viewport: 1440;
     border-right: 1px #f2a900 solid;
     border-bottom: 1px #f2a900 solid;
     border-left: 1px #f2a900 solid;
-    color: #f2a900 !important;
+
+    .catagory-link {
+      color: #f2a900 !important;
+    }
 
     @media (max-width: 768px) {
       border-right: 0;
@@ -38,7 +41,7 @@ $vw-viewport: 1440;
     // color: rgba(236, 234, 233, 0.69);
     color: #eceae9;
     font-family: $OpenSans;
-    font-size: 0.67vw;
+    font-size: 0.69vw;
     font-style: normal;
     font-weight: bold;
     letter-spacing: 0.75px;
@@ -46,13 +49,18 @@ $vw-viewport: 1440;
     cursor: pointer;
 
     @media (max-width: 768px) {
-      margin-top: 13px;
+      //margin-top: 3.73vw;
+      margin-top: 3.63vw;
       margin-bottom: 0;
       padding: 9px;
       padding-left: 31.77px !important;
       // border: 0.26vw #f2a900 solid !important;
-      font-size: 10px !important;
+      font-size: 2.66vw !important;
       line-height: 28px;
+    }
+
+    .catagory-link {
+      color: white;
     }
 
     &:hover {
@@ -64,14 +72,11 @@ $vw-viewport: 1440;
     margin-bottom: get-vw(15px);
     padding: 10px 0;
 
-    .c-label {
+    .c-link {
       margin-bottom: get-vw(5px);
       padding: 0;
       border: none;
       background: none;
-    }
-
-    .active-product {
       color: #fff;
     }
 

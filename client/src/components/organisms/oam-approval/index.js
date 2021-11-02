@@ -1,53 +1,58 @@
 import React from 'react'
-import { oamdata } from './data'
 import './style.scss'
-import PCPBottom from 'components/organisms/pcpBottom'
-import { PcpBottom, technicalBanner } from 'libs/data/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import PropTypes from 'prop-types'
 import { useWindowSize } from 'libs/custom-hooks'
+import Link from 'components/atoms/link'
 import Image from 'components/atoms/image'
 import Techtabllist from 'components/organisms/Technical-tablist'
 import MobileTabListTech from '../Technical-tablist/mobile-tab'
-import Label from 'components/atoms/label'
-const Oamspprovaldata = () => {
-  const { oam } = oamdata
-  return (
-    <>
-      <div className="oam-main">
-        <div className="oam-wrap">
-          <h1>OEM Approvals</h1>
-          {oam.map(data => {
-            return (
-              <>
-                <div className="oam-data">
-                  <div className="img-oam">
-                    <Image src={data.img} />
-                  </div>
-                  <div className="data-warp">
-                    <div className="heading-oam">{data.heading}</div>
-                    <div className="descr-oam">{data.description}</div>
-                    <Label className="arow-img">
-                      Discover More
-                      <span>
-                        <Image className="img-arow" src={data.lebal} />
-                      </span>
-                    </Label>
-                  </div>
-                </div>
-              </>
-            )
-          })}
-        </div>
-      </div>
-    </>
-  )
-}
-const Oamspproval = () => {
+const Oamspproval = ({ oam, heading }) => {
   const size = useWindowSize()
+  const renderOamspprovaldata = () => {
+    return (
+      <>
+        <div className="oam-main">
+          <div className="oam-wrap">
+            <h1>{heading}</h1>
+            {oam &&
+              oam.map(data => {
+                return (
+                  <>
+                    <div className="oam-data">
+                      <div className="img-oam">
+                        <Image src={data.image.url} alt={data.image.altText} />
+                      </div>
+                      <div className="data-warp">
+                        <Link className="heading-oam" to={data.headingLink}>
+                          {data.heading}
+                        </Link>
+                        <div
+                          className="descr-oam"
+                          dangerouslySetInnerHTML={{ __html: data.description }}
+                        ></div>
+                        <Link className="arow-img" to={data.discoverLink}>
+                          Discover More
+                          <span>
+                            <Image
+                              className="img-arow"
+                              src={data.lebal.url}
+                              alt={data.lebal.altText}
+                            />
+                          </span>
+                        </Link>
+                      </div>
+                    </div>
+                  </>
+                )
+              })}
+          </div>
+        </div>
+      </>
+    )
+  }
+
   return size[0] > 768 ? (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
       <div className="oaem-page-wrapper">
         <div className="technacil-wriper">
           <div className="custom-tech">
@@ -57,21 +62,7 @@ const Oamspproval = () => {
               // categories={categories}
             />
           </div>
-          <Oamspprovaldata />
-        </div>
-        <div className="technical-bottom">
-          <div className="technical-bottom-section">
-            {PcpBottom &&
-              PcpBottom.map((item, i) => (
-                <>
-                  <PCPBottom
-                    image={item.image}
-                    button={item.button}
-                    mobileButton={item.mobileButton}
-                  />
-                </>
-              ))}
-          </div>
+          {renderOamspprovaldata()}
         </div>
       </div>
     </>
@@ -82,9 +73,7 @@ const Oamspproval = () => {
           className="warranty-tablist"
           itemName="OEM Approvals"
         >
-          <div className="oaem-page-wrapper">
-            <Oamspprovaldata />
-          </div>
+          <div className="oaem-page-wrapper">{renderOamspprovaldata()}</div>
         </MobileTabListTech>
       </div>
     </>
@@ -96,5 +85,7 @@ Oamspproval.DefaultProps = {
 
 Oamspproval.propTypes = {
   categories: PropTypes.array,
+  oam: PropTypes.object,
+  heading: PropTypes.string,
 }
 export default Oamspproval

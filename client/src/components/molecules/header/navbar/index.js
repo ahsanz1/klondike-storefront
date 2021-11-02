@@ -46,6 +46,9 @@ const Navbar = ({
     toggleSearch()
     setLoginBottom(false)
   }
+  const menuToggle = () => {
+    setIsOpen(!isOpen)
+  }
   return (
     <div
       className={
@@ -98,6 +101,7 @@ const Navbar = ({
           linkClassName="header-link"
           mobile={false}
           links={links}
+          toggleMenu={menuToggle}
         />
         <Button
           className={
@@ -110,7 +114,11 @@ const Navbar = ({
                 ? 'quick-order'
                 : 'Buy-Button'
             }
-            to={userLoginInfo && userLoginInfo.email ? '/quickorder' : '#'}
+            to={
+              userLoginInfo && userLoginInfo.email
+                ? '/quickorder'
+                : 'contact-us'
+            }
           >
             {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
           </Link>
@@ -162,19 +170,12 @@ const Navbar = ({
               />
             </Button>
           )}
-
-          {/* <Link to="/about-us" className="header__search-icon">
-            <Image height={26} src="/static/images/english.png" alt="..." />
-          </Link> */}
         </div>
       </div>
       <div
         className={`header__mobile-menu ${
           isOpen ? 'header__mobile-menu--show' : ''
         }`}
-        // onClick={() => {
-        //   setIsOpen(false)
-        // }}
       >
         <Links
           className="header__mobile-menu-links"
@@ -185,6 +186,7 @@ const Navbar = ({
           buyButton={buyButton}
           menuBottom={menuBottom}
           userIcon={userIcon}
+          toggleMenu={menuToggle}
         />
       </div>
     </div>

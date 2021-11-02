@@ -1,13 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 
-const TechBlogItem = ({ date, catagory, title, text, image }) => {
+const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
+  const [textVal, setTextVal] = useState('')
+  const [textState, setTextState] = useState(false)
+  const [btnText, setBtnText] = useState('')
+
+  useEffect(() => {
+    setTextState(!(text.length > 20))
+    setBtnText(text.length > 20 ? 'Read More' : '')
+    setTextVal(text.length > 20 ? text.substring(0, 20) + '... ' : text)
+  }, [])
+
+  const changeState = text => {
+    let activeState = textState
+
+    if (activeState === false) {
+      setTextVal(text)
+      setTextState(true)
+      setBtnText('View Less')
+    } else {
+      setTextState(false)
+      setBtnText('Read More')
+      setTextVal(text.substring(0, 20) + '... ')
+    }
+  }
+
   return (
     <div className="tech-blog-item">
       <div>
-        <img className="item-image" src={image} alt="" />
+        <img className="item-image" src={image.url} alt="" />
       </div>
       <div className="item-descriptions">
         <div className="item-top-bar">
@@ -15,11 +39,14 @@ const TechBlogItem = ({ date, catagory, title, text, image }) => {
           <Link className="links">{catagory}</Link>
         </div>
         <div className="item-desc-box">
-          <Label className="item-title">{title}</Label>
+          <Label className="item-title">{descHeading}</Label>
         </div>
         <div>
           <Label className="paragragh-text">
-            {text} <Link className="read-more">Read More</Link>
+            {textVal.slice(3, textVal.length - 5)}
+            <button className="read-more" onClick={e => changeState(text)}>
+              {btnText}
+            </button>
           </Label>
         </div>
       </div>
@@ -41,6 +68,7 @@ TechBlogItem.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
   image: PropTypes.string,
+  descHeading: PropTypes.string,
 }
 
 export default TechBlogItem

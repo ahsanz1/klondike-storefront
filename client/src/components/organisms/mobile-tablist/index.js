@@ -6,6 +6,7 @@ import { AboutUsXPM } from 'components/organisms/Technical-tablist/data'
 import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
 import { PcpBottom, aboutUs } from 'libs/data/data'
 import PCPBottom from 'components/organisms/pcpBottom'
+import Link from 'components/atoms/link'
 
 const MobileTabList = ({
   categories,
@@ -43,22 +44,25 @@ const MobileTabList = ({
                       clickCategoryHandler(item.categoryName, item.categoryDesc)
                     }
                   >
-                    {item.categoryName}
+                    <Link className="catagory-link" to={`/${item.link}`}>
+                      {item.categoryName}
+                    </Link>
 
                     {subItem && itemName === item.categoryName && (
                       <div className="subItem">
                         {subItem &&
                           subItem.hits &&
                           subItem.hits.map((item, index) => (
-                            <Label
+                            <Link
                               onClick={() => productClickHandler(item.title)}
                               key={index}
                               className={
                                 item.title === product && 'active-product'
                               }
+                              to={item.links}
                             >
                               {item.title}
-                            </Label>
+                            </Link>
                           ))}
                       </div>
                     )}
@@ -78,6 +82,7 @@ const MobileTabList = ({
                   image={item.image}
                   button={item.button}
                   mobileButton={item.mobileButton}
+                  url={item.url}
                 />
               </>
             ))}

@@ -60,7 +60,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                 {data.orderArray && (
                   <div className="order-filter">
                     <Label>
-                      FITER BY STATUS{' '}
+                      FILTER BY STATUS{' '}
                       <select>
                         <option>All</option>
                       </select>

@@ -19,15 +19,19 @@
       .img-deading {
         display: flex;
         flex-direction: row;
-        padding-bottom: 5.9vw;
+        padding-bottom: 5.97vw;
         padding-left: 4.7vw;
 
         .imge-catlog {
           > .c-image {
+            width: 16.38vw;
             max-width: none;
+            height: 16.38vw;
 
             @media (max-width: 768px) {
+              width: 62.93vw;
               max-width: none;
+              height: 62.93vw;
             }
           }
         }
@@ -68,7 +72,13 @@
         font-weight: normal;
         line-height: 1.3vw;
 
+        p {
+          margin-bottom: 0.347vw;
+        }
+
         .english-link {
+          padding-right: 0.347vw;
+          padding-left: 0.347vw;
           color: #f1a900;
         }
 

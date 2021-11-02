@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 // import './style.scss'
 import { AboutUsXPM } from 'components/organisms/Technical-tablist/data'
+import Link from 'components/atoms/link'
 
 const AboutUsTablist = ({
   categories,
@@ -33,7 +34,12 @@ const AboutUsTablist = ({
                   clickCategoryHandler(item.categoryName, item.categoryDesc)
                 }
               >
-                {item.categoryName}
+                <Link
+                  className="catagory-link"
+                  to={`about-klondike/${item.link}`}
+                >
+                  {item.categoryName}
+                </Link>
                 {subItem && itemName === item.categoryName && (
                   <div className="subItem">
                     {subItem &&

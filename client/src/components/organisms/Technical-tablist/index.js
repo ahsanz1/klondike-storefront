@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import './style.scss'
 import { categoriesXPM } from './data'
+import Link from 'components/atoms/link'
+
 const Techtabllist = ({
   categories,
   itemName,
+  categoryLink,
   clickCategoryHandler,
   subItem,
   className,
@@ -35,19 +38,24 @@ const Techtabllist = ({
                   clickCategoryHandler(item.categoryName, item.categoryDesc)
                 }
               >
-                {item.categoryName}
+                <Link className="catagory-link" to={item.categoryLink}>
+                  {item.categoryName}
+                </Link>
                 {item.subItem && itemName === item.categoryName && (
                   <div className="subItem">
                     {item.subItem &&
                       item.subItem.hits &&
                       item.subItem.hits.map((item, index) => (
-                        <Label
+                        <Link
                           key={index}
                           onClick={() => productClickHandler(item.title)}
                           className={item.title === product && 'active-product'}
+                          to={item.links}
                         >
-                          {item.title}
-                        </Label>
+                          <ul>
+                            <li>{item.title}</li>
+                          </ul>
+                        </Link>
                       ))}
                   </div>
                 )}
@@ -61,6 +69,7 @@ const Techtabllist = ({
 Techtabllist.DefaultProps = {
   categories: [],
   itemName: '',
+  categoryLink: '',
   clickCategoryHandler: {},
   subItem: [],
   className: '',
@@ -69,6 +78,7 @@ Techtabllist.DefaultProps = {
 Techtabllist.propTypes = {
   categories: PropTypes.array,
   itemName: PropTypes.string,
+  categoryLink: PropTypes.string,
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
   className: PropTypes.string,

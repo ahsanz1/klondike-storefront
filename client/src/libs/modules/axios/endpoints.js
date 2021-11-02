@@ -47,6 +47,7 @@ const ENDPOINTS = {
     },
     updateCartItems: cartId => `/api-cart/cart/${cartId}/items`,
     mergeCart: `/api-cart/cart/merge`,
+    linkItemsWithShipping: cartId => `/api-cart/cart/${cartId}/ship-to`,
   },
   DELETE: {
     removePayment: `/api-payment/payment`,

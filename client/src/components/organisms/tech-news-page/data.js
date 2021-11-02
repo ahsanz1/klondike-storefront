@@ -28,4 +28,34 @@ export const techBlogData = [
     image:
       'https://klondikelubricants.com/wp-content/uploads/2021/08/Heavy-Duty-Engine-Oils_Mechanic-Post-03.png',
   },
+  {
+    date: '25 june',
+    catagory: 'Industry News',
+    title:
+      'Keep your engine running at a stable temperature with the correct antifreeze/ coolant',
+    text:
+      'Not using the correct Antifreeze/Coolant can lead to serious issues for your engine. Antifreeze is a temperature control fluid that protects engines from overheating and putting pressure on the radiator and hoses. It also lowers the freezing point of water …',
+    image:
+      'https://klondikelubricants.com/wp-content/uploads/2021/08/Heavy-Duty-Engine-Oils_Mechanic-Post-03.png',
+  },
+  {
+    date: '25 june',
+    catagory: 'Industry News',
+    title:
+      'Keep your engine running at a stable temperature with the correct antifreeze/ coolant',
+    text:
+      'Not using the correct Antifreeze/Coolant can lead to serious issues for your engine. Antifreeze is a temperature control fluid that protects engines from overheating and putting pressure on the radiator and hoses. It also lowers the freezing point of water …',
+    image:
+      'https://klondikelubricants.com/wp-content/uploads/2021/08/Heavy-Duty-Engine-Oils_Mechanic-Post-03.png',
+  },
+  {
+    date: '25 june',
+    catagory: 'Industry News',
+    title:
+      'Keep your engine running at a stable temperature with the correct antifreeze/ coolant',
+    text:
+      'Not using the correct Antifreeze/Coolant can lead to serious issues for your engine. Antifreeze is a temperature control fluid that protects engines from overheating and putting pressure on the radiator and hoses. It also lowers the freezing point of water …',
+    image:
+      'https://klondikelubricants.com/wp-content/uploads/2021/08/Heavy-Duty-Engine-Oils_Mechanic-Post-03.png',
+  },
 ]

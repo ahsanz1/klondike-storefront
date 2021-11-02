@@ -2,7 +2,7 @@
 
 .mini-cart-item {
   padding-top: get-vw(15px);
-  padding-bottom: get-vw(40px);
+  padding-bottom: get-vw(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   font-family: $OpenSans;
@@ -108,9 +108,8 @@
       }
 
       .product-price-info {
-        display: grid;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         margin-top: get-vw(5px);
         font-size: get-vw(11px);
         font-style: normal;
@@ -131,12 +130,25 @@
           display: none;
         }
 
-        .product-quantity-mobile {
-          display: none;
+        .product-price {
+          margin-top: 3.19vw;
+          color: rgba(194, 187, 183, 1);
+          font-size: get-vw(12px);
+          font-style: normal;
+          font-weight: 800;
+          line-height: get-vw(15px);
 
           @media screen and (max-width: 768px) {
-            display: block;
-            font-weight: bold;
+            padding-left: 5.33vw;
+            font-size: 11px !important;
+          }
+
+          .product-price-mobile {
+            width: 6.11vw;
+            height: 1.31vw;
+            margin-bottom: 2px;
+            color: white;
+            font-size: 0.76vw;
           }
         }
       }
@@ -158,9 +170,21 @@
         @media screen and (max-width: 768px) {
           display: none;
         }
+
+        .product-quantity-mobile {
+          margin-right: get-vw(11px);
+          font-size: get-vw(11px);
+
+          @media screen and (max-width: 768px) {
+            display: block;
+            font-weight: bold;
+          }
+        }
       }
 
       .remove-button {
+        margin-top: 2.08vw;
+        margin-left: -61vw;
         border: none;
         background: #013a4e;
         color: #c2bbb7;
@@ -192,6 +216,10 @@
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        .ant-input-number-handler-wrap {
+          opacity: 1;
         }
       }
 
@@ -260,22 +288,9 @@
         flex-direction: row;
         justify-content: space-between;
         padding-top: 25px;
-      }
 
-      .product-price {
-        color: white;
-        font-size: 11px;
-        font-style: normal;
-        font-weight: 800;
-        // line-height: 15px;
         @media screen and (max-width: 768px) {
-          padding-left: 5.33vw;
-        }
-
-        .product-price-mobile {
-          color: grey;
-          font-size: 12px;
-          font-weight: bold;
+          font-size: 2.93vw;
         }
       }
 

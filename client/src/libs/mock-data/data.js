@@ -74,8 +74,18 @@ import {
   Packagerorder,
   bulkorder,
   PlpBottom,
-  PcpBottom,
+  pcp,
   searchFlow,
+  delarship,
+  cataogData,
+  indusrtyapplication,
+  warrantyData,
+  overviewData,
+  oamdata,
+  technicalBanner,
+  bigVideodata,
+  smallVideodata,
+  rendersubpage,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -170,7 +180,23 @@ const mockData = {
     },
     {
       id: 'PCPBottom',
-      params: PcpBottom,
+      params: pcp,
+    },
+    {
+      id: 'DownTime',
+      params: DownTime,
+    },
+  ],
+  '/pds': [
+    {
+      id: 'PDS',
+      params: pcp,
+    },
+  ],
+  '/SubItem': [
+    {
+      id: 'SubItem',
+      params: rendersubpage,
     },
   ],
   '/terms-condition': [
@@ -494,7 +520,7 @@ const mockData = {
   '/PDP': [
     {
       id: 'PDP',
-      params: { pdpdata, pdpdatasheet, RadioData },
+      params: { pdpdata, pdpdatasheet, RadioData, categories },
     },
   ],
   '/Order': [
@@ -534,10 +560,10 @@ const mockData = {
     },
   ],
 
-  '/tech-resources/oamapprovals': [
+  '/tech-resources/OEMApprovals': [
     {
       id: 'Oamspproval',
-      params: {},
+      params: oamdata,
     },
   ],
   '/confirmation-order': [
@@ -549,15 +575,24 @@ const mockData = {
   '/tech-resources/warranty': [
     {
       id: 'WarrantyPage',
-      params: {},
+      params: warrantyData,
     },
   ],
   '/tech-resources/video-gallery': [
     {
-      id: 'VideoGallery',
-      params: {},
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...technicalBanner, key: '112233446677' },
     },
+    {
+      id: 'VideoGallery',
+      params: { bigVideodata, smallVideodata },
+    },
+    // {
+    //   id: 'PCPBottom',
+    //   params: { ...PcpBottom },
+    // },
   ],
+
   '/Techtabllist': [
     {
       id: 'Techtabllist',
@@ -573,7 +608,7 @@ const mockData = {
   '/tech-resources/catlog': [
     {
       id: 'Catlog',
-      params: {},
+      params: cataogData,
     },
   ],
   '/tech-resource': [
@@ -582,34 +617,54 @@ const mockData = {
       params: {},
     },
   ],
-  '/overview': [
+  '/about-klondike/overview': [
+    {
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...contactUsBanner, key: '112233446677' },
+    },
     {
       id: 'OverView',
       params: {},
     },
-  ],
-  '/why-klondike': [
     {
-      id: 'WhyKlondike',
+      id: 'OverViewLinks',
       params: {},
     },
   ],
-  '/work-at-klondike': [
+  '/about-klondike/why-klondike': [
+    {
+      id: 'WhyKlondike',
+      params: overviewData,
+    },
+  ],
+  '/about-klondike/work-at-klondike': [
     {
       id: 'WorkAtKlonedike',
       params: {},
     },
   ],
-  '/industry-applications': [
+  '/about-klondike/industry-applications': [
     {
       id: 'IndustryApplications',
-      params: {},
+      params: indusrtyapplication,
     },
   ],
-  '/safety-environment': [
+  '/about-klondike/safety-environment': [
     {
       id: 'SafetyEnvironment',
       params: {},
+    },
+  ],
+  '/about-klondike/our-story': [
+    {
+      id: 'OurStory',
+      params: {},
+    },
+  ],
+  '/dealership-opportunity': [
+    {
+      id: 'Dealership',
+      params: delarship,
     },
   ],
 }

@@ -1,0 +1,93 @@
+@import '~styles/globals';
+
+.pds-bottom-section {
+  display: flex;
+  margin-right: 6.66vw;
+  margin-left: 8.33vw;
+  //margin-bottom: 5.41vw;
+  //justify-content: space-between;
+  //margin-top: 3.4vw;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    margin-right: 2.66vw;
+    margin-left: 2.93vw;
+    //margin-top: 45.11vw;
+  }
+
+  .bottom-plp {
+    width: 41.66vw;
+    height: 20.83vw;
+    margin: 0 1.11vw;
+    margin-bottom: 5.48vw;
+
+    @media (max-width: 500px) {
+      width: 100% !important;
+      height: auto !important;
+      margin: 0;
+    }
+
+    .mob-button {
+      display: none;
+
+      @media (max-width: 500px) {
+        display: block;
+        box-sizing: border-box;
+        width: 60.26vw;
+        height: 10.6vw;
+        margin-top: 4.26vw;
+        margin-bottom: 5.6vw;
+        border: 0.53vw solid #f1a900;
+        border-radius: 1.33vw;
+        background: none;
+        font-family: $OpenSans;
+        font-size: 3.73vw;
+        font-weight: bold;
+        line-height: 6.4vw;
+        text-transform: uppercase;
+
+        a {
+          color: #ffff;
+        }
+      }
+    }
+
+    .dealer-botton {
+      box-sizing: border-box;
+      width: 15.69vw;
+      height: 2.77vw;
+      margin-top: 3.05vw;
+      margin-bottom: 1.45vw;
+      padding: 0 1.11vw;
+      border: 0.13vw solid #f1a900;
+      border-radius: 0.34vw;
+      background: none;
+      font-family: $OpenSans;
+      font-size: 0.97vw;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.05vw;
+      line-height: 1.66vw;
+
+      a {
+        color: #ffff;
+      }
+
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+  }
+}
+
+//   .mobile-banner {
+//     display: none;
+
+//     @media (max-width: 500px) {
+//       display: block;
+//     }
+//   }
