@@ -82,6 +82,31 @@ export const getCartByUserId = async (authToken, count = 1) => {
   return response
 }
 
+export const addShippingWithLineItems = async (cartId, payload) => {
+  let response
+  try {
+    response = await axiosObj.common.patch(
+      ENDPOINTS.PATCH.linkItemsWithShipping(cartId),
+      JSON.stringify(payload),
+      {
+        params: {
+          userAuthToken: null,
+        },
+      },
+    )
+
+    response = { error: false, data: response.data, message: null }
+  } catch (e) {
+    response = {
+      error: true,
+      data: null,
+      message: JSON.stringify(e),
+    }
+  }
+
+  return response
+}
+
 export const removeItemFromCart = async (cartId, lineItemId) => {
   let response
   try {
