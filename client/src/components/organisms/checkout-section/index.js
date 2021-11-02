@@ -7,6 +7,7 @@ import { Radio, Button, Input, Modal } from 'antd'
 import { Link } from '@reach/router'
 import { getCartByUserId } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
+import { getAllShippingMethods, createShipTo } from 'libs/services/api/checkout'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 const Checkoutsection = () => {
   const { user } = useContext(AppContext)
@@ -14,6 +15,8 @@ const Checkoutsection = () => {
   let [cartPayload, setCartPayloadState] = useState('')
   const [visible, setVisible] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [cartId, setCartId] = useState('617fb67c3d8494000801e3f0')
+  setCartId('617fb67c3d8494000801e3f0')
 
   // const [isActive, setIsAcive] = useState(true)
   // const [pickup, setPickup] = useState(false)
@@ -22,7 +25,8 @@ const Checkoutsection = () => {
   useEffect(async () => {
     if (user !== null) {
       let res = await getCartByUserId(user.accessToken)
-
+      let r = getAllShippingMethods()
+      console.log({ r })
       let data = {
         itemsTotal: res.data.totalAmount.amount,
         currency: res.data.totalAmount.currency,
@@ -44,6 +48,42 @@ const Checkoutsection = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false)
+  }
+
+  const createShipping = async () => {
+    let req = {
+      address: {
+        street1: '1510 Wall Street NW ',
+        city: 'Winnipeg',
+        state: 'MB',
+        country: 'Canada',
+        zipCode: 'R3G 2T3',
+        kind: 'shipping',
+        name: {
+          first: 'Haseeb',
+          last: 'Shaukat',
+        },
+        email: 'haseeb.shaukat@shopdev.co',
+        phone: {
+          number: '844-883-4645',
+          kind: 'Mobile',
+        },
+      },
+      shipToType: 'SHIP_TO_ADDRESS',
+      shipMethod: {
+        shipMethodId: 10009,
+        shipmentCarrier: 'KLONDIKE - Delivery Shipping ',
+        shipmentMethod: 'Next Day',
+        cost: {
+          currency: 'USD',
+          amount: 39,
+        },
+      },
+      taxCode: 'FR020000',
+    }
+    console.log({ req })
+    let response = await createShipTo(cartId, req)
+    console.log({ response })
   }
 
   // const [value, setValue] = useState(1)
@@ -132,7 +172,9 @@ const Checkoutsection = () => {
               placeholder="Enter custom PO number"
             ></Input>
           </Label>
-          <Button className="order-btn">PLACE ORDER</Button>
+          <Button className="order-btn" onClick={createShipping}>
+            PLACE ORDER
+          </Button>
         </div>
 
         <div className="checkout-summary">
@@ -161,7 +203,9 @@ const Checkoutsection = () => {
               {cartPayload.totalPrice} {cartPayload.currency}
             </p>
           </Label>
-          <Button className="mobile-btn">PLACE ORDER</Button>
+          <Button className="mobile-btn" onClick={createShipping}>
+            PLACE ORDER
+          </Button>
         </div>
       </div>
       <Modal

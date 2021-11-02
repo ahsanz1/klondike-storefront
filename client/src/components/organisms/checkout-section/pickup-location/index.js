@@ -87,7 +87,7 @@ const Checkoutsection = () => {
             <p>$3,450.00</p>
           </Label>
           <Label className="order-credit">
-            <p> Shippling&Handling</p>
+            <p> Shipping&amp;Handling</p>
             <p>TBD</p>
           </Label>
 

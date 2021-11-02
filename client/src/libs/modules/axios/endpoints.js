@@ -17,6 +17,7 @@ const ENDPOINTS = {
     //   process.env.NAVIGATION_LINKS_API
     //     ? `${process.env.NAVIGATION_LINKS_API}${url}`
     //     : `https://uat01.abchome.fabric.zone/api-xpm/menu/get-item-by-url?url=${url}`,
+    getAllShippingMethods: '/api-shipping/shipping/all',
   },
   POST: {
     addToCart: '/api-cart/cart/item',
