@@ -4,8 +4,9 @@ import Label from 'components/atoms/label'
 import './style.scss'
 import { categoriesXPM } from 'components/organisms/Technical-tablist/data'
 // import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
-import { PcpBottom } from 'libs/data/data'
-import PCPBottom from 'components/organisms/pcpBottom'
+// import { PcpBottom } from 'libs/data/data'
+// import PCPBottom from 'components/organisms/pcpBottom'
+
 import Link from 'components/atoms/link'
 
 const MobileTabListTech = ({
@@ -74,21 +75,6 @@ const MobileTabListTech = ({
               )}
             </>
           ))}
-      </div>
-      <div className="technical-bottom">
-        <div className="technical-bottom-section">
-          {PcpBottom &&
-            PcpBottom.map((item, i) => (
-              <>
-                <PCPBottom
-                  image={item.image}
-                  button={item.button}
-                  mobileButton={item.mobileButton}
-                  url={item.url}
-                />
-              </>
-            ))}
-        </div>
       </div>
     </div>
   )

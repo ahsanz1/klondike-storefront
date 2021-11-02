@@ -5,10 +5,14 @@ import Label from 'components/atoms/label'
 
 import { Radio, Button, Input, Modal } from 'antd'
 import { Link } from '@reach/router'
-import { getCartByUserId } from 'libs/services/api/cart'
+import {
+  // addShippingWithLineItems,
+  getCartByUserId,
+} from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 const Checkoutsection = () => {
+  // let cart
   const { user } = useContext(AppContext)
   const { checkData } = checkoutData
   let [cartPayload, setCartPayloadState] = useState('')
@@ -23,6 +27,7 @@ const Checkoutsection = () => {
     if (user !== null) {
       let res = await getCartByUserId(user.accessToken)
 
+      // cart = res.data
       let data = {
         itemsTotal: res.data.totalAmount.amount,
         currency: res.data.totalAmount.currency,
@@ -33,6 +38,21 @@ const Checkoutsection = () => {
       setCartPayloadState(data)
     }
   }, [])
+
+  // const mapItemsWithShipping = async () => {
+  //   let data = []
+
+  //   cart.map((i, v) => {
+  //     data.push({
+  //       itemId: 1000000012,
+  //       lineItemId: 1,
+  //       shipToId: '5e99dd58fcef0314e06b64fe',
+  //     })
+  //   })
+
+  //   let res = await addShippingWithLineItems(cart.cartId, data)
+  //   console.log('line items res', res)
+  // }
 
   const showModal = () => {
     setIsModalVisible(true)
