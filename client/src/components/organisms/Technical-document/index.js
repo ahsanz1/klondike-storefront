@@ -60,10 +60,10 @@ const Technicaldata = ({
                 <Accordiondocment
                   short={short}
                   key={index}
-                  question={faq.question}
-                  answer={faq.answer}
-                  isOpen={faq.isOpen}
-                  table={faq.table}
+                  question={faq?.question}
+                  answer={faq?.answer}
+                  isOpen={faq?.isOpen}
+                  table={faq?.table}
                   isOpenHandler={isOpenHandler}
                   faqId={index}
                 />

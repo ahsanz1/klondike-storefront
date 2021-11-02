@@ -73,7 +73,7 @@
 
       @media screen and (max-width: 768px) {
         display: block;
-        padding-bottom: 41px;
+        padding-bottom: 4.53vw !important;
         font-size: 14px;
         line-height: 20px;
       }
@@ -192,6 +192,18 @@
           }
         }
       }
+    }
+  }
+
+  .read-more {
+    margin-bottom: 11.2vw;
+    border: none;
+    background: none;
+    font-family: $OpenSans;
+    font-size: 3.73vw;
+
+    @media (min-width: 768px) {
+      display: none;
     }
   }
 }
