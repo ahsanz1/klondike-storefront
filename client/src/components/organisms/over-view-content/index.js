@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Label from 'components/atoms/label'
-import ReactReadMoreReadLess from 'react-read-more-read-less'
+import PropTypes from 'prop-types'
 import './style.scss'
 
-const overViewContent = ({ mainHeading, overviewWrapper }) => {
-  console.log('check naaa...', overviewWrapper)
+const OverViewContent = ({ mainHeading, overviewWrapper }) => {
+  const [readMore, setReadMore] = useState('')
+  const more = name => {
+    console.log('more name:', name)
+    setReadMore(name)
+  }
   return (
     <>
       <div className="company-overview">
@@ -20,19 +24,31 @@ const overViewContent = ({ mainHeading, overviewWrapper }) => {
                       <Label className="details-paragragh" key={i}>
                         {data.paragraph.slice(3, data.paragraph.length - 5)}
                       </Label>
-                      <div className="overview-detail-section-mobile">
-                        <ReactReadMoreReadLess
-                          charLimit={200}
-                          readMoreText={'Read more'}
-                          readLessText={'Read less'}
-                          readMoreClassName="read-more-less--more  details-paragragh-mobile"
-                          readLessClassName="read-more-less--less  details-paragragh-mobile"
-                        >
-                          {data.paragraph.slice(3, data.paragraph.length - 5)}
-                        </ReactReadMoreReadLess>
-                      </div>
                     </>
                   ))}
+                  <div className="overview-detail-section-mobile">
+                    {readMore === item.subHeading
+                      ? item.subSection.map((data, i) => (
+                          <>
+                            <Label className="details-paragragh-mobile" key={i}>
+                              {data.paragraph.slice(
+                                3,
+                                data.paragraph.length - 5,
+                              )}
+                            </Label>
+                          </>
+                          // eslint-disable-next-line indent
+                        ))
+                      : item.subSection[0].paragraph.slice(3, 200) + '...'}
+                  </div>
+                  {readMore !== item.subHeading && (
+                    <button
+                      className="read-more"
+                      onClick={() => more(item.subHeading)}
+                    >
+                      Read more
+                    </button>
+                  )}
                 </div>
               )
             })}
@@ -42,4 +58,8 @@ const overViewContent = ({ mainHeading, overviewWrapper }) => {
     </>
   )
 }
-export default overViewContent
+OverViewContent.propTypes = {
+  overviewWrapper: PropTypes.array,
+  mainHeading: PropTypes.string,
+}
+export default OverViewContent
