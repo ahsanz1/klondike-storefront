@@ -1,6 +1,8 @@
 @import '~styles/globals';
 
 .categoryItem {
+  width: 17.36vw;
+
   .active-category {
     border-color: #f2a900 !important;
     color: #f2a900 !important;
@@ -19,7 +21,7 @@
     background: rgba(5, 5, 5, 0.39);
     color: rgba(236, 234, 233, 0.69);
     font-family: $OpenSans;
-    font-size: 0.67vw;
+    font-size: 0.69vw;
     font-weight: bold;
     cursor: pointer;
 
