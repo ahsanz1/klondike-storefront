@@ -10,6 +10,7 @@ exports.default = Types.Component({
       label: 'Categories',
       children: Types.Shape({
         children: {
+          categoryLink: Types.String({ label: 'Category link' }),
           categoryName: Types.String({ label: 'Category name' }),
           subItem: Types.Array({
             label: 'subitem',
