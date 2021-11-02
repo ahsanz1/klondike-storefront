@@ -46,15 +46,16 @@ const Techtabllist = ({
                     {item.subItem &&
                       item.subItem.hits &&
                       item.subItem.hits.map((item, index) => (
-                        <Label
+                        <Link
                           key={index}
                           onClick={() => productClickHandler(item.title)}
                           className={item.title === product && 'active-product'}
+                          to={item.links}
                         >
                           <ul>
                             <li>{item.title}</li>
                           </ul>
-                        </Label>
+                        </Link>
                       ))}
                   </div>
                 )}
