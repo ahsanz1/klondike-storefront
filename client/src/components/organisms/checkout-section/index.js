@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useContext, useEffect, useState } from 'react'
 import { checkoutData } from './data'
 import './style.scss'
@@ -6,11 +7,15 @@ import Label from 'components/atoms/label'
 import { Radio, Button, Input, Modal } from 'antd'
 import { Link } from '@reach/router'
 import {
-  // addShippingWithLineItems,
+  addShippingWithLineItems,
   getCartByUserId,
 } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
-import { getAllShippingMethods, createShipTo } from 'libs/services/api/checkout'
+import {
+  // getAllShippingMethods,
+  createShipTo,
+  checkout,
+} from 'libs/services/api/checkout'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 const Checkoutsection = () => {
   // let cart
@@ -19,44 +24,51 @@ const Checkoutsection = () => {
   let [cartPayload, setCartPayloadState] = useState('')
   const [visible, setVisible] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [cartId, setCartId] = useState('617fb67c3d8494000801e3f0')
-  setCartId('617fb67c3d8494000801e3f0')
+  const [cartId] = useState('617fb67c3d8494000801e3f0')
 
   // const [isActive, setIsAcive] = useState(true)
   // const [pickup, setPickup] = useState(false)
   // const [delivery, setDelivery] = useState(false)
-
-  useEffect(async () => {
+  const getCart = async () => {
     if (user !== null) {
-      let res = await getCartByUserId(user.accessToken)
-      let r = getAllShippingMethods()
-      console.log({ r })
+      console.log('token', user?.accessToken)
+      let res = await getCartByUserId(user?.accessToken)
+      // let r = getAllShippingMethods()
+      // console.log({ r })
       // cart = res.data
       let data = {
-        itemsTotal: res.data.totalAmount.amount,
-        currency: res.data.totalAmount.currency,
-        totalItems: res.data.quantity,
+        ...res?.data,
+        itemsTotal: res?.data?.totalAmount?.amount,
+        currency: res?.data?.totalAmount?.currency,
+        totalItems: res?.data?.quantity,
         totalPrice: '12,000',
       }
-
       setCartPayloadState(data)
+    }
+  }
+
+  useEffect(() => {
+    if (user != null) {
+      getCart()
     }
   }, [])
 
-  // const mapItemsWithShipping = async () => {
-  //   let data = []
+  const mapItemsWithShipping = async shipToId => {
+    let data = []
 
-  //   cart.map((i, v) => {
-  //     data.push({
-  //       itemId: 1000000012,
-  //       lineItemId: 1,
-  //       shipToId: '5e99dd58fcef0314e06b64fe',
-  //     })
-  //   })
+    await cartPayload?.items?.map((item, i) => {
+      data.push({
+        itemId: item?.itemId,
+        lineItemId: item?.lineItemId,
+        shipToId: shipToId,
+      })
+    })
+    console.log('dataaa', data)
 
-  //   let res = await addShippingWithLineItems(cart.cartId, data)
-  //   console.log('line items res', res)
-  // }
+    let res = await addShippingWithLineItems(cartPayload?._id, data)
+    console.log('line items res', res)
+    return res
+  }
 
   const showModal = () => {
     setIsModalVisible(true)
@@ -68,6 +80,76 @@ const Checkoutsection = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false)
+  }
+
+  const getItemsTaxes = async items => {
+    console.log({ items })
+    let newArray = []
+    await items?.map((item, i) => {
+      newArray.push({
+        lineItemId: item?.lineItemId,
+        amount: item?.totalPrice?.amount,
+      })
+    })
+    return newArray
+  }
+
+  const getShipToTaxes = async items => {
+    let newArray = []
+    await items?.map((item, i) => {
+      newArray.push({
+        shipToId: item?.shipTo?._id,
+        amount: item?.shipTo?.shipMethod?.cost?.amount,
+      })
+    })
+    return newArray
+  }
+
+  const finalCheckout = async shipToResponse => {
+    console.log({ shipToResponse })
+    let req = {
+      cartId: cartPayload?._id,
+      customerEmail: 'haseeb.shaukat@shopdev.co',
+      paymentDetails: [
+        {
+          transactionDetails: {
+            paymentType: 'NON_CARD',
+            tokenizedPaymentMethod: '123',
+          },
+          paymentIdentifier: {
+            cardIdentifier: 'QWfXNQNFXWp07Xu2',
+          },
+          paymentMethod: 'PURCHASE_ORDER',
+          paymentKind: 'PURCHASE_ORDER',
+          amount: shipToResponse?.data?.totalAmount?.amount,
+          currency: 'USD',
+          conversion: 1,
+          billToAddress: {
+            street1: '1510 Wall Street NW ',
+            city: 'Winnipeg',
+            state: 'MB',
+            country: 'Canada',
+            zipCode: 'R3G 2T3',
+            kind: 'shipping',
+            name: {
+              first: 'Haseeb',
+              last: 'Shaukat',
+            },
+            email: 'haseeb.shaukat@shopdev.co',
+            phone: {
+              number: '844-883-4645',
+              kind: 'Mobile',
+            },
+          },
+        },
+      ],
+      estimatedTax: {
+        itemsTaxes: await getItemsTaxes(shipToResponse?.data?.items),
+        shipToTaxes: await getShipToTaxes(shipToResponse?.data?.items),
+      },
+    }
+    let finalResponse = await checkout(req)
+    console.log({ finalResponse })
   }
 
   const createShipping = async () => {
@@ -104,6 +186,11 @@ const Checkoutsection = () => {
     console.log({ req })
     let response = await createShipTo(cartId, req)
     console.log({ response })
+    let shipToId = response?.data?._id
+    console.log({ shipToId })
+    let responseofLineItems = await mapItemsWithShipping(shipToId)
+    console.log({ responseofLineItems })
+    await finalCheckout(responseofLineItems)
   }
 
   // const [value, setValue] = useState(1)
