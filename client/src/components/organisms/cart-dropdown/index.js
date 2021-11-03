@@ -9,9 +9,8 @@ import './style.scss'
 import { getCartByUserId } from 'libs/api/cart'
 
 const CartDropdown = () => {
-  const { isModalVisible, closeModal } = useContext(AppContext)
+  const { user, isModalVisible, closeModal } = useContext(AppContext)
 
-  const { user } = useContext(AppContext)
   let [cartItems, setCartItemsState] = useState('')
 
   useEffect(() => {
