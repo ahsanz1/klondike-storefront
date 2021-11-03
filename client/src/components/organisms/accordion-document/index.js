@@ -92,7 +92,7 @@ const Accordiondocment = ({
                         <>
                           <Row className="table-content flex" key={i}>
                             <Col lg={8} className="custom-width">
-                              <p className="text-setting-table">
+                              <p className="text-setting-table notranslate">
                                 {data.product}
                               </p>
                             </Col>
