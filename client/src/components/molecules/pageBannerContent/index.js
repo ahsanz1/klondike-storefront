@@ -19,15 +19,15 @@ const PageBannerContent = ({
       <div className="pagebanner-wrapper">
         <img src={backgroundimg.url} alt="" className="backgrounimg" />
         <img
-          src={backgroundimgMobile.url}
-          alt={backgroundimgMobile.altText}
+          src={backgroundimgMobile?.url}
+          alt={backgroundimgMobile?.altText}
           className="backgrounimgmobile"
         />
         <div className="pagebanner-internal">
           <div className="imgwrapper">
             <img src={banerlogoimg.url} alt="" />
             <p className="deskHeading">{heading}</p>
-            <p className="mobHeading">{mobileHeading}</p>
+            <p className="mobHeading">{mobileHeading && mobileHeading}</p>
           </div>
           <Link to="/oats">
             <Button>{buttontxt}</Button>
