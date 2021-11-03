@@ -19,7 +19,7 @@ const TechNews = ({
   mainHeading,
   categoryHeading,
 }) => {
-  const perPageItems = 2
+  const perPageItems = 10
   let [activeItems, setActiveItems] = useState([])
 
   useEffect(() => {
@@ -34,7 +34,13 @@ const TechNews = ({
     data = data.slice(startIndex, endIndex)
     setActiveItems(data)
   }
-  console.log('check response:', techBlogData)
+  const catagory = techBlogData.map(item => {
+    return item.catagory.toUpperCase()
+  })
+  const toFindDuplicates = arry =>
+    arry.filter((item, index) => arry.indexOf(item) === index)
+  const duplicateElementa = toFindDuplicates(catagory)
+  console.log('check response:', duplicateElementa)
   return (
     <>
       <div className="technacil-wriper">
@@ -51,12 +57,11 @@ const TechNews = ({
               <Label className="tech-news-title">{mainHeading}</Label>
               <Label className="pages-title">{categoryHeading}</Label>
               <div className="catagory-links">
-                <Link className="links">Uncategorized</Link>
-                <Link className="links">Industry News</Link>
-                <Link className="links">Hydraulic Fluids</Link>
-                <Link className="links">Engine Oils</Link>
-                <Link className="links">Greases</Link>
-                <Link className="links">Biodegradable Lubricants</Link>
+                {duplicateElementa.map((item, i) => (
+                  <Link key={i} className="links">
+                    {item}
+                  </Link>
+                ))}
               </div>
               <div className="blog-item">
                 <div className="page-no">
