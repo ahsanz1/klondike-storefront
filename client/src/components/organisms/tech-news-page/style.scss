@@ -218,7 +218,10 @@
           }
 
           .read-more {
-            color: #ffa500;
+            border: none;
+            background: none;
+            color: rgba(255, 165, 0, 1);
+            font-weight: bold;
           }
         }
       }

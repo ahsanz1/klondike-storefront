@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
+import Button from 'components/atoms/button'
 
 const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
   const [textVal, setTextVal] = useState('')
@@ -44,9 +45,10 @@ const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
         <div>
           <Label className="paragragh-text">
             {textVal.slice(3, textVal.length - 5)}
-            <button className="read-more" onClick={e => changeState(text)}>
+            {' ...'}
+            <Button className="read-more" onClick={e => changeState(text)}>
               {btnText}
-            </button>
+            </Button>
           </Label>
         </div>
       </div>
