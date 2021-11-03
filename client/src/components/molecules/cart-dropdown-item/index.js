@@ -32,7 +32,7 @@ const CartDropdownItem = ({ mainImage, title, size, price, quantity }) => {
         <div>
           <div className="item-desc-and-price">
             <div className="item-desc">
-              <Label className="item-title">{title}</Label>
+              <Label className="item-title notranslate">{title}</Label>
               <div className="product-detail-info-cart">
                 <Label className="item-info">
                   SIZE: <Label className="item-subInfo">{size}</Label>

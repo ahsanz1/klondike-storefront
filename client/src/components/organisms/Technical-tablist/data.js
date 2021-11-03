@@ -1,7 +1,7 @@
 export const categoriesXPM = [
   {
     title: 'Technical Documents',
-    categoryLink: '/tech-resource',
+    categoryLink: '/tech-resources/Technical-doucmente',
     categoryName: 'Technical Documents',
     link: 'Technical-doucment',
   },
@@ -92,7 +92,6 @@ export const categoriesXPM = [
   //     categoryName: 'Chemicals',
   //   },
 ]
-
 export const AboutUsXPM = [
   {
     title: 'Company Overview',
