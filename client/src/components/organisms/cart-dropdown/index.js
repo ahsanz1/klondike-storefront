@@ -1,45 +1,27 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'libs/context'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
 import './style.scss'
+import { getCartByUserId } from 'libs/api/cart'
 
 const CartDropdown = () => {
-  const {
-    //  cartItems,
-    isModalVisible,
-    closeModal,
-    subTotal,
-    cartProducts,
-  } = useContext(AppContext)
+  const { isModalVisible, closeModal } = useContext(AppContext)
 
-  const cartItems = [
-    {
-      mainImage: 'static/images/klondike4.png',
-      itemId: 0,
-      title: '15W-40 CK-4 Advanced Formula',
-      size: 208,
-      price: 110,
-      partnum: 'KL-GL1390',
-      percase: 12,
-      quantity: 3,
-    },
-    {
-      mainImage: 'static/images/klondike2.png',
-      itemId: 1,
-      title: '85W-140 GL-5',
-      size: 946,
-      partnum: 'KL-HD0540',
-      percase: 12,
-      price: 110,
-      quantity: 2,
-    },
-  ]
+  const { user } = useContext(AppContext)
+  let [cartItems, setCartItemsState] = useState('')
 
-  console.log({ cartProducts })
+  useEffect(() => {
+    const getCart = async () => {
+      let res = await getCartByUserId(user.accessToken)
+      setCartItemsState(res.data)
+    }
+
+    getCart()
+  }, [])
 
   return (
     isModalVisible && (
@@ -67,7 +49,7 @@ const CartDropdown = () => {
                 </div>
                 <div className="cart-dropdown-header-item-no">
                   {/* <p> */}
-                  {cartItems.length} Items
+                  {cartItems?.items?.length} Items
                   {/* </p> */}
                 </div>
               </div>
@@ -86,8 +68,8 @@ const CartDropdown = () => {
             </p>
           </div>
           <div className="cart-dropdown-items">
-            {cartItems && cartItems.length > 0 ? (
-              cartItems.map((cartItem, id) => {
+            {cartItems.items && cartItems.items.length > 0 ? (
+              cartItems.items.map((cartItem, id) => {
                 return <CartDropdownItem {...cartItem} key={id} />
               })
             ) : (
@@ -95,12 +77,15 @@ const CartDropdown = () => {
             )}
           </div>
 
-          {cartItems && cartItems.length > 0 ? (
+          {cartItems.items && cartItems.items.length > 0 ? (
             <div className="cart-dropdown-checkout-container">
               <div className="cart-dropdown-checkout-details">
                 <div className="order-subtotal-and-checkout-btn">
                   <p className="subtotal-title">Subtotal</p>
-                  <p className="subtotal-price">${subTotal}</p>
+                  <p className="subtotal-price">
+                    {cartItems?.totalAmount?.amount}{' '}
+                    {cartItems?.totalAmount?.currency}
+                  </p>
                 </div>
                 <div className="cart-dropdown-checkout">CHECKOUT</div>
               </div>

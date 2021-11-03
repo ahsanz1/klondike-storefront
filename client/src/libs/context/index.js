@@ -22,7 +22,6 @@ const AppProvider = ({ children }) => {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [cartPopupModal, setCartPopupModal] = useState(false)
   const [cartProducts, setCartProducts] = useState([])
-  const [cartData, setCartData] = useState({})
   const [pdpPurchaseType, setPdpPurchaseType] = useState(1)
   const [pdpSubscriptionType, setPdpSubscriptionType] = useState(
     'ShipEveryWeek',
@@ -225,8 +224,6 @@ const AppProvider = ({ children }) => {
         cartProducts,
         setCartProducts,
         setCartPopupModal,
-        cartData,
-        setCartData,
         showcartPOPModal,
         closePopUpModal,
         closeModal,
