@@ -14,7 +14,7 @@ const SearchList = ({ image, category, title, sku, close }) => {
       </div>
       <div>
         <Label className="search-category">{category}</Label>
-        <Label className="search-title">{title}</Label>
+        <Label className="search-title notranslate">{title}</Label>
       </div>
     </div>
   )
