@@ -11,8 +11,17 @@
     //   height: 200px;
     // }
     @media screen and (max-width: 500px) {
+      display: none;
       width: 100vw;
       height: 66.4vw;
+    }
+  }
+
+  .backgrounimgmobile {
+    display: none;
+
+    @media (max-width: 500px) {
+      display: block;
     }
   }
 
@@ -67,6 +76,18 @@
           height: 13vw;
         }
       }
+
+      .deskHeading {
+        @media (max-width: 500px) {
+          display: none;
+        }
+      }
+
+      .mobHeading {
+        @media (min-width: 500px) {
+          display: none;
+        }
+      }
     }
 
     button {
@@ -85,12 +106,13 @@
       text-align: center;
       text-transform: uppercase;
 
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: 768px) {
         width: 44vw;
-        height: 10.6vw;
+        height: auto;
         border: 0.5vw solid #f2a900;
         border-radius: 1.3vw;
         font-size: 3.7vw;
+        line-height: 6.4vw;
       }
     }
   }
