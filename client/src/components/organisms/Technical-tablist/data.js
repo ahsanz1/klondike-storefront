@@ -92,7 +92,6 @@ export const categoriesXPM = [
   //     categoryName: 'Chemicals',
   //   },
 ]
-
 export const AboutUsXPM = [
   {
     title: 'Company Overview',
