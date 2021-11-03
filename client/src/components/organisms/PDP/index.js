@@ -32,7 +32,9 @@ import queryString from 'query-string'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   // const { data, imgdata, heading } = pdpdata
-  const { showcartPOPModal, user, setCartData } = useContext(AppContext)
+  const { showcartPOPModal, user, setCartData, setPdpProductData } = useContext(
+    AppContext,
+  )
   console.log({ user })
 
   const { search } = useLocation()
@@ -125,6 +127,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         setProductData(newObj)
         setIsLoading(false)
         mapAttributes(res?.response?.data?.items)
+        setPdpProductData(res?.response?.data?.product)
       })
       .catch(e => {
         setIsLoading(false)
