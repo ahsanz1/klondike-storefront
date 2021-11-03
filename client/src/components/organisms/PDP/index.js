@@ -488,7 +488,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 {isLoggedIn && (
                   <div style={{ display: 'flex', justifyContent: 'end' }}>
                     <div
-                      className="cell-header total-price"
+                      className="cell totalPrice"
                       style={{
                         color:
                           items?.totalPackagedOrderPrice > 0
@@ -583,7 +583,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                       </div>
                       <div
                         className={
-                          packagedOrder ? 'cell color-disabled' : 'cell'
+                          packagedOrder
+                            ? 'cell color-disabled totalPrice'
+                            : 'cell totalPrice'
                         }
                         style={{
                           color:
