@@ -33,9 +33,9 @@
     margin-top: 0;
     margin-bottom: 21px;
     // margin-left: -97px;
-    padding-top: 53px;
+    padding-top: 5.76vw;
     font-family: $OpenSans;
-    font-size: 2.1vw;
+    font-size: 2.15vw;
     font-style: normal;
     font-weight: bold;
     line-height: 140%;
@@ -59,6 +59,7 @@
   .input_model {
     width: 31.1vw;
     height: 4.44vw;
+    margin-right: 0.69vw;
     // height: 4.4vw;
     // margin-left: 22.9vw;
     padding-left: 1.3vw;
@@ -95,6 +96,7 @@
   .btn-search {
     width: 3.5vw;
     height: 3vw;
+    margin-left: 0.69vw;
     padding: 0;
     border-radius: 1.11vw;
     background-color: #f1a900;
@@ -112,7 +114,7 @@
   .wrapper-oats {
     display: flex;
     margin-right: 22vw;
-    margin-left: 22.98vw;
+    margin-left: 24vw;
 
     @media (max-width: 768px) {
       // display: grid;
@@ -319,6 +321,7 @@
     display: flex;
     justify-content: space-between;
     width: 93.34vw;
+    width: 90.34vw;
     margin: 0 auto;
     // margin-left: 49px;
     padding-left: 20px;
