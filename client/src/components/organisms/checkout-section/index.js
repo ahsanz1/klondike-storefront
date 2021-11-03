@@ -46,7 +46,7 @@ const Checkoutsection = () => {
   //     data.push({
   //       itemId: 1000000012,
   //       lineItemId: 1,
-  //       shipToId: '5e99dd58fcef0314e06b64fe',
+  //       shipToId: '71',
   //     })
   //   })
 

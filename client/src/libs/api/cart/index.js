@@ -10,6 +10,7 @@ export const getCartByUserId = async (userId, authToken) => {
       userAuthToken: authToken,
     },
     headers: {
+      'access-control-allow-origin': '*',
       ...HEADER.common,
     },
   })

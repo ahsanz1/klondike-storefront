@@ -11,15 +11,26 @@ import { fetchCategory } from 'libs/services/algolia'
 import './style.scss'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import { AppContext } from 'libs/context'
+import { getCartByUserId } from 'libs/api/cart'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
   const { user } = useContext(AppContext)
   let [qty, setQty] = useState(1)
+  let [cartItems, setCartItemsState] = useState('')
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
 
   const [itemdata, setItemData] = useState([])
+
+  useEffect(() => {
+    const getCart = async () => {
+      setCartItemsState(await getCartByUserId(user.accessToken))
+    }
+
+    getCart()
+  }, [])
+
   useEffect(() => {
     const data = async () => {
       const items = await fetchCategory(question)
@@ -139,6 +150,7 @@ const ProductAccordion = ({ question }) => {
 
         {itemdata &&
           itemdata.map((data, i) => {
+            console.log({ cartItems })
             return (
               <>
                 <Row className="table-content flex" key={i}>
