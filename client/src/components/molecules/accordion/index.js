@@ -58,7 +58,7 @@ const Accordion = ({
           </Col>
           <Col md={table ? 24 : 22} xs={18} sm={18}>
             <h4
-              className="accordion-question"
+              className="accordion-question notranslate"
               onClick={() => {
                 isOpenHandler(faqId)
               }}

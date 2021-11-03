@@ -53,15 +53,16 @@ const MobileTabList = ({
                         {subItem &&
                           subItem.hits &&
                           subItem.hits.map((item, index) => (
-                            <Label
+                            <Link
                               onClick={() => productClickHandler(item.title)}
                               key={index}
                               className={
                                 item.title === product && 'active-product'
                               }
+                              to={item.links}
                             >
                               {item.title}
-                            </Label>
+                            </Link>
                           ))}
                       </div>
                     )}

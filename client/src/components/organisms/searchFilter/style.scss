@@ -2,8 +2,8 @@
 
 .search-filter {
   @media (max-width: 500px) {
-    margin-top: 35.73vw;
-    padding-top: 21.6vw;
+    margin-top: 35.7vw;
+    padding-top: 10.66vw;
   }
 
   .products {
@@ -19,6 +19,11 @@
       margin: 0;
       padding: 0;
       list-style: none;
+
+      @media (max-width: 500px) {
+        display: flex;
+        flex-wrap: wrap;
+      }
 
       li {
         width: 13.8vw;
@@ -172,6 +177,7 @@
 
         @media (max-width: 500px) {
           top: 4.46vw;
+          margin-left: 3.46vw;
           font-family: $OpenSans;
           font-size: 4.26vw;
           font-weight: bold;
@@ -184,6 +190,10 @@
     .ant-select-arrow {
       padding-right: 2.08vw;
       color: #fff !important;
+
+      @media (max-width: 500px) {
+        padding-right: 8vw;
+      }
     }
   }
 }

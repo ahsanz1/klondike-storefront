@@ -15,6 +15,7 @@ $vw-viewport: 1440;
 .technacil-wriper {
   display: flex;
   flex-direction: row;
+  margin-bottom: get-vw(48px);
 
   @media (max-width: 768px) {
     display: flex;
@@ -56,7 +57,7 @@ $vw-viewport: 1440;
       margin-left: get-vw(63px);
 
       @media (max-width: 768px) {
-        margin-left: 8.8vw;
+        margin-left: 4.375vw;
       }
     }
 

@@ -1,11 +1,13 @@
 export const categoriesXPM = [
   {
     title: 'Technical Documents',
+    categoryLink: '/tech-resources/Technical-doucmente',
     categoryName: 'Technical Documents',
     link: 'Technical-doucment',
   },
   {
     title: 'OEM Approvals',
+    categoryLink: '/tech-resources/OEMApprovals',
     categoryName: 'OEM Approvals',
     link: 'OEMApprovals',
     subItem: {
@@ -16,60 +18,64 @@ export const categoriesXPM = [
         },
         {
           title: 'Cummins Approved',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/cummins-approval',
         },
         {
           title: 'Detroit Diesel ',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/detroit-diesel-approved',
         },
         {
           title: 'Approved dexos1®',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/dexos1-approved',
         },
         {
           title: 'Approved Mack',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/mack-approved',
         },
         {
           title: 'Mercedes-Benz Approved',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/mercedes-benz-approved',
         },
         {
           title: 'NMMA Approvedlo',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/nmma-approved',
         },
         {
           title: 'Renault Approved',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/renault-approved',
         },
         {
           title: ' Volkswagen Approved',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/volkswagen-approved',
         },
         {
           title: 'Volvo Approved',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/volvo-approved',
         },
       ],
     },
   },
   {
     title: 'Catalog',
+    categoryLink: '/tech-resources/catlog',
     categoryName: 'Catalog',
     link: 'catlog',
   },
   {
     title: 'Warranty',
+    categoryLink: '/tech-resources/warranty',
     categoryName: 'Warranty',
     link: 'warranty',
   },
   {
     title: 'Video Gallery',
+    categoryLink: '/tech-resources/video-gallery',
     categoryName: 'Video Gallery',
     link: 'video-gallery',
   },
   {
     title: 'Tech/News Blog',
+    categoryLink: '/tech-resources/tech-news-blog',
     categoryName: 'Tech/News Blog',
     link: 'tech-news-blog',
   },

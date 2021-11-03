@@ -1,6 +1,3 @@
-// import Accordiondocment from 'components/molecules/accordion'
-// import PropTypes from 'prop-types'
-// import Heading from 'components/atoms/heading'
 import './style.scss'
 import React, { useState } from 'react'
 import Accordiondocment from 'components/organisms/accordion-document'
@@ -34,7 +31,11 @@ const Technical = ({ faq, title, paragraph }) => {
             <div className="accordin-warp">
               <div className="heading-tech">
                 <h1>{title}</h1>
-                <p>{paragraph}</p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: `${paragraph}`,
+                  }}
+                ></p>
               </div>
 
               {faqs &&
@@ -42,7 +43,7 @@ const Technical = ({ faq, title, paragraph }) => {
                   <Accordiondocment
                     key={index}
                     question={faq.question}
-                    // isOpen={faq.isOpen}
+                    isOpen={faq.isOpen}
                     isOpenHandler={isOpenHandler}
                     faqId={index}
                     tableData={faq.tableData}
