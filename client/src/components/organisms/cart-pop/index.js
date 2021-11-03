@@ -74,7 +74,7 @@ const CartPopUP = () => {
           <div className="subtotal-and-free-delivery-info">
             <div className="subtotal-section">
               <Label className="subtotal-section-text">
-                Cart Subtotal ({cartData?.quantity} items):
+                Cart Subtotal ({cartData?.items?.length} items):
               </Label>
               <Label className="subtotal-section-price">
                 ${cartData?.totalAmount?.amount}
