@@ -14,7 +14,7 @@ const WebpagesHeroImages = ({
   return (
     <div
       className="banner"
-      style={overLapMobile && size[0] < 768 && { marginTop: '35.73vw' }}
+      style={overLapMobile && size[0] < 768 ? { marginTop: '35.73vw' } : {}}
     >
       <Image
         src={desktopImage.url}
