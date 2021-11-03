@@ -17,9 +17,30 @@ import {
   checkout,
 } from 'libs/services/api/checkout'
 // import AccordionComponent from 'components/molecules/accordionComponent'
+
 const Checkoutsection = () => {
   // let cart
-  const { user } = useContext(AppContext)
+  const { user, personalInfo } = useContext(AppContext)
+  console.log({ personalInfo })
+
+  const address = {
+    street1: '1510 Wall Street NW ',
+    city: 'Winnipeg',
+    state: 'MB',
+    country: 'Canada',
+    zipCode: 'R3G 2T3',
+    kind: 'shipping',
+    name: {
+      first: personalInfo?.firstName,
+      last: personalInfo?.lastName,
+    },
+    email: personalInfo?.email,
+    phone: {
+      number: '844-883-4645',
+      kind: 'Mobile',
+    },
+  }
+
   const { checkData } = checkoutData
   let [cartPayload, setCartPayloadState] = useState('')
   const [visible, setVisible] = useState(false)
@@ -127,23 +148,7 @@ const Checkoutsection = () => {
           ),
           currency: 'USD',
           conversion: 1,
-          billToAddress: {
-            street1: '1510 Wall Street NW ',
-            city: 'Winnipeg',
-            state: 'MB',
-            country: 'Canada',
-            zipCode: 'R3G 2T3',
-            kind: 'shipping',
-            name: {
-              first: 'Haseeb',
-              last: 'Shaukat',
-            },
-            email: 'haseeb.shaukat@shopdev.co',
-            phone: {
-              number: '844-883-4645',
-              kind: 'Mobile',
-            },
-          },
+          billToAddress: address,
         },
       ],
       estimatedTax: {
@@ -160,23 +165,7 @@ const Checkoutsection = () => {
 
   const createShipping = async () => {
     let req = {
-      address: {
-        street1: '1510 Wall Street NW ',
-        city: 'Winnipeg',
-        state: 'MB',
-        country: 'Canada',
-        zipCode: 'R3G 2T3',
-        kind: 'shipping',
-        name: {
-          first: 'Haseeb',
-          last: 'Shaukat',
-        },
-        email: 'haseeb.shaukat@shopdev.co',
-        phone: {
-          number: '844-883-4645',
-          kind: 'Mobile',
-        },
-      },
+      address: address,
       shipToType: 'SHIP_TO_ADDRESS',
       shipMethod: {
         shipMethodId: 10009,
@@ -276,10 +265,18 @@ const Checkoutsection = () => {
             return (
               <>
                 <div className="checkout-gmail">
-                  <p>{data.gmail}</p>
+                  <p>{address?.email}</p>
                 </div>
                 <div className="ckeckout-name">
-                  <p>{data.name}</p>
+                  <p>
+                    {`${address?.name?.first} ${address?.name?.last}`}
+                    <br />
+                    {`${address?.street1},`}
+                    <br />
+                    {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                    <br />
+                    {`${address?.phone?.number}`}
+                  </p>
                   {visible && (
                     <Button onClick={showModal} className="btn-location">
                       CHOOSE PICK UP LOCATION
