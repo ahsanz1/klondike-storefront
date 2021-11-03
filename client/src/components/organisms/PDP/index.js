@@ -32,7 +32,9 @@ import queryString from 'query-string'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   // const { data, imgdata, heading } = pdpdata
-  const { showcartPOPModal, user, setCartData } = useContext(AppContext)
+  const { showcartPOPModal, user, setCartData, setPdpProductData } = useContext(
+    AppContext,
+  )
   console.log({ user })
 
   const { search } = useLocation()
@@ -125,6 +127,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         setProductData(newObj)
         setIsLoading(false)
         mapAttributes(res?.response?.data?.items)
+        setPdpProductData(res?.response?.data?.product)
       })
       .catch(e => {
         setIsLoading(false)
@@ -485,7 +488,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 {isLoggedIn && (
                   <div style={{ display: 'flex', justifyContent: 'end' }}>
                     <div
-                      className="cell-header total-price"
+                      className="cell totalPrice"
                       style={{
                         color:
                           items?.totalPackagedOrderPrice > 0
@@ -580,7 +583,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                       </div>
                       <div
                         className={
-                          packagedOrder ? 'cell color-disabled' : 'cell'
+                          packagedOrder
+                            ? 'cell color-disabled totalPrice'
+                            : 'cell totalPrice'
                         }
                         style={{
                           color:
