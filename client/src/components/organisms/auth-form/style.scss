@@ -29,9 +29,10 @@
     padding-top: 3.47vw !important;
     padding-bottom: 0;
 
-    @media (max-width: 500px) {
-      margin-top: 26.6vw;
+    @media (max-width: 768px) {
+      margin-top: 30.16vw !important;
       margin-bottom: 23.2vw !important;
+      padding-top: 13.47vw !important;
     }
 
     .request-form__content {
@@ -96,9 +97,12 @@
         color: #fff;
       }
 
-      @media screen and(max-width: 500px) {
+      @media screen and(max-width: 768px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-bottom: 8vw;
-        padding: 2.6vw 8vw;
+        padding: 6vw 0;
         border: 0.5vw solid #111;
         font-size: 4.2vw;
         line-height: 7.4vw;
