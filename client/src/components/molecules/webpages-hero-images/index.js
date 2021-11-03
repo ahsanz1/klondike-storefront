@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import { useWindowSize } from 'libs/custom-hooks'
 import Image from 'components/atoms/image'
 import './style.scss'
 
@@ -10,8 +10,12 @@ const WebpagesHeroImages = ({
   overLapImage,
   overLapMobile,
 }) => {
+  const size = useWindowSize()
   return (
-    <div className="banner">
+    <div
+      className="banner"
+      style={overLapMobile && size[0] < 768 ? { marginTop: '35.73vw' } : {}}
+    >
       <Image
         src={desktopImage.url}
         alt={desktopImage.alt || desktopImage.altText}
