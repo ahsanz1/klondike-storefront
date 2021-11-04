@@ -522,6 +522,10 @@ const mockData = {
       id: 'PDP',
       params: { pdpdata, pdpdatasheet, RadioData, categories },
     },
+    {
+      id: 'PDS',
+      params: pcp,
+    },
   ],
   '/Order': [
     {
@@ -665,6 +669,12 @@ const mockData = {
     {
       id: 'Dealership',
       params: delarship,
+    },
+  ],
+  '/about-klondike/industry-applications/agriculture': [
+    {
+      id: 'AgriculturePage',
+      params: {},
     },
   ],
 }

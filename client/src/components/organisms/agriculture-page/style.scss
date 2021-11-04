@@ -1,0 +1,220 @@
+@import '~styles/globals';
+
+.agricultural-page-wrapper {
+  color: white;
+  font-family: $OpenSans;
+
+  .overview-detail-section-mobile {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+      position: relative;
+      padding-bottom: 0;
+      overflow: hidden;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .read-more {
+      display: block;
+      position: relative;
+      right: 0;
+      bottom: 60px;
+      width: 100%;
+      height: 60px;
+      padding-top: 40px;
+      background-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          rgba(2, 50, 68, 0.57)
+        );
+      color: orange;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: left;
+
+      .button {
+        position: relative;
+        top: 25px;
+        border: 0;
+        background-color: transparent;
+        color: white;
+      }
+    }
+  }
+
+  .featured-products {
+    .feat-title {
+      font-size: get-vw(18px);
+      font-style: normal;
+      font-weight: bold;
+      line-height: get-vw(25px);
+
+      /* identical to box height */
+
+      text-transform: capitalize;
+
+      @media screen and (max-width: 768px) {
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
+
+    .feat-products {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: get-vw(16px);
+
+      @media screen and (max-width: 768px) {
+        margin-top: 30px;
+      }
+
+      .feat-product {
+        display: flex;
+        flex-direction: column;
+        margin-left: get-vw(27px);
+
+        @media screen and (max-width: 768px) {
+          margin-right: 17px;
+          margin-left: 0;
+        }
+
+        .feat-image {
+          width: get-vw(185px);
+          background: #fff;
+
+          @media screen and (max-width: 768px) {
+            width: 140px;
+          }
+        }
+
+        .feat-link {
+          padding-top: get-vw(15.84px);
+          padding-bottom: get-vw(15.84px);
+          color: rgba(241, 169, 0, 1);
+          font-size: get-vw(14px);
+          font-weight: normal;
+          line-height: get-vw(19px);
+          text-align: center;
+          text-transform: capitalize;
+
+          @media screen and (max-width: 768px) {
+            padding-top: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            line-height: 19px;
+          }
+        }
+      }
+    }
+  }
+
+  .explore-all {
+    .explore-title {
+      margin-top: get-vw(28px);
+      font-size: get-vw(18px);
+      font-style: normal;
+      font-weight: bold;
+      line-height: get-vw(25px);
+      text-transform: capitalize;
+
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+        line-height: 25px;
+      }
+    }
+
+    .explore-links {
+      display: flex;
+      flex-wrap: wrap;
+
+      .explore-link {
+        margin-top: get-vw(26px);
+        margin-right: get-vw(67px);
+        margin-left: get-ve(67px);
+        color: #f1a900;
+        font-size: get-vw(14px);
+        font-style: normal;
+        font-weight: normal;
+        line-height: get-vw(19px);
+        text-align: center;
+        text-transform: capitalize;
+
+        @media screen and (max-width: 768px) {
+          margin-top: 22px;
+          margin-right: 15px;
+          margin-left: 0;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 19px;
+        }
+      }
+    }
+  }
+
+  .agricultural-wrapper {
+    margin-top: get-vw(100px);
+    margin-right: get-vw(91px);
+    padding-top: get-vw(66px);
+    padding-right: get-vw(77px);
+    padding-bottom: get-vw(101px);
+    padding-left: get-vw(61px);
+    background: rgba(3, 41, 57, 0.5);
+
+    @media screen and (max-width: 768px) {
+      margin-top: 0;
+      margin-right: 0;
+      padding-top: 53px;
+      padding-right: 30px;
+      padding-bottom: 56px;
+      padding-left: 30px;
+    }
+
+    .agricultural-content {
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .yellow {
+      color: #f1a900;
+    }
+
+    .title {
+      margin-bottom: get-vw(30px);
+      color: #f1a900;
+      font-size: get-vw(24px);
+      font-weight: bold;
+      line-height: get-vw(33px);
+      text-transform: uppercase;
+
+      @media screen and (max-width: 768px) {
+        margin-bottom: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 33px;
+      }
+    }
+
+    .details-paragraph {
+      font-size: get-vw(14px);
+      font-weight: normal;
+      line-height: get-vw(20px);
+      //   color: rgba(38, 70, 83, 0.5);
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .more {
+      margin-top: get-vw(20px);
+
+      @media screen and (max-width: 768px) {
+        margin-top: 20px;
+      }
+    }
+  }
+}

@@ -201,7 +201,7 @@ const PDPMobile = ({
               </div>
             )
           })}
-        <div>
+        <div className="total-price-container">
           <span className="total-price">
             {'$' +
               (pdpdata?.totalPackagedOrderPrice > 0

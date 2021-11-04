@@ -52,11 +52,12 @@ $vw-viewport: 1440;
     // margin-right: 2.63vw;
     // padding-top: 66px;
     .accordin-warp {
-      width: 62.4vw;
+      // width: 62.4vw;
       margin-top: get-vw(66px);
       margin-left: get-vw(63px);
 
       @media (max-width: 768px) {
+        margin-right: 25px;
         margin-left: 4.375vw;
       }
     }
@@ -82,9 +83,10 @@ $vw-viewport: 1440;
         font-feature-settings: 'pnum';
 
         @media (max-width: 768px) {
-          width: 128.53vw;
-          height: 8.8vw;
+          // width: 128.53vw;
+          // height: 8.8vw;
           margin-top: 16.8vw;
+          // margin-bottom: 25px;
           font-size: 6.4vw;
           line-height: 8.8vw;
           text-transform: uppercase;

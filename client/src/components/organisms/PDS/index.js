@@ -15,7 +15,7 @@ const PDS = ({ pcpbottom }) => {
 }
 
 PDS.propTypes = {
-  pcpbottom: PropTypes.string,
+  pcpbottom: PropTypes.array,
 }
 
 export default PDS

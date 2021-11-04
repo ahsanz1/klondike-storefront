@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
-import './style.scss'
-import { AboutUsXPM } from 'components/organisms/Technical-tablist/data'
+import { IndustryAppXPM } from 'components/organisms/Technical-tablist/data'
 import Link from 'components/atoms/link'
 
-const MobileTabList = ({
+const IndustryAppMobileTabList = ({
   categories,
   itemName,
   clickCategoryHandler,
@@ -21,9 +20,9 @@ const MobileTabList = ({
   return (
     <div className="mobile-tab-list">
       <div className={`categoryItem-tab trt ${className}`}>
-        {AboutUsXPM &&
-          AboutUsXPM.length &&
-          AboutUsXPM.map((item, index) => (
+        {IndustryAppXPM &&
+          IndustryAppXPM.length &&
+          IndustryAppXPM.map((item, index) => (
             <>
               {item.categoryName.length > 0 && (
                 <div>
@@ -70,7 +69,7 @@ const MobileTabList = ({
     </div>
   )
 }
-MobileTabList.DefaultProps = {
+IndustryAppMobileTabList.DefaultProps = {
   categories: [],
   itemName: '',
   clickCategoryHandler: {},
@@ -78,7 +77,7 @@ MobileTabList.DefaultProps = {
   className: '',
 }
 
-MobileTabList.propTypes = {
+IndustryAppMobileTabList.propTypes = {
   categories: PropTypes.array,
   itemName: PropTypes.string,
   clickCategoryHandler: PropTypes.func,
@@ -86,4 +85,4 @@ MobileTabList.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
 }
-export default MobileTabList
+export default IndustryAppMobileTabList
