@@ -34,6 +34,7 @@ Components['DownTime'] = require('components/organisms/DownTime').default
 Components['HomeBanner'] = require('components/organisms/HomeBanner').default
 Components['OurProduct'] = require('components/organisms/ourProduct').default
 Components['Header'] = require('components/organisms/header').default
+Components['EzeBox'] = require('components/organisms/eze-box').default
 Components[
   'ClientTestimonial'
 ] = require('components/organisms/ClientTestimonial').default
