@@ -21,8 +21,8 @@ $vw-viewport: 1440;
     margin-bottom: 0;
     color: #fff;
     font-family: $OpenSans;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 1.25vw;
+    font-weight: 600;
     letter-spacing: -0.5px;
     line-height: 26.4px;
     text-align: left;
@@ -45,6 +45,7 @@ $vw-viewport: 1440;
       color: #fff;
       font-family: $OpenSans;
       font-size: 16px;
+      font-weight: 700;
       line-height: 22.4px;
 
       @media (max-width: 768px) {
@@ -54,12 +55,22 @@ $vw-viewport: 1440;
 
     .c-link {
       width: 32px;
+      margin-right: 9.33vw;
       margin-left: 2.77vw;
       color: #f1a900;
       font-size: 14px;
       font-style: normal;
       font-weight: normal;
       line-height: 140%;
+    }
+
+    p.text-setting-table.notranslate {
+      font-size: 0.97vw;
+      font-weight: 400;
+
+      @media (max-width: 768px) {
+        font-size: 3.73vw;
+      }
     }
   }
 
