@@ -1,13 +1,12 @@
 import React from 'react'
-import PCPBottom from 'components/organisms/pcpBottom'
+
 import PropTypes from 'prop-types'
 import Techtabllist from 'components/organisms/Technical-tablist'
 import './style.scss'
 import ReadMoreReact from 'read-more-react'
 // import { cataogData } from './data'
 import { useWindowSize } from 'libs/custom-hooks'
-import { technicalBanner, PcpBottom } from 'libs/data/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
+
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
 import Link from 'components/atoms/link'
@@ -126,7 +125,6 @@ const Catlog = ({ heading, catData, image }) => {
   // const [size, setSize] = useState(useWindowSize)
   return size[0] > 768 ? (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
       <div className="tech-page-wrapper">
         <div className="technacil-wriper">
           <div className="custom-tech">
@@ -137,21 +135,6 @@ const Catlog = ({ heading, catData, image }) => {
             />
           </div>
           {renderCatlogdata()}
-        </div>
-        <div className="technical-bottom">
-          <div className="technical-bottom-section">
-            {PcpBottom &&
-              PcpBottom.map((item, i) => (
-                <>
-                  <PCPBottom
-                    image={item.image}
-                    button={item.button}
-                    mobileButton={item.mobileButton}
-                    url={item.url}
-                  />
-                </>
-              ))}
-          </div>
         </div>
       </div>
     </>
