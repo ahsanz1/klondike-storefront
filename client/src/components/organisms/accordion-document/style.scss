@@ -55,13 +55,16 @@ $vw-viewport: 1440;
 
     .c-link {
       width: 32px;
-      margin-right: 9.33vw;
       margin-left: 2.77vw;
       color: #f1a900;
       font-size: 14px;
       font-style: normal;
       font-weight: normal;
       line-height: 140%;
+
+      @media (max-width: 768px) {
+        margin-right: 9.33vw;
+      }
     }
 
     p.text-setting-table.notranslate {
