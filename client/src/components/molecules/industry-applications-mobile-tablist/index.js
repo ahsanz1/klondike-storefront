@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
-import './style.scss'
 import { IndustryAppXPM } from 'components/organisms/Technical-tablist/data'
 import Link from 'components/atoms/link'
 
