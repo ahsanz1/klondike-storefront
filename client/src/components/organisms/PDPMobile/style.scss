@@ -122,12 +122,19 @@
   padding: 3px;
 }
 
-.total-price {
-  //display: flex;
-  justify-content: flex-end;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 30px;
+.total-price-container {
+  @media (max-width: 768px) {
+    margin-right: 24px;
+    text-align: right;
+  }
+
+  .total-price {
+    //display: flex;
+    justify-content: flex-end;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+  }
 }
 
 .add-to-cart {
