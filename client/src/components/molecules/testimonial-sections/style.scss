@@ -1,0 +1,25 @@
+.testimonial-section {
+  padding-bottom: 1.11vw;
+  border-bottom: 1px solid #ffa500;
+
+  .testimonials-title {
+    padding-top: 2vw;
+    padding-bottom: 1.11vw;
+    color: white;
+    font-size: 0.97vw;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+  }
+
+  .testimonials-sub-title {
+    opacity: 0.5;
+    color: white;
+    font-size: 0.97vw;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+  }
+}
