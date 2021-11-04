@@ -224,4 +224,7 @@ Components['SubItem'] = require('components/organisms/sub-page').default
 Components[
   'AgriculturePage'
 ] = require('components/organisms/agriculture-page').default
+Components[
+  'TestimonialSection'
+] = require('components/organisms/testimonial-section').default
 export default Components
