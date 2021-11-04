@@ -28,6 +28,7 @@ const AppProvider = ({ children }) => {
   )
   const [pdpSwagSize, setPdpSwagSize] = useState('')
   const [getCartItems, setGetCartItemsState] = useState('')
+  const [pdpProductData, setPdpProductData] = useState({})
   const [pdpWholeItemQuantity, setPdpWholeItemQuantity] = useState(1)
   const [pdpUserSize, setPdpUserSize] = useState()
   const [pdpCustomCaseFlavour, setPdpCustomCaseFlavour] = useState([])
@@ -297,6 +298,8 @@ const AppProvider = ({ children }) => {
         setPaymentIndex,
         billingIndex,
         setBillingIndex,
+        pdpProductData,
+        setPdpProductData,
         ...state,
       }}
     >
