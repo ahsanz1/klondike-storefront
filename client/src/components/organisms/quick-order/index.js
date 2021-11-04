@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 
 import './style.scss'
 import { Radio, InputNumber } from 'antd'
@@ -17,6 +18,7 @@ import Button from 'components/atoms/button'
 /* eslint-disable indent */
 
 const QuickOrder = () => {
+  const [size] = useWindowSize()
   const { user } = useContext(AppContext)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
@@ -287,12 +289,12 @@ const QuickOrder = () => {
     }
     addedItemToCart({ ...cartItem[0] })
 
-    if (searchedCartitems.length > 0) {
-      setCartItems(searchedCartitems)
-      setAccordianIsActive(false)
-    } else {
-      // show invalid sku error from here
-    }
+    // if (searchedCartitems.length > 0) {
+    setCartItems(searchedCartitems)
+    setAccordianIsActive(false)
+    // } else {
+    // show invalid sku error from here
+    // }
   }
 
   const radioChangeBULK = () => {
@@ -430,66 +432,135 @@ const QuickOrder = () => {
             {cartItems && (
               <div className="quickorder-wrapper">
                 {packgdata &&
-                  packgdata.map((data, i) => (
-                    <div key={i} className="orders">
-                      <div className="item-wraper">
-                        <div>
-                          <div className="img-wraper">
-                            <img src={data['Image URL']} alt="img" />
+                  packgdata.map((data, i) =>
+                    size > 768 ? (
+                      <div key={i} className="orders">
+                        <div className="item-wraper">
+                          <div>
+                            <div className="img-wraper">
+                              <img src={data['Image URL']} alt="img" />
+                            </div>
+                            <button
+                              className="quick-orde_btn"
+                              onClick={e => itemremove(i)}
+                            >
+                              Remove Item
+                            </button>
                           </div>
-                          <button
-                            className="quick-orde_btn"
-                            onClick={e => itemremove(i)}
-                          >
-                            Remove Item
-                          </button>
+                          <div className="part-wraper">
+                            <div className="quik-product-heading">
+                              <p>{data['product title']}</p>
+                            </div>
+                            <div>
+                              <p>
+                                Part Num <span>{data['Part Number']}</span>
+                              </p>
+                            </div>
+                            <div>
+                              <p>
+                                Size <span>{data['Package Size']}</span>
+                              </p>
+                            </div>
+                            <div>
+                              <p>
+                                Per case <span>{data['QTY PER CASE']}</span>
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="part-wraper">
-                          <div className="quik-product-heading">
-                            <p>{data['product title']}</p>
-                          </div>
-                          <div>
-                            <p>
-                              Part Num <span>{data['Part Number']}</span>
-                            </p>
-                          </div>
-                          <div>
-                            <p>
-                              Size <span>{data['Package Size']}</span>
-                            </p>
-                          </div>
-                          <div>
-                            <p>
-                              Per case <span>{data['QTY PER CASE']}</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div>
-                        <p>{data['Base Price']}</p>
+                        <div>
+                          <p>{data['Base Price']}</p>
+                        </div>
+                        <div>
+                          <InputNumber
+                            min={0}
+                            max={100}
+                            defaultValue={1}
+                            value={caseqty[`index-${i}`]}
+                            onChange={e => onChangeqty(e, i)}
+                            size="middle"
+                            className="input"
+                          />
+                        </div>
+                        <div>
+                          <p>
+                            $
+                            {(
+                              data['Base Price'] * Number(caseqty[`index-${i}`])
+                            ).toFixed(2)}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <InputNumber
-                          min={0}
-                          max={100}
-                          defaultValue={1}
-                          value={caseqty[`index-${i}`]}
-                          onChange={e => onChangeqty(e, i)}
-                          size="middle"
-                          className="input"
-                        />
-                      </div>
-                      <div>
-                        <p>
-                          $
-                          {(
-                            data['Base Price'] * Number(caseqty[`index-${i}`])
-                          ).toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ) : (
+                      <>
+                        <div className="quick-order-mobile">
+                          <div className="quick-order-mobile__previous">
+                            <img
+                              className="quick-order-mobile__image"
+                              src={data['Image URL']}
+                              alt="img"
+                            />
+                            <p className="price">Price</p>
+                            <p className="price-value">${data['Base Price']}</p>
+                          </div>
+                          <p>{data['product title']}</p>
+                          <div className="quick-order-mobile__next-container">
+                            <p>
+                              Size{' '}
+                              <span className="span">
+                                {data['Package Size']}
+                              </span>
+                            </p>
+                            <p>
+                              Per case{' '}
+                              <span className="span">
+                                {data['QTY PER CASE']}
+                              </span>
+                            </p>
+                            <p>
+                              Part Num{' '}
+                              <span className="span">
+                                {data['Part Number']}
+                              </span>
+                            </p>
+                            <div className="quantity-container">
+                              <div className="remove-button">
+                                <p>
+                                  <span className="quantity">QTY:</span>
+                                  <InputNumber
+                                    min={0}
+                                    max={100}
+                                    defaultValue={1}
+                                    value={caseqty[`index-${i}`]}
+                                    onChange={e => onChangeqty(e, i)}
+                                    size="middle"
+                                    className="input"
+                                  />
+                                </p>
+                                <button
+                                  className="quick-orde_btn"
+                                  onClick={e => itemremove(i)}
+                                >
+                                  Remove Item
+                                </button>
+                              </div>
+                              <div>
+                                <p className="total-price">Total Price</p>
+                                <p className="total-price-value">
+                                  $
+                                  {(
+                                    data['Base Price'] *
+                                    Number(caseqty[`index-${i}`])
+                                  ).toFixed(2)}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ),
+                  )}
               </div>
             )}
           </div>
