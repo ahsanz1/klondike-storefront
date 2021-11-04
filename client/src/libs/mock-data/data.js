@@ -671,5 +671,11 @@ const mockData = {
       params: delarship,
     },
   ],
+  '/about-klondike/industry-applications/agriculture': [
+    {
+      id: 'AgriculturePage',
+      params: {},
+    },
+  ],
 }
 export default mockData

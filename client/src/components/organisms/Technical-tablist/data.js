@@ -92,7 +92,6 @@ export const categoriesXPM = [
   //     categoryName: 'Chemicals',
   //   },
 ]
-
 export const AboutUsXPM = [
   {
     title: 'Company Overview',
@@ -124,5 +123,54 @@ export const AboutUsXPM = [
     title: 'Work At Klondike',
     categoryName: 'Work At Klondike',
     link: 'work-at-klondike',
+  },
+]
+
+export const IndustryAppXPM = [
+  {
+    title: 'Agriculture',
+    categoryName: 'Agriculture',
+    //  subItem: 'Company Overview',
+    link: 'agriculture',
+  },
+  {
+    title: 'Automotive',
+    categoryName: 'Automotive',
+    link: '',
+  },
+  {
+    title: 'Construction',
+    categoryName: 'Construction',
+    link: '',
+  },
+  {
+    title: 'Exploration',
+    categoryName: 'Exploration',
+    link: '',
+  },
+  {
+    title: 'Forestry',
+    categoryName: 'Forestry',
+    link: '',
+  },
+  {
+    title: 'Industrial',
+    categoryName: 'Industrial',
+    link: '',
+  },
+  {
+    title: 'Marine',
+    categoryName: 'Marine',
+    link: '',
+  },
+  {
+    title: 'Mining',
+    categoryName: 'Mining',
+    link: '',
+  },
+  {
+    title: 'On-Road Heavy Duty',
+    categoryName: 'On-Road Heavy Duty',
+    link: '',
   },
 ]
