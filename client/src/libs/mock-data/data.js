@@ -87,6 +87,7 @@ import {
   bigVideodata,
   smallVideodata,
   rendersubpage,
+  EzeBox,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -227,6 +228,12 @@ const mockData = {
   '/search-filter': [
     {
       id: 'SearchFilter',
+    },
+  ],
+  '/about-klondike/eze-box': [
+    {
+      id: 'EzeBox',
+      params: { ...EzeBox },
     },
   ],
 
