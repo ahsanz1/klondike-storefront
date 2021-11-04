@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './style.scss'
 
 import Label from 'components/atoms/label'
 
@@ -10,8 +11,8 @@ const TestimonialSections = testimonials => {
     testimonials.testimonials.map((data, i) => {
       return (
         <div className="testimonial-section" key={i}>
-          <Label>{data.title}</Label>
-          <Label>{data.subTitle}</Label>
+          <Label className="testimonials-title">{data.title}</Label>
+          <Label className="testimonials-sub-title">{data.subTitle}</Label>
         </div>
       )
     })
