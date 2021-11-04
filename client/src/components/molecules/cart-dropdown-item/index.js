@@ -1,6 +1,6 @@
 // export default CartDropdownItem
 
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import './styles.scss'
@@ -8,9 +8,12 @@ import Label from 'components/atoms/label'
 import Button from 'components/atoms/button'
 
 import { InputNumber } from 'antd'
+import { removeItemFromCart, updateCartApi } from 'libs/services/api/cart'
+import { AppContext } from 'libs/context'
 // import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
 const CartDropdownItem = cart => {
+  const { setGetCartItemsState } = useContext(AppContext)
   // const [removing, setRemoving] = useState(false)
   // const { removeFromCart, error } = useRemoveFromCart()
 
@@ -22,6 +25,27 @@ const CartDropdownItem = cart => {
   //     setRemoving(false)
   //   }
   // }
+
+  const onChange = async (qty, cart) => {
+    let payload = {
+      items: [
+        {
+          lineItemId: cart?.lineItemId,
+          itemId: cart?.itemId,
+          quantity: qty,
+          price: cart?.price,
+        },
+      ],
+    }
+
+    let res = await updateCartApi(cart?.cartId, payload)
+    setGetCartItemsState(res.data)
+  }
+
+  const removeItem = async (cartId, lineItemId) => {
+    let res = await removeItemFromCart(cartId, lineItemId)
+    console.log('remove res', res)
+  }
 
   return (
     <div className="mini-cart-item">
@@ -58,10 +82,9 @@ const CartDropdownItem = cart => {
             <div className="removebtn-div">
               <Button
                 className="remove-button"
-                //   onClick={removeItem}
-                //   disabled={removing && true}
+                onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
+                // disabled={removing && true}
               >
-                {/* {removing ? 'Removing' : 'Remove'} */}
                 Remove
               </Button>
             </div>
@@ -72,7 +95,7 @@ const CartDropdownItem = cart => {
                 min={1}
                 max={1000}
                 defaultValue={cart?.quantity}
-                // onChange={onChange}
+                onChange={e => onChange(e, cart)}
               />
             </div>
             <Label className="total-price">

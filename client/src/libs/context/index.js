@@ -27,6 +27,7 @@ const AppProvider = ({ children }) => {
     'ShipEveryWeek',
   )
   const [pdpSwagSize, setPdpSwagSize] = useState('')
+  const [getCartItems, setGetCartItemsState] = useState('')
   const [pdpWholeItemQuantity, setPdpWholeItemQuantity] = useState(1)
   const [pdpUserSize, setPdpUserSize] = useState()
   const [pdpCustomCaseFlavour, setPdpCustomCaseFlavour] = useState([])
@@ -227,6 +228,8 @@ const AppProvider = ({ children }) => {
         showcartPOPModal,
         closePopUpModal,
         closeModal,
+        getCartItems,
+        setGetCartItemsState,
         pdpPurchaseType,
         setPdpPurchaseType,
         pdpSubscriptionType,

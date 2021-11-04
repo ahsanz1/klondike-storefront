@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
 import Label from 'components/atoms/label'
@@ -9,14 +9,18 @@ import './style.scss'
 import { getCartByUserId } from 'libs/api/cart'
 
 const CartDropdown = () => {
-  const { user, isModalVisible, closeModal } = useContext(AppContext)
-
-  let [cartItems, setCartItemsState] = useState('')
+  const {
+    user,
+    isModalVisible,
+    closeModal,
+    getCartItems,
+    setGetCartItemsState,
+  } = useContext(AppContext)
 
   useEffect(() => {
     const getCart = async () => {
       let res = await getCartByUserId(user.accessToken)
-      setCartItemsState(res.data)
+      setGetCartItemsState(res.data)
     }
 
     getCart()
@@ -48,7 +52,7 @@ const CartDropdown = () => {
                 </div>
                 <div className="cart-dropdown-header-item-no">
                   {/* <p> */}
-                  {cartItems?.items?.length} Items
+                  {getCartItems?.items?.length} Items
                   {/* </p> */}
                 </div>
               </div>
@@ -67,23 +71,25 @@ const CartDropdown = () => {
             </p>
           </div>
           <div className="cart-dropdown-items">
-            {cartItems.items && cartItems.items.length > 0 ? (
-              cartItems.items.map((cartItem, id) => {
-                return <CartDropdownItem {...cartItem} key={id} />
+            {getCartItems.items && getCartItems.items.length > 0 ? (
+              getCartItems.items.map((cartItem, id) => {
+                let cart = { cartId: getCartItems?._id, ...cartItem }
+                console.log('carog', cart)
+                return <CartDropdownItem {...cart} key={id} />
               })
             ) : (
               <Label className="no-item">No items are in your cart.</Label>
             )}
           </div>
 
-          {cartItems.items && cartItems.items.length > 0 ? (
+          {getCartItems.items && getCartItems.items.length > 0 ? (
             <div className="cart-dropdown-checkout-container">
               <div className="cart-dropdown-checkout-details">
                 <div className="order-subtotal-and-checkout-btn">
                   <p className="subtotal-title">Subtotal</p>
                   <p className="subtotal-price">
-                    {cartItems?.totalAmount?.amount}{' '}
-                    {cartItems?.totalAmount?.currency}
+                    {getCartItems?.totalAmount?.amount}{' '}
+                    {getCartItems?.totalAmount?.currency}
                   </p>
                 </div>
                 <div className="cart-dropdown-checkout">CHECKOUT</div>
