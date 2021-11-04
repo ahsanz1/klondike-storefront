@@ -7,12 +7,13 @@ export const getCartByUserId = async (userId, authToken) => {
   //   try {
   const response = await axios.get(ENDPOINTS.GET_CART, {
     params: {
-      userAuthToken: authToken,
+      userAuthToken: userId,
     },
     headers: {
       ...HEADER.common,
     },
   })
+
   return response
   //   if (response.status === 200) {
   //     return response
