@@ -220,4 +220,7 @@ Components[
   'Dealership'
 ] = require('components/organisms/Dealership-page').default
 Components['SubItem'] = require('components/organisms/sub-page').default
+Components[
+  'AgriculturePage'
+] = require('components/organisms/agriculture-page').default
 export default Components

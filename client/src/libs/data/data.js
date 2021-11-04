@@ -792,11 +792,16 @@ export const homebanneer = {
         url: '/static/images/MaskGroup.png',
         alt: 'alt',
       },
+      backgroundimgMobile: {
+        url: '/static/images/mobile-mid-home.png',
+        altText: 'mobile background',
+      },
       banerlogoimg: {
         url: '/static/images/lubelogobanner.png',
         alt: 'alt',
       },
       heading: 'Lubricants Built to Withstand the Extremes of Your Operations',
+      mobileHeading: 'FIND THE RIGHT OIL FOR YOUR APPLICATION',
       buttontxt: 'SEARCH NOW',
       headingbanner:
         'Why KLONDIKE? Because We Know the Needs of the North American market?',
@@ -3894,14 +3899,21 @@ export const PProductsData = [
 export const pcp = {
   pcpbottom: [
     {
-      image:
-        'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+      image: {
+        url:
+          'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+        altText: 'image',
+      },
       button: 'DOWNLOAD PDS & MSDS',
       url: '/tech-resource',
       mobileButton: 'DOWNLOAD PDS & MSDS',
     },
     {
-      image: '/static/images/productfooter.png',
+      image: {
+        url:
+          'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+        altText: 'image',
+      },
       button: 'BECOME A DEALER',
       url: '/dealership-opportunity',
       mobileButton: 'BECOME A DEALER',
