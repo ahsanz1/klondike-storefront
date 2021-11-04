@@ -19,17 +19,18 @@ const OurStory = ({ OurStoryData }) => {
               <div className="our-story-content">
                 {item.subSection.map((data, i) => (
                   <>
-                    {/* <Label className="details-paragragh" key={i}>
-                      {data.paragraph.slice(3, data.paragraph.length - 5)}
-                    </Label> */}
                     <p
                       className="details-paragragh"
                       key={i}
                       dangerouslySetInnerHTML={{ __html: data.paragraph }}
                     ></p>
-                    <Label className="highlighted-paragraph">
-                      {item.highlightedParagraph}
-                    </Label>
+                    <p
+                      className="highlighted-paragraph"
+                      dangerouslySetInnerHTML={{
+                        __html: data.highlightedParagraph,
+                      }}
+                    ></p>
+
                     <div className="overview-detail-section-mobile">
                       <ReactReadMoreReadLess
                         charLimit={200}

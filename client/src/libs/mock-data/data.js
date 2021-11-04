@@ -684,5 +684,11 @@ const mockData = {
       params: {},
     },
   ],
+  '/about-klondike/industry-applications/On-road-heavy-duty': [
+    {
+      id: 'AgriculturePage',
+      params: {},
+    },
+  ],
 }
 export default mockData
