@@ -3899,14 +3899,21 @@ export const PProductsData = [
 export const pcp = {
   pcpbottom: [
     {
-      image:
-        'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+      image: {
+        url:
+          'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+        altText: 'image',
+      },
       button: 'DOWNLOAD PDS & MSDS',
       url: '/tech-resource',
       mobileButton: 'DOWNLOAD PDS & MSDS',
     },
     {
-      image: '/static/images/productfooter.png',
+      image: {
+        url:
+          'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+        altText: 'image',
+      },
       button: 'BECOME A DEALER',
       url: '/dealership-opportunity',
       mobileButton: 'BECOME A DEALER',
