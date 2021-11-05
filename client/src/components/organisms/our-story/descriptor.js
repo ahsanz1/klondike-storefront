@@ -26,5 +26,6 @@ exports.default = Types.Component({
         },
       }),
     }),
+    activeTablist: Types.String({ label: 'Active Tablist' }),
   },
 })

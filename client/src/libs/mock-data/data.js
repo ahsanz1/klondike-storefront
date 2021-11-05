@@ -6,6 +6,7 @@ import WebpageGlobalHeroBannerData from 'components/organisms/webpages-hero-imag
 // import instagramPosts from 'components/organisms/instagram-section/data'
 import { categoriesXPM as categories } from 'components/organisms/plp/data'
 import SliderTabbableData from 'components/organisms/slider-tabable/data'
+import { testimonialData } from 'components/organisms/testimonial-section/data'
 // import tableAccoData from 'components/organisms/faqs/data'
 
 import {
@@ -86,6 +87,7 @@ import {
   bigVideodata,
   smallVideodata,
   rendersubpage,
+  EzeBox,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -226,6 +228,12 @@ const mockData = {
   '/search-filter': [
     {
       id: 'SearchFilter',
+    },
+  ],
+  '/about-klondike/eze-box': [
+    {
+      id: 'EzeBox',
+      params: EzeBox,
     },
   ],
 
@@ -675,6 +683,18 @@ const mockData = {
     {
       id: 'AgriculturePage',
       params: {},
+    },
+  ],
+  '/about-klondike/industry-applications/On-road-heavy-duty': [
+    {
+      id: 'AgriculturePage',
+      params: {},
+    },
+  ],
+  '/testimonials': [
+    {
+      id: 'TestimonialSection',
+      params: { ...testimonialData },
     },
   ],
 }

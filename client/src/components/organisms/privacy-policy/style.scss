@@ -4,11 +4,11 @@
   position: relative;
   top: 50px;
   height: auto;
-  margin: 0 6.319vw 0 6.319vw;
+  margin: 2.5vw 6.319vw 3.33vw 6.319vw;
   padding: 50px;
   padding-top: 3.75vw;
   padding-right: 7.22vw;
-  padding-bottom: 3.75vw;
+  padding-bottom: 0.97vw;
   padding-left: 4.79vw;
   background: rgba(3, 41, 57, 0.5);
 
@@ -21,6 +21,8 @@
 }
 
 .main-heading {
+  margin-top: 0;
+  margin-bottom: 0.625vw;
   color: #f1a900;
   font-family: $OpenSans;
   font-size: 24px;
@@ -33,6 +35,8 @@
 }
 
 .sub-heading {
+  margin-top: 0.625vw;
+  margin-bottom: 2.08vw;
   color: #ffff;
   font-family: $OpenSans;
   font-size: 24px;
@@ -47,11 +51,12 @@
 
 .privacy-body > p {
   width: 75.34vw;
-  padding-top: 0.625vw;
-  padding-bottom: 2.77vw;
+  // padding-top: 0.625vw;
+  padding-bottom: 1.8vw;
   color: #ffff;
   font-family: $OpenSans;
   font-size: 14px;
+  font-weight: 400;
 
   @media (max-width: 767px) {
     width: 82.78vw;

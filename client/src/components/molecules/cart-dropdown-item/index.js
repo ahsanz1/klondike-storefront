@@ -44,7 +44,7 @@ const CartDropdownItem = cart => {
 
   const removeItem = async (cartId, lineItemId) => {
     let res = await removeItemFromCart(cartId, lineItemId)
-    console.log('remove res', res)
+    setGetCartItemsState(res.data)
   }
 
   return (
@@ -132,7 +132,7 @@ const CartDropdownItem = cart => {
           <div className="removebtn-div">
             <Button
               className="remove-button"
-              //   onClick={removeItem}
+              onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
               //   disabled={removing && true}
             >
               {/* {removing ? 'Removing' : 'Remove'} */}
