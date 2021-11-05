@@ -20,6 +20,10 @@
           display: flex;
           flex-direction: column;
         }
+
+        .big-videos {
+          width: 550px;
+        }
       }
 
       .video-gallery-title {
@@ -87,7 +91,7 @@
       }
 
       .small-video-element {
-        padding-left: get-vw(41px);
+        padding-left: get-vw(85px);
 
         .details {
           margin-top: get-vw(23px);
