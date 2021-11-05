@@ -63,7 +63,7 @@
 
       .heading-catlog {
         padding-right: 4.86vw;
-        padding-left: 1.9vw;
+        //padding-left: 1.9vw;
         opacity: 0.9;
         color: #fff;
         font-family: $OpenSans;
@@ -73,7 +73,11 @@
         line-height: 1.3vw;
 
         p {
-          margin-bottom: 0.347vw;
+          margin-bottom: 1.5vw;
+          padding-left: 1.94vw;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 19.6px;
         }
 
         .english-link {
