@@ -15,7 +15,8 @@ import {
   Breadcrumb,
   Divider,
   Image,
-  Spin,
+  // Spin,
+  // Modal,
 } from 'antd'
 import { ShareAltOutlined } from '@ant-design/icons'
 import { productListing } from 'libs/utils/gtm'
@@ -43,7 +44,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [productData, setProductData] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [packagedOrder, setPackagedOrder] = useState(true)
-  const [isLoading, setIsLoading] = useState(false)
+  // const [isPdpLoading, setIsPdpLoading] = useState(true)
   const [addingToCart, setAddingToCart] = useState(false)
   const [items, setItems] = useState({})
 
@@ -118,19 +119,18 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   }
 
   useEffect(() => {
-    setIsLoading(true)
     getProductBySKU(sku || 'AUTO000', 1)
       .then(res => {
         let newObj = {
           ...res?.response?.data?.product,
         }
         setProductData(newObj)
-        setIsLoading(false)
+        // setIsPdpLoading(false)
         mapAttributes(res?.response?.data?.items)
         setPdpProductData(res?.response?.data?.product)
       })
       .catch(e => {
-        setIsLoading(false)
+        // setIsPdpLoading(false)
         console.log({ e })
       })
     if (user?.accessToken) {
@@ -298,17 +298,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         } else setAddingToCart(false)
       })
       .catch(e => {
-        alert('No Data Found')
-        setAddingToCart(false)
+        if (e) {
+          alert('Some Error Occured! Please try again!')
+          setAddingToCart(false)
+          console.log('errr', e)
+        }
       })
-  }
-
-  if (isLoading) {
-    return (
-      <div className="spinner">
-        <Spin />
-      </div>
-    )
   }
 
   return (
@@ -340,302 +335,317 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               width="100%"
             />
           </Col>
-          <Col
-            style={{
-              display: 'flex',
-              justifyContent: 'space-evenly',
-              width: '80%',
-              flexWrap: 'wrap',
-            }}
-          >
-            <div className="flex-column">
-              <div className="image-background">
-                {productData?.images?.map((img, i) => (
-                  <Image
-                    src={img?.source[0]?.url}
-                    key={i}
-                    width="100%"
-                    height="100%"
-                  />
-                ))}
-              </div>
-              {!isLoggedIn && (
-                <div style={{ textAlign: 'center' }}>
-                  <Button className="customButton">HOW TO BUY</Button>
+          {Object.keys(productData).length ? (
+            <Col
+              style={{
+                display: 'flex',
+                justifyContent: 'space-evenly',
+                width: '80%',
+                flexWrap: 'wrap',
+              }}
+            >
+              <div className="flex-column">
+                <div className="image-background">
+                  {productData?.images?.map((img, i) => (
+                    <Image
+                      src={img?.source[0]?.url}
+                      key={i}
+                      width="100%"
+                      height="100%"
+                    />
+                  ))}
                 </div>
-              )}
-            </div>
-            <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div>
-                  <h1
-                    style={{
-                      fontSize: '3vw',
-                      fontWeight: 'bold',
-                      color: '#FFFFFF',
-                      lineHeight: '1.2',
-                      whiteSpace: 'initial',
-                      wordWrap: 'break-word',
-                      maxWidth: '35vw',
-                    }}
-                    className="notranslate"
-                  >
-                    {productData?.title}
-                  </h1>
-                </div>
-                <div className="share-icon">
-                  <ShareAltOutlined size="32px" style={{ color: '#FFFFFF' }} />
-                </div>
-              </div>
-              <div style={{ marginBottom: 10 }}>
-                {isLoggedIn && (
-                  <Radio.Group
-                    onChange={onChange}
-                    value={value}
-                    defaultValue={1}
-                    size="large"
-                    optionType="button"
-                  >
-                    <Tooltip placement="bottomLeft" title={text}>
-                      <Radio value={1} style={{ color: 'white' }}>
-                        PACKAGED ORDER
-                      </Radio>
-                    </Tooltip>
-                    <Tooltip placement="bottomRight" title={secondtext}>
-                      <Radio value={2} style={{ color: 'white' }}>
-                        BULK ORDER
-                      </Radio>
-                    </Tooltip>
-                  </Radio.Group>
+                {!isLoggedIn && (
+                  <div style={{ textAlign: 'center' }}>
+                    <Button className="customButton">HOW TO BUY</Button>
+                  </div>
                 )}
               </div>
               <div>
-                <div className="table">
-                  <div className="cell-header">SIZES</div>
-                  <div className="cell-header">UNITS/CASE</div>
-                  <div className="cell-header">PART NUM</div>
-                  <div className="cell-header">{isLoggedIn && 'PRICE'}</div>
-                  <div className="cell-header">{isLoggedIn && 'QTY'}</div>
-                  <div className="cell-header">
-                    {isLoggedIn && 'TOTAL PRICE'}
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-between' }}
+                >
+                  <div>
+                    <h1
+                      style={{
+                        fontSize: '3vw',
+                        fontWeight: 'bold',
+                        color: '#FFFFFF',
+                        lineHeight: '1.2',
+                        whiteSpace: 'initial',
+                        wordWrap: 'break-word',
+                        maxWidth: '35vw',
+                      }}
+                      className="notranslate"
+                    >
+                      {productData?.title}
+                    </h1>
+                  </div>
+                  <div className="share-icon">
+                    <ShareAltOutlined
+                      size="32px"
+                      style={{ color: '#FFFFFF' }}
+                    />
                   </div>
                 </div>
-                {items?.packagedOrderItems?.map((item, i) => {
-                  return (
-                    <div className="table" key={i}>
-                      <div
-                        className={
-                          !packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        {item?.mappedAttributes['Package Size']}
+                <div style={{ marginBottom: 10 }}>
+                  {isLoggedIn && (
+                    <Radio.Group
+                      onChange={onChange}
+                      value={value}
+                      defaultValue={1}
+                      size="large"
+                      optionType="button"
+                    >
+                      <Tooltip placement="bottomLeft" title={text}>
+                        <Radio value={1} style={{ color: 'white' }}>
+                          PACKAGED ORDER
+                        </Radio>
+                      </Tooltip>
+                      <Tooltip placement="bottomRight" title={secondtext}>
+                        <Radio value={2} style={{ color: 'white' }}>
+                          BULK ORDER
+                        </Radio>
+                      </Tooltip>
+                    </Radio.Group>
+                  )}
+                </div>
+                <div>
+                  <div className="table">
+                    <div className="cell-header">SIZES</div>
+                    <div className="cell-header">UNITS/CASE</div>
+                    <div className="cell-header">PART NUM</div>
+                    <div className="cell-header">{isLoggedIn && 'PRICE'}</div>
+                    <div className="cell-header">{isLoggedIn && 'QTY'}</div>
+                    <div className="cell-header">
+                      {isLoggedIn && 'TOTAL PRICE'}
+                    </div>
+                  </div>
+                  {items?.packagedOrderItems?.map((item, i) => {
+                    return (
+                      <div className="table" key={i}>
+                        <div
+                          className={
+                            !packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          {item?.mappedAttributes['Package Size']}
+                        </div>
+                        <div
+                          className={
+                            !packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          {item?.mappedAttributes['Unit of Measurement']}
+                        </div>
+                        <div
+                          className={
+                            !packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          {item?.mappedAttributes['Part Number']}
+                        </div>
+                        <div
+                          className={
+                            !packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          {isLoggedIn && item?.price?.base}
+                        </div>
+                        <div
+                          className={
+                            !packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          {isLoggedIn && (
+                            <InputNumber
+                              min={0}
+                              max={100}
+                              defaultValue={0}
+                              onChange={e => onQtyChange(e, i)}
+                              disabled={!packagedOrder}
+                              size="middle"
+                              className="input"
+                              style={{
+                                backgroundColor:
+                                  !packagedOrder && 'rgba(255, 255, 255, 0.3)',
+                              }}
+                            />
+                          )}
+                        </div>
+                        <div
+                          className={
+                            !packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                          style={{
+                            color: item?.totalPrice > 0 ? '#fa9200' : 'white',
+                          }}
+                        >
+                          {isLoggedIn && '$' + (item?.totalPrice || '0.00')}
+                        </div>
                       </div>
+                    )
+                  })}
+                  {isLoggedIn && (
+                    <div style={{ display: 'flex', justifyContent: 'end' }}>
                       <div
-                        className={
-                          !packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
+                        className="cell totalPrice"
+                        style={{
+                          color:
+                            items?.totalPackagedOrderPrice > 0
+                              ? '#fa9200'
+                              : packagedOrder
+                                ? 'white'
+                                : 'rgba(255, 255, 255, 0.3)',
+                        }}
                       >
-                        {item?.mappedAttributes['Unit of Measurement']}
+                        {'$' +
+                          (items?.totalPackagedOrderPrice > 0
+                            ? parseFloat(
+                                items?.totalPackagedOrderPrice,
+                            ).toFixed(2)
+                            : '0.00')}
                       </div>
-                      <div
-                        className={
-                          !packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        {item?.mappedAttributes['Part Number']}
+                    </div>
+                  )}
+                  {isLoggedIn && (
+                    <Divider
+                      style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }}
+                    />
+                  )}
+                  {isLoggedIn ? (
+                    <>
+                      <div className="table">
+                        <div className="cell-header">BULK</div>
+                        <div
+                          className={
+                            packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          PRICE/LITER
+                        </div>
+                        <div
+                          className={
+                            packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          PART NUM
+                        </div>
+                        <div
+                          className={
+                            packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          LITRES
+                        </div>
+                        <div className="cell-header"></div>
                       </div>
-                      <div
-                        className={
-                          !packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        {isLoggedIn && item?.price?.base}
-                      </div>
-                      <div
-                        className={
-                          !packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        {isLoggedIn && (
+                      <div className="table">
+                        <div
+                          className={
+                            packagedOrder ? 'cell' : 'cell color-disabled'
+                          }
+                        ></div>
+                        <div
+                          className={
+                            packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          {items?.bulkOrderItem?.length &&
+                            items?.bulkOrderItem[0]?.price?.base}
+                        </div>
+                        <div
+                          className={
+                            packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
+                          {items?.bulkOrderItem?.length &&
+                            // eslint-disable-next-line standard/computed-property-even-spacing
+                            items?.bulkOrderItem[0].mappedAttributes[
+                              'Part Number'
+                            ]}
+                        </div>
+                        <div
+                          className={
+                            packagedOrder ? 'cell color-disabled' : 'cell'
+                          }
+                        >
                           <InputNumber
                             min={0}
                             max={100}
                             defaultValue={0}
-                            onChange={e => onQtyChange(e, i)}
-                            disabled={!packagedOrder}
+                            onChange={e => onBulkQtyChange(e)}
                             size="middle"
                             className="input"
+                            disabled={packagedOrder}
                             style={{
                               backgroundColor:
-                                !packagedOrder && 'rgba(255, 255, 255, 0.3)',
+                                packagedOrder && 'rgba(255, 255, 255, 0.3)',
                             }}
                           />
-                        )}
+                        </div>
+                        <div
+                          className={
+                            packagedOrder
+                              ? 'cell color-disabled totalPrice'
+                              : 'cell totalPrice'
+                          }
+                          style={{
+                            color:
+                              items?.bulkOrderItem?.length &&
+                              items?.bulkOrderItem[0]?.totalPrice > 0
+                                ? '#fa9200'
+                                : 'white',
+                          }}
+                        >
+                          $
+                          {items?.bulkOrderItem?.length
+                            ? items?.bulkOrderItem[0]?.totalPrice
+                            : '0.00'}
+                        </div>
                       </div>
-                      <div
-                        className={
-                          !packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                        style={{
-                          color: item?.totalPrice > 0 ? '#fa9200' : 'white',
-                        }}
-                      >
-                        {isLoggedIn && '$' + (item?.totalPrice || '0.00')}
-                      </div>
-                    </div>
-                  )
-                })}
-                {isLoggedIn && (
-                  <div style={{ display: 'flex', justifyContent: 'end' }}>
-                    <div
-                      className="cell totalPrice"
-                      style={{
-                        color:
-                          items?.totalPackagedOrderPrice > 0
-                            ? '#fa9200'
-                            : 'white',
-                      }}
-                    >
-                      {'$' +
-                        (items?.totalPackagedOrderPrice > 0
-                          ? parseFloat(items?.totalPackagedOrderPrice).toFixed(
-                            2,
-                          )
-                          : '0.00')}
-                    </div>
-                  </div>
-                )}
-                {isLoggedIn && (
-                  <Divider
-                    style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }}
-                  />
-                )}
-                {isLoggedIn ? (
-                  <>
+                    </>
+                  ) : (
                     <div className="table">
-                      <div className="cell-header">BULK</div>
-                      <div
-                        className={
-                          packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        PRICE/LITER
-                      </div>
-                      <div
-                        className={
-                          packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        PART NUM
-                      </div>
-                      <div
-                        className={
-                          packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        LITRES
-                      </div>
-                      <div className="cell-header"></div>
-                    </div>
-                    <div className="table">
-                      <div
-                        className={
-                          packagedOrder ? 'cell' : 'cell color-disabled'
-                        }
-                      ></div>
-                      <div
-                        className={
-                          packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        {items?.bulkOrderItem?.length &&
-                          items?.bulkOrderItem[0]?.price?.base}
-                      </div>
-                      <div
-                        className={
-                          packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
+                      <div className="cell">BULK</div>
+                      <div className="cell"></div>
+                      <div className="cell">
                         {items?.bulkOrderItem?.length &&
                           // eslint-disable-next-line standard/computed-property-even-spacing
                           items?.bulkOrderItem[0].mappedAttributes[
                             'Part Number'
                           ]}
                       </div>
-                      <div
-                        className={
-                          packagedOrder ? 'cell color-disabled' : 'cell'
-                        }
-                      >
-                        <InputNumber
-                          min={0}
-                          max={100}
-                          defaultValue={0}
-                          onChange={e => onBulkQtyChange(e)}
-                          size="middle"
-                          className="input"
-                          disabled={packagedOrder}
-                          style={{
-                            backgroundColor:
-                              packagedOrder && 'rgba(255, 255, 255, 0.3)',
-                          }}
-                        />
-                      </div>
-                      <div
-                        className={
-                          packagedOrder
-                            ? 'cell color-disabled totalPrice'
-                            : 'cell totalPrice'
-                        }
-                        style={{
-                          color:
-                            items?.bulkOrderItem?.length &&
-                            items?.bulkOrderItem[0]?.totalPrice > 0
-                              ? '#fa9200'
-                              : 'white',
-                        }}
-                      >
-                        $
-                        {items?.bulkOrderItem?.length
-                          ? items?.bulkOrderItem[0]?.totalPrice
-                          : '0.00'}
-                      </div>
+                      <div className="cell"></div>
+                      <div className="cell"></div>
+                      <div className="cell"></div>
                     </div>
-                  </>
-                ) : (
-                  <div className="table">
-                    <div className="cell">BULK</div>
-                    <div className="cell"></div>
-                    <div className="cell">
-                      {items?.bulkOrderItem?.length &&
-                        items?.bulkOrderItem[0].mappedAttributes['Part Number']}
+                  )}
+                  {isLoggedIn && (
+                    <Divider
+                      style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }}
+                    />
+                  )}
+                  {isLoggedIn && (
+                    <div style={{ display: 'flex', justifyContent: 'end' }}>
+                      <Button
+                        className="customButton"
+                        disabled={btnDisabled}
+                        onClick={onSubmit}
+                      >
+                        {addingToCart ? 'Adding...' : 'ADD TO CART'}
+                      </Button>
                     </div>
-                    <div className="cell"></div>
-                    <div className="cell"></div>
-                    <div className="cell"></div>
-                  </div>
-                )}
-                {isLoggedIn && (
-                  <Divider
-                    style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }}
-                  />
-                )}
-                {isLoggedIn && (
-                  <div style={{ display: 'flex', justifyContent: 'end' }}>
-                    <Button
-                      className="customButton"
-                      disabled={btnDisabled}
-                      onClick={onSubmit}
-                    >
-                      {addingToCart ? 'Adding...' : 'ADD TO CART'}
-                    </Button>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
+              <PDPInformation pdpdatasheet={pdpdatasheet} />
+            </Col>
+          ) : (
+            <div style={{ margin: 'auto' }}>
+              <h1 style={{ color: 'gray' }}>No Data Found for this Item</h1>
             </div>
-
-            <PDPInformation pdpdatasheet={pdpdatasheet} />
-          </Col>
+          )}
         </Row>
         <CartDropdown productData={productData} />
       </div>
@@ -649,6 +659,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         packagedOrder={packagedOrder}
         onBulkQtyChange={onBulkQtyChange}
         btnDisabled={btnDisabled}
+        pdpdatasheet={pdpdatasheet}
       />
     </>
   )
