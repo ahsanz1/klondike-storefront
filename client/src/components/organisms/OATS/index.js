@@ -36,7 +36,7 @@ const Oats = () => {
       if (response.data.equipment_list.equipment.length > 0) {
         setNotFound(false)
       }
-      console.log('response', response.data)
+      console.log('response', response)
       let results = response.data.equipment_list
       console.log('res', results)
       if (response.data.equipment_list.equipment.length <= 0) {
@@ -246,7 +246,9 @@ const Oats = () => {
                           {data && data.manufacturer}
                         </p>
                         <p className="custom-grid">{data && data.model}</p>
-                        <p className="custom-grid">{data && data.yearto}</p>
+                        <p className="custom-grid">
+                          {data && data.yearfrom} - {data && data.yearto}
+                        </p>
                         <p className="custom-grid">
                           {data && data.alt_fueltype}
                         </p>

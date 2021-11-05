@@ -233,7 +233,7 @@ const mockData = {
   '/about-klondike/eze-box': [
     {
       id: 'EzeBox',
-      params: { ...EzeBox },
+      params: EzeBox,
     },
   ],
 
