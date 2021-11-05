@@ -50,9 +50,13 @@ const AgriculturePage = ({
                 {featuredProduct.map((item, i) => {
                   return (
                     <div key={i} className="feat-product">
-                      <img className="feat-image" alt="" src={item.imgURL} />
+                      <img
+                        className="feat-image"
+                        alt=""
+                        src={item.imgURL.url}
+                      />
                       <Link
-                        // to={`/${item.productRedirect}`}
+                        to={`/${item.productRedirect}`}
                         className="feat-link"
                       >
                         {item.produckSKU}
@@ -126,9 +130,9 @@ AgriculturePage.propTypes = {
   title: PropTypes.string,
   paragraph: PropTypes.string,
   subHeading: PropTypes.string,
-  featuredProduct: PropTypes.Array,
+  featuredProduct: PropTypes.array,
   exploreCatagoryHeading: PropTypes.string,
-  exploreCatagory: PropTypes.Array,
+  exploreCatagory: PropTypes.array,
   activeTablist: PropTypes.string,
 }
 
