@@ -2,6 +2,10 @@
   padding-bottom: 1.11vw;
   border-bottom: 1px solid #ffa500;
 
+  @media (max-width: 768px) {
+    padding-bottom: 16px;
+  }
+
   .testimonials-title {
     padding-top: 2vw;
     padding-bottom: 1.11vw;
@@ -9,6 +13,8 @@
     font-size: 0.97vw;
 
     @media (max-width: 768px) {
+      padding-top: 32px;
+      padding-bottom: 16px;
       font-size: 13px;
     }
   }
