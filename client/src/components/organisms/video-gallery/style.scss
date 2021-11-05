@@ -3,7 +3,6 @@
 .video-page {
   .video-gallery-page {
     .video-gallery-wrap {
-      height: 95.83vw;
       padding-top: get-vw(66px);
       // padding-bottom: get-vw(78px);
       padding-left: get-vw(69px);
@@ -20,11 +19,6 @@
         @media (max-width: 768px) {
           display: flex;
           flex-direction: column;
-        }
-
-        .big-videos {
-          width: 36.3vw;
-          height: 20.1vw;
         }
       }
 
