@@ -125,6 +125,10 @@ $vw-viewport: 1440;
       .data-warp {
         padding-left: 1.6vw;
 
+        @media (max-width: 768px) {
+          padding-top: 10px;
+        }
+
         .heading-oam {
           margin-bottom: 0.21vw;
           color: #f1a900;
