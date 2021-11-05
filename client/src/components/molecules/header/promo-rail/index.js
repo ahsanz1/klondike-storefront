@@ -17,7 +17,6 @@ const PromoRail = ({
   extraLink = {},
   lubricantLink = '',
 }) => {
-  console.log('lub link:', lubricantLink)
   // const { user } = useContext(AppContext)
   const [showPromo, setShowPromo] = useState(SHOW)
   const [lastScrollTop, setLastScrollTop] = useState(
