@@ -1,6 +1,6 @@
 // export default CartDropdownItem
 
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import './styles.scss'
@@ -8,9 +8,12 @@ import Label from 'components/atoms/label'
 import Button from 'components/atoms/button'
 
 import { InputNumber } from 'antd'
+import { removeItemFromCart, updateCartApi } from 'libs/services/api/cart'
+import { AppContext } from 'libs/context'
 // import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
-const CartDropdownItem = ({ mainImage, title, size, price, quantity }) => {
+const CartDropdownItem = cart => {
+  const { setGetCartItemsState } = useContext(AppContext)
   // const [removing, setRemoving] = useState(false)
   // const { removeFromCart, error } = useRemoveFromCart()
 
@@ -23,34 +26,55 @@ const CartDropdownItem = ({ mainImage, title, size, price, quantity }) => {
   //   }
   // }
 
+  const onChange = async (qty, cart) => {
+    let payload = {
+      items: [
+        {
+          lineItemId: cart?.lineItemId,
+          itemId: cart?.itemId,
+          quantity: qty,
+          price: cart?.price,
+        },
+      ],
+    }
+
+    let res = await updateCartApi(cart?.cartId, payload)
+    setGetCartItemsState(res.data)
+  }
+
+  const removeItem = async (cartId, lineItemId) => {
+    let res = await removeItemFromCart(cartId, lineItemId)
+    setGetCartItemsState(res.data)
+  }
+
   return (
     <div className="mini-cart-item">
       <div className="cart-item">
         <div>
-          <img src={mainImage} className="cart-item-image" alt="" />
+          <img src="abc.jpg" className="cart-item-image" alt="" />
         </div>
         <div>
           <div className="item-desc-and-price">
             <div className="item-desc">
-              <Label className="item-title notranslate">{title}</Label>
+              <Label className="item-title notranslate">{cart?.title}</Label>
               <div className="product-detail-info-cart">
                 <Label className="item-info">
-                  SIZE: <Label className="item-subInfo">{size}</Label>
+                  SIZE: <Label className="item-subInfo">{cart?.sku}</Label>
                 </Label>
 
                 <Label className="item-info">
-                  PER CASE: <Label className="item-subInfo">{price}</Label>
-                </Label>
-                <Label className="item-info">
-                  PART NUM:
-                  {/* <p className="item-subInfo">{props['Part Number']}</p> */}
+                  PER CASE:{' '}
+                  <Label className="item-subInfo">
+                    {cart?.price?.base} {cart?.price?.currency}
+                  </Label>
                 </Label>
               </div>
             </div>
 
             <div className="product-price-info">
               <Label className="product-price">
-                <p className="product-price-mobile">PRICE</p>${price}
+                <p className="product-price-mobile">PRICE</p>
+                {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
               </Label>
             </div>
           </div>
@@ -58,44 +82,25 @@ const CartDropdownItem = ({ mainImage, title, size, price, quantity }) => {
             <div className="removebtn-div">
               <Button
                 className="remove-button"
-                //   onClick={removeItem}
-                //   disabled={removing && true}
+                onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
+                // disabled={removing && true}
               >
-                {/* {removing ? 'Removing' : 'Remove'} */}
                 Remove
               </Button>
             </div>
             <div className="quantity-box">
-              {/* <Label className="items-quanity">{quantity}</Label>
-            <div className="quantity-buttons">
-              <ImageOnlyButton
-                onClick={() => updateCartApiCall(itemId, 1)}
-                id={itemId}
-                imgSrc="/static/icons/arrow-up.png"
-                // imgAlt={imageAlt}
-                className="quantity-increase-btn"
-              />
-              <ImageOnlyButton
-                onClick={() => updateCartApiCall(itemId, -1)}
-                id={itemId}
-                imgSrc="/static/icons/arrow-down.png"
-                disabled={quantity === 1}
-                className="quantity-increase-btn"
-              />
-            </div> */}
-
               <Label className="product-quantity-mobile">QTY:</Label>
               <InputNumber
                 className="product-quantity-spinner"
                 min={1}
                 max={1000}
-                defaultValue={quantity}
-                // onChange={onChange}
+                defaultValue={cart?.quantity}
+                onChange={e => onChange(e, cart)}
               />
             </div>
             <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>$
-              {(quantity * price).toFixed(2)}
+              <p className="product-total-mobile">TOTAL PRICE</p>
+              {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
             </Label>
           </div>
         </div>
@@ -104,46 +109,30 @@ const CartDropdownItem = ({ mainImage, title, size, price, quantity }) => {
             <div className="product-price-info">
               <Label className="product-price">
                 PRICE
-                <Label className="product-price-mobile">${price}</Label>
+                <Label className="product-price-mobile">
+                  {cart?.price?.base} {cart?.price?.currency}
+                </Label>
               </Label>
             </div>
             <div className="quantity-box">
-              {/* <Label className="items-quanity">{quantity}</Label>
-            <div className="quantity-buttons">
-              <ImageOnlyButton
-                onClick={() => updateCartApiCall(itemId, 1)}
-                id={itemId}
-                imgSrc="/static/icons/arrow-up.png"
-                // imgAlt={imageAlt}
-                className="quantity-increase-btn"
-              />
-              <ImageOnlyButton
-                onClick={() => updateCartApiCall(itemId, -1)}
-                id={itemId}
-                imgSrc="/static/icons/arrow-down.png"
-                disabled={quantity === 1}
-                className="quantity-increase-btn"
-              />
-            </div> */}
-
               <Label className="product-quantity-mobile">QTY:</Label>
               <InputNumber
                 className="product-quantity-spinner"
                 min={1}
                 max={1000}
-                defaultValue={quantity}
+                defaultValue={cart?.quantity}
                 // onChange={onChange}
               />
             </div>
             <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>$
-              {(quantity * price).toFixed(2)}
+              <p className="product-total-mobile">TOTAL PRICE</p>
+              {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
             </Label>
           </div>
           <div className="removebtn-div">
             <Button
               className="remove-button"
-              //   onClick={removeItem}
+              onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
               //   disabled={removing && true}
             >
               {/* {removing ? 'Removing' : 'Remove'} */}

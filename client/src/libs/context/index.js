@@ -22,12 +22,12 @@ const AppProvider = ({ children }) => {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [cartPopupModal, setCartPopupModal] = useState(false)
   const [cartProducts, setCartProducts] = useState([])
-  const [cartData, setCartData] = useState({})
   const [pdpPurchaseType, setPdpPurchaseType] = useState(1)
   const [pdpSubscriptionType, setPdpSubscriptionType] = useState(
     'ShipEveryWeek',
   )
   const [pdpSwagSize, setPdpSwagSize] = useState('')
+  const [getCartItems, setGetCartItemsState] = useState('')
   const [pdpProductData, setPdpProductData] = useState({})
   const [pdpWholeItemQuantity, setPdpWholeItemQuantity] = useState(1)
   const [pdpUserSize, setPdpUserSize] = useState()
@@ -226,11 +226,11 @@ const AppProvider = ({ children }) => {
         cartProducts,
         setCartProducts,
         setCartPopupModal,
-        cartData,
-        setCartData,
         showcartPOPModal,
         closePopUpModal,
         closeModal,
+        getCartItems,
+        setGetCartItemsState,
         pdpPurchaseType,
         setPdpPurchaseType,
         pdpSubscriptionType,

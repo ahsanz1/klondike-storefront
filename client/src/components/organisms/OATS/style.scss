@@ -176,7 +176,7 @@
   .ant-select-selector {
     min-width: 11.45vw !important;
     height: 4.44vw !important;
-    margin: 0 10px !important;
+    //margin: 0 10px !important;
     // padding-top: 15px !important;
     padding-top: 1.2vw !important;
     padding-left: 2vw !important;
@@ -229,7 +229,7 @@
 
     .ant-select {
       min-width: 165px;
-      margin: 0 10px;
+      margin: 0 18px;
 
       @media (max-width: 768px) {
         width: 219px;

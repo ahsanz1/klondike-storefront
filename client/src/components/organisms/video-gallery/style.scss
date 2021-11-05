@@ -3,6 +3,7 @@
 .video-page {
   .video-gallery-page {
     .video-gallery-wrap {
+      height: 95.83vw;
       padding-top: get-vw(66px);
       // padding-bottom: get-vw(78px);
       padding-left: get-vw(69px);
@@ -20,11 +21,16 @@
           display: flex;
           flex-direction: column;
         }
+
+        .big-videos {
+          width: 36.3vw;
+          height: 20.1vw;
+        }
       }
 
       .video-gallery-title {
         margin: 0%;
-        margin-bottom: get-vw(17px);
+        margin-bottom: get-vw(14px);
         color: #f1a900;
         font-family: $OpenSans;
         font-size: get-vw(36px);
@@ -58,7 +64,7 @@
       .big-video-element {
         .details {
           padding-top: get-vw(19px);
-          padding-bottom: get-vw(41px);
+          padding-bottom: get-vw(27px);
           color: #fff;
           font-size: get-vw(14px);
           font-style: normal;
@@ -67,33 +73,38 @@
 
           @media (max-width: 768px) {
             padding-top: 12px;
-            padding-bottom: 41px;
+            padding-bottom: 4px;
             font-size: 14px;
             line-height: 20px;
           }
         }
 
         .big-video-frame {
-          width: get-vw(480px);
-          height: get-vw(270px);
+          width: get-vw(550px);
+          height: get-vw(290px);
 
           @media (max-width: 768px) {
-            width: 380px;
-            height: 197px;
-            margin-left: -10px;
-            padding-right: 20px;
+            width: 380px !important;
+            height: 209px;
+            margin-left: -18px;
+            padding-right: 5px;
           }
         }
       }
 
       .small-video-element {
-        padding-left: get-vw(41px);
+        padding-left: get-vw(85px);
+
+        @media (max-width: 768px) {
+          margin-right: 80px;
+          padding-left: 0;
+        }
 
         .details {
-          margin-top: get-vw(23px);
-          margin-right: get-vw(70px);
-          padding-right: get-vw(60px);
-          padding-bottom: get-vw(25px);
+          margin-top: get-vw(20px);
+          // margin-right: get-vw(70px);
+          //padding-right: get-vw(60px);
+          padding-bottom: get-vw(7px);
           color: #fff;
           font-size: get-vw(18px);
           font-style: normal;
@@ -101,14 +112,15 @@
           line-height: get-vw(25px);
 
           @media (max-width: 768px) {
-            padding-top: 12px;
-            padding-right: 30px;
-            padding-bottom: 41px;
-            color: #fff;
-            font-size: 14px;
+            font-size: 18px;
             font-style: normal;
             font-weight: normal;
-            line-height: 20px;
+            line-height: 140%;
+          }
+
+          p {
+            width: 275px;
+            margin-left: 0.41vw;
           }
         }
 
