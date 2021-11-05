@@ -7,7 +7,7 @@ import { useWindowSize } from 'libs/custom-hooks'
 import ReactReadMoreReadLess from 'react-read-more-read-less'
 import MobileTabList from '../mobile-tablist'
 
-const OurStory = ({ OurStoryData }) => {
+const OurStory = ({ OurStoryData, activeTablist }) => {
   const size = useWindowSize()
   const renderOurStoryPage = () => {
     return (
@@ -19,17 +19,18 @@ const OurStory = ({ OurStoryData }) => {
               <div className="our-story-content">
                 {item.subSection.map((data, i) => (
                   <>
-                    {/* <Label className="details-paragragh" key={i}>
-                      {data.paragraph.slice(3, data.paragraph.length - 5)}
-                    </Label> */}
                     <p
                       className="details-paragragh"
                       key={i}
                       dangerouslySetInnerHTML={{ __html: data.paragraph }}
                     ></p>
-                    <Label className="highlighted-paragraph">
-                      {item.highlightedParagraph}
-                    </Label>
+                    <p
+                      className="highlighted-paragraph"
+                      dangerouslySetInnerHTML={{
+                        __html: data.highlightedParagraph,
+                      }}
+                    ></p>
+
                     <div className="overview-detail-section-mobile">
                       <ReactReadMoreReadLess
                         charLimit={200}
@@ -56,32 +57,17 @@ const OurStory = ({ OurStoryData }) => {
         <div className="custom-tech">
           <AboutUsTablist
             className="warranty-tablist"
-            itemName="Our Story"
+            itemName={activeTablist}
             // categories={categories}
           />
         </div>
         {renderOurStoryPage()}
       </div>
-      {/* <div className="technical-bottom">
-        <div className="technical-bottom-section">
-          {PcpBottom &&
-            PcpBottom.map((item, i) => (
-              <>
-                <PCPBottom
-                  image={item.image}
-                  button={item.button}
-                  mobileButton={item.mobileButton}
-                  url={item.url}
-                />
-              </>
-            ))}
-        </div>
-      </div> */}
     </div>
   ) : (
     <>
       <div className="custom-tech">
-        <MobileTabList className="warranty-tablist" itemName="Our Story">
+        <MobileTabList className="warranty-tablist" itemName={activeTablist}>
           <div className="our-story-page-wrapper">{renderOurStoryPage()}</div>
         </MobileTabList>
       </div>
@@ -91,10 +77,12 @@ const OurStory = ({ OurStoryData }) => {
 
 OurStory.DefaultProps = {
   OurStoryData: [],
+  activeTablist: '',
 }
 
 OurStory.propTypes = {
   OurStoryData: PropTypes.array,
+  activeTablist: PropTypes.string,
 }
 
 export default OurStory

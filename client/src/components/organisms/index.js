@@ -74,6 +74,7 @@ import PDS from 'components/organisms/PDS'
 import SubItem from 'components/organisms/sub-page'
 import Dealership from 'components/organisms/Dealership-page'
 import AgriculturePage from 'components/organisms/agriculture-page'
+import TestimonialSection from 'components/organisms/testimonial-section'
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -157,4 +158,5 @@ export default {
   PDS: params => <PDS {...params} />,
   SubItem: params => <SubItem {...params} />,
   AgriculturePage: params => <AgriculturePage {...params} />,
+  TestimonialSection: params => <TestimonialSection {...params} />,
 }
