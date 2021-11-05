@@ -685,6 +685,12 @@ const mockData = {
       params: {},
     },
   ],
+  '/about-klondike/industry-applications/On-road-heavy-duty': [
+    {
+      id: 'AgriculturePage',
+      params: {},
+    },
+  ],
   '/testimonials': [
     {
       id: 'TestimonialSection',
