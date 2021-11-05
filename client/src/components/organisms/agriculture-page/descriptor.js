@@ -7,6 +7,7 @@ exports.default = Types.Component({
   description: `agriculture page in industry applications`,
 
   attributes: {
+    activeTablist: Types.String({ label: 'Active Tablist' }),
     title: Types.String({
       label: 'Page title',
     }),

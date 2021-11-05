@@ -432,6 +432,9 @@
 .quick-order-mobile {
   display: flex;
   justify-content: space-around;
+  margin-right: 12px;
+  margin-bottom: 40px;
+  margin-left: 12px;
   color: white;
 
   .quick-order-mobile__previous {
@@ -482,9 +485,12 @@
         margin-right: 0.5rem;
       }
 
-      input {
-        width: 80px !important;
-        padding: 0;
+      .input {
+        width: 30px !important;
+
+        input {
+          padding: 0;
+        }
       }
     }
 

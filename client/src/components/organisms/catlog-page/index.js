@@ -9,7 +9,7 @@ import { useWindowSize } from 'libs/custom-hooks'
 
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
-import Link from 'components/atoms/link'
+// import Link from 'components/atoms/link'
 import MobileTabListTech from '../Technical-tablist/mobile-tab'
 // const Catlogdata = ({ cataogData }) => {
 //   const { catData } = cataogData
@@ -93,7 +93,7 @@ const Catlog = ({ heading, catData, image }) => {
                     )
                   })}
                 <br />
-                Download an electronic copy of the
+                {/* Download an electronic copy of the
                 <Link
                   className="english-link"
                   to="https://klondikelubricants.com/wp-content/uploads/2021/07/2021.06.01_KLONDIKE-Catalogue-Spring_Summer-2021-Edition_English_website.pdf"
@@ -113,7 +113,7 @@ const Catlog = ({ heading, catData, image }) => {
                 <Link className="english-link">
                   info@klondikelubricants.com
                 </Link>
-                now!
+                now! */}
               </div>
             </div>
           </div>
