@@ -80,6 +80,11 @@
         letter-spacing: -1px;
         line-height: 24px;
         text-transform: uppercase;
+
+        button {
+          border: none;
+          background-color: transparent;
+        }
       }
     }
   }

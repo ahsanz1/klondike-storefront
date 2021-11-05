@@ -1,16 +1,15 @@
 import React from 'react'
-import PCPBottom from 'components/organisms/pcpBottom'
+
 import PropTypes from 'prop-types'
 import Techtabllist from 'components/organisms/Technical-tablist'
 import './style.scss'
 import ReadMoreReact from 'read-more-react'
 // import { cataogData } from './data'
 import { useWindowSize } from 'libs/custom-hooks'
-import { technicalBanner, PcpBottom } from 'libs/data/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
+
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
-import Link from 'components/atoms/link'
+// import Link from 'components/atoms/link'
 import MobileTabListTech from '../Technical-tablist/mobile-tab'
 // const Catlogdata = ({ cataogData }) => {
 //   const { catData } = cataogData
@@ -94,7 +93,7 @@ const Catlog = ({ heading, catData, image }) => {
                     )
                   })}
                 <br />
-                Download an electronic copy of the
+                {/* Download an electronic copy of the
                 <Link
                   className="english-link"
                   to="https://klondikelubricants.com/wp-content/uploads/2021/07/2021.06.01_KLONDIKE-Catalogue-Spring_Summer-2021-Edition_English_website.pdf"
@@ -114,7 +113,7 @@ const Catlog = ({ heading, catData, image }) => {
                 <Link className="english-link">
                   info@klondikelubricants.com
                 </Link>
-                now!
+                now! */}
               </div>
             </div>
           </div>
@@ -126,7 +125,6 @@ const Catlog = ({ heading, catData, image }) => {
   // const [size, setSize] = useState(useWindowSize)
   return size[0] > 768 ? (
     <>
-      <WebpagesHeroImages {...technicalBanner} />
       <div className="tech-page-wrapper">
         <div className="technacil-wriper">
           <div className="custom-tech">
@@ -137,21 +135,6 @@ const Catlog = ({ heading, catData, image }) => {
             />
           </div>
           {renderCatlogdata()}
-        </div>
-        <div className="technical-bottom">
-          <div className="technical-bottom-section">
-            {PcpBottom &&
-              PcpBottom.map((item, i) => (
-                <>
-                  <PCPBottom
-                    image={item.image}
-                    button={item.button}
-                    mobileButton={item.mobileButton}
-                    url={item.url}
-                  />
-                </>
-              ))}
-          </div>
         </div>
       </div>
     </>

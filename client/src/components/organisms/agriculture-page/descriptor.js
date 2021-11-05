@@ -7,6 +7,7 @@ exports.default = Types.Component({
   description: `agriculture page in industry applications`,
 
   attributes: {
+    activeTablist: Types.String({ label: 'Active Tablist' }),
     title: Types.String({
       label: 'Page title',
     }),
@@ -20,13 +21,17 @@ exports.default = Types.Component({
       label: 'featured Products',
       children: Types.Shape({
         children: {
-          imgURL: Types.String({ label: 'image URL' }),
+          imgURL: Types.Image({
+            label: 'image URL',
+            url: Types.String({ label: 'URL' }),
+            altText: Types.String({ label: 'Alt text' }),
+          }),
           productRedirect: Types.String({ label: 'Redirect to product(URL)' }),
           produckSKU: Types.String({ label: 'product SKU name for link' }),
         },
       }),
     }),
-    exploreCatagoryHeading: Types.String({ label: 'ecplore more heading' }),
+    exploreCatagoryHeading: Types.String({ label: 'explore more heading' }),
     exploreCatagory: Types.Array({
       label: 'explore catagorys',
       children: Types.Shape({

@@ -15,6 +15,7 @@ const AgriculturePage = ({
   featuredProduct,
   exploreCatagoryHeading,
   exploreCatagory,
+  activeTablist,
 }) => {
   const size = useWindowSize()
   const renderAgriculturePage = () => {
@@ -26,7 +27,7 @@ const AgriculturePage = ({
             <p
               className="details-paragraph"
               dangerouslySetInnerHTML={{
-                __html: `${paragraph}`,
+                __html: paragraph,
               }}
             ></p>
 
@@ -34,15 +35,14 @@ const AgriculturePage = ({
               <p
                 className="details-paragraph"
                 dangerouslySetInnerHTML={{
-                  __html: `${paragraph}`,
+                  __html: paragraph,
                 }}
-              >
-                <span className="read-more">
-                  <Button href className="button">
-                    Read More
-                  </Button>
-                </span>
-              </p>
+              ></p>
+              <span className="read-more">
+                <Button href className="button">
+                  Read More
+                </Button>
+              </span>
             </div>
             <div className="featured-products">
               <Label className="feat-title">{subHeading}</Label>
@@ -50,7 +50,11 @@ const AgriculturePage = ({
                 {featuredProduct.map((item, i) => {
                   return (
                     <div key={i} className="feat-product">
-                      <img className="feat-image" alt="" src={item.imgURL} />
+                      <img
+                        className="feat-image"
+                        alt=""
+                        src={item.imgURL.url}
+                      />
                       <Link
                         to={`/${item.productRedirect}`}
                         className="feat-link"
@@ -69,7 +73,7 @@ const AgriculturePage = ({
                   return (
                     <Link
                       key={i}
-                      to={`/${item.catagoryRedirect}`}
+                      // to={`/${item.catagoryRedirect}`}
                       className="explore-link"
                     >
                       {item.catagory}
@@ -89,7 +93,7 @@ const AgriculturePage = ({
         <div className="custom-tech">
           <IndustryAppTablist
             className="warranty-tablist"
-            itemName="Agriculture"
+            itemName={activeTablist}
             // categories={categories}
           />
         </div>
@@ -101,7 +105,7 @@ const AgriculturePage = ({
       <div className="custom-tech">
         <IndustryAppMobileTabList
           className="warranty-tablist"
-          itemName="Agriculture"
+          itemName={activeTablist}
         >
           <div className="agricultural-page-wrapper">
             {renderAgriculturePage()}
@@ -119,15 +123,17 @@ AgriculturePage.DefaultProps = {
   featuredProduct: [],
   exploreCatagoryHeading: '',
   exploreCatagory: [],
+  activeTablist: '',
 }
 
 AgriculturePage.propTypes = {
   title: PropTypes.string,
   paragraph: PropTypes.string,
   subHeading: PropTypes.string,
-  featuredProduct: PropTypes.Array,
+  featuredProduct: PropTypes.array,
   exploreCatagoryHeading: PropTypes.string,
-  exploreCatagory: PropTypes.Array,
+  exploreCatagory: PropTypes.array,
+  activeTablist: PropTypes.string,
 }
 
 export default AgriculturePage

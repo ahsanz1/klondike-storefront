@@ -1,0 +1,216 @@
+/* stylelint-disable */
+@import '~styles/globals';
+
+.eze-box {
+  display: flex;
+  margin: 0 4.2vw;
+  padding-top: 3.54167vw;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .categoryItem-tab {
+    @media (max-width: 768px) {
+      margin-top: 32.8vw;
+    }
+  }
+
+  .tablist-heading {
+    width: 17.29vw;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .eze-heading {
+    margin-bottom: 0.625vw;
+    color: #f1a900;
+    font-size: 1.66667vw;
+    font-weight: bold;
+    line-height: 2.29167vw;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: 5.66667vw;
+    }
+  }
+
+  .benefits-section {
+    margin-bottom: 4.16vw;
+    margin-left: 2.77vw;
+
+    @media (max-width: 768px) {
+      margin-top: 5.33vw;
+    }
+
+    .benefits {
+      display: flex;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .benefits-image {
+        .img-section {
+          border: 1px solid #cf5c03;
+
+          @media (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        img {
+          width: 40.29vw;
+          height: 30.29vw;
+          border: 5px solid #002a3a;
+          background: #fff;
+
+          &:hover {
+            border-color: #cf5c03;
+          }
+        }
+      }
+
+      .benefits-content {
+        margin-left: 1.38vw;
+        padding-top: 2.5vw;
+
+        .c-label {
+          margin-bottom: 0.9vw;
+          font-family: $OpenSans;
+          font-size: 0.97vw;
+
+          @media (max-width: 768px) {
+            font-size: 3.73vw;
+          }
+        }
+
+        .benefits-heading {
+          margin: 0.9vw 0;
+          color: #f1a900;
+          font-family: $OpenSans;
+          font-size: 1.66vw;
+          font-weight: bold;
+
+          @media (max-width: 768px) {
+            font-size: 3.73vw;
+          }
+        }
+
+        .first {
+          color: #f1a900;
+          font-family: $OpenSans;
+          font-size: 1.59vw;
+          font-weight: bold;
+
+          @media (max-width: 768px) {
+            font-size: 5.73vw;
+          }
+        }
+      }
+    }
+
+    .why-eze {
+      .why-heading {
+        margin: 0.9vw 0;
+        color: #f1a900;
+        font-family: $OpenSans;
+        font-size: 1.66vw;
+        font-weight: bold;
+        text-transform: capitalize;
+
+        @media (max-width: 768px) {
+          font-size: 3.73vw;
+        }
+      }
+
+      ol {
+        @media (max-width: 768px) {
+          padding-left: 4vw !important;
+        }
+
+        li {
+          div {
+            font-weight: bold;
+          }
+
+          font-weight: normal;
+        }
+      }
+    }
+
+    .eze-products {
+      .product-collection {
+        display: flex;
+
+        @media (max-width: 768px) {
+          flex-wrap: wrap;
+        }
+      }
+
+      .products-heading {
+        margin: 0.9vw 0;
+        color: #f1a900;
+        font-family: $OpenSans;
+        font-size: 1.66vw;
+        font-weight: bold;
+        text-transform: capitalize;
+
+        @media (max-width: 768px) {
+          font-size: 3.73vw;
+        }
+      }
+
+      li {
+        margin-right: 30px;
+        list-style: none;
+
+        @media (max-width: 768px) {
+          width: 39.4vw;
+          margin-right: 4.26vw;
+          margin-bottom: 5.33vw;
+        }
+
+        .product-image-section {
+          border: 1px solid #f90;
+        }
+
+        img {
+          width: 100%;
+          border: 5px solid #002a3a;
+          background: $white-color;
+          cursor: pointer;
+
+          &:hover {
+            border-color: #cf5c03;
+          }
+        }
+      }
+
+      .product-collection {
+        margin-bottom: 3.47vw;
+
+        .name {
+          color: #f1a900;
+          font-weight: normal;
+        }
+      }
+
+      .sub-heading {
+        margin-bottom: 0.69vw;
+        color: #f1a900;
+        font-size: 1.1vw;
+
+        @media (max-width: 768px) {
+          padding-bottom: 2.9vw;
+          padding-left: 0;
+          font-size: 3.73vw;
+        }
+      }
+    }
+  }
+}
+/* stylelint-enable */
