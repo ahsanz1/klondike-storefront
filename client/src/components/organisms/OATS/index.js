@@ -36,7 +36,7 @@ const Oats = () => {
       if (response.data.equipment_list.equipment.length > 0) {
         setNotFound(false)
       }
-      console.log('response', response.data)
+      console.log('response', response)
       let results = response.data.equipment_list
       console.log('res', results)
       if (response.data.equipment_list.equipment.length <= 0) {

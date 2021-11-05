@@ -16,6 +16,7 @@ const AboutUsTablist = ({
   const productClickHandler = productName => {
     setProduct(productName)
   }
+  console.log('check map:', AboutUsXPM)
   return (
     <div className={`categoryItem-tab trt ${className}`}>
       {AboutUsXPM &&
