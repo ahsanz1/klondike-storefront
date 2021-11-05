@@ -368,10 +368,10 @@ const QuickOrder = () => {
             <Link className="checkout-btn" to="/checkout">
               PROCEED TO CHECK OUT
             </Link>
-            <Link className="view-btn" to="/cart">
+            <div className="view-btn" to="/cart">
               {/* <Button>VIEW CART </Button> */}
               <Button onClick={e => addedItemToCart(e)}>VIEW CART </Button>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
