@@ -42,7 +42,15 @@ const PromoRail = ({
     }
   })
   // const selectItem = [{ label: 'Eng' }, { label: 'Fr' }]
+  useEffect(() => {
+    const script = document.createElement('script')
 
+    script.src =
+      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+    script.async = true
+
+    document.body.appendChild(script)
+  }, [])
   return (
     <div className={`promo-rail ${showPromo}`}>
       <div className="promo-rail__page-width">

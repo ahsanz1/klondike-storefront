@@ -45,7 +45,7 @@
   min-width: 90%;
   margin-top: 10px !important;
   color: #fff !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   font-weight: 700;
   line-height: 14.98px !important;
   text-transform: uppercase;
@@ -122,12 +122,19 @@
   padding: 3px;
 }
 
-.total-price {
-  //display: flex;
-  justify-content: flex-end;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 30px;
+.total-price-container {
+  @media (max-width: 768px) {
+    margin-right: 24px;
+    text-align: right;
+  }
+
+  .total-price {
+    //display: flex;
+    justify-content: flex-end;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+  }
 }
 
 .add-to-cart {

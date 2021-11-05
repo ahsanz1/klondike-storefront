@@ -34,6 +34,7 @@ Components['DownTime'] = require('components/organisms/DownTime').default
 Components['HomeBanner'] = require('components/organisms/HomeBanner').default
 Components['OurProduct'] = require('components/organisms/ourProduct').default
 Components['Header'] = require('components/organisms/header').default
+Components['EzeBox'] = require('components/organisms/eze-box').default
 Components[
   'ClientTestimonial'
 ] = require('components/organisms/ClientTestimonial').default
@@ -220,4 +221,10 @@ Components[
   'Dealership'
 ] = require('components/organisms/Dealership-page').default
 Components['SubItem'] = require('components/organisms/sub-page').default
+Components[
+  'AgriculturePage'
+] = require('components/organisms/agriculture-page').default
+Components[
+  'TestimonialSection'
+] = require('components/organisms/testimonial-section').default
 export default Components

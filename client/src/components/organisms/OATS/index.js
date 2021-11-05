@@ -36,8 +36,12 @@ const Oats = () => {
       if (response.data.equipment_list.equipment.length > 0) {
         setNotFound(false)
       }
+      console.log('response', response)
       let results = response.data.equipment_list
       console.log('res', results)
+      if (response.data.equipment_list.equipment.length <= 0) {
+        setNotFound(true)
+      }
       setOtsdata(results)
 
       let yearsArray = [{ label: ' ' }]
@@ -101,7 +105,7 @@ const Oats = () => {
   const [bgImg, setBgimg] = useState(false)
 
   const searchQuery = () => {
-    setNotFound(true)
+    // setNotFound(true)
     setBgimg(true)
     if (query) {
       getproducts()

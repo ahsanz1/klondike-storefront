@@ -79,27 +79,37 @@
       text-transform: uppercase;
 
       @media screen and (max-width: 768px) {
-        width: 150px;
-        margin-bottom: 20px;
-        margin-left: 20px;
-        background: $accent-color;
-        color: white;
-        font-size: 14px;
-        text-transform: none;
-      }
-
-      @media screen and (max-width: 500px) {
         width: 32vw;
-        height: 10.6vw;
+        height: auto;
         margin-top: 2.6vw;
         margin-bottom: 8vw;
+        //width: 150px;
+        //margin-bottom: 20px;
+        //background: $accent-color;
+        //color: white;
+        //font-size: 14px;
+        margin-left: 5.33vw;
         border: 0.5vw solid #ff8200;
         border-radius: 1.3vw;
         background: transparent;
         color: #032939;
         font-size: 3.7vw;
         line-height: 6.4vw;
+        text-transform: none;
       }
+
+      // @media screen and (max-width: 500px) {
+      //   width: 32vw;
+      //   height: 10.6vw;
+      //   margin-top: 2.6vw;
+      //   margin-bottom: 8vw;
+      //   border: 0.5vw solid #ff8200;
+      //   border-radius: 1.3vw;
+      //   background: transparent;
+      //   color: #032939;
+      //   font-size: 3.7vw;
+      //   line-height: 6.4vw;
+      // }
     }
   }
 }
