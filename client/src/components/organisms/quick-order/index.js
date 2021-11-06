@@ -19,7 +19,7 @@ import Button from 'components/atoms/button'
 
 const QuickOrder = () => {
   const [size] = useWindowSize()
-  const { user } = useContext(AppContext)
+  const { user, showModal } = useContext(AppContext)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
@@ -365,12 +365,12 @@ const QuickOrder = () => {
             <Label className="total">{totalqty}</Label>
           </div>
           <div className="checkout-links">
-            <Link className="checkout-btn" to="/checkout">
+            <Link className="checkout-btn" to="/Checkoutsection">
               PROCEED TO CHECK OUT
             </Link>
             <div className="view-btn" to="/cart">
               {/* <Button>VIEW CART </Button> */}
-              <Button onClick={e => addedItemToCart(e)}>VIEW CART </Button>
+              <Button onClick={showModal}>VIEW CART </Button>
             </div>
           </div>
         </div>
