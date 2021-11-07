@@ -43,19 +43,27 @@ const Techtabllist = ({
                 </Link>
                 {item.subItem && itemName === item.categoryName && (
                   <div className="subItem">
+                    {item.subItemHeading && (
+                      <Label className="subitems-heading">
+                        {item.subItemHeading}
+                      </Label>
+                    )}
                     {item.subItem &&
                       item.subItem.hits &&
                       item.subItem.hits.map((item, index) => (
-                        <Link
-                          key={index}
-                          onClick={() => productClickHandler(item.title)}
-                          className={item.title === product && 'active-product'}
-                          to={item.links}
-                        >
-                          <ul>
-                            <li>{item.title}</li>
-                          </ul>
-                        </Link>
+                        <div key={index}>
+                          <Link
+                            onClick={() => productClickHandler(item.title)}
+                            className={
+                              item.title === product && 'active-product'
+                            }
+                            to={item.links}
+                          >
+                            <ul>
+                              <li>{item.title}</li>
+                            </ul>
+                          </Link>
+                        </div>
                       ))}
                   </div>
                 )}
