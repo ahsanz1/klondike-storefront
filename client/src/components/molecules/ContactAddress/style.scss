@@ -1,24 +1,24 @@
 @import '~styles/globals';
 
 .Address {
-  width: 252px;
-  padding-top: 60px;
+  width: 17.5vw;
+  padding-top: 4.16vw;
 
   h1 {
     color: white;
     font-family: $OpenSans;
-    font-size: 13px;
+    font-size: 0.902vw;
     font-style: normal;
     font-weight: bold;
     letter-spacing: 0.08em;
-    line-height: 18px;
+    line-height: 1.25vw;
     text-transform: uppercase;
   }
 
   p {
     color: white;
     font-family: $OpenSans;
-    font-size: 14px;
+    font-size: 0.97vw;
     font-style: normal;
     font-weight: normal;
     letter-spacing: -0.01em;

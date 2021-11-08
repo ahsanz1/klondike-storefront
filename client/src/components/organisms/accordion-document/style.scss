@@ -31,20 +31,26 @@ $vw-viewport: 1440;
   }
 
   .accordion-content {
-    position: relative;
-    right: get-vw(29px);
+    // position: relative;
+    // right: get-vw(29px);
     // height: initial;
     margin-bottom: 0;
+    padding-left: get-vw(26px);
     transition: all 0.3s;
     font-size: get-vw(16px);
     line-height: get-vw(23px);
 
     @media (max-width: 768px) {
-      position: relative;
-      right: 44px;
+      // position: relative;
+      // right: 44px;
+      padding-left: 26px;
       overflow: auto;
       font-size: 16px;
       line-height: 23px;
+
+      .table-wrapper-technical {
+        padding-bottom: 16px;
+      }
     }
 
     p {
@@ -103,21 +109,46 @@ $vw-viewport: 1440;
 
   .ant-row.accordion-item {
     display: flex;
-    flex-direction: row;
-    align-items: baseline;
+    flex-direction: column;
     margin-bottom: 0;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    // padding-top: 15px;
+    padding-bottom: 1.73vw;
     border: 0.06vw solid #f1a900;
 
     @media (max-width: 768px) {
       width: 82.2vw;
     }
+
+    &.border-none {
+      border-right: none;
+      border-bottom: none;
+      border-left: none;
+    }
   }
 
   .accordion-item {
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 1.73vw;
+
+    @media (max-width: 768px) {
+      padding-bottom: 15px;
+    }
+
+    .accordion-col {
+      display: flex;
+      max-width: 100%;
+      padding-top: 1.73vw;
+
+      @media (max-width: 768px) {
+        max-width: 100%;
+        padding-top: 15px;
+      }
+
+      &.borders {
+        padding-bottom: 1.5vw;
+        border: 0.06vw solid #f1a900;
+      }
+    }
 
     .accordion-arrow {
       display: flex;
@@ -125,6 +156,7 @@ $vw-viewport: 1440;
       justify-content: flex-end;
       width: 1.28vw;
       margin-top: 5px;
+      margin-right: get-vw(16px);
       margin-left: 1.8vw;
       transition: all 0.3s ease-in-out;
 
@@ -135,6 +167,8 @@ $vw-viewport: 1440;
 
       @media (max-width: 768px) {
         width: 4.8vw;
+        margin-top: 0;
+        margin-right: 20px;
         margin-left: 7.2vw;
         cursor: pointer;
       }
@@ -145,6 +179,14 @@ $vw-viewport: 1440;
       font-size: 20px;
       font-weight: 500;
       line-height: 26px;
+    }
+
+    .accordion-question-col {
+      max-width: 100%;
+
+      &::-webkit-scrollbar-thumb {
+        color: #f1a900;
+      }
     }
   }
 

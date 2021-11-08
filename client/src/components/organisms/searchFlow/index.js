@@ -23,9 +23,10 @@ const SearchFlow = props => {
   const { setSearchFilter, setSearchKey } = useContext(AppContext)
 
   const searchValueHandler = async ({ value }) => {
+    console.log('value check:', value)
     setSearchValue(value)
     setShowRecent(false)
-    const list = await fetchItems(searchValue)
+    const list = await fetchItems(value)
     console.log('check list:', list.hits)
     setItemList(list.hits)
     setSearchFilter(list.hits)
