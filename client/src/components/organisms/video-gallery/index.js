@@ -99,21 +99,6 @@ const VideoGallery = ({ bigVideodata, smallVideodata, heading, paragraph }) => {
           </div>
           {renderVideoGallery()}
         </div>
-        {/* <div className="technical-bottom">
-          <div className="technical-bottom-section">
-            {PcpBottom &&
-              PcpBottom.map((item, i) => (
-                <>
-                  <PCPBottom
-                    image={item.image}
-                    button={item.button}
-                    mobileButton={item.mobileButton}
-                    url={item.url}
-                  />
-                </>
-              ))}
-          </div>
-        </div> */}
       </div>
     </>
   ) : (
