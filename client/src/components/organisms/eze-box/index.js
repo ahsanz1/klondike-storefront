@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import AboutUsTablist from 'components/organisms/about-us-tablist'
 import Lable from 'components/atoms/label'
 import Image from 'components/atoms/image'
-// import Link from 'components/atoms/link'
 import './style.scss'
+import { navigate } from '@reach/router'
 
 const EzeBox = ({
   mainHeading,
@@ -76,7 +76,11 @@ const EzeBox = ({
                         <div className="product-set" key={i}>
                           <li>
                             <div className="product-image-section">
-                              <Image src={data?.image?.url} alt="" />
+                              <Image
+                                src={data && data.image.url}
+                                alt="alt"
+                                onClick={() => navigate('/PDP')}
+                              />
                             </div>
                             <div className="name">{data?.name}</div>
                           </li>
