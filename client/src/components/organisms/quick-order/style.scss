@@ -264,7 +264,7 @@
 
     :first-child {
       display: flex;
-      padding-left: get-vw(17px);
+      // padding-left: get-vw(17px);
 
       .quick-order-asterisk {
         padding-left: 0;
@@ -486,10 +486,10 @@
       }
 
       .input {
-        width: 30px !important;
+        width: 48px !important;
 
         input {
-          padding: 0;
+          padding: 5px;
         }
       }
     }

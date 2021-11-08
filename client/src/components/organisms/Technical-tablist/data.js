@@ -144,6 +144,11 @@ export const AboutUsXPM = [
     categoryName: 'Work At Klondike',
     link: 'work-at-klondike',
   },
+  {
+    title: 'EZE-BOX',
+    categoryName: 'EZE-BOX',
+    link: 'eze-box',
+  },
 ]
 
 export const IndustryAppXPM = [
