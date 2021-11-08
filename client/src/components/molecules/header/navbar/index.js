@@ -115,9 +115,7 @@ const Navbar = ({
                 : 'Buy-Button'
             }
             to={
-              userLoginInfo && userLoginInfo.email
-                ? '/quickorder'
-                : 'contact-us'
+              userLoginInfo && userLoginInfo.email ? 'quickorder' : 'contact-us'
             }
           >
             {userLoginInfo && userLoginInfo.email ? 'Quick Order' : buyButton}
