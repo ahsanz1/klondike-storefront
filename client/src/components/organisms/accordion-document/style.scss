@@ -183,6 +183,10 @@ $vw-viewport: 1440;
 
     .accordion-question-col {
       max-width: 100%;
+
+      &::-webkit-scrollbar-thumb {
+        color: #f1a900;
+      }
     }
   }
 
