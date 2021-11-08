@@ -34,7 +34,7 @@ const Accordiondocment = ({
             <div className={`accordion-arrow`}>
               {isOpen ? (
                 <Image
-                  src="/static/images/plus.png"
+                  src="/static/images/Vector.png"
                   alt=""
                   onClick={() => {
                     isOpenHandler(faqId)
@@ -42,7 +42,7 @@ const Accordiondocment = ({
                 />
               ) : (
                 <Image
-                  src="/static/images/Vector.png"
+                  src="/static/images/plus.png"
                   alt=""
                   onClick={() => {
                     isOpenHandler(faqId)
