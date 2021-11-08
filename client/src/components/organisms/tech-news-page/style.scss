@@ -7,6 +7,10 @@
   color: white;
   font-family: $OpenSans;
 
+  @media (max-width: 768px) {
+    margin-top: 42px;
+  }
+
   .tech-news-titles {
     display: flex;
     flex-direction: column;
@@ -21,7 +25,7 @@
 
       @media (max-width: 768px) {
         width: 86.6vw;
-        height: 8.8vw;
+        // height: 8.8vw;
         margin-left: 2vw;
         font-size: 6.4vw;
         line-height: 32px;
@@ -78,6 +82,14 @@
           padding-left: 3.2vw;
           font-size: 3.73vw;
           line-height: 5.08vw;
+
+          &:nth-child(2) {
+            border-left: none;
+          }
+
+          &:nth-child(3) {
+            margin-top: 0;
+          }
         }
       }
     }
@@ -87,11 +99,19 @@
       margin-top: get-vw(39px);
       margin-left: get-vw(33px);
 
+      @media (max-width: 768px) {
+        margin-top: 16px;
+      }
+
       .page-no {
         display: flex;
         flex-direction: row;
         margin-bottom: get-vw(39px);
         // margin-left: 2vw;
+
+        @media (max-width: 768px) {
+          margin-bottom: 32px;
+        }
 
         .page-no-box {
           display: flex;
@@ -129,7 +149,7 @@
           @media (max-width: 768px) {
             width: 40vw;
             height: 40vw;
-            margin-bottom: 3.2vw;
+            margin-bottom: 3.7vw;
           }
         }
 
@@ -137,10 +157,18 @@
           margin-bottom: get-vw(51px);
           margin-left: get-vw(16px);
 
+          @media (max-width: 768px) {
+            margin-bottom: 27px;
+          }
+
           .item-top-bar {
             display: flex;
             align-items: center;
             border-bottom: get-vw(1px) solid #ffa500;
+
+            @media (max-width: 768px) {
+              padding-bottom: 8px;
+            }
 
             .item-date {
               margin-right: get-vw(15px);
@@ -152,7 +180,9 @@
               text-transform: uppercase;
 
               @media (max-width: 768px) {
-                width: 20.26vw;
+                display: flex;
+                align-items: center;
+                // width: 20.26vw;
                 height: 4.26vw;
                 margin-right: 2.93vw;
                 font-size: 3.2vw;
@@ -173,9 +203,13 @@
               text-transform: uppercase;
 
               @media (max-width: 768px) {
-                width: 26.66vw;
+                // width: 32.5vw;
+                display: flex;
+                align-items: center;
                 height: 4.26vw;
                 margin-right: 2.93vw;
+                margin-left: 2.93vw;
+                padding-right: 2.93vw;
                 padding-left: 2.93vw;
                 font-size: 3.2vw;
               }
@@ -196,6 +230,7 @@
               @media (max-width: 768px) {
                 width: 83.46vw;
                 margin-top: 2.13vw;
+                margin-bottom: 0;
                 font-size: 4.26vw;
                 line-height: 4.4vw;
               }
@@ -212,43 +247,46 @@
             @media (max-width: 768px) {
               width: 84.26vw;
               margin-top: 2.13vw;
-              font-size: 3.73vw;
+              font-size: 4.26vw;
               line-height: 5.08vw;
             }
           }
 
           .read-more {
-            color: #ffa500;
+            border: none;
+            background: none;
+            color: rgba(255, 165, 0, 1);
+            font-weight: bold;
           }
         }
       }
     }
   }
-}
 
-.ant-pagination-item-active {
-  border-color: #ffa500 !important;
-  background: #ffa500 !important;
-}
+  .ant-pagination-item-active {
+    border-color: #ffa500 !important;
+    background: #ffa500 !important;
+  }
 
-.ant-pagination-item-active a {
-  color: white !important;
-}
+  .ant-pagination-item a {
+    color: white !important;
+  }
 
-.ant-pagination-item a {
-  color: white !important;
-}
+  .ant-pagination-item {
+    border: 1px solid #f0a51f !important;
+    background-color: transparent;
+  }
 
-.ant-pagination-item {
-  border: 1px solid #f0a51f !important;
-  background-color: transparent !important;
-}
+  .ant-pagination-next .ant-pagination-item-link {
+    border: 1px solid #f0a51f !important;
+    background-color: transparent !important;
+  }
 
-.ant-pagination-next .ant-pagination-item-link {
-  border: 1px solid #f0a51f !important;
-  background-color: transparent !important;
-}
+  .anticon-right svg {
+    color: white;
+  }
 
-.anticon-right svg {
-  color: white;
+  .ant-pagination-prev {
+    display: none;
+  }
 }

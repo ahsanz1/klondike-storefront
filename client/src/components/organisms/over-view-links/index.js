@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Label from 'components/atoms/label'
+// import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 import './style.scss'
 
@@ -17,7 +17,9 @@ const OverViewLinks = ({ aboutUsLinks }) => {
               </div>
 
               <div className="about-us-links-content">
-                <Label className="links-title">{item.title}</Label>
+                <Link className="links-title" to={item.titleLinks}>
+                  {item.title}
+                </Link>
 
                 <p
                   className="links-paragraph"
@@ -28,6 +30,7 @@ const OverViewLinks = ({ aboutUsLinks }) => {
 
                 <Link
                   className="discover-more"
+                  to={item.buttonLinks}
                   //   to={`about-klondike/${item.redirectUrl}`}
                 >
                   {item.buttonText}

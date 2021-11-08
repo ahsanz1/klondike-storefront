@@ -1,0 +1,44 @@
+.sub-pages-container {
+  display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .sub-pages__techtablist {
+    width: 40%;
+    margin-top: 3.54vw;
+    margin-left: 4.2vw;
+
+    // @media (max-width: 768px) {
+    //   width: 100%;
+    // }
+  }
+
+  .sub-pages__subpages {
+    padding-top: 3.5vw;
+
+    .subpage-warp {
+      @media (max-width: 768px) {
+        padding-left: 31px;
+      }
+    }
+
+    .main-heading-subpage {
+      margin-left: 1.45vw;
+    }
+
+    .data-warp-subpage {
+      margin-right: 8vw;
+      margin-left: 1.45vw;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .Paragraph {
+        padding-right: 3vw;
+      }
+    }
+  }
+}

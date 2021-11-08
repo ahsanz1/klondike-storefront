@@ -16,8 +16,10 @@ exports.default = Types.Component({
             url: Types.String({ label: 'URL' }),
             altText: Types.String({ label: 'Alt text' }),
           }),
+          titleLinks: Types.String({ label: 'Title Link' }),
           title: Types.String({ label: 'Title' }),
           paragraph: Types.RichText({ label: 'Description' }),
+          buttonLinks: Types.String({ label: 'Button Link' }),
           buttonText: Types.String({ label: 'Button Text' }),
           redirectUrl: Types.String({ label: 'Redirect URL' }),
           buttonImage: Types.Image({

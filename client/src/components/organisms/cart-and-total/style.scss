@@ -80,6 +80,11 @@
         letter-spacing: -1px;
         line-height: 24px;
         text-transform: uppercase;
+
+        button {
+          border: none;
+          background-color: transparent;
+        }
       }
     }
   }
@@ -88,7 +93,9 @@
 .product-price-mobile {
   @media screen and (max-width: 768px) {
     display: block;
-    color: white;
+    //color: white;
+    color: #c2bbb7;
+    font-size: 3.2vw;
   }
 }
 
@@ -150,6 +157,7 @@
       .product-price {
         @media screen and (max-width: 768px) {
           color: #c2bbb7;
+          //  font-size: 2.93vw;
         }
       }
 

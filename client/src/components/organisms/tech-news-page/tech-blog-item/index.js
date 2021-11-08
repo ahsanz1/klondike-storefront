@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
+import Button from 'components/atoms/button'
 
-const TechBlogItem = ({ date, catagory, title, text, image }) => {
+const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
   const [textVal, setTextVal] = useState('')
   const [textState, setTextState] = useState(false)
   const [btnText, setBtnText] = useState('')
@@ -31,7 +32,7 @@ const TechBlogItem = ({ date, catagory, title, text, image }) => {
   return (
     <div className="tech-blog-item">
       <div>
-        <img className="item-image" src={image} alt="" />
+        <img className="item-image" src={image.url} alt="" />
       </div>
       <div className="item-descriptions">
         <div className="item-top-bar">
@@ -39,14 +40,15 @@ const TechBlogItem = ({ date, catagory, title, text, image }) => {
           <Link className="links">{catagory}</Link>
         </div>
         <div className="item-desc-box">
-          <Label className="item-title">{title}</Label>
+          <Label className="item-title">{descHeading}</Label>
         </div>
         <div>
           <Label className="paragragh-text">
-            {textVal}
-            <button className="read-more" onClick={e => changeState(text)}>
+            {textVal.slice(3, textVal.length - 5)}
+            {' ...'}
+            <Button className="read-more" onClick={e => changeState(text)}>
               {btnText}
-            </button>
+            </Button>
           </Label>
         </div>
       </div>
@@ -68,6 +70,7 @@ TechBlogItem.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
   image: PropTypes.string,
+  descHeading: PropTypes.string,
 }
 
 export default TechBlogItem

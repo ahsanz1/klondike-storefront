@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import './style.scss'
 import { categoriesXPM } from 'components/organisms/Technical-tablist/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
-import { technicalBanner, PcpBottom } from 'libs/data/data'
-import PCPBottom from 'components/organisms/pcpBottom'
+// import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
+// import { PcpBottom } from 'libs/data/data'
+// import PCPBottom from 'components/organisms/pcpBottom'
+
 import Link from 'components/atoms/link'
 
 const MobileTabListTech = ({
@@ -25,10 +26,7 @@ const MobileTabListTech = ({
   console.log('check categories:', categories)
   return (
     <div className="mobile-tab-list">
-      <div>
-        {' '}
-        <WebpagesHeroImages {...technicalBanner} />
-      </div>
+      <div> {/* <WebpagesHeroImages {...technicalBanner} /> */}</div>
       <div className={`categoryItem-tab trt ${className}`}>
         {categoriesXPM &&
           categoriesXPM.length &&
@@ -47,10 +45,7 @@ const MobileTabListTech = ({
                       clickCategoryHandler(item.categoryName, item.categoryDesc)
                     }
                   >
-                    <Link
-                      className="catagory-link"
-                      to={`tech-resources/${item.link}`}
-                    >
+                    <Link className="catagory-link" to={item.categoryLink}>
                       {item.categoryName}
                     </Link>
 
@@ -59,17 +54,18 @@ const MobileTabListTech = ({
                         {item.subItem &&
                           item.subItem.hits &&
                           item.subItem.hits.map((item, index) => (
-                            <Label
+                            <Link
                               onClick={() => productClickHandler(item.title)}
                               key={index}
                               className={
                                 item.title === product && 'active-product'
                               }
+                              to={item.links}
                             >
                               <ul>
                                 <li>{item.title}</li>
                               </ul>
-                            </Label>
+                            </Link>
                           ))}
                       </div>
                     )}
@@ -79,21 +75,6 @@ const MobileTabListTech = ({
               )}
             </>
           ))}
-      </div>
-      <div className="technical-bottom">
-        <div className="technical-bottom-section">
-          {PcpBottom &&
-            PcpBottom.map((item, i) => (
-              <>
-                <PCPBottom
-                  image={item.image}
-                  button={item.button}
-                  mobileButton={item.mobileButton}
-                  url={item.url}
-                />
-              </>
-            ))}
-        </div>
       </div>
     </div>
   )

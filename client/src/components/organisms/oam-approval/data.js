@@ -3,6 +3,7 @@ export const oamdata = {
     {
       img: '/static/images/audi.png',
       heading: 'Audi Approved',
+      headingLink: '/tech-resources/oem-approvals/audi-approved/',
       description:
         'Audi AG is a German automobile manufacturer that designs, engineers, produces, markets and distributes luxury vehicles. Audi models are known for being very balanced between sport and comfort.',
       lebal: '/static/images/vec.png',

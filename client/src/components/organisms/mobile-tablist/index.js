@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import './style.scss'
 import { AboutUsXPM } from 'components/organisms/Technical-tablist/data'
-import WebpagesHeroImages from 'components/molecules/webpages-hero-images'
-import { PcpBottom, aboutUs } from 'libs/data/data'
-import PCPBottom from 'components/organisms/pcpBottom'
 import Link from 'components/atoms/link'
 
 const MobileTabList = ({
@@ -23,9 +20,6 @@ const MobileTabList = ({
 
   return (
     <div className="mobile-tab-list">
-      <div>
-        <WebpagesHeroImages {...aboutUs} />
-      </div>
       <div className={`categoryItem-tab trt ${className}`}>
         {AboutUsXPM &&
           AboutUsXPM.length &&
@@ -53,15 +47,16 @@ const MobileTabList = ({
                         {subItem &&
                           subItem.hits &&
                           subItem.hits.map((item, index) => (
-                            <Label
+                            <Link
                               onClick={() => productClickHandler(item.title)}
                               key={index}
                               className={
                                 item.title === product && 'active-product'
                               }
+                              to={item.links}
                             >
                               {item.title}
-                            </Label>
+                            </Link>
                           ))}
                       </div>
                     )}
@@ -71,21 +66,6 @@ const MobileTabList = ({
               )}
             </>
           ))}
-      </div>
-      <div className="technical-bottom">
-        <div className="technical-bottom-section">
-          {PcpBottom &&
-            PcpBottom.map((item, i) => (
-              <>
-                <PCPBottom
-                  image={item.image}
-                  button={item.button}
-                  mobileButton={item.mobileButton}
-                  url={item.url}
-                />
-              </>
-            ))}
-        </div>
       </div>
     </div>
   )

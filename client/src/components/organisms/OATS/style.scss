@@ -33,9 +33,9 @@
     margin-top: 0;
     margin-bottom: 21px;
     // margin-left: -97px;
-    padding-top: 53px;
+    padding-top: 5.76vw;
     font-family: $OpenSans;
-    font-size: 2.1vw;
+    font-size: 2.15vw;
     font-style: normal;
     font-weight: bold;
     line-height: 140%;
@@ -59,6 +59,7 @@
   .input_model {
     width: 31.1vw;
     height: 4.44vw;
+    margin-right: 0.69vw;
     // height: 4.4vw;
     // margin-left: 22.9vw;
     padding-left: 1.3vw;
@@ -95,6 +96,7 @@
   .btn-search {
     width: 3.5vw;
     height: 3vw;
+    margin-left: 0.69vw;
     padding: 0;
     border-radius: 1.11vw;
     background-color: #f1a900;
@@ -112,7 +114,7 @@
   .wrapper-oats {
     display: flex;
     margin-right: 22vw;
-    margin-left: 22.98vw;
+    margin-left: 24vw;
 
     @media (max-width: 768px) {
       // display: grid;
@@ -156,7 +158,7 @@
       object-fit: cover;
 
       @media (max-width: 768px) {
-        width: 19.46vw;
+        width: 20vw;
         height: 64px;
         // height: 100%;
         object-fit: revert;
@@ -174,7 +176,7 @@
   .ant-select-selector {
     min-width: 11.45vw !important;
     height: 4.44vw !important;
-    margin: 0 10px !important;
+    //margin: 0 10px !important;
     // padding-top: 15px !important;
     padding-top: 1.2vw !important;
     padding-left: 2vw !important;
@@ -220,14 +222,14 @@
 
     @media (max-width: 768px) {
       display: block;
-      margin-top: 20px;
+      margin-top: -2vw;
       margin-left: 12px;
       padding-bottom: 23px;
     }
 
     .ant-select {
       min-width: 165px;
-      margin: 0 10px;
+      margin: 0 18px;
 
       @media (max-width: 768px) {
         width: 219px;
@@ -312,13 +314,18 @@
 .table-wrapper {
   // max-width: 90%;
 
-  padding-top: 36px;
+  padding-top: 0.347vw;
   color: #fff;
+
+  @media (max-width: 768px) {
+    padding-top: 1.33vw;
+  }
 
   .flex {
     display: flex;
     justify-content: space-between;
     width: 93.34vw;
+    width: 90.34vw;
     margin: 0 auto;
     // margin-left: 49px;
     padding-left: 20px;
@@ -336,6 +343,13 @@
 
   .custom-grid {
     width: 20%;
+    padding-top: 1.31vw;
+    padding-bottom: 0.347vw;
+
+    @media (max-width: 768px) {
+      padding-top: 5.066vw;
+      padding-bottom: 1.33vw;
+    }
   }
 
   .custom-grid.tiles {
@@ -394,8 +408,8 @@
   }
 
   .not-found {
-    margin-top: -24px;
-    margin-left: 22.98vw;
+    margin-top: 0;
+    margin-left: 23.88vw;
 
     @media (max-width: 768px) {
       margin-left: 7.73vw;

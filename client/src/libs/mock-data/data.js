@@ -6,6 +6,7 @@ import WebpageGlobalHeroBannerData from 'components/organisms/webpages-hero-imag
 // import instagramPosts from 'components/organisms/instagram-section/data'
 import { categoriesXPM as categories } from 'components/organisms/plp/data'
 import SliderTabbableData from 'components/organisms/slider-tabable/data'
+import { testimonialData } from 'components/organisms/testimonial-section/data'
 // import tableAccoData from 'components/organisms/faqs/data'
 
 import {
@@ -74,12 +75,19 @@ import {
   Packagerorder,
   bulkorder,
   PlpBottom,
-  PcpBottom,
+  pcp,
   searchFlow,
   delarship,
   cataogData,
   indusrtyapplication,
   warrantyData,
+  overviewData,
+  oamdata,
+  technicalBanner,
+  bigVideodata,
+  smallVideodata,
+  rendersubpage,
+  EzeBox,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -174,7 +182,23 @@ const mockData = {
     },
     {
       id: 'PCPBottom',
-      params: PcpBottom,
+      params: pcp,
+    },
+    {
+      id: 'DownTime',
+      params: DownTime,
+    },
+  ],
+  '/pds': [
+    {
+      id: 'PDS',
+      params: pcp,
+    },
+  ],
+  '/SubItem': [
+    {
+      id: 'SubItem',
+      params: rendersubpage,
     },
   ],
   '/terms-condition': [
@@ -204,6 +228,12 @@ const mockData = {
   '/search-filter': [
     {
       id: 'SearchFilter',
+    },
+  ],
+  '/about-klondike/eze-box': [
+    {
+      id: 'EzeBox',
+      params: EzeBox,
     },
   ],
 
@@ -500,6 +530,10 @@ const mockData = {
       id: 'PDP',
       params: { pdpdata, pdpdatasheet, RadioData, categories },
     },
+    {
+      id: 'PDS',
+      params: pcp,
+    },
   ],
   '/Order': [
     {
@@ -541,7 +575,7 @@ const mockData = {
   '/tech-resources/OEMApprovals': [
     {
       id: 'Oamspproval',
-      params: {},
+      params: oamdata,
     },
   ],
   '/confirmation-order': [
@@ -558,10 +592,19 @@ const mockData = {
   ],
   '/tech-resources/video-gallery': [
     {
-      id: 'VideoGallery',
-      params: {},
+      id: 'WebpageGlobalHeroBanner',
+      params: { ...technicalBanner, key: '112233446677' },
     },
+    {
+      id: 'VideoGallery',
+      params: { bigVideodata, smallVideodata },
+    },
+    // {
+    //   id: 'PCPBottom',
+    //   params: { ...PcpBottom },
+    // },
   ],
+
   '/Techtabllist': [
     {
       id: 'Techtabllist',
@@ -603,7 +646,7 @@ const mockData = {
   '/about-klondike/why-klondike': [
     {
       id: 'WhyKlondike',
-      params: {},
+      params: overviewData,
     },
   ],
   '/about-klondike/work-at-klondike': [
@@ -634,6 +677,24 @@ const mockData = {
     {
       id: 'Dealership',
       params: delarship,
+    },
+  ],
+  '/about-klondike/industry-applications/agriculture': [
+    {
+      id: 'AgriculturePage',
+      params: {},
+    },
+  ],
+  '/about-klondike/industry-applications/On-road-heavy-duty': [
+    {
+      id: 'AgriculturePage',
+      params: {},
+    },
+  ],
+  '/testimonials': [
+    {
+      id: 'TestimonialSection',
+      params: { ...testimonialData },
     },
   ],
 }

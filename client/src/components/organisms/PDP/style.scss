@@ -58,8 +58,10 @@
   // border: 1px solid gray;
 }
 
-.total-price {
-  color: #f2a900 !important;
+.totalPrice {
+  color: #f2a900;
+  font-size: 1.5vw;
+  font-weight: bold;
 }
 
 .color-disabled {
@@ -89,6 +91,9 @@
 
   @media screen and (max-width: 500px) {
     visibility: hidden;
+    width: 0;
+    height: auto !important;
+    padding: 0;
   }
 }
 
@@ -119,7 +124,7 @@
   height: 4vw;
   margin-top: 1vw;
   border: 1px solid #f1a900;
-  border-radius: 9px;
+  border-radius: 5px;
   background-color: #f1a900;
   color: #fff;
   font-size: 1.5vw;
@@ -127,8 +132,9 @@
 }
 
 .customButton:disabled {
-  border: '1px solid gray';
-  background: gray;
+  border: 1px solid gray !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  cursor: default !important;
 }
 
 .customButton :hover {
@@ -145,6 +151,9 @@
 }
 
 .share-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 4vw;
   height: 4vw;
   padding: 1vw;

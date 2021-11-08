@@ -65,7 +65,7 @@ export const getCartByUserId = async (authToken, count = 1) => {
     response = { error: false, data: response.data, message: null }
   } catch (e) {
     // console.log(e.message);
-    // console.log(e.response);
+    console.log('error', e.response)
     if (e.request.response && e.response.status) {
       const statusCode = e.response.status
       if (statusCode === 500 && count < 4) {
@@ -76,6 +76,31 @@ export const getCartByUserId = async (authToken, count = 1) => {
       error: true,
       data: e.response.data,
       message: 'Unable to load cart. Please refresh your page.',
+    }
+  }
+
+  return response
+}
+
+export const addShippingWithLineItems = async (cartId, payload) => {
+  let response
+  try {
+    response = await axiosObj.common.patch(
+      ENDPOINTS.PATCH.linkItemsWithShipping(cartId),
+      JSON.stringify(payload),
+      {
+        params: {
+          userAuthToken: null,
+        },
+      },
+    )
+
+    response = { error: false, data: response.data, message: null }
+  } catch (e) {
+    response = {
+      error: true,
+      data: null,
+      message: JSON.stringify(e),
     }
   }
 

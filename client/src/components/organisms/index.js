@@ -70,8 +70,11 @@ import WorkAtKlonedike from 'components/organisms/work-at-klondike'
 import IndustryApplications from 'components/organisms/industry-applications'
 import SafetyEnvironment from 'components/organisms/safety-environment'
 import OurStory from 'components/organisms/our-story'
-
+import PDS from 'components/organisms/PDS'
+import SubItem from 'components/organisms/sub-page'
 import Dealership from 'components/organisms/Dealership-page'
+import AgriculturePage from 'components/organisms/agriculture-page'
+import TestimonialSection from 'components/organisms/testimonial-section'
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -152,4 +155,8 @@ export default {
   SafetyEnvironment: params => <SafetyEnvironment {...params} />,
   OurStory: params => <OurStory {...params} />,
   Dealership: params => <Dealership {...params} />,
+  PDS: params => <PDS {...params} />,
+  SubItem: params => <SubItem {...params} />,
+  AgriculturePage: params => <AgriculturePage {...params} />,
+  TestimonialSection: params => <TestimonialSection {...params} />,
 }

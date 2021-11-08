@@ -8,6 +8,7 @@ import Link from 'components/atoms/link'
 const Techtabllist = ({
   categories,
   itemName,
+  categoryLink,
   clickCategoryHandler,
   subItem,
   className,
@@ -37,26 +38,32 @@ const Techtabllist = ({
                   clickCategoryHandler(item.categoryName, item.categoryDesc)
                 }
               >
-                <Link
-                  className="catagory-link"
-                  to={`tech-resources/${item.link}`}
-                >
+                <Link className="catagory-link" to={item.categoryLink}>
                   {item.categoryName}
                 </Link>
                 {item.subItem && itemName === item.categoryName && (
                   <div className="subItem">
+                    {item.subItemHeading && (
+                      <Label className="subitems-heading">
+                        {item.subItemHeading}
+                      </Label>
+                    )}
                     {item.subItem &&
                       item.subItem.hits &&
                       item.subItem.hits.map((item, index) => (
-                        <Label
-                          key={index}
-                          onClick={() => productClickHandler(item.title)}
-                          className={item.title === product && 'active-product'}
-                        >
-                          <ul>
-                            <li>{item.title}</li>
-                          </ul>
-                        </Label>
+                        <div key={index}>
+                          <Link
+                            onClick={() => productClickHandler(item.title)}
+                            className={
+                              item.title === product && 'active-product'
+                            }
+                            to={item.links}
+                          >
+                            <ul>
+                              <li>{item.title}</li>
+                            </ul>
+                          </Link>
+                        </div>
                       ))}
                   </div>
                 )}
@@ -70,6 +77,7 @@ const Techtabllist = ({
 Techtabllist.DefaultProps = {
   categories: [],
   itemName: '',
+  categoryLink: '',
   clickCategoryHandler: {},
   subItem: [],
   className: '',
@@ -78,6 +86,7 @@ Techtabllist.DefaultProps = {
 Techtabllist.propTypes = {
   categories: PropTypes.array,
   itemName: PropTypes.string,
+  categoryLink: PropTypes.string,
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
   className: PropTypes.string,

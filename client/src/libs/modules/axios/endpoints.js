@@ -17,6 +17,7 @@ const ENDPOINTS = {
     //   process.env.NAVIGATION_LINKS_API
     //     ? `${process.env.NAVIGATION_LINKS_API}${url}`
     //     : `https://uat01.abchome.fabric.zone/api-xpm/menu/get-item-by-url?url=${url}`,
+    getAllShippingMethods: '/api-shipping/shipping/all',
   },
   POST: {
     addToCart: '/api-cart/cart/item',
@@ -47,6 +48,7 @@ const ENDPOINTS = {
     },
     updateCartItems: cartId => `/api-cart/cart/${cartId}/items`,
     mergeCart: `/api-cart/cart/merge`,
+    linkItemsWithShipping: cartId => `/api-cart/cart/${cartId}/ship-to`,
   },
   DELETE: {
     removePayment: `/api-payment/payment`,

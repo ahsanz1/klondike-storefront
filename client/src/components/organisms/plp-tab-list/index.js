@@ -18,7 +18,7 @@ const PlpTabList = ({
   }
   console.log('check categories:', categories)
   return (
-    <div className="categoryItem trt" style={{ width: width }}>
+    <div className="categoryItem trt">
       {categories &&
         categories.length &&
         categories.map((item, index) => (

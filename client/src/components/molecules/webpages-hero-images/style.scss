@@ -1,9 +1,41 @@
+@import '~styles/globals';
+
+.banner {
+  position: relative;
+
+  // @media (max-width: 500px) {
+  //   margin-top: 35.73vw;
+  // }
+}
+
 .desktopImage {
   width: 100%;
 }
 
 .mobileImage {
   display: none;
+}
+
+.overLapImage {
+  position: absolute;
+  top: 13.7vw;
+  right: 21.1vw;
+  width: get-vw(394px);
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.overLapMobile {
+  display: none;
+  position: absolute;
+  top: 36.8vw;
+  right: 10.93vw;
+
+  @media (max-width: 500px) {
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {

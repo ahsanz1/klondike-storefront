@@ -19,6 +19,7 @@ exports.default = Types.Component({
       children: Types.Shape({
         children: {
           text: Types.RichText({ label: 'Paragraph' }),
+          Url: Types.String({ label: 'link URL' }),
         },
       }),
     }),

@@ -128,7 +128,9 @@ const Links = ({
             }
           })}
           <Button className={!getToken ? 'Buy-Button' : 'Buy-Button'}>
-            {!getToken ? 'HOW TO BUY' : 'Quick Order'}
+            <Link to={!getToken ? 'contact-us' : 'quickorder'}>
+              {!getToken ? 'HOW TO BUY' : 'Quick Order'}
+            </Link>
           </Button>
         </>
       )}

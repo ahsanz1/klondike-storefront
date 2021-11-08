@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 
 import './style.scss'
 import { Radio, InputNumber } from 'antd'
@@ -17,7 +18,8 @@ import Button from 'components/atoms/button'
 /* eslint-disable indent */
 
 const QuickOrder = () => {
-  const { user } = useContext(AppContext)
+  const [size] = useWindowSize()
+  const { user, showModal } = useContext(AppContext)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
@@ -34,6 +36,7 @@ const QuickOrder = () => {
   let [caseqty, setCaseqty] = useState([])
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
+  let [cartqty, setCartqty] = useState()
   let total = []
   console.log(fetcheditems, 'fetcheditems')
   useEffect(() => {
@@ -50,6 +53,7 @@ const QuickOrder = () => {
       [`index-${index}`]: value,
     }
     setCaseqty(qtyIndex)
+    setCartqty(value)
   }
 
   const handleAccordianClick = () => {
@@ -59,6 +63,7 @@ const QuickOrder = () => {
   const addedItemToCart = async Data => {
     // const resData = await addToCartApiCall(Data)
     // console.log('addto', resData)
+    let qickarray = []
     let data =
       packgdata &&
       packgdata.map((data, i) => {
@@ -82,27 +87,26 @@ const QuickOrder = () => {
             let response = res.response.data
             console.log(response, 'response')
             let product = response && response.product
+            let newobj = {
+              extra: {},
+              group: product.group,
+              itemId: product.itemId,
+              sku: product.sku,
+              quantity: cartqty, // qty,
+              price: {
+                base: 0,
+                currency: 'USD',
+                sale: false,
+                discount: {
+                  price: 0,
+                },
+              },
+              size: false,
+            }
+            qickarray.push(newobj)
             let payload = {
               cartId: null,
-              items: [
-                {
-                  extra: {},
-                  group: product.group,
-                  itemId: product.itemId,
-                  sku: product.sku,
-                  quantity: 1, // qty,
-                  price: {
-                    base: 0,
-                    currency: 'USD',
-                    sale: false,
-                    discount: {
-                      price: 0,
-                    },
-                  },
-                  size: false,
-                },
-              ],
-
+              items: qickarray,
               registeredUser: true,
               userAuthToken: user.accessToken,
             }
@@ -287,12 +291,12 @@ const QuickOrder = () => {
     }
     addedItemToCart({ ...cartItem[0] })
 
-    if (searchedCartitems.length > 0) {
-      setCartItems(searchedCartitems)
-      setAccordianIsActive(false)
-    } else {
-      // show invalid sku error from here
-    }
+    // if (searchedCartitems.length > 0) {
+    setCartItems(searchedCartitems)
+    setAccordianIsActive(false)
+    // } else {
+    // show invalid sku error from here
+    // }
   }
 
   const radioChangeBULK = () => {
@@ -363,13 +367,13 @@ const QuickOrder = () => {
             <Label className="total">{totalqty}</Label>
           </div>
           <div className="checkout-links">
-            <Link className="checkout-btn" to="/checkout">
+            <Link className="checkout-btn" to="/Checkoutsection">
               PROCEED TO CHECK OUT
             </Link>
-            <Link className="view-btn" to="/cart">
+            <div className="view-btn" to="/cart">
               {/* <Button>VIEW CART </Button> */}
-              <Button onClick={e => addedItemToCart(e)}>VIEW CART </Button>
-            </Link>
+              <Button onClick={showModal}>VIEW CART </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -430,66 +434,135 @@ const QuickOrder = () => {
             {cartItems && (
               <div className="quickorder-wrapper">
                 {packgdata &&
-                  packgdata.map((data, i) => (
-                    <div key={i} className="orders">
-                      <div className="item-wraper">
-                        <div>
-                          <div className="img-wraper">
-                            <img src={data['Image URL']} alt="img" />
+                  packgdata.map((data, i) =>
+                    size > 768 ? (
+                      <div key={i} className="orders">
+                        <div className="item-wraper">
+                          <div>
+                            <div className="img-wraper">
+                              <img src={data['Image URL']} alt="img" />
+                            </div>
+                            <button
+                              className="quick-orde_btn"
+                              onClick={e => itemremove(i)}
+                            >
+                              Remove Item
+                            </button>
                           </div>
-                          <button
-                            className="quick-orde_btn"
-                            onClick={e => itemremove(i)}
-                          >
-                            Remove Item
-                          </button>
+                          <div className="part-wraper">
+                            <div className="quik-product-heading">
+                              <p>{data['product title']}</p>
+                            </div>
+                            <div>
+                              <p>
+                                Part Num <span>{data['Part Number']}</span>
+                              </p>
+                            </div>
+                            <div>
+                              <p>
+                                Size <span>{data['Package Size']}</span>
+                              </p>
+                            </div>
+                            <div>
+                              <p>
+                                Per case <span>{data['QTY PER CASE']}</span>
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="part-wraper">
-                          <div className="quik-product-heading">
-                            <p>{data['product title']}</p>
-                          </div>
-                          <div>
-                            <p>
-                              Part Num <span>{data['Part Number']}</span>
-                            </p>
-                          </div>
-                          <div>
-                            <p>
-                              Size <span>{data['Package Size']}</span>
-                            </p>
-                          </div>
-                          <div>
-                            <p>
-                              Per case <span>{data['QTY PER CASE']}</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div>
-                        <p>{data['Base Price']}</p>
+                        <div>
+                          <p>{data['Base Price']}</p>
+                        </div>
+                        <div>
+                          <InputNumber
+                            min={0}
+                            max={100}
+                            defaultValue={1}
+                            value={caseqty[`index-${i}`]}
+                            onChange={e => onChangeqty(e, i)}
+                            size="middle"
+                            className="input"
+                          />
+                        </div>
+                        <div>
+                          <p>
+                            $
+                            {(
+                              data['Base Price'] * Number(caseqty[`index-${i}`])
+                            ).toFixed(2)}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <InputNumber
-                          min={0}
-                          max={100}
-                          defaultValue={1}
-                          value={caseqty[`index-${i}`]}
-                          onChange={e => onChangeqty(e, i)}
-                          size="middle"
-                          className="input"
-                        />
-                      </div>
-                      <div>
-                        <p>
-                          $
-                          {(
-                            data['Base Price'] * Number(caseqty[`index-${i}`])
-                          ).toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ) : (
+                      <>
+                        <div className="quick-order-mobile">
+                          <div className="quick-order-mobile__previous">
+                            <img
+                              className="quick-order-mobile__image"
+                              src={data['Image URL']}
+                              alt="img"
+                            />
+                            <p className="price">Price</p>
+                            <p className="price-value">${data['Base Price']}</p>
+                          </div>
+                          <p>{data['product title']}</p>
+                          <div className="quick-order-mobile__next-container">
+                            <p>
+                              Size{' '}
+                              <span className="span">
+                                {data['Package Size']}
+                              </span>
+                            </p>
+                            <p>
+                              Per case{' '}
+                              <span className="span">
+                                {data['QTY PER CASE']}
+                              </span>
+                            </p>
+                            <p>
+                              Part Num{' '}
+                              <span className="span">
+                                {data['Part Number']}
+                              </span>
+                            </p>
+                            <div className="quantity-container">
+                              <div className="remove-button">
+                                <p>
+                                  <span className="quantity">QTY:</span>
+                                  <InputNumber
+                                    min={0}
+                                    max={100}
+                                    defaultValue={1}
+                                    value={caseqty[`index-${i}`]}
+                                    onChange={e => onChangeqty(e, i)}
+                                    size="middle"
+                                    className="input"
+                                  />
+                                </p>
+                                <button
+                                  className="quick-orde_btn"
+                                  onClick={e => itemremove(i)}
+                                >
+                                  Remove Item
+                                </button>
+                              </div>
+                              <div>
+                                <p className="total-price">Total Price</p>
+                                <p className="total-price-value">
+                                  $
+                                  {(
+                                    data['Base Price'] *
+                                    Number(caseqty[`index-${i}`])
+                                  ).toFixed(2)}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ),
+                  )}
               </div>
             )}
           </div>
