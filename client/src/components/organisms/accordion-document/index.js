@@ -24,18 +24,15 @@ const Accordiondocment = ({
   return (
     <>
       <div className="accordion-main">
-        <Row className="accordion-item">
-          <Col md={2} xs={6} sm={6}>
-            <div className="accordion-arrow">
+        <Row className={`accordion-item ${isOpen ? 'border-none' : ''}`}>
+          <Col
+            className={`accordion-col  ${isOpen ? 'borders' : ''}`}
+            md={2}
+            xs={6}
+            sm={6}
+          >
+            <div className={`accordion-arrow`}>
               {isOpen ? (
-                <Image
-                  src="/static/images/Vector.png"
-                  alt=""
-                  onClick={() => {
-                    isOpenHandler(faqId)
-                  }}
-                />
-              ) : (
                 <Image
                   src="/static/images/plus.png"
                   alt=""
@@ -43,10 +40,17 @@ const Accordiondocment = ({
                     isOpenHandler(faqId)
                   }}
                 />
+              ) : (
+                <Image
+                  src="/static/images/Vector.png"
+                  alt=""
+                  onClick={() => {
+                    isOpenHandler(faqId)
+                  }}
+                />
               )}
             </div>
-          </Col>
-          <Col md={22} xs={18} sm={18}>
+
             <h4
               className="accordion-question notranslate"
               onClick={() => {
@@ -55,6 +59,8 @@ const Accordiondocment = ({
             >
               {question}
             </h4>
+          </Col>
+          <Col className="accordion-question-col" md={22} xs={18} sm={18}>
             <div
               className={
                 isOpen
