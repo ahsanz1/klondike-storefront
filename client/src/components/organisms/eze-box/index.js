@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AboutUsTablist from 'components/organisms/about-us-tablist'
 import Lable from 'components/atoms/label'
 import Image from 'components/atoms/image'
+// import Link from 'components/atoms/link'
 import './style.scss'
 
 const EzeBox = ({
@@ -72,12 +73,12 @@ const EzeBox = ({
                   <div className="product-collection">
                     {item.product?.map((data, i) => (
                       <>
-                        <div className="product-set">
+                        <div className="product-set" key={i}>
                           <li>
                             <div className="product-image-section">
-                              <Image src={data.image.url} alt="" />
+                              <Image src={data?.image?.url} alt="" />
                             </div>
-                            <div className="name">{data.name}</div>
+                            <div className="name">{data?.name}</div>
                           </li>
                         </div>
                       </>
