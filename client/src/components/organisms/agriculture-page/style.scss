@@ -81,9 +81,11 @@
         flex-direction: column;
         margin-left: get-vw(27px);
 
-        @media screen and (max-width: 768px) {
-          margin-right: 9px;
-          margin-left: 0;
+        &:nth-child(odd) {
+          @media screen and (max-width: 768px) {
+            margin-right: 17px;
+            margin-left: 0;
+          }
         }
 
         .feat-image {
@@ -92,8 +94,8 @@
           background: #fff;
 
           @media screen and (max-width: 768px) {
-            width: 39.52vw;
-            height: 48.63vw;
+            width: 38.4vw;
+            padding: 5.33vw 2.66vw;
           }
         }
 
