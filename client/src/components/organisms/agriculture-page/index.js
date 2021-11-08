@@ -17,8 +17,12 @@ const AgriculturePage = ({
   exploreCatagory,
   activeTablist,
 }) => {
+  const [readMore, setReadMore] = React.useState(false)
   const size = useWindowSize()
   const renderAgriculturePage = () => {
+    const more = () => {
+      setReadMore(true)
+    }
     return (
       <div className="agricultural-wrapper">
         <Label className="title">{title}</Label>
@@ -32,17 +36,16 @@ const AgriculturePage = ({
             ></p>
 
             <div className="overview-detail-section-mobile">
-              <p
-                className="details-paragraph"
-                dangerouslySetInnerHTML={{
-                  __html: paragraph,
-                }}
-              ></p>
-              <span className="read-more">
-                <Button href className="button">
-                  Read More
-                </Button>
-              </span>
+              {readMore
+                ? paragraph.slice(3, paragraph.length - 5)
+                : paragraph.slice(3, 200) + '...'}
+              {!readMore && (
+                <span className="read-more">
+                  <Button href className="button" onClick={more}>
+                    Read More
+                  </Button>
+                </span>
+              )}
             </div>
             <div className="featured-products">
               <Label className="feat-title">{subHeading}</Label>
