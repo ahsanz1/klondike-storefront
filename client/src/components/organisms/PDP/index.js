@@ -40,11 +40,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const { search } = useLocation()
   const { sku } = queryString.parse(search)
+  const [itemSku, setItemSku] = useState(sku)
 
   const [productData, setProductData] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [packagedOrder, setPackagedOrder] = useState(true)
-  // const [isPdpLoading, setIsPdpLoading] = useState(true)
+  const [isPdpLoading, setIsPdpLoading] = useState(true)
   const [addingToCart, setAddingToCart] = useState(false)
   const [items, setItems] = useState({})
 
@@ -52,7 +53,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [value, setValue] = React.useState(1)
   const [btnDisabled, setButtonDisabled] = useState(true)
 
-  const { setStep, plpredirect } = useContext(AppContext)
+  const { setStep, plpredirect, setPlpRedirect } = useContext(AppContext)
   const [desc, setDesc] = useState('')
   const [subItem, setSubItem] = useState({})
   const [contextPlp, setContextPlp] = useState(plpredirect)
@@ -65,24 +66,26 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   useEffect(() => {
     setStep(1)
   }, [])
+
   useEffect(() => {
     setContextPlp(plpredirect)
   }, [plpredirect])
 
-  useEffect(() => {
-    console.log('category changed')
-    const data = []
-    if (!data) {
-      perfomeAlgoliaSearch(contextPlp, 0)
-    } else {
-      setProducts([])
-    }
-  }, [contextPlp])
+  // useEffect(() => {
+  //   console.log('category changed')
+  //   const data = []
+  //   if (!data) {
+  //     perfomeAlgoliaSearch(contextPlp, 0)
+  //   } else {
+  //     setProducts([])
+  //   }
+  // }, [contextPlp])
 
   const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
     try {
       setLoading(true)
       const results = await fetchCategory(category, pageNumber)
+      console.log({ results })
       let serverResults = (results || { hits: [] }).hits
       serverResults.sort((a, b) =>
         a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
@@ -102,7 +105,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const clickCategoryHandler = (name, desc) => {
     // setItemName(name)
     setContextPlp(name)
+    setPlpRedirect(name)
     setDesc(desc)
+    perfomeAlgoliaSearch(name, 0)
   }
   const subItemHandler = list => {
     console.log('list check:', list)
@@ -119,24 +124,25 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   }
 
   useEffect(() => {
-    getProductBySKU(sku || 'AUTO000', 1)
+    setIsPdpLoading(true)
+    getProductBySKU(itemSku || 'AUTO000', 1)
       .then(res => {
         let newObj = {
           ...res?.response?.data?.product,
         }
         setProductData(newObj)
-        // setIsPdpLoading(false)
+        setIsPdpLoading(false)
         mapAttributes(res?.response?.data?.items)
         setPdpProductData(res?.response?.data?.product)
       })
       .catch(e => {
-        // setIsPdpLoading(false)
+        setIsPdpLoading(false)
         console.log({ e })
       })
     if (user?.accessToken) {
       setIsLoggedIn(true)
     } else setIsLoggedIn(false)
-  }, [])
+  }, [itemSku])
 
   const mapAttributes = items => {
     let newItems = []
@@ -279,6 +285,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     return newData
   }
 
+  const subItemClickHandler = item => {
+    setItemSku(item?.sku)
+  }
+
   const onSubmit = e => {
     setAddingToCart(true)
     console.log(productData?.requestArray, 'pkg')
@@ -333,9 +343,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               clickCategoryHandler={clickCategoryHandler}
               subItem={subItem}
               width="100%"
+              subItemClickHandler={subItemClickHandler}
             />
           </Col>
-          {Object.keys(productData).length ? (
+          {!isPdpLoading ? (
             <Col
               style={{
                 display: 'flex',
@@ -643,7 +654,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
             </Col>
           ) : (
             <div style={{ margin: 'auto' }}>
-              <h1 style={{ color: 'gray' }}>No Data Found for this Item</h1>
+              <h1 style={{ color: 'gray' }}>
+                {!isPdpLoading ? 'No Data Found for this Item' : 'Loading...'}
+              </h1>
             </div>
           )}
         </Row>
