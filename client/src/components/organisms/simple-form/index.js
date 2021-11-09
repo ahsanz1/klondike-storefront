@@ -27,7 +27,7 @@ const SimpleForm = ({
           phone: data.phoneNumber,
           reasonForMessage: data.reasonForMsg,
           message: data.message,
-          klaviyoApiKey: 'U7Eb42',
+          klaviyoApiKey: 'XAQtN6',
         },
       })
       .then(res => {

@@ -19,6 +19,8 @@ const CartPopUP = () => {
     // subTotal,
   } = useContext(AppContext)
 
+  const freeShippingAmount = 500
+
   // const cartItems = [
   //   {
   //     mainImage: 'static/images/klondike4.png',
@@ -77,14 +79,22 @@ const CartPopUP = () => {
                 Cart Subtotal ({cartData?.items?.length} items):
               </Label>
               <Label className="subtotal-section-price">
-                ${cartData?.totalAmount?.amount}
+                ${parseFloat(cartData?.totalAmount?.amount).toFixed(2)}
               </Label>
             </div>
-            <Label className="free-shipping-banner">
-              You are
-              <Label className="free-shipping-banner-text-price"> $20 </Label>
-              away from free shipping
-            </Label>
+            {cartData?.totalAmount?.amount >= freeShippingAmount ? (
+              <Label className="free-shipping-banner">
+                Congrats! You have got the free shipping!
+              </Label>
+            ) : (
+              <Label className="free-shipping-banner">
+                You are
+                <Label className="free-shipping-banner-text-price">{`$${Math.floor(
+                  freeShippingAmount - cartData?.totalAmount?.amount,
+                ).toFixed(2)}`}</Label>
+                away from free shipping
+              </Label>
+            )}
           </div>
           <div className="viewcart-and-checkout-btn">
             <Button
