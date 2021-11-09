@@ -161,41 +161,41 @@ export const IndustryAppXPM = [
   {
     title: 'Automotive',
     categoryName: 'Automotive',
-    link: '',
+    link: 'automotive',
   },
   {
     title: 'Construction',
     categoryName: 'Construction',
-    link: '',
+    link: 'construction',
   },
   {
     title: 'Exploration',
     categoryName: 'Exploration',
-    link: '',
+    link: 'exploration',
   },
   {
     title: 'Forestry',
     categoryName: 'Forestry',
-    link: '',
+    link: 'forestry',
   },
   {
     title: 'Industrial',
     categoryName: 'Industrial',
-    link: '',
+    link: 'industrial',
   },
   {
     title: 'Marine',
     categoryName: 'Marine',
-    link: '',
+    link: 'marine',
   },
   {
     title: 'Mining',
     categoryName: 'Mining',
-    link: '',
+    link: 'mining',
   },
   {
     title: 'On-Road Heavy Duty',
     categoryName: 'On-Road Heavy Duty',
-    link: '',
+    link: 'on-road-heavy-duty',
   },
 ]
