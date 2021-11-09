@@ -76,7 +76,7 @@ const AgriculturePage = ({
                   return (
                     <Link
                       key={i}
-                      // to={`/${item.catagoryRedirect}`}
+                      to={`${item.catagoryRedirect}`}
                       className="explore-link"
                     >
                       {item.catagory}
