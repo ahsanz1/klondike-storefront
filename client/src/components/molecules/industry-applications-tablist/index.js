@@ -36,7 +36,7 @@ const IndustryAppTablist = ({
               >
                 <Link
                   className="catagory-link"
-                  to={`about-klondike/${item.link}`}
+                  to={`about-klondike/industry-applications/${item.link}`}
                 >
                   {item.categoryName}
                 </Link>
