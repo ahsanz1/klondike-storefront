@@ -51,7 +51,7 @@ const CartDropdownItem = cart => {
     <div className="mini-cart-item">
       <div className="cart-item">
         <div>
-          <img src="abc.jpg" className="cart-item-image" alt="" />
+          <img src={cart?.image} className="cart-item-image" alt="" />
         </div>
         <div>
           <div className="item-desc-and-price">
