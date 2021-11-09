@@ -79,7 +79,7 @@ const AppProvider = ({ children }) => {
   const showModal = () => {
     setIsModalVisible(true)
     if (size > 768) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'visible'
     }
   }
   const showcartPOPModal = () => {
