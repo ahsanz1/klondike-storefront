@@ -20,7 +20,7 @@ exports.default = Types.Component({
           }),
           date: Types.String({ label: 'Date' }),
           descHeading: Types.String({ label: 'Description Heading' }),
-          text: Types.RichText({ label: 'Description' }),
+          text: Types.String({ label: 'Description' }),
           catagory: Types.String({ label: 'Category' }),
         },
       }),

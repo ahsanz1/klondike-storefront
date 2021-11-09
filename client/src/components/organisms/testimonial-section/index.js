@@ -7,10 +7,10 @@ import TestimonialSections from 'components/molecules/testimonial-sections'
 
 const TestimonialSection = ({ testimonials, heading }) => {
   return (
-    <>
+    <div className="testimonial-sections">
       <Label className="testimonials-heading">{heading}</Label>
       <TestimonialSections testimonials={testimonials} />
-    </>
+    </div>
   )
 }
 TestimonialSection.defaultProps = {

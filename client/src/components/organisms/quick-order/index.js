@@ -19,7 +19,7 @@ import Button from 'components/atoms/button'
 
 const QuickOrder = () => {
   const [size] = useWindowSize()
-  const { user } = useContext(AppContext)
+  const { user, showModal } = useContext(AppContext)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
@@ -36,6 +36,7 @@ const QuickOrder = () => {
   let [caseqty, setCaseqty] = useState([])
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
+  let [cartqty, setCartqty] = useState()
   let total = []
   console.log(fetcheditems, 'fetcheditems')
   useEffect(() => {
@@ -52,6 +53,7 @@ const QuickOrder = () => {
       [`index-${index}`]: value,
     }
     setCaseqty(qtyIndex)
+    setCartqty(value)
   }
 
   const handleAccordianClick = () => {
@@ -61,6 +63,7 @@ const QuickOrder = () => {
   const addedItemToCart = async Data => {
     // const resData = await addToCartApiCall(Data)
     // console.log('addto', resData)
+    let qickarray = []
     let data =
       packgdata &&
       packgdata.map((data, i) => {
@@ -84,27 +87,26 @@ const QuickOrder = () => {
             let response = res.response.data
             console.log(response, 'response')
             let product = response && response.product
+            let newobj = {
+              extra: {},
+              group: product.group,
+              itemId: product.itemId,
+              sku: product.sku,
+              quantity: cartqty, // qty,
+              price: {
+                base: 0,
+                currency: 'USD',
+                sale: false,
+                discount: {
+                  price: 0,
+                },
+              },
+              size: false,
+            }
+            qickarray.push(newobj)
             let payload = {
               cartId: null,
-              items: [
-                {
-                  extra: {},
-                  group: product.group,
-                  itemId: product.itemId,
-                  sku: product.sku,
-                  quantity: 1, // qty,
-                  price: {
-                    base: 0,
-                    currency: 'USD',
-                    sale: false,
-                    discount: {
-                      price: 0,
-                    },
-                  },
-                  size: false,
-                },
-              ],
-
+              items: qickarray,
               registeredUser: true,
               userAuthToken: user.accessToken,
             }
@@ -365,13 +367,13 @@ const QuickOrder = () => {
             <Label className="total">{totalqty}</Label>
           </div>
           <div className="checkout-links">
-            <Link className="checkout-btn" to="/checkout">
+            <Link className="checkout-btn" to="/Checkoutsection">
               PROCEED TO CHECK OUT
             </Link>
-            <Link className="view-btn" to="/cart">
+            <div className="view-btn" to="/cart">
               {/* <Button>VIEW CART </Button> */}
-              <Button onClick={e => addedItemToCart(e)}>VIEW CART </Button>
-            </Link>
+              <Button onClick={showModal}>VIEW CART </Button>
+            </div>
           </div>
         </div>
       </div>

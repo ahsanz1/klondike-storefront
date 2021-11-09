@@ -227,4 +227,5 @@ Components[
 Components[
   'TestimonialSection'
 ] = require('components/organisms/testimonial-section').default
+Components['Accounts'] = require('components/molecules/accounts-page').default
 export default Components

@@ -44,6 +44,7 @@ const AppProvider = ({ children }) => {
   const [payDone, setPayDone] = useState(false)
   const [paymentIndex, setPaymentIndex] = useState(0)
   const [billingIndex, setBillingIndex] = useState(0)
+  const [cartData, setCartData] = useState({})
   const [size] = useWindowSize()
   const initialState = {
     personalInfo: getItem('userPersonalInfo')
@@ -300,6 +301,8 @@ const AppProvider = ({ children }) => {
         setBillingIndex,
         pdpProductData,
         setPdpProductData,
+        cartData,
+        setCartData,
         ...state,
       }}
     >

@@ -137,6 +137,7 @@
       .tech-blog-item {
         display: flex;
         flex-direction: row;
+        margin-bottom: get-vw(40px);
 
         @media (max-width: 768px) {
           display: contents;
@@ -247,7 +248,7 @@
             @media (max-width: 768px) {
               width: 84.26vw;
               margin-top: 2.13vw;
-              font-size: 3.73vw;
+              font-size: 4.26vw;
               line-height: 5.08vw;
             }
           }
@@ -262,31 +263,31 @@
       }
     }
   }
-}
 
-.ant-pagination-item-active {
-  border-color: #ffa500 !important;
-  background: #ffa500 !important;
-}
+  .ant-pagination-item-active {
+    border-color: #ffa500 !important;
+    background: #ffa500 !important;
+  }
 
-.ant-pagination-item-active a {
-  color: white !important;
-}
+  .ant-pagination-item a {
+    color: white !important;
+  }
 
-.ant-pagination-item a {
-  color: white !important;
-}
+  .ant-pagination-item {
+    border: 1px solid #f0a51f !important;
+    background-color: transparent;
+  }
 
-.ant-pagination-item {
-  border: 1px solid #f0a51f !important;
-  background-color: transparent !important;
-}
+  .ant-pagination-next .ant-pagination-item-link {
+    border: 1px solid #f0a51f !important;
+    background-color: transparent !important;
+  }
 
-.ant-pagination-next .ant-pagination-item-link {
-  border: 1px solid #f0a51f !important;
-  background-color: transparent !important;
-}
+  .anticon-right svg {
+    color: white;
+  }
 
-.anticon-right svg {
-  color: white;
+  .ant-pagination-prev {
+    display: none;
+  }
 }

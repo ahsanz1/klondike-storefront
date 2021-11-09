@@ -1,17 +1,19 @@
 .Address-wraper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+  padding-right: 8.33vw;
+  //justify-items: center;
+  padding-left: 8.33vw;
   background: #013a4e;
 
   @media screen and (min-width: 1600px) {
+    padding-left: 8.33vw;
     justify-items: start;
-    padding-left: 120px;
   }
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
-    justify-items: start;
     padding-left: 30px;
+    justify-items: start;
   }
 }

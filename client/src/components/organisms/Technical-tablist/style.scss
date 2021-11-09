@@ -85,6 +85,21 @@ $vw-viewport: 1440;
       border: none;
       background: none;
     }
+
+    .subitems-heading {
+      margin-left: get-vw(20px);
+      color: white;
+      font-size: get-vw(10px);
+      font-weight: bold;
+      letter-spacing: get-vw(0.75px);
+      line-height: get-vw(20px);
+
+      @media (max-width: 768px) {
+        font-size: 10px;
+        letter-spacing: 0.75px;
+        line-height: 28px;
+      }
+    }
   }
 
   // @media (max-width: 768px) {

@@ -78,6 +78,26 @@ export const categoriesXPM = [
     categoryLink: '/tech-resources/tech-news-blog',
     categoryName: 'Tech/News Blog',
     link: 'tech-news-blog',
+    subItemHeading: 'RECENT POSTS',
+    subItem: {
+      hits: [
+        {
+          title:
+            'Give Your Diesel Engine the Love it Deserves – Proper Maintenance Will Extend Its Service Life',
+        },
+        {
+          title: 'New Products to Drive Business Growth',
+        },
+        {
+          title:
+            'KEEP YOUR ENGINE RUNNING AT A STABLE TEMPERATURE WITH THE CORRECT ANTIFREEZE/ COOLANT',
+        },
+
+        {
+          title: 'How To Choose The Right Hydraulic Fluid For your equipment',
+        },
+      ],
+    },
   },
   //   {
   //     title: 'Greases',
@@ -124,6 +144,11 @@ export const AboutUsXPM = [
     categoryName: 'Work At Klondike',
     link: 'work-at-klondike',
   },
+  {
+    title: 'EZE-BOX',
+    categoryName: 'EZE-BOX',
+    link: 'eze-box',
+  },
 ]
 
 export const IndustryAppXPM = [
@@ -136,41 +161,41 @@ export const IndustryAppXPM = [
   {
     title: 'Automotive',
     categoryName: 'Automotive',
-    link: '',
+    link: 'automotive',
   },
   {
     title: 'Construction',
     categoryName: 'Construction',
-    link: '',
+    link: 'construction',
   },
   {
     title: 'Exploration',
     categoryName: 'Exploration',
-    link: '',
+    link: 'exploration',
   },
   {
     title: 'Forestry',
     categoryName: 'Forestry',
-    link: '',
+    link: 'forestry',
   },
   {
     title: 'Industrial',
     categoryName: 'Industrial',
-    link: '',
+    link: 'industrial',
   },
   {
     title: 'Marine',
     categoryName: 'Marine',
-    link: '',
+    link: 'marine',
   },
   {
     title: 'Mining',
     categoryName: 'Mining',
-    link: '',
+    link: 'mining',
   },
   {
     title: 'On-Road Heavy Duty',
     categoryName: 'On-Road Heavy Duty',
-    link: '',
+    link: 'on-road-heavy-duty',
   },
 ]
