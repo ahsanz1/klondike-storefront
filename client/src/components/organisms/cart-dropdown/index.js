@@ -7,6 +7,7 @@ import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
 import './style.scss'
 import { getCartByUserId } from 'libs/api/cart'
+import { getItemsBySkus } from 'libs/services/api/item'
 
 const CartDropdown = () => {
   const {
@@ -19,8 +20,32 @@ const CartDropdown = () => {
 
   useEffect(() => {
     const getCart = async () => {
+      let skus = []
       let res = await getCartByUserId(user.accessToken)
-      setGetCartItemsState(res.data)
+      let data = res.data
+
+      await data.items.map((item, i) => {
+        skus.push(item.sku)
+      })
+
+      let itemsRes = await getItemsBySkus(skus)
+
+      let itemsArr = []
+      data.items.map((item, i) => {
+        let itemObj = {
+          ...item,
+          image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+        }
+
+        itemsArr.push(itemObj)
+      })
+
+      let payload = {
+        ...data,
+        items: itemsArr,
+      }
+
+      setGetCartItemsState(payload)
     }
 
     getCart()
@@ -74,7 +99,6 @@ const CartDropdown = () => {
             {getCartItems.items && getCartItems.items.length > 0 ? (
               getCartItems.items.map((cartItem, id) => {
                 let cart = { cartId: getCartItems?._id, ...cartItem }
-                console.log('carog', cart)
                 return <CartDropdownItem {...cart} key={id} />
               })
             ) : (
