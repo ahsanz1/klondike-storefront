@@ -13,7 +13,7 @@ exports.default = Types.Component({
       url: Types.String({ label: 'URL' }),
       altText: Types.String({ label: 'Alt text' }),
     }),
-    easeDescription: Types.String({ label: 'Main Heading' }),
+    easeDescription: Types.String({ label: 'Description' }),
     benifits: Types.Array({
       label: 'Benefits',
       children: Types.Shape({
@@ -68,7 +68,7 @@ exports.default = Types.Component({
                         altText: Types.String({ label: 'Alt text' }),
                       }),
                       name: Types.String({ label: 'Product Name' }),
-                      sku: Types.String({ label: 'Product Name' }),
+                      sku: Types.String({ label: 'SKU' }),
                     },
                   }),
                 }),

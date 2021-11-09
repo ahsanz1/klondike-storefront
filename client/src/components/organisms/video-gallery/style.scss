@@ -3,7 +3,6 @@
 .video-page {
   .video-gallery-page {
     .video-gallery-wrap {
-      height: 95.83vw;
       padding-top: get-vw(66px);
       // padding-bottom: get-vw(78px);
       padding-left: get-vw(69px);
@@ -20,11 +19,6 @@
         @media (max-width: 768px) {
           display: flex;
           flex-direction: column;
-        }
-
-        .big-videos {
-          width: 36.3vw;
-          height: 20.1vw;
         }
       }
 
@@ -80,7 +74,7 @@
         }
 
         .big-video-frame {
-          width: get-vw(550px);
+          width: get-vw(525px);
           height: get-vw(290px);
 
           @media (max-width: 768px) {
@@ -93,7 +87,7 @@
       }
 
       .small-video-element {
-        padding-left: get-vw(85px);
+        padding-left: get-vw(41px);
 
         @media (max-width: 768px) {
           margin-right: 80px;
@@ -118,10 +112,10 @@
             line-height: 140%;
           }
 
-          p {
-            width: 275px;
-            margin-left: 0.41vw;
-          }
+          // p {
+          //   width: 275px;
+          //   margin-left: 0.41vw;
+          // }
         }
 
         .small-video-frame {

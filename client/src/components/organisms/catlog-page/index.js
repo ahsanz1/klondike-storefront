@@ -82,7 +82,7 @@ const Catlog = ({ heading, catData, image }) => {
                     ) : (
                       <>
                         <ReadMoreReact
-                          text={data.text}
+                          text={data.mobileText}
                           dangerouslySetInnerHTML={{ __html: data.text }}
                           min={150}
                           ideal={300}

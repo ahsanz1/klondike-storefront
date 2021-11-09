@@ -78,6 +78,26 @@ export const categoriesXPM = [
     categoryLink: '/tech-resources/tech-news-blog',
     categoryName: 'Tech/News Blog',
     link: 'tech-news-blog',
+    subItemHeading: 'RECENT POSTS',
+    subItem: {
+      hits: [
+        {
+          title:
+            'Give Your Diesel Engine the Love it Deserves – Proper Maintenance Will Extend Its Service Life',
+        },
+        {
+          title: 'New Products to Drive Business Growth',
+        },
+        {
+          title:
+            'KEEP YOUR ENGINE RUNNING AT A STABLE TEMPERATURE WITH THE CORRECT ANTIFREEZE/ COOLANT',
+        },
+
+        {
+          title: 'How To Choose The Right Hydraulic Fluid For your equipment',
+        },
+      ],
+    },
   },
   //   {
   //     title: 'Greases',
@@ -123,6 +143,11 @@ export const AboutUsXPM = [
     title: 'Work At Klondike',
     categoryName: 'Work At Klondike',
     link: 'work-at-klondike',
+  },
+  {
+    title: 'EZE-BOX',
+    categoryName: 'EZE-BOX',
+    link: 'eze-box',
   },
 ]
 

@@ -7,6 +7,7 @@ import WebpageGlobalHeroBannerData from 'components/organisms/webpages-hero-imag
 import { categoriesXPM as categories } from 'components/organisms/plp/data'
 import SliderTabbableData from 'components/organisms/slider-tabable/data'
 import { testimonialData } from 'components/organisms/testimonial-section/data'
+import { accountData } from 'components/molecules/accounts-page/data'
 // import tableAccoData from 'components/organisms/faqs/data'
 
 import {
@@ -695,6 +696,12 @@ const mockData = {
     {
       id: 'TestimonialSection',
       params: { ...testimonialData },
+    },
+  ],
+  '/account-page': [
+    {
+      id: 'Accounts',
+      params: { ...accountData },
     },
   ],
 }

@@ -121,12 +121,11 @@ body {
 }
 
 // Tidio Chat
-iframe {
-  width: 100% !important;
-}
-
-.awesome-iframe {
-  width: 80%;
+iframe#tidio-chat-iframe {
+  @media screen and (min-width: 768px) {
+    // width: 100% !important;
+    width: 35% !important;
+  }
 }
 
 // Tidio chat End

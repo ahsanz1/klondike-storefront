@@ -14,6 +14,8 @@ const SearchFilter = ({ searchHeading }) => {
   let [uom, setUOM] = useState()
   let { searchFilter, setSearchFilter, searchKey } = useContext(AppContext)
   const [product, setProduct] = useState()
+  const [isCalled, setIsCalledState] = useState(false)
+  const [holdSearch, setHoldSearchState] = useState('')
   const [unit, setUnit] = useState()
   const [size, setSize] = useState()
   // const [selectedFilterList, setSelectFilterList] = useState([])
@@ -23,12 +25,25 @@ const SearchFilter = ({ searchHeading }) => {
 
   // let productitem = []
   useEffect(() => {
+    const setFilters = async searchFilter => {
+      await setFilterResult(searchFilter)
+      console.log('is called state', isCalled)
+      if (isCalled !== true) {
+        setHoldSearchState(searchFilter)
+        setIsCalledState(true)
+      }
+    }
+
+    setFilters(searchFilter)
+  }, [searchFilter])
+
+  const setFilterResult = async searchFilters => {
     let arrProduct = []
     let arrSize = []
     let arrUnit = []
 
-    searchFilter &&
-      searchFilter.map((data, index) => {
+    searchFilters &&
+      searchFilters.map((data, index) => {
         let objProduct = {
           label: data['Part Number'],
           value: data['Part Number'],
@@ -48,7 +63,7 @@ const SearchFilter = ({ searchHeading }) => {
     setProduct(arrProduct)
     setUnit(arrSize)
     setSize(arrUnit)
-  }, [searchFilter])
+  }
 
   const changePN = async e => {
     setPN(e)
@@ -85,6 +100,14 @@ const SearchFilter = ({ searchHeading }) => {
     await searchFilters(payload).then(res => {
       setSearchFilter(res)
     })
+  }
+
+  const resetFilter = e => {
+    let data = holdSearch
+    setSearchFilter(data)
+    setFilterResult(data)
+
+    console.log('products', product)
   }
 
   // const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
@@ -154,6 +177,9 @@ const SearchFilter = ({ searchHeading }) => {
           items={unit}
           className="third-drop"
         />
+        <button className="btn btn-primary" onClick={e => resetFilter(e)}>
+          Reset Filter
+        </button>
       </div>
       <div className="products">
         <ul>
