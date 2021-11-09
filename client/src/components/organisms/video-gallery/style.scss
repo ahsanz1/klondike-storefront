@@ -74,7 +74,7 @@
         }
 
         .big-video-frame {
-          width: get-vw(550px);
+          width: get-vw(525px);
           height: get-vw(290px);
 
           @media (max-width: 768px) {
@@ -87,7 +87,7 @@
       }
 
       .small-video-element {
-        padding-left: get-vw(85px);
+        padding-left: get-vw(41px);
 
         @media (max-width: 768px) {
           margin-right: 80px;
@@ -112,10 +112,10 @@
             line-height: 140%;
           }
 
-          p {
-            width: 275px;
-            margin-left: 0.41vw;
-          }
+          // p {
+          //   width: 275px;
+          //   margin-left: 0.41vw;
+          // }
         }
 
         .small-video-frame {
