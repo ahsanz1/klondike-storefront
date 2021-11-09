@@ -146,30 +146,32 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const mapAttributes = items => {
     let newItems = []
-    items?.map(item => {
-      let newObj = {}
-      item?.attributes?.map(att => {
-        newObj = {
-          ...newObj,
-          [att?.name]: att?.value,
-        }
+    if (items?.length > 0) {
+      items?.map(item => {
+        let newObj = {}
+        item?.attributes?.map(att => {
+          newObj = {
+            ...newObj,
+            [att?.name]: att?.value,
+          }
+        })
+        newItems?.push({
+          ...item,
+          mappedAttributes: newObj,
+          totalPrice: 0.0,
+        })
       })
-      newItems?.push({
-        ...item,
-        mappedAttributes: newObj,
-        totalPrice: 0.0,
+      let packagedOrderItems = newItems?.filter(
+        item => item?.mappedAttributes['Packaged Order'],
+      )
+      let bulkOrderItem = newItems?.filter(
+        item => !item?.mappedAttributes['Packaged Order'],
+      )
+      setItems({
+        packagedOrderItems: packagedOrderItems,
+        bulkOrderItem: bulkOrderItem,
       })
-    })
-    let packagedOrderItems = newItems?.filter(
-      item => item?.mappedAttributes['Packaged Order'],
-    )
-    let bulkOrderItem = newItems?.filter(
-      item => !item?.mappedAttributes['Packaged Order'],
-    )
-    setItems({
-      packagedOrderItems: packagedOrderItems,
-      bulkOrderItem: bulkOrderItem,
-    })
+    } else setItems({})
   }
 
   const getTotalPackagedOrderPrice = newArray => {
@@ -346,7 +348,20 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               subItemClickHandler={subItemClickHandler}
             />
           </Col>
-          {!isPdpLoading ? (
+          {console.log({ productData })}
+          {isPdpLoading ? (
+            <div style={{ margin: 'auto' }}>
+              <h1 style={{ color: 'gray' }}>
+                {!isPdpLoading ? 'No Data Found for this Item' : 'Loading...'}
+              </h1>
+            </div>
+          ) : Object.keys(items).length === 0 ? (
+            <div style={{ margin: 'auto' }}>
+              <h1 style={{ color: 'gray' }}>
+                No Attributes Found for this Item
+              </h1>
+            </div>
+          ) : (
             <Col
               style={{
                 display: 'flex',
@@ -652,12 +667,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               </div>
               <PDPInformation pdpdatasheet={pdpdatasheet} />
             </Col>
-          ) : (
-            <div style={{ margin: 'auto' }}>
-              <h1 style={{ color: 'gray' }}>
-                {!isPdpLoading ? 'No Data Found for this Item' : 'Loading...'}
-              </h1>
-            </div>
           )}
         </Row>
         <CartDropdown productData={productData} />
