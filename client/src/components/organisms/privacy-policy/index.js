@@ -10,7 +10,7 @@ const PrivacyPolicy = ({ heading, subheading, paragraph, policyList }) => {
         <div className="privacy-body">
           <h1 className="main-heading">{heading}</h1>
           <h1 className="sub-heading">{subheading}</h1>
-          <p>{paragraph}</p>
+          <p>{paragraph?.map(item => item?.paragraphContext)}</p>
           {policyList.map((content, id) => (
             <Privacy text={content} key={id} />
           ))}

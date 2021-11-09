@@ -12,15 +12,27 @@ exports.default = Types.Component({
     subheading: Types.String({
       label: 'Sub Heading',
     }),
-    paragraph: Types.String({
+    paragraph: Types.Array({
       label: 'Paragraph',
+      children: Types.Shape({
+        children: {
+          paragraphContext: Types.String({ label: 'Paragraph' }),
+        },
+      }),
     }),
     policyList: Types.Array({
       label: 'List item',
       children: Types.Shape({
         children: {
           heading: Types.String({ label: 'heading' }),
-          body: Types.String({ label: 'body' }),
+          body: Types.Array({
+            label: 'Body',
+            children: Types.Shape({
+              children: {
+                paragraph: Types.String({ label: 'Paragraph' }),
+              },
+            }),
+          }),
         },
       }),
     }),
