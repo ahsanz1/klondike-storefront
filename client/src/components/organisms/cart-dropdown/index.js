@@ -5,6 +5,7 @@ import { AppContext } from 'libs/context'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
+import Link from 'components/atoms/link'
 import './style.scss'
 import { getCartByUserId } from 'libs/api/cart'
 
@@ -88,11 +89,12 @@ const CartDropdown = () => {
                 <div className="order-subtotal-and-checkout-btn">
                   <p className="subtotal-title">Subtotal</p>
                   <p className="subtotal-price">
-                    {getCartItems?.totalAmount?.amount}{' '}
-                    {getCartItems?.totalAmount?.currency}
+                    ${getCartItems?.totalAmount?.amount}{' '}
                   </p>
                 </div>
-                <div className="cart-dropdown-checkout">CHECKOUT</div>
+                <Link to="/Checkoutsection">
+                  <div className="cart-dropdown-checkout">CHECKOUT</div>
+                </Link>
               </div>
             </div>
           ) : null
