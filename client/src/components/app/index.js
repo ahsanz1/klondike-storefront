@@ -14,7 +14,6 @@ import { saveItem } from 'libs/services/localStorage'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import 'antd/dist/antd.css'
-
 // const PreviewPage = lazyLoad(() => import('components/pages/cmsPreview'));
 // const XPM = lazyLoad(() => import('components/xpm-manager'))
 // const XPM = loadable(() => import('components/xpm-manager'))
@@ -46,6 +45,14 @@ const App = () => {
       ...loading,
       gc: true,
     })
+  }, [])
+  useEffect(() => {
+    const script = document.createElement('script')
+
+    script.src = '//code.tidio.co/kwotmb3primfdn61l1s7yacamtcileuq.js'
+    script.async = true
+
+    document.body.appendChild(script)
   }, [])
   const handleGlobalLayout = gcData => {
     saveItem('gc', JSON.stringify(gcData))
