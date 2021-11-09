@@ -14,9 +14,9 @@ $vw-viewport: 1440;
   background-color: #002a3a;
 
   > img {
-    margin-top: 18px;
-    margin-right: 552px;
-    margin-left: 677px;
+    margin-top: 1.25vw;
+    margin-right: 38.33vw;
+    margin-left: 47.01vw;
 
     @media (max-width: 768px) {
       display: none;
@@ -108,8 +108,9 @@ $vw-viewport: 1440;
 
     .img {
       // margin-left: get-vw(122px);
-      width: 25px;
-      height: 33px;
+      width: 1.73vw;
+      height: 2.29vw;
+      background: none;
     }
 
     > h1 {
