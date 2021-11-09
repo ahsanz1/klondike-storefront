@@ -38,4 +38,6 @@ export const ENDPOINTS = {
   DEFAULT_ADDRESS: `${apiDomain}/api-commerceIdentity/user`,
   UNSET_DEFAULT_ADDRESS: `${apiDomain}/api-commerceIdentity/user`,
   ALL_ADDRESSES: `${apiDomain}/api-commerceIdentity/user`,
+  GET_ORDER: (offset, limit) =>
+    `${apiDomain}/api-order/orders/user?offset=${offset}&limit=${limit}`,
 }

@@ -1,9 +1,13 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
+// import Accounts from 'components/molecules/accounts-page'
+// import { getOrder } from 'libs/api/order'
+// import { AppContext } from 'libs/context'
 
 const AccountTabPane = ({ data, user, title, userOrder }) => {
-  console.log('check order:', userOrder)
+  // const context = useContext(AppContext)
+
   return (
     <div className="account-tabpane-content">
       {title === 'Profile' ? (
