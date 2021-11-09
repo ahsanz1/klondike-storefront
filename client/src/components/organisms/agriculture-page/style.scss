@@ -178,7 +178,7 @@
     @media screen and (max-width: 768px) {
       margin-top: 0;
       margin-right: 0;
-      padding-top: 53px;
+      padding-top: 11.2vw;
       padding-right: 30px;
       padding-bottom: 56px;
       padding-left: 30px;
@@ -211,6 +211,7 @@
     }
 
     .details-paragraph {
+      margin-bottom: 28px;
       font-size: get-vw(14px);
       font-weight: normal;
       line-height: get-vw(20px);
