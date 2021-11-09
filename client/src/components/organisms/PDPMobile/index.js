@@ -9,6 +9,8 @@ import { Radio, InputNumber, Button, Breadcrumb, Space, Divider } from 'antd'
 import Heading from 'components/atoms/heading'
 // import Button from 'components/atoms/button'
 import { ShareAltOutlined } from '@ant-design/icons'
+import PDPInformation from 'components/molecules/pdpinforamation'
+// import PlpTabList from 'components/organisms/plp-tab-list'
 
 const PDPMobile = ({
   pdpdata,
@@ -22,11 +24,12 @@ const PDPMobile = ({
   onBulkQtyChange,
   value,
   btnDisabled,
+  pdpdatasheet,
 }) => {
   console.log('responsive', pdpdata)
 
   return (
-    <div className="pdp_mobile-wraper">
+    <>
       <div className="pdp_mobile-container">
         <div className="top-section">
           <Button className="categoryButton" type="primary" ghost>
@@ -136,7 +139,12 @@ const PDPMobile = ({
                 {isLoggedIn && (
                   <div className="oneCell">
                     <span className="head">Total Price</span>
-                    <span className="value">
+                    <span
+                      className="value"
+                      style={{
+                        color: item?.totalPrice > 0 ? '#f1a900' : '#ffff',
+                      }}
+                    >
                       {isLoggedIn && '$' + (item?.totalPrice || '0.00')}
                     </span>
                   </div>
@@ -202,7 +210,12 @@ const PDPMobile = ({
             )
           })}
         <div className="total-price-container">
-          <span className="total-price">
+          <span
+            className="total-price"
+            style={{
+              color: pdpdata?.totalPackagedOrderPrice > 0 ? '#f1a900' : '#ffff',
+            }}
+          >
             {'$' +
               (pdpdata?.totalPackagedOrderPrice > 0
                 ? parseFloat(pdpdata?.totalPackagedOrderPrice).toFixed(2)
@@ -224,6 +237,9 @@ const PDPMobile = ({
             <Button className="add-to-cart">{'How To Buy'}</Button>
           </div>
         )}
+        <div>
+          <PDPInformation pdpdatasheet={pdpdatasheet} />
+        </div>
       </div>
       {/* <div className="pdp_mobile-container">
         {imgdata.map((content, i) => (
@@ -296,7 +312,7 @@ const PDPMobile = ({
           </div>
         ))}
       </div> */}
-    </div>
+    </>
   )
 }
 PDPMobile.propTypes = {
@@ -314,5 +330,6 @@ PDPMobile.propTypes = {
   addingToCart: PropTypes.bool,
   onBulkQtyChange: PropTypes.func,
   btnDisabled: PropTypes.bool,
+  pdpdatasheet: PropTypes.string,
 }
 export default PDPMobile
