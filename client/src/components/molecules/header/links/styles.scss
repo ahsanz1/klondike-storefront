@@ -82,11 +82,11 @@
       left: 0;
       width: 100%;
       padding: 10px;
-      padding-left: 8.5vw;
+      padding-left: 2.5vw;
       background: #013a4e;
       color: #fff;
       font-family: $OpenSans;
-      font-size: 5.3vw;
+      font-size: 2.3vw;
       font-style: normal;
       font-weight: normal;
       line-height: 7.2vw;
@@ -95,6 +95,8 @@
 
     @media (max-width: 500px) {
       padding: 7.46vw;
+      padding-left: 8.5vw;
+      font-size: 5.3vw;
     }
   }
 
