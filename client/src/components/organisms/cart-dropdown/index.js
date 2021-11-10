@@ -4,8 +4,8 @@ import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
 import Label from 'components/atoms/label'
-import Image from 'components/atoms/image'
 import Link from 'components/atoms/link'
+import Image from 'components/atoms/image'
 import './style.scss'
 import { getCartByUserId } from 'libs/api/cart'
 import { getItemsBySkus } from 'libs/services/api/item'
@@ -116,22 +116,17 @@ const CartDropdown = () => {
                     ${getCartItems?.totalAmount?.amount}{' '}
                   </p>
                 </div>
-                <Link to="/Checkoutsection">
-                  <div className="cart-dropdown-checkout">CHECKOUT</div>
-                </Link>
+                <div className="cart-dropdown-checkout">
+                  <Link
+                    className="cart-dropdown-checkout"
+                    to="/Checkoutsection"
+                  >
+                    CHECKOUT
+                  </Link>
+                </div>
               </div>
             </div>
-          ) : null
-          // (
-          //   <Link
-          //     className="cart-dropdown-checkout"
-          //     to="/collections/all-bars"
-          //     onClick={() => closeModal()}
-          //   >
-          //     SHOP NOW
-          //   </Link>
-          // )
-          }
+          ) : null}
         </div>
       </>
     )
