@@ -32,7 +32,9 @@ const Navbar = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
-  const { user, loginBottom, setLoginBottom } = useContext(AppContext)
+  const { user, loginBottom, setLoginBottom, getCartItems } = useContext(
+    AppContext,
+  )
   const wholesaleLinks =
     dynamicLinks ||
     dynamicLinks.find(item => item.id === 'Wholesale').linksArray ||
@@ -164,6 +166,9 @@ const Navbar = ({
                 paddingRight: '35px',
               }}
             >
+              <div className="cart-amount">
+                ${getCartItems?.totalAmount?.amount}
+              </div>
               <NavbarcartIcon
                 linkCartPageIcon={location.pathname === '/cart' && true}
                 cartIcon={cartIcon}
