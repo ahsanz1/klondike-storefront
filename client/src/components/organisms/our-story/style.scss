@@ -60,7 +60,7 @@
       font-size: get-vw(24px);
       font-weight: bold;
       line-height: get-vw(33px);
-      text-transform: capitalize;
+      text-transform: uppercase;
 
       @media screen and (max-width: 768px) {
         margin-bottom: 30px;
