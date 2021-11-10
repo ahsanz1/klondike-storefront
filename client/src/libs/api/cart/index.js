@@ -33,3 +33,15 @@ export const getCartByUserId = async (userId, authToken) => {
 
   //   return response
 }
+
+export const getItemsBySkus = async skus => {
+  //   let response
+  //   try {
+  const response = await axios.post(ENDPOINTS.GET_ITEMS_BY_SKU, skus, {
+    headers: {
+      ...HEADER.common,
+    },
+  })
+
+  return response
+}

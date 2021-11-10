@@ -13,6 +13,7 @@ import { AppContext } from 'libs/context'
 // import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
 const CartDropdownItem = cart => {
+  console.log('check cart:', cart)
   const { setGetCartItemsState } = useContext(AppContext)
   // const [removing, setRemoving] = useState(false)
   // const { removeFromCart, error } = useRemoveFromCart()
@@ -51,7 +52,7 @@ const CartDropdownItem = cart => {
     <div className="mini-cart-item">
       <div className="cart-item">
         <div>
-          <img src="abc.jpg" className="cart-item-image" alt="" />
+          <img src={cart?.image} className="cart-item-image" alt="" />
         </div>
         <div>
           <div className="item-desc-and-price">
@@ -64,17 +65,15 @@ const CartDropdownItem = cart => {
 
                 <Label className="item-info">
                   PER CASE:{' '}
-                  <Label className="item-subInfo">
-                    {cart?.price?.base} {cart?.price?.currency}
-                  </Label>
+                  <Label className="item-subInfo">${cart?.price?.base}</Label>
                 </Label>
               </div>
             </div>
 
             <div className="product-price-info">
               <Label className="product-price">
-                <p className="product-price-mobile">PRICE</p>
-                {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
+                <p className="product-price-mobile">PRICE</p>$
+                {cart?.totalPrice?.amount}
               </Label>
             </div>
           </div>
@@ -99,8 +98,8 @@ const CartDropdownItem = cart => {
               />
             </div>
             <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>
-              {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
+              <p className="product-total-mobile">TOTAL PRICE</p>$
+              {cart?.totalPrice?.amount}
             </Label>
           </div>
         </div>
@@ -110,7 +109,7 @@ const CartDropdownItem = cart => {
               <Label className="product-price">
                 PRICE
                 <Label className="product-price-mobile">
-                  {cart?.price?.base} {cart?.price?.currency}
+                  ${cart?.price?.base}
                 </Label>
               </Label>
             </div>
@@ -125,8 +124,8 @@ const CartDropdownItem = cart => {
               />
             </div>
             <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>
-              {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
+              <p className="product-total-mobile">TOTAL PRICE</p>$
+              {cart?.totalPrice?.amount}
             </Label>
           </div>
           <div className="removebtn-div">
