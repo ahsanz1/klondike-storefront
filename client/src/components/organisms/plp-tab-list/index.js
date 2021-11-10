@@ -10,11 +10,14 @@ const PlpTabList = ({
   clickCategoryHandler,
   subItem,
   width = '20%',
+  subItemClickHandler,
 }) => {
   const [product, setProduct] = useState('')
   console.log('props:', categories)
   const productClickHandler = productName => {
-    setProduct(productName)
+    console.log({ productName })
+    setProduct(productName.title)
+    subItemClickHandler(productName)
   }
   console.log('check categories:', categories)
   return (
@@ -39,7 +42,7 @@ const PlpTabList = ({
                       subItem.hits.map((item, index) => (
                         <Label
                           key={index}
-                          onClick={() => productClickHandler(item.title)}
+                          onClick={() => productClickHandler(item)}
                           className={item.title === product && 'active-product'}
                         >
                           <Link
@@ -65,6 +68,7 @@ PlpTabList.propTypes = {
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
   width: PropTypes.string,
+  subItemClickHandler: PropTypes.func,
 }
 
 export default PlpTabList

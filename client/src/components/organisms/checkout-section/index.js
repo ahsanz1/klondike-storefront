@@ -63,7 +63,7 @@ const Checkoutsection = () => {
         itemsTotal: res?.data?.totalAmount?.amount,
         currency: res?.data?.totalAmount?.currency,
         totalItems: res?.data?.quantity,
-        totalPrice: '12,000',
+        totalPrice: '$12,000',
       }
       setCartPayloadState(data)
     }
@@ -311,9 +311,7 @@ const Checkoutsection = () => {
           </Label>
           <Label className="order-handling">
             <p> Items ({cartPayload.totalItems})</p>
-            <p>
-              {cartPayload.itemsTotal} {cartPayload.currency}
-            </p>
+            <p>{`$${cartPayload.itemsTotal}`}</p>
           </Label>
           <Label className="order-credit">
             <p> SHIPPING & Handling</p>
@@ -327,9 +325,7 @@ const Checkoutsection = () => {
 
           <Label className="order-total">
             <p className="total">Total </p>
-            <p>
-              {cartPayload.totalPrice} {cartPayload.currency}
-            </p>
+            <p>{cartPayload.totalPrice}</p>
           </Label>
           <Button className="mobile-btn" onClick={createShipping}>
             PLACE ORDER

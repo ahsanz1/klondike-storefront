@@ -38,7 +38,7 @@ const AgriculturePage = ({
             <div className="overview-detail-section-mobile">
               {readMore
                 ? paragraph.slice(3, paragraph.length - 5)
-                : paragraph.slice(3, 200) + '...'}
+                : paragraph.slice(3, 500) + '...'}
               {!readMore && (
                 <span className="read-more">
                   <Button href className="button" onClick={more}>
@@ -76,7 +76,7 @@ const AgriculturePage = ({
                   return (
                     <Link
                       key={i}
-                      // to={`/${item.catagoryRedirect}`}
+                      to={`${item.catagoryRedirect}`}
                       className="explore-link"
                     >
                       {item.catagory}

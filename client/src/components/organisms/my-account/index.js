@@ -37,8 +37,6 @@ const MyAccount = ({
   const [loading, setLoading] = useState(false)
   const [userName, setUserName] = useState('')
   const [tabKey, setTabKey] = useState('0')
-  // const [showOrderModal, setShowOrderModal] = useState(false)
-  // const [trackData, setTrackData] = useState({})
   const [allOrders, setAllOrders] = useState([])
   const [userOrder, setUserOrder] = useState([])
   const { user, logout, personalInfo } = useContext(AppContext)
@@ -88,32 +86,6 @@ const MyAccount = ({
     logout()
     navigate('account/login')
   }
-
-  // const handleTabClick = tab => {
-  //   tab = tab + 1
-  //   tab = tab.toString()
-  //   setTabKey(tab)
-  // }
-
-  // const handleButtonClick = order => {
-  //   handleToggleOrderModal(order)
-  // }
-
-  // const handleToggleOrderModal = order => {
-  //   const data = order ? getTrackOrderData(order) : []
-  //   setShowOrderModal(!showOrderModal)
-  //   setTrackData(data)
-  //   console.log('modal order', data)
-  // }
-
-  // const handleCancelOrderModal = event => {
-  //   console.log('cancel modal event: ', event.currentTarget)
-  //   handleToggleOrderModal()
-  // }
-
-  // const handleOrderModalSave = event => {
-  //   console.log('ok modal event', event)
-  // }
 
   return (
     <div className="account--container">

@@ -1,6 +1,6 @@
 // export default CartDropdownItem
 
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import './styles.scss'
@@ -10,10 +10,12 @@ import Button from 'components/atoms/button'
 import { InputNumber } from 'antd'
 import { removeItemFromCart, updateCartApi } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
+import { getItemsBySkus } from 'libs/services/api/item'
 // import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
 const CartDropdownItem = cart => {
   const { setGetCartItemsState } = useContext(AppContext)
+  const [isShow, SetIsShow] = useState(false)
   // const [removing, setRemoving] = useState(false)
   // const { removeFromCart, error } = useRemoveFromCart()
 
@@ -27,7 +29,7 @@ const CartDropdownItem = cart => {
   // }
 
   const onChange = async (qty, cart) => {
-    let payload = {
+    let updateCartPayload = {
       items: [
         {
           lineItemId: cart?.lineItemId,
@@ -37,9 +39,35 @@ const CartDropdownItem = cart => {
         },
       ],
     }
+    let skus = []
 
-    let res = await updateCartApi(cart?.cartId, payload)
-    setGetCartItemsState(res.data)
+    SetIsShow(true)
+    let res = await updateCartApi(cart?.cartId, updateCartPayload)
+    let data = res.data
+
+    await data.items.map((item, i) => {
+      skus.push(item.sku)
+    })
+
+    let itemsRes = await getItemsBySkus(skus)
+
+    let itemsArr = []
+    await data.items.map((item, i) => {
+      let itemObj = {
+        ...item,
+        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+      }
+
+      itemsArr.push(itemObj)
+    })
+
+    let payload = {
+      ...data,
+      items: itemsArr,
+    }
+
+    await setGetCartItemsState(payload)
+    SetIsShow(false)
   }
 
   const removeItem = async (cartId, lineItemId) => {
@@ -48,100 +76,115 @@ const CartDropdownItem = cart => {
   }
 
   return (
-    <div className="mini-cart-item">
-      <div className="cart-item">
-        <div>
-          <img src="abc.jpg" className="cart-item-image" alt="" />
+    <>
+      {
+        <div
+          className="preloader"
+          style={{
+            display: isShow === true ? 'block' : 'none',
+            color: '#ffff',
+            position: 'relative',
+            opacity: '0.9',
+            font: 'bolder',
+            background: 'lightgray',
+          }}
+        >
+          Please Wait...
         </div>
-        <div>
-          <div className="item-desc-and-price">
-            <div className="item-desc">
-              <Label className="item-title notranslate">{cart?.title}</Label>
-              <div className="product-detail-info-cart">
-                <Label className="item-info">
-                  SIZE: <Label className="item-subInfo">{cart?.sku}</Label>
-                </Label>
-
-                <Label className="item-info">
-                  PER CASE:{' '}
-                  <Label className="item-subInfo">
-                    {cart?.price?.base} {cart?.price?.currency}
+      }
+      <div className="mini-cart-item">
+        <div className="cart-item">
+          <div>
+            <img src={cart?.image} className="cart-item-image" alt="" />
+          </div>
+          <div>
+            <div className="item-desc-and-price">
+              <div className="item-desc">
+                <Label className="item-title notranslate">{cart?.title}</Label>
+                <div className="product-detail-info-cart">
+                  <Label className="item-info">
+                    SIZE: <Label className="item-subInfo">{cart?.sku}</Label>
                   </Label>
+
+                  <Label className="item-info">
+                    PER CASE:{' '}
+                    <Label className="item-subInfo">${cart?.price?.base}</Label>
+                  </Label>
+                </div>
+              </div>
+
+              <div className="product-price-info">
+                <Label className="product-price">
+                  <p className="product-price-mobile">PRICE</p>$
+                  {cart?.totalPrice?.amount}
                 </Label>
               </div>
             </div>
-
-            <div className="product-price-info">
-              <Label className="product-price">
-                <p className="product-price-mobile">PRICE</p>
-                {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
+            <div className="total-and-quantity-cart">
+              <div className="removebtn-div">
+                <Button
+                  className="remove-button"
+                  onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
+                  // disabled={removing && true}
+                >
+                  Remove
+                </Button>
+              </div>
+              <div className="quantity-box">
+                <Label className="product-quantity-mobile">QTY:</Label>
+                <InputNumber
+                  className="product-quantity-spinner"
+                  min={1}
+                  max={1000}
+                  defaultValue={cart?.quantity}
+                  onChange={e => onChange(e, cart)}
+                />
+              </div>
+              <Label className="total-price">
+                <p className="product-total-mobile">TOTAL PRICE</p>$
+                {cart?.totalPrice?.amount}
               </Label>
             </div>
           </div>
-          <div className="total-and-quantity-cart">
+          <div className="total-and-quantity-cart-MOBILE">
+            <div className="total-and-quantity-cart-and-remove-btn">
+              <div className="product-price-info">
+                <Label className="product-price">
+                  PRICE
+                  <Label className="product-price-mobile">
+                    ${cart?.price?.base}
+                  </Label>
+                </Label>
+              </div>
+              <div className="quantity-box">
+                <Label className="product-quantity-mobile">QTY:</Label>
+                <InputNumber
+                  className="product-quantity-spinner"
+                  min={1}
+                  max={1000}
+                  defaultValue={cart?.quantity}
+                  onChange={e => onChange(e, cart)}
+                />
+              </div>
+              <Label className="total-price">
+                <p className="product-total-mobile">TOTAL PRICE</p>$
+                {cart?.totalPrice?.amount}
+              </Label>
+            </div>
             <div className="removebtn-div">
               <Button
                 className="remove-button"
                 onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
-                // disabled={removing && true}
+                //   disabled={removing && true}
               >
+                {/* {removing ? 'Removing' : 'Remove'} */}
                 Remove
               </Button>
             </div>
-            <div className="quantity-box">
-              <Label className="product-quantity-mobile">QTY:</Label>
-              <InputNumber
-                className="product-quantity-spinner"
-                min={1}
-                max={1000}
-                defaultValue={cart?.quantity}
-                onChange={e => onChange(e, cart)}
-              />
-            </div>
-            <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>
-              {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
-            </Label>
-          </div>
-        </div>
-        <div className="total-and-quantity-cart-MOBILE">
-          <div className="total-and-quantity-cart-and-remove-btn">
-            <div className="product-price-info">
-              <Label className="product-price">
-                PRICE
-                <Label className="product-price-mobile">
-                  {cart?.price?.base} {cart?.price?.currency}
-                </Label>
-              </Label>
-            </div>
-            <div className="quantity-box">
-              <Label className="product-quantity-mobile">QTY:</Label>
-              <InputNumber
-                className="product-quantity-spinner"
-                min={1}
-                max={1000}
-                defaultValue={cart?.quantity}
-                // onChange={onChange}
-              />
-            </div>
-            <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>
-              {cart?.totalPrice?.amount} {cart?.totalPrice?.currency}
-            </Label>
-          </div>
-          <div className="removebtn-div">
-            <Button
-              className="remove-button"
-              onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
-              //   disabled={removing && true}
-            >
-              {/* {removing ? 'Removing' : 'Remove'} */}
-              Remove
-            </Button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
