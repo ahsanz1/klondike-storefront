@@ -123,7 +123,7 @@
           height: get-vw(153px);
 
           @media (max-width: 768px) {
-            width: 271px;
+            width: 271px !important;
             height: 153px;
           }
         }
