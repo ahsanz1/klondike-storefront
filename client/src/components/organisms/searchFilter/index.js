@@ -180,7 +180,7 @@ const SearchFilter = ({ searchHeading }) => {
           items={unit}
           className="third-drop"
         />
-        <button className="btn btn-primary" onClick={e => resetFilter(e)}>
+        <button className="btn reset-button" onClick={e => resetFilter(e)}>
           Reset Filter
         </button>
       </div>

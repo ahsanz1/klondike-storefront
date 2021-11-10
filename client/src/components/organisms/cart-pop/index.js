@@ -105,7 +105,11 @@ const CartPopUP = () => {
             >
               VIEW CART
             </Button>
-            <Link to="/Checkoutsection" className="CheckoutBtn">
+            <Link
+              to="/Checkoutsection"
+              onClick={closePopUpModal}
+              className="CheckoutBtn"
+            >
               PROCEED TO CHECKOUT
             </Link>
           </div>
