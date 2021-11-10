@@ -53,10 +53,13 @@ const CheckoutSuccess = () => {
       </Row>
       <Row justify="center" align="center">
         <Col xs={{ span: 24 }} lg={{ span: 12 }} className="columns">
-          <span>Order Number: {checkoutData?.data?.orderId}</span>
+          <span>Order Number: {checkoutData?.orderId}</span>
           <span>PO Number: {address?.zipCode}</span>
           <span>Order Date: {getDate()}</span>
-          <span>Order Total: 1123331</span>
+          <span>
+            Order Total:{' '}
+            {`$${parseFloat(checkoutData?.totalAmount).toFixed(2)}`}
+          </span>
           <p style={{ marginTop: '5vw' }}>
             If you need to make changes to your order. please email
             clientcare@klondikelubricants.com or call 1-877-293-4691

@@ -15,7 +15,6 @@ import {
   List,
   Typography,
 } from 'antd'
-
 import {
   addShippingWithLineItems,
   getCartByUserId,
@@ -182,7 +181,12 @@ const Checkoutsection = () => {
     let finalResponse = await checkout(req)
     console.log({ finalResponse })
     if (finalResponse?.data?.checkoutComplete) {
-      setCheckoutData(finalResponse)
+      setCheckoutData({
+        orderId: shipToResponse?.data?.orderId,
+        totalAmount: Math.floor(
+          shipToResponse?.data?.totalAmount?.amount + shipMethodCost,
+        ),
+      })
       navigate('checkout-success')
     } else error()
   }
@@ -285,7 +289,10 @@ const Checkoutsection = () => {
         <Row className="checkout-padding">
           <Col>
             <div className="page-title">
-              <LeftOutlined className="checkout-back-icon" />
+              <LeftOutlined
+                className="checkout-back-icon"
+                onClick={() => navigate('/plp-page')}
+              />
               <h1 className="checkout-title"> Checkout</h1>
             </div>
           </Col>
@@ -392,7 +399,7 @@ const Checkoutsection = () => {
             </div>
             <div className="item">
               <span>Shipping &amp; Handling</span>
-              <span>TBD</span>
+              <span>{delivery ? `$39.00` : 'TBD'}</span>
             </div>
             <div className="item">
               <span>Credit Limit</span>
@@ -402,7 +409,7 @@ const Checkoutsection = () => {
             <div className="item">
               <span className="total-price">Total Amount</span>
               <span className="total-amount">
-                {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                {`$${Math.floor(cartPayload?.itemsTotal + 39).toFixed(2)}`}
               </span>
             </div>
           </Col>
