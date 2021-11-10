@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { getItem } from 'libs/services/localStorage/localStorage'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import { CartReducer, sumItems } from './app-reducer'
+import { getCartByUserId } from 'libs/services/api/cart'
+import { getItemsBySkus } from 'libs/services/api/item'
 
 const AppContext = React.createContext({})
 const AppProvider = ({ children }) => {
@@ -76,8 +78,35 @@ const AppProvider = ({ children }) => {
     setIsNewAddress(!isNewAddress)
   }
 
-  const showModal = () => {
+  const showModal = async () => {
+    let skus = []
+    let res = await getCartByUserId(initialState.user.accessToken)
+    let data = res.data
+
+    await data.items.map((item, i) => {
+      skus.push(item.sku)
+    })
+
+    let itemsRes = await getItemsBySkus(skus)
+
+    let itemsArr = []
+    data.items.map((item, i) => {
+      let itemObj = {
+        ...item,
+        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+      }
+
+      itemsArr.push(itemObj)
+    })
+
+    let payload = {
+      ...data,
+      items: itemsArr,
+    }
+
+    setGetCartItemsState(payload)
     setIsModalVisible(true)
+
     if (size > 768) {
       document.body.style.overflow = 'visible'
     }
