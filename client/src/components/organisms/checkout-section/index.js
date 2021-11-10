@@ -1,11 +1,21 @@
 /* eslint-disable no-unused-expressions */
 import React, { useContext, useEffect, useState } from 'react'
-import { checkoutData } from './data'
 import './style.scss'
-import Label from 'components/atoms/label'
+import { useNavigate } from '@reach/router'
 
-import { Radio, Button, Input, Modal, Result } from 'antd'
-import { Link } from '@reach/router'
+import {
+  Radio,
+  Button,
+  Input,
+  Modal,
+  Result,
+  Row,
+  Col,
+  Divider,
+  List,
+  Typography,
+} from 'antd'
+
 import {
   addShippingWithLineItems,
   getCartByUserId,
@@ -16,19 +26,37 @@ import {
   createShipTo,
   checkout,
 } from 'libs/services/api/checkout'
+import { LeftOutlined } from '@ant-design/icons'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 
 const Checkoutsection = () => {
   // let cart
-  const { user, personalInfo } = useContext(AppContext)
+  const { user, personalInfo, creditLimit, setCheckoutData } = useContext(
+    AppContext,
+  )
   console.log({ personalInfo })
+  console.log({ user })
+  const navigate = useNavigate()
+
+  // const { checkData } = checkoutData
+  const [cartPayload, setCartPayloadState] = useState('')
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  // const [cartId] = useState('617fb67c3d8494000801e3f0')
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [delivery, setDelivery] = useState(true)
+  const [value, setValue] = useState(1)
+  const [poNumber, setPONumber] = useState('R3G 2T3')
+  console.log({ cartPayload })
+  const [inputField, setInputField] = useState(false)
 
   const address = {
     street1: '1510 Wall Street NW ',
     city: 'Winnipeg',
     state: 'MB',
     country: 'Canada',
-    zipCode: 'R3G 2T3',
+    zipCode: poNumber,
+    // zipCode: 'R3G 2T3',
     kind: 'shipping',
     name: {
       first: personalInfo?.firstName,
@@ -41,12 +69,13 @@ const Checkoutsection = () => {
     },
   }
 
-  const { checkData } = checkoutData
-  let [cartPayload, setCartPayloadState] = useState('')
-  const [visible, setVisible] = useState(false)
-  const [isModalVisible, setIsModalVisible] = useState(false)
-  const [cartId] = useState('617fb67c3d8494000801e3f0')
-  const [isSuccess, setIsSuccess] = useState(false)
+  const data = [
+    'Racing car sprays burning fuel into crowd.',
+    'Japanese princess to wed commoner.',
+    'Australian walks 100km after outback crash.',
+    'Man charged over missing wedding girl.',
+    'Los Angeles battles huge wildfires.',
+  ]
 
   // const [isActive, setIsAcive] = useState(true)
   // const [pickup, setPickup] = useState(false)
@@ -62,16 +91,18 @@ const Checkoutsection = () => {
         ...res?.data,
         itemsTotal: res?.data?.totalAmount?.amount,
         currency: res?.data?.totalAmount?.currency,
-        totalItems: res?.data?.quantity,
-        totalPrice: '12,000',
+        // totalItems: res?.data?.quantity,
+        // totalPrice: '12,000',
       }
-      setCartPayloadState(data)
+      await setCartPayloadState(data)
     }
   }
 
   useEffect(() => {
-    if (user != null) {
+    if (Object.keys(user).length !== 0) {
       getCart()
+    } else {
+      navigate('/account/login')
     }
   }, [])
 
@@ -90,14 +121,6 @@ const Checkoutsection = () => {
     let res = await addShippingWithLineItems(cartPayload?._id, data)
     console.log('line items res', res)
     return res
-  }
-
-  const showModal = () => {
-    setIsModalVisible(true)
-  }
-
-  const handleOk = () => {
-    setIsModalVisible(false)
   }
 
   const handleCancel = () => {
@@ -159,11 +182,13 @@ const Checkoutsection = () => {
     let finalResponse = await checkout(req)
     console.log({ finalResponse })
     if (finalResponse?.data?.checkoutComplete) {
-      setIsSuccess(true)
-    }
+      setCheckoutData(finalResponse)
+      navigate('checkout-success')
+    } else error()
   }
 
   const createShipping = async () => {
+    setIsLoading(true)
     let req = {
       address: address,
       shipToType: 'SHIP_TO_ADDRESS',
@@ -179,35 +204,60 @@ const Checkoutsection = () => {
       taxCode: 'FR020000',
     }
     console.log({ req })
-    let response = await createShipTo(cartId, req)
+    let response = await createShipTo(cartPayload?._id, req)
     console.log({ response })
-    let shipToId = response?.data?._id
-    let shipMethodCost = response?.data?.shipMethod?.cost?.amount
-    console.log({ shipToId })
-    let responseofLineItems = await mapItemsWithShipping(shipToId)
-    console.log({ responseofLineItems })
-    await finalCheckout(responseofLineItems, shipMethodCost)
+    try {
+      if (response?.status === 200) {
+        let shipToId = response?.data?._id
+        let shipMethodCost = response?.data?.shipMethod?.cost?.amount
+        console.log({ shipToId })
+        let responseofLineItems = await mapItemsWithShipping(shipToId)
+        console.log({ responseofLineItems })
+        if (responseofLineItems?.error === false) {
+          await finalCheckout(responseofLineItems, shipMethodCost)
+          setIsLoading(false)
+        } else error()
+      } else error()
+    } catch (e) {
+      error()
+    }
   }
 
-  // const [value, setValue] = useState(1)
-
-  // const handleClick = () => {
-  //   setIsAcive(!isActive)
-  // }
-  // const onChange = e => {
-  //   setValue(e.target.value)
-  // }
-  // const radioChangeBULK = () => {
-  //   setPickup(false)
-  //   setDelivery(true)
-  // }
-
-  // const radioChangePACKAGE = () => {
-  //   setDelivery(false)
-  //   setPickup(true)
-  // }
   const handleClose = () => {
     setIsSuccess(false)
+  }
+  const onChange = e => {
+    setValue(e.target.value)
+    if (e.target.value === 1) {
+      setDelivery(true)
+    } else {
+      setDelivery(false)
+    }
+  }
+
+  const handlePOChange = () => {
+    setInputField(true)
+  }
+
+  const handlePOInput = e => {
+    if (e.target.value) {
+      setPONumber(e.target.value)
+    }
+  }
+
+  const handlePickUpClick = () => {
+    setIsModalVisible(true)
+  }
+  const onListClick = item => {
+    setIsModalVisible(false)
+  }
+
+  function error () {
+    setIsLoading(false)
+    Modal.error({
+      title: 'Error! Please try again.',
+      content: 'Due to Some technical reason there is an error!',
+    })
   }
 
   return (
@@ -226,126 +276,158 @@ const Checkoutsection = () => {
           />
         </Modal>
       )}
-      <div className="checkout-header">
-        <img src="static\images\klondike.png" alt="pic" />
-        <Link className="link" to="/collections/all-bars">
-          <img src="static\images\chevron-right.png" alt="pic" />
-          <div className="header-h">
-            <h1> checkout</h1>
-            <img src="static\images\headerlogo.png" alt="pic" />
-          </div>
-        </Link>
+      <div className="checkout-wrapper">
+        <Row justify="center" align="center" className="checkoutHeader">
+          <Col>
+            <img src="static\images\klondike.png" alt="pic" />
+          </Col>
+        </Row>
+        <Row className="checkout-padding">
+          <Col>
+            <div className="page-title">
+              <LeftOutlined className="checkout-back-icon" />
+              <h1 className="checkout-title"> Checkout</h1>
+            </div>
+          </Col>
+        </Row>
+        <Row className="checkout-padding">
+          <Col xs={{ span: 23 }} lg={{ span: 16 }}>
+            <div style={{ margin: '0 0 3vw 1vw' }} className="radio-group">
+              <Radio.Group
+                onChange={onChange}
+                value={value}
+                defaultValue={1}
+                size="large"
+                optionType="button"
+              >
+                <Radio
+                  value={1}
+                  style={{
+                    color: delivery ? 'white' : 'rgba(244, 244, 244, 0.5)',
+                  }}
+                  className="radio-btn"
+                >
+                  DELIVERY
+                </Radio>
+                <Radio
+                  value={2}
+                  style={{
+                    color: delivery ? 'rgba(244, 244, 244, 0.5)' : 'white',
+                  }}
+                  className="radio-btn"
+                >
+                  PICKUP
+                </Radio>
+              </Radio.Group>
+            </div>
+            <div className="checkout-info">
+              <span>{personalInfo?.email}</span>
+            </div>
+            <div className="checkout-info">
+              <div className="checkout-po">
+                <span>
+                  <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+                  <br />
+                  {`${address?.street1},`}
+                  <br />
+                  {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                  <br />
+                  {`${address?.phone?.number}`}
+                </span>
+                {!delivery && (
+                  <Button
+                    ghost
+                    className="change-button"
+                    onClick={handlePickUpClick}
+                  >
+                    CHOOSE PICKUP LOCATION
+                  </Button>
+                )}
+              </div>
+            </div>
+            <div className="checkout-info">
+              <div className="checkout-po">
+                <span>
+                  PO Number: <strong>{poNumber}</strong>
+                </span>
+                <Button
+                  ghost
+                  className="change-button"
+                  onClick={handlePOChange}
+                >
+                  CHANGE
+                </Button>
+              </div>
+            </div>
+            {inputField && (
+              <div className="checkout-info">
+                <div className="checkout-po">
+                  <span>Custom PO Number:</span>
+                  <Input
+                    placeholder="Enter Custom PO Number"
+                    onChange={handlePOInput}
+                  />
+                </div>
+              </div>
+            )}
+            <div className="checkout-btn">
+              <Button
+                className="placeorder-btn"
+                onClick={createShipping}
+                loading={isLoading}
+              >
+                PLACE ORDER
+              </Button>
+            </div>
+          </Col>
+          <Col xs={{ span: 24 }} lg={{ span: 8 }} className="checkout-summary">
+            <div>
+              <h2 className="summary-title">ORDER SUMMARY</h2>
+            </div>
+            <div className="item">
+              <span>Items ({cartPayload?.items?.length})</span>
+              <span>
+                {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+              </span>
+            </div>
+            <div className="item">
+              <span>Shipping &amp; Handling</span>
+              <span>TBD</span>
+            </div>
+            <div className="item">
+              <span>Credit Limit</span>
+              <span>${creditLimit}</span>
+            </div>
+            <Divider style={{ border: '1px solid #fff' }} />
+            <div className="item">
+              <span className="total-price">Total Amount</span>
+              <span className="total-amount">
+                {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+              </span>
+            </div>
+          </Col>
+        </Row>
+        <Modal
+          // title="Basic Modal"
+          visible={isModalVisible}
+          // onOk={handleOk}
+          // centered
+          onCancel={handleCancel}
+          bodyStyle={{ background: 'white', padding: 10 }}
+        >
+          <List
+            // header={<div>Header</div>}
+            // footer={<div>Footer</div>}
+            bordered
+            dataSource={data}
+            renderItem={item => (
+              <List.Item onClick={() => onListClick(item)}>
+                <Typography.Text mark>[WAREHOUSE]</Typography.Text> {item}
+              </List.Item>
+            )}
+          />
+        </Modal>
       </div>
-      <div className="chectout-wraper">
-        <div className="checkout-data">
-          <div className="desktop-heading">
-            <Link to="/collections/all-bars">
-              <img
-                className="img"
-                src="static\images\chevron-right.png"
-                alt="pic"
-              />
-            </Link>
-            <h1>Checkout</h1>
-          </div>
-          <div className="radio-btn">
-            <Radio.Group
-              // value={value}
-              className="radio-delivery"
-            >
-              <Radio onClick={() => setVisible(false)} value={1}>
-                DELIVERY
-              </Radio>
-              <Radio onClick={() => setVisible(true)} value={2}>
-                PICK UP
-              </Radio>
-            </Radio.Group>
-          </div>
-          {checkData.map((data, i) => {
-            return (
-              <>
-                <div className="checkout-gmail">
-                  <p>{address?.email}</p>
-                </div>
-                <div className="ckeckout-name">
-                  <p>
-                    {`${address?.name?.first} ${address?.name?.last}`}
-                    <br />
-                    {`${address?.street1},`}
-                    <br />
-                    {`${address?.city}, ${address?.state} ${address?.zipCode}`}
-                    <br />
-                    {`${address?.phone?.number}`}
-                  </p>
-                  {visible && (
-                    <Button onClick={showModal} className="btn-location">
-                      CHOOSE PICK UP LOCATION
-                    </Button>
-                  )}
-                </div>
-                <div className="ckeckout-po">
-                  <p>
-                    PO Number:{' '}
-                    <span className="checkout-value">{data.ponumber}</span>
-                  </p>
-                </div>
-              </>
-            )
-          })}
-          <Label className="costom-po">
-            <p>Custom PO Number:</p>
-            <Input
-              // disabled={delivery}
-              className="input-po"
-              placeholder="Enter custom PO number"
-            ></Input>
-          </Label>
-          <Button className="order-btn" onClick={createShipping}>
-            PLACE ORDER
-          </Button>
-        </div>
-
-        <div className="checkout-summary">
-          <Label className="order-summary">
-            <p>Order summary</p>
-          </Label>
-          <Label className="order-handling">
-            <p> Items ({cartPayload.totalItems})</p>
-            <p>
-              {cartPayload.itemsTotal} {cartPayload.currency}
-            </p>
-          </Label>
-          <Label className="order-credit">
-            <p> SHIPPING & Handling</p>
-            <p>TBD</p>
-          </Label>
-
-          <Label className="order-items">
-            <p>Credit Limit </p>
-            <p>$44,435</p>
-          </Label>
-
-          <Label className="order-total">
-            <p className="total">Total </p>
-            <p>
-              {cartPayload.totalPrice} {cartPayload.currency}
-            </p>
-          </Label>
-          <Button className="mobile-btn" onClick={createShipping}>
-            PLACE ORDER
-          </Button>
-        </div>
-      </div>
-      <Modal
-        title="Basic Modal"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
     </>
   )
 }

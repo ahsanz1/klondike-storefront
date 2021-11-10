@@ -1,42 +1,82 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'libs/context'
 import PropTypes from 'prop-types'
 import './style.scss'
-import Image from 'components/atoms/image'
-import Link from 'components/atoms/link'
-import { getItem } from 'libs/services/localStorage'
 import { clearCart } from 'libs/services/cart-service'
+import { Row, Col } from 'antd'
 
 const CheckoutSuccess = () => {
-  const { checkoutEmail, personalInfo, clearLocalCart } = useContext(AppContext)
+  const { personalInfo, clearLocalCart, checkoutData } = useContext(AppContext)
+  const [poNumber] = useState('R3G 2T3')
+  console.log({ checkoutData })
 
   useEffect(() => {
     clearCart()
     clearLocalCart()
   }, [])
 
+  const address = {
+    street1: '1510 Wall Street NW ',
+    city: 'Winnipeg',
+    state: 'MB',
+    country: 'Canada',
+    zipCode: poNumber,
+    // zipCode: 'R3G 2T3',
+    kind: 'shipping',
+    name: {
+      first: personalInfo?.firstName,
+      last: personalInfo?.lastName,
+    },
+    email: personalInfo?.email,
+    phone: {
+      number: '844-883-4645',
+      kind: 'Mobile',
+    },
+  }
+
+  const getDate = () => {
+    var today = new Date()
+    var transformedDate = today.toDateString()
+    return transformedDate
+  }
+
   return (
     <div className="checkout-success">
-      <div className="iconHolder">
-        <Image
-          src="https://images.vexels.com/media/users/3/157931/isolated/preview/604a0cadf94914c7ee6c6e552e9b4487-curved-check-mark-circle-icon-by-vexels.png"
-          alt="alt"
-          className="tick-icon"
-        />
-      </div>
-      <div className="text-section">
-        <h3>Thank you for your purchase!</h3>
-        <span className="text">
-          A confirmation email has been sent to{' '}
-          {personalInfo && Object.keys(personalInfo).length > 0
-            ? personalInfo.email
-            : checkoutEmail.isEmail}{' '}
-          Order#
-          {getItem('orderID')}{' '}
-        </span>
-        <Link to="/collections/all-bars">Continue shopping</Link>
-        {/* <Link>Print receipt</Link> */}
-      </div>
+      <Row justify="center" align="center">
+        <Col>
+          <h1 className="thankyou-text">Thank you for shopping with us.</h1>
+          <span className="received-text">
+            Your order has been received. We will send an order confirmation at{' '}
+            {personalInfo?.email}
+          </span>
+        </Col>
+      </Row>
+      <Row justify="center" align="center">
+        <Col xs={{ span: 24 }} lg={{ span: 12 }} className="columns">
+          <span>Order Number: {checkoutData?.data?.orderId}</span>
+          <span>PO Number: {address?.zipCode}</span>
+          <span>Order Date: {getDate()}</span>
+          <span>Order Total: 1123331</span>
+          <p style={{ marginTop: '5vw' }}>
+            If you need to make changes to your order. please email
+            clientcare@klondikelubricants.com or call 1-877-293-4691
+          </p>
+        </Col>
+        <Col xs={{ span: 24 }} lg={{ span: 12 }} className="columns">
+          <h3 style={{ color: '#ffff' }}>SHIPPING ADDRESS</h3>
+          <div className="shipping-address">
+            <span>
+              <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+              <br />
+              {`${address?.street1},`}
+              <br />
+              {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+              <br />
+              {`${address?.phone?.number}`}
+            </span>
+          </div>
+        </Col>
+      </Row>
     </div>
   )
 }
