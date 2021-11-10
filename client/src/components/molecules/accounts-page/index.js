@@ -7,34 +7,18 @@ import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
 import Button from 'components/atoms/button'
 
-const Accounts = ({
-  orderImage,
-  orderNumber,
-  orderCart,
-  orderReview,
-  orderPrice,
-  orderReorder,
-  orderDate,
-  orderFullPrice,
-  orderStatus,
-}) => {
+const Accounts = ({ order, orderCart, orderReview, orderReorder }) => {
   const [size] = useWindowSize()
   return (
     <div className="account-page">
       {size > 768 ? (
         <>
           <div className="account-image-block">
-            <Image
-              className="account-image-block__image"
-              src={orderImage.url}
-              alt={orderImage.altText}
-            />
+            <Image className="account-image-block__image" src="" alt="" />
           </div>
 
           <div className="account-review-block">
-            <Label className="account-image-block__orderNumber">
-              {orderNumber}
-            </Label>
+            <Label className="account-image-block__orderNumber">#123378</Label>
             <Button className="account-image-block__orderCart">
               {orderCart}
             </Button>
@@ -44,32 +28,26 @@ const Accounts = ({
           </div>
           <div className="account-price-block">
             <Label className="account-image-block__orderPrice">
-              ${orderPrice}
+              12,000 USD
             </Label>
             <Button className="account-image-block__orderReorder">
-              {orderReorder}
+              Untracked
             </Button>
           </div>
           <div className="account-date-block">
-            <Label className="account-image-block__orderDate">
-              {orderDate}
-            </Label>
+            <Label className="account-image-block__orderDate">2020-12-09</Label>
             <Label className="account-image-block__orderFullPrice">
-              ${orderFullPrice}
+              15000 USD
             </Label>
             <Label className="account-image-block__orderStatus">
-              Status:{orderStatus}
+              Status: Completed
             </Label>
           </div>
         </>
       ) : (
         <>
           <div className="account-image-block">
-            <Image
-              className="account-image-block__image"
-              src={orderImage.url}
-              alt={orderImage.altText}
-            />
+            <Image className="account-image-block__image" src="" alt="" />
           </div>
           <div className="account-mobile-description">
             {size < 768 && (
@@ -77,7 +55,7 @@ const Accounts = ({
                 Vestibulum aliquam, magnis, Size Medium
               </p>
             )}
-            <Label className="account-mobile-orderPrice">${orderPrice}</Label>
+            <Label className="account-mobile-orderPrice">12,000 USD</Label>
             <Button className="account-mobile-orderCart">{orderCart}</Button>
             <Button className="account-mobile-orderCart">{orderReorder}</Button>
             <Button className="account-mobile-orderCart">{orderReview}</Button>
@@ -88,25 +66,15 @@ const Accounts = ({
   )
 }
 Accounts.defaultProps = {
-  orderImage: {},
-  orderNumber: '',
+  order: '',
   orderCart: '',
   orderReview: '',
-  orderPrice: '',
-  orderReorder: '',
   orderDate: '',
-  orderFullPrice: '',
-  orderStatus: '',
 }
 Accounts.propTypes = {
-  orderImage: PropTypes.object,
-  orderNumber: PropTypes.string,
+  order: PropTypes.string,
   orderCart: PropTypes.string,
   orderReview: PropTypes.string,
-  orderPrice: PropTypes.string,
   orderReorder: PropTypes.string,
-  orderDate: PropTypes.string,
-  orderFullPrice: PropTypes.string,
-  orderStatus: PropTypes.string,
 }
 export default Accounts

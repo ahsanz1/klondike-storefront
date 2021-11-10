@@ -10,6 +10,7 @@ import Button from 'components/atoms/button'
 import { InputNumber } from 'antd'
 import { removeItemFromCart, updateCartApi } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
+import { getItemsBySkus } from 'libs/services/api/item'
 // import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
 const CartDropdownItem = cart => {
@@ -27,7 +28,7 @@ const CartDropdownItem = cart => {
   // }
 
   const onChange = async (qty, cart) => {
-    let payload = {
+    let updateCartPayload = {
       items: [
         {
           lineItemId: cart?.lineItemId,
@@ -37,9 +38,33 @@ const CartDropdownItem = cart => {
         },
       ],
     }
+    let skus = []
 
-    let res = await updateCartApi(cart?.cartId, payload)
-    setGetCartItemsState(res.data)
+    let res = await updateCartApi(cart?.cartId, updateCartPayload)
+    let data = res.data
+
+    await data.items.map((item, i) => {
+      skus.push(item.sku)
+    })
+
+    let itemsRes = await getItemsBySkus(skus)
+
+    let itemsArr = []
+    data.items.map((item, i) => {
+      let itemObj = {
+        ...item,
+        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+      }
+
+      itemsArr.push(itemObj)
+    })
+
+    let payload = {
+      ...data,
+      items: itemsArr,
+    }
+
+    setGetCartItemsState(payload)
   }
 
   const removeItem = async (cartId, lineItemId) => {
@@ -96,6 +121,7 @@ const CartDropdownItem = cart => {
                 max={1000}
                 defaultValue={cart?.quantity}
                 onChange={e => onChange(e, cart)}
+                onBlur={e => onChange(e, cart)}
               />
             </div>
             <Label className="total-price">
@@ -121,7 +147,8 @@ const CartDropdownItem = cart => {
                 min={1}
                 max={1000}
                 defaultValue={cart?.quantity}
-                // onChange={onChange}
+                onChange={e => onChange(e, cart)}
+                onBlur={e => onChange(e, cart)}
               />
             </div>
             <Label className="total-price">
