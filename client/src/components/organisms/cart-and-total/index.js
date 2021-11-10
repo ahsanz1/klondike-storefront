@@ -14,6 +14,7 @@ import Button from 'components/atoms/button'
 // import Link from 'components/atoms/link'
 
 const DesktopCartPageItem = props => {
+  console.log('check part num:', props)
   // const { apiButtonCalled } = useContext(AppContext)
   //   const [removing, setRemoving] = useState(false)
   //   const { removeFromCart, error } = useRemoveFromCart()

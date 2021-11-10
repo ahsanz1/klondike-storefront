@@ -70,13 +70,13 @@
         }
 
         .why-klondike-video {
-          width: get-vw(344px);
+          width: get-vw(344px) !important;
           height: get-vw(195px);
           margin-left: get-vw(36px);
 
           @media screen and (max-width: 768px) {
-            width: 344px;
-            height: 195px;
+            width: 91.73vw !important;
+            height: 52vw;
             margin-left: 0;
           }
         }
