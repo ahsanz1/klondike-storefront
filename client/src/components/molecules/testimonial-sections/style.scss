@@ -10,6 +10,8 @@
     padding-top: 2vw;
     padding-bottom: 1.11vw;
     color: white;
+    font-family: $Opensans;
+    font-family: 600;
     font-size: 0.97vw;
 
     @media (max-width: 768px) {
@@ -22,6 +24,7 @@
   .testimonials-sub-title {
     opacity: 0.5;
     color: white;
+    font-family: $Opensans;
     font-size: 0.97vw;
 
     @media (max-width: 768px) {
