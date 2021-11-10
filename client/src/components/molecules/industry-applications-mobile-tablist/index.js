@@ -37,7 +37,10 @@ const IndustryAppMobileTabList = ({
                       clickCategoryHandler(item.categoryName, item.categoryDesc)
                     }
                   >
-                    <Link className="catagory-link" to={`/${item.link}`}>
+                    <Link
+                      className="catagory-link"
+                      to={`/about-klondike/industry-applications/${item.link}`}
+                    >
                       {item.categoryName}
                     </Link>
 
