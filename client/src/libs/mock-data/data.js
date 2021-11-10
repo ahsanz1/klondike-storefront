@@ -208,7 +208,7 @@ const mockData = {
       params: TermsCondition,
     },
   ],
-  '/privacy-policy': [
+  '/privacy-policys': [
     {
       id: 'PrivacyPolicy',
       params: PrivacyPolicy,

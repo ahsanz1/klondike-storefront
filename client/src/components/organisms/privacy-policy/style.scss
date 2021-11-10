@@ -1,66 +1,72 @@
 @import '~styles/globals';
 
-.privacy-body {
-  position: relative;
-  top: 50px;
-  height: auto;
-  margin: 2.5vw 6.319vw 3.33vw 6.319vw;
-  padding: 50px;
-  padding-top: 3.75vw;
-  padding-right: 7.22vw;
-  padding-bottom: 0.97vw;
-  padding-left: 4.79vw;
-  background: rgba(3, 41, 57, 0.5);
+.PrivacyPolicy-wrapper {
+  padding-top: 0.33vw;
+  padding-bottom: 0.33vw;
 
-  @media (max-width: 767px) {
-    width: 100vw;
-    margin-top: 22vw;
-    margin-left: 0;
-    padding-left: 0;
-  }
-}
+  .privacy-body {
+    position: relative;
+    top: 50px;
+    height: auto;
+    margin: 2.5vw 6.319vw 6.319vw 6.319vw;
+    padding: 50px;
+    padding-top: 3.75vw;
+    padding-right: 7.22vw;
+    padding-bottom: 0.97vw;
+    padding-left: 4.79vw;
+    background: rgba(3, 41, 57, 0.5);
 
-.main-heading {
-  margin-top: 0;
-  margin-bottom: 0.625vw;
-  color: #f1a900;
-  font-family: $OpenSans;
-  font-size: 24px;
-  font-weight: 700;
+    @media (max-width: 767px) {
+      width: 100vw;
+      margin-top: 22vw;
+      margin-bottom: 50px;
+      margin-left: 0;
+      padding-left: 0;
+    }
 
-  @media (max-width: 767px) {
-    padding-bottom: 4vw;
-    padding-left: 8vw;
-  }
-}
+    .main-heading {
+      margin-top: 0;
+      margin-bottom: 0.625vw;
+      color: #f1a900;
+      font-family: $OpenSans;
+      font-size: 24px;
+      font-weight: 700;
 
-.sub-heading {
-  margin-top: 0.625vw;
-  margin-bottom: 2.08vw;
-  color: #ffff;
-  font-family: $OpenSans;
-  font-size: 24px;
-  font-weight: 700;
+      @media (max-width: 767px) {
+        padding-bottom: 4vw;
+        padding-left: 8vw;
+      }
+    }
 
-  @media (max-width: 767px) {
-    padding-top: 5.33vw;
-    padding-bottom: 12vw;
-    padding-left: 8vw;
-  }
-}
+    .sub-heading {
+      margin-top: 0.625vw;
+      margin-bottom: 2.08vw;
+      color: #ffff;
+      font-family: $OpenSans;
+      font-size: 24px;
+      font-weight: 700;
 
-.privacy-body > p {
-  width: 75.34vw;
-  // padding-top: 0.625vw;
-  padding-bottom: 1.8vw;
-  color: #ffff;
-  font-family: $OpenSans;
-  font-size: 14px;
-  font-weight: 400;
+      @media (max-width: 767px) {
+        padding-top: 5.33vw;
+        padding-bottom: 12vw;
+        padding-left: 8vw;
+      }
+    }
 
-  @media (max-width: 767px) {
-    width: 82.78vw;
-    padding-bottom: 5.33vw;
-    padding-left: 8vw;
+    p {
+      width: 75.34vw;
+      // padding-top: 0.625vw;
+      padding-bottom: 1.8vw;
+      color: #ffff;
+      font-family: $OpenSans;
+      font-size: 14px;
+      font-weight: 400;
+
+      @media (max-width: 767px) {
+        width: 82.78vw;
+        padding-bottom: 5.33vw;
+        padding-left: 8vw;
+      }
+    }
   }
 }
