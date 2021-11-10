@@ -45,6 +45,10 @@
     }
 
     .our-story-content {
+      p {
+        font-size: 0.97vw;
+      }
+
       @media screen and (max-width: 768px) {
         // display: none;
       }
@@ -78,6 +82,17 @@
       @media screen and (max-width: 768px) {
         font-size: 14px;
         line-height: 20px;
+      }
+
+      &.safety-paragraph {
+        font-size: get-vw(14px);
+        font-weight: 400;
+        line-height: get-vw(19.6px);
+        //   color: rgba(38, 70, 83, 0.5);
+        @media screen and (max-width: 768px) {
+          font-size: 3.73vw;
+          line-height: 5.22vw;
+        }
       }
     }
 
