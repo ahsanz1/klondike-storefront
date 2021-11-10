@@ -91,6 +91,12 @@ $vw-viewport: 1440;
         font-size: 10px;
         line-height: 28px;
       }
+
+      .down-arrow-mobile {
+        @media (max-width: 768px) {
+          padding-left: 220px;
+        }
+      }
     }
 
     &:hover {
