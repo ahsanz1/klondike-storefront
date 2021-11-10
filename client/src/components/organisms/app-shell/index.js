@@ -16,6 +16,7 @@ const AppShell = ({ children = null }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const { setLocalCart, user } = useContext(AppContext)
+
   useEffect(() => {
     const fetchData = async () => {
       const getLocalCart = await JSON.parse(window.localStorage.getItem('CART'))
