@@ -908,16 +908,28 @@ export const TermsCondition = {
 export const PrivacyPolicy = {
   heading: 'Privacy Policy',
   subheading: 'Welcome to our Privacy Policy',
-  paragraph:
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.',
+  paragraph: [
+    {
+      paragraphs:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.',
+    },
+    {
+      paragraphs:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.',
+    },
+    {
+      paragraphs:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque enim eos id ipsa nesciunt nihil reprehenderit tempore. Ad consequatur earum minus nemo officia optio perferendis quam sequi velit voluptate.',
+    },
+  ],
   policyList: [
     {
       heading: 'Testing',
-      body: 'Content',
+      data: 'Content',
     },
     {
       heading: 'Testing 2',
-      body: 'Content 2',
+      data: 'Content 2',
     },
   ],
 }
