@@ -88,8 +88,8 @@ const CartDropdown = () => {
                 <div className="order-subtotal-and-checkout-btn">
                   <p className="subtotal-title">Subtotal</p>
                   <p className="subtotal-price">
-                    {getCartItems?.totalAmount?.amount}{' '}
-                    {getCartItems?.totalAmount?.currency}
+                    <span>${getCartItems?.totalAmount?.amount}</span>
+                    {/* {getCartItems?.totalAmount?.currency} */}
                   </p>
                 </div>
                 <div className="cart-dropdown-checkout">CHECKOUT</div>
