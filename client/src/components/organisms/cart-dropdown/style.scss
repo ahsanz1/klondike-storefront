@@ -155,12 +155,8 @@
 
     @media screen and (max-width: 768px) {
       width: getmb-vw(325px);
-      max-height: 58vh;
-      overflow: scroll;
-    }
-
-    @media screen and (max-width: 500px) {
       max-height: 45vh;
+      overflow: scroll;
     }
 
     .no-item {
@@ -184,15 +180,11 @@
     font-family: $OpenSans;
 
     @media screen and (max-width: 768px) {
-      position: fixed;
+      position: unset;
       bottom: 0;
       align-items: flex-end;
       justify-content: center;
       margin-top: getmb-vw(27px);
-    }
-
-    @media screen and (max-width: 500px) {
-      position: unset;
     }
 
     .cart-dropdown-checkout-details {
@@ -237,11 +229,11 @@
           line-height: get-vw(30px);
 
           @media screen and (max-width: 768px) {
-            width: getmb-vw(149px);
+            // width: getmb-vw(149px);
             height: getmb-vw(32px);
-            padding-left: getmb-vw(86px);
-            font-size: getmb-vw(24px);
-            line-height: getmb-vw(30px);
+            // padding-left: getmb-vw(86px);
+            font-size: 6.4vw;
+            line-height: 8vw;
           }
         }
       }
