@@ -325,6 +325,12 @@
     font-family: $OpenSans;
     font-size: 1.1vw;
     font-weight: bold;
+
+    @media (max-width: 768px) {
+      top: 2.66vw;
+      right: 4vw;
+      font-size: 3.2vw;
+    }
   }
 }
 
