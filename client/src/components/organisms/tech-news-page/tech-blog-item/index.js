@@ -12,7 +12,7 @@ const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
   useEffect(() => {
     setTextState(!(text.length > 20))
     setBtnText(text.length > 20 ? 'Read More' : '')
-    setTextVal(text.length > 20 ? text.substring(0, 20) + '... ' : text)
+    setTextVal(text.length > 20 ? text.substring(0, 20) : text)
   }, [])
 
   const changeState = text => {
@@ -25,7 +25,7 @@ const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
     } else {
       setTextState(false)
       setBtnText('Read More')
-      setTextVal(text.substring(0, 20) + '... ')
+      setTextVal(text.substring(0, 20))
     }
   }
 
@@ -44,7 +44,7 @@ const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
         </div>
         <div>
           <Label className="paragragh-text">
-            <span>{textVal.slice(3, textVal.length - 5)}</span>
+            <span>{textVal.slice(3, textVal.length)}</span>
             <span>{' ...'}</span>
             <Button className="read-more" onClick={e => changeState(text)}>
               {btnText}
