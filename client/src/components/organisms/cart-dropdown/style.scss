@@ -155,7 +155,7 @@
 
     @media screen and (max-width: 768px) {
       width: getmb-vw(325px);
-      max-height: 45vh;
+      max-height: 58vh;
       overflow: scroll;
     }
 
@@ -231,7 +231,7 @@
           @media screen and (max-width: 768px) {
             // width: getmb-vw(149px);
             height: getmb-vw(32px);
-            // padding-left: getmb-vw(86px);
+            padding-left: 8vw;
             font-size: 6.4vw;
             line-height: 8vw;
           }

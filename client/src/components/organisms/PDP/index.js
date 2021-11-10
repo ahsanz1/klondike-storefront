@@ -87,8 +87,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       const results = await fetchCategory(category, pageNumber)
       console.log({ results })
       let serverResults = (results || { hits: [] }).hits
-      serverResults.sort((a, b) =>
-        a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
+      serverResults.sort(
+        (a, b) => (a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0),
+        setPlpRedirect(category),
       )
       if (pageNumber === 0) {
         productListing(results.nbHits, category)
@@ -104,6 +105,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const clickCategoryHandler = (name, desc) => {
     // setItemName(name)
+    console.log('name', name)
     setContextPlp(name)
     setPlpRedirect(name)
     setDesc(desc)

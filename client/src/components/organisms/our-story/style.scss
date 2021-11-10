@@ -45,6 +45,10 @@
     }
 
     .our-story-content {
+      p {
+        font-size: 0.97vw;
+      }
+
       @media screen and (max-width: 768px) {
         // display: none;
       }
