@@ -6,6 +6,7 @@ import {
   stage,
   channel,
   site,
+  xApiKey,
 } from 'libs/general-config'
 
 // const account = '5fc78dfc6135050007191290'
@@ -18,6 +19,7 @@ export const fetchLayout = async ({ url }) => {
     {
       headers: {
         'x-site-context': `{"account":"${account}","stage":"${stage}","site": "${site}", "channel": ${channel},"date":"${new Date()}"}`,
+        'x-api-key': xApiKey,
       },
     },
   )
@@ -39,6 +41,7 @@ export const fetchGc = async () => {
     {
       headers: {
         'x-site-context': `{"account":"${account}","stage":"${stage}","site": "${site}", "channel": ${channel},"date":"${new Date()}"}`,
+        'x-api-key': xApiKey,
       },
     },
   )
