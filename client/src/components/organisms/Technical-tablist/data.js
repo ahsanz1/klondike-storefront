@@ -25,11 +25,11 @@ export const categoriesXPM = [
           links: '/tech-resources/oem-approvals/detroit-diesel-approved',
         },
         {
-          title: 'Approved dexos1®',
+          title: 'Dexos1® Approved',
           links: '/tech-resources/oem-approvals/dexos1-approved',
         },
         {
-          title: 'Approved Mack',
+          title: 'Mack Approved',
           links: '/tech-resources/oem-approvals/mack-approved',
         },
         {
