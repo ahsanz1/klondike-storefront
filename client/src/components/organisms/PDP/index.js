@@ -21,7 +21,7 @@ import {
 import { ShareAltOutlined } from '@ant-design/icons'
 import { productListing } from 'libs/utils/gtm'
 import PDPMobile from '../PDPMobile'
-// import Link from 'components/atoms/link'
+import Link from 'components/atoms/link'
 
 import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
@@ -329,10 +329,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
             >
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>Our Products</Breadcrumb.Item>
-              <Breadcrumb.Item>{productData?.category}</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                  {productData?.category}
+                </Link>
+              </Breadcrumb.Item>
               {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
               <Breadcrumb.Item className="notranslate">
-                {productData?.title}
+                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                  {productData?.title}
+                </Link>
               </Breadcrumb.Item>
             </Breadcrumb>
           </Col>
