@@ -180,7 +180,7 @@
     font-family: $OpenSans;
 
     @media screen and (max-width: 768px) {
-      position: fixed;
+      position: unset;
       bottom: 0;
       align-items: flex-end;
       justify-content: center;
@@ -204,6 +204,10 @@
           justify-content: space-between;
         }
 
+        @media screen and (max-width: 768px) {
+          justify-content: unset;
+        }
+
         .subtotal-title {
           padding-right: get-vw(50px);
           font-size: get-vw(24px);
@@ -225,11 +229,11 @@
           line-height: get-vw(30px);
 
           @media screen and (max-width: 768px) {
-            width: getmb-vw(149px);
+            // width: getmb-vw(149px);
             height: getmb-vw(32px);
-            padding-left: getmb-vw(86px);
-            font-size: getmb-vw(24px);
-            line-height: getmb-vw(30px);
+            padding-left: 8vw;
+            font-size: 6.4vw;
+            line-height: 8vw;
           }
         }
       }

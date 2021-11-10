@@ -6,7 +6,7 @@ const Privacy = ({ text }) => {
   return (
     <>
       <h1 className="main-heading">{text.heading}</h1>
-      <p>{text.body}</p>
+      <p>{text?.body?.map(item => item.paragraph)}</p>
     </>
   )
 }

@@ -17,7 +17,7 @@ const EzeBox = ({
   console.log('ezebox:', mainHeading)
   return (
     <div className="eze-box">
-      <AboutUsTablist className="warranty-tablist" itemName="Our Story" />
+      <AboutUsTablist className="warranty-tablist" itemName="EZE-BOX" />
       <div className="benefits-section">
         <div className="benefits">
           <div className="benefits-image">
