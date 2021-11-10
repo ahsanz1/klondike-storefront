@@ -6,9 +6,11 @@ import PropTypes from 'prop-types'
 import { useWindowSize } from 'libs/custom-hooks'
 import ReactReadMoreReadLess from 'react-read-more-read-less'
 import MobileTabList from '../mobile-tablist'
+import { useLocation } from '@reach/router'
 
 const OurStory = ({ OurStoryData, activeTablist }) => {
   const size = useWindowSize()
+  const location = useLocation()
   const renderOurStoryPage = () => {
     return (
       <div className="our-story-wrapper">
@@ -20,7 +22,9 @@ const OurStory = ({ OurStoryData, activeTablist }) => {
                 {item.subSection.map((data, i) => (
                   <>
                     <p
-                      className="details-paragragh"
+                      className={`paragraph ${location.pathname ===
+                        '/about-klondike/safety-environment' &&
+                        'safety-paragraph'}`}
                       key={i}
                       dangerouslySetInnerHTML={{ __html: data.paragraph }}
                     ></p>
