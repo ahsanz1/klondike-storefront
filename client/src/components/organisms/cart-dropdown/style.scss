@@ -159,6 +159,10 @@
       overflow: scroll;
     }
 
+    @media screen and (max-width: 500px) {
+      max-height: 45vh;
+    }
+
     .no-item {
       padding: get-vw(20px);
       background-color: #013a4e;
@@ -187,6 +191,10 @@
       margin-top: getmb-vw(27px);
     }
 
+    @media screen and (max-width: 500px) {
+      position: unset;
+    }
+
     .cart-dropdown-checkout-details {
       width: get-vw(334px);
       color: white;
@@ -202,6 +210,10 @@
 
         @media screen and (max-width: 768px) {
           justify-content: space-between;
+        }
+
+        @media screen and (max-width: 768px) {
+          justify-content: unset;
         }
 
         .subtotal-title {
