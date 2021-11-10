@@ -149,6 +149,11 @@ export const AboutUsXPM = [
     categoryName: 'EZE-BOX',
     link: 'eze-box',
   },
+  {
+    title: 'Testimonials',
+    categoryName: 'Testimonials',
+    link: 'testimonials',
+  },
 ]
 
 export const IndustryAppXPM = [
