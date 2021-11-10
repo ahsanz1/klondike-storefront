@@ -1,23 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
-import Privacy from '../../molecules/privacy-policy'
+// import Privacy from '../../molecules/privacy-policy'
 
 const PrivacyPolicy = ({ heading, subheading, paragraph, policyList }) => {
-  console.log('paragraph', paragraph)
+  console.log('here', heading, subheading, paragraph, policyList)
   return (
     <div className="PrivacyPolicy-wrapper">
       <div className="PrivacyPolicy-container">
         <div className="privacy-body">
-          <h1 className="main-heading">{heading}</h1>
-          <h1 className="sub-heading">{subheading}</h1>
+          <p className="main-heading">{heading}</p>
+          <p className="sub-heading">{subheading}</p>
           {paragraph.length > 0 &&
-            paragraph.map((item, i) => {
-              return <div key={i}>{item.paragraphContext}</div>
+            paragraph.map((data, i) => {
+              return <p key={i}>{data.paragraphs}</p>
             })}
-          {policyList.map((content, id) => (
-            <Privacy text={content} key={id} />
-          ))}
+          {policyList.length > 0 &&
+            policyList.map((policy, i) => {
+              return (
+                <div key={i}>
+                  <p className="main-heading">{policy.heading}</p>
+                  <p dangerouslySetInnerHTML={{ __html: policy.data }}></p>
+                </div>
+              )
+            })}
         </div>
       </div>
     </div>
