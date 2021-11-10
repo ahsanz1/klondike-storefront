@@ -4,6 +4,7 @@ import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
 import Label from 'components/atoms/label'
+import Link from 'components/atoms/link'
 import Image from 'components/atoms/image'
 import './style.scss'
 import { getCartByUserId } from 'libs/api/cart'
@@ -92,7 +93,15 @@ const CartDropdown = () => {
                     {getCartItems?.totalAmount?.currency}
                   </p>
                 </div>
-                <div className="cart-dropdown-checkout">CHECKOUT</div>
+                <div className="cart-dropdown-checkout">
+                  <Link
+                    className="cart-dropdown-checkout"
+                    to="/Checkoutsection"
+                    // onClick={() => closeModal()}
+                  >
+                    CHECKOUT
+                  </Link>
+                </div>
               </div>
             </div>
           ) : null
