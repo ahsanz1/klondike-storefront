@@ -44,8 +44,8 @@ const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
         </div>
         <div>
           <Label className="paragragh-text">
-            {textVal.slice(3, textVal.length - 5)}
-            {' ...'}
+            <span>{textVal.slice(3, textVal.length - 5)}</span>
+            <span>{' ...'}</span>
             <Button className="read-more" onClick={e => changeState(text)}>
               {btnText}
             </Button>
