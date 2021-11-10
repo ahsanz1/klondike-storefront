@@ -39,7 +39,7 @@ const OurStory = ({ OurStoryData, activeTablist }) => {
                         readMoreClassName="read-more-less--more  details-paragragh-mobile"
                         readLessClassName="read-more-less--less  details-paragragh-mobile"
                       >
-                        {data.paragraph.slice(3, data.paragraph.length - 5)}
+                        {data.paragraph.slice(3, data.paragraph.length)}
                       </ReactReadMoreReadLess>
                     </div>
                   </>
