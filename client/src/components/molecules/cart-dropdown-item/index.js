@@ -14,6 +14,7 @@ import { getItemsBySkus } from 'libs/services/api/item'
 // import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
 const CartDropdownItem = cart => {
+  console.log('check cart:', cart)
   const { setGetCartItemsState } = useContext(AppContext)
   const [isShow, SetIsShow] = useState(false)
   // const [removing, setRemoving] = useState(false)
@@ -39,19 +40,31 @@ const CartDropdownItem = cart => {
         },
       ],
     }
-    let skus = []
 
     SetIsShow(true)
-    let res = await updateCartApi(cart?.cartId, updateCartPayload)
-    let data = res.data
 
-    await data.items.map((item, i) => {
+    let res = await updateCartApi(cart?.cartId, updateCartPayload)
+    let payload = await refreshingCart(res.data, updateCartPayload)
+    await setGetCartItemsState(payload)
+    SetIsShow(false)
+  }
+
+  const removeItem = async (cartId, lineItemId) => {
+    SetIsShow(true)
+    let res = await removeItemFromCart(cartId, lineItemId)
+    let payload = await refreshingCart(res.data)
+    setGetCartItemsState(payload)
+    SetIsShow(false)
+  }
+
+  const refreshingCart = async data => {
+    let skus = []
+    let itemsArr = []
+    await data.items.map(item => {
       skus.push(item.sku)
     })
 
     let itemsRes = await getItemsBySkus(skus)
-
-    let itemsArr = []
     await data.items.map((item, i) => {
       let itemObj = {
         ...item,
@@ -66,13 +79,7 @@ const CartDropdownItem = cart => {
       items: itemsArr,
     }
 
-    await setGetCartItemsState(payload)
-    SetIsShow(false)
-  }
-
-  const removeItem = async (cartId, lineItemId) => {
-    let res = await removeItemFromCart(cartId, lineItemId)
-    setGetCartItemsState(res.data)
+    return payload
   }
 
   return (
@@ -89,7 +96,7 @@ const CartDropdownItem = cart => {
             background: 'lightgray',
           }}
         >
-          Please Wait...
+          Ruko Zara Sbr Kro ...
         </div>
       }
       <div className="mini-cart-item">
@@ -109,6 +116,12 @@ const CartDropdownItem = cart => {
                   <Label className="item-info">
                     PER CASE:{' '}
                     <Label className="item-subInfo">${cart?.price?.base}</Label>
+                  </Label>
+                  <Label className="item-info">
+                    PART NUM:{' '}
+                    <Label className="item-subInfo">
+                      {cart.partNum ? cart.partNum : cart.sku}
+                    </Label>
                   </Label>
                 </div>
               </div>

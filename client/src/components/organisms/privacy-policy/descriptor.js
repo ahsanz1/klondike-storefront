@@ -16,7 +16,7 @@ exports.default = Types.Component({
       label: 'Paragraph',
       children: Types.Shape({
         children: {
-          paragraphContext: Types.String({ label: 'Paragraph' }),
+          paragraphs: Types.String({ label: 'Paragraph' }),
         },
       }),
     }),
@@ -25,14 +25,7 @@ exports.default = Types.Component({
       children: Types.Shape({
         children: {
           heading: Types.String({ label: 'heading' }),
-          body: Types.Array({
-            label: 'Body',
-            children: Types.Shape({
-              children: {
-                paragraph: Types.String({ label: 'Paragraph' }),
-              },
-            }),
-          }),
+          data: Types.RichText({ label: 'body' }),
         },
       }),
     }),
