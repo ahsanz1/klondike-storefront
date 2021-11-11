@@ -62,6 +62,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   console.log({ loading })
   console.log({ products })
   console.log({ desc })
+  console.log('plpredirect', plpredirect)
 
   useEffect(() => {
     setStep(1)
@@ -90,6 +91,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       serverResults.sort(
         (a, b) => (a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0),
         setPlpRedirect(category),
+        console.log('category', category),
       )
       if (pageNumber === 0) {
         productListing(results.nbHits, category)
