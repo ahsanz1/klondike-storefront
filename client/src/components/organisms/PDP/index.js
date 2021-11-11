@@ -331,8 +331,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               className="breadCrumbStyle"
               separator={<span style={{ color: '#FFFFFF' }}>/</span>}
             >
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>Our Products</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/" style={{ color: '#FFFFFF' }}>
+                  Home
+                </Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/PCP" style={{ color: '#FFFFFF' }}>
+                  Our Products
+                </Link>
+              </Breadcrumb.Item>
               <Breadcrumb.Item>
                 <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
                   {productData?.category}
