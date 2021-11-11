@@ -30,6 +30,10 @@ const CartDropdownItem = cart => {
   // }
 
   const onChange = async (qty, cart) => {
+    if (qty === null) {
+      return
+    }
+
     let updateCartPayload = {
       items: [
         {
