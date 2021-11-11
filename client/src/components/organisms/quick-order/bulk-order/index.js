@@ -40,7 +40,7 @@ const BulkOrder = ({
                     list="partnumber"
                     name="partnumber"
                     className="part-number"
-                    placeholder="Enter Part Name"
+                    placeholder="Enter Part Number"
                     value={x.partnumber}
                     onChange={e => handleChangePackage(e, i)}
                   />
