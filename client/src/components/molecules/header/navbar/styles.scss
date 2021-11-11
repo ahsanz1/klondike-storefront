@@ -218,7 +218,7 @@
     box-sizing: border-box;
     align-items: center;
     width: get-vw(210px);
-    height: get-vw(64px);
+    height: auto !important;
     border: 0.06vw solid #f2a900;
     border-radius: get-vw(9px);
     background: #f2a900;
