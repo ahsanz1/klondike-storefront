@@ -135,7 +135,7 @@ const QuickOrder = () => {
     const list = [...inputList]
     list.splice(index, 1)
     setInputList(list)
-    itemremove(index)
+    // itemremove(index)
   }
   const handleChangePackageqty = async (e, index) => {
     const { name, value } = e.target
