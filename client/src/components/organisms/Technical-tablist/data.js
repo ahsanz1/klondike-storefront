@@ -1,7 +1,7 @@
 export const categoriesXPM = [
   {
     title: 'Technical Documents',
-    categoryLink: '/tech-resources/Technical-doucmente',
+    categoryLink: '/tech-resources/Technical-doucment',
     categoryName: 'Technical Documents',
     link: 'Technical-doucment',
   },
@@ -25,11 +25,11 @@ export const categoriesXPM = [
           links: '/tech-resources/oem-approvals/detroit-diesel-approved',
         },
         {
-          title: 'Approved dexos1®',
+          title: 'Dexos1® Approved',
           links: '/tech-resources/oem-approvals/dexos1-approved',
         },
         {
-          title: 'Approved Mack',
+          title: 'Mack Approved',
           links: '/tech-resources/oem-approvals/mack-approved',
         },
         {
@@ -149,6 +149,11 @@ export const AboutUsXPM = [
     categoryName: 'EZE-BOX',
     link: 'eze-box',
   },
+  {
+    title: 'Testimonials',
+    categoryName: 'Testimonials',
+    link: 'testimonials',
+  },
 ]
 
 export const IndustryAppXPM = [
@@ -156,46 +161,46 @@ export const IndustryAppXPM = [
     title: 'Agriculture',
     categoryName: 'Agriculture',
     //  subItem: 'Company Overview',
-    link: 'agriculture',
+    link: 'about-klondike/industry-applications/agriculture',
   },
   {
     title: 'Automotive',
     categoryName: 'Automotive',
-    link: 'automotive',
+    link: 'about-klondike/industry-applications/automotive',
   },
   {
     title: 'Construction',
     categoryName: 'Construction',
-    link: 'construction',
+    link: 'about-klondike/industry-applications/construction',
   },
   {
     title: 'Exploration',
     categoryName: 'Exploration',
-    link: 'exploration',
+    link: 'about-klondike/industry-applications/exploration',
   },
   {
     title: 'Forestry',
     categoryName: 'Forestry',
-    link: 'forestry',
+    link: 'about-klondike/industry-applications/forestry',
   },
   {
     title: 'Industrial',
     categoryName: 'Industrial',
-    link: 'industrial',
+    link: 'about-klondike/industry-applications/industrial',
   },
   {
     title: 'Marine',
     categoryName: 'Marine',
-    link: 'marine',
+    link: 'about-klondike/industry-applications/marine',
   },
   {
     title: 'Mining',
     categoryName: 'Mining',
-    link: 'mining',
+    link: 'about-klondike/industry-applications/mining',
   },
   {
     title: 'On-Road Heavy Duty',
     categoryName: 'On-Road Heavy Duty',
-    link: 'on-road-heavy-duty',
+    link: 'about-klondike/industry-applications/on-road-heavy-duty',
   },
 ]

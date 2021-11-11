@@ -21,7 +21,7 @@ const AgriculturePage = ({
   const size = useWindowSize()
   const renderAgriculturePage = () => {
     const more = () => {
-      setReadMore(true)
+      setReadMore(!readMore)
     }
     return (
       <div className="agricultural-wrapper">
@@ -36,16 +36,19 @@ const AgriculturePage = ({
             ></p>
 
             <div className="overview-detail-section-mobile">
-              {readMore
-                ? paragraph.slice(3, paragraph.length - 5)
-                : paragraph.slice(3, 500) + '...'}
-              {!readMore && (
-                <span className="read-more">
-                  <Button href className="button" onClick={more}>
-                    Read More
-                  </Button>
-                </span>
-              )}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: readMore
+                    ? paragraph.slice(3, paragraph.length - 5)
+                    : paragraph.slice(3, 500) + '...',
+                }}
+              ></p>
+
+              <span className={readMore ? 'read-less' : 'read-more'}>
+                <Button href className="button" onClick={more}>
+                  {readMore ? 'Read Less' : 'Read More'}
+                </Button>
+              </span>
             </div>
             <div className="featured-products">
               <Label className="feat-title">{subHeading}</Label>

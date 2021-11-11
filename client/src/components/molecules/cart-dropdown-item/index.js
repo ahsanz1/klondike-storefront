@@ -14,6 +14,7 @@ import { getItemsBySkus } from 'libs/services/api/item'
 // import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
 const CartDropdownItem = cart => {
+  console.log('check cart:', cart)
   const { setGetCartItemsState } = useContext(AppContext)
   const [isShow, SetIsShow] = useState(false)
   // const [removing, setRemoving] = useState(false)
@@ -115,6 +116,12 @@ const CartDropdownItem = cart => {
                   <Label className="item-info">
                     PER CASE:{' '}
                     <Label className="item-subInfo">${cart?.price?.base}</Label>
+                  </Label>
+                  <Label className="item-info">
+                    PART NUM:{' '}
+                    <Label className="item-subInfo">
+                      {cart.partNum ? cart.partNum : cart.sku}
+                    </Label>
                   </Label>
                 </div>
               </div>

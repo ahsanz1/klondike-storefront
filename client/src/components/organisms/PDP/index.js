@@ -21,7 +21,7 @@ import {
 import { ShareAltOutlined } from '@ant-design/icons'
 import { productListing } from 'libs/utils/gtm'
 import PDPMobile from '../PDPMobile'
-// import Link from 'components/atoms/link'
+import Link from 'components/atoms/link'
 
 import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
@@ -62,6 +62,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   console.log({ loading })
   console.log({ products })
   console.log({ desc })
+  console.log('plpredirect', plpredirect)
 
   useEffect(() => {
     setStep(1)
@@ -87,8 +88,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       const results = await fetchCategory(category, pageNumber)
       console.log({ results })
       let serverResults = (results || { hits: [] }).hits
-      serverResults.sort((a, b) =>
-        a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
+      serverResults.sort(
+        (a, b) => (a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0),
+        setPlpRedirect(category),
+        console.log('category', category),
       )
       if (pageNumber === 0) {
         productListing(results.nbHits, category)
@@ -104,6 +107,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const clickCategoryHandler = (name, desc) => {
     // setItemName(name)
+    console.log('name', name)
     setContextPlp(name)
     setPlpRedirect(name)
     setDesc(desc)
@@ -329,10 +333,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
             >
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>Our Products</Breadcrumb.Item>
-              <Breadcrumb.Item>{productData?.category}</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                  {productData?.category}
+                </Link>
+              </Breadcrumb.Item>
               {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
               <Breadcrumb.Item className="notranslate">
-                {productData?.title}
+                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                  {productData?.title}
+                </Link>
               </Breadcrumb.Item>
             </Breadcrumb>
           </Col>
