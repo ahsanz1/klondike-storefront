@@ -125,7 +125,7 @@ const ProductItem = ({ item, id }) => {
           className="product-title"
           style={{ marginBottom: titles.length > 1 && '0' }}
         >
-          <Link className="notranslate" to={`/products?sku=${item.sku}`}>
+          <Link className="notranslate" to={`/PDP?sku=${item.sku}`}>
             {titles[0] && titles[0]}
             {titles.length > 1 ? ' & ' : ''}
           </Link>
@@ -133,7 +133,7 @@ const ProductItem = ({ item, id }) => {
       )}
       {titles.length > 1 && (
         <h3 className="product-title">
-          <Link to={`/products?sku=${item.sku}`}>{titles[1] && titles[1]}</Link>
+          <Link to={`/PDP?sku=${item.sku}`}>{titles[1] && titles[1]}</Link>
         </h3>
       )}
 
