@@ -65,9 +65,19 @@ const CartDropdownItem = cart => {
     })
 
     let itemsRes = await getItemsBySkus(skus)
-    await data.items.map((item, i) => {
+
+    let sizes = []
+    await data.items.map(async (item, i) => {
+      let attributes = itemsRes?.data[i]?.attributes
+      await attributes.map(attr => {
+        if (attr.name === 'Package Size') {
+          sizes.push(attr.value)
+        }
+      })
+
       let itemObj = {
         ...item,
+        size: sizes[i],
         image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
       }
 
@@ -96,7 +106,7 @@ const CartDropdownItem = cart => {
             background: 'lightgray',
           }}
         >
-          Ruko Zara Sbr Kro ...
+          Please Wait ...
         </div>
       }
       <div className="mini-cart-item">
@@ -110,7 +120,7 @@ const CartDropdownItem = cart => {
                 <Label className="item-title notranslate">{cart?.title}</Label>
                 <div className="product-detail-info-cart">
                   <Label className="item-info">
-                    SIZE: <Label className="item-subInfo">{cart?.sku}</Label>
+                    SIZE: <Label className="item-subInfo">{cart?.size}</Label>
                   </Label>
 
                   <Label className="item-info">
