@@ -46,6 +46,7 @@ const Checkoutsection = () => {
   const [delivery, setDelivery] = useState(true)
   const [value, setValue] = useState(1)
   const [poNumber, setPONumber] = useState('R3G 2T3')
+  const [isCartLoading, setIsCartLoading] = useState(true)
   console.log({ cartPayload })
   const [inputField, setInputField] = useState(false)
 
@@ -83,17 +84,18 @@ const Checkoutsection = () => {
     if (user !== null) {
       console.log('token', user?.accessToken)
       let res = await getCartByUserId(user?.accessToken)
-      // let r = getAllShippingMethods()
-      // console.log({ r })
-      // cart = res.data
-      let data = {
-        ...res?.data,
-        itemsTotal: res?.data?.totalAmount?.amount,
-        currency: res?.data?.totalAmount?.currency,
-        // totalItems: res?.data?.quantity,
-        // totalPrice: '12,000',
-      }
-      await setCartPayloadState(data)
+      console.log({ res })
+      if (res && res?.data) {
+        let data = {
+          ...res?.data,
+          itemsTotal: res?.data?.totalAmount?.amount,
+          currency: res?.data?.totalAmount?.currency,
+          // totalItems: res?.data?.quantity,
+          // totalPrice: '12,000',
+        }
+        await setCartPayloadState(data)
+        setIsCartLoading(false)
+      } else navigate('/plp-page')
     }
   }
 
@@ -151,6 +153,8 @@ const Checkoutsection = () => {
 
   const finalCheckout = async (shipToResponse, shipMethodCost) => {
     console.log({ shipToResponse })
+    var itemsTaxes = await getItemsTaxes(shipToResponse?.data?.items)
+    var shipToTaxes = await getShipToTaxes(shipToResponse?.data?.items)
     let req = {
       cartId: cartPayload?._id,
       customerEmail: 'haseeb.shaukat@shopdev.co',
@@ -174,8 +178,8 @@ const Checkoutsection = () => {
         },
       ],
       estimatedTax: {
-        itemsTaxes: await getItemsTaxes(shipToResponse?.data?.items),
-        shipToTaxes: await getShipToTaxes(shipToResponse?.data?.items),
+        itemsTaxes: itemsTaxes,
+        shipToTaxes: shipToTaxes,
       },
     }
     let finalResponse = await checkout(req)
@@ -187,6 +191,7 @@ const Checkoutsection = () => {
           shipToResponse?.data?.totalAmount?.amount + shipMethodCost,
         ),
       })
+      setIsLoading(false)
       navigate('checkout-success')
     } else error()
   }
@@ -219,7 +224,6 @@ const Checkoutsection = () => {
         console.log({ responseofLineItems })
         if (responseofLineItems?.error === false) {
           await finalCheckout(responseofLineItems, shipMethodCost)
-          setIsLoading(false)
         } else error()
       } else error()
     } catch (e) {
@@ -280,6 +284,26 @@ const Checkoutsection = () => {
           />
         </Modal>
       )}
+      <Modal
+        // title="Basic Modal"
+        visible={isModalVisible}
+        // onOk={handleOk}
+        // centered
+        onCancel={handleCancel}
+        bodyStyle={{ background: 'white', padding: 10 }}
+      >
+        <List
+          // header={<div>Header</div>}
+          // footer={<div>Footer</div>}
+          bordered
+          dataSource={data}
+          renderItem={item => (
+            <List.Item onClick={() => onListClick(item)}>
+              <Typography.Text mark>[WAREHOUSE]</Typography.Text> {item}
+            </List.Item>
+          )}
+        />
+      </Modal>
       <div className="checkout-wrapper">
         <Row justify="center" align="center" className="checkoutHeader">
           <Col>
@@ -297,143 +321,133 @@ const Checkoutsection = () => {
             </div>
           </Col>
         </Row>
-        <Row className="checkout-padding">
-          <Col xs={{ span: 23 }} lg={{ span: 16 }}>
-            <div style={{ margin: '0 0 3vw 1vw' }} className="radio-group">
-              <Radio.Group
-                onChange={onChange}
-                value={value}
-                defaultValue={1}
-                size="large"
-                optionType="button"
-              >
-                <Radio
-                  value={1}
-                  style={{
-                    color: delivery ? 'white' : 'rgba(244, 244, 244, 0.5)',
-                  }}
-                  className="radio-btn"
+        {isCartLoading ? (
+          <Row justify="center" align="center">
+            <h1 style={{ color: 'gray' }}>Loading...</h1>
+          </Row>
+        ) : (
+          <Row className="checkout-padding">
+            <Col xs={{ span: 23 }} lg={{ span: 16 }}>
+              <div style={{ margin: '0 0 3vw 1vw' }} className="radio-group">
+                <Radio.Group
+                  onChange={onChange}
+                  value={value}
+                  defaultValue={1}
+                  size="large"
+                  optionType="button"
                 >
-                  DELIVERY
-                </Radio>
-                <Radio
-                  value={2}
-                  style={{
-                    color: delivery ? 'rgba(244, 244, 244, 0.5)' : 'white',
-                  }}
-                  className="radio-btn"
-                >
-                  PICKUP
-                </Radio>
-              </Radio.Group>
-            </div>
-            <div className="checkout-info">
-              <span>{personalInfo?.email}</span>
-            </div>
-            <div className="checkout-info">
-              <div className="checkout-po">
-                <span>
-                  <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
-                  <br />
-                  {`${address?.street1},`}
-                  <br />
-                  {`${address?.city}, ${address?.state} ${address?.zipCode}`}
-                  <br />
-                  {`${address?.phone?.number}`}
-                </span>
-                {!delivery && (
+                  <Radio
+                    value={1}
+                    style={{
+                      color: delivery ? 'white' : 'rgba(244, 244, 244, 0.5)',
+                    }}
+                    className="radio-btn"
+                  >
+                    DELIVERY
+                  </Radio>
+                  <Radio
+                    value={2}
+                    style={{
+                      color: delivery ? 'rgba(244, 244, 244, 0.5)' : 'white',
+                    }}
+                    className="radio-btn"
+                  >
+                    PICKUP
+                  </Radio>
+                </Radio.Group>
+              </div>
+              <div className="checkout-info">
+                <span>{personalInfo?.email}</span>
+              </div>
+              <div className="checkout-info">
+                <div className="checkout-po">
+                  <span>
+                    <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+                    <br />
+                    {`${address?.street1},`}
+                    <br />
+                    {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                    <br />
+                    {`${address?.phone?.number}`}
+                  </span>
+                  {!delivery && (
+                    <Button
+                      ghost
+                      className="change-button"
+                      onClick={handlePickUpClick}
+                    >
+                      CHOOSE PICKUP LOCATION
+                    </Button>
+                  )}
+                </div>
+              </div>
+              <div className="checkout-info">
+                <div className="checkout-po">
+                  <span>
+                    PO Number: <strong>{`${poNumber}`}</strong>
+                  </span>
                   <Button
                     ghost
                     className="change-button"
-                    onClick={handlePickUpClick}
+                    onClick={handlePOChange}
                   >
-                    CHOOSE PICKUP LOCATION
+                    CHANGE
                   </Button>
-                )}
-              </div>
-            </div>
-            <div className="checkout-info">
-              <div className="checkout-po">
-                <span>
-                  PO Number: <strong>{poNumber}</strong>
-                </span>
-                <Button
-                  ghost
-                  className="change-button"
-                  onClick={handlePOChange}
-                >
-                  CHANGE
-                </Button>
-              </div>
-            </div>
-            {inputField && (
-              <div className="checkout-info">
-                <div className="checkout-po">
-                  <span>Custom PO Number:</span>
-                  <Input
-                    placeholder="Enter Custom PO Number"
-                    onChange={handlePOInput}
-                  />
                 </div>
               </div>
-            )}
-            <div className="checkout-btn">
-              <Button
-                className="placeorder-btn"
-                onClick={createShipping}
-                loading={isLoading}
-              >
-                PLACE ORDER
-              </Button>
-            </div>
-          </Col>
-          <Col xs={{ span: 24 }} lg={{ span: 8 }} className="checkout-summary">
-            <div>
-              <h2 className="summary-title">ORDER SUMMARY</h2>
-            </div>
-            <div className="item">
-              <span>Items ({cartPayload?.items?.length})</span>
-              <span>
-                {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
-              </span>
-            </div>
-            <div className="item">
-              <span>Shipping &amp; Handling</span>
-              <span>{delivery ? `$39.00` : 'TBD'}</span>
-            </div>
-            <div className="item">
-              <span>Credit Limit</span>
-              <span>${creditLimit}</span>
-            </div>
-            <Divider style={{ border: '1px solid #fff' }} />
-            <div className="item">
-              <span className="total-price">Total Amount</span>
-              <span className="total-amount">
-                {`$${Math.floor(cartPayload?.itemsTotal + 39).toFixed(2)}`}
-              </span>
-            </div>
-          </Col>
-        </Row>
-        <Modal
-          // title="Basic Modal"
-          visible={isModalVisible}
-          // onOk={handleOk}
-          // centered
-          onCancel={handleCancel}
-          bodyStyle={{ background: 'white', padding: 10 }}
-        >
-          <List
-            // header={<div>Header</div>}
-            // footer={<div>Footer</div>}
-            bordered
-            dataSource={data}
-            renderItem={item => (
-              <List.Item onClick={() => onListClick(item)}>
-                <Typography.Text mark>[WAREHOUSE]</Typography.Text> {item}
-              </List.Item>
-            )}
-          />
-        </Modal>
+              {inputField && (
+                <div className="checkout-info">
+                  <div className="checkout-po">
+                    <span>Custom PO Number:</span>
+                    <Input
+                      placeholder="Enter Custom PO Number"
+                      onChange={handlePOInput}
+                    />
+                  </div>
+                </div>
+              )}
+              <div className="checkout-btn">
+                <Button
+                  className="placeorder-btn"
+                  onClick={createShipping}
+                  loading={isLoading}
+                >
+                  PLACE ORDER
+                </Button>
+              </div>
+            </Col>
+            <Col
+              xs={{ span: 24 }}
+              lg={{ span: 8 }}
+              className="checkout-summary"
+            >
+              <div>
+                <h2 className="summary-title">ORDER SUMMARY</h2>
+              </div>
+              <div className="item">
+                <span>Items ({cartPayload?.items?.length})</span>
+                <span>
+                  {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                </span>
+              </div>
+              <div className="item">
+                <span>Shipping &amp; Handling</span>
+                <span>{delivery ? `$39.00` : 'TBD'}</span>
+              </div>
+              <div className="item">
+                <span>Credit Limit</span>
+                <span>${creditLimit}</span>
+              </div>
+              <Divider style={{ border: '1px solid #fff' }} />
+              <div className="item">
+                <span className="total-price">Total Amount</span>
+                <span className="total-amount">
+                  {`$${Math.floor(cartPayload?.itemsTotal + 39).toFixed(2)}`}
+                </span>
+              </div>
+            </Col>
+          </Row>
+        )}
       </div>
     </>
   )
