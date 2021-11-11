@@ -5,13 +5,10 @@ import './style.scss'
 // import { PcpBottom, techresource } from 'libs/data/data'
 import Label from 'components/atoms/label'
 // import PCPBottom from 'components/organisms/pcpBottom'
-import Image from 'components/atoms/image'
 const Dealership = ({ oppertunity, heading }) => {
   return (
     <>
       <div className="Dealership-wraper">
-        {/* <WebpagesHeroImages {...techresource} /> */}
-        <Image className="banner-img" src="/static/images/you.png" />
         <div className="Dealership-heading">
           <Label>{heading}</Label>
         </div>
