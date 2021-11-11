@@ -18,6 +18,7 @@ const ProductAccordion = ({ question }) => {
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
+  let [showAddToCart, setShowAddToCart] = useState(false)
 
   const [itemdata, setItemData] = useState([])
 
@@ -105,7 +106,9 @@ const ProductAccordion = ({ question }) => {
     setQty(value)
     setTotalPrice(data.price * value)
   }
-
+  const handleAddToCart = () => {
+    setShowAddToCart(!showAddToCart)
+  }
   // const showModal = () => {
   //   setIsModalVisible(true)
   // }
@@ -142,7 +145,11 @@ const ProductAccordion = ({ question }) => {
           itemdata.map((data, i) => {
             return (
               <>
-                <Row className="table-content flex" key={i}>
+                <Row
+                  className="table-content flex"
+                  key={i}
+                  onClick={handleAddToCart}
+                >
                   <Col lg={8} className="custom-width">
                     <p className="text-setting-table">
                       {data['product title']}
@@ -167,22 +174,27 @@ const ProductAccordion = ({ question }) => {
                       ${data['Order Price']}
                     </p>
                   </Col>
-                  <div className="hover-details">
-                    <div className="table-image">
-                      <Image
-                        src={data['Image URL'] || data['Image 1 URL']}
-                        className="table-image"
-                      />
-                    </div>
-                    <div className="table-button">
-                      <Button
-                        onClick={e => showModal(JSON.stringify(data))}
-                        className="hover-button"
-                      >
-                        ADD TO CART
-                      </Button>
-                    </div>
-                  </div>
+                  {showAddToCart && (
+                    <>
+                      {/* <div className="hover-details"> */}
+                      <div className="">
+                        <div className="table-image">
+                          <Image
+                            src={data['Image URL'] || data['Image 1 URL']}
+                            className="table-image"
+                          />
+                        </div>
+                        <div className="table-button">
+                          <Button
+                            onClick={e => showModal(JSON.stringify(data))}
+                            className="hover-button"
+                          >
+                            ADD TO CART
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </Row>
               </>
             )
