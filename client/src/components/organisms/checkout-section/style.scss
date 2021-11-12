@@ -120,7 +120,7 @@ $vw-viewport: 1440;
     }
 
     span {
-      font-size: 1.2vw;
+      font-size: get-vw(16px);
 
       @media (max-width: 768px) {
         font-size: 4vw;
