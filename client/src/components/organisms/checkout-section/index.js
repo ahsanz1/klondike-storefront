@@ -260,7 +260,7 @@ const Checkoutsection = () => {
     setIsModalVisible(false)
   }
 
-  function error () {
+  const error = () => {
     setIsLoading(false)
     Modal.error({
       title: 'Error! Please try again.',
@@ -310,7 +310,7 @@ const Checkoutsection = () => {
             <img src="static\images\klondike.png" alt="pic" />
           </Col>
         </Row>
-        <Row className="checkout-padding">
+        <Row className="checkout-heading-padding">
           <Col>
             <div className="page-title">
               <LeftOutlined
