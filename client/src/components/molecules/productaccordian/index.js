@@ -252,7 +252,9 @@ const ProductAccordion = ({ question }) => {
                   </div>
                   <div>
                     <p className="products-sizes">Total Price</p>
-                    <p className="products-sizes detail">${totalPrice}</p>
+                    <p className="products-sizes detail">
+                      $ {parseFloat(totalPrice).toFixed(2)}
+                    </p>
                   </div>
                 </div>
                 <Button
