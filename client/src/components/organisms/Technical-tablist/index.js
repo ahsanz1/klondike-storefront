@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import './style.scss'
@@ -12,12 +12,8 @@ const Techtabllist = ({
   clickCategoryHandler,
   subItem,
   className,
+  subItemName,
 }) => {
-  const [product, setProduct] = useState('')
-  console.log('props:', categories)
-  const productClickHandler = productName => {
-    setProduct(productName)
-  }
   console.log('subitem', subItem)
   console.log('check categories:', categories)
   return (
@@ -50,21 +46,24 @@ const Techtabllist = ({
                     )}
                     {item.subItem &&
                       item.subItem.hits &&
-                      item.subItem.hits.map((item, index) => (
-                        <div key={index}>
-                          <Link
-                            onClick={() => productClickHandler(item.title)}
-                            className={
-                              item.title === product && 'active-product'
-                            }
-                            to={item.links}
-                          >
-                            <ul>
-                              <li>{item.title}</li>
-                            </ul>
-                          </Link>
-                        </div>
-                      ))}
+                      item.subItem.hits.map((item, index) => {
+                        console.log('item', item)
+                        return (
+                          <div key={index}>
+                            <Link
+                              className={
+                                item.title === subItemName && 'active-product'
+                              }
+                              // onClick={() => productClickHandler(item.title)}
+                              to={item.links}
+                            >
+                              <ul>
+                                <li>{item.title}</li>
+                              </ul>
+                            </Link>
+                          </div>
+                        )
+                      })}
                   </div>
                 )}
               </Label>
@@ -81,6 +80,7 @@ Techtabllist.DefaultProps = {
   clickCategoryHandler: {},
   subItem: [],
   className: '',
+  subItemName: '',
 }
 
 Techtabllist.propTypes = {
@@ -90,5 +90,6 @@ Techtabllist.propTypes = {
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
   className: PropTypes.string,
+  subItemName: PropTypes.string,
 }
 export default Techtabllist
