@@ -35,6 +35,9 @@ $vw-viewport: 1440;
   }
 
   .checkout-back-icon {
+    width: 0.83vw;
+    height: 1.66vw;
+    margin-right: 0.97vw;
     font-size: 2.3vw !important;
 
     @media (max-width: 768px) {
@@ -158,7 +161,7 @@ $vw-viewport: 1440;
     padding: 1vw 1vw 0 7.43vw;
 
     .radio-btn {
-      font-size: 1vw !important;
+      font-size: 1.1805vw !important;
 
       @media (max-width: 768px) {
         font-size: 4vw !important;
