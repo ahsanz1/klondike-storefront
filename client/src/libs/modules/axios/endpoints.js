@@ -7,6 +7,8 @@ const ENDPOINTS = {
     getUser: userId => `/user/${userId}`,
     getCart: `/api-cart/cart`,
     getCartPayment: cartId => `/api-payment/payment/${cartId}`,
+    getPickupPoints: itemId =>
+      `/api-inventory/inventory/pickup-point/${itemId}`,
     getNavigation:
       process.env.NAVIGATION_DATA_API ||
       'https://abchome-config.s3.amazonaws.com/navigationqa.json',
