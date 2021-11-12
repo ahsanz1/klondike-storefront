@@ -148,7 +148,7 @@
 
   .cart-dropdown-items {
     width: 100%;
-    max-height: get-vw(205px);
+    max-height: 53vh;
     padding-right: get-vw(24px);
     overflow: scroll;
     box-shadow: inset 0 -10px 15px -13px black;
@@ -183,6 +183,7 @@
     @media screen and (max-width: 768px) {
       position: fixed;
       // bottom: 8.26vw;
+      bottom: 0;
       align-items: flex-end;
       justify-content: flex-start;
       width: 100%;
