@@ -362,18 +362,24 @@
     font-weight: bold;
     line-height: get-vw(20px);
 
-    .price-list-text {
-      color: #f1a900;
-      text-decoration: underline;
-    }
-
     @media screen and (max-width: 768px) {
-      display: flex;
+      // display: flex;
       position: static;
       justify-content: end;
       margin-right: 17px;
       font-size: 14px;
       line-height: 20px;
+    }
+
+    .price-list-text {
+      display: block;
+      color: #f1a900;
+      text-align: right;
+      text-decoration: underline;
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      justify-content: end;
     }
   }
 }
