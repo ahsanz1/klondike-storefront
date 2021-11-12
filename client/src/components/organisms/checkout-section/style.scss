@@ -9,13 +9,20 @@ $vw-viewport: 1440;
 }
 
 .checkout-wrapper {
-  padding-bottom: 30vw;
+  padding-bottom: 12vw;
   color: #fff;
   font-family: $OpenSans;
 
   .checkoutHeader {
-    padding: 1vw;
+    padding-top: 1.25vw;
+    padding-bottom: 0.97vw;
     background-color: #002a3a;
+
+    img {
+      width: 14.652vw;
+      height: 5.486vw;
+      padding-right: 8.4vw;
+    }
   }
 
   .page-title {
@@ -34,13 +41,13 @@ $vw-viewport: 1440;
   .checkout-title {
     color: #eceae9;
     font-family: $OpenSans;
-    font-size: get-vw(28px);
+    font-size: get-vw(32px);
     font-style: normal;
     font-weight: bold;
     text-transform: uppercase;
 
     @media (max-width: 768px) {
-      font-size: 4vw;
+      font-size: 4.266vw;
     }
   }
 
@@ -68,7 +75,7 @@ $vw-viewport: 1440;
   }
 
   .checkout-summary {
-    padding: 1vw 4vw;
+    padding: 1vw 4vw 1vw 8.88vw;
     color: #fff;
 
     .summary-title {
