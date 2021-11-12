@@ -51,79 +51,20 @@ $vw-viewport: 1440;
     }
   }
 
-  .checkout-info {
-    width: 100%;
-    margin: 1vw;
-    padding: 2vw;
-    background-color: #002a3a;
-    word-break: break-all;
-
-    @media (max-width: 768px) {
-      padding: 4vw;
-    }
-
-    span {
-      font-size: 1.2vw;
-
-      @media (max-width: 768px) {
-        font-size: 4vw;
-      }
-    }
-
-    .checkout-po {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      input {
-        width: 25%;
-        font-size: get-vw(14px);
-
-        @media (max-width: 768px) {
-          width: 40%;
-          font-size: 4vw;
-        }
-      }
-    }
-
-    .change-button {
-      height: 2.5vw !important;
-      padding: 0 1vw 0 1vw;
-      border: 0.15vw solid #f2a900 !important;
-      border-radius: get-vw(5px);
-      font-size: 1.2vw !important;
-      // border-color: #f2a900 !important;
-      @media (max-width: 768px) {
-        height: 6vw !important;
-        padding: 0 2vw 0 2vw;
-        border-radius: get-vw(5px);
-        font-size: 4vw !important;
-      }
-    }
-
-    .change-button:hover {
-      color: #fff !important;
-    }
-
-    .change-button:focus {
-      color: #fff !important;
-    }
-  }
-
   .checkout-btn {
     width: 100%;
     margin: 3vw 1vw;
 
     .placeorder-btn {
       box-sizing: border-box;
-      width: 100%;
-      height: 4vw;
+      width: 55vw;
+      height: 4.444vw;
       margin-top: 1vw;
-      border: 1px solid #f1a900;
+      border: 1px solid #f2a900;
       border-radius: 5px;
-      background-color: #f1a900;
+      background-color: #f2a900;
       color: #fff;
-      font-size: 1.5vw;
+      font-size: 1.597vw;
       font-weight: 700;
 
       @media (max-width: 768px) {
@@ -133,17 +74,17 @@ $vw-viewport: 1440;
     }
   }
 
-  .checkout-padding {
-    padding: 1vw 1vw 0 4vw;
+  // .checkout-padding {
+  //   padding: 1vw 1vw 0 4vw;
 
-    .radio-btn {
-      font-size: 1vw !important;
+  //   .radio-btn {
+  //     font-size: 1.1805vw !important;
 
-      @media (max-width: 768px) {
-        font-size: 4vw !important;
-      }
-    }
-  }
+  //     @media (max-width: 768px) {
+  //       font-size: 4vw !important;
+  //     }
+  //   }
+  // }
 
   .checkout-heading-padding {
     padding: 2.43vw 1vw 0 4vw;
@@ -192,7 +133,7 @@ $vw-viewport: 1440;
     }
 
     .total-price {
-      font-size: 1.5vw;
+      font-size: 1.666vw;
 
       @media (max-width: 768px) {
         font-size: 5vw;
@@ -201,13 +142,174 @@ $vw-viewport: 1440;
 
     .total-amount {
       color: #f2a900;
-      font-size: 1.5vw;
+      font-size: 1.666vw;
 
       @media (max-width: 768px) {
         font-size: 5vw;
       }
     }
   }
+
+  .checkout-padding {
+    padding: 1vw 1vw 0 4vw;
+
+    .radio-btn {
+      font-size: 1vw !important;
+
+      @media (max-width: 768px) {
+        font-size: 4vw !important;
+      }
+    }
+
+    .change-button {
+      height: 2.5vw !important;
+      padding: 0 1vw 0 1vw;
+      border: 0.15vw solid #f2a900 !important;
+      border-radius: get-vw(5px);
+      font-size: 1.2vw !important;
+      // border-color: #f2a900 !important;
+      @media (max-width: 768px) {
+        height: 6vw !important;
+        padding: 0 2vw 0 2vw;
+        border-radius: get-vw(5px);
+        font-size: 4vw !important;
+      }
+
+      &:hover {
+        color: #fff !important;
+      }
+
+      &:focus {
+        color: #fff !important;
+      }
+    }
+
+    .checkout-info {
+      width: 55.13vw;
+      margin: 1vw;
+      padding: 2vw;
+      background-color: #002a3a;
+      word-break: break-all;
+
+      @media (max-width: 768px) {
+        padding: 4vw;
+      }
+
+      span {
+        font-size: 1.2vw;
+
+        @media (max-width: 768px) {
+          font-size: 4vw;
+        }
+      }
+
+      .checkout-po {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          width: 25%;
+          font-size: get-vw(14px);
+
+          @media (max-width: 768px) {
+            width: 40%;
+            font-size: 4vw;
+          }
+        }
+      }
+
+      // .change-button:hover {
+      //   color: #fff !important;
+      // }
+
+      // .change-button:focus {
+      //   color: #fff !important;
+      // }
+    }
+
+    .checkout-info-second {
+      width: 55.13vw;
+      margin: 1vw;
+      padding-top: get-vw(11px);
+      padding-right: 2vw;
+      padding-bottom: get-vw(11px);
+      padding-left: 2vw;
+      background-color: #002a3a;
+      word-break: break-all;
+
+      @media (max-width: 768px) {
+        padding: 4vw;
+      }
+
+      .change-button {
+        height: 2.5vw !important;
+        padding: 0 1vw 0 1vw;
+        border: 0.15vw solid #f2a900 !important;
+        border-radius: get-vw(5px);
+        font-size: 1.2vw !important;
+        // border-color: #f2a900 !important;
+        @media (max-width: 768px) {
+          height: 6vw !important;
+          padding: 0 2vw 0 2vw;
+          border-radius: get-vw(5px);
+          font-size: 4vw !important;
+        }
+
+        &:hover {
+          color: #fff !important;
+        }
+
+        &:focus {
+          color: #fff !important;
+        }
+      }
+
+      span {
+        font-size: 1.2vw;
+
+        @media (max-width: 768px) {
+          font-size: 4vw;
+        }
+      }
+
+      .checkout-po {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          width: 25%;
+          font-size: get-vw(14px);
+
+          @media (max-width: 768px) {
+            width: 40%;
+            font-size: 4vw;
+          }
+        }
+      }
+
+      // .change-button:hover {
+      //   color: #fff !important;
+      // }
+
+      // .change-button:focus {
+      //   color: #fff !important;
+      // }
+    }
+  }
+
+  // .checkout-heading-padding {
+  //   padding: 2.43vw 1vw 0 4vw;
+
+  //   .radio-btn {
+  //     font-size: 1vw !important;
+
+  //     @media (max-width: 768px) {
+  //       font-size: 4vw !important;
+  //     }
+  //   }
+  // }
 }
 
 .radio-group {
