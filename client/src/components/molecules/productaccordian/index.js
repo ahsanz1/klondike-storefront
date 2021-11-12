@@ -20,6 +20,7 @@ const ProductAccordion = ({ question }) => {
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
   let [showAddToCart, setShowAddToCart] = useState(false)
+  let [itemId, setItemId] = useState(0)
   const [size] = useWindowSize()
 
   const [itemdata, setItemData] = useState([])
@@ -108,8 +109,9 @@ const ProductAccordion = ({ question }) => {
     setQty(value)
     setTotalPrice(data.price * value)
   }
-  const handleAddToCart = () => {
+  const handleAddToCart = i => {
     setShowAddToCart(!showAddToCart)
+    setItemId(i)
   }
   // const showModal = () => {
   //   setIsModalVisible(true)
@@ -150,7 +152,7 @@ const ProductAccordion = ({ question }) => {
                 <Row
                   className="table-content flex"
                   key={i}
-                  onClick={handleAddToCart}
+                  onClick={i => handleAddToCart(data.itemId)}
                 >
                   <Col lg={8} className="custom-width">
                     <p className="text-setting-table">
@@ -176,7 +178,7 @@ const ProductAccordion = ({ question }) => {
                       ${data['Order Price']}
                     </p>
                   </Col>
-                  {showAddToCart && (
+                  {showAddToCart && itemId === data.itemId && (
                     <>
                       {/* <div className="hover-details"> */}
                       <div className="">
