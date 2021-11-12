@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
@@ -9,6 +9,9 @@ import Link from 'components/atoms/link'
 import './style.scss'
 
 const CartPopUP = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
   const {
     //  cartItems,
     cartData,
@@ -49,8 +52,7 @@ const CartPopUP = () => {
     closePopUpModal()
     showModal()
   }
-  console.log({ cartData })
-  console.log({ pdpProductData })
+
   return (
     cartPopupModal && (
       // size > 768 &&

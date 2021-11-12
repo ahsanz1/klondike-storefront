@@ -1,4 +1,10 @@
 .xpm-manager {
   width: 100%;
   background: #013a4e;
+
+  &.checkout-xpm {
+    @media (max-width: 768px) {
+      height: 100vh;
+    }
+  }
 }
