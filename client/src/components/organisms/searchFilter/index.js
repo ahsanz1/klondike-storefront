@@ -60,9 +60,12 @@ const SearchFilter = ({ searchHeading }) => {
         arrSize.push(objSize)
         arrUnit.push(objUnit)
       })
-    setProduct(arrProduct)
-    setUnit(arrSize)
-    setSize(arrUnit)
+
+    if (isCalled !== true) {
+      setProduct(arrProduct)
+      setUnit(arrSize)
+      setSize(arrUnit)
+    }
   }
 
   const changePN = async e => {
