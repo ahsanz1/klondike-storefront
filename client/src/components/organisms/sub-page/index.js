@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import Techtabllist from '../Technical-tablist'
 import './style.scss'
 const SubItem = ({ ActiveSubItem, datasubpage }) => {
-  console.log('sub', datasubpage)
+  console.log('sub', ActiveSubItem)
   return (
     <div className="sub-pages-container">
       <Techtabllist
         className="sub-pages__techtablist"
         itemName="OEM Approvals"
-        subItemName={ActiveSubItem ? ActiveSubItem.name : ''}
+        subItemName={ActiveSubItem}
       />
       <div className="sub-pages__subpages">
         {datasubpage.map((down, i) => (
