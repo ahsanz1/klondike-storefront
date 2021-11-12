@@ -86,8 +86,13 @@ $vw-viewport: 1440;
 
   .table-button {
     position: absolute;
-    top: -1%;
-    right: -12%;
+    top: 15px;
+    right: -130px;
+
+    @media (min-width: 1600px) {
+      position: absolute;
+      top: 5px;
+    }
   }
 
   .hover-button {
