@@ -359,7 +359,7 @@ const Checkoutsection = () => {
               <div className="checkout-info">
                 <span>{personalInfo?.email}</span>
               </div>
-              <div className="checkout-info">
+              <div className="checkout-info-second">
                 <div className="checkout-po">
                   <span>
                     <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
