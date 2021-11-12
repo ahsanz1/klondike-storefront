@@ -40,14 +40,14 @@ const Faqs = ({
     setFaqs([...newFaqs])
   }
   return (
-    <>
+    <div className="main-pricelist">
       <div>
         <Heading className="accordion-heading desktop-heading">
           {desktopHeading}
         </Heading>
-        {/* <Heading className="accordion-heading mobile-heading">
+        <Heading className="accordion-heading mobile-heading">
           {mobileHeading}
-        </Heading> */}
+        </Heading>
       </div>
       <div color="#fff" className="accordion-container">
         <p
@@ -90,7 +90,7 @@ const Faqs = ({
           </Link>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
