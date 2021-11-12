@@ -95,6 +95,34 @@ export const getAllShippingMethods = async (count = 1) => {
   return response
 }
 
+export const retreivePickupPoints = async (itemId, count = 1) => {
+  let response
+  try {
+    response = await axiosObj.common.get(
+      ENDPOINTS.GET.getPickupPoints(itemId),
+      {
+        headers: {
+          ...HEADER.common,
+        },
+      },
+    )
+  } catch (e) {
+    if (e.request.response && e.response.status) {
+      const statusCode = e.response.status
+      if (statusCode === 500 && count < 4) {
+        return retreivePickupPoints(itemId, count + 1)
+      }
+    }
+    response = {
+      error: true,
+      data: null,
+      message: e.response.data.message,
+      code: e.response.data.code,
+    }
+  }
+  return response
+}
+
 export const createShipTo = async (cartId, payload, count = 1) => {
   let response
   try {

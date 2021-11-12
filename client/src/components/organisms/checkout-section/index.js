@@ -24,9 +24,11 @@ import {
   // getAllShippingMethods,
   createShipTo,
   checkout,
+  retreivePickupPoints,
 } from 'libs/services/api/checkout'
-import { LeftOutlined } from '@ant-design/icons'
+// import { LeftOutlined } from '@ant-design/icons'
 // import AccordionComponent from 'components/molecules/accordionComponent'
+// import { Link } from 'react-router-dom'
 
 const Checkoutsection = () => {
   // let cart
@@ -49,6 +51,10 @@ const Checkoutsection = () => {
   const [isCartLoading, setIsCartLoading] = useState(true)
   console.log({ cartPayload })
   const [inputField, setInputField] = useState(false)
+  const [cartItemIds, setCartItemIds] = useState([])
+  const [availableLocations, setAvaiableLocations] = useState([])
+  console.log({ cartItemIds })
+  console.log({ availableLocations })
 
   const address = {
     street1: '1510 Wall Street NW ',
@@ -93,10 +99,33 @@ const Checkoutsection = () => {
           // totalItems: res?.data?.quantity,
           // totalPrice: '12,000',
         }
+        let tempArr = getCartItemIds(res?.data?.items)
+        await setCartItemIds(tempArr)
         await setCartPayloadState(data)
+        if (tempArr?.length) {
+          let pickUpPoints = retreivePickupPoints(1)
+          pickUpPoints
+            .then(res => {
+              setAvaiableLocations(res?.data?.locations)
+            })
+            .catch(err => console.log({ err }))
+          console.log({ pickUpPoints })
+        }
         setIsCartLoading(false)
       } else navigate('/plp-page')
     }
+  }
+
+  const getCartItemIds = (items = []) => {
+    let newArr = []
+    items?.length &&
+      items?.map(item => {
+        newArr.push({
+          itemId: item?.itemId,
+        })
+      })
+    console.log({ newArr })
+    return newArr
   }
 
   useEffect(() => {
@@ -169,9 +198,9 @@ const Checkoutsection = () => {
           },
           paymentMethod: 'PURCHASE_ORDER',
           paymentKind: 'PURCHASE_ORDER',
-          amount: Math.floor(
-            shipToResponse?.data?.totalAmount?.amount + shipMethodCost,
-          ),
+          amount:
+            parseFloat(shipToResponse?.data?.totalAmount?.amount) +
+            shipMethodCost,
           currency: 'USD',
           conversion: 1,
           billToAddress: address,
@@ -187,9 +216,9 @@ const Checkoutsection = () => {
     if (finalResponse?.data?.checkoutComplete) {
       setCheckoutData({
         orderId: shipToResponse?.data?.orderId,
-        totalAmount: Math.floor(
-          shipToResponse?.data?.totalAmount?.amount + shipMethodCost,
-        ),
+        totalAmount:
+          parseFloat(shipToResponse?.data?.totalAmount?.amount) +
+          shipMethodCost,
       })
       setIsLoading(false)
       navigate('checkout-success')
@@ -313,10 +342,14 @@ const Checkoutsection = () => {
         <Row className="checkout-heading-padding">
           <Col>
             <div className="page-title">
-              <LeftOutlined
-                className="checkout-back-icon"
-                onClick={() => navigate('/plp-page')}
-              />
+              {/* <Link to="/plp"> */}
+              <a href="/plp-page">
+                <img
+                  className="checkout-back-icon"
+                  src="/static/images/arrowleft.png"
+                  alt="pic"
+                />
+              </a>
               <h1 className="checkout-title"> Checkout</h1>
             </div>
           </Col>
@@ -442,7 +475,7 @@ const Checkoutsection = () => {
               <div className="item">
                 <span className="total-price">Total Amount</span>
                 <span className="total-amount">
-                  {`$${Math.floor(cartPayload?.itemsTotal + 39).toFixed(2)}`}
+                  {`$${(parseFloat(cartPayload?.itemsTotal) + 39).toFixed(2)}`}
                 </span>
               </div>
             </Col>
