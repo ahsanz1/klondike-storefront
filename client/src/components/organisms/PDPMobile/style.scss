@@ -7,9 +7,11 @@
   margin: auto;
   padding: 10px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 768px) {
     visibility: visible;
+    position: unset;
     top: 150px;
+    padding-top: 150px;
   }
 }
 

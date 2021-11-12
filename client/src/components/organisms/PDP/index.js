@@ -21,7 +21,7 @@ import {
 import { ShareAltOutlined } from '@ant-design/icons'
 import { productListing } from 'libs/utils/gtm'
 import PDPMobile from '../PDPMobile'
-// import Link from 'components/atoms/link'
+import Link from 'components/atoms/link'
 
 import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
@@ -40,11 +40,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const { search } = useLocation()
   const { sku } = queryString.parse(search)
+  const [itemSku, setItemSku] = useState(sku)
 
   const [productData, setProductData] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [packagedOrder, setPackagedOrder] = useState(true)
-  // const [isPdpLoading, setIsPdpLoading] = useState(true)
+  const [isPdpLoading, setIsPdpLoading] = useState(true)
   const [addingToCart, setAddingToCart] = useState(false)
   const [items, setItems] = useState({})
 
@@ -52,7 +53,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [value, setValue] = React.useState(1)
   const [btnDisabled, setButtonDisabled] = useState(true)
 
-  const { setStep, plpredirect } = useContext(AppContext)
+  const { setStep, plpredirect, setPlpRedirect } = useContext(AppContext)
   const [desc, setDesc] = useState('')
   const [subItem, setSubItem] = useState({})
   const [contextPlp, setContextPlp] = useState(plpredirect)
@@ -61,31 +62,36 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   console.log({ loading })
   console.log({ products })
   console.log({ desc })
+  console.log('plpredirect', plpredirect)
 
   useEffect(() => {
     setStep(1)
   }, [])
+
   useEffect(() => {
     setContextPlp(plpredirect)
   }, [plpredirect])
 
-  useEffect(() => {
-    console.log('category changed')
-    const data = []
-    if (!data) {
-      perfomeAlgoliaSearch(contextPlp, 0)
-    } else {
-      setProducts([])
-    }
-  }, [contextPlp])
+  // useEffect(() => {
+  //   console.log('category changed')
+  //   const data = []
+  //   if (!data) {
+  //     perfomeAlgoliaSearch(contextPlp, 0)
+  //   } else {
+  //     setProducts([])
+  //   }
+  // }, [contextPlp])
 
   const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
     try {
       setLoading(true)
       const results = await fetchCategory(category, pageNumber)
+      console.log({ results })
       let serverResults = (results || { hits: [] }).hits
-      serverResults.sort((a, b) =>
-        a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
+      serverResults.sort(
+        (a, b) => (a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0),
+        setPlpRedirect(category),
+        console.log('category', category),
       )
       if (pageNumber === 0) {
         productListing(results.nbHits, category)
@@ -101,8 +107,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   const clickCategoryHandler = (name, desc) => {
     // setItemName(name)
+    console.log('name', name)
     setContextPlp(name)
+    setPlpRedirect(name)
     setDesc(desc)
+    perfomeAlgoliaSearch(name, 0)
   }
   const subItemHandler = list => {
     console.log('list check:', list)
@@ -119,51 +128,54 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   }
 
   useEffect(() => {
-    getProductBySKU(sku || 'AUTO000', 1)
+    setIsPdpLoading(true)
+    getProductBySKU(itemSku || 'AUTO000', 1)
       .then(res => {
         let newObj = {
           ...res?.response?.data?.product,
         }
         setProductData(newObj)
-        // setIsPdpLoading(false)
+        setIsPdpLoading(false)
         mapAttributes(res?.response?.data?.items)
         setPdpProductData(res?.response?.data?.product)
       })
       .catch(e => {
-        // setIsPdpLoading(false)
+        setIsPdpLoading(false)
         console.log({ e })
       })
     if (user?.accessToken) {
       setIsLoggedIn(true)
     } else setIsLoggedIn(false)
-  }, [])
+  }, [itemSku])
 
   const mapAttributes = items => {
     let newItems = []
-    items?.map(item => {
-      let newObj = {}
-      item?.attributes?.map(att => {
-        newObj = {
-          ...newObj,
-          [att?.name]: att?.value,
-        }
+    if (items?.length > 0) {
+      items?.map(item => {
+        let newObj = {}
+        item?.attributes?.map(att => {
+          newObj = {
+            ...newObj,
+            [att?.name]: att?.value,
+          }
+        })
+        newItems?.push({
+          ...item,
+          mappedAttributes: newObj,
+          totalPrice: 0.0,
+        })
       })
-      newItems?.push({
-        ...item,
-        mappedAttributes: newObj,
-        totalPrice: 0.0,
+      let packagedOrderItems = newItems?.filter(
+        item => item?.mappedAttributes['Packaged Order'],
+      )
+      let bulkOrderItem = newItems?.filter(
+        item => !item?.mappedAttributes['Packaged Order'],
+      )
+      setItems({
+        packagedOrderItems: packagedOrderItems,
+        bulkOrderItem: bulkOrderItem,
       })
-    })
-    let packagedOrderItems = newItems?.filter(
-      item => item?.mappedAttributes['Packaged Order'],
-    )
-    let bulkOrderItem = newItems?.filter(
-      item => !item?.mappedAttributes['Packaged Order'],
-    )
-    setItems({
-      packagedOrderItems: packagedOrderItems,
-      bulkOrderItem: bulkOrderItem,
-    })
+    } else setItems({})
   }
 
   const getTotalPackagedOrderPrice = newArray => {
@@ -279,6 +291,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     return newData
   }
 
+  const subItemClickHandler = item => {
+    setItemSku(item?.sku)
+  }
+
   const onSubmit = e => {
     setAddingToCart(true)
     console.log(productData?.requestArray, 'pkg')
@@ -315,12 +331,26 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               className="breadCrumbStyle"
               separator={<span style={{ color: '#FFFFFF' }}>/</span>}
             >
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>Our Products</Breadcrumb.Item>
-              <Breadcrumb.Item>{productData?.category}</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/" style={{ color: '#FFFFFF' }}>
+                  Home
+                </Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/PCP" style={{ color: '#FFFFFF' }}>
+                  Our Products
+                </Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                  {productData?.category}
+                </Link>
+              </Breadcrumb.Item>
               {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
               <Breadcrumb.Item className="notranslate">
-                {productData?.title}
+                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                  {productData?.title}
+                </Link>
               </Breadcrumb.Item>
             </Breadcrumb>
           </Col>
@@ -333,9 +363,23 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               clickCategoryHandler={clickCategoryHandler}
               subItem={subItem}
               width="100%"
+              subItemClickHandler={subItemClickHandler}
             />
           </Col>
-          {Object.keys(productData).length ? (
+          {console.log({ productData })}
+          {isPdpLoading ? (
+            <div style={{ margin: 'auto' }}>
+              <h1 style={{ color: 'gray' }}>
+                {!isPdpLoading ? 'No Data Found for this Item' : 'Loading...'}
+              </h1>
+            </div>
+          ) : Object.keys(items).length === 0 ? (
+            <div style={{ margin: 'auto' }}>
+              <h1 style={{ color: 'gray' }}>
+                No Attributes Found for this Item
+              </h1>
+            </div>
+          ) : (
             <Col
               style={{
                 display: 'flex',
@@ -641,10 +685,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               </div>
               <PDPInformation pdpdatasheet={pdpdatasheet} />
             </Col>
-          ) : (
-            <div style={{ margin: 'auto' }}>
-              <h1 style={{ color: 'gray' }}>No Data Found for this Item</h1>
-            </div>
           )}
         </Row>
         <CartDropdown productData={productData} />

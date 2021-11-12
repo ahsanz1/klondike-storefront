@@ -109,6 +109,9 @@ const SearchFilter = ({ searchHeading }) => {
     let data = holdSearch
     setSearchFilter(data)
     setFilterResult(data)
+    setUOM('UNIT/CASE')
+    setPN('PART NUMBER')
+    setPS('SIZE')
 
     console.log('products', product)
   }
@@ -180,7 +183,7 @@ const SearchFilter = ({ searchHeading }) => {
           items={unit}
           className="third-drop"
         />
-        <button className="btn btn-primary" onClick={e => resetFilter(e)}>
+        <button className="btn reset-button" onClick={e => resetFilter(e)}>
           Reset Filter
         </button>
       </div>

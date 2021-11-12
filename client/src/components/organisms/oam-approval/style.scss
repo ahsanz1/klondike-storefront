@@ -87,6 +87,7 @@ $vw-viewport: 1440;
 
       .img-oam {
         > .c-image {
+          width: 15.69vw;
           max-width: none;
 
           @media (max-width: 768px) {
@@ -101,7 +102,6 @@ $vw-viewport: 1440;
         padding-right: 2.63vw;
         opacity: 0.9;
         color: #fff;
-        font-family: $OpenSans;
         font-size: 0.97vw;
         font-style: normal;
         font-weight: normal;
@@ -110,15 +110,19 @@ $vw-viewport: 1440;
 
         @media (max-width: 768px) {
           padding-top: 1.6vw;
-          font-family: $OpenSans;
-          font-size: 3.3vw;
+          padding-right: 40px;
+          font-size: 14px;
           font-style: normal;
           font-weight: normal;
-          line-height: 140%;
+          line-height: 19.6px;
 
           /* or 20px */
 
           font-feature-settings: 'pnum' on, 'lnum' on;
+        }
+
+        p {
+          margin-bottom: 0.7vw;
         }
       }
 
@@ -132,7 +136,6 @@ $vw-viewport: 1440;
         .heading-oam {
           margin-bottom: 0.21vw;
           color: #f1a900;
-          font-family: $OpenSans;
           font-size: 1.67vw;
           font-style: normal;
           font-weight: 600;

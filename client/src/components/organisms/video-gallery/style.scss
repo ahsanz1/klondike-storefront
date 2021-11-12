@@ -74,7 +74,7 @@
         }
 
         .big-video-frame {
-          width: get-vw(525px);
+          width: get-vw(525px) !important;
           height: get-vw(290px);
 
           @media (max-width: 768px) {
@@ -119,11 +119,11 @@
         }
 
         .small-video-frame {
-          width: get-vw(271px);
+          width: get-vw(271px) !important;
           height: get-vw(153px);
 
           @media (max-width: 768px) {
-            width: 271px;
+            width: 271px !important;
             height: 153px;
           }
         }

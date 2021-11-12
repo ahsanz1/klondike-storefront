@@ -18,6 +18,7 @@ $vw-viewport: 1440;
     // width: get-vw(405px);
     // width: 480px;
     height: auto;
+    // min-height: 114px;
     margin-bottom: 0;
     color: #fff;
     font-family: $OpenSans;
@@ -39,6 +40,20 @@ $vw-viewport: 1440;
     transition: all 0.3s;
     font-size: get-vw(16px);
     line-height: get-vw(23px);
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: rgba(230, 234, 236, 0.44);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #f1a900;
+    }
 
     @media (max-width: 768px) {
       // position: relative;
@@ -95,6 +110,7 @@ $vw-viewport: 1440;
   }
 
   .accordion-show {
+    max-height: 154px;
     margin: 0 0 0;
   }
 

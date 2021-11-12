@@ -46,7 +46,18 @@ const MobileTabListTech = ({
                     }
                   >
                     <Link className="catagory-link" to={item.categoryLink}>
-                      {item.categoryName}
+                      {item.categoryName === 'OEM Approvals' ? (
+                        <>
+                          <span>OEM Approvals </span>
+                          <img
+                            className="down-arrow-mobile"
+                            src="/static/images/arrowdown.png"
+                            alt="pic"
+                          />
+                        </>
+                      ) : (
+                        item.categoryName
+                      )}
                     </Link>
 
                     {item.subItem && itemName === item.categoryName && (

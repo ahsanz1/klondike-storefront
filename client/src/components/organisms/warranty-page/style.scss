@@ -3,13 +3,21 @@
 .warranty-page-wrapper {
   .warranty-page-wrap {
     padding-top: get-vw(66px);
+    padding-right: get-vw(38px);
     padding-bottom: get-vw(78px);
     padding-left: get-vw(69px);
     font-family: $OpenSans;
 
+    @media only screen and (max-width: 500px) {
+      padding-top: 11.2vw;
+      padding-bottom: 0;
+      padding-left: 8vw;
+      font-size: 6.4vw;
+    }
+
     .warranty-title {
       margin: 0%;
-      margin-bottom: get-vw(17px);
+      margin-bottom: get-vw(14px);
       color: #f1a900;
       font-size: get-vw(36px);
       font-style: normal;
@@ -40,8 +48,16 @@
           @media (max-width: 768px) {
             width: 62.93vw;
             height: 65.06vw;
-            margin-top: 3.73vw;
+            margin-top: 6.66vw;
           }
+        }
+      }
+
+      p {
+        width: 41.04vw;
+
+        @media (max-width: 768px) {
+          width: 76.8vw;
         }
       }
 

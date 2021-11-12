@@ -15,12 +15,13 @@
 
   @media screen and (max-width: 768px) {
     display: inline;
+    margin-left: 8px;
   }
 
   li {
     display: inline-flex;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 5px;
 
     a {
       color: rgb(5, 5, 5);
@@ -36,12 +37,12 @@
 
 @media (max-width: 1014px) {
   .footer-bottom-menu {
-    font-size: 16px;
+    font-size: 10px;
   }
 }
 
-@media (max-width: 875px) {
-  .footer-bottom-menu {
-    display: none;
-  }
-}
+// @media (max-width: 875px) {
+//   .footer-bottom-menu {
+//     display: none;
+//   }
+// }

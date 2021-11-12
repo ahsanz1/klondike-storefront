@@ -6,7 +6,6 @@ export const ENDPOINTS = {
   FORGOT_PASSWORD: `${apiDomain}/api-commerceIdentity/auth/local/reset/token`,
   ADD_TO_CART: `${apiDomain}/api-cart/cart/item`,
   GET_CART: `${apiDomain}/api-cart/cart`,
-  GET_ITEMS_BY_SKUS: `${apiDomain}/api-item/item/sku`,
   GET_STOCK_BY_ITEMID: `${apiDomain}/api-inventory/inventory`,
   UPDATE_CART_ITEMS: cardId => `${apiDomain}/api-cart/cart/${cardId}/items`,
   MERGE_CART: `${apiDomain}/api-cart/cart/merge`,
@@ -40,4 +39,5 @@ export const ENDPOINTS = {
   ALL_ADDRESSES: `${apiDomain}/api-commerceIdentity/user`,
   GET_ORDER: (offset, limit) =>
     `${apiDomain}/api-order/orders/user?offset=${offset}&limit=${limit}`,
+  GET_ITEMS_BY_SKU: `${apiDomain}/api-item/item/sku`,
 }

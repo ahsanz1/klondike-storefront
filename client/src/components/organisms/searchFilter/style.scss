@@ -6,6 +6,21 @@
     padding-top: 10.66vw;
   }
 
+  .reset-button {
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #f1a900;
+    color: #fff;
+    font-weight: bold;
+
+    @media (max-width: 768px) {
+      position: relative;
+      top: 10px;
+      right: 10px;
+    }
+  }
+
   .products {
     margin: 0 8.3vw;
 
@@ -119,8 +134,14 @@
   }
 
   .filter-dropdown {
+    display: flex;
+    align-items: center;
     margin-bottom: 9.4vw;
     margin-left: 8.3vw;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
 
     .first-drop {
       width: 10.4vw !important;

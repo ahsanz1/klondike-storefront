@@ -1,5 +1,5 @@
 import './style.scss'
-import React from 'react'
+import React, { useContext } from 'react'
 import IndustryAppTablist from 'components/molecules/industry-applications-tablist'
 import IndustryAppMobileTabList from 'components/molecules/industry-applications-mobile-tablist'
 import Label from 'components/atoms/label'
@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import { useWindowSize } from 'libs/custom-hooks'
 import Button from 'components/atoms/button'
 import Link from 'components/atoms/link'
+import { AppContext } from 'libs/context'
 
 const AgriculturePage = ({
   title,
@@ -17,11 +18,12 @@ const AgriculturePage = ({
   exploreCatagory,
   activeTablist,
 }) => {
+  const { setPlpRedirect } = useContext(AppContext)
   const [readMore, setReadMore] = React.useState(false)
   const size = useWindowSize()
   const renderAgriculturePage = () => {
     const more = () => {
-      setReadMore(true)
+      setReadMore(!readMore)
     }
     return (
       <div className="agricultural-wrapper">
@@ -36,16 +38,19 @@ const AgriculturePage = ({
             ></p>
 
             <div className="overview-detail-section-mobile">
-              {readMore
-                ? paragraph.slice(3, paragraph.length - 5)
-                : paragraph.slice(3, 200) + '...'}
-              {!readMore && (
-                <span className="read-more">
-                  <Button href className="button" onClick={more}>
-                    Read More
-                  </Button>
-                </span>
-              )}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: readMore
+                    ? paragraph.slice(3, paragraph.length - 5)
+                    : paragraph.slice(3, 500) + '...',
+                }}
+              ></p>
+
+              <span className={readMore ? 'read-less' : 'read-more'}>
+                <Button href className="button" onClick={more}>
+                  {readMore ? 'Read Less' : 'Read More'}
+                </Button>
+              </span>
             </div>
             <div className="featured-products">
               <Label className="feat-title">{subHeading}</Label>
@@ -76,10 +81,14 @@ const AgriculturePage = ({
                   return (
                     <Link
                       key={i}
-                      // to={`/${item.catagoryRedirect}`}
+                      to={`${item.catagoryRedirect}`}
                       className="explore-link"
+                      onClick={() => setPlpRedirect(item.catagory)}
                     >
                       {item.catagory}
+                      {/* <Button onClick={() => setPlpRedirect(item.catagory)}>
+                        {item.catagory}
+                      </Button> */}
                     </Link>
                   )
                 })}

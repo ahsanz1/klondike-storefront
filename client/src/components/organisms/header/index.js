@@ -56,6 +56,7 @@ const Header = ({
   const searchToggle = () => {
     setToggle(!toggle)
   }
+
   console.log('header prop:', searchCloseIcon)
   return (
     <div
