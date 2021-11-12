@@ -212,9 +212,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     let newObj = {
       ...bulkOrderItem[0],
       quantity: value,
-      totalPrice: parseFloat(Number(productData?.price?.base) * value).toFixed(
-        2,
-      ),
+      totalPrice: parseFloat(
+        Number(bulkOrderItem && bulkOrderItem[0]?.price?.base) * value,
+      ).toFixed(2),
     }
     if (newObj?.totalPrice > 0) {
       setButtonDisabled(false)
