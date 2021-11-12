@@ -147,31 +147,6 @@ const CartDropdownItem = cart => {
                 </Label>
               </div>
             </div>
-            <div className="total-and-quantity-cart">
-              <div className="removebtn-div">
-                <Button
-                  className="remove-button"
-                  onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
-                  // disabled={removing && true}
-                >
-                  Remove
-                </Button>
-              </div>
-              <div className="quantity-box">
-                <Label className="product-quantity-mobile">QTY:</Label>
-                <InputNumber
-                  className="product-quantity-spinner"
-                  min={1}
-                  max={1000}
-                  defaultValue={cart?.quantity}
-                  onChange={e => onChange(e, cart)}
-                />
-              </div>
-              <Label className="total-price">
-                <p className="product-total-mobile">TOTAL PRICE</p>$
-                {cart?.totalPrice?.amount}
-              </Label>
-            </div>
           </div>
           <div className="total-and-quantity-cart-MOBILE">
             <div className="total-and-quantity-cart-and-remove-btn">
@@ -208,6 +183,33 @@ const CartDropdownItem = cart => {
                 Remove
               </Button>
             </div>
+          </div>
+        </div>
+        <div className="total-and-quantity-cart">
+          <div className="removebtn-div">
+            <Button
+              className="remove-button"
+              onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
+              // disabled={removing && true}
+            >
+              Remove
+            </Button>
+          </div>
+          <div className="quantity-block">
+            <div className="quantity-box">
+              <Label className="product-quantity-mobile">QTY:</Label>
+              <InputNumber
+                className="product-quantity-spinner"
+                min={1}
+                max={1000}
+                defaultValue={cart?.quantity}
+                onChange={e => onChange(e, cart)}
+              />
+            </div>
+            <Label className="total-price">
+              <p className="product-total-mobile">TOTAL PRICE</p>$
+              {cart?.totalPrice?.amount}
+            </Label>
           </div>
         </div>
       </div>
