@@ -9,7 +9,7 @@ $vw-viewport: 1440;
 }
 
 .checkout-wrapper {
-  padding-bottom: 30vw;
+  padding-bottom: 12vw;
   color: #fff;
   font-family: $OpenSans;
 
@@ -145,8 +145,20 @@ $vw-viewport: 1440;
     }
   }
 
+  .checkout-heading-padding {
+    padding: 2.43vw 1vw 0 4vw;
+
+    .radio-btn {
+      font-size: 1vw !important;
+
+      @media (max-width: 768px) {
+        font-size: 4vw !important;
+      }
+    }
+  }
+
   .checkout-summary {
-    padding: 1vw 4vw;
+    padding: 1vw 4vw 1vw 8.88vw;
     color: #fff;
 
     .summary-title {
