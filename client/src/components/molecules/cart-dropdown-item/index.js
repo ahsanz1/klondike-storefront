@@ -206,8 +206,8 @@ const CartDropdownItem = cart => {
                 onChange={e => onChange(e, cart)}
               />
             </div>
-            <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>$
+            <Label className="total-price-desktop">
+              <p className="product-total-desktop">TOTAL PRICE</p>$
               {cart?.totalPrice?.amount}
             </Label>
           </div>
