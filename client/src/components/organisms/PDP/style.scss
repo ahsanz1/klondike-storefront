@@ -89,8 +89,9 @@
   width: 100%;
   padding: 1vw;
 
-  @media screen and (max-width: 768px) {
-    visibility: hidden;
+  @media screen and (max-width: 500px) {
+    // visibility: hidden;
+    display: none;
     width: 0;
     height: auto !important;
     padding: 0;

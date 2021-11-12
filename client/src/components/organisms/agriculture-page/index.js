@@ -1,5 +1,5 @@
 import './style.scss'
-import React from 'react'
+import React, { useContext } from 'react'
 import IndustryAppTablist from 'components/molecules/industry-applications-tablist'
 import IndustryAppMobileTabList from 'components/molecules/industry-applications-mobile-tablist'
 import Label from 'components/atoms/label'
@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import { useWindowSize } from 'libs/custom-hooks'
 import Button from 'components/atoms/button'
 import Link from 'components/atoms/link'
+import { AppContext } from 'libs/context'
 
 const AgriculturePage = ({
   title,
@@ -17,6 +18,7 @@ const AgriculturePage = ({
   exploreCatagory,
   activeTablist,
 }) => {
+  const { setPlpRedirect } = useContext(AppContext)
   const [readMore, setReadMore] = React.useState(false)
   const size = useWindowSize()
   const renderAgriculturePage = () => {
@@ -81,8 +83,12 @@ const AgriculturePage = ({
                       key={i}
                       to={`${item.catagoryRedirect}`}
                       className="explore-link"
+                      onClick={() => setPlpRedirect(item.catagory)}
                     >
                       {item.catagory}
+                      {/* <Button onClick={() => setPlpRedirect(item.catagory)}>
+                        {item.catagory}
+                      </Button> */}
                     </Link>
                   )
                 })}

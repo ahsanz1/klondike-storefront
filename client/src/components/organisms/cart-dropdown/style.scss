@@ -41,7 +41,7 @@
 
   @media screen and (max-width: 768px) {
     position: fixed;
-    top: 8.5%;
+    top: 6.5%;
     left: 0;
     width: 100%;
     height: 100%;
@@ -82,7 +82,7 @@
 
     @media screen and (max-width: 768px) {
       width: getmb-vw(325px);
-      padding-top: getmb-vw(13px);
+      margin-top: 5.46vw;
       padding-bottom: getmb-vw(15px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       font-size: getmb-vw(20px);
@@ -157,6 +157,7 @@
       width: getmb-vw(325px);
       max-height: 58vh;
       overflow: scroll;
+      box-shadow: none;
     }
 
     .no-item {
@@ -171,7 +172,7 @@
 
   .cart-dropdown-checkout-container {
     display: flex;
-    justify-content: right;
+    justify-content: end;
     margin-top: get-vw(19px);
     // height: get-vw(172px);
     margin-right: get-vw(41px);
@@ -180,11 +181,14 @@
     font-family: $OpenSans;
 
     @media screen and (max-width: 768px) {
-      position: unset;
-      bottom: 0;
+      position: fixed;
+      // bottom: 8.26vw;
       align-items: flex-end;
-      justify-content: center;
-      margin-top: getmb-vw(27px);
+      justify-content: flex-start;
+      width: 100%;
+      padding: 10px;
+      background: #013a4e;
+      // margin-top: 4.8vw;
     }
 
     .cart-dropdown-checkout-details {
@@ -257,7 +261,7 @@
         line-height: get-vw(24px);
 
         @media screen and (max-width: 768px) {
-          width: getmb-vw(290px);
+          width: 100%;
           height: getmb-vw(64px);
           margin-left: 2.8vw;
           border-radius: getmb-vw(5px);

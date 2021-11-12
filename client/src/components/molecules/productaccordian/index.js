@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Modal, InputNumber } from 'antd'
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 // import { tableProAccoData } from './data'
 import Image from 'components/atoms/image'
 import Button from 'components/atoms/button'
@@ -18,6 +19,8 @@ const ProductAccordion = ({ question }) => {
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
+  let [showAddToCart, setShowAddToCart] = useState(false)
+  const [size] = useWindowSize()
 
   const [itemdata, setItemData] = useState([])
 
@@ -105,7 +108,9 @@ const ProductAccordion = ({ question }) => {
     setQty(value)
     setTotalPrice(data.price * value)
   }
-
+  const handleAddToCart = () => {
+    setShowAddToCart(!showAddToCart)
+  }
   // const showModal = () => {
   //   setIsModalVisible(true)
   // }
@@ -142,7 +147,11 @@ const ProductAccordion = ({ question }) => {
           itemdata.map((data, i) => {
             return (
               <>
-                <Row className="table-content flex" key={i}>
+                <Row
+                  className="table-content flex"
+                  key={i}
+                  onClick={handleAddToCart}
+                >
                   <Col lg={8} className="custom-width">
                     <p className="text-setting-table">
                       {data['product title']}
@@ -167,22 +176,27 @@ const ProductAccordion = ({ question }) => {
                       ${data['Order Price']}
                     </p>
                   </Col>
-                  <div className="hover-details">
-                    <div className="table-image">
-                      <Image
-                        src={data['Image URL'] || data['Image 1 URL']}
-                        className="table-image"
-                      />
-                    </div>
-                    <div className="table-button">
-                      <Button
-                        onClick={e => showModal(JSON.stringify(data))}
-                        className="hover-button"
-                      >
-                        ADD TO CART
-                      </Button>
-                    </div>
-                  </div>
+                  {showAddToCart && (
+                    <>
+                      {/* <div className="hover-details"> */}
+                      <div className="">
+                        <div className="table-image">
+                          <Image
+                            src={data['Image URL'] || data['Image 1 URL']}
+                            className="table-image"
+                          />
+                        </div>
+                        <div className="table-button">
+                          <Button
+                            onClick={e => showModal(JSON.stringify(data))}
+                            className="hover-button"
+                          >
+                            ADD TO CART
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </Row>
               </>
             )
@@ -197,37 +211,94 @@ const ProductAccordion = ({ question }) => {
       )} */}
       <div className="Price-list-modal">
         <Modal visible={isModalVisible} onCancel={handleCancel}>
-          <div className="model-parent">
-            <div className="product-img">
-              <img src={modalData.img} alt="img" />
+          {size > 768 ? (
+            <div className="model-parent">
+              <div className="product-img">
+                <img src={modalData.img} alt="img" />
+              </div>
+              <div className="prodct-data">
+                <h1>{modalData.title}</h1>
+                <div className="product-detail">
+                  <div>
+                    <p className="products-sizes">Size</p>
+                    <p className="products-sizes detail">{modalData.size}</p>
+                  </div>
+                  <div>
+                    <p className="products-sizes">UNITS/CASE</p>
+                    <p className="products-sizes">{modalData.unit}</p>
+                  </div>
+                  <div>
+                    <p className="products-sizes">Part Num</p>
+                    <p className="products-sizes detail">
+                      {modalData.partNumber}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="products-sizes">Price</p>
+                    <p className="products-sizes detail ">${modalData.price}</p>
+                  </div>
+                  <div>
+                    <p className="products-sizes">QTY</p>
+                    <p className="products-sizes detail">
+                      <InputNumber
+                        min={0}
+                        value={qty}
+                        defaultValue={1}
+                        onChange={onChange}
+                        size="middle"
+                        className="input"
+                      />
+                    </p>
+                  </div>
+                  <div>
+                    <p className="products-sizes">Total Price</p>
+                    <p className="products-sizes detail">${totalPrice}</p>
+                  </div>
+                </div>
+                <Button
+                  className="pricelist-addcart "
+                  onClick={e => addItemToCart(e)}
+                >
+                  Add TO CART
+                </Button>
+              </div>
             </div>
-            <div className="prodct-data">
-              <h1>{modalData.title}</h1>
-              <div className="product-detail">
-                <div>
-                  <p className="products-sizes">Size</p>
+          ) : (
+            <div className="product-mobile">
+              <h1 className="product-heading-mobile">{modalData.title}</h1>
+              <div className="product-img-mobile">
+                <img src={modalData.img} alt="img" />
+              </div>
+              <div className="product-content-mobile">
+                <div className="product-detail-mobile">
                   <p className="products-sizes detail">{modalData.size}</p>
                 </div>
-                <div>
-                  <p className="products-sizes">UNITS/CASE</p>
-                  <p className="products-sizes">{modalData.unit}</p>
+                <div className="product-pricing-mobile">
+                  <div>
+                    <div>
+                      <p className="products-sizes">Part Num</p>
+                      <p className="products-sizes detail">
+                        {modalData.partNumber}
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="product-pricing-block">
+                      <p className="products-sizes">Price</p>
+                      <p className="products-sizes detail ">
+                        ${modalData.price}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="products-sizes">Part Num</p>
-                  <p className="products-sizes detail">
-                    {modalData.partNumber}
-                  </p>
-                </div>
-                <div>
-                  <p className="products-sizes">Price</p>
-                  <p className="products-sizes detail ">${modalData.price}</p>
-                </div>
-                <div>
-                  <p className="products-sizes">QTY</p>
+              </div>
+              <div className="product-total-pricing">
+                <div className="total-pricing-block">
+                  <p className="products-sizes">LITRES:</p>
                   <p className="products-sizes detail">
                     <InputNumber
-                      min={1}
-                      value={1}
+                      min={0}
+                      value={qty}
                       defaultValue={1}
                       onChange={onChange}
                       size="middle"
@@ -235,19 +306,19 @@ const ProductAccordion = ({ question }) => {
                     />
                   </p>
                 </div>
-                <div>
+                <div className="prodcut-total-price">
                   <p className="products-sizes">Total Price</p>
-                  <p className="products-sizes detail">${totalPrice}</p>
+                  <p className="products-sizes details">${totalPrice}</p>
                 </div>
               </div>
               <Button
-                className="pricelist-addcart "
+                className="pricelist-addcart-mobile "
                 onClick={e => addItemToCart(e)}
               >
                 Add TO CART
               </Button>
             </div>
-          </div>
+          )}
         </Modal>
       </div>
     </>

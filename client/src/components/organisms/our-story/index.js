@@ -12,7 +12,6 @@ const OurStory = ({ OurStoryData, activeTablist }) => {
   const size = useWindowSize()
   const location = useLocation()
   const [readMore, setReadMore] = useState(false)
-
   const renderOurStoryPage = () => {
     const more = () => {
       setReadMore(!readMore)
@@ -43,11 +42,11 @@ const OurStory = ({ OurStoryData, activeTablist }) => {
                       <p
                         dangerouslySetInnerHTML={{
                           __html: readMore
-                            ? data.paragraph.slice(3, data.paragraph.length - 5)
-                            : data.paragraph.slice(3, 500),
+                            ? data.paragraph.slice(3, data.paragraph.length)
+                            : data.paragraph.slice(3, 535),
                         }}
                       ></p>
-                      {data.paragraph.length > 265 && (
+                      {data.paragraph.length > 540 && (
                         <span className={readMore ? 'read-less' : 'read-more'}>
                           <Button href className="button" onClick={more}>
                             {readMore ? 'Read Less' : 'Read More'}

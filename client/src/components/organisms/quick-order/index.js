@@ -32,6 +32,7 @@ const QuickOrder = () => {
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
   const [accordianisActive, setAccordianIsActive] = useState(true)
   const [bulkdata, setBulkdata] = useState([])
+  const [amounttotal, setAmounttotal] = useState()
   let [pn, setPN] = useState()
   let [caseqty, setCaseqty] = useState([])
   let qtyIndex = {}
@@ -47,6 +48,16 @@ const QuickOrder = () => {
     }
     data()
   }, [])
+  const itemtotalamount = () => {
+    let sum = total.reduce(
+      (previousValue, currentValue, currentIndex, array) => {
+        return previousValue + currentValue
+      },
+      0,
+    )
+    let totalamount = sum.toFixed(2)
+    setTotalQty(totalamount)
+  }
   const onChangeqty = async (value, index) => {
     qtyIndex = {
       ...caseqty,
@@ -54,6 +65,10 @@ const QuickOrder = () => {
     }
     setCaseqty(qtyIndex)
     setCartqty(value)
+    let amounts = amounttotal * Number(caseqty[`index-${index}`])
+    console.log(amounts, 'amouunt')
+    total.push(amounts)
+    itemtotalamount()
   }
 
   const handleAccordianClick = () => {
@@ -67,60 +82,53 @@ const QuickOrder = () => {
     let data =
       packgdata &&
       packgdata.map((data, i) => {
-        let baseprice = data['Base Price']
-        console.log(data.sku, 'dtatt')
-        let amount = baseprice * Number(caseqty[`index-${i}`])
-        total.push(amount)
-        const itemtotalamount = () => {
-          let sum = total.reduce(
-            (previousValue, currentValue, currentIndex, array) => {
-              return previousValue + currentValue
-            },
-            0,
-          )
-          let totalamount = sum.toFixed(2)
-          setTotalQty(totalamount)
-        }
-        itemtotalamount()
-        return getProductBySKU(data.sku)
-          .then(res => {
-            let response = res.response.data
-            console.log(response, 'response')
-            let product = response && response.product
-            let newobj = {
-              extra: {},
-              group: product.group,
-              itemId: product.itemId,
-              sku: product.sku,
-              quantity: cartqty, // qty,
-              price: {
-                base: 0,
-                currency: 'USD',
-                sale: false,
-                discount: {
-                  price: 0,
+        if (data !== undefined) {
+          let baseprice = data['Base Price']
+          console.log(data.sku, 'dtatt')
+          setAmounttotal(baseprice)
+          let amount = baseprice * Number(caseqty[`index-${i}`])
+          total.push(amount)
+          itemtotalamount()
+          return getProductBySKU(data.sku)
+            .then(res => {
+              let response = res.response.data
+              console.log(response, 'response')
+              let product = response && response.product
+              let newobj = {
+                extra: {},
+                group: product.group,
+                itemId: product.itemId,
+                sku: product.sku,
+                quantity: cartqty, // qty,
+                price: {
+                  base: 0,
+                  currency: 'USD',
+                  sale: false,
+                  discount: {
+                    price: 0,
+                  },
                 },
-              },
-              size: false,
-            }
-            qickarray.push(newobj)
-            let payload = {
-              cartId: null,
-              items: qickarray,
-              registeredUser: true,
-              userAuthToken: user.accessToken,
-            }
-            addProductToCart(payload)
-              .then(res => {
-                console.log('sucres', res)
-              })
-              .catch(err => {
-                console.log('errres', err)
-              })
-          })
-          .catch(err => {
-            console.log('error', err)
-          })
+                size: false,
+              }
+              qickarray.push(newobj)
+              let payload = {
+                cartId: null,
+                items: qickarray,
+                registeredUser: true,
+                userAuthToken: user.accessToken,
+              }
+              addProductToCart(payload)
+                .then(res => {
+                  console.log('sucres', res)
+                })
+                .catch(err => {
+                  console.log('errres', err)
+                })
+            })
+            .catch(err => {
+              console.log('error', err)
+            })
+        }
       })
     console.log(data, 'data')
   }
@@ -128,15 +136,17 @@ const QuickOrder = () => {
     let a = packgdata
     a.splice(i, 1)
     setPackgdata(a)
-    handleRemoveClick(i)
-  }
-  const handleRemoveClick = index => {
-    console.log(index, 'indexing')
     const list = [...inputList]
-    list.splice(index, 1)
+    list.splice(i, 1)
     setInputList(list)
-    itemremove(index)
   }
+  // const handleRemoveClick = index => {
+  //   console.log(index, 'indexing')
+  //   const list = [...inputList]
+  //   list.splice(index, 1)
+  //   setInputList(list)
+  //   // itemremove(index)
+  // }
   const handleChangePackageqty = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
@@ -328,7 +338,7 @@ const QuickOrder = () => {
               productstitle={productstitle}
               inputList={inputList}
               handleAddRow={handleAddRow}
-              handleRemoveClick={handleRemoveClick}
+              handleRemoveClick={itemremove}
             />
           </AccordionComponent>
         </div>
@@ -350,7 +360,7 @@ const QuickOrder = () => {
               bulkdata={bulkdata}
               inputList={inputList}
               handleAddRow={handleAddRow}
-              handleRemoveClick={handleRemoveClick}
+              handleRemoveClick={itemremove}
             />
           </AccordionComponent>
         </div>
@@ -434,135 +444,140 @@ const QuickOrder = () => {
             {cartItems && (
               <div className="quickorder-wrapper">
                 {packgdata &&
-                  packgdata.map((data, i) =>
-                    size > 768 ? (
-                      <div key={i} className="orders">
-                        <div className="item-wraper">
-                          <div>
-                            <div className="img-wraper">
-                              <img src={data['Image URL']} alt="img" />
-                            </div>
-                            <button
-                              className="quick-orde_btn"
-                              onClick={e => itemremove(i)}
-                            >
-                              Remove Item
-                            </button>
-                          </div>
-                          <div className="part-wraper">
-                            <div className="quik-product-heading">
-                              <p>{data['product title']}</p>
-                            </div>
+                  packgdata.map((data, i) => {
+                    if (data !== undefined) {
+                      return size > 768 ? (
+                        <div key={i} className="orders">
+                          <div className="item-wraper">
                             <div>
-                              <p>
-                                Part Num <span>{data['Part Number']}</span>
-                              </p>
+                              <div className="img-wraper">
+                                <img src={data['Image URL']} alt="img" />
+                              </div>
+                              <button
+                                className="quick-orde_btn"
+                                onClick={e => itemremove(i)}
+                              >
+                                Remove Item
+                              </button>
                             </div>
-                            <div>
-                              <p>
-                                Size <span>{data['Package Size']}</span>
-                              </p>
-                            </div>
-                            <div>
-                              <p>
-                                Per case <span>{data['QTY PER CASE']}</span>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <p>{data['Base Price']}</p>
-                        </div>
-                        <div>
-                          <InputNumber
-                            min={0}
-                            max={100}
-                            defaultValue={1}
-                            value={caseqty[`index-${i}`]}
-                            onChange={e => onChangeqty(e, i)}
-                            size="middle"
-                            className="input"
-                          />
-                        </div>
-                        <div>
-                          <p>
-                            $
-                            {(
-                              data['Base Price'] * Number(caseqty[`index-${i}`])
-                            ).toFixed(2)}
-                          </p>
-                        </div>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="quick-order-mobile">
-                          <div className="quick-order-mobile__previous">
-                            <img
-                              className="quick-order-mobile__image"
-                              src={data['Image URL']}
-                              alt="img"
-                            />
-                            <p className="price">Price</p>
-                            <p className="price-value">${data['Base Price']}</p>
-                          </div>
-                          <p>{data['product title']}</p>
-                          <div className="quick-order-mobile__next-container">
-                            <p>
-                              Size{' '}
-                              <span className="span">
-                                {data['Package Size']}
-                              </span>
-                            </p>
-                            <p>
-                              Per case{' '}
-                              <span className="span">
-                                {data['QTY PER CASE']}
-                              </span>
-                            </p>
-                            <p>
-                              Part Num{' '}
-                              <span className="span">
-                                {data['Part Number']}
-                              </span>
-                            </p>
-                            <div className="quantity-container">
-                              <div className="remove-button">
-                                <p>
-                                  <span className="quantity">QTY:</span>
-                                  <InputNumber
-                                    min={0}
-                                    max={100}
-                                    defaultValue={1}
-                                    value={caseqty[`index-${i}`]}
-                                    onChange={e => onChangeqty(e, i)}
-                                    size="middle"
-                                    className="input"
-                                  />
-                                </p>
-                                <button
-                                  className="quick-orde_btn"
-                                  onClick={e => itemremove(i)}
-                                >
-                                  Remove Item
-                                </button>
+                            <div className="part-wraper">
+                              <div className="quik-product-heading">
+                                <p>{data['product title']}</p>
                               </div>
                               <div>
-                                <p className="total-price">Total Price</p>
-                                <p className="total-price-value">
-                                  $
-                                  {(
-                                    data['Base Price'] *
-                                    Number(caseqty[`index-${i}`])
-                                  ).toFixed(2)}
+                                <p>
+                                  Part Num <span>{data['Part Number']}</span>
+                                </p>
+                              </div>
+                              <div>
+                                <p>
+                                  Size <span>{data['Package Size']}</span>
+                                </p>
+                              </div>
+                              <div>
+                                <p>
+                                  Per case <span>{data['QTY PER CASE']}</span>
                                 </p>
                               </div>
                             </div>
                           </div>
+
+                          <div>
+                            <p>{data['Base Price']}</p>
+                          </div>
+                          <div>
+                            <InputNumber
+                              min={0}
+                              max={100}
+                              defaultValue={1}
+                              value={caseqty[`index-${i}`]}
+                              onChange={e => onChangeqty(e, i)}
+                              size="middle"
+                              className="input"
+                            />
+                          </div>
+                          <div>
+                            <p>
+                              $
+                              {(
+                                data['Base Price'] *
+                                Number(caseqty[`index-${i}`])
+                              ).toFixed(2)}
+                            </p>
+                          </div>
                         </div>
-                      </>
-                    ),
-                  )}
+                      ) : (
+                        <>
+                          <div className="quick-order-mobile">
+                            <div className="quick-order-mobile__previous">
+                              <img
+                                className="quick-order-mobile__image"
+                                src={data['Image URL'] && data['Image URL']}
+                                alt="img"
+                              />
+                              <p className="price">Price</p>
+                              <p className="price-value">
+                                ${data['Base Price']}
+                              </p>
+                            </div>
+                            <p>{data['product title']}</p>
+                            <div className="quick-order-mobile__next-container">
+                              <p>
+                                Size{' '}
+                                <span className="span">
+                                  {data['Package Size']}
+                                </span>
+                              </p>
+                              <p>
+                                Per case{' '}
+                                <span className="span">
+                                  {data['QTY PER CASE']}
+                                </span>
+                              </p>
+                              <p>
+                                Part Num{' '}
+                                <span className="span">
+                                  {data['Part Number']}
+                                </span>
+                              </p>
+                              <div className="quantity-container">
+                                <div className="remove-button">
+                                  <p>
+                                    <span className="quantity">QTY:</span>
+                                    <InputNumber
+                                      min={0}
+                                      max={100}
+                                      defaultValue={1}
+                                      value={caseqty[`index-${i}`]}
+                                      onChange={e => onChangeqty(e, i)}
+                                      size="middle"
+                                      className="input"
+                                    />
+                                  </p>
+                                  <button
+                                    className="quick-orde_btn"
+                                    onClick={e => itemremove(i)}
+                                  >
+                                    Remove Item
+                                  </button>
+                                </div>
+                                <div>
+                                  <p className="total-price">Total Price</p>
+                                  <p className="total-price-value">
+                                    $
+                                    {(
+                                      data['Base Price'] *
+                                      Number(caseqty[`index-${i}`])
+                                    ).toFixed(2)}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      )
+                    }
+                  })}
               </div>
             )}
           </div>

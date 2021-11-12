@@ -30,6 +30,10 @@ const CartDropdownItem = cart => {
   // }
 
   const onChange = async (qty, cart) => {
+    if (qty === null) {
+      return
+    }
+
     let updateCartPayload = {
       items: [
         {
@@ -65,9 +69,19 @@ const CartDropdownItem = cart => {
     })
 
     let itemsRes = await getItemsBySkus(skus)
-    await data.items.map((item, i) => {
+
+    let sizes = []
+    await data.items.map(async (item, i) => {
+      let attributes = itemsRes?.data[i]?.attributes
+      await attributes.map(attr => {
+        if (attr.name === 'Package Size') {
+          sizes.push(attr.value)
+        }
+      })
+
       let itemObj = {
         ...item,
+        size: sizes[i],
         image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
       }
 
@@ -96,7 +110,7 @@ const CartDropdownItem = cart => {
             background: 'lightgray',
           }}
         >
-          Ruko Zara Sbr Kro ...
+          Please Wait ...
         </div>
       }
       <div className="mini-cart-item">
@@ -110,7 +124,7 @@ const CartDropdownItem = cart => {
                 <Label className="item-title notranslate">{cart?.title}</Label>
                 <div className="product-detail-info-cart">
                   <Label className="item-info">
-                    SIZE: <Label className="item-subInfo">{cart?.sku}</Label>
+                    SIZE: <Label className="item-subInfo">{cart?.size}</Label>
                   </Label>
 
                   <Label className="item-info">
@@ -132,31 +146,6 @@ const CartDropdownItem = cart => {
                   {cart?.totalPrice?.amount}
                 </Label>
               </div>
-            </div>
-            <div className="total-and-quantity-cart">
-              <div className="removebtn-div">
-                <Button
-                  className="remove-button"
-                  onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
-                  // disabled={removing && true}
-                >
-                  Remove
-                </Button>
-              </div>
-              <div className="quantity-box">
-                <Label className="product-quantity-mobile">QTY:</Label>
-                <InputNumber
-                  className="product-quantity-spinner"
-                  min={1}
-                  max={1000}
-                  defaultValue={cart?.quantity}
-                  onChange={e => onChange(e, cart)}
-                />
-              </div>
-              <Label className="total-price">
-                <p className="product-total-mobile">TOTAL PRICE</p>$
-                {cart?.totalPrice?.amount}
-              </Label>
             </div>
           </div>
           <div className="total-and-quantity-cart-MOBILE">
@@ -194,6 +183,33 @@ const CartDropdownItem = cart => {
                 Remove
               </Button>
             </div>
+          </div>
+        </div>
+        <div className="total-and-quantity-cart">
+          <div className="removebtn-div">
+            <Button
+              className="remove-button"
+              onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
+              // disabled={removing && true}
+            >
+              Remove
+            </Button>
+          </div>
+          <div className="quantity-block">
+            <div className="quantity-box">
+              <Label className="product-quantity-mobile">QTY:</Label>
+              <InputNumber
+                className="product-quantity-spinner"
+                min={1}
+                max={1000}
+                defaultValue={cart?.quantity}
+                onChange={e => onChange(e, cart)}
+              />
+            </div>
+            <Label className="total-price-desktop">
+              <p className="product-total-desktop">TOTAL PRICE</p>$
+              {cart?.totalPrice?.amount}
+            </Label>
           </div>
         </div>
       </div>

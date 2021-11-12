@@ -288,7 +288,7 @@ const Checkoutsection = () => {
     setIsModalVisible(false)
   }
 
-  function error () {
+  const error = () => {
     setIsLoading(false)
     Modal.error({
       title: 'Error! Please try again.',
@@ -338,7 +338,7 @@ const Checkoutsection = () => {
             <img src="static\images\klondike.png" alt="pic" />
           </Col>
         </Row>
-        <Row className="checkout-padding">
+        <Row className="checkout-heading-padding">
           <Col>
             <div className="page-title">
               <LeftOutlined
@@ -387,7 +387,7 @@ const Checkoutsection = () => {
               <div className="checkout-info">
                 <span>{personalInfo?.email}</span>
               </div>
-              <div className="checkout-info">
+              <div className="checkout-info-second">
                 <div className="checkout-po">
                   <span>
                     <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
@@ -409,7 +409,7 @@ const Checkoutsection = () => {
                   )}
                 </div>
               </div>
-              <div className="checkout-info">
+              <div className="checkout-info-third">
                 <div className="checkout-po">
                   <span>
                     PO Number: <strong>{`${poNumber}`}</strong>

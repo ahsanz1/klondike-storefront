@@ -111,11 +111,7 @@ const Navbar = ({
           }
         >
           <Link
-            className={
-              userLoginInfo && userLoginInfo.email
-                ? 'quick-order'
-                : 'Buy-Button'
-            }
+            style={{ color: '#fff' }}
             to={
               userLoginInfo && userLoginInfo.email
                 ? '/quickorder'

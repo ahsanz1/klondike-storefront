@@ -13,6 +13,12 @@
     background: #f1a900;
     color: #fff;
     font-weight: bold;
+
+    @media (max-width: 768px) {
+      position: relative;
+      top: 10px;
+      right: 10px;
+    }
   }
 
   .products {
@@ -132,6 +138,10 @@
     align-items: center;
     margin-bottom: 9.4vw;
     margin-left: 8.3vw;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
 
     .first-drop {
       width: 10.4vw !important;
