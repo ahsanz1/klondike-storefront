@@ -10,6 +10,11 @@
     margin-top: 35vw;
   }
 
+  h3 {
+    font-size: 0.972vw;
+    text-align: left;
+  }
+
   .thankyou-text {
     color: #fff;
     font-family: $OpenSans;
@@ -28,8 +33,15 @@
     padding: 5vw;
 
     .shipping-address {
+      width: 26.5vw;
+      height: 12.15vw;
       padding: 2vw;
       background: #002a3a;
+      text-align: left;
+
+      span {
+        font-size: 0.972vw;
+      }
     }
   }
 }
