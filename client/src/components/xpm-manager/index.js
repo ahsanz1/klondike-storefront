@@ -54,7 +54,10 @@ const XPM = props => {
   return (
     <>
       {loading.xpm && <LinerProgress />}
-      <div className="xpm-manager">
+      <div
+        className={`xpm-manager ${location.pathname === '/Checkoutsection' &&
+          'checkout-xpm'}`}
+      >
         {layout.map(xmComponent => {
           const XPM_ID = xmComponent.id
           const ORGANISM = ORGANISMS[XPM_ID]
