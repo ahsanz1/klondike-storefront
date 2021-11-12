@@ -25,8 +25,9 @@ import {
   createShipTo,
   checkout,
 } from 'libs/services/api/checkout'
-import { LeftOutlined } from '@ant-design/icons'
+// import { LeftOutlined } from '@ant-design/icons'
 // import AccordionComponent from 'components/molecules/accordionComponent'
+// import { Link } from 'react-router-dom'
 
 const Checkoutsection = () => {
   // let cart
@@ -313,10 +314,14 @@ const Checkoutsection = () => {
         <Row className="checkout-heading-padding">
           <Col>
             <div className="page-title">
-              <LeftOutlined
-                className="checkout-back-icon"
-                onClick={() => navigate('/plp-page')}
-              />
+              {/* <Link to="/plp"> */}
+              <a href="/plp-page">
+                <img
+                  className="checkout-back-icon"
+                  src="/static/images/arrowleft.png"
+                  alt="pic"
+                />
+              </a>
               <h1 className="checkout-title"> Checkout</h1>
             </div>
           </Col>
