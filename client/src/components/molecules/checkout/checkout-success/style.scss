@@ -10,10 +10,37 @@
     margin-top: 35vw;
   }
 
+  .order-details-attributes {
+    font-size: get-vw(13px);
+    font-weight: bold;
+    line-height: get-vw(18px);
+
+    .order-attribute {
+      margin-left: get-vw(50px);
+      text-align: left;
+    }
+
+    .order-detail {
+      font-size: get-vw(16px);
+      font-weight: bold;
+      line-height: 140%;
+    }
+
+    p {
+      margin-left: get-vw(50px);
+      font-size: 0.972vw;
+      text-align: left;
+    }
+  }
+
+  .received-text {
+    font-size: get-vw(14px);
+  }
+
   .thankyou-text {
     color: #fff;
     font-family: $OpenSans;
-    font-size: 3vw;
+    font-size: get-vw(48px);
     font-style: normal;
     font-weight: bold;
 
