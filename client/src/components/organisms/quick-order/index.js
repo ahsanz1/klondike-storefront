@@ -128,15 +128,17 @@ const QuickOrder = () => {
     let a = packgdata
     a.splice(i, 1)
     setPackgdata(a)
-    handleRemoveClick(i)
-  }
-  const handleRemoveClick = index => {
-    console.log(index, 'indexing')
     const list = [...inputList]
-    list.splice(index, 1)
+    list.splice(i, 1)
     setInputList(list)
-    // itemremove(index)
   }
+  // const handleRemoveClick = index => {
+  //   console.log(index, 'indexing')
+  //   const list = [...inputList]
+  //   list.splice(index, 1)
+  //   setInputList(list)
+  //   // itemremove(index)
+  // }
   const handleChangePackageqty = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
@@ -328,7 +330,7 @@ const QuickOrder = () => {
               productstitle={productstitle}
               inputList={inputList}
               handleAddRow={handleAddRow}
-              handleRemoveClick={handleRemoveClick}
+              handleRemoveClick={itemremove}
             />
           </AccordionComponent>
         </div>
@@ -350,7 +352,7 @@ const QuickOrder = () => {
               bulkdata={bulkdata}
               inputList={inputList}
               handleAddRow={handleAddRow}
-              handleRemoveClick={handleRemoveClick}
+              handleRemoveClick={itemremove}
             />
           </AccordionComponent>
         </div>
