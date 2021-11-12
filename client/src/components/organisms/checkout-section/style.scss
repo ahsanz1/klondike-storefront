@@ -91,7 +91,7 @@ $vw-viewport: 1440;
   // }
 
   .checkout-heading-padding {
-    padding: 2.43vw 1vw 0 4vw;
+    padding: 2.43vw 1vw 0 8.33vw;
 
     .radio-btn {
       font-size: 1vw !important;
@@ -155,7 +155,7 @@ $vw-viewport: 1440;
   }
 
   .checkout-padding {
-    padding: 1vw 1vw 0 4vw;
+    padding: 1vw 1vw 0 7.43vw;
 
     .radio-btn {
       font-size: 1vw !important;
@@ -191,7 +191,7 @@ $vw-viewport: 1440;
     .checkout-info {
       width: 55.13vw;
       margin: 1vw;
-      padding: 2vw;
+      padding: get-vw(20.8px);
       background-color: #002a3a;
       word-break: break-all;
 
@@ -300,6 +300,42 @@ $vw-viewport: 1440;
       // .change-button:focus {
       //   color: #fff !important;
       // }
+    }
+
+    .checkout-info-third {
+      width: 55.13vw;
+      margin: 1vw;
+      padding: get-vw(16px);
+      background-color: #002a3a;
+      word-break: break-all;
+
+      @media (max-width: 768px) {
+        padding: 4vw;
+      }
+
+      span {
+        font-size: 1.2vw;
+
+        @media (max-width: 768px) {
+          font-size: 4vw;
+        }
+      }
+
+      .checkout-po {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          width: 25%;
+          font-size: get-vw(14px);
+
+          @media (max-width: 768px) {
+            width: 40%;
+            font-size: 4vw;
+          }
+        }
+      }
     }
   }
 

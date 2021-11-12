@@ -111,6 +111,10 @@ $vw-viewport: 1440;
     padding: 10px 0 0 0;
 
     div {
+      .active-product {
+        color: #f2a900;
+      }
+
       &:nth-child(10) {
         a {
           span {
