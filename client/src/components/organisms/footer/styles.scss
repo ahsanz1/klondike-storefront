@@ -155,14 +155,14 @@
 
     // display: inline-block;
 
-    height: 90px;
+    height: 100px;
     font-weight: 600;
   }
 
-  @media (max-width: 500px) {
-    height: 24vw;
-    padding: 0 2.93vw;
-  }
+  // @media (max-width: 500px) {
+  //   height: 24vw;
+  //   padding: 0 2.93vw;
+  // }
 
   p {
     margin-top: get-vw(13px);
@@ -180,12 +180,12 @@
       font-size: 12px;
     }
 
-    @media (max-width: 500px) {
-      font-family: $OpenSans;
-      font-size: 3.06vw;
-      font-weight: 600;
-      line-height: 4.26vw;
-    }
+    // @media (max-width: 500px) {
+    //   font-family: $OpenSans;
+    //   font-size: 3.06vw;
+    //   font-weight: 600;
+    //   line-height: 4.26vw;
+    // }
   }
 }
 
