@@ -32,9 +32,19 @@ const CartDropdown = () => {
       let itemsRes = await getItemsBySkus(skus)
 
       let itemsArr = []
-      data.items.map((item, i) => {
+
+      let sizes = []
+      await data.items.map(async (item, i) => {
+        let attributes = itemsRes?.data[i]?.attributes
+        await attributes.map(attr => {
+          if (attr.name === 'Package Size') {
+            sizes.push(attr.value)
+          }
+        })
+
         let itemObj = {
           ...item,
+          size: sizes[i],
           image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
         }
 
@@ -45,7 +55,6 @@ const CartDropdown = () => {
         ...data,
         items: itemsArr,
       }
-
       setGetCartItemsState(payload)
     }
 

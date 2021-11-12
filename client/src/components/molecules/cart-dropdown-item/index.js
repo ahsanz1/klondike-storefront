@@ -30,6 +30,10 @@ const CartDropdownItem = cart => {
   // }
 
   const onChange = async (qty, cart) => {
+    if (qty === null) {
+      return
+    }
+
     let updateCartPayload = {
       items: [
         {
@@ -40,22 +44,44 @@ const CartDropdownItem = cart => {
         },
       ],
     }
-    let skus = []
 
     SetIsShow(true)
-    let res = await updateCartApi(cart?.cartId, updateCartPayload)
-    let data = res.data
 
-    await data.items.map((item, i) => {
+    let res = await updateCartApi(cart?.cartId, updateCartPayload)
+    let payload = await refreshingCart(res.data, updateCartPayload)
+    await setGetCartItemsState(payload)
+    SetIsShow(false)
+  }
+
+  const removeItem = async (cartId, lineItemId) => {
+    SetIsShow(true)
+    let res = await removeItemFromCart(cartId, lineItemId)
+    let payload = await refreshingCart(res.data)
+    setGetCartItemsState(payload)
+    SetIsShow(false)
+  }
+
+  const refreshingCart = async data => {
+    let skus = []
+    let itemsArr = []
+    await data.items.map(item => {
       skus.push(item.sku)
     })
 
     let itemsRes = await getItemsBySkus(skus)
 
-    let itemsArr = []
-    await data.items.map((item, i) => {
+    let sizes = []
+    await data.items.map(async (item, i) => {
+      let attributes = itemsRes?.data[i]?.attributes
+      await attributes.map(attr => {
+        if (attr.name === 'Package Size') {
+          sizes.push(attr.value)
+        }
+      })
+
       let itemObj = {
         ...item,
+        size: sizes[i],
         image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
       }
 
@@ -67,13 +93,7 @@ const CartDropdownItem = cart => {
       items: itemsArr,
     }
 
-    await setGetCartItemsState(payload)
-    SetIsShow(false)
-  }
-
-  const removeItem = async (cartId, lineItemId) => {
-    let res = await removeItemFromCart(cartId, lineItemId)
-    setGetCartItemsState(res.data)
+    return payload
   }
 
   return (
@@ -90,7 +110,7 @@ const CartDropdownItem = cart => {
             background: 'lightgray',
           }}
         >
-          Please Wait...
+          Please Wait ...
         </div>
       }
       <div className="mini-cart-item">
@@ -104,7 +124,7 @@ const CartDropdownItem = cart => {
                 <Label className="item-title notranslate">{cart?.title}</Label>
                 <div className="product-detail-info-cart">
                   <Label className="item-info">
-                    SIZE: <Label className="item-subInfo">{cart?.sku}</Label>
+                    SIZE: <Label className="item-subInfo">{cart?.size}</Label>
                   </Label>
 
                   <Label className="item-info">

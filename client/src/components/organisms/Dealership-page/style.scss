@@ -14,8 +14,9 @@
   right: 21.18vw;
 
   .Dealership-heading {
-    margin-right: 34vw;
-    margin-left: 32vw;
+    margin-right: 20vw;
+    margin-bottom: 2.08vw;
+    margin-left: 20vw;
     padding-top: 5vw;
     color: #f1a900;
     font-family: $OpenSans;
@@ -28,6 +29,13 @@
 
     text-transform: uppercase;
     font-feature-settings: 'pnum' on, 'lnum' on;
+
+    @media (max-width: 768px) {
+      margin-right: 0;
+      margin-bottom: 8vw;
+      margin-left: 8vw;
+      font-size: 5.33vw;
+    }
   }
 
   .description {
@@ -36,7 +44,7 @@
     opacity: 0.9;
     color: #fff;
     font-family: $OpenSans;
-    font-size: 14px;
+    font-size: 0.97vw;
     font-style: normal;
     font-weight: normal;
     line-height: 140%;
@@ -44,5 +52,19 @@
     /* or 20px */
 
     font-feature-settings: 'pnum' on, 'lnum' on;
+
+    @media (max-width: 768px) {
+      margin-right: 8vw;
+      margin-left: 8vw;
+      font-size: 3.73vw;
+    }
+
+    a {
+      color: #f1a900;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 13.33vw;
   }
 }

@@ -62,6 +62,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   console.log({ loading })
   console.log({ products })
   console.log({ desc })
+  console.log('plpredirect', plpredirect)
 
   useEffect(() => {
     setStep(1)
@@ -90,6 +91,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       serverResults.sort(
         (a, b) => (a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0),
         setPlpRedirect(category),
+        console.log('category', category),
       )
       if (pageNumber === 0) {
         productListing(results.nbHits, category)
@@ -329,8 +331,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               className="breadCrumbStyle"
               separator={<span style={{ color: '#FFFFFF' }}>/</span>}
             >
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>Our Products</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/" style={{ color: '#FFFFFF' }}>
+                  Home
+                </Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/PCP" style={{ color: '#FFFFFF' }}>
+                  Our Products
+                </Link>
+              </Breadcrumb.Item>
               <Breadcrumb.Item>
                 <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
                   {productData?.category}

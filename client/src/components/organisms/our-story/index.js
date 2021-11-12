@@ -1,12 +1,10 @@
 import './style.scss'
-
 import React, { useState } from 'react'
 import AboutUsTablist from 'components/organisms/about-us-tablist'
+import Button from 'components/atoms/button'
 import Label from 'components/atoms/label'
 import PropTypes from 'prop-types'
 import { useWindowSize } from 'libs/custom-hooks'
-
-import Button from 'components/atoms/button'
 import MobileTabList from '../mobile-tablist'
 import { useLocation } from '@reach/router'
 
