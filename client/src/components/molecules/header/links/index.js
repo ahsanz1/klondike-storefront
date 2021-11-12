@@ -127,7 +127,10 @@ const Links = ({
               return null
             }
           })}
-          <Button className={!getToken ? 'Buy-Button' : 'Buy-Button'}>
+          <Button
+            className={!getToken ? 'Buy-Button' : 'Buy-Button'}
+            onClick={toggleMenu}
+          >
             <Link to={!getToken ? 'contact-us' : 'quickorder'}>
               {!getToken ? 'HOW TO BUY' : 'Quick Order'}
             </Link>
