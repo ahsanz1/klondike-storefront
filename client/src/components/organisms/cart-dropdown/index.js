@@ -102,10 +102,19 @@ const CartDropdown = () => {
             />
           </div>
           <div className="free-shipping-banner">
-            <p className="free-shipping-banner-text">
-              You are <p className="free-shipping-banner-text-price">$20</p>
-              away from free shipping
-            </p>
+            {getCartItems?.totalAmount?.amount >= 500 ? (
+              <p className="free-shipping-banner-text">
+                Congrats! You have got the free shipping!
+              </p>
+            ) : (
+              <p className="free-shipping-banner-text">
+                You are{' '}
+                <p className="free-shipping-banner-text-price">{`$${parseFloat(
+                  500 - getCartItems?.totalAmount?.amount,
+                ).toFixed(2)}`}</p>
+                away from free shipping
+              </p>
+            )}
           </div>
           <div className="cart-dropdown-items">
             {getCartItems.items && getCartItems.items.length > 0 ? (
