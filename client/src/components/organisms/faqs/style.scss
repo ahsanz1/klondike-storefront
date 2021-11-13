@@ -18,6 +18,17 @@ $vw-viewport: 1440;
   margin-left: 8.33vw;
   padding: 102px;
   background-color: #013a4e;
+
+  .price-list-pdf {
+    .link-pdf {
+      margin-right: get-vw(20px);
+      color: #f1a900;
+      font-family: $OpenSans;
+      font-size: get-vw(14px);
+      line-height: get-vw(20px);
+      text-decoration-line: underline;
+    }
+  }
 }
 
 // .accordion-heading-container {
