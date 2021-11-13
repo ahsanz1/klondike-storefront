@@ -19,6 +19,7 @@ const CartPopUP = () => {
     closePopUpModal,
     showModal,
     pdpProductData,
+    setCartAmount,
     // subTotal,
   } = useContext(AppContext)
 
@@ -52,9 +53,9 @@ const CartPopUP = () => {
     closePopUpModal()
     showModal()
   }
-
-  console.log('pdpProductData', pdpProductData)
-
+  useEffect(() => {
+    setCartAmount(cartData?.totalAmount?.amount)
+  }, [cartData])
   return (
     cartPopupModal && (
       // size > 768 &&

@@ -8,6 +8,7 @@ import { getItemsBySkus } from 'libs/services/api/item'
 
 const AppContext = React.createContext({})
 const AppProvider = ({ children }) => {
+  const [cartAmount, setCartAmount] = useState('')
   const [searchKey, setSearchKey] = useState('')
   const [searchFilter, setSearchFilter] = useState([])
   const [plpredirect, setPlpRedirect] = useState('nano')
@@ -229,6 +230,8 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        setCartAmount,
+        cartAmount,
         removeProduct,
         addProduct,
         searchKey,
