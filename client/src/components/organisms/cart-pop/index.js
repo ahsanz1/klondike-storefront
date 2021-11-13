@@ -53,6 +53,8 @@ const CartPopUP = () => {
     showModal()
   }
 
+  console.log('pdpProductData', pdpProductData)
+
   return (
     cartPopupModal && (
       // size > 768 &&
