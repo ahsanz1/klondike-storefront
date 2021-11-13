@@ -14,11 +14,12 @@ const CartPopUP = () => {
   })
   const {
     //  cartItems,
-    cartData,
     cartPopupModal,
+    getCartItems,
     closePopUpModal,
     showModal,
     pdpProductData,
+    setCartAmount,
     // subTotal,
   } = useContext(AppContext)
 
@@ -52,7 +53,9 @@ const CartPopUP = () => {
     closePopUpModal()
     showModal()
   }
-
+  useEffect(() => {
+    setCartAmount(getCartItems?.totalAmount?.amount)
+  }, [getCartItems])
   return (
     cartPopupModal && (
       // size > 768 &&
@@ -78,21 +81,21 @@ const CartPopUP = () => {
           <div className="subtotal-and-free-delivery-info">
             <div className="subtotal-section">
               <Label className="subtotal-section-text">
-                Cart Subtotal ({cartData?.items?.length} items):
+                Cart Subtotal ({getCartItems?.items?.length} items):
               </Label>
               <Label className="subtotal-section-price">
-                ${parseFloat(cartData?.totalAmount?.amount).toFixed(2)}
+                ${parseFloat(getCartItems?.totalAmount?.amount).toFixed(2)}
               </Label>
             </div>
-            {cartData?.totalAmount?.amount >= freeShippingAmount ? (
+            {getCartItems?.totalAmount?.amount >= freeShippingAmount ? (
               <Label className="free-shipping-banner">
                 Congrats! You have got the free shipping!
               </Label>
             ) : (
               <Label className="free-shipping-banner">
                 You are
-                <Label className="free-shipping-banner-text-price">{`$${Math.floor(
-                  freeShippingAmount - cartData?.totalAmount?.amount,
+                <Label className="free-shipping-banner-text-price">{`$${parseFloat(
+                  freeShippingAmount - getCartItems?.totalAmount?.amount,
                 ).toFixed(2)}`}</Label>
                 away from free shipping
               </Label>
