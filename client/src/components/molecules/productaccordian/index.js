@@ -15,7 +15,7 @@ import { AppContext } from 'libs/context'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
-  const { user } = useContext(AppContext)
+  const { user, showcartPOPModal } = useContext(AppContext)
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
@@ -59,6 +59,7 @@ const ProductAccordion = ({ question }) => {
     setTotalPrice(payload.totalPrice)
 
     setIsModalVisible(true)
+    showcartPOPModal()
   }
 
   const handleCancel = () => {
