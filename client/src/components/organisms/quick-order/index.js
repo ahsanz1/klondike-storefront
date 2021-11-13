@@ -19,7 +19,7 @@ import Button from 'components/atoms/button'
 
 const QuickOrder = () => {
   const [size] = useWindowSize()
-  const { user, showModal } = useContext(AppContext)
+  const { user, showModal, setGetCartItemsState } = useContext(AppContext)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
@@ -37,7 +37,6 @@ const QuickOrder = () => {
   let [caseqty, setCaseqty] = useState([])
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
-  let [cartqty, setCartqty] = useState()
   let total = []
   console.log(fetcheditems, 'fetcheditems')
   useEffect(() => {
@@ -64,7 +63,6 @@ const QuickOrder = () => {
       [`index-${index}`]: value,
     }
     setCaseqty(qtyIndex)
-    setCartqty(value)
     let amounts = amounttotal * Number(caseqty[`index-${index}`])
     console.log(amounts, 'amouunt')
     total.push(amounts)
@@ -75,62 +73,60 @@ const QuickOrder = () => {
     setAccordianIsActive(!accordianisActive)
   }
 
-  const addedItemToCart = async Data => {
-    // const resData = await addToCartApiCall(Data)
-    // console.log('addto', resData)
-    let qickarray = []
-    let data =
-      packgdata &&
-      packgdata.map((data, i) => {
-        if (data !== undefined) {
-          let baseprice = data['Base Price']
-          console.log(data.sku, 'dtatt')
-          setAmounttotal(baseprice)
-          let amount = baseprice * Number(caseqty[`index-${i}`])
-          total.push(amount)
-          itemtotalamount()
-          return getProductBySKU(data.sku)
-            .then(res => {
-              let response = res.response.data
-              console.log(response, 'response')
-              let product = response && response.product
-              let newobj = {
-                extra: {},
-                group: product.group,
-                itemId: product.itemId,
-                sku: product.sku,
-                quantity: cartqty, // qty,
-                price: {
-                  base: 0,
-                  currency: 'USD',
-                  sale: false,
-                  discount: {
-                    price: 0,
-                  },
+  const addedItemToCart = async () => {
+    let items = []
+    await packgdata.map(async (data, i) => {
+      if (data !== undefined) {
+        let baseprice = data['Base Price']
+        setAmounttotal(baseprice)
+        let amount = baseprice * Number(caseqty[`index-${i}`])
+        total.push(amount)
+        itemtotalamount()
+        await getProductBySKU(data.sku)
+          .then(res => {
+            let response = res.response.data
+            console.log(response, 'response')
+            let product = response && response.product
+            let newobj = {
+              extra: {},
+              group: product.group,
+              itemId: product.itemId,
+              sku: product.sku,
+              quantity: caseqty[`index-${i}`], // qty,
+              price: {
+                base: 0,
+                currency: 'USD',
+                sale: false,
+                discount: {
+                  price: 0,
                 },
-                size: false,
-              }
-              qickarray.push(newobj)
-              let payload = {
-                cartId: null,
-                items: qickarray,
-                registeredUser: true,
-                userAuthToken: user.accessToken,
-              }
-              addProductToCart(payload)
-                .then(res => {
-                  console.log('sucres', res)
-                })
-                .catch(err => {
-                  console.log('errres', err)
-                })
-            })
-            .catch(err => {
-              console.log('error', err)
-            })
+              },
+              size: false,
+            }
+            items.push(newobj)
+          })
+          .catch(err => {
+            console.log('error', err)
+          })
+      }
+
+      if (i >= packgdata.length - 1) {
+        let payload = {
+          cartId: null,
+          items,
+          registeredUser: true,
+          userAuthToken: user.accessToken,
         }
-      })
-    console.log(data, 'data')
+        addProductToCart(payload)
+          .then(res => {
+            setGetCartItemsState(res.response.data)
+            console.log('sucres', res)
+          })
+          .catch(err => {
+            console.log('errres', err)
+          })
+      }
+    })
   }
   const itemremove = async i => {
     let a = packgdata
