@@ -56,7 +56,7 @@ const Accordion = ({
               )}
             </div>
           </Col>
-          <Col md={table ? 24 : 22} xs={18} sm={18}>
+          <Col md={table ? 24 : 22} xs={24} sm={18}>
             <h4
               className="accordion-question notranslate"
               onClick={() => {

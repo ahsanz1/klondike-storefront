@@ -15,11 +15,15 @@ import { AppContext } from 'libs/context'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
-  const { user } = useContext(AppContext)
+  const { user, showcartPOPModal, setGetCartItemsState } = useContext(
+    AppContext,
+  )
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
+  let [addToCart, setAddToCart] = useState(false)
   let [showAddToCart, setShowAddToCart] = useState(false)
+  let [itemId, setItemId] = useState(0)
   const [size] = useWindowSize()
 
   const [itemdata, setItemData] = useState([])
@@ -57,6 +61,7 @@ const ProductAccordion = ({ question }) => {
     setTotalPrice(payload.totalPrice)
 
     setIsModalVisible(true)
+    showcartPOPModal()
   }
 
   const handleCancel = () => {
@@ -64,6 +69,7 @@ const ProductAccordion = ({ question }) => {
   }
 
   const addItemToCart = async () => {
+    setAddToCart(true)
     let data = modalData
     getProductBySKU(data.sku).then(res => {
       res = res.response.data
@@ -94,12 +100,13 @@ const ProductAccordion = ({ question }) => {
       }
       addProductToCart(payload)
         .then(res => {
-          console.log('sucres', res)
+          setGetCartItemsState(res.response.data)
         })
         .catch(err => {
           console.log('errres', err)
         })
       setIsModalVisible(false)
+      setAddToCart(false)
     })
   }
 
@@ -108,8 +115,9 @@ const ProductAccordion = ({ question }) => {
     setQty(value)
     setTotalPrice(data.price * value)
   }
-  const handleAddToCart = () => {
+  const handleAddToCart = i => {
     setShowAddToCart(!showAddToCart)
+    setItemId(i)
   }
   // const showModal = () => {
   //   setIsModalVisible(true)
@@ -150,7 +158,7 @@ const ProductAccordion = ({ question }) => {
                 <Row
                   className="table-content flex"
                   key={i}
-                  onClick={handleAddToCart}
+                  onClick={i => handleAddToCart(data.itemId)}
                 >
                   <Col lg={8} className="custom-width">
                     <p className="text-setting-table">
@@ -176,7 +184,7 @@ const ProductAccordion = ({ question }) => {
                       ${data['Order Price']}
                     </p>
                   </Col>
-                  {showAddToCart && (
+                  {showAddToCart && itemId === data.itemId && (
                     <>
                       {/* <div className="hover-details"> */}
                       <div className="">
@@ -252,14 +260,16 @@ const ProductAccordion = ({ question }) => {
                   </div>
                   <div>
                     <p className="products-sizes">Total Price</p>
-                    <p className="products-sizes detail">${totalPrice}</p>
+                    <p className="products-sizes detail">
+                      $ {parseFloat(totalPrice).toFixed(2)}
+                    </p>
                   </div>
                 </div>
                 <Button
                   className="pricelist-addcart "
                   onClick={e => addItemToCart(e)}
                 >
-                  Add TO CART
+                  {addToCart ? 'Adding...' : 'Add To Cart'}
                 </Button>
               </div>
             </div>
