@@ -6,6 +6,7 @@ exports.default = Types.Component({
   description: `Address component where each child has 4 text options  attributes for 
   displaying text as paragraph or list`,
   attributes: {
+    ActiveSubItem: Types.String({ label: 'Active SubItem' }),
     datasubpage: Types.Array({
       label: 'Text ',
       children: Types.Shape({
