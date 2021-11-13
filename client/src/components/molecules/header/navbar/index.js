@@ -168,7 +168,9 @@ const Navbar = ({
                 paddingRight: '35px',
               }}
             >
-              <div className="cart-amount">${cartAmount}</div>
+              <div className="cart-amount">
+                ${parseFloat(cartAmount).toFixed(2) || 0.0}
+              </div>
               <NavbarcartIcon
                 linkCartPageIcon={location.pathname === '/cart' && true}
                 cartIcon={cartIcon}
