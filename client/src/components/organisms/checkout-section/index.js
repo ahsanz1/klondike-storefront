@@ -24,7 +24,8 @@ import {
   // getAllShippingMethods,
   createShipTo,
   checkout,
-  retreivePickupPoints,
+  // retreivePickupPoints,
+  getPickupPoints,
 } from 'libs/services/api/checkout'
 import { LeftOutlined } from '@ant-design/icons'
 // import AccordionComponent from 'components/molecules/accordionComponent'
@@ -51,9 +52,9 @@ const Checkoutsection = () => {
   console.log({ cartPayload })
   const [inputField, setInputField] = useState(false)
   const [cartItemIds, setCartItemIds] = useState([])
-  const [availableLocations, setAvaiableLocations] = useState([])
+  // const [availableLocations, setAvaiableLocations] = useState([])
   console.log({ cartItemIds })
-  console.log({ availableLocations })
+  // console.log({ availableLocations })
 
   const address = {
     street1: '1510 Wall Street NW ',
@@ -101,15 +102,22 @@ const Checkoutsection = () => {
         let tempArr = getCartItemIds(res?.data?.items)
         await setCartItemIds(tempArr)
         await setCartPayloadState(data)
-        if (tempArr?.length) {
-          let pickUpPoints = retreivePickupPoints(1)
-          pickUpPoints
-            .then(res => {
-              setAvaiableLocations(res?.data?.locations)
-            })
-            .catch(err => console.log({ err }))
-          console.log({ pickUpPoints })
-        }
+        const responsePicup = []
+        tempArr?.length &&
+          tempArr?.map(async item => {
+            console.log({ item })
+            const response = await getPickupPoints(item?.itemId)
+            console.log({ response })
+            let pickUpPoints = response?.data?.locations
+            pickUpPoints?.length &&
+              pickUpPoints?.map(item => {
+                responsePicup.push(item)
+              })
+          })
+        console.log(responsePicup, 'filter')
+        console.log(responsePicup.length, 'filter')
+        const filteredLocations = [...new Set(responsePicup)]
+        console.log(filteredLocations, 'filtered')
         setIsCartLoading(false)
       } else navigate('/plp-page')
     }
