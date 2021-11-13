@@ -32,9 +32,13 @@ import {
 
 const Checkoutsection = () => {
   // let cart
-  const { user, personalInfo, creditLimit, setCheckoutData } = useContext(
-    AppContext,
-  )
+  const {
+    user,
+    personalInfo,
+    creditLimit,
+    setCheckoutData,
+    setGetCartItemsState,
+  } = useContext(AppContext)
   console.log({ personalInfo })
   console.log({ user })
   const navigate = useNavigate()
@@ -221,6 +225,7 @@ const Checkoutsection = () => {
           shipMethodCost,
       })
       setIsLoading(false)
+      setGetCartItemsState([])
       navigate('checkout-success')
     } else error()
   }
