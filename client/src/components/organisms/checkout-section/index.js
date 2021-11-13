@@ -26,15 +26,20 @@ import {
   checkout,
   retreivePickupPoints,
 } from 'libs/services/api/checkout'
+import LinkIcon from 'components/atoms/link-icon'
 // import { LeftOutlined } from '@ant-design/icons'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 // import { Link } from 'react-router-dom'
 
 const Checkoutsection = () => {
   // let cart
-  const { user, personalInfo, creditLimit, setCheckoutData } = useContext(
-    AppContext,
-  )
+  const {
+    user,
+    personalInfo,
+    creditLimit,
+    setCheckoutData,
+    setGetCartItemsState,
+  } = useContext(AppContext)
   console.log({ personalInfo })
   console.log({ user })
   const navigate = useNavigate()
@@ -221,6 +226,7 @@ const Checkoutsection = () => {
           shipMethodCost,
       })
       setIsLoading(false)
+      setGetCartItemsState([])
       navigate('checkout-success')
     } else error()
   }
@@ -336,7 +342,7 @@ const Checkoutsection = () => {
       <div className="checkout-wrapper">
         <Row justify="center" align="center" className="checkoutHeader">
           <Col>
-            <img src="static\images\klondike.png" alt="pic" />
+            <LinkIcon link="/" src="static\images\klondike.png" alt="pic" />
           </Col>
         </Row>
         <Row className="checkout-heading-padding">
