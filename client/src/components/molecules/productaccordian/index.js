@@ -19,6 +19,7 @@ const ProductAccordion = ({ question }) => {
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
+  let [addToCart, setAddToCart] = useState(false)
   let [showAddToCart, setShowAddToCart] = useState(false)
   let [itemId, setItemId] = useState(0)
   const [size] = useWindowSize()
@@ -65,6 +66,7 @@ const ProductAccordion = ({ question }) => {
   }
 
   const addItemToCart = async () => {
+    setAddToCart(true)
     let data = modalData
     getProductBySKU(data.sku).then(res => {
       res = res.response.data
@@ -101,6 +103,7 @@ const ProductAccordion = ({ question }) => {
           console.log('errres', err)
         })
       setIsModalVisible(false)
+      setAddToCart(false)
     })
   }
 
@@ -263,7 +266,7 @@ const ProductAccordion = ({ question }) => {
                   className="pricelist-addcart "
                   onClick={e => addItemToCart(e)}
                 >
-                  Add TO CART
+                  {addToCart ? 'Adding...' : 'Add To Cart'}
                 </Button>
               </div>
             </div>
