@@ -32,9 +32,14 @@ const Navbar = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
-  const { user, loginBottom, setLoginBottom, getCartItems } = useContext(
-    AppContext,
-  )
+  const {
+    user,
+    loginBottom,
+    setLoginBottom,
+    cartAmount,
+    getCartItems,
+    cartData,
+  } = useContext(AppContext)
   const wholesaleLinks =
     dynamicLinks ||
     dynamicLinks.find(item => item.id === 'Wholesale').linksArray ||
@@ -51,6 +56,7 @@ const Navbar = ({
   const menuToggle = () => {
     setIsOpen(!isOpen)
   }
+  console.log('cart amoutn check:', getCartItems, cartAmount, cartData)
   return (
     <div
       className={
@@ -162,9 +168,7 @@ const Navbar = ({
                 paddingRight: '35px',
               }}
             >
-              <div className="cart-amount">
-                ${getCartItems?.totalAmount?.amount}
-              </div>
+              <div className="cart-amount">${cartAmount}</div>
               <NavbarcartIcon
                 linkCartPageIcon={location.pathname === '/cart' && true}
                 cartIcon={cartIcon}

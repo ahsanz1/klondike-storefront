@@ -57,22 +57,27 @@
       }
     }
 
-    .remove-button {
-      // margin-top: 1.3vw;
-      // margin-left: -59vw;
-      border: none;
-      background: #013a4e;
-      color: #c2bbb7;
-      font-size: get-vw(12px);
-      font-style: normal;
-      font-weight: 600;
-      line-height: 185.5%;
-      text-decoration-line: underline;
+    .removebtn-div {
+      display: flex;
+      flex: 1;
 
-      @media screen and (max-width: 768px) {
-        display: none;
-        font-size: 12px;
+      .remove-button {
+        // margin-top: 1.3vw;
+        // margin-left: -59vw;
+        border: none;
+        background: #013a4e;
+        color: #c2bbb7;
+        font-size: get-vw(12px);
+        font-style: normal;
+        font-weight: 600;
         line-height: 185.5%;
+        text-decoration-line: underline;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+          font-size: 12px;
+          line-height: 185.5%;
+        }
       }
     }
 
