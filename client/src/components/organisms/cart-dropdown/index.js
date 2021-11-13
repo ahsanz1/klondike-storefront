@@ -17,6 +17,7 @@ const CartDropdown = () => {
     closeModal,
     getCartItems,
     setGetCartItemsState,
+    setCartAmount,
   } = useContext(AppContext)
 
   useEffect(() => {
@@ -59,6 +60,7 @@ const CartDropdown = () => {
     }
 
     getCart()
+    setCartAmount(getCartItems?.totalAmount?.amount)
   }, [])
 
   return (
