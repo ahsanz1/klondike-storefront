@@ -27,6 +27,14 @@ $vw-viewport: 1440;
       font-size: get-vw(14px);
       line-height: get-vw(20px);
       text-decoration-line: underline;
+
+      @media screen and (max-width: 768px) {
+        font-size: 3.73vw;
+
+        &:last-child {
+          padding-left: 10px;
+        }
+      }
     }
   }
 }
