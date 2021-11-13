@@ -531,7 +531,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                     )
                   })}
                   {isLoggedIn && (
-                    <div style={{ display: 'flex', justifyContent: 'end' }}>
+                    <div
+                      style={{ display: 'flex', justifyContent: 'flex-end' }}
+                    >
                       <div
                         className="cell totalPrice"
                         style={{
@@ -671,7 +673,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                     />
                   )}
                   {isLoggedIn && (
-                    <div style={{ display: 'flex', justifyContent: 'end' }}>
+                    <div
+                      style={{ display: 'flex', justifyContent: 'flex-end' }}
+                    >
                       <Button
                         className="customButton"
                         disabled={btnDisabled}
@@ -700,6 +704,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         onBulkQtyChange={onBulkQtyChange}
         btnDisabled={btnDisabled}
         pdpdatasheet={pdpdatasheet}
+        onSubmit={onSubmit}
+        addingToCart={addingToCart}
       />
     </>
   )

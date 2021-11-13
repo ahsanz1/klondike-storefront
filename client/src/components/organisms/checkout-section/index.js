@@ -60,6 +60,7 @@ const Checkoutsection = () => {
   const [cartItemIds, setCartItemIds] = useState([])
   // const [availableLocations, setAvaiableLocations] = useState([])
   console.log({ cartItemIds })
+  // var regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
   // console.log({ availableLocations })
 
   const address = {
@@ -228,7 +229,7 @@ const Checkoutsection = () => {
     console.log({ finalResponse })
     if (finalResponse?.data?.checkoutComplete) {
       setCheckoutData({
-        orderId: shipToResponse?.data?.orderId,
+        orderId: finalResponse?.data?.orderId,
         totalAmount:
           parseFloat(shipToResponse?.data?.totalAmount?.amount) +
           shipMethodCost,
