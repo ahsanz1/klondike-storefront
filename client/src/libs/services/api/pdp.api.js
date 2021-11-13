@@ -43,6 +43,7 @@ export const resetPasswordEmail = async email => {
 }
 
 export const addProductToCart = async (payload, count = 1) => {
+  console.log('from api', payload)
   try {
     const response = await axios.common.post(ENDPOINTS.POST.addToCart, payload)
     return {
