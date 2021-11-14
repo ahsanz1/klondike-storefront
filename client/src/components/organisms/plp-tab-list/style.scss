@@ -4,7 +4,8 @@
   width: 17.36vw;
 
   .active-category {
-    border-color: #f2a900 !important;
+    border: 0.1vw solid #f2a900 !important;
+    // border-color: #f2a900 !important;
     color: #f2a900 !important;
 
     @media (max-width: 768px) {

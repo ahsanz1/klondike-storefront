@@ -169,7 +169,7 @@ const Navbar = ({
               }}
             >
               <div className="cart-amount">
-                ${parseFloat(cartAmount).toFixed(2) || 0.0}
+                ${parseFloat(cartAmount || 0.0).toFixed(2)}
               </div>
               <NavbarcartIcon
                 linkCartPageIcon={location.pathname === '/cart' && true}

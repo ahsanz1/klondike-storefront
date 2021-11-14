@@ -1,12 +1,19 @@
+@function get-vw($pixel) {
+  $vw: ($pixel / 1400) * 100;
+
+  @return $vw * 1vw;
+}
+
 .Pdp-content {
   width: 100%;
-  margin: 0 auto;
+  // margin: 0 auto;
   margin-top: 100px;
   padding: 40px 120px;
   background: #032939;
 
   @media screen and (max-width: 768px) {
     padding: 40px 40px;
+    // margin: auto;
   }
 
   h1 {

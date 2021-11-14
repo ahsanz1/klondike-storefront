@@ -58,9 +58,9 @@ const Checkoutsection = () => {
   console.log({ cartPayload })
   const [inputField, setInputField] = useState(false)
   const [cartItemIds, setCartItemIds] = useState([])
+  const [validatePO, setValidatePO] = useState(false)
   // const [availableLocations, setAvaiableLocations] = useState([])
   console.log({ cartItemIds })
-  // var regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
   // console.log({ availableLocations })
 
   const address = {
@@ -293,7 +293,12 @@ const Checkoutsection = () => {
 
   const handlePOInput = e => {
     if (e.target.value) {
+      var regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
       setPONumber(e.target.value)
+      var reg = new RegExp(regex)
+      let res = reg.test(e.target.value)
+      console.log('regex', res)
+      setValidatePO(res)
     }
   }
 
@@ -447,10 +452,18 @@ const Checkoutsection = () => {
                 <div className="checkout-info">
                   <div className="checkout-po">
                     <span>Custom PO Number:</span>
-                    <Input
-                      placeholder="Enter Custom PO Number"
-                      onChange={handlePOInput}
-                    />
+                    <div>
+                      <Input
+                        placeholder="Enter Custom PO Number"
+                        onChange={handlePOInput}
+                        maxLength={7}
+                        defaultValue={`R3G`}
+                        className="inputStyle"
+                      />
+                      {!validatePO && (
+                        <p style={{ color: '#f2a900' }}>Invalid PO Number</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
