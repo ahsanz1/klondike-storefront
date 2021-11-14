@@ -214,16 +214,6 @@ $vw-viewport: 1440;
         display: flex;
         align-items: center;
         justify-content: space-between;
-
-        input {
-          width: 25%;
-          font-size: get-vw(14px);
-
-          @media (max-width: 768px) {
-            width: 40%;
-            font-size: 4vw;
-          }
-        }
       }
 
       // .change-button:hover {
@@ -360,5 +350,15 @@ $vw-viewport: 1440;
     width: 50px !important;
     height: 50px !important;
     border: 0 !important;
+  }
+}
+
+.inputStyle {
+  width: 25%;
+  font-size: get-vw(14px);
+
+  @media (max-width: 768px) {
+    width: 40%;
+    font-size: 4vw;
   }
 }

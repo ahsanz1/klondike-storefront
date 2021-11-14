@@ -11,13 +11,15 @@ const PlpTabList = ({
   subItem,
   width = '20%',
   subItemClickHandler,
+  handleClose,
 }) => {
-  const [product, setProduct] = useState('')
+  const [product, setProduct] = useState(itemName)
   console.log('props:', categories)
   const productClickHandler = productName => {
     console.log({ productName })
     setProduct(productName.title)
     subItemClickHandler(productName)
+    handleClose()
   }
   console.log('check categories:', categories)
   return (
@@ -69,6 +71,7 @@ PlpTabList.propTypes = {
   subItem: PropTypes.array,
   width: PropTypes.string,
   subItemClickHandler: PropTypes.func,
+  handleClose: PropTypes.func,
 }
 
 export default PlpTabList
