@@ -32,6 +32,9 @@ const Oats = () => {
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
     ]
+    console.log('urlss', url)
+    setOtsdata([])
+
     axios.get(url).then(response => {
       if (response.data.equipment_list.equipment.length > 0) {
         setNotFound(false)
@@ -105,6 +108,8 @@ const Oats = () => {
   const [bgImg, setBgimg] = useState(false)
 
   const searchQuery = () => {
+    console.log('bugs')
+    console.log('query', query)
     // setNotFound(true)
     setBgimg(true)
     if (query) {
@@ -135,6 +140,7 @@ const Oats = () => {
     setGr(value)
   }
   const handleKeyPress = event => {
+    console.log('event ', event)
     if (event.key === 'Enter') {
       searchQuery()
     }
@@ -185,6 +191,14 @@ const Oats = () => {
                     alt="icon"
                     className="img-icon"
                   />
+                </Button>
+                <Button
+                  className="reset-button"
+                  onClick={() => {
+                    setOtsdata([])
+                  }}
+                >
+                  Reset
                 </Button>
               </div>
             </div>
