@@ -57,11 +57,13 @@ const TechNews = ({
               <Label className="tech-news-title">{mainHeading}</Label>
               <Label className="pages-title">{categoryHeading}</Label>
               <div className="catagory-links">
-                {duplicateElementa.map((item, i) => (
-                  <Link key={i} className="links">
-                    {item}
-                  </Link>
-                ))}
+                {duplicateElementa &&
+                  duplicateElementa.length > 0 &&
+                  duplicateElementa.map((item, i) => (
+                    <Link key={i} className="links">
+                      {item}
+                    </Link>
+                  ))}
               </div>
               <div className="blog-item">
                 <div className="page-no">
