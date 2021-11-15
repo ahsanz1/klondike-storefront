@@ -16,7 +16,7 @@ import {
   Divider,
   Image,
   // Spin,
-  // Modal,
+  Modal,
 } from 'antd'
 import { ShareAltOutlined } from '@ant-design/icons'
 import { productListing } from 'libs/utils/gtm'
@@ -49,7 +49,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [addingToCart, setAddingToCart] = useState(false)
   const [items, setItems] = useState({})
 
-  const { packagedata, text1, bulk, text2 } = RadioData
+  const { packagedata, text1, bulk } = RadioData
   const [value, setValue] = React.useState(1)
   const [btnDisabled, setButtonDisabled] = useState(true)
 
@@ -71,16 +71,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   useEffect(() => {
     setContextPlp(plpredirect)
   }, [plpredirect])
-
-  // useEffect(() => {
-  //   console.log('category changed')
-  //   const data = []
-  //   if (!data) {
-  //     perfomeAlgoliaSearch(contextPlp, 0)
-  //   } else {
-  //     setProducts([])
-  //   }
-  // }, [contextPlp])
 
   const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
     try {
@@ -135,6 +125,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
           ...res?.response?.data?.product,
         }
         setProductData(newObj)
+        clickCategoryHandler(newObj?.category, null)
         setIsPdpLoading(false)
         mapAttributes(res?.response?.data?.items)
         setPdpProductData(res?.response?.data?.product)
@@ -233,7 +224,15 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const secondtext = (
     <div className="toltip-container">
       <h1>{bulk}</h1>
-      <p>{text2}</p>
+      <p>
+        When ordering a product to be delivered in bulk, all items within your
+        order must be ordered in bulk, too.
+      </p>{' '}
+      {/* <br />{' '} */}
+      <p>
+        Packaged Shipments and bulk deliveries have to be placed as separate
+        orders.
+      </p>
     </div>
   )
 
@@ -295,6 +294,15 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setItemSku(item?.sku)
   }
 
+  function error (msg) {
+    Modal.error({
+      title: 'This is an error message',
+      content:
+        msg ||
+        'Due to some technical reasons, this action cannot be performed!',
+    })
+  }
+
   const onSubmit = e => {
     setAddingToCart(true)
     console.log(productData?.requestArray, 'pkg')
@@ -307,11 +315,17 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
     addProductToCart(payload)
       .then(res => {
+        console.log('ressss', res)
         if (res?.response?.data) {
           setCartData(res?.response?.data)
           showcartPOPModal()
           setAddingToCart(false)
-        } else setAddingToCart(false)
+        } else {
+          setAddingToCart(false)
+          if (res?.hasError) {
+            error(res?.response?.error)
+          }
+        }
       })
       .catch(e => {
         if (e) {
@@ -325,8 +339,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   return (
     <>
       <div className="customContainer">
-        <Row className="p-10">
-          <Col>
+        <Row>
+          <Col className="breadcumb-column">
             <Breadcrumb
               className="breadCrumbStyle"
               separator={<span style={{ color: '#FFFFFF' }}>/</span>}
@@ -355,38 +369,54 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
             </Breadcrumb>
           </Col>
         </Row>
-        <Row className="p-10">
-          <Col style={{ width: '20%' }}>
+        <Row style={{ flexFlow: 'row' }}>
+          <Col className="sidebar">
             <PlpTabList
               categories={categories}
               itemName={contextPlp}
               clickCategoryHandler={clickCategoryHandler}
               subItem={subItem}
-              width="100%"
               subItemClickHandler={subItemClickHandler}
             />
           </Col>
-          {console.log({ productData })}
           {isPdpLoading ? (
-            <div style={{ margin: 'auto' }}>
+            <Col
+              style={{
+                display: 'flex',
+                justifyContent: 'space-evenly',
+                // width: '69vw',
+                flexWrap: 'wrap',
+              }}
+              className="product-details"
+            >
               <h1 style={{ color: 'gray' }}>
                 {!isPdpLoading ? 'No Data Found for this Item' : 'Loading...'}
               </h1>
-            </div>
+            </Col>
           ) : Object.keys(items).length === 0 ? (
-            <div style={{ margin: 'auto' }}>
+            <Col
+              style={{
+                display: 'flex',
+                justifyContent: 'space-evenly',
+                // width: '69vw',
+                flexWrap: 'wrap',
+              }}
+              className="product-details"
+            >
+              {' '}
               <h1 style={{ color: 'gray' }}>
                 No Attributes Found for this Item
               </h1>
-            </div>
+            </Col>
           ) : (
             <Col
               style={{
                 display: 'flex',
                 justifyContent: 'space-evenly',
-                width: '80%',
+                // width: '69vw',
                 flexWrap: 'wrap',
               }}
+              className="product-details"
             >
               <div className="flex-column">
                 <div className="image-background">
@@ -405,23 +435,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                   </div>
                 )}
               </div>
-              <div>
+              <div className="product-table">
                 <div
                   style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
                   <div>
-                    <h1
-                      style={{
-                        fontSize: '3vw',
-                        fontWeight: 'bold',
-                        color: '#FFFFFF',
-                        lineHeight: '1.2',
-                        whiteSpace: 'initial',
-                        wordWrap: 'break-word',
-                        maxWidth: '35vw',
-                      }}
-                      className="notranslate"
-                    >
+                    <h1 className="notranslate productTitle">
                       {productData?.title}
                     </h1>
                   </div>
@@ -442,12 +461,26 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                       optionType="button"
                     >
                       <Tooltip placement="bottomLeft" title={text}>
-                        <Radio value={1} style={{ color: 'white' }}>
+                        <Radio
+                          value={1}
+                          style={{
+                            color: 'white',
+                            fontSize: `${(17 / 1400) * 100}vw`,
+                            fontFamily: 'OpenSans',
+                          }}
+                        >
                           PACKAGED ORDER
                         </Radio>
                       </Tooltip>
                       <Tooltip placement="bottomRight" title={secondtext}>
-                        <Radio value={2} style={{ color: 'white' }}>
+                        <Radio
+                          value={2}
+                          style={{
+                            color: 'white',
+                            fontSize: `${(17 / 1400) * 100}vw`,
+                            fontFamily: 'OpenSans',
+                          }}
+                        >
                           BULK ORDER
                         </Radio>
                       </Tooltip>
@@ -556,120 +589,147 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                   )}
                   {isLoggedIn && (
                     <Divider
-                      style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }}
+                      style={{
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        width: '43.05556vw',
+                      }}
                     />
                   )}
-                  {isLoggedIn ? (
-                    <>
-                      <div className="table">
-                        <div className="cell-header">BULK</div>
-                        <div
-                          className={
-                            packagedOrder ? 'cell color-disabled' : 'cell'
-                          }
-                        >
-                          PRICE/LITER
-                        </div>
-                        <div
-                          className={
-                            packagedOrder ? 'cell color-disabled' : 'cell'
-                          }
-                        >
-                          PART NUM
-                        </div>
-                        <div
-                          className={
-                            packagedOrder ? 'cell color-disabled' : 'cell'
-                          }
-                        >
-                          LITRES
-                        </div>
-                        <div className="cell-header"></div>
-                      </div>
-                      <div className="table">
-                        <div
-                          className={
-                            packagedOrder ? 'cell' : 'cell color-disabled'
-                          }
-                        ></div>
-                        <div
-                          className={
-                            packagedOrder ? 'cell color-disabled' : 'cell'
-                          }
-                        >
-                          {items?.bulkOrderItem?.length &&
-                            items?.bulkOrderItem[0]?.price?.base}
-                        </div>
-                        <div
-                          className={
-                            packagedOrder ? 'cell color-disabled' : 'cell'
-                          }
-                        >
-                          {items?.bulkOrderItem?.length &&
-                            // eslint-disable-next-line standard/computed-property-even-spacing
-                            items?.bulkOrderItem[0].mappedAttributes[
-                              'Part Number'
-                            ]}
-                        </div>
-                        <div
-                          className={
-                            packagedOrder ? 'cell color-disabled' : 'cell'
-                          }
-                        >
-                          <InputNumber
-                            min={0}
-                            max={100}
-                            defaultValue={0}
-                            onChange={e => onBulkQtyChange(e)}
-                            size="middle"
-                            className="input"
-                            disabled={packagedOrder}
-                            style={{
-                              backgroundColor:
-                                packagedOrder && 'rgba(255, 255, 255, 0.3)',
-                            }}
-                          />
-                        </div>
-                        <div
-                          className={
-                            packagedOrder
-                              ? 'cell color-disabled totalPrice'
-                              : 'cell totalPrice'
-                          }
-                          style={{
-                            color:
-                              items?.bulkOrderItem?.length &&
-                              items?.bulkOrderItem[0]?.totalPrice > 0
-                                ? '#fa9200'
-                                : 'white',
-                          }}
-                        >
-                          $
-                          {items?.bulkOrderItem?.length
-                            ? items?.bulkOrderItem[0]?.totalPrice
-                            : '0.00'}
-                        </div>
-                      </div>
-                    </>
+                  {items?.bulkOrderItem?.length ? (
+                    items?.bulkOrderItem?.map(item => {
+                      console.log('bulkitem', item)
+                      return (
+                        <>
+                          {isLoggedIn ? (
+                            <>
+                              <div className="table">
+                                <div className="cell-header">BULK</div>
+                                <div
+                                  className={
+                                    packagedOrder
+                                      ? 'cell color-disabled'
+                                      : 'cell'
+                                  }
+                                >
+                                  PRICE/LITER
+                                </div>
+                                <div
+                                  className={
+                                    packagedOrder
+                                      ? 'cell color-disabled'
+                                      : 'cell'
+                                  }
+                                >
+                                  PART NUM
+                                </div>
+                                <div
+                                  className={
+                                    packagedOrder
+                                      ? 'cell color-disabled'
+                                      : 'cell'
+                                  }
+                                >
+                                  LITRES
+                                </div>
+                                <div className="cell-header"></div>
+                              </div>
+                              <div className="table">
+                                <div
+                                  className={
+                                    packagedOrder
+                                      ? 'cell'
+                                      : 'cell color-disabled'
+                                  }
+                                ></div>
+                                <div
+                                  className={
+                                    packagedOrder
+                                      ? 'cell color-disabled'
+                                      : 'cell'
+                                  }
+                                >
+                                  {item?.price?.base}
+                                </div>
+                                <div
+                                  className={
+                                    packagedOrder
+                                      ? 'cell color-disabled'
+                                      : 'cell'
+                                  }
+                                >
+                                  {
+                                    // eslint-disable-next-line standard/computed-property-even-spacing
+                                    item?.mappedAttributes['Part Number']
+                                  }
+                                </div>
+                                <div
+                                  className={
+                                    packagedOrder
+                                      ? 'cell color-disabled'
+                                      : 'cell'
+                                  }
+                                >
+                                  <InputNumber
+                                    min={0}
+                                    max={100}
+                                    defaultValue={0}
+                                    onChange={e => onBulkQtyChange(e)}
+                                    size="middle"
+                                    className="input"
+                                    disabled={packagedOrder}
+                                    style={{
+                                      backgroundColor:
+                                        packagedOrder &&
+                                        'rgba(255, 255, 255, 0.3)',
+                                    }}
+                                  />
+                                </div>
+                                <div
+                                  className={
+                                    packagedOrder
+                                      ? 'cell color-disabled totalPrice'
+                                      : 'cell totalPrice'
+                                  }
+                                  style={{
+                                    color:
+                                      item?.totalPrice > 0
+                                        ? '#fa9200'
+                                        : 'white',
+                                  }}
+                                >
+                                  {parseFloat(item?.totalPrice || 0).toFixed(2)}
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="table">
+                              <div className="cell">BULK</div>
+                              <div className="cell"></div>
+                              <div className="cell">
+                                {item?.mappedAttributes['Part Number']}
+                              </div>
+                              <div className="cell"></div>
+                              <div className="cell"></div>
+                              <div className="cell"></div>
+                            </div>
+                          )}
+                        </>
+                      )
+                    })
                   ) : (
-                    <div className="table">
-                      <div className="cell">BULK</div>
-                      <div className="cell"></div>
-                      <div className="cell">
-                        {items?.bulkOrderItem?.length &&
-                          // eslint-disable-next-line standard/computed-property-even-spacing
-                          items?.bulkOrderItem[0].mappedAttributes[
-                            'Part Number'
-                          ]}
-                      </div>
-                      <div className="cell"></div>
-                      <div className="cell"></div>
-                      <div className="cell"></div>
+                    <div style={{ width: '100%', margin: 'auto' }}>
+                      <h5 style={{ color: 'gray' }}>
+                        Bulk Order is no available.
+                      </h5>
                     </div>
                   )}
+
                   {isLoggedIn && (
                     <Divider
-                      style={{ border: '1px solid rgba(255, 255, 255, 0.2)' }}
+                      style={{
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        width: '43.05556vw',
+                      }}
                     />
                   )}
                   {isLoggedIn && (
@@ -687,7 +747,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                   )}
                 </div>
               </div>
-              <PDPInformation pdpdatasheet={pdpdatasheet} />
+              <div className="pdp-info">
+                <PDPInformation pdpdatasheet={pdpdatasheet} />
+              </div>
             </Col>
           )}
         </Row>
@@ -706,6 +768,13 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         pdpdatasheet={pdpdatasheet}
         onSubmit={onSubmit}
         addingToCart={addingToCart}
+        contextPlp={contextPlp}
+        categories={categories}
+        clickCategoryHandler={clickCategoryHandler}
+        subItem={subItem}
+        subItemClickHandler={subItemClickHandler}
+        isPdpLoading={isPdpLoading}
+        items={items}
       />
     </>
   )
