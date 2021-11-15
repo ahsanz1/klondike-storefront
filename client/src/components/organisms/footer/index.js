@@ -251,7 +251,7 @@ const Footer = ({
             : 'bottom-bar'
         }
       >
-        <p>{policyText}</p>
+        <p className="policy-text">{policyText}</p>
         <FooterPolicy
           policyText={policyText}
           privacyTitle={privacyTitle}
