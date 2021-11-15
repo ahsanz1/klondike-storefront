@@ -55,8 +55,14 @@
     }
   }
 
+  .accordion-item .ant-col {
+    max-width: fit-content;
+  }
+
   .ant-row.accordion-item {
     flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 0;
     padding-top: 15px;
     padding-bottom: 15px;
