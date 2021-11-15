@@ -102,6 +102,7 @@ const MyAccount = ({
             <div className="accounts-tabs">
               <div className="tabs-container">
                 <TabsDropdown
+                  className="account-dropdown"
                   activeKey={tabKey}
                   onTabClick={key => setTabKey(key)}
                 >
