@@ -518,7 +518,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 </div>
                 <div>
                   <div className="table">
-                    <div className="cell-header">SIZES</div>
+                    <div className="cell-header size">SIZES</div>
                     <div className="cell-header">UNITS/CASE</div>
                     <div className="cell-header">PART NUM</div>
                     <div className="cell-header">{isLoggedIn && 'PRICE'}</div>
