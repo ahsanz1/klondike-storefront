@@ -9,7 +9,7 @@ import {
   Button,
   Input,
   Modal,
-  Result,
+  // Result,
   Row,
   Col,
   Divider,
@@ -52,7 +52,7 @@ const Checkoutsection = () => {
   const [cartPayload, setCartPayloadState] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
   // const [cartId] = useState('617fb67c3d8494000801e3f0')
-  const [isSuccess, setIsSuccess] = useState(false)
+  // const [isSuccess, setIsSuccess] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [delivery, setDelivery] = useState(true)
   const [value, setValue] = useState(1)
@@ -240,9 +240,10 @@ const Checkoutsection = () => {
           },
           paymentMethod: 'PURCHASE_ORDER',
           paymentKind: 'PURCHASE_ORDER',
-          amount:
-            parseFloat(shipToResponse?.data?.totalAmount?.amount) +
-            shipMethodCost,
+          amount: delivery
+            ? parseFloat(shipToResponse?.data?.totalAmount?.amount) +
+              shipMethodCost
+            : parseFloat(shipToResponse?.data?.totalAmount?.amount),
           currency: 'USD',
           conversion: 1,
           billToAddress: address,
@@ -258,9 +259,11 @@ const Checkoutsection = () => {
     if (finalResponse?.data?.checkoutComplete) {
       setCheckoutData({
         orderId: finalResponse?.data?.orderId,
-        totalAmount:
-          parseFloat(shipToResponse?.data?.totalAmount?.amount) +
-          shipMethodCost,
+        totalAmount: delivery
+          ? parseFloat(shipToResponse?.data?.totalAmount?.amount) +
+            shipMethodCost
+          : parseFloat(shipToResponse?.data?.totalAmount?.amount),
+        selectedLocation: selectedLocation,
       })
       setIsLoading(false)
       setGetCartItemsState([])
@@ -312,15 +315,10 @@ const Checkoutsection = () => {
     }
   }
 
-  const handleClose = () => {
-    setIsSuccess(false)
-  }
   const onChange = e => {
-    setValue(e.target.value)
-    if (e.target.value === 1) {
-      setDelivery(true)
-    } else {
-      setDelivery(false)
+    if (e.target.value) {
+      setValue(e.target.value)
+      setDelivery(!delivery)
     }
   }
 
@@ -357,20 +355,6 @@ const Checkoutsection = () => {
 
   return (
     <>
-      {isSuccess && (
-        <Modal
-          title="Basic Modal"
-          visible={isSuccess}
-          // onOk={handleOk}
-          onCancel={handleClose}
-        >
-          <Result
-            status="success"
-            title="Order Placed Successfully!"
-            subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-          />
-        </Modal>
-      )}
       <Modal
         // title="Basic Modal"
         visible={isModalVisible}
