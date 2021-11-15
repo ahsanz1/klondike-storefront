@@ -1,6 +1,10 @@
 @import '~styles/globals';
 
 .search-filter {
+  @media (min-width: 768px) {
+    padding-top: 5.2vw;
+  }
+
   @media (max-width: 500px) {
     margin-top: 35.7vw;
     padding-top: 10.66vw;

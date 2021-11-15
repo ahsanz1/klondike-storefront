@@ -75,7 +75,8 @@ $vw-viewport: 1440;
       font-weight: 700;
 
       @media (max-width: 768px) {
-        height: 10vw !important;
+        width: 100%;
+        height: 64px !important;
         font-size: 4vw;
       }
     }
@@ -108,6 +109,10 @@ $vw-viewport: 1440;
   .checkout-summary {
     padding: 1vw 4vw 1vw 8.88vw;
     color: #fff;
+
+    @media (max-width: 768px) {
+      padding: 0;
+    }
 
     .summary-title {
       color: #eceae9;
@@ -160,6 +165,11 @@ $vw-viewport: 1440;
   .checkout-padding {
     padding: 1vw 1vw 0 7.43vw;
 
+    @media (max-width: 768px) {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+
     .radio-btn {
       font-size: 1.1805vw !important;
 
@@ -176,8 +186,8 @@ $vw-viewport: 1440;
       font-size: 1.2vw !important;
       // border-color: #f2a900 !important;
       @media (max-width: 768px) {
-        height: 6vw !important;
-        padding: 0 2vw 0 2vw;
+        height: auto !important;
+        padding: 10px 30px 10px 30px;
         border-radius: get-vw(5px);
         font-size: 4vw !important;
       }
@@ -194,11 +204,15 @@ $vw-viewport: 1440;
     .checkout-info {
       width: 55.13vw;
       margin: 1vw;
+      // margin-left: 0;
       padding: get-vw(20.8px);
       background-color: #002a3a;
       word-break: break-all;
 
       @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 15px;
+        margin-left: 0;
         padding: 4vw;
       }
 
@@ -228,6 +242,7 @@ $vw-viewport: 1440;
     .checkout-info-second {
       width: 55.13vw;
       margin: 1vw;
+      // margin-left: 0;
       padding-top: get-vw(10px);
       padding-right: 2vw;
       padding-bottom: get-vw(11px);
@@ -236,6 +251,9 @@ $vw-viewport: 1440;
       word-break: break-all;
 
       @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 15px;
+        margin-left: 0;
         padding: 4vw;
       }
 
@@ -248,7 +266,7 @@ $vw-viewport: 1440;
         // border-color: #f2a900 !important;
         @media (max-width: 768px) {
           height: 6vw !important;
-          padding: 0 2vw 0 2vw;
+          padding: 10px 30px 10px 30px;
           border-radius: get-vw(5px);
           font-size: 4vw !important;
         }
@@ -303,6 +321,9 @@ $vw-viewport: 1440;
       word-break: break-all;
 
       @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 36px;
+        margin-left: 0;
         padding: 4vw;
       }
 

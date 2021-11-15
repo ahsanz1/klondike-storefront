@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import React, { useContext, useEffect, useState } from 'react'
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import './style.scss'
 import { useNavigate } from '@reach/router'
 
@@ -44,6 +45,7 @@ const Checkoutsection = () => {
   console.log({ personalInfo })
   console.log({ user })
   const navigate = useNavigate()
+  const [size] = useWindowSize()
 
   // const { checkData } = checkoutData
   const [cartPayload, setCartPayloadState] = useState('')
@@ -380,8 +382,8 @@ const Checkoutsection = () => {
           </Row>
         ) : (
           <Row className="checkout-padding">
-            <Col xs={{ span: 23 }} lg={{ span: 16 }}>
-              <div style={{ margin: '0 0 3vw 1vw' }} className="radio-group">
+            <Col xs={{ span: 24 }} lg={{ span: 16 }}>
+              <div style={{ margin: '0 0 36px 1vw' }} className="radio-group">
                 <Radio.Group
                   onChange={onChange}
                   value={value}
@@ -467,15 +469,17 @@ const Checkoutsection = () => {
                   </div>
                 </div>
               )}
-              <div className="checkout-btn">
-                <Button
-                  className="placeorder-btn"
-                  onClick={createShipping}
-                  loading={isLoading}
-                >
-                  PLACE ORDER
-                </Button>
-              </div>
+              {size > 768 && (
+                <div className="checkout-btn">
+                  <Button
+                    className="placeorder-btn"
+                    onClick={createShipping}
+                    loading={isLoading}
+                  >
+                    PLACE ORDER
+                  </Button>
+                </div>
+              )}
             </Col>
             <Col
               xs={{ span: 24 }}
@@ -507,6 +511,17 @@ const Checkoutsection = () => {
                 </span>
               </div>
             </Col>
+            {size < 768 && (
+              <div className="checkout-btn">
+                <Button
+                  className="placeorder-btn"
+                  onClick={createShipping}
+                  loading={isLoading}
+                >
+                  PLACE ORDER
+                </Button>
+              </div>
+            )}
           </Row>
         )}
       </div>
