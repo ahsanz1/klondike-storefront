@@ -65,7 +65,7 @@ const AgriculturePage = ({
                       />
                       <Link
                         to={`/${item.productRedirect}`}
-                        className="feat-link"
+                        className="feat-link notranslate"
                       >
                         {item.produckSKU}
                       </Link>
@@ -76,7 +76,7 @@ const AgriculturePage = ({
             </div>
             <div className="explore-all">
               <Label className="explore-title">{exploreCatagoryHeading}</Label>
-              <div className="explore-links">
+              <div className="explore-links notranslate">
                 {exploreCatagory.map((item, i) => {
                   return (
                     <Link
