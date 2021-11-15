@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
+import Accounts from 'components/molecules/accounts-page'
 // import Accounts from 'components/molecules/accounts-page'
 // import { getOrder } from 'libs/api/order'
 // import { AppContext } from 'libs/context'
@@ -72,42 +73,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                   </div>
                 )}
               </div>
-              <div>
-                {userOrder &&
-                  userOrder.map((item, index) =>
-                    item.items.map((dataItem, i) => (
-                      <div className="order-image" key={index}>
-                        {/* <div className="image">
-                      <img src={item.image?.url} />
-                    </div> */}
-                        <div className="product-info">
-                          <div>
-                            <Label className="order-number">
-                              {item.orderId}
-                            </Label>
-                            <Label className="price">{dataItem.price}</Label>
-                            <Label className="link">{data.cart}</Label>
-                            <Label className="link">{data.review}</Label>
-                          </div>
-                          <div className="order">
-                            <Label className="price">{dataItem.price}</Label>
-                            <Label>{data.reorder}</Label>
-                          </div>
-                          <div className="status">
-                            <Label>{item.createdAt.slice(0, 10)}</Label>
-                            <Label className="price">{item.orderTotal}</Label>
-                            <Label>
-                              Status:
-                              {(item.status === 'ORDER_CREATED' &&
-                                'ORDER CREATED') ||
-                                item.status}
-                            </Label>
-                          </div>
-                        </div>
-                      </div>
-                    )),
-                  )}
-              </div>
+              {<Accounts orders={userOrder} />}
             </>
           )}
         </>
