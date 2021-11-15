@@ -27,9 +27,7 @@ export const getOrdersByUser = async (
         headers: {
           ...HEADERS.common,
           'x-api-key': orderApiKey,
-          Authorization:
-            accessToken ||
-            'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjI3Njk3OTQyOTliMDAwNzE0MGEyOSIsInJvbGVzIjpbeyJpZCI6IjVlMTk2MjUwNWVmNjEyMDAwODlmM2IyMiJ9XSwicGVybWlzc2lvbnMiOltdLCJhY2NvdW50aWQiOiI2MDIyNzY5Njk0Mjk5YjAwMDcxNDBhMjgiLCJhY2NvdW50SWQiOm51bGwsInVzZXJUeXBlIjp7ImtpbmQiOiJSRUdJU1RFUkVEIn0sImlhdCI6MTYxNzYwMzU1MywiZXhwIjoxNjE3NjA1MzUzfQ.SJO7ac5T9sWhTdO40aBgP-n17SiifVl2lathDE_zFDwTD7xpkcYyDbZT-ybo7F_ye14QdmZEqrRvHjlKSfLB0A',
+          Authorization: accessToken,
         },
       },
     )
