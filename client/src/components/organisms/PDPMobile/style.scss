@@ -126,7 +126,18 @@
   justify-content: space-evenly;
   min-width: 100px;
   margin: 3px;
-  padding: 3px;
+
+  .ant-input-number-input {
+    font-family: $OpenSans;
+    font-size: 1.0416vw;
+    font-weight: 700;
+    line-height: 1.5vw;
+
+    @media (max-width: 768px) {
+      font-size: 4vw;
+      line-height: 4.533vw;
+    }
+  }
 }
 
 .total-price-container {
