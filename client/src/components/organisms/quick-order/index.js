@@ -40,12 +40,13 @@ const QuickOrder = () => {
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
   const [accordianisActive, setAccordianIsActive] = useState(true)
   const [bulkdata, setBulkdata] = useState([])
-  const [amounttotal, setAmounttotal] = useState()
+  const [amounttotal, setAmounttotal] = useState({})
   let [pn, setPN] = useState()
   let [caseqty, setCaseqty] = useState([])
+  let [total, setTotal] = useState([])
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
-  let total = []
+  // let total = []
   console.log(fetcheditems, 'fetcheditems')
   console.log('packgdata', packgdata)
   useEffect(() => {
@@ -56,6 +57,10 @@ const QuickOrder = () => {
     }
     data()
   }, [])
+
+  useEffect(() => {
+    total.length > 0 && itemtotalamount()
+  }, [total])
   const itemtotalamount = () => {
     let sum = total.reduce(
       (previousValue, currentValue, currentIndex, array) => {
@@ -64,21 +69,38 @@ const QuickOrder = () => {
       0,
     )
     let totalamount = sum.toFixed(2)
+    console.log('amounts', total, totalamount)
+
     setTotalQty(totalamount)
   }
+  // const onChangeqty = async (value, index) => {
+  //   qtyIndex = {
+  //     ...caseqty,
+  //     [`index-${index}`]: value,
+  //   }
+  //   setCaseqty(qtyIndex)
+  //   let amounts = amounttotal * Number(caseqty[`index-${index}`])
+  //   console.log(amounts, 'amouunt')
+  //   total.push(amounts)
+  //   itemtotalamount()
+  // }
+
   const handleAccordianClick = () => {
     setAccordianIsActive(!accordianisActive)
   }
   const addedItemToCart = async () => {
     let items = []
+    let obj = {}
+    let arrayTotal = []
     await packgdata.map(async (data, i) => {
       if (data !== undefined) {
         let baseprice = data['Base Price']
-        setAmounttotal(baseprice)
+        obj = { ...obj, [i]: baseprice }
         let amount = baseprice * Number(caseqty[`index-${i}`])
-        total.push(amount)
-        console.log('total', total)
-        itemtotalamount()
+        // total.push(amount)
+        arrayTotal.push(amount)
+        console.log('totalss', total)
+        // itemtotalamount()
         await getProductBySKU(data.sku)
           .then(res => {
             let response = res.response.data
@@ -123,6 +145,11 @@ const QuickOrder = () => {
             console.log('errres', err)
           })
       }
+
+      if (packgdata.length - 1 === i) {
+        setAmounttotal(obj)
+        setTotal(arrayTotal)
+      }
     })
   }
   const itemremove = async i => {
@@ -134,11 +161,12 @@ const QuickOrder = () => {
     setInputList(list)
   }
   const onChangeqty = async (value, i) => {
-    let amounts = amounttotal * Number(caseqty[`index-${i}`])
-    console.log(amounts, 'amouunt')
-    total.push(amounts)
-    console.log('total', total)
-    itemtotalamount()
+    let amounts = amounttotal[i] * value
+    // total[i] = amounts
+    const amountT = [...total]
+    amountT[i] = amounts
+    setTotal(amountT)
+    // itemtotalamount()
     qtyIndex = {
       ...caseqty,
       [`index-${i}`]: value,
@@ -485,17 +513,26 @@ const QuickOrder = () => {
                               </div>
                               <div>
                                 <p>
-                                  Part Num <span>{data['Part Number']}</span>
+                                  Part Num
+                                  <span className="quick-item-description">
+                                    {data['Part Number']}
+                                  </span>
                                 </p>
                               </div>
                               <div>
                                 <p>
-                                  Size <span>{data['Package Size']}</span>
+                                  Size
+                                  <span className="quick-item-description">
+                                    {data['Package Size']}
+                                  </span>
                                 </p>
                               </div>
                               <div>
                                 <p>
-                                  Per case <span>{data['QTY PER CASE']}</span>
+                                  Per case
+                                  <span className="quick-item-description">
+                                    {data['QTY PER CASE']}
+                                  </span>
                                 </p>
                               </div>
                             </div>
@@ -579,7 +616,7 @@ const QuickOrder = () => {
                                     className="quick-orde_btn"
                                     onClick={e => itemremove(i)}
                                   >
-                                    Remove Item
+                                    Remove
                                   </button>
                                 </div>
                                 <div>

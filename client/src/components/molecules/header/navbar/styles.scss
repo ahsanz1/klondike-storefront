@@ -232,9 +232,8 @@
 
     @media screen and (max-width: 768px) {
       display: none;
-      width: 55.73vw;
-      height: 13vw !important;
-      // font-size: 20px;
+      min-width: 67.73vw !important;
+      min-height: 13vw !important;
     }
 
     @supports (-webkit-touch-callout: none) {
