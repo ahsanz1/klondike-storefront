@@ -556,7 +556,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             !packagedOrder ? 'cell color-disabled' : 'cell'
                           }
                         >
-                          {isLoggedIn && item?.price?.base}
+                          {isLoggedIn && '$' + item?.price?.base}
                         </div>
                         <div
                           className={
