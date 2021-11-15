@@ -209,10 +209,6 @@
           justify-content: space-between;
         }
 
-        @media screen and (max-width: 768px) {
-          justify-content: unset;
-        }
-
         .subtotal-title {
           padding-right: get-vw(50px);
           font-size: get-vw(24px);
@@ -305,6 +301,7 @@
 
       @media screen and (max-width: 768px) {
         justify-content: center;
+        padding-right: 0;
         font-size: getmb-vw(14px);
         line-height: getmb-vw(19px);
       }
