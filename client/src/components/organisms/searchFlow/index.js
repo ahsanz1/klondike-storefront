@@ -26,10 +26,18 @@ const SearchFlow = props => {
     console.log('value check:', value)
     setSearchValue(value)
     setShowRecent(false)
-    const list = await fetchItems(value)
-    console.log('check list:', list.hits)
-    setItemList(list.hits)
-    setSearchFilter(list.hits)
+    // const list = await fetchItems(value)
+    // console.log('check Search list:', list.hits)
+    // setItemList(list.hits)
+    // setSearchFilter(list.hits)
+    // Promise Start
+    await fetchItems(value)
+      .then(list => {
+        setItemList(list.hits)
+        setSearchFilter(list.hits)
+      })
+      .catch(error => console.log('Search Error:', error))
+    // Promise End
   }
   const clear = () => {
     setSearchValue('')
