@@ -17,6 +17,18 @@
     }
   }
 
+  .desktop {
+    @media (max-width: 768px) {
+      display: none !important;
+    }
+  }
+
+  .desk-bene {
+    @media (max-width: 768px) {
+      display: none !important;
+    }
+  }
+
   .tablist-heading {
     width: 17.29vw;
 
@@ -226,6 +238,12 @@
           font-size: 3.73vw;
         }
       }
+    }
+  }
+
+  .custom-tech {
+    @media (min-width: 768px) {
+      display: none !important;
     }
   }
 }

@@ -81,6 +81,10 @@
         &:nth-child(2) {
           width: 20%;
           text-align: right;
+
+          @media (max-width: 768px) {
+            margin-right: 9.33vw;
+          }
         }
       }
     }
@@ -194,6 +198,7 @@
     justify-content: space-between;
     height: 100vh;
     padding: 2vw 8.3vw;
+    overflow: auto;
 
     // @media (max-width: 1250px) {
     //   padding: 30px;
