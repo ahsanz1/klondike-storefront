@@ -162,7 +162,7 @@
         @media (max-width: 500px) {
           display: block !important;
           width: 55.7vw !important;
-          height: 12.2vw !important;
+          // height: 12.2vw !important;
           margin-top: 7.2vw;
           font-family: $OpenSans !important;
           font-size: 5.33vw !important;
@@ -232,7 +232,14 @@
 
     @media screen and (max-width: 768px) {
       display: none;
-      font-size: 20px;
+      width: 55.73vw;
+      height: 13vw !important;
+      // font-size: 20px;
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      width: 55.73vw !important;
+      font-size: 4.4vw;
     }
   }
 
@@ -320,7 +327,7 @@
   .cart-amount {
     position: absolute;
     top: 1.1vw;
-    right: 2.63vw;
+    right: 4.63vw;
     color: #f1a900;
     font-family: $OpenSans;
     font-size: 1.1vw;

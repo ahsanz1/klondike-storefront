@@ -1,6 +1,6 @@
 // export default CartDropdownItem
 
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import './styles.scss'
@@ -15,7 +15,9 @@ import { getItemsBySkus } from 'libs/services/api/item'
 
 const CartDropdownItem = cart => {
   console.log('check cart:', cart)
-  const { setGetCartItemsState } = useContext(AppContext)
+  const { setGetCartItemsState, getCartItems, setCartAmount } = useContext(
+    AppContext,
+  )
   const [isShow, SetIsShow] = useState(false)
   // const [removing, setRemoving] = useState(false)
   // const { removeFromCart, error } = useRemoveFromCart()
@@ -92,10 +94,11 @@ const CartDropdownItem = cart => {
       ...data,
       items: itemsArr,
     }
-
     return payload
   }
-
+  useEffect(() => {
+    setCartAmount(getCartItems?.totalAmount?.amount)
+  }, [getCartItems])
   return (
     <>
       {

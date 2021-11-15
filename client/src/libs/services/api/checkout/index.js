@@ -95,6 +95,29 @@ export const getAllShippingMethods = async (count = 1) => {
   return response
 }
 
+export const getPickupPoints = async (itemId, count = 1) => {
+  let response
+  try {
+    response = await axiosObj.common.get(ENDPOINTS.GET.getPickupPoints(itemId))
+    response = { error: false, data: response.data, message: null }
+  } catch (e) {
+    // console.log(e.message);
+    console.log('error', e.response)
+    if (e.request.response && e.response.status) {
+      const statusCode = e.response.status
+      if (statusCode === 500 && count < 4) {
+        return getPickupPoints(itemId, count + 1)
+      }
+    }
+    response = {
+      error: true,
+      data: e.response.data,
+      message: 'Unable to load pickup points. Please refresh your page.',
+    }
+  }
+  return response
+}
+
 export const retreivePickupPoints = async (itemId, count = 1) => {
   let response
   try {

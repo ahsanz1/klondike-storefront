@@ -132,7 +132,7 @@ export const faqsData = {
       table: true,
     },
     {
-      question: 'Auto Engine Oils',
+      question: 'Automotive Engine Oils',
       answer:
         'Follow us on Instagram and Twitter and all deals will be posted daily.',
       table: true,

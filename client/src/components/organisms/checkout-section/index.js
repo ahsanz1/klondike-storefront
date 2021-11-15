@@ -24,17 +24,23 @@ import {
   // getAllShippingMethods,
   createShipTo,
   checkout,
-  retreivePickupPoints,
+  // retreivePickupPoints,
+  getPickupPoints,
 } from 'libs/services/api/checkout'
+import LinkIcon from 'components/atoms/link-icon'
 // import { LeftOutlined } from '@ant-design/icons'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 // import { Link } from 'react-router-dom'
 
 const Checkoutsection = () => {
   // let cart
-  const { user, personalInfo, creditLimit, setCheckoutData } = useContext(
-    AppContext,
-  )
+  const {
+    user,
+    personalInfo,
+    creditLimit,
+    setCheckoutData,
+    setGetCartItemsState,
+  } = useContext(AppContext)
   console.log({ personalInfo })
   console.log({ user })
   const navigate = useNavigate()
@@ -52,9 +58,10 @@ const Checkoutsection = () => {
   console.log({ cartPayload })
   const [inputField, setInputField] = useState(false)
   const [cartItemIds, setCartItemIds] = useState([])
-  const [availableLocations, setAvaiableLocations] = useState([])
+  const [validatePO, setValidatePO] = useState(false)
+  // const [availableLocations, setAvaiableLocations] = useState([])
   console.log({ cartItemIds })
-  console.log({ availableLocations })
+  // console.log({ availableLocations })
 
   const address = {
     street1: '1510 Wall Street NW ',
@@ -102,15 +109,22 @@ const Checkoutsection = () => {
         let tempArr = getCartItemIds(res?.data?.items)
         await setCartItemIds(tempArr)
         await setCartPayloadState(data)
-        if (tempArr?.length) {
-          let pickUpPoints = retreivePickupPoints(1)
-          pickUpPoints
-            .then(res => {
-              setAvaiableLocations(res?.data?.locations)
-            })
-            .catch(err => console.log({ err }))
-          console.log({ pickUpPoints })
-        }
+        const responsePicup = []
+        tempArr?.length &&
+          tempArr?.map(async item => {
+            console.log({ item })
+            const response = await getPickupPoints(item?.itemId)
+            console.log({ response })
+            let pickUpPoints = response?.data?.locations
+            pickUpPoints?.length &&
+              pickUpPoints?.map(item => {
+                responsePicup.push(item)
+              })
+          })
+        console.log(responsePicup, 'filter')
+        console.log(responsePicup.length, 'filter')
+        const filteredLocations = [...new Set(responsePicup)]
+        console.log(filteredLocations, 'filtered')
         setIsCartLoading(false)
       } else navigate('/plp-page')
     }
@@ -215,12 +229,13 @@ const Checkoutsection = () => {
     console.log({ finalResponse })
     if (finalResponse?.data?.checkoutComplete) {
       setCheckoutData({
-        orderId: shipToResponse?.data?.orderId,
+        orderId: finalResponse?.data?.orderId,
         totalAmount:
           parseFloat(shipToResponse?.data?.totalAmount?.amount) +
           shipMethodCost,
       })
       setIsLoading(false)
+      setGetCartItemsState([])
       navigate('checkout-success')
     } else error()
   }
@@ -278,7 +293,12 @@ const Checkoutsection = () => {
 
   const handlePOInput = e => {
     if (e.target.value) {
+      var regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
       setPONumber(e.target.value)
+      var reg = new RegExp(regex)
+      let res = reg.test(e.target.value)
+      console.log('regex', res)
+      setValidatePO(res)
     }
   }
 
@@ -336,7 +356,7 @@ const Checkoutsection = () => {
       <div className="checkout-wrapper">
         <Row justify="center" align="center" className="checkoutHeader">
           <Col>
-            <img src="static\images\klondike.png" alt="pic" />
+            <LinkIcon link="/" src="static\images\klondike.png" alt="pic" />
           </Col>
         </Row>
         <Row className="checkout-heading-padding">
@@ -432,10 +452,18 @@ const Checkoutsection = () => {
                 <div className="checkout-info">
                   <div className="checkout-po">
                     <span>Custom PO Number:</span>
-                    <Input
-                      placeholder="Enter Custom PO Number"
-                      onChange={handlePOInput}
-                    />
+                    <div>
+                      <Input
+                        placeholder="Enter Custom PO Number"
+                        onChange={handlePOInput}
+                        maxLength={7}
+                        defaultValue={`R3G`}
+                        className="inputStyle"
+                      />
+                      {!validatePO && (
+                        <p style={{ color: '#f2a900' }}>Invalid PO Number</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}

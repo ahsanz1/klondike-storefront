@@ -5,13 +5,17 @@
   position: absolute;
   width: 100%;
   margin: auto;
-  padding: 10px;
+  padding: 2.5vw;
+
+  // @media screen and (min-width: 768px) {
+  //   display: none;
+  // }
 
   @media screen and (max-width: 768px) {
     visibility: visible;
     position: unset;
-    top: 150px;
-    padding-top: 150px;
+    top: 10vh;
+    padding-top: 20vh;
   }
 }
 
@@ -62,12 +66,13 @@
 
 .pdp_mobile-heading {
   margin-top: 31px;
-  color: white;
+  color: #fff;
   font-family: $OpenSans;
   font-size: 20px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 22px;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+  line-height: 110%;
   text-align: center;
 }
 
@@ -165,6 +170,7 @@
   justify-content: center;
   width: 30px;
   height: 30px;
+  margin-left: 20px;
   padding: 5px;
   border: 1px solid #013a4e;
   border-radius: 50%;

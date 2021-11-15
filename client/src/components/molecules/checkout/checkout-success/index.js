@@ -55,16 +55,24 @@ const CheckoutSuccess = () => {
       <Row justify="center" align="center">
         <Col xs={{ span: 24 }} lg={{ span: 12 }} className="columns">
           <span className="order-number">
-            Order Number: {checkoutData?.orderId}
+            <span className="order-number-two">
+              Order Number: {checkoutData?.orderId}
+            </span>
           </span>
-          <span className="bold">PO Number: {address?.zipCode}</span>
-          <span className="bold">Order Date: {getDate()}</span>
+          <span className="bold">
+            PO Number: <span className="bold-two">{address?.zipCode}</span>
+          </span>
+          <span className="bold">
+            Order Date: <span className="bold-two">{getDate()}</span>
+          </span>
           <span className="bold">
             Order Total:{' '}
-            {`$${parseFloat(checkoutData?.totalAmount).toFixed(2)}`}
+            <span className="bold-two">{`$${parseFloat(
+              checkoutData?.totalAmount,
+            ).toFixed(2)}`}</span>
           </span>
           {window.innerWidth > 768 ? (
-            <p style={{ marginTop: '5vw' }}>
+            <p style={{ marginTop: '5vw', textAlign: 'left' }}>
               If you need to make changes to your order. please email
               clientcare@klondikelubricants.com or call 1-877-293-4691
             </p>
@@ -82,13 +90,10 @@ const CheckoutSuccess = () => {
           <h3>SHIPPING ADDRESS</h3>
           <div className="shipping-address">
             <span>
-              <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
-              <br />
-              {`${address?.street1},`}
-              <br />
-              {`${address?.city}, ${address?.state} ${address?.zipCode}`}
-              <br />
-              {`${address?.phone?.number}`}
+              <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
+              <p>{`${address?.street1},`}</p>
+              <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
+              <p>{`${address?.phone?.number}`}</p>
             </span>
           </div>
         </Col>
