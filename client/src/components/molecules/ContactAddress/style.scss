@@ -4,6 +4,10 @@
   width: 17.5vw;
   padding-top: 4.16vw;
 
+  @media (max-width: 768px) {
+    width: 65.8vw !important;
+  }
+
   h1 {
     color: white;
     font-family: $OpenSans;
@@ -13,6 +17,11 @@
     letter-spacing: 0.08em;
     line-height: 1.25vw;
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: 3.46vw;
+      line-height: 4.72vw !important;
+    }
   }
 
   p {
@@ -23,5 +32,9 @@
     font-weight: normal;
     letter-spacing: -0.01em;
     line-height: 140%;
+
+    @media (max-width: 768px) {
+      font-size: 3.73vw;
+    }
   }
 }

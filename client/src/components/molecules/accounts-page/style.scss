@@ -2,14 +2,26 @@
 
 .account-page {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   padding-top: get-vw(68px);
   padding-bottom: get-vw(17px);
 
   @media (max-width: 768px) {
     justify-content: unset;
-    margin-left: 24px;
-    padding-top: 173px;
+    width: 100%;
+    // margin-left: 24px;
+    // padding-top: 173px;
+    .account-sections {
+      display: flex;
+      margin-bottom: 110px;
+    }
+  }
+
+  .account-section-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.39vw;
   }
 
   .account-image-block {
@@ -37,6 +49,7 @@
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    margin-top: 0.97vw;
 
     .account-image-block__orderNumber {
       margin-bottom: get-vw(68px);
@@ -151,7 +164,7 @@
 }
 
 .account-mobile-orderPrice {
-  margin-bottom: 18px;
+  margin-bottom: 18px !important;
   color: #f1a900;
   font-size: 16px;
   font-style: normal;
