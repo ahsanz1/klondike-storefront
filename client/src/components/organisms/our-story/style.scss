@@ -22,6 +22,16 @@
       padding-left: 30px;
     }
 
+    .safety-para {
+      &:nth-child(2) {
+        font-weight: bolder;
+
+        .safety-paragraph {
+          font-weight: 700 !important;
+        }
+      }
+    }
+
     .our-story-content {
       font-size: 0.97vw;
 
