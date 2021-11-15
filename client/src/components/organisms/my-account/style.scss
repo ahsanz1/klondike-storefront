@@ -200,9 +200,10 @@
   }
 
   .zip {
+    margin-top: 1.11vw;
     color: #f1a900;
     font-family: $OpenSans;
-    font-size: 1.6vw;
+    font-size: 1.67vw !important;
     font-weight: bold;
 
     @media (max-width: 768px) {
@@ -221,6 +222,7 @@
   }
 
   .profile-mail {
+    margin-top: 0.97vw;
     font-weight: normal !important;
   }
 

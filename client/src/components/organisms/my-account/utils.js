@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-export const getUserInfo = user => user.name.first
+export const getUserInfo = user => user?.name?.first
 
 export const getAllOrders = orders => {
   return orders?.response?.data?.orders || []

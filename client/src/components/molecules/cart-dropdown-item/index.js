@@ -15,7 +15,7 @@ import { getItemsBySkus } from 'libs/services/api/item'
 
 const CartDropdownItem = cart => {
   console.log('check cart:', cart)
-  const { setGetCartItemsState, getCartItems, setCartAmount } = useContext(
+  const { setGetCartItemsState, setCartAmount, cartData } = useContext(
     AppContext,
   )
   const [isShow, SetIsShow] = useState(false)
@@ -97,8 +97,8 @@ const CartDropdownItem = cart => {
     return payload
   }
   useEffect(() => {
-    setCartAmount(getCartItems?.totalAmount?.amount)
-  }, [getCartItems])
+    setCartAmount(cartData?.totalAmount?.amount)
+  }, [cartData])
   return (
     <>
       {

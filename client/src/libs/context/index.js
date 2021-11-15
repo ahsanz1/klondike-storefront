@@ -48,6 +48,7 @@ const AppProvider = ({ children }) => {
   const [paymentIndex, setPaymentIndex] = useState(0)
   const [billingIndex, setBillingIndex] = useState(0)
   const [cartData, setCartData] = useState({})
+  const [cartState, setCartState] = useState('')
   const [checkoutData, setCheckoutData] = useState({})
   const [creditLimit, setCreditLimit] = useState(5000)
   const [size] = useWindowSize()
@@ -230,6 +231,8 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        setCartState,
+        cartState,
         setCartAmount,
         cartAmount,
         removeProduct,
