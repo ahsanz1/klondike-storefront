@@ -20,7 +20,11 @@ const OurStory = ({ OurStoryData, activeTablist }) => {
       <div className="our-story-wrapper">
         {OurStoryData.map((item, i) => {
           return (
-            <div key={i}>
+            <div
+              className={`safety-para ${location.pathname ===
+                '/about-klondike/safety-environment' && 'safety-para'}`}
+              key={i}
+            >
               <Label className="title">{item.title}</Label>
               {item.subSection.map((data, i) => (
                 <div key={i} className="our-story-content">
