@@ -95,7 +95,7 @@
       grid-template-columns: 210px 83px;
       grid-template-rows: auto auto;
       padding-bottom: 0;
-      padding-left: 28px;
+      padding-left: 10px;
       gap: 18px;
     }
 
@@ -284,7 +284,7 @@
     @media screen and (max-width: 768px) {
       grid-template-columns: 220px auto;
       padding-top: 20px;
-      padding-left: 38px;
+      padding-left: 15px;
       font-size: 16px;
       line-height: 28px;
     }
@@ -296,7 +296,7 @@
     width: 50px;
 
     @media screen and (max-width: 768px) {
-      right: 0;
+      right: 5px;
       width: 20px;
     }
   }
@@ -432,6 +432,13 @@
         }
       }
     }
+
+    .quickorder-Price {
+      font-family: $OpenSans;
+      font-size: 1.25vw;
+      font-weight: 700;
+      line-height: 1.75vw;
+    }
   }
 }
 
@@ -479,6 +486,10 @@
         flex-direction: column;
         align-items: center;
 
+        @media screen and (max-width: 768px) {
+          margin-right: 10px;
+        }
+
         button {
           border: none;
           opacity: 0.7;
@@ -496,6 +507,7 @@
 
         input {
           padding: 5px;
+          font-size: 15px;
         }
       }
     }

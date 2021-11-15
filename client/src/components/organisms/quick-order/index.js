@@ -39,6 +39,7 @@ const QuickOrder = () => {
   let [totalqty, setTotalQty] = useState()
   let total = []
   console.log(fetcheditems, 'fetcheditems')
+  console.log('packgdata', packgdata)
   useEffect(() => {
     const data = async () => {
       const items = await fetchItems('')
@@ -57,22 +58,9 @@ const QuickOrder = () => {
     let totalamount = sum.toFixed(2)
     setTotalQty(totalamount)
   }
-  const onChangeqty = async (value, index) => {
-    qtyIndex = {
-      ...caseqty,
-      [`index-${index}`]: value,
-    }
-    setCaseqty(qtyIndex)
-    let amounts = amounttotal * Number(caseqty[`index-${index}`])
-    console.log(amounts, 'amouunt')
-    total.push(amounts)
-    itemtotalamount()
-  }
-
   const handleAccordianClick = () => {
     setAccordianIsActive(!accordianisActive)
   }
-
   const addedItemToCart = async () => {
     let items = []
     await packgdata.map(async (data, i) => {
@@ -81,6 +69,7 @@ const QuickOrder = () => {
         setAmounttotal(baseprice)
         let amount = baseprice * Number(caseqty[`index-${i}`])
         total.push(amount)
+        console.log('total', total)
         itemtotalamount()
         await getProductBySKU(data.sku)
           .then(res => {
@@ -135,6 +124,18 @@ const QuickOrder = () => {
     const list = [...inputList]
     list.splice(i, 1)
     setInputList(list)
+  }
+  const onChangeqty = async (value, i) => {
+    let amounts = amounttotal * Number(caseqty[`index-${i}`])
+    console.log(amounts, 'amouunt')
+    total.push(amounts)
+    console.log('total', total)
+    itemtotalamount()
+    qtyIndex = {
+      ...caseqty,
+      [`index-${i}`]: value,
+    }
+    setCaseqty(qtyIndex)
   }
   // const handleRemoveClick = index => {
   //   console.log(index, 'indexing')
@@ -370,7 +371,9 @@ const QuickOrder = () => {
         <div className="checkout">
           <div className="order-price">
             <Label className="sub-total">Order Total</Label>
-            <Label className="total">{totalqty}</Label>
+            <Label className="total">
+              <span>${totalqty}</span>
+            </Label>
           </div>
           <div className="checkout-links">
             <Link className="checkout-btn" to="/Checkoutsection">
@@ -398,11 +401,10 @@ const QuickOrder = () => {
           <div className="orderComponent">
             {/* ^^^^Order list and order component div excluding orderTotal */}
             <div className="radio-wrapper">
-              <Radio.Group className="radio-group">
+              <Radio.Group className="radio-group" defaultValue={1}>
                 <Radio
                   className={'radiobtn'}
                   value={1}
-                  defaultChecked={true}
                   disabled={radioStateBulk}
                   onChange={radioChangePACKAGE}
                 >
@@ -458,7 +460,7 @@ const QuickOrder = () => {
                             </div>
                             <div className="part-wraper">
                               <div className="quik-product-heading">
-                                <p>{data['product title']}</p>
+                                <p>{data['Product Title']}</p>
                               </div>
                               <div>
                                 <p>
@@ -479,7 +481,9 @@ const QuickOrder = () => {
                           </div>
 
                           <div>
-                            <p>{data['Base Price']}</p>
+                            <p className="quickorder-Price">
+                              ${data['Base Price']}
+                            </p>
                           </div>
                           <div>
                             <InputNumber
@@ -493,7 +497,7 @@ const QuickOrder = () => {
                             />
                           </div>
                           <div>
-                            <p>
+                            <p className="quickorder-Price">
                               $
                               {(
                                 data['Base Price'] *
@@ -519,19 +523,19 @@ const QuickOrder = () => {
                             <p>{data['product title']}</p>
                             <div className="quick-order-mobile__next-container">
                               <p>
-                                Size{' '}
+                                Size
                                 <span className="span">
                                   {data['Package Size']}
                                 </span>
                               </p>
                               <p>
-                                Per case{' '}
+                                Per case
                                 <span className="span">
                                   {data['QTY PER CASE']}
                                 </span>
                               </p>
                               <p>
-                                Part Num{' '}
+                                Part Num
                                 <span className="span">
                                   {data['Part Number']}
                                 </span>

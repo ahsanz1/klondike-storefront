@@ -43,32 +43,33 @@ const MyAccount = ({
   console.log('user info', personalInfo)
 
   useEffect(() => {
-    if (user.accessToken) {
-      setLoading(true)
-      const _name = getUserInfo(user)
-      setUserName(_name)
+    const setData = async () => {
+      if (user.accessToken) {
+        setLoading(true)
+        const _name = await getUserInfo(user)
+        setUserName(_name)
 
-      const fetchOrders = async () => {
-        const ordersByUser = await getOrdersByUser(user.accessToken)
-        const _allOrders = getAllOrders(ordersByUser)
+        const fetchOrders = async () => {
+          const ordersByUser = await getOrdersByUser(user.accessToken)
+          const _allOrders = await getAllOrders(ordersByUser)
 
-        console.log('ordersByUser: ', ordersByUser)
-        console.log('allOrders: ', _allOrders)
+          setUserOrder(
+            ordersByUser &&
+              ordersByUser.response &&
+              ordersByUser.response.data &&
+              ordersByUser.response.data.orders,
+          )
+          setAllOrders(_allOrders)
+          setLoading(false)
+        }
 
-        setUserOrder(
-          ordersByUser &&
-            ordersByUser.response &&
-            ordersByUser.response.data &&
-            ordersByUser.response.data.orders,
-        )
-        setAllOrders(_allOrders)
-        setLoading(false)
+        fetchOrders()
+      } else {
+        navigate('/account/login')
       }
-
-      fetchOrders()
-    } else {
-      navigate('/account/login')
     }
+
+    setData()
   }, [user])
   const logoutWord = logoutBtnText.split(' ')
   const logoutCapital = []

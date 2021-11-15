@@ -232,13 +232,13 @@
 
     @media screen and (max-width: 768px) {
       display: none;
-      width: auto;
+      width: 55.73vw;
       height: 13vw !important;
       // font-size: 20px;
     }
 
     @supports (-webkit-touch-callout: none) {
-      width: auto !important;
+      width: 55.73vw !important;
       font-size: 4.4vw;
     }
   }
