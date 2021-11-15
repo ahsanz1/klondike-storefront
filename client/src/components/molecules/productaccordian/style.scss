@@ -211,6 +211,11 @@ body .ant-modal-mask {
       padding-top: 3.26vw;
       justify-items: center;
 
+      .detail {
+        font-size: 0.97vw !important;
+        font-weight: bold !important;
+      }
+
       div {
         display: flex;
         flex-direction: column;
@@ -242,6 +247,10 @@ body .ant-modal-mask {
       background: #f2a900;
       color: white;
     }
+  }
+
+  .ant-input-number-handler-wrap {
+    right: -13px;
   }
 }
 
@@ -308,6 +317,12 @@ body .ant-modal-mask {
       .detail {
         .ant-input-number {
           width: 59px !important;
+
+          @media (max-width: 768px) {
+            font-family: $OpenSans !important;
+            font-size: 4vw !important;
+            font-weight: bold !important;
+          }
         }
       }
     }
