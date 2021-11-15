@@ -57,6 +57,7 @@ const CartPopUP = () => {
   useEffect(() => {
     setCartAmount(getCartItems?.totalAmount?.amount)
   }, [getCartItems])
+  console.log('check cart data:', getCartItems)
   return (
     cartPopupModal && (
       // size > 768 &&

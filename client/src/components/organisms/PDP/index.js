@@ -1,3 +1,6 @@
+/* eslint-disable space-before-function-paren */
+/* eslint-disable no-unneeded-ternary */
+/* eslint-disable indent */
 /* eslint-disable no-unused-expressions */
 import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
@@ -33,9 +36,15 @@ import queryString from 'query-string'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   // const { data, imgdata, heading } = pdpdata
-  const { showcartPOPModal, user, setCartData, setPdpProductData } = useContext(
-    AppContext,
-  )
+  const {
+    showcartPOPModal,
+    user,
+    setCartData,
+    setPdpProductData,
+    setCartState,
+    cartState,
+    getCartItems,
+  } = useContext(AppContext)
   console.log({ user })
 
   const { search } = useLocation()
@@ -294,7 +303,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setItemSku(item?.sku)
   }
 
-  function error (msg) {
+  function error(msg) {
     Modal.error({
       title: 'This is an error message',
       content:
@@ -468,6 +477,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             fontSize: `${(17 / 1400) * 100}vw`,
                             fontFamily: 'OpenSans',
                           }}
+                          disabled={
+                            cartState === 'bulk' &&
+                            getCartItems?.items?.length > 0
+                              ? true
+                              : false
+                          }
+                          onChange={() => {
+                            setCartState('package')
+                            console.log('package selected...', cartState)
+                          }}
                         >
                           PACKAGED ORDER
                         </Radio>
@@ -480,6 +499,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             fontSize: `${(17 / 1400) * 100}vw`,
                             fontFamily: 'OpenSans',
                           }}
+                          disabled={
+                            cartState === 'package' &&
+                            getCartItems?.items?.length > 0
+                              ? true
+                              : false
+                          }
+                          onChange={() => {
+                            setCartState('bulk')
+                            console.log('bulk selected...', cartState)
+                          }}
                         >
                           BULK ORDER
                         </Radio>
@@ -489,7 +518,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 </div>
                 <div>
                   <div className="table">
-                    <div className="cell-header">SIZES</div>
+                    <div className="cell-header size">SIZES</div>
                     <div className="cell-header">UNITS/CASE</div>
                     <div className="cell-header">PART NUM</div>
                     <div className="cell-header">{isLoggedIn && 'PRICE'}</div>
@@ -527,7 +556,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             !packagedOrder ? 'cell color-disabled' : 'cell'
                           }
                         >
-                          {isLoggedIn && item?.price?.base}
+                          {isLoggedIn && '$' + item?.price?.base}
                         </div>
                         <div
                           className={
@@ -574,15 +603,15 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             items?.totalPackagedOrderPrice > 0
                               ? '#fa9200'
                               : packagedOrder
-                                ? 'white'
-                                : 'rgba(255, 255, 255, 0.3)',
+                              ? 'white'
+                              : 'rgba(255, 255, 255, 0.3)',
                         }}
                       >
                         {'$' +
                           (items?.totalPackagedOrderPrice > 0
                             ? parseFloat(
                                 items?.totalPackagedOrderPrice,
-                            ).toFixed(2)
+                              ).toFixed(2)
                             : '0.00')}
                       </div>
                     </div>

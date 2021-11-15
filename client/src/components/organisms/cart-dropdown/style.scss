@@ -155,7 +155,6 @@
 
     @media screen and (max-width: 768px) {
       width: getmb-vw(325px);
-      max-height: 58vh;
       overflow: scroll;
       box-shadow: none;
     }
@@ -172,9 +171,8 @@
 
   .cart-dropdown-checkout-container {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: get-vw(19px);
-    // height: get-vw(172px);
     margin-right: get-vw(41px);
     margin-bottom: get-vw(40px);
     overflow: hidden;
@@ -207,10 +205,6 @@
 
         @media screen and (max-width: 768px) {
           justify-content: space-between;
-        }
-
-        @media screen and (max-width: 768px) {
-          justify-content: unset;
         }
 
         .subtotal-title {
@@ -305,6 +299,7 @@
 
       @media screen and (max-width: 768px) {
         justify-content: center;
+        padding-right: 0;
         font-size: getmb-vw(14px);
         line-height: getmb-vw(19px);
       }
