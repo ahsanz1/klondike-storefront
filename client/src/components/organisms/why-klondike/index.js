@@ -29,15 +29,23 @@ const WhyKlondike = ({ whyKlondikeData, heading, paragragh }) => {
           </div>
         </div>
         <div className="why-klondike-content">
-          {whyKlondikeData &&
+          {whyKlondikeData.length > 0 &&
             whyKlondikeData.map((item, i) => {
               return (
                 <div key={i} className="overview-detail-section">
                   <Label className="details-title">{item.title}</Label>
 
-                  <Label className="details-paragragh">{item.paragragh}</Label>
+                  {item.paragragh && (
+                    <Label className="details-paragragh">
+                      {item.paragragh}
+                    </Label>
+                  )}
 
-                  <Label className="details-paragragh">{item.paragragh2}</Label>
+                  {item.paragragh2 && (
+                    <Label className="details-paragragh">
+                      {item.paragragh2}
+                    </Label>
+                  )}
 
                   <div className="overview-detail-section-mobile">
                     <ReactReadMoreReadLess

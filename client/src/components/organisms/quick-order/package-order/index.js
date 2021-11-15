@@ -61,7 +61,7 @@ const PackageOrder = ({
                     className="quantity-number"
                     type="number"
                     value={x.quantity}
-                    step={1}
+                    // step={1}
                     onChange={e => handleChangePackageqty(e, i)}
                   />
                 </div>
