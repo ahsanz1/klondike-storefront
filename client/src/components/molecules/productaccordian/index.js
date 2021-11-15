@@ -56,7 +56,7 @@ const ProductAccordion = ({ question }) => {
       }`,
       sku: data['SKU'],
     }
-
+    console.log('payload:', payload)
     setModalData(payload)
     setTotalPrice(payload.totalPrice)
 
@@ -125,7 +125,7 @@ const ProductAccordion = ({ question }) => {
   // const onOk = () => {
   //   setIsModalVisible(false)
   // }
-
+  console.log('modal data:', modalData)
   return (
     <>
       {/* <Panel header="This is panel header 2" key="2"> */}
@@ -243,7 +243,9 @@ const ProductAccordion = ({ question }) => {
                   </div>
                   <div>
                     <p className="products-sizes">Price</p>
-                    <p className="products-sizes detail ">${modalData.price}</p>
+                    <p className="products-sizes detail ">
+                      ${modalData?.price?.toFixed(2)}
+                    </p>
                   </div>
                   <div>
                     <p className="products-sizes">QTY</p>
@@ -281,8 +283,17 @@ const ProductAccordion = ({ question }) => {
               </div>
               <div className="product-content-mobile">
                 <div className="product-detail-mobile">
+                  {modalData.size !== 'Bulk' && (
+                    <p className="products-sizes">SiZE</p>
+                  )}
                   <p className="products-sizes detail">{modalData.size}</p>
                 </div>
+                {modalData.size !== 'Bulk' && (
+                  <div className="product-detail-mobile">
+                    <p className="products-sizes">UNIT/CASE</p>
+                    <p className="products-sizes detail">{modalData.unit}</p>
+                  </div>
+                )}
                 <div className="product-pricing-mobile">
                   <div>
                     <div>
