@@ -41,30 +41,32 @@ const OurStory = ({ OurStoryData, activeTablist }) => {
                         __html: data.highlightedParagraph,
                       }}
                     ></p>
-
-                    <div className="overview-detail-section-mobile">
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html: readMore
-                            ? data.paragraph.slice(3, data.paragraph.length)
-                            : data.paragraph.slice(3, 535),
-                        }}
-                      ></p>
-                      {data.paragraph.length > 540 && (
-                        <span className={readMore ? 'read-less' : 'read-more'}>
-                          <Button href className="button" onClick={more}>
-                            {readMore ? 'Read Less' : 'Read More'}
-                          </Button>
-                        </span>
-                      )}
-
-                      <p
-                        className="highlighted-paragraph-mobile"
-                        dangerouslySetInnerHTML={{
-                          __html: data.highlightedParagraph,
-                        }}
-                      ></p>
-                    </div>
+                    {data.paragraph && (
+                      <div className="overview-detail-section-mobile">
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: readMore
+                              ? data.paragraph.slice(3, data.paragraph.length)
+                              : data.paragraph.slice(3, 535),
+                          }}
+                        ></p>
+                        {data.paragraph.length > 540 && (
+                          <span
+                            className={readMore ? 'read-less' : 'read-more'}
+                          >
+                            <Button href className="button" onClick={more}>
+                              {readMore ? 'Read Less' : 'Read More'}
+                            </Button>
+                          </span>
+                        )}
+                        <p
+                          className="highlighted-paragraph-mobile"
+                          dangerouslySetInnerHTML={{
+                            __html: data.highlightedParagraph,
+                          }}
+                        ></p>
+                      </div>
+                    )}
                   </>
                 </div>
               ))}
