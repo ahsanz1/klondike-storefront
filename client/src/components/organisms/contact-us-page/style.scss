@@ -110,7 +110,14 @@
 
     .request-form__submit-button-wrapper {
       @media (max-width: 500px) {
-        margin: 30px;
+        // margin: 30px;
+      }
+
+      .c-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 100px;
       }
     }
   }
@@ -142,6 +149,12 @@
         width: 327px;
         height: 298px !important;
       }
+    }
+  }
+
+  .links--container {
+    @media (max-width: 768px) {
+      margin-bottom: 0 !important;
     }
   }
 }

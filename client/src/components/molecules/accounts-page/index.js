@@ -18,11 +18,11 @@ const Accounts = ({ orders }) => {
   return (
     <div className="account-page">
       {size > 768 ? (
-        <>
+        <div className="account-sections">
           {fetchedOrders &&
             fetchedOrders.map((order, i) => {
               return (
-                <>
+                <div className="account-section-block" key={i}>
                   <div className="account-image-block">
                     <Image
                       className="account-image-block__image"
@@ -59,16 +59,16 @@ const Accounts = ({ orders }) => {
                       Status: {order.status.replace('_', ' ')}
                     </Label>
                   </div>
-                </>
+                </div>
               )
             })}
-        </>
+        </div>
       ) : (
         <>
           {fetchedOrders &&
             fetchedOrders.map((order, i) => {
               return (
-                <>
+                <div className="account-sections" key={i}>
                   <div className="account-image-block">
                     <Image
                       className="account-image-block__image"
@@ -89,7 +89,7 @@ const Accounts = ({ orders }) => {
                     <Button className="account-mobile-orderCart">2</Button>
                     <Button className="account-mobile-orderCart">3</Button>
                   </div>
-                </>
+                </div>
               )
             })}
         </>
