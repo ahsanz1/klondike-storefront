@@ -10,8 +10,8 @@
   @media (max-width: 768px) {
     display: block;
     // padding-top: 160px;
-    padding-right: 21px;
-    padding-left: 21px;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .testimonial-sections-container {
@@ -20,6 +20,8 @@
     @media (max-width: 768px) {
       margin-top: 24px;
       margin-left: 0;
+      padding-right: 21px;
+      padding-left: 21px;
     }
   }
 

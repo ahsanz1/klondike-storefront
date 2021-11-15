@@ -79,16 +79,17 @@
       text-transform: uppercase;
 
       @media screen and (max-width: 768px) {
-        width: 32vw;
+        width: auto;
         height: auto;
         margin-top: 2.6vw;
         margin-bottom: 8vw;
+        margin-left: 5.33vw;
         //width: 150px;
         //margin-bottom: 20px;
         //background: $accent-color;
         //color: white;
         //font-size: 14px;
-        margin-left: 5.33vw;
+        padding: 10px;
         border: 0.5vw solid #ff8200;
         border-radius: 1.3vw;
         background: transparent;
