@@ -42,7 +42,7 @@
     line-height: 1.16vw;
 
     @media screen and (max-width: 768px) {
-      font-size: 12px;
+      font-size: 3.2vw;
     }
   }
 
@@ -55,6 +55,10 @@
     color: #f1a900;
     font-size: 0.97vw;
     font-weight: 700;
+
+    @media screen and (max-width: 768px) {
+      font-size: 3.2vw;
+    }
   }
 
   .display-text-group {
@@ -64,5 +68,11 @@
     font-size: 0.97vw;
     font-weight: 400;
     line-height: 1.36vw;
+
+    @media screen and (max-width: 768px) {
+      margin-top: 7.73vw;
+      font-size: 3.733vw;
+      line-height: 5.22vw;
+    }
   }
 }

@@ -287,11 +287,19 @@
 
     :first-child {
       display: flex;
-      // padding-left: get-vw(17px);
+      padding-left: get-vw(5px);
+
+      @media screen and(max-width: 768px) {
+        padding-left: 1vw;
+      }
 
       .quick-order-asterisk {
-        padding-left: 0;
+        padding-left: 0.5vw;
         color: rgb(192, 17, 17);
+
+        @media screen and(max-width: 768px) {
+          padding-left: 1.5vw;
+        }
       }
     }
 
