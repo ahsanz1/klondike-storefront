@@ -14,6 +14,7 @@ const PackageOrder = ({
   inputList,
   handleRemoveClick,
   addingToCart,
+  qtyerror,
   // caceqty,
 }) => {
   const handleSubmit = e => {
@@ -56,7 +57,7 @@ const PackageOrder = ({
                   </datalist>
                 </div>
 
-                <div>
+                <div className="package-qty">
                   <input
                     name="quantity"
                     className="quantity-number"
@@ -65,6 +66,9 @@ const PackageOrder = ({
                     // step={1}
                     onChange={e => handleChangePackageqty(e, i)}
                   />
+                  {qtyerror && (
+                    <span className="packageqty-error">Please Entre QTY</span>
+                  )}
                 </div>
                 <div className="remove-rowbtn">
                   {InputList.length > 1 && InputList.length - 1 === i && (
@@ -103,6 +107,7 @@ PackageOrder.propTypes = {
   handleChangePackageqty: PropTypes.func,
   caceqty: PropTypes.func,
   addingToCart: PropTypes.bool,
+  qtyerror: PropTypes.bool,
 }
 
 export default PackageOrder

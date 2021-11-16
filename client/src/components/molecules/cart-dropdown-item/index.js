@@ -146,7 +146,7 @@ const CartDropdownItem = cart => {
               <div className="product-price-info">
                 <Label className="product-price">
                   <p className="product-price-mobile">PRICE</p>$
-                  {cart?.totalPrice?.amount}
+                  {cart?.totalPrice?.amount.toFixed(2)}
                 </Label>
               </div>
             </div>
@@ -173,7 +173,7 @@ const CartDropdownItem = cart => {
               </div>
               <Label className="total-price">
                 <p className="product-total-mobile">TOTAL PRICE</p>$
-                {cart?.totalPrice?.amount}
+                {cart?.totalPrice?.amount?.toFixed(2)}
               </Label>
             </div>
             <div className="removebtn-div">
@@ -211,7 +211,7 @@ const CartDropdownItem = cart => {
             </div>
             <Label className="total-price-desktop">
               <p className="product-total-desktop">TOTAL PRICE</p>$
-              {cart?.totalPrice?.amount}
+              {cart?.totalPrice?.amount?.toFixed(2)}
             </Label>
           </div>
         </div>
