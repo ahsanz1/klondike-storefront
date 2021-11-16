@@ -103,7 +103,23 @@ export const addShippingWithLineItems = async (cartId, payload) => {
       message: JSON.stringify(e),
     }
   }
+  return response
+}
 
+export const addPickupAndShippingWithLineItems = async (cartId, payload) => {
+  let response
+  try {
+    response = await axiosObj.common.post(
+      ENDPOINTS.PATCH.linkItemsWithPickupandShipping(cartId),
+      JSON.stringify(payload),
+    )
+  } catch (e) {
+    response = {
+      error: true,
+      data: null,
+      message: JSON.stringify(e),
+    }
+  }
   return response
 }
 
