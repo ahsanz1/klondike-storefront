@@ -4,12 +4,14 @@ import PropTypes from 'prop-types'
 import './style.scss'
 import { clearCart } from 'libs/services/cart-service'
 import { Row, Col } from 'antd'
+// import { useNavigate } from '@reach/router'
 // import Link from 'components/atoms/link'
 
 const CheckoutSuccess = () => {
   const { personalInfo, clearLocalCart, checkoutData } = useContext(AppContext)
   const [poNumber] = useState('R3G 2T3')
   console.log({ checkoutData })
+  // const navigate = useNavigate()
 
   useEffect(() => {
     clearCart()
@@ -87,14 +89,28 @@ const CheckoutSuccess = () => {
           )}
         </Col>
         <Col xs={{ span: 24 }} lg={{ span: 12 }} className="columns">
-          <h3>SHIPPING ADDRESS</h3>
+          <h3>{`${
+            checkoutData && Object.keys(checkoutData?.selectedLocation).length
+              ? 'PICKUP LOCATION'
+              : 'SHIPPING ADDRESS'
+          }`}</h3>
           <div className="shipping-address">
-            <span>
-              <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
-              <p>{`${address?.street1},`}</p>
-              <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
-              <p>{`${address?.phone?.number}`}</p>
-            </span>
+            {checkoutData &&
+            Object.keys(checkoutData?.selectedLocation).length ? (
+                <span>
+                  <p>{`${checkoutData?.selectedLocation?.address?.street1},`}</p>
+                  <p>{`${checkoutData?.selectedLocation?.address?.city}, ${checkoutData?.selectedLocation?.address?.state} ${checkoutData?.selectedLocation?.address?.zipCode}`}</p>
+                  <p>{`${checkoutData?.selectedLocation?.address?.phone?.number ||
+                  ''}`}</p>
+                </span>
+              ) : (
+                <span>
+                  <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
+                  <p>{`${address?.street1},`}</p>
+                  <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
+                  <p>{`${address?.phone?.number}`}</p>
+                </span>
+              )}
           </div>
         </Col>
       </Row>
