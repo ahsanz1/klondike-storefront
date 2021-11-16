@@ -41,26 +41,31 @@ const SearchFilter = ({ searchHeading }) => {
     let arrProduct = []
     let arrSize = []
     let arrUnit = []
+    let objProduct = {}
+    let objSize = {}
+    let objUnit = {}
 
     searchFilters &&
       searchFilters.map((data, index) => {
-        let objProduct = {
-          label: data['Part Number'],
-          value: data['Part Number'],
-        }
-        let objSize = {
-          label: data['Unit of Measurement'],
-          value: data['Unit of Measurement'],
-        }
-        let objUnit = {
-          label: data['Package Size'],
-          value: data['Package Size'],
-        }
+        data['Part Number'] &&
+          (objProduct = {
+            label: data['Part Number'] ? data['Part Number'] : '',
+            value: data['Part Number'] ? data['Part Number'] : '',
+          })
+        data['Unit of Measurement'] &&
+          (objSize = {
+            label: data['Unit of Measurement'],
+            value: data['Unit of Measurement'],
+          })
+        data['Package Size'] &&
+          (objUnit = {
+            label: data['Package Size'],
+            value: data['Package Size'],
+          })
         arrProduct.push(objProduct)
         arrSize.push(objSize)
         arrUnit.push(objUnit)
       })
-
     if (isCalled !== true) {
       setProduct(arrProduct)
       setUnit(arrSize)
@@ -70,7 +75,6 @@ const SearchFilter = ({ searchHeading }) => {
 
   const changePN = async e => {
     setPN(e)
-    console.log(e, 'partnub')
     filters['Part Number'] = e
     algoliaApi()
   }
@@ -189,7 +193,7 @@ const SearchFilter = ({ searchHeading }) => {
       </div>
       <div className="products">
         <ul>
-          {searchFilter &&
+          {searchFilter && searchFilter.length > 0 ? (
             searchFilter.map((item, i) => (
               <li key={i}>
                 <SearchList
@@ -203,7 +207,10 @@ const SearchFilter = ({ searchHeading }) => {
                   sku={item.sku}
                 />
               </li>
-            ))}
+            ))
+          ) : (
+            <p style={{ color: '#fff' }}>no item found</p>
+          )}
         </ul>
       </div>
     </div>

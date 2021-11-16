@@ -2223,9 +2223,9 @@ export const mapLocationData = {
       positionLng: '-122.462019',
       title: `WHERE WE'RE AT`,
       description: `<p class="big-margin-b">
-  Head Office, <br/><br/>
- 3078 275th Street<br/><br/>
-Langley, BC V4W 3L4
+      123 Example Ave, <br/><br/>
+      New york City, NY 10000<br/><br/>
+      123.456.7890
 </p>`,
     },
     {
