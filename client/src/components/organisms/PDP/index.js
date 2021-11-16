@@ -43,7 +43,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setPdpProductData,
     setCartState,
     cartState,
-    getCartItems,
+    // getCartItems,
   } = useContext(AppContext)
   console.log({ user })
   const navigate = useNavigate()
@@ -479,12 +479,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                         <Radio
                           value={1}
                           className="radio-style"
-                          disabled={
-                            cartState === 'bulk' &&
-                            getCartItems?.items?.length > 0
-                              ? true
-                              : false
-                          }
+                          // disabled={
+                          //   cartState === 'bulk' &&
+                          //   getCartItems?.items?.length > 0
+                          //     ? true
+                          //     : false
+                          // }
                           onChange={() => {
                             setCartState('package')
                             console.log('package selected...', cartState)
@@ -497,12 +497,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                         <Radio
                           value={2}
                           className="radio-style"
-                          disabled={
-                            cartState === 'package' &&
-                            getCartItems?.items?.length > 0
-                              ? true
-                              : false
-                          }
+                          // disabled={
+                          //   cartState === 'package' &&
+                          //   getCartItems?.items?.length > 0
+                          //     ? true
+                          //     : false
+                          // }
                           onChange={() => {
                             setCartState('bulk')
                             console.log('bulk selected...', cartState)
