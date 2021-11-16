@@ -13,6 +13,7 @@ const PackageOrder = ({
   productstitle,
   inputList,
   handleRemoveClick,
+  addingToCart,
   // caceqty,
 }) => {
   const handleSubmit = e => {
@@ -84,7 +85,7 @@ const PackageOrder = ({
             ADD ROW
           </Button>
           <Button className="add-btn" onClick={() => handleAddtoCart()}>
-            ADD TO CART
+            {addingToCart ? 'Adding...' : 'ADD TO CART'}
           </Button>
         </div>
       </form>
@@ -101,6 +102,7 @@ PackageOrder.propTypes = {
   handleRemoveClick: PropTypes.func,
   handleChangePackageqty: PropTypes.func,
   caceqty: PropTypes.func,
+  addingToCart: PropTypes.bool,
 }
 
 export default PackageOrder

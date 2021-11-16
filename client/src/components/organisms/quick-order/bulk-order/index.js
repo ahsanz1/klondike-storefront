@@ -13,6 +13,7 @@ const BulkOrder = ({
   bulkdata,
   inputList,
   handleRemoveClick,
+  addingToCart,
 }) => {
   const handleSubmit = e => {
     e.preventDefault()
@@ -81,7 +82,7 @@ const BulkOrder = ({
             ADD ROW
           </Button>
           <Button className="add-btn" onClick={() => handleAddtoCart()}>
-            ADD TO CART
+            {addingToCart ? 'Adding...' : 'ADD TO CART'}
           </Button>
         </div>
       </form>
@@ -97,6 +98,7 @@ BulkOrder.propTypes = {
   inputList: PropTypes.array,
   handleRemoveClick: PropTypes.func,
   handleChangePackageqty: PropTypes.func,
+  addingToCart: PropTypes.bool,
 }
 
 export default BulkOrder

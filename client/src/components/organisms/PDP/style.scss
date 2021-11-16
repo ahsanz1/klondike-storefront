@@ -74,6 +74,17 @@ $vw-viewport: 1440;
   }
 }
 
+.radio-style {
+  color: #f4f4f4 !important;
+  font-family: $OpenSans !important;
+  font-size: 17px !important;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  line-height: 23px !important;
+  text-transform: uppercase;
+}
+
 .cell {
   display: table-cell;
   min-width: get-vw(80);
