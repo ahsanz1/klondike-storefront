@@ -140,6 +140,13 @@
     }
   }
 
+  .packageqty-error {
+    display: block;
+    position: absolute;
+    margin-top: 10px;
+    color: red;
+  }
+
   .submit-btns {
     display: grid;
     // grid-template-rows: auto auto;
