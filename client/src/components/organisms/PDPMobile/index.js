@@ -269,7 +269,10 @@ const PDPMobile = ({
                     </div>
                     <div className="oneCell">
                       <span className="head">Price pER Litre</span>
-                      <span className="value">{item?.price?.base}</span>
+                      <span className="value">
+                        {item?.price?.base &&
+                            '$' + parseFloat(item?.price?.base)}
+                      </span>
                     </div>
                     <div className="oneCell">
                       <span className="head">Bulk</span>
@@ -315,7 +318,9 @@ const PDPMobile = ({
                           2,
                         )
                         : '0.00'
-                      : pdpdata?.bulkOrderItem[0]?.totalPrice)}
+                      : parseFloat(
+                          pdpdata?.bulkOrderItem[0]?.totalPric || 0,
+                      ).toFixed(2))}
                 </span>
               </div>
             )}
