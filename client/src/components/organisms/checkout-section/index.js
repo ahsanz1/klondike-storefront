@@ -484,10 +484,12 @@ const Checkoutsection = () => {
                 )}
               </div>
               <div className="checkout-info-third">
-                <div className="checkout-po">
-                  <span>
+                <div>
+                  <span className="checkout-po">
                     PO Number: <strong>{`${poNumber}`}</strong>
                   </span>
+                </div>
+                <div className="checkout-po-button">
                   <Button
                     ghost
                     className="change-button"
