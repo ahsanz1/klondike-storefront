@@ -181,7 +181,7 @@ const ProductAccordion = ({ question }) => {
                   </Col>
                   <Col lg={3} className="custom-width">
                     <p className="text-class-right text-setting-table">
-                      ${data['Order Price']}
+                      ${data['Order Price'].toFixed(2)}
                     </p>
                   </Col>
                   {showAddToCart && itemId === data.itemId && (
