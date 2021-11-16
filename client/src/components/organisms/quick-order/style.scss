@@ -167,7 +167,7 @@
       font-weight: bold;
 
       &:lang(fr) {
-        width: get-vw(200px);
+        width: 13.72vw;
       }
 
       @media screen and (max-width: 768px) {
@@ -176,7 +176,7 @@
         border: 1px solid #f1a900;
 
         &:lang(fr) {
-          width: 200px;
+          width: 46.72vw;
         }
       }
     }
@@ -192,7 +192,7 @@
       font-weight: bold;
 
       &:lang(fr) {
-        width: get-vw(200px);
+        width: 13.72vw;
       }
 
       @media screen and (max-width: 768px) {
@@ -200,7 +200,7 @@
         height: 42px;
 
         &:lang(fr) {
-          width: 200px;
+          width: 46.72vw;
         }
       }
     }
