@@ -100,6 +100,7 @@ const Oats = () => {
       setFamily(familyArray)
     })
   }
+  console.log('manufacturer', manufacturer)
   const filterData = e => {
     setQuery(e.target.value)
     setNotFound(false)
@@ -118,15 +119,19 @@ const Oats = () => {
     }
   }
   const manuFunc = value => {
+    setOtsdata([])
+    console.log('hhhh', otsdata)
+    // getproducts()
     setMu(value)
     setManuQuery(value)
-    getproducts()
   }
+
+  // console.log('otsdata::', otsdata)
   const searchFamily = value => {
     console.log('family:', value)
     setFamilyQuery(value)
     setFa(value)
-    getproducts()
+    // getproducts()
   }
   const seriesFunc = value => {
     setSeriesQuery(value)
@@ -228,7 +233,7 @@ const Oats = () => {
                   value={fa !== undefined ? fa : ' FAMILY'}
                 />
                 <Dropdown
-                  onChange={manuFunc}
+                  onChange={e => manuFunc(e)}
                   className="manufecturer "
                   items={manufacturer}
                   value={mu !== undefined ? mu : ' MANUFACTURER'}
@@ -251,6 +256,7 @@ const Oats = () => {
                 )}
               {otsdata && otsdata.equipment && otsdata.equipment.length > 0
                 ? otsdata.equipment.map((data, i) => {
+                    console.log('dataHere', data)
                     return (
                       <div className="table-content flex" key={i}>
                         <p className="custom-grid">
