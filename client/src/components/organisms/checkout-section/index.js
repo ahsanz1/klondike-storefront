@@ -359,10 +359,10 @@ const Checkoutsection = () => {
         // title="Basic Modal"
         visible={isModalVisible}
         // onOk={handleOk}
-        // centered
+        centered
         onCancel={handleCancel}
         bodyStyle={{ background: 'white', padding: 10 }}
-        width={300}
+        width={600}
       >
         <List
           // header={<div>Header</div>}
@@ -462,7 +462,7 @@ const Checkoutsection = () => {
                 ) : (
                   <div className="checkout-po">
                     {Object.keys(selectedLocation).length === 0 ? (
-                      <span></span>
+                      <span>Please choose location!</span>
                     ) : (
                       <span>
                         {`${selectedLocation?.address?.street1},`}
@@ -522,6 +522,9 @@ const Checkoutsection = () => {
                     className="placeorder-btn"
                     onClick={createShipping}
                     loading={isLoading}
+                    disabled={
+                      !delivery && !Object.keys(selectedLocation).length
+                    }
                   >
                     PLACE ORDER
                   </Button>
@@ -554,7 +557,7 @@ const Checkoutsection = () => {
               <div className="item">
                 <span className="total-price">Total Amount</span>
                 <span className="total-amount">
-                  {`$${(parseFloat(cartPayload?.itemsTotal) + 39).toFixed(2)}`}
+                  {`$${parseFloat(cartPayload?.itemsTotal + 39).toFixed(2)}`}
                 </span>
               </div>
             </Col>
@@ -564,6 +567,7 @@ const Checkoutsection = () => {
                   className="placeorder-btn"
                   onClick={createShipping}
                   loading={isLoading}
+                  disabled={!delivery && !Object.keys(selectedLocation).length}
                 >
                   PLACE ORDER
                 </Button>
