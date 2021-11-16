@@ -28,6 +28,19 @@ const Oats = () => {
   const [seriesQuery, setSeriesQuery] = useState('')
   const [yearQuery, setYearQuery] = useState('')
   const [notFound, setNotFound] = useState(false)
+
+  const resetFunction = () => {
+    setYearQuery('')
+    setYa()
+    setSeriesQuery('')
+    setSe()
+    setManuQuery('')
+    setMu()
+    setFamilyQuery('')
+    setFa()
+    setQuery('')
+    setOtsdata([])
+  }
   const getproducts = () => {
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
@@ -197,12 +210,7 @@ const Oats = () => {
                     className="img-icon"
                   />
                 </Button>
-                <Button
-                  className="reset-button"
-                  onClick={() => {
-                    setOtsdata([])
-                  }}
-                >
+                <Button className="reset-button" onClick={resetFunction}>
                   Reset
                 </Button>
               </div>
