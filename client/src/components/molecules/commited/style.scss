@@ -18,6 +18,10 @@
     @media screen and (max-width: 500px) {
       width: 100%;
       padding: 0 5.3vw;
+
+      &:lang(fr) {
+        padding-top: 16px;
+      }
     }
 
     h1 {

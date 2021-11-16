@@ -226,7 +226,10 @@
       cursor: pointer;
 
       @media screen and (max-width: 768px) {
-        width: 300px;
+        width: 300px !important;
+        font-family: $OpenSans;
+        font-size: 16px !important;
+        line-height: 28px !important;
       }
 
       @media screen and (max-width: 500px) {
