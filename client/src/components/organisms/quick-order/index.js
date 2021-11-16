@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 
 import './style.scss'
-import { Radio, InputNumber } from 'antd'
+import { Radio, InputNumber, Modal } from 'antd'
 import Label from 'components/atoms/label'
 import PackageOrder from 'components/organisms/quick-order/package-order/index'
 import BulkOrder from 'components/organisms/quick-order/bulk-order/index'
@@ -41,6 +41,7 @@ const QuickOrder = () => {
   const [accordianisActive, setAccordianIsActive] = useState(true)
   const [bulkdata, setBulkdata] = useState([])
   const [amounttotal, setAmounttotal] = useState({})
+  const [addingToCart, setAddingToCart] = useState(false)
   let [pn, setPN] = useState()
   let [caseqty, setCaseqty] = useState([])
   let [total, setTotal] = useState([])
@@ -73,6 +74,7 @@ const QuickOrder = () => {
 
     setTotalQty(totalamount)
   }
+
   // const onChangeqty = async (value, index) => {
   //   qtyIndex = {
   //     ...caseqty,
@@ -85,10 +87,19 @@ const QuickOrder = () => {
   //   itemtotalamount()
   // }
 
+  function error (err) {
+    Modal.error({
+      title: 'This is an error message',
+      content: err
+        ? err
+        : 'Due to some technical reasons, this request cannot be sent.',
+    })
+  }
+
   const handleAccordianClick = () => {
     setAccordianIsActive(!accordianisActive)
   }
-  const addedItemToCart = async () => {
+  const addedItemToCart = async searchedCartitems => {
     let items = []
     let obj = {}
     let arrayTotal = []
@@ -138,11 +149,21 @@ const QuickOrder = () => {
         }
         addProductToCart(payload)
           .then(res => {
-            setGetCartItemsState(res.response.data)
-            console.log('sucres', res)
+            if (res?.response?.data) {
+              setGetCartItemsState(res.response.data)
+              setAccordianIsActive(false)
+              setCartItems(searchedCartitems)
+              setAddingToCart(false)
+              console.log('sucres', res)
+            } else {
+              error(res?.response?.error)
+              setAddingToCart(false)
+            }
           })
           .catch(err => {
             console.log('errres', err)
+            error(err)
+            setAddingToCart(false)
           })
       }
 
@@ -315,6 +336,7 @@ const QuickOrder = () => {
 
   // -----------------------------------
   const handleAddtoCart = async () => {
+    setAddingToCart(true)
     const partnumberlist = inputList.map(item => {
       return item.partnumber
     })
@@ -328,15 +350,15 @@ const QuickOrder = () => {
     )
 
     setQty(quantitylist)
-    const cartItem = {
-      ...searchedCartitems,
-      quantitylist,
-    }
-    addedItemToCart({ ...cartItem[0] })
+    // const cartItem = {
+    //   ...searchedCartitems,
+    //   quantitylist,
+    // }
+    // addedItemToCart({ ...cartItem[0] })
+    addedItemToCart(searchedCartitems)
 
     // if (searchedCartitems.length > 0) {
-    setCartItems(searchedCartitems)
-    setAccordianIsActive(false)
+    // setCartItems(searchedCartitems)
     // } else {
     // show invalid sku error from here
     // }
@@ -374,6 +396,7 @@ const QuickOrder = () => {
               inputList={inputList}
               handleAddRow={handleAddRow}
               handleRemoveClick={itemremove}
+              addingToCart={addingToCart}
             />
           </AccordionComponent>
         </div>
@@ -396,6 +419,7 @@ const QuickOrder = () => {
               inputList={inputList}
               handleAddRow={handleAddRow}
               handleRemoveClick={itemremove}
+              addingToCart={addingToCart}
             />
           </AccordionComponent>
         </div>

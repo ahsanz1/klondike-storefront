@@ -9,15 +9,16 @@ import {
   Button,
   Input,
   Modal,
-  Result,
+  // Result,
   Row,
   Col,
   Divider,
   List,
-  Typography,
+  // Typography,
 } from 'antd'
 import {
   addShippingWithLineItems,
+  addPickupAndShippingWithLineItems,
   getCartByUserId,
 } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
@@ -51,7 +52,7 @@ const Checkoutsection = () => {
   const [cartPayload, setCartPayloadState] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
   // const [cartId] = useState('617fb67c3d8494000801e3f0')
-  const [isSuccess, setIsSuccess] = useState(false)
+  // const [isSuccess, setIsSuccess] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [delivery, setDelivery] = useState(true)
   const [value, setValue] = useState(1)
@@ -61,7 +62,8 @@ const Checkoutsection = () => {
   const [inputField, setInputField] = useState(false)
   const [cartItemIds, setCartItemIds] = useState([])
   const [validatePO, setValidatePO] = useState(false)
-  // const [availableLocations, setAvaiableLocations] = useState([])
+  const [availablePickupLocations, setAvaiablePickupLocations] = useState([])
+  const [selectedLocation, setSelectedLocation] = useState({})
   console.log({ cartItemIds })
   // console.log({ availableLocations })
 
@@ -84,17 +86,6 @@ const Checkoutsection = () => {
     },
   }
 
-  const data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
-  ]
-
-  // const [isActive, setIsAcive] = useState(true)
-  // const [pickup, setPickup] = useState(false)
-  // const [delivery, setDelivery] = useState(false)
   const getCart = async () => {
     if (user !== null) {
       console.log('token', user?.accessToken)
@@ -105,28 +96,25 @@ const Checkoutsection = () => {
           ...res?.data,
           itemsTotal: res?.data?.totalAmount?.amount,
           currency: res?.data?.totalAmount?.currency,
-          // totalItems: res?.data?.quantity,
-          // totalPrice: '12,000',
         }
         let tempArr = getCartItemIds(res?.data?.items)
         await setCartItemIds(tempArr)
         await setCartPayloadState(data)
-        const responsePicup = []
-        tempArr?.length &&
-          tempArr?.map(async item => {
-            console.log({ item })
-            const response = await getPickupPoints(item?.itemId)
-            console.log({ response })
-            let pickUpPoints = response?.data?.locations
-            pickUpPoints?.length &&
-              pickUpPoints?.map(item => {
-                responsePicup.push(item)
-              })
-          })
-        console.log(responsePicup, 'filter')
-        console.log(responsePicup.length, 'filter')
-        const filteredLocations = [...new Set(responsePicup)]
+        let availableLocations = []
+        for (var i = 0; i < tempArr?.length; i++) {
+          let resp = await getPickupPoints(tempArr[i]?.itemId)
+          let locations = resp?.data?.locations
+          console.log({ locations })
+          availableLocations.push(...locations)
+        }
+        console.log(availableLocations, 'filter')
+        const filteredLocations = await [
+          ...new Map(
+            availableLocations.map(item => [item['_id'], item]),
+          ).values(),
+        ]
         console.log(filteredLocations, 'filtered')
+        await setAvaiablePickupLocations(filteredLocations)
         setIsCartLoading(false)
       } else navigate('/plp-page')
     }
@@ -154,7 +142,6 @@ const Checkoutsection = () => {
 
   const mapItemsWithShipping = async shipToId => {
     let data = []
-
     await cartPayload?.items?.map((item, i) => {
       data.push({
         itemId: item?.itemId,
@@ -163,10 +150,49 @@ const Checkoutsection = () => {
       })
     })
     console.log('dataaa', data)
+    let res
 
-    let res = await addShippingWithLineItems(cartPayload?._id, data)
+    res = await addShippingWithLineItems(cartPayload?._id, data)
     console.log('line items res', res)
     return res
+  }
+
+  const mapItemsWithPickUpandShipping = async shipMethodId => {
+    let req = {
+      shipToType: 'BOPIS',
+      shipMethod: shipMethodId,
+      taxCode: 'FR020000',
+      warehouseId: selectedLocation?._id,
+      isPickup: true,
+      pickupPerson: {
+        name: {
+          first: personalInfo?.firstName,
+          last: personalInfo?.lastName,
+        },
+        email: personalInfo?.email,
+        phone: {
+          number: address?.phone?.number,
+          kind: 'Mobile',
+        },
+      },
+      altPickupPerson: {
+        name: {
+          first: 'Yousaf',
+          last: 'Khan',
+        },
+        email: 'yousaf.khan@shopdev.co',
+        phone: {
+          number: '8087769338',
+          kind: 'Mobile',
+        },
+      },
+    }
+    let response = await addPickupAndShippingWithLineItems(
+      cartPayload?._id,
+      req,
+    )
+    console.log({ response })
+    return response
   }
 
   const handleCancel = () => {
@@ -214,9 +240,10 @@ const Checkoutsection = () => {
           },
           paymentMethod: 'PURCHASE_ORDER',
           paymentKind: 'PURCHASE_ORDER',
-          amount:
-            parseFloat(shipToResponse?.data?.totalAmount?.amount) +
-            shipMethodCost,
+          amount: delivery
+            ? parseFloat(shipToResponse?.data?.totalAmount?.amount) +
+              shipMethodCost
+            : parseFloat(shipToResponse?.data?.totalAmount?.amount),
           currency: 'USD',
           conversion: 1,
           billToAddress: address,
@@ -232,9 +259,11 @@ const Checkoutsection = () => {
     if (finalResponse?.data?.checkoutComplete) {
       setCheckoutData({
         orderId: finalResponse?.data?.orderId,
-        totalAmount:
-          parseFloat(shipToResponse?.data?.totalAmount?.amount) +
-          shipMethodCost,
+        totalAmount: delivery
+          ? parseFloat(shipToResponse?.data?.totalAmount?.amount) +
+            shipMethodCost
+          : parseFloat(shipToResponse?.data?.totalAmount?.amount),
+        selectedLocation: selectedLocation,
       })
       setIsLoading(false)
       setGetCartItemsState([])
@@ -259,14 +288,23 @@ const Checkoutsection = () => {
       taxCode: 'FR020000',
     }
     console.log({ req })
-    let response = await createShipTo(cartPayload?._id, req)
+    let response
+    if (delivery) {
+      response = await createShipTo(cartPayload?._id, req)
+    } else {
+      response = await mapItemsWithPickUpandShipping(
+        req?.shipMethod?.shipMethodId,
+      )
+    }
     console.log({ response })
     try {
       if (response?.status === 200) {
         let shipToId = response?.data?._id
+        // let shipMethodId = response?.data?.shipMethod?.shipMethodId
         let shipMethodCost = response?.data?.shipMethod?.cost?.amount
         console.log({ shipToId })
-        let responseofLineItems = await mapItemsWithShipping(shipToId)
+        let responseofLineItems
+        responseofLineItems = await mapItemsWithShipping(shipToId)
         console.log({ responseofLineItems })
         if (responseofLineItems?.error === false) {
           await finalCheckout(responseofLineItems, shipMethodCost)
@@ -277,15 +315,10 @@ const Checkoutsection = () => {
     }
   }
 
-  const handleClose = () => {
-    setIsSuccess(false)
-  }
   const onChange = e => {
-    setValue(e.target.value)
-    if (e.target.value === 1) {
-      setDelivery(true)
-    } else {
-      setDelivery(false)
+    if (e.target.value) {
+      setValue(e.target.value)
+      setDelivery(!delivery)
     }
   }
 
@@ -308,6 +341,7 @@ const Checkoutsection = () => {
     setIsModalVisible(true)
   }
   const onListClick = item => {
+    setSelectedLocation(item)
     setIsModalVisible(false)
   }
 
@@ -321,36 +355,34 @@ const Checkoutsection = () => {
 
   return (
     <>
-      {isSuccess && (
-        <Modal
-          title="Basic Modal"
-          visible={isSuccess}
-          // onOk={handleOk}
-          onCancel={handleClose}
-        >
-          <Result
-            status="success"
-            title="Order Placed Successfully!"
-            subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-          />
-        </Modal>
-      )}
       <Modal
         // title="Basic Modal"
         visible={isModalVisible}
         // onOk={handleOk}
-        // centered
+        centered
         onCancel={handleCancel}
         bodyStyle={{ background: 'white', padding: 10 }}
+        width={600}
       >
         <List
           // header={<div>Header</div>}
           // footer={<div>Footer</div>}
           bordered
-          dataSource={data}
+          dataSource={availablePickupLocations}
           renderItem={item => (
             <List.Item onClick={() => onListClick(item)}>
-              <Typography.Text mark>[WAREHOUSE]</Typography.Text> {item}
+              <List.Item.Meta
+                title={item.name}
+                description={
+                  <p>
+                    {`${item?.address?.street1},`}
+                    <br />
+                    {`${item?.address?.city}, ${item?.address?.state} ${item?.address?.zipCode}`}
+                    <br />
+                    {`${item?.address?.phone?.number || '000-000-000'}`}
+                  </p>
+                }
+              />
             </List.Item>
           )}
         />
@@ -415,17 +447,32 @@ const Checkoutsection = () => {
                 <span>{personalInfo?.email}</span>
               </div>
               <div className="checkout-info-second">
-                <div className="checkout-po">
-                  <span>
-                    <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
-                    <br />
-                    {`${address?.street1},`}
-                    <br />
-                    {`${address?.city}, ${address?.state} ${address?.zipCode}`}
-                    <br />
-                    {`${address?.phone?.number}`}
-                  </span>
-                  {!delivery && (
+                {delivery ? (
+                  <div className="checkout-po">
+                    <span>
+                      <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+                      <br />
+                      {`${address?.street1},`}
+                      <br />
+                      {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                      <br />
+                      {`${address?.phone?.number}`}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="checkout-po">
+                    {Object.keys(selectedLocation).length === 0 ? (
+                      <span>Please choose location!</span>
+                    ) : (
+                      <span>
+                        {`${selectedLocation?.address?.street1},`}
+                        <br />
+                        {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
+                        <br />
+                        {`${selectedLocation?.address?.phone?.number ||
+                          '000-000-000'}`}
+                      </span>
+                    )}
                     <Button
                       ghost
                       className="change-button"
@@ -433,8 +480,8 @@ const Checkoutsection = () => {
                     >
                       CHOOSE PICKUP LOCATION
                     </Button>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
               <div className="checkout-info-third">
                 <div className="checkout-po">
@@ -475,6 +522,9 @@ const Checkoutsection = () => {
                     className="placeorder-btn"
                     onClick={createShipping}
                     loading={isLoading}
+                    disabled={
+                      !delivery && !Object.keys(selectedLocation).length
+                    }
                   >
                     PLACE ORDER
                   </Button>
@@ -507,7 +557,7 @@ const Checkoutsection = () => {
               <div className="item">
                 <span className="total-price">Total Amount</span>
                 <span className="total-amount">
-                  {`$${(parseFloat(cartPayload?.itemsTotal) + 39).toFixed(2)}`}
+                  {`$${parseFloat(cartPayload?.itemsTotal + 39).toFixed(2)}`}
                 </span>
               </div>
             </Col>
@@ -517,6 +567,7 @@ const Checkoutsection = () => {
                   className="placeorder-btn"
                   onClick={createShipping}
                   loading={isLoading}
+                  disabled={!delivery && !Object.keys(selectedLocation).length}
                 >
                   PLACE ORDER
                 </Button>
