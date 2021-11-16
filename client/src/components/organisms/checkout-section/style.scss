@@ -374,6 +374,12 @@ $vw-viewport: 1440;
   }
 }
 
+.ant-radio-inner {
+  // display: none !important;
+  border-color: #f2a900 !important;
+  background-color: #013a4e !important;
+}
+
 .inputStyle {
   width: 25%;
   font-size: get-vw(14px);
