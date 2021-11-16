@@ -180,7 +180,13 @@ const QuickOrder = () => {
     setPackgdata(a)
     const list = [...inputList]
     list.splice(i, 1)
-    setInputList(list)
+    if (list.length <= 0) {
+      setInputList([...list, { partnumber: '', quantity: '' }])
+      setPackgdata([])
+      setCartItems(false)
+    } else {
+      setInputList(list)
+    }
   }
   const onChangeqty = async (value, i) => {
     let amounts = amounttotal[i] * value
@@ -202,6 +208,7 @@ const QuickOrder = () => {
   //   setInputList(list)
   //   // itemremove(index)
   // }
+
   const handleChangePackageqty = async (e, index) => {
     setQtyError(false)
     const { name, value } = e.target
@@ -222,6 +229,7 @@ const QuickOrder = () => {
     }
     setCaseqty(qtyIndex)
   }
+
   const handleChange = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
