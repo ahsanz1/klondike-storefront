@@ -209,10 +209,6 @@ const QuickOrder = () => {
   //   // itemremove(index)
   // }
 
-  useEffect(() => {
-    handleChangePackageqty()
-  }, [])
-
   const handleChangePackageqty = async (e, index) => {
     setQtyError(false)
     const { name, value } = e.target
