@@ -30,8 +30,8 @@ const QuickOrder = () => {
   } = useContext(AppContext)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
-  // const [radioStatePackage, setRadioStatePackage] = useState(false)
-  // const [radioStateBulk, setRadioStateBulk] = useState(false)
+  const [radioStatePackage, setRadioStatePackage] = useState(false)
+  const [radioStateBulk, setRadioStateBulk] = useState(false)
   const [qty, setQty] = useState([])
   const [cartItems, setCartItems] = useState()
   const [productstitle, setProductstitle] = useState([])
@@ -180,7 +180,13 @@ const QuickOrder = () => {
     setPackgdata(a)
     const list = [...inputList]
     list.splice(i, 1)
-    setInputList(list)
+    if (list.length <= 0) {
+      setInputList([...list, { partnumber: '', quantity: '' }])
+      setPackgdata([])
+      setCartItems(false)
+    } else {
+      setInputList(list)
+    }
   }
   const onChangeqty = async (value, i) => {
     let amounts = amounttotal[i] * value
@@ -202,6 +208,7 @@ const QuickOrder = () => {
   //   setInputList(list)
   //   // itemremove(index)
   // }
+
   const handleChangePackageqty = async (e, index) => {
     setQtyError(false)
     const { name, value } = e.target
@@ -222,6 +229,7 @@ const QuickOrder = () => {
     }
     setCaseqty(qtyIndex)
   }
+
   const handleChange = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
@@ -244,9 +252,9 @@ const QuickOrder = () => {
     const inputs = Object.values(inputList[0])
     console.log('arraaayy', inputs)
     if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
-      // setRadioStatePackage(true)
+      setRadioStatePackage(true)
     } else {
-      // setRadioStatePackage(false)
+      setRadioStatePackage(false)
     }
   }
 
@@ -297,9 +305,9 @@ const QuickOrder = () => {
       const inputs = Object.values(inputList[0])
       console.log('arraaayy', inputs)
       if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
-        // setRadioStateBulk(true)
+        setRadioStateBulk(true)
       } else {
-        // setRadioStateBulk(false)
+        setRadioStateBulk(false)
       }
     }
 
@@ -475,13 +483,13 @@ const QuickOrder = () => {
                   className={'radiobtn'}
                   value={1}
                   defaultChecked={true}
-                  // disabled={radioStateBulk}
+                  disabled={radioStateBulk}
                   onChange={radioChangePACKAGE}
-                  disabled={
-                    cartState === 'bulk' && getCartItems?.items?.length > 0
-                      ? true
-                      : false
-                  }
+                  // disabled={
+                  //   cartState === 'bulk' && getCartItems?.items?.length > 0
+                  //     ? true
+                  //     : false
+                  // }
                 >
                   PACKAGED ORDER
                 </Radio>
@@ -489,13 +497,14 @@ const QuickOrder = () => {
                 <Radio
                   className="radiobtn"
                   value={2}
-                  // disabled={radioStatePackage}
+                  disabled={radioStatePackage}
+                  s
                   onChange={radioChangeBULK}
-                  disabled={
-                    cartState === 'package' && getCartItems?.items?.length > 0
-                      ? true
-                      : false
-                  }
+                  // disabled={
+                  //   cartState === 'package' && getCartItems?.items?.length > 0
+                  //     ? true
+                  //     : false
+                  // }
                 >
                   BULK ORDER
                 </Radio>

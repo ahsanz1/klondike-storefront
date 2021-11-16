@@ -561,7 +561,7 @@ const Checkoutsection = () => {
                 </span>
               </div>
             </Col>
-            {size < 768 && (
+            {size <= 768 && (
               <div className="checkout-btn">
                 <Button
                   className="placeorder-btn"

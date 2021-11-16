@@ -420,7 +420,7 @@
 .main-header {
   height: auto;
 
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     position: fixed;
     z-index: 999;
     top: 0;
