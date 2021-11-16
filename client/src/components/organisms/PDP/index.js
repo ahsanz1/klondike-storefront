@@ -1,3 +1,6 @@
+/* eslint-disable space-before-function-paren */
+/* eslint-disable no-unneeded-ternary */
+/* eslint-disable indent */
 /* eslint-disable no-unused-expressions */
 import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
@@ -28,15 +31,22 @@ import { AppContext } from 'libs/context'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import CartDropdown from '../cart-dropdown'
-import { useLocation } from '@reach/router'
+import { useLocation, useNavigate } from '@reach/router'
 import queryString from 'query-string'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   // const { data, imgdata, heading } = pdpdata
-  const { showcartPOPModal, user, setCartData, setPdpProductData } = useContext(
-    AppContext,
-  )
+  const {
+    showcartPOPModal,
+    user,
+    setCartData,
+    setPdpProductData,
+    setCartState,
+    cartState,
+    getCartItems,
+  } = useContext(AppContext)
   console.log({ user })
+  const navigate = useNavigate()
 
   const { search } = useLocation()
   const { sku } = queryString.parse(search)
@@ -294,7 +304,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setItemSku(item?.sku)
   }
 
-  function error (msg) {
+  function error(msg) {
     Modal.error({
       title: 'This is an error message',
       content:
@@ -431,7 +441,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 </div>
                 {!isLoggedIn && (
                   <div style={{ textAlign: 'center' }}>
-                    <Button className="customButton">HOW TO BUY</Button>
+                    <Button
+                      className="customButton"
+                      onClick={() => navigate('/account/login')}
+                    >
+                      HOW TO BUY
+                    </Button>
                   </div>
                 )}
               </div>
@@ -463,10 +478,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                       <Tooltip placement="bottomLeft" title={text}>
                         <Radio
                           value={1}
-                          style={{
-                            color: 'white',
-                            fontSize: `${(17 / 1400) * 100}vw`,
-                            fontFamily: 'OpenSans',
+                          className="radio-style"
+                          disabled={
+                            cartState === 'bulk' &&
+                            getCartItems?.items?.length > 0
+                              ? true
+                              : false
+                          }
+                          onChange={() => {
+                            setCartState('package')
+                            console.log('package selected...', cartState)
                           }}
                         >
                           PACKAGED ORDER
@@ -475,10 +496,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                       <Tooltip placement="bottomRight" title={secondtext}>
                         <Radio
                           value={2}
-                          style={{
-                            color: 'white',
-                            fontSize: `${(17 / 1400) * 100}vw`,
-                            fontFamily: 'OpenSans',
+                          className="radio-style"
+                          disabled={
+                            cartState === 'package' &&
+                            getCartItems?.items?.length > 0
+                              ? true
+                              : false
+                          }
+                          onChange={() => {
+                            setCartState('bulk')
+                            console.log('bulk selected...', cartState)
                           }}
                         >
                           BULK ORDER
@@ -489,7 +516,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 </div>
                 <div>
                   <div className="table">
-                    <div className="cell-header">SIZES</div>
+                    <div className="cell-header size">SIZES</div>
                     <div className="cell-header">UNITS/CASE</div>
                     <div className="cell-header">PART NUM</div>
                     <div className="cell-header">{isLoggedIn && 'PRICE'}</div>
@@ -527,7 +554,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             !packagedOrder ? 'cell color-disabled' : 'cell'
                           }
                         >
-                          {isLoggedIn && item?.price?.base}
+                          {isLoggedIn && '$' + item?.price?.base}
                         </div>
                         <div
                           className={
@@ -574,15 +601,15 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             items?.totalPackagedOrderPrice > 0
                               ? '#fa9200'
                               : packagedOrder
-                                ? 'white'
-                                : 'rgba(255, 255, 255, 0.3)',
+                              ? 'white'
+                              : 'rgba(255, 255, 255, 0.3)',
                         }}
                       >
                         {'$' +
                           (items?.totalPackagedOrderPrice > 0
                             ? parseFloat(
                                 items?.totalPackagedOrderPrice,
-                            ).toFixed(2)
+                              ).toFixed(2)
                             : '0.00')}
                       </div>
                     </div>
@@ -648,7 +675,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       : 'cell'
                                   }
                                 >
-                                  {item?.price?.base}
+                                  ${item?.price?.base}
                                 </div>
                                 <div
                                   className={
@@ -697,6 +724,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                         : 'white',
                                   }}
                                 >
+                                  $
                                   {parseFloat(item?.totalPrice || 0).toFixed(2)}
                                 </div>
                               </div>

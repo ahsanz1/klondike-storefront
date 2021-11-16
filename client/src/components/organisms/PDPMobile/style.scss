@@ -28,6 +28,7 @@
 .pdp-container {
   display: flex;
   justify-content: center;
+  width: 90%;
   margin: 30px auto;
 }
 
@@ -43,6 +44,7 @@
   border: 2px solid #f2a900 !important;
   border-radius: 5px !important;
   color: white !important;
+  font-family: $OpenSans;
   font-size: 20px !important;
   font-weight: 400;
 }
@@ -51,10 +53,13 @@
   min-width: 90%;
   margin-top: 10px !important;
   color: #fff !important;
-  font-size: 14px !important;
-  font-weight: 700;
-  line-height: 14.98px !important;
+  font-family: $OpenSans;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 15px;
   text-transform: uppercase;
+  font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
 .product-img {
@@ -65,6 +70,8 @@
 }
 
 .pdp_mobile-heading {
+  width: 90%;
+  margin: auto;
   margin-top: 31px;
   color: #fff;
   font-family: $OpenSans;
@@ -77,20 +84,41 @@
 }
 
 .radioGroup {
-  margin: 20px 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+}
+
+.radio-font {
+  color: #f4f4f4 !important;
+  font-family: $OpenSans !important;
+  font-size: 17px !important;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  line-height: 23px !important;
+  text-transform: uppercase;
 }
 
 .pdp-mobile-table {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+
+  span.ant-radio + * {
+    font-family: $OpenSans !important;
+  }
+}
+
+.text-right {
+  text-align: right !important;
 }
 
 .oneCell {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 80px;
+  // align-items: center;
+  min-width: 77px;
   margin: 3px;
   padding: 3px;
 }
@@ -100,23 +128,31 @@
 }
 
 .head {
+  margin-bottom: 5px;
   color: #fff;
+  font-family: $OpenSans;
   font-size: 11px;
+  font-style: normal;
   font-weight: 800;
   letter-spacing: 0.03em;
+  line-height: 15px;
   text-transform: uppercase;
 }
 
 .value {
   max-width: 75px;
   overflow: hidden;
+  opacity: 0.9;
   color: #c2bbb7;
+  font-family: $OpenSans;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0.03em;
+  line-height: 185.5%;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
+  // margin-top: 5px;
 }
 
 .value-qty {
@@ -127,17 +163,32 @@
   min-width: 100px;
   margin: 3px;
   padding: 3px;
+
+  .ant-input-number-input {
+    font-family: $OpenSans;
+    font-family: $OpenSans;
+    font-size: 1.0416vw;
+    font-weight: 700;
+    line-height: 1.5vw;
+
+    @media (max-width: 768px) {
+      font-size: 4vw;
+      line-height: 4.533vw;
+    }
+  }
 }
 
 .total-price-container {
   @media (max-width: 768px) {
     margin-right: 24px;
+    font-family: $OpenSans;
     text-align: right;
   }
 
   .total-price {
     //display: flex;
     justify-content: flex-end;
+    font-family: $OpenSans;
     font-size: 24px;
     font-weight: 700;
     line-height: 30px;
@@ -147,13 +198,14 @@
 .add-to-cart {
   box-sizing: border-box;
   width: 70%;
-  height: 50px !important;
+  height: 60px !important;
   margin-top: 20px;
-  border: 1px solid #f2a900;
+  border: 1px solid #f2a900 !important;
   border-radius: 5px !important;
   background-color: #f2a900 !important;
   color: #fff !important;
-  font-size: 20px !important;
+  font-family: $OpenSans;
+  font-size: 23px !important;
   font-weight: 700 !important;
   line-height: 24px;
 }
