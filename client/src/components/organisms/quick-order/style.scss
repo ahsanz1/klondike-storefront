@@ -166,10 +166,18 @@
       color: #fff;
       font-weight: bold;
 
+      &:lang(fr) {
+        width: 13.72vw;
+      }
+
       @media screen and (max-width: 768px) {
         width: 119px;
         height: 42px;
         border: 1px solid #f1a900;
+
+        &:lang(fr) {
+          width: 46.72vw;
+        }
       }
     }
 
@@ -183,9 +191,17 @@
       color: #fff;
       font-weight: bold;
 
+      &:lang(fr) {
+        width: 13.72vw;
+      }
+
       @media screen and (max-width: 768px) {
         width: 140px;
         height: 42px;
+
+        &:lang(fr) {
+          width: 46.72vw;
+        }
       }
     }
   }
