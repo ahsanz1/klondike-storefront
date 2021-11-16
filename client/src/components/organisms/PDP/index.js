@@ -554,9 +554,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             !packagedOrder ? 'cell color-disabled' : 'cell'
                           }
                         >
-                          {isLoggedIn && item && item.price && item.price.base
-                            ? item.price.base
-                            : ''}
+                          {isLoggedIn && '$' + item?.price?.base}
                         </div>
                         <div
                           className={
@@ -587,12 +585,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             color: item?.totalPrice > 0 ? '#fa9200' : 'white',
                           }}
                         >
-                          {isLoggedIn &&
-                            !isNaN(
-                              (parseFloat(item?.totalPrice) &&
-                                '$' + item?.totalPrice) ||
-                                '',
-                            )}
+                          {isLoggedIn && '$' + (item?.totalPrice || '0.00')}
                         </div>
                       </div>
                     )

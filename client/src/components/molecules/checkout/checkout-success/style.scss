@@ -11,6 +11,11 @@
     padding-top: 2.66vw;
   }
 
+  @media (max-width: 992px) and (min-width: 768px) {
+    margin-top: 11vw;
+    padding-top: 2.66vw;
+  }
+
   h3 {
     font-size: 0.972vw;
     text-align: left;
@@ -68,6 +73,7 @@
 
     @media (max-width: 768px) {
       width: 87.2vw;
+      margin-top: 5.6vw;
       margin-right: 6.4vw;
       margin-bottom: 0;
       margin-left: 6.4vw;
@@ -93,8 +99,20 @@
     padding-bottom: 10.76vw;
     padding-left: 8.19vw;
 
+    &:nth-child(1) {
+      @media (max-width: 768px) {
+        padding-bottom: 13.06vw;
+      }
+    }
+
+    &:nth-child(2) {
+      @media (max-width: 768px) {
+        padding-top: 0;
+      }
+    }
+
     @media (max-width: 768px) {
-      padding: 14.93vw 5vw 15.73vw;
+      padding: 15.46vw 5vw 15.73vw;
       text-align: left;
     }
 
@@ -144,7 +162,6 @@
     }
 
     .order-number {
-      width: 25vw;
       font-size: 0.9vw;
       text-align: left;
 
@@ -157,11 +174,13 @@
 
     .order-number-two {
       width: 25vw;
+      padding-left: 1.31vw;
       font-size: 1.11vw;
       text-align: left;
 
       @media (max-width: 768px) {
         padding-bottom: 8.53vw;
+        padding-left: 5.33vw;
         font-size: 4.26vw;
         font-weight: bold;
       }
@@ -179,10 +198,12 @@
     }
 
     .bold-two {
+      padding-left: 1.18vw;
       font-size: 1.11;
 
       @media (max-width: 768px) {
         padding-bottom: 2.66vw;
+        padding-left: 6.66vw;
         font-size: 4.26vw;
         font-weight: bold;
       }
