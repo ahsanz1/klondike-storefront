@@ -199,6 +199,8 @@
     }
 
     .para {
+      font-size: get-vw(14px);
+
       @media (max-width: 768px) {
         margin-top: 2.93vw;
         margin-bottom: 0;
