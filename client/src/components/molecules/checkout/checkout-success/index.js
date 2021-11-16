@@ -57,9 +57,8 @@ const CheckoutSuccess = () => {
       <Row justify="center" align="center">
         <Col xs={{ span: 24 }} lg={{ span: 12 }} className="columns">
           <span className="order-number">
-            <span className="order-number-two">
-              Order Number: {checkoutData?.orderId}
-            </span>
+            Order Number:
+            <span className="order-number-two">{checkoutData?.orderId}</span>
           </span>
           <span className="bold">
             PO Number: <span className="bold-two">{address?.zipCode}</span>
