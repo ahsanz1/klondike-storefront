@@ -10,6 +10,10 @@
   color: white;
   font-family: $OpenSans;
 
+  @media (max-width: 768px) {
+    top: 20vw;
+  }
+
   .cart-message-and-image {
     display: flex;
 
