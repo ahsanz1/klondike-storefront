@@ -183,7 +183,7 @@
         border: 1px solid #f1a900;
 
         &:lang(fr) {
-          width: 46.72vw;
+          width: 57.72vw;
         }
       }
     }
@@ -207,7 +207,7 @@
         height: 42px;
 
         &:lang(fr) {
-          width: 46.72vw;
+          width: 57.72vw;
         }
       }
     }
@@ -287,18 +287,18 @@
 
     :first-child {
       display: flex;
-      padding-left: get-vw(5px);
+      padding-left: 0.3vw;
 
       @media screen and(max-width: 768px) {
-        padding-left: 1vw;
+        padding-left: 0.9vw;
       }
 
       .quick-order-asterisk {
-        padding-left: 0.5vw;
+        padding-left: 0.6vw;
         color: rgb(192, 17, 17);
 
         @media screen and(max-width: 768px) {
-          padding-left: 1.5vw;
+          padding-left: 1.4vw;
         }
       }
     }
