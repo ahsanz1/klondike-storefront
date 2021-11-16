@@ -54,6 +54,7 @@ const CartPopUP = () => {
     closePopUpModal()
     showModal()
   }
+  console.log('cartData', cartData)
   useEffect(() => {
     setCartAmount(getCartItems?.totalAmount?.amount)
   }, [getCartItems])
