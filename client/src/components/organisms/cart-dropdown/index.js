@@ -133,7 +133,9 @@ const CartDropdown = () => {
                 <div className="order-subtotal-and-checkout-btn">
                   <p className="subtotal-title">Subtotal</p>
                   <p className="subtotal-price">
-                    <span>${getCartItems?.totalAmount?.amount}</span>
+                    <span>
+                      ${getCartItems?.totalAmount?.amount?.toFixed(2)}
+                    </span>
                     {/* {getCartItems?.totalAmount?.currency} */}
                   </p>
                 </div>
