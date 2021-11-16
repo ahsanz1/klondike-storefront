@@ -74,20 +74,32 @@ $vw-viewport: 1440;
   }
 }
 
+.radio-style {
+  color: #f4f4f4 !important;
+  font-family: $OpenSans !important;
+  font-size: 17px !important;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  line-height: 23px !important;
+  text-transform: uppercase;
+}
+
 .cell {
   display: table-cell;
   min-width: get-vw(80);
   // width: get-vw(103);
-  max-width: get-vw(103);
+  max-width: get-vw(80);
   padding: 1vw;
+  //padding-left: 0vw;
   opacity: 0.9;
   color: #fff;
   font-family: $OpenSans;
   font-size: get-vw(14);
-  // text-align: center;
   font-style: normal;
   font-weight: bold;
   line-height: get-vw(25);
+  text-align: center;
   // border: 1px solid gray;
 }
 
@@ -119,9 +131,10 @@ $vw-viewport: 1440;
   display: table-cell;
   // width: get-vw(103);
   min-width: get-vw(80);
+  max-width: 6.6vw;
   padding: 1vw;
+  // padding-left: 0vw;
   color: #fff;
-  // text-align: center;
   // border: 1px solid gray;
   font-family: $OpenSans;
   font-size: get-vw(13);
@@ -129,7 +142,12 @@ $vw-viewport: 1440;
   font-weight: 800;
   letter-spacing: get-vw(0.5);
   line-height: get-vw(18);
+  text-align: center;
   text-transform: uppercase;
+}
+
+.cell-header.size {
+  text-align: left;
 }
 
 .input {

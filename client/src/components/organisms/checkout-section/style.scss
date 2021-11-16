@@ -80,6 +80,10 @@ $vw-viewport: 1440;
         font-size: 4vw;
       }
     }
+
+    .placeorder-btn:disabled {
+      background: rgba(255, 255, 255, 0.3);
+    }
   }
 
   // .checkout-padding {
