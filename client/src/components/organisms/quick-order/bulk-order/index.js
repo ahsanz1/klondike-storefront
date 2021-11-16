@@ -14,6 +14,7 @@ const BulkOrder = ({
   inputList,
   handleRemoveClick,
   addingToCart,
+  qtyerror,
 }) => {
   const handleSubmit = e => {
     e.preventDefault()
@@ -62,6 +63,9 @@ const BulkOrder = ({
                     value={x.quantity}
                     onChange={e => handleChangePackageqty(e, i)}
                   />
+                  {qtyerror && (
+                    <span className="packageqty-error">Please Entre QTY</span>
+                  )}
                 </div>
                 <div className="remove-rowbtn">
                   {InputList.length > 1 && InputList.length - 1 === i && (
@@ -99,6 +103,7 @@ BulkOrder.propTypes = {
   handleRemoveClick: PropTypes.func,
   handleChangePackageqty: PropTypes.func,
   addingToCart: PropTypes.bool,
+  qtyerror: PropTypes.bool,
 }
 
 export default BulkOrder
