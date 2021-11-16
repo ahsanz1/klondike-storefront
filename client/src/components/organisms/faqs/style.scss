@@ -126,6 +126,10 @@ $vw-viewport: 1440;
     @media screen and (max-width: 768px) {
       margin-top: 130px;
     }
+
+    @media (max-width: 992px) and (min-width: 768px) {
+      margin-top: 89px;
+    }
   }
 
   .accordion-heading-container {
