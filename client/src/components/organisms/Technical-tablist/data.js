@@ -145,6 +145,11 @@ export const AboutUsXPM = [
     link: 'work-at-klondike',
   },
   {
+    title: 'Careers',
+    categoryName: 'Careers',
+    link: 'careers',
+  },
+  {
     title: 'EZE-BOX',
     categoryName: 'EZE-BOX',
     link: 'eze-box',

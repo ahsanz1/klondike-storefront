@@ -127,6 +127,10 @@ $vw-viewport: 1440;
       margin-top: 0;
       padding-top: 0;
     }
+
+    @media (max-width: 992px) and (min-width: 768px) {
+      margin-top: 89px;
+    }
   }
 
   .accordion-heading-container {
