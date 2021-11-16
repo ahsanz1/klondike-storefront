@@ -5,7 +5,7 @@ $vw-viewport: 1440;
   $vw-context: $vw-viewport * 0.01 * 1px;
 
   @return $font / $vw-context * 1vw;
-  @return $font;
+  // @return $font;
 }
 
 // .xpm-manager {
@@ -82,6 +82,7 @@ $vw-viewport: 1440;
     }
 
     .placeorder-btn:disabled {
+      border: 1px solid rgba(255, 255, 255, 0.3);
       background: rgba(255, 255, 255, 0.3);
     }
   }
@@ -417,4 +418,18 @@ $vw-viewport: 1440;
     width: 40%;
     font-size: 4vw;
   }
+}
+
+.ant-modal-content {
+  width: get-vw(325px);
+  margin: auto;
+
+  @media (max-width: 768px) {
+    width: get-vw(300px);
+  }
+}
+
+.list-item {
+  margin: get-vw(10px);
+  cursor: pointer;
 }
