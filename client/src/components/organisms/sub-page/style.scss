@@ -26,6 +26,12 @@
 
     .main-heading-subpage {
       margin-left: 1.45vw;
+      font-size: 1.25vw;
+      font-weight: bolder;
+
+      @media (max-width: 768px) {
+        font-size: 18px;
+      }
     }
 
     .data-warp-subpage {
