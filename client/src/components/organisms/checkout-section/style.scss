@@ -269,7 +269,9 @@ $vw-viewport: 1440;
         font-size: 1.2vw !important;
         // border-color: #f2a900 !important;
         @media (max-width: 768px) {
-          height: 6vw !important;
+          height: auto !important;
+          margin-top: 6.66vw;
+          margin-left: 9.73vw;
           padding: 10px 30px 10px 30px;
           border-radius: get-vw(5px);
           font-size: 4vw !important;
@@ -296,6 +298,10 @@ $vw-viewport: 1440;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media (max-width: 768px) {
+          display: block;
+        }
 
         input {
           width: 25%;
