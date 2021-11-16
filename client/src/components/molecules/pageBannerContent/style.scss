@@ -106,6 +106,10 @@
       text-align: center;
       text-transform: uppercase;
 
+      &:lang(fr) {
+        width: 16.7vw;
+      }
+
       @media screen and (max-width: 768px) {
         width: auto;
         height: auto;
