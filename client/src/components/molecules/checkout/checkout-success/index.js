@@ -74,7 +74,7 @@ const CheckoutSuccess = () => {
             ).toFixed(2)}`}</span>
           </span>
           {window.innerWidth > 768 ? (
-            <p style={{ marginTop: '5vw', textAlign: 'left' }}>
+            <p className="para" style={{ marginTop: '5vw', textAlign: 'left' }}>
               If you need to make changes to your order. please email
               clientcare@klondikelubricants.com or call 1-877-293-4691
             </p>
