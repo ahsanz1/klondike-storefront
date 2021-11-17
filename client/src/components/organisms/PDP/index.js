@@ -559,7 +559,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                           item?.price &&
                           item?.price?.base
                             ? '$' + item?.price?.base
-                            : null}
+                            : ''}
                         </div>
                         <div
                           className={
@@ -636,7 +636,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                           {isLoggedIn ? (
                             <>
                               <div className="table">
-                                <div className="cell-header">BULK</div>
+                                <div className="cell-header align-left">
+                                  BULK
+                                </div>
                                 <div
                                   className={
                                     packagedOrder
@@ -730,8 +732,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                         : 'white',
                                   }}
                                 >
-                                  $
-                                  {parseFloat(item?.totalPrice || 0).toFixed(2)}
+                                  {'$' +
+                                    parseFloat(item?.totalPrice || 0).toFixed(
+                                      2,
+                                    )}
                                 </div>
                               </div>
                             </>

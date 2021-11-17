@@ -315,11 +315,10 @@ const Checkoutsection = () => {
     }
   }
 
-  const onChange = e => {
-    if (e.target.value) {
-      setValue(e.target.value)
-      setDelivery(!delivery)
-    }
+  const onChange = async e => {
+    console.log('radio', e.target.value)
+    setDelivery(prev => !prev)
+    setValue(e.target.value)
   }
 
   const handlePOChange = () => {
@@ -354,7 +353,7 @@ const Checkoutsection = () => {
   }
 
   return (
-    <>
+    <div>
       <Modal
         // title="Basic Modal"
         visible={isModalVisible}
@@ -362,7 +361,6 @@ const Checkoutsection = () => {
         centered
         onCancel={handleCancel}
         bodyStyle={{ background: 'white', padding: 10 }}
-        width={600}
       >
         <List
           // header={<div>Header</div>}
@@ -370,7 +368,7 @@ const Checkoutsection = () => {
           bordered
           dataSource={availablePickupLocations}
           renderItem={item => (
-            <List.Item onClick={() => onListClick(item)}>
+            <List.Item onClick={() => onListClick(item)} className="list-item">
               <List.Item.Meta
                 title={item.name}
                 description={
@@ -525,7 +523,8 @@ const Checkoutsection = () => {
                     onClick={createShipping}
                     loading={isLoading}
                     disabled={
-                      !delivery && !Object.keys(selectedLocation).length
+                      (!delivery && !Object.keys(selectedLocation).length) ||
+                      (inputField && !validatePO)
                     }
                   >
                     PLACE ORDER
@@ -569,7 +568,10 @@ const Checkoutsection = () => {
                   className="placeorder-btn"
                   onClick={createShipping}
                   loading={isLoading}
-                  disabled={!delivery && !Object.keys(selectedLocation).length}
+                  disabled={
+                    (!delivery && !Object.keys(selectedLocation).length) ||
+                    (inputField && !validatePO)
+                  }
                 >
                   PLACE ORDER
                 </Button>
@@ -578,7 +580,7 @@ const Checkoutsection = () => {
           </Row>
         )}
       </div>
-    </>
+    </div>
   )
 }
 export default Checkoutsection
