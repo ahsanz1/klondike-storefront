@@ -61,7 +61,6 @@ const ProductAccordion = ({ question }) => {
     setTotalPrice(payload.totalPrice)
 
     setIsModalVisible(true)
-    showcartPOPModal()
   }
 
   const handleCancel = () => {
@@ -101,6 +100,7 @@ const ProductAccordion = ({ question }) => {
       addProductToCart(payload)
         .then(res => {
           setGetCartItemsState(res.response.data)
+          showcartPOPModal()
         })
         .catch(err => {
           console.log('errres', err)
