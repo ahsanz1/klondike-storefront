@@ -108,13 +108,21 @@ const Checkoutsection = () => {
           availableLocations.push(...locations)
         }
         console.log(availableLocations, 'filter')
-        const filteredLocations = await [
-          ...new Map(
-            availableLocations.map(item => [item['_id'], item]),
-          ).values(),
-        ]
-        console.log(filteredLocations, 'filtered')
-        await setAvaiablePickupLocations(filteredLocations)
+        const result = []
+        const map = new Map()
+        for (const item of availableLocations) {
+          if (!map.has(item._id)) {
+            map.set(item._id, true) // set any value to Map
+            result.push(item)
+          }
+        }
+        // const filteredLocations = await [
+        //   ...new Map(
+        //     availableLocations.map(item => [item['_id'], item]),
+        //   ).values(),
+        // ]
+        console.log(result, 'filtered')
+        await setAvaiablePickupLocations(result)
         setIsCartLoading(false)
       } else navigate('/plp-page')
     }
