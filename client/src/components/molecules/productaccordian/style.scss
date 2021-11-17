@@ -214,13 +214,6 @@ body .ant-modal-mask {
       .detail {
         font-size: 0.97vw !important;
         font-weight: bold !important;
-
-        @media (max-width: 768px) {
-          display: flex;
-          justify-content: center;
-          width: 65px;
-          color: #c2bbb7;
-        }
       }
 
       div {
@@ -235,13 +228,11 @@ body .ant-modal-mask {
         margin-bottom: 1.94vw;
         color: white;
         font-family: $OpenSans;
-        font-size: 11px;
+        font-size: 13px;
         font-style: normal;
         font-weight: 800;
-        letter-spacing: 0.03em;
-        line-height: 15px;
+        line-height: 18px;
         text-align: left;
-        text-transform: uppercase;
       }
     }
 
@@ -281,6 +272,24 @@ body .ant-modal-mask {
     font-size: 24px;
     font-weight: bold;
     line-height: 110%;
+  }
+
+  @media (max-width: 768px) {
+    .products-sizes {
+      font-size: 11px;
+      letter-spacing: 0.03em;
+      line-height: 15px;
+      text-transform: uppercase;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .detail {
+      display: flex;
+      justify-content: center;
+      width: 64px;
+      color: #c2bbb7;
+    }
   }
 
   .product-img-mobile {
@@ -333,6 +342,8 @@ body .ant-modal-mask {
       }
 
       .detail {
+        display: block;
+
         .ant-input-number {
           width: 59px !important;
 
