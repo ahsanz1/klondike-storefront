@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Image from 'components/atoms/image'
@@ -13,6 +13,7 @@ import PDPInformation from 'components/molecules/pdpinforamation'
 // import PlpTabList from 'components/organisms/plp-tab-list'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import { useNavigate } from '@reach/router'
+import { AppContext } from 'libs/context'
 
 const PDPMobile = ({
   pdpdata,
@@ -47,6 +48,12 @@ const PDPMobile = ({
 
   const handleClose = () => setOpenCategories(false)
   const handleHowToBuy = () => navigate('/account/login')
+  const { showModal } = useContext(AppContext)
+
+  const addToCartFunction = () => {
+    onSubmit()
+    showModal()
+  }
 
   return (
     <>
@@ -201,7 +208,12 @@ const PDPMobile = ({
                         <div className="oneCell">
                           <span className="head text-right">Price</span>
                           <span className="value text-right">
-                            ${item?.price?.base}
+                            {isLoggedIn &&
+                            item &&
+                            item?.price &&
+                            item?.price?.base
+                              ? '$' + parseFloat(item?.price?.base).toFixed(2)
+                              : ''}{' '}
                           </span>
                         </div>
                       )}
@@ -236,7 +248,9 @@ const PDPMobile = ({
                               color: item?.totalPrice > 0 ? '#f1a900' : '#ffff',
                             }}
                           >
-                            {isLoggedIn && '$' + (item?.totalPrice || '0.00')}
+                            {isLoggedIn &&
+                              '$' +
+                                parseFloat(item?.totalPrice || 0).toFixed(2)}
                           </span>
                         </div>
                       )}
@@ -262,7 +276,10 @@ const PDPMobile = ({
                     </div>
                     <div className="oneCell">
                       <span className="head">Price pER Litre</span>
-                      <span className="value">{item?.price?.base}</span>
+                      <span className="value">
+                        {item?.price?.base &&
+                            '$' + parseFloat(item?.price?.base)}
+                      </span>
                     </div>
                     <div className="oneCell">
                       <span className="head">Bulk</span>
@@ -308,7 +325,9 @@ const PDPMobile = ({
                           2,
                         )
                         : '0.00'
-                      : pdpdata?.bulkOrderItem[0]?.totalPrice)}
+                      : parseFloat(
+                          pdpdata?.bulkOrderItem[0]?.totalPrice || 0,
+                      ).toFixed(2))}
                 </span>
               </div>
             )}
@@ -319,7 +338,7 @@ const PDPMobile = ({
             <Button
               className="add-to-cart"
               disabled={btnDisabled}
-              onClick={onSubmit}
+              onClick={addToCartFunction}
             >
               {addingToCart ? 'Adding...' : 'ADD TO CART'}
             </Button>

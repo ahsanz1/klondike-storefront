@@ -52,6 +52,7 @@ const CartDropdown = () => {
           size: sizes[i],
           partnumber: partnumber[i],
           image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+          attributes: itemsRes?.data[i]?.attributes,
         }
 
         itemsArr.push(itemObj)

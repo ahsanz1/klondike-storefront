@@ -10,6 +10,7 @@
   background: #0000008c;
 
   @media screen and (max-width: 768px) {
+    display: none;
     z-index: 0;
   }
 }
@@ -201,14 +202,14 @@
       .order-subtotal-and-checkout-btn {
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-between;
 
         @media screen and (max-width: 768px) {
           justify-content: space-between;
         }
 
         .subtotal-title {
-          padding-right: get-vw(50px);
+          // padding-right: 8.63vw;
           font-size: get-vw(24px);
           font-style: normal;
           font-weight: bold;

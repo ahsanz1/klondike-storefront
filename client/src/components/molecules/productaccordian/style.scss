@@ -130,7 +130,8 @@ $vw-viewport: 1440;
   height: 15.27vw;
 
   .ant-modal-body {
-    padding-top: 30px;
+    padding-top: 4.86vw;
+    padding-right: 6.94vw;
     padding-left: 10.9vw;
     background: #013a4e;
 
@@ -190,10 +191,11 @@ body .ant-modal-mask {
   }
 
   .prodct-data {
-    padding-left: 2.5vw;
+    //padding-left: 2.5vw;
 
     h1 {
       margin-top: 0;
+      margin-left: 3vw;
       color: white;
       font-family: $OpenSans;
       font-size: 24px;
@@ -214,6 +216,13 @@ body .ant-modal-mask {
       .detail {
         font-size: 0.97vw !important;
         font-weight: bold !important;
+
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+          width: 65px;
+          color: #c2bbb7;
+        }
       }
 
       div {
@@ -221,18 +230,21 @@ body .ant-modal-mask {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-right: get-vw(15px);
+        //margin-right: get-vw(15px);
       }
 
       .products-sizes {
+        margin-right: 1.041vw;
         margin-bottom: 1.94vw;
         color: white;
         font-family: $OpenSans;
-        font-size: 13px;
+        font-size: 11px;
         font-style: normal;
         font-weight: 800;
-        line-height: 18px;
+        letter-spacing: 0.03em;
+        line-height: 15px;
         text-align: left;
+        text-transform: uppercase;
       }
     }
 
@@ -240,12 +252,16 @@ body .ant-modal-mask {
       width: 20.83vw;
       height: 64px;
       margin-top: 0.97vw;
+      margin-right: 2.08vw;
       margin-bottom: 30px;
       float: right;
       border: 1px solid #f2a900;
       border-radius: 5px;
       background: #f2a900;
       color: white;
+      font-family: $OpenSans;
+      font-size: 1.597vw;
+      font-weight: 700;
     }
   }
 
@@ -263,10 +279,15 @@ body .ant-modal-mask {
   flex-direction: column;
   margin-right: 25px;
   margin-left: 25px;
+  font-family: $OpenSans;
 
   .product-heading-mobile {
     margin: 0 auto 26px auto;
     color: white;
+    font-family: $OpenSans;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 110%;
   }
 
   .product-img-mobile {

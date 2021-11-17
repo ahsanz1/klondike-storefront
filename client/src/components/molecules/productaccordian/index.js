@@ -61,7 +61,6 @@ const ProductAccordion = ({ question }) => {
     setTotalPrice(payload.totalPrice)
 
     setIsModalVisible(true)
-    showcartPOPModal()
   }
 
   const handleCancel = () => {
@@ -101,6 +100,7 @@ const ProductAccordion = ({ question }) => {
       addProductToCart(payload)
         .then(res => {
           setGetCartItemsState(res.response.data)
+          showcartPOPModal()
         })
         .catch(err => {
           console.log('errres', err)
@@ -283,12 +283,12 @@ const ProductAccordion = ({ question }) => {
               </div>
               <div className="product-content-mobile">
                 <div className="product-detail-mobile">
-                  {modalData.size !== 'Bulk' && (
+                  {modalData.size !== 'Bulk:' && (
                     <p className="products-sizes">SiZE</p>
                   )}
                   <p className="products-sizes detail">{modalData.size}</p>
                 </div>
-                {modalData.size !== 'Bulk' && (
+                {modalData.size !== 'Bulk:' && (
                   <div className="product-detail-mobile">
                     <p className="products-sizes">UNIT/CASE</p>
                     <p className="products-sizes detail">{modalData.unit}</p>
