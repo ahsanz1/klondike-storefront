@@ -108,13 +108,21 @@ const Checkoutsection = () => {
           availableLocations.push(...locations)
         }
         console.log(availableLocations, 'filter')
-        const filteredLocations = await [
-          ...new Map(
-            availableLocations.map(item => [item['_id'], item]),
-          ).values(),
-        ]
-        console.log(filteredLocations, 'filtered')
-        await setAvaiablePickupLocations(filteredLocations)
+        const result = []
+        const map = new Map()
+        for (const item of availableLocations) {
+          if (!map.has(item._id)) {
+            map.set(item._id, true) // set any value to Map
+            result.push(item)
+          }
+        }
+        // const filteredLocations = await [
+        //   ...new Map(
+        //     availableLocations.map(item => [item['_id'], item]),
+        //   ).values(),
+        // ]
+        console.log(result, 'filtered')
+        await setAvaiablePickupLocations(result)
         setIsCartLoading(false)
       } else navigate('/plp-page')
     }
@@ -351,6 +359,9 @@ const Checkoutsection = () => {
       content: 'Due to Some technical reason there is an error!',
     })
   }
+  const goBack = () => {
+    window.history.go(-1)
+  }
 
   return (
     <div>
@@ -395,13 +406,13 @@ const Checkoutsection = () => {
           <Col>
             <div className="page-title">
               {/* <Link to="/plp"> */}
-              <a href="/plp-page">
+              <Button onClick={goBack} className="goback">
                 <img
                   className="checkout-back-icon"
                   src="/static/images/arrowleft.png"
                   alt="pic"
                 />
-              </a>
+              </Button>
               <h1 className="checkout-title"> Checkout</h1>
             </div>
           </Col>

@@ -29,7 +29,8 @@ const PlpTabList = ({
         categories.map((item, index) => (
           <>
             {item.categoryName.length > 0 && (
-              <Label
+              <Link
+                to="/plp-page"
                 className={itemName === item.categoryName && 'active-category'}
                 key={index}
                 onClick={() =>
@@ -57,7 +58,7 @@ const PlpTabList = ({
                       ))}
                   </div>
                 )}
-              </Label>
+              </Link>
             )}
           </>
         ))}
