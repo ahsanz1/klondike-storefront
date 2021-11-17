@@ -48,6 +48,13 @@ const TechNews = ({
     setActiveCatagoryData(data)
     data = data.filter(item => item.catagory.toUpperCase() === catagory)
   }
+  const sidebarSubitem = title => {
+    let data = techBlogData.filter(item => {
+      return item.descHeading === title
+    })
+    setActiveCatagoryData(data)
+  }
+
   return (
     <>
       <div className="technacil-wriper">
@@ -56,6 +63,7 @@ const TechNews = ({
             className="warranty-tablist"
             itemName="Tech/News Blog"
             categories={categories}
+            sidebarSubitem={sidebarSubitem}
           />
         </div>
         <div className="technical-data">
