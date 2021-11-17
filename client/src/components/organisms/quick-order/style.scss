@@ -322,6 +322,14 @@
       padding-left: 15px;
       font-size: 16px;
       line-height: 28px;
+
+      &:lang(fr) {
+        grid-template-columns: 195px auto;
+        padding-top: 20px;
+        padding-left: 15px;
+        font-size: 16px;
+        line-height: 28px;
+      }
     }
   }
 
