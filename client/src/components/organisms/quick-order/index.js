@@ -47,7 +47,6 @@ const QuickOrder = () => {
   let [total, setTotal] = useState([])
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
-  let [qtyerror, setQtyError] = useState(false)
   // let total = []
   console.log(fetcheditems, 'fetcheditems')
   console.log('packgdata', packgdata)
@@ -180,13 +179,7 @@ const QuickOrder = () => {
     setPackgdata(a)
     const list = [...inputList]
     list.splice(i, 1)
-    if (list.length <= 0) {
-      setInputList([...list, { partnumber: '', quantity: '' }])
-      setPackgdata([])
-      setCartItems(false)
-    } else {
-      setInputList(list)
-    }
+    setInputList(list)
   }
   const onChangeqty = async (value, i) => {
     let amounts = amounttotal[i] * value
@@ -208,15 +201,12 @@ const QuickOrder = () => {
   //   setInputList(list)
   //   // itemremove(index)
   // }
-
   const handleChangePackageqty = async (e, index) => {
-    setQtyError(false)
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
 
     if (qtyIndex.length > 0 && qtyIndex[`index-${index}`] === undefined) {
-      // setQtyError(true)
       qtyIndex = {
         ...caseqty,
         [`index-${index}`]: value,
@@ -229,7 +219,6 @@ const QuickOrder = () => {
     }
     setCaseqty(qtyIndex)
   }
-
   const handleChange = async (e, index) => {
     const { name, value } = e.target
     const list = [...inputList]
@@ -287,7 +276,6 @@ const QuickOrder = () => {
   }
 
   const handleChangeBulk = async (e, index) => {
-    setQtyError(false)
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
@@ -344,7 +332,6 @@ const QuickOrder = () => {
     if (inputList[0].partnumber.length > 0 && inputList[0].quantity > 0) {
       setInputList([...inputList, { partnumber: '', quantity: '' }])
     }
-    inputList[0].quantity <= 0 && setQtyError(true)
   }
 
   // -----------------------------------
@@ -410,7 +397,6 @@ const QuickOrder = () => {
               handleAddRow={handleAddRow}
               handleRemoveClick={itemremove}
               addingToCart={addingToCart}
-              qtyerror={qtyerror}
             />
           </AccordionComponent>
         </div>
@@ -431,7 +417,6 @@ const QuickOrder = () => {
               handleAddtoCart={handleAddtoCart}
               bulkdata={bulkdata}
               inputList={inputList}
-              qtyerror={qtyerror}
               handleAddRow={handleAddRow}
               handleRemoveClick={itemremove}
               addingToCart={addingToCart}
@@ -569,7 +554,7 @@ const QuickOrder = () => {
                               </div>
                               <div>
                                 <p>
-                                  {data['QTY PER CASE'] ? 'Per case' : ''}
+                                  Per case
                                   <span className="quick-item-description">
                                     {data['QTY PER CASE']}
                                   </span>
@@ -580,7 +565,7 @@ const QuickOrder = () => {
 
                           <div>
                             <p className="quickorder-Price">
-                              ${data['Base Price']}
+                              ${data['Base Price'].toFixed(2)}
                             </p>
                           </div>
                           <div>
@@ -627,7 +612,7 @@ const QuickOrder = () => {
                                 </span>
                               </p>
                               <p>
-                                {data['QTY PER CASE'] ? 'Per case' : ''}
+                                Per case
                                 <span className="span">
                                   {data['QTY PER CASE']}
                                 </span>
