@@ -61,7 +61,7 @@ const CartDropdown = () => {
 
     getCart()
     setCartAmount(getCartItems?.totalAmount?.amount)
-  }, [])
+  }, [getCartItems])
 
   return (
     isModalVisible && (
