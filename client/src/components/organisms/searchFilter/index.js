@@ -183,7 +183,7 @@ const SearchFilter = ({ searchHeading }) => {
         />
         <Dropdown
           onChange={e => changeUOM(e)}
-          value={uom !== undefined ? uom : 'UNIT / CASE'}
+          value={uom !== undefined ? uom.toString() : 'UNIT / CASE'}
           items={unit}
           className="third-drop"
         />
