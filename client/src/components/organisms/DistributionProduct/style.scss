@@ -70,7 +70,7 @@
       background: white;
 
       @media screen and (max-width: 500px) {
-        width: 87.2vw;
+        width: 100%;
         height: 92.2vw;
       }
 
@@ -145,8 +145,8 @@
       }
 
       @media screen and (max-width: 500px) {
-        width: 327px;
-        height: 346;
+        width: 90%;
+        height: auto;
         margin: auto;
       }
     }
