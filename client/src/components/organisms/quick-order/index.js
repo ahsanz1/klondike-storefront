@@ -12,9 +12,7 @@ import DesktopCartPageItem from 'components/organisms/cart-and-total'
 import Link from 'components/atoms/link'
 import { fetchItems, searchFilters } from 'libs/services/algolia'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
-import { removeItemFromCart } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
-import { getItemsBySkus } from 'libs/services/api/item'
 // import useAddToCart from 'libs/api-hooks/useAddToCart'
 import Button from 'components/atoms/button'
 
@@ -30,10 +28,9 @@ const QuickOrder = () => {
     getCartItems,
     cartState,
   } = useContext(AppContext)
-  console.log('getCartItems', getCartItems)
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
-  // const [radioStatePackage, setRadioStatePackage] = useState(false)
+  const [radioStatePackage, setRadioStatePackage] = useState(false)
   const [radioStateBulk, setRadioStateBulk] = useState(false)
   const [qty, setQty] = useState([])
   const [cartItems, setCartItems] = useState()
@@ -50,10 +47,6 @@ const QuickOrder = () => {
   let [total, setTotal] = useState([])
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
-  // let [qtyerror, setQtyError] = useState(false)
-  // const [isShow, SetIsShow] = useState(false)
-  // let [cart, setCart] = useState()
-
   // let total = []
   console.log(fetcheditems, 'fetcheditems')
   console.log('packgdata', packgdata)
@@ -180,62 +173,14 @@ const QuickOrder = () => {
       }
     })
   }
-  // const itemremove = async i => {
-  //   let a = packgdata
-  //   a.splice(i, 1)
-  //   setPackgdata(a)
-  //   const list = [...inputList]
-  //   list.splice(i, 1)
-  //   setInputList(list)
-  // }
-
-  const itemremove = async (cartId, lineItemId) => {
-    // SetIsShow(true)
-    let res = await removeItemFromCart(cartId, lineItemId)
-    let payload = await refreshingCart(res.data)
-    setGetCartItemsState(payload)
-    // SetIsShow(false)
+  const itemremove = async i => {
+    let a = packgdata
+    a.splice(i, 1)
+    setPackgdata(a)
+    const list = [...inputList]
+    list.splice(i, 1)
+    setInputList(list)
   }
-
-  const refreshingCart = async data => {
-    let skus = []
-    let itemsArr = []
-    await data.items.map(item => {
-      skus.push(item.sku)
-    })
-
-    let itemsRes = await getItemsBySkus(skus)
-
-    let sizes = []
-    let partnumber = []
-    await data.items.map(async (item, i) => {
-      let attributes = itemsRes?.data[i]?.attributes
-      await attributes.map(attr => {
-        if (attr.name === 'Package Size') {
-          sizes.push(attr.value)
-        }
-        if (attr.name === 'Part Number') {
-          partnumber.push(attr.value)
-        }
-      })
-
-      let itemObj = {
-        ...item,
-        size: sizes[i],
-        partnumber: partnumber[i],
-        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
-      }
-
-      itemsArr.push(itemObj)
-    })
-
-    let payload = {
-      ...data,
-      items: itemsArr,
-    }
-    return payload
-  }
-
   const onChangeqty = async (value, i) => {
     let amounts = amounttotal[i] * value
     // total[i] = amounts
@@ -248,27 +193,6 @@ const QuickOrder = () => {
       [`index-${i}`]: value,
     }
     setCaseqty(qtyIndex)
-    // if (val === null) {
-    //   return
-    // }
-
-    // let updateCartPayload = {
-    //   items: [
-    //     {
-    //       lineItemId: cart?.lineItemId,
-    //       itemId: cart?.itemId,
-    //       quantity: qty,
-    //       price: cart?.price,
-    //     },
-    //   ],
-    // }
-
-    // SetIsShow(true)
-
-    // let res = await updateCartApi(cart?.cartId, updateCartPayload)
-    // let payload = await refreshingCart(res.data, updateCartPayload)
-    // await setGetCartItemsState(payload)
-    // SetIsShow(false)
   }
   // const handleRemoveClick = index => {
   //   console.log(index, 'indexing')
@@ -308,19 +232,19 @@ const QuickOrder = () => {
     } else {
     }
 
-    // const items = await fetchItems(value)
+    const items = await fetchItems(value)
 
-    // const titleArray = items.hits.map(item => {
-    //   return item.title
-    // })
-    // console.log(titleArray, 'titleArray')
-    // const inputs = Object.values(inputList[0])
-    // console.log('arraaayy', inputs)
-    // if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
-    //   // setRadioStatePackage(true)
-    // } else {
-    //   // setRadioStatePackage(false)
-    // }
+    const titleArray = items.hits.map(item => {
+      return item.title
+    })
+    console.log(titleArray, 'titleArray')
+    const inputs = Object.values(inputList[0])
+    console.log('arraaayy', inputs)
+    if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
+      setRadioStatePackage(true)
+    } else {
+      setRadioStatePackage(false)
+    }
   }
 
   const filters = {}
@@ -558,8 +482,8 @@ const QuickOrder = () => {
                 <Radio
                   className="radiobtn"
                   value={2}
-                  // disabled={radioStatePackage}
-
+                  disabled={radioStatePackage}
+                  s
                   onChange={radioChangeBULK}
                   // disabled={
                   //   cartState === 'package' && getCartItems?.items?.length > 0
@@ -591,35 +515,32 @@ const QuickOrder = () => {
 
             {cartItems && (
               <div className="quickorder-wrapper">
-                {getCartItems &&
-                  getCartItems.items.map((data, i) => {
-                    // setCart(data)
+                {packgdata &&
+                  packgdata.map((data, i) => {
                     if (data !== undefined) {
                       return size > 768 ? (
                         <div key={i} className="orders">
                           <div className="item-wraper">
                             <div>
                               <div className="img-wraper">
-                                <img src={data.image} alt="img" />
+                                <img src={data['Image URL']} alt="img" />
                               </div>
                               <button
                                 className="quick-orde_btn"
-                                onClick={e =>
-                                  itemremove(data?.cartId, data?.lineItemId)
-                                }
+                                onClick={e => itemremove(i)}
                               >
                                 Remove Item
                               </button>
                             </div>
                             <div className="part-wraper">
                               <div className="quik-product-heading">
-                                <p>{data.title}</p>
+                                <p>{data['Product Title']}</p>
                               </div>
                               <div>
                                 <p>
                                   Part Num
                                   <span className="quick-item-description">
-                                    {data.sku}
+                                    {data['Part Number']}
                                   </span>
                                 </p>
                               </div>
@@ -627,15 +548,15 @@ const QuickOrder = () => {
                                 <p>
                                   Size
                                   <span className="quick-item-description">
-                                    {data.size}
+                                    {data['Package Size']}
                                   </span>
                                 </p>
                               </div>
                               <div>
                                 <p>
-                                  {/* {data['QTY PER CASE'] ? 'Per case' : ''} */}
+                                  Per case
                                   <span className="quick-item-description">
-                                    {/* {data['QTY PER CASE']} */}
+                                    {data['QTY PER CASE']}
                                   </span>
                                 </p>
                               </div>
@@ -644,7 +565,7 @@ const QuickOrder = () => {
 
                           <div>
                             <p className="quickorder-Price">
-                              ${data.price.base}
+                              ${data['Base Price'].toFixed(2)}
                             </p>
                           </div>
                           <div>
@@ -662,7 +583,8 @@ const QuickOrder = () => {
                             <p className="quickorder-Price">
                               $
                               {(
-                                data.price.base * Number(caseqty[`index-${i}`])
+                                data['Base Price'] *
+                                Number(caseqty[`index-${i}`])
                               ).toFixed(2)}
                             </p>
                           </div>
@@ -673,13 +595,15 @@ const QuickOrder = () => {
                             <div className="quick-order-mobile__previous">
                               <img
                                 className="quick-order-mobile__image"
-                                src={data.image}
+                                src={data['Image URL'] && data['Image URL']}
                                 alt="img"
                               />
                               <p className="price">Price</p>
-                              <p className="price-value">${data.price.base}</p>
+                              <p className="price-value">
+                                ${data['Base Price']}
+                              </p>
                             </div>
-                            <p>{data.title}</p>
+                            <p>{data['product title']}</p>
                             <div className="quick-order-mobile__next-container">
                               <p>
                                 Size
@@ -688,14 +612,16 @@ const QuickOrder = () => {
                                 </span>
                               </p>
                               <p>
-                                {/* {data['QTY PER CASE'] ? 'Per case' : ''} */}
+                                Per case
                                 <span className="span">
-                                  {/* {data['QTY PER CASE']} */}
+                                  {data['QTY PER CASE']}
                                 </span>
                               </p>
                               <p>
                                 Part Num
-                                <span className="span">{data.sku}</span>
+                                <span className="span">
+                                  {data['Part Number']}
+                                </span>
                               </p>
                               <div className="quantity-container">
                                 <div className="remove-button">
@@ -713,9 +639,7 @@ const QuickOrder = () => {
                                   </p>
                                   <button
                                     className="quick-orde_btn"
-                                    onClick={e =>
-                                      itemremove(data?.cartId, data?.lineItemId)
-                                    }
+                                    onClick={e => itemremove(i)}
                                   >
                                     Remove
                                   </button>
