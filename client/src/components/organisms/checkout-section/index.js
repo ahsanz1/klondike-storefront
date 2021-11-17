@@ -359,6 +359,9 @@ const Checkoutsection = () => {
       content: 'Due to Some technical reason there is an error!',
     })
   }
+  const goBack = () => {
+    window.history.go(-1)
+  }
 
   return (
     <div>
@@ -403,13 +406,13 @@ const Checkoutsection = () => {
           <Col>
             <div className="page-title">
               {/* <Link to="/plp"> */}
-              <a href="/plp-page">
+              <Button onClick={goBack} className="goback">
                 <img
                   className="checkout-back-icon"
                   src="/static/images/arrowleft.png"
                   alt="pic"
                 />
-              </a>
+              </Button>
               <h1 className="checkout-title"> Checkout</h1>
             </div>
           </Col>
