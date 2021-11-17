@@ -32,6 +32,12 @@ $vw-viewport: 1440;
   .page-title {
     display: flex;
     align-items: center;
+
+    .goback {
+      padding: 0;
+      border: none;
+      background: none;
+    }
   }
 
   .checkout-back-icon {
