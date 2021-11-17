@@ -530,6 +530,10 @@
     flex-direction: column;
     color: white;
 
+    &:lang(fr) {
+      padding-right: 10px;
+    }
+
     .quantity-container {
       display: flex;
       justify-content: space-between;
