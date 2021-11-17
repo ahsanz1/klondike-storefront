@@ -197,6 +197,10 @@ $vw-viewport: 1440;
   color: #f2a900 !important;
 }
 
+.align-left {
+  text-align: left !important;
+}
+
 .image-background {
   width: get-vw(329);
   height: get-vw(422);

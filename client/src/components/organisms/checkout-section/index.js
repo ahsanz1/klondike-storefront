@@ -108,13 +108,21 @@ const Checkoutsection = () => {
           availableLocations.push(...locations)
         }
         console.log(availableLocations, 'filter')
-        const filteredLocations = await [
-          ...new Map(
-            availableLocations.map(item => [item['_id'], item]),
-          ).values(),
-        ]
-        console.log(filteredLocations, 'filtered')
-        await setAvaiablePickupLocations(filteredLocations)
+        const result = []
+        const map = new Map()
+        for (const item of availableLocations) {
+          if (!map.has(item._id)) {
+            map.set(item._id, true) // set any value to Map
+            result.push(item)
+          }
+        }
+        // const filteredLocations = await [
+        //   ...new Map(
+        //     availableLocations.map(item => [item['_id'], item]),
+        //   ).values(),
+        // ]
+        console.log(result, 'filtered')
+        await setAvaiablePickupLocations(result)
         setIsCartLoading(false)
       } else navigate('/plp-page')
     }
@@ -315,11 +323,10 @@ const Checkoutsection = () => {
     }
   }
 
-  const onChange = e => {
-    if (e.target.value) {
-      setValue(e.target.value)
-      setDelivery(!delivery)
-    }
+  const onChange = async e => {
+    console.log('radio', e.target.value)
+    setDelivery(prev => !prev)
+    setValue(e.target.value)
   }
 
   const handlePOChange = () => {
@@ -352,9 +359,12 @@ const Checkoutsection = () => {
       content: 'Due to Some technical reason there is an error!',
     })
   }
+  const goBack = () => {
+    window.history.go(-1)
+  }
 
   return (
-    <>
+    <div>
       <Modal
         // title="Basic Modal"
         visible={isModalVisible}
@@ -362,7 +372,6 @@ const Checkoutsection = () => {
         centered
         onCancel={handleCancel}
         bodyStyle={{ background: 'white', padding: 10 }}
-        width={600}
       >
         <List
           // header={<div>Header</div>}
@@ -370,7 +379,7 @@ const Checkoutsection = () => {
           bordered
           dataSource={availablePickupLocations}
           renderItem={item => (
-            <List.Item onClick={() => onListClick(item)}>
+            <List.Item onClick={() => onListClick(item)} className="list-item">
               <List.Item.Meta
                 title={item.name}
                 description={
@@ -397,13 +406,13 @@ const Checkoutsection = () => {
           <Col>
             <div className="page-title">
               {/* <Link to="/plp"> */}
-              <a href="/plp-page">
+              <Button onClick={goBack} className="goback">
                 <img
                   className="checkout-back-icon"
                   src="/static/images/arrowleft.png"
                   alt="pic"
                 />
-              </a>
+              </Button>
               <h1 className="checkout-title"> Checkout</h1>
             </div>
           </Col>
@@ -525,7 +534,8 @@ const Checkoutsection = () => {
                     onClick={createShipping}
                     loading={isLoading}
                     disabled={
-                      !delivery && !Object.keys(selectedLocation).length
+                      (!delivery && !Object.keys(selectedLocation).length) ||
+                      (inputField && !validatePO)
                     }
                   >
                     PLACE ORDER
@@ -569,7 +579,10 @@ const Checkoutsection = () => {
                   className="placeorder-btn"
                   onClick={createShipping}
                   loading={isLoading}
-                  disabled={!delivery && !Object.keys(selectedLocation).length}
+                  disabled={
+                    (!delivery && !Object.keys(selectedLocation).length) ||
+                    (inputField && !validatePO)
+                  }
                 >
                   PLACE ORDER
                 </Button>
@@ -578,7 +591,7 @@ const Checkoutsection = () => {
           </Row>
         )}
       </div>
-    </>
+    </div>
   )
 }
 export default Checkoutsection
