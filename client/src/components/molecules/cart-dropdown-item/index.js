@@ -59,6 +59,7 @@ const CartDropdownItem = cart => {
     SetIsShow(true)
     let res = await removeItemFromCart(cartId, lineItemId)
     let payload = await refreshingCart(res.data)
+    console.log({ payload })
     setGetCartItemsState(payload)
     SetIsShow(false)
   }
