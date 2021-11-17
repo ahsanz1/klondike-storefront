@@ -6,13 +6,42 @@ import './style.scss'
 import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
 import Button from 'components/atoms/button'
+import { getItemsBySkus } from 'libs/services/api/item'
 
 const Accounts = ({ orders }) => {
   const [size] = useWindowSize()
   const [fetchedOrders, setFetchedOrders] = useState('')
 
   useEffect(() => {
-    setFetchedOrders(orders)
+    let fetchImages = async orders => {
+      let skus = []
+      let orderPayload = []
+
+      await orders.map((data, i) => {
+        skus.push(data.items[0].sku)
+      })
+
+      let images = []
+      let itemRes = await getItemsBySkus(skus)
+      await orders.map(async (order, j) => {
+        await itemRes.data.map((item, i) => {
+          if (order.items[0].sku === item.sku) {
+            images.push(item.images[0].source[0]?.url)
+          }
+        })
+      })
+
+      await orders.map((data, i) => {
+        orderPayload.push({
+          ...data,
+          image: images[i],
+        })
+      })
+
+      setFetchedOrders(orderPayload)
+    }
+
+    fetchImages(orders)
   }, [orders])
 
   return (
@@ -26,35 +55,37 @@ const Accounts = ({ orders }) => {
                   <div className="account-image-block">
                     <Image
                       className="account-image-block__image"
-                      src=""
+                      src={order.image}
                       alt=""
                     />
                   </div>
 
                   <div className="account-review-block">
                     <Label className="account-image-block__orderNumber">
-                      {order.orderReference}/
+                      {order.orderReference}
                     </Label>
                     <Button className="account-image-block__orderCart">
-                      {order.totalQuantity}
+                      Quantity: {order.totalQuantity}
                     </Button>
                     <Button className="account-image-block__orderReview">
-                      234
+                      Reorder
                     </Button>
                   </div>
                   <div className="account-price-block">
                     <Label className="account-image-block__orderPrice">
-                      12,000 USD
+                      ${order.orderTotal}
                     </Label>
                     <Button className="account-image-block__orderReorder">
-                      {order.status}
+                      {order.status.replace('_', ' ')}
                     </Button>
                   </div>
                   <div className="account-date-block">
-                    <Label className="account-image-block__orderDate">12</Label>
-                    <Label className="account-image-block__orderFullPrice">
-                      ${order.orderTotal}
+                    <Label className="account-image-block__orderDate">
+                      Items ({order.items.length})
                     </Label>
+                    {/* <Label className="account-image-block__orderFullPrice">
+
+                    </Label> */}
                     <Label className="account-image-block__orderStatus">
                       Status: {order.status.replace('_', ' ')}
                     </Label>
