@@ -214,6 +214,13 @@ body .ant-modal-mask {
       .detail {
         font-size: 0.97vw !important;
         font-weight: bold !important;
+
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+          width: 65px;
+          color: #c2bbb7;
+        }
       }
 
       div {
@@ -228,11 +235,13 @@ body .ant-modal-mask {
         margin-bottom: 1.94vw;
         color: white;
         font-family: $OpenSans;
-        font-size: 13px;
+        font-size: 11px;
         font-style: normal;
         font-weight: 800;
-        line-height: 18px;
+        letter-spacing: 0.03em;
+        line-height: 15px;
         text-align: left;
+        text-transform: uppercase;
       }
     }
 
@@ -263,10 +272,15 @@ body .ant-modal-mask {
   flex-direction: column;
   margin-right: 25px;
   margin-left: 25px;
+  font-family: $OpenSans;
 
   .product-heading-mobile {
     margin: 0 auto 26px auto;
     color: white;
+    font-family: $OpenSans;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 110%;
   }
 
   .product-img-mobile {

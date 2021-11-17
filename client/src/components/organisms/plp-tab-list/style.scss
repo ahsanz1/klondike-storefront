@@ -1,6 +1,8 @@
 @import '~styles/globals';
 
 .categoryItem {
+  display: flex;
+  flex-direction: column;
   width: 17.36vw;
 
   .active-category {
@@ -16,7 +18,7 @@
     }
   }
 
-  .c-label {
+  .c-link {
     margin-bottom: 1vw;
     padding: 1vw;
     background: rgba(5, 5, 5, 0.39);
@@ -45,7 +47,7 @@
     margin-bottom: 1vw;
     padding: 0.69vw 0;
 
-    .c-label {
+    .c-link {
       margin-bottom: 1vw;
       padding: 0;
       border: none;
@@ -53,6 +55,7 @@
 
       .h-links {
         color: #fff;
+        line-height: get-vw(28px);
       }
     }
 

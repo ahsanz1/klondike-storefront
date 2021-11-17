@@ -13,6 +13,7 @@ $vw-viewport: 1440;
   width: get-vw(422);
   // height: 144px;
   padding: get-vw(15) !important;
+  padding-left: get-vw(22) !important;
   border: get-vw(1) solid rgba(255, 255, 255, 0.4);
   border-radius: get-vw(4) !important;
   background: #013a4e !important;
@@ -190,6 +191,14 @@ $vw-viewport: 1440;
   font-weight: bold !important;
   line-height: get-vw(27) !important;
   text-transform: uppercase !important;
+}
+
+.ant-breadcrumb > span:last-child a {
+  color: #f2a900 !important;
+}
+
+.align-left {
+  text-align: left !important;
 }
 
 .image-background {

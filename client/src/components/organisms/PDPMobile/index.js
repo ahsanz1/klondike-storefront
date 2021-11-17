@@ -201,7 +201,12 @@ const PDPMobile = ({
                         <div className="oneCell">
                           <span className="head text-right">Price</span>
                           <span className="value text-right">
-                            ${item?.price?.base}
+                            {isLoggedIn &&
+                            item &&
+                            item?.price &&
+                            item?.price?.base
+                              ? '$' + parseFloat(item?.price?.base).toFixed(2)
+                              : ''}{' '}
                           </span>
                         </div>
                       )}
@@ -236,7 +241,9 @@ const PDPMobile = ({
                               color: item?.totalPrice > 0 ? '#f1a900' : '#ffff',
                             }}
                           >
-                            {isLoggedIn && '$' + (item?.totalPrice || '0.00')}
+                            {isLoggedIn &&
+                              '$' +
+                                parseFloat(item?.totalPrice || 0).toFixed(2)}
                           </span>
                         </div>
                       )}
@@ -262,7 +269,10 @@ const PDPMobile = ({
                     </div>
                     <div className="oneCell">
                       <span className="head">Price pER Litre</span>
-                      <span className="value">{item?.price?.base}</span>
+                      <span className="value">
+                        {item?.price?.base &&
+                            '$' + parseFloat(item?.price?.base)}
+                      </span>
                     </div>
                     <div className="oneCell">
                       <span className="head">Bulk</span>
@@ -308,7 +318,9 @@ const PDPMobile = ({
                           2,
                         )
                         : '0.00'
-                      : pdpdata?.bulkOrderItem[0]?.totalPrice)}
+                      : parseFloat(
+                          pdpdata?.bulkOrderItem[0]?.totalPrice || 0,
+                      ).toFixed(2))}
                 </span>
               </div>
             )}

@@ -43,7 +43,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setPdpProductData,
     setCartState,
     cartState,
-    // getCartItems,
+    getCartItems,
   } = useContext(AppContext)
   console.log({ user })
   const navigate = useNavigate()
@@ -197,7 +197,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     newArray[index] = {
       ...newArray[index],
       totalPrice: parseFloat(
-        Number(newArray[index]?.price?.base) * value,
+        Number(newArray[index]?.price?.base || 0) * value,
       ).toFixed(2),
       quantity: Number(value),
     }
@@ -214,7 +214,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       ...bulkOrderItem[0],
       quantity: value,
       totalPrice: parseFloat(
-        Number(bulkOrderItem && bulkOrderItem[0]?.price?.base) * value,
+        Number((bulkOrderItem && bulkOrderItem[0]?.price?.base) || 0) * value,
       ).toFixed(2),
     }
     if (newObj?.totalPrice > 0) {
@@ -479,12 +479,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                         <Radio
                           value={1}
                           className="radio-style"
-                          // disabled={
-                          //   cartState === 'bulk' &&
-                          //   getCartItems?.items?.length > 0
-                          //     ? true
-                          //     : false
-                          // }
+                          disabled={
+                            cartState === 'bulk' &&
+                            getCartItems?.items?.length > 0
+                              ? true
+                              : false
+                          }
                           onChange={() => {
                             setCartState('package')
                             console.log('package selected...', cartState)
@@ -497,12 +497,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                         <Radio
                           value={2}
                           className="radio-style"
-                          // disabled={
-                          //   cartState === 'package' &&
-                          //   getCartItems?.items?.length > 0
-                          //     ? true
-                          //     : false
-                          // }
+                          disabled={
+                            cartState === 'package' &&
+                            getCartItems?.items?.length > 0
+                              ? true
+                              : false
+                          }
                           onChange={() => {
                             setCartState('bulk')
                             console.log('bulk selected...', cartState)
@@ -554,7 +554,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             !packagedOrder ? 'cell color-disabled' : 'cell'
                           }
                         >
-                          {isLoggedIn && '$' + item?.price?.base}
+                          {isLoggedIn &&
+                          item &&
+                          item?.price &&
+                          item?.price?.base
+                            ? '$' + item?.price?.base
+                            : ''}
                         </div>
                         <div
                           className={
@@ -585,7 +590,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             color: item?.totalPrice > 0 ? '#fa9200' : 'white',
                           }}
                         >
-                          {isLoggedIn && '$' + (item?.totalPrice || '0.00')}
+                          {isLoggedIn &&
+                            '$' + parseFloat(item?.totalPrice || 0).toFixed(2)}
                         </div>
                       </div>
                     )
@@ -630,7 +636,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                           {isLoggedIn ? (
                             <>
                               <div className="table">
-                                <div className="cell-header">BULK</div>
+                                <div className="cell-header align-left">
+                                  BULK
+                                </div>
                                 <div
                                   className={
                                     packagedOrder
@@ -724,8 +732,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                         : 'white',
                                   }}
                                 >
-                                  $
-                                  {parseFloat(item?.totalPrice || 0).toFixed(2)}
+                                  {'$' +
+                                    parseFloat(item?.totalPrice || 0).toFixed(
+                                      2,
+                                    )}
                                 </div>
                               </div>
                             </>
