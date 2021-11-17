@@ -47,6 +47,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   } = useContext(AppContext)
   console.log({ user })
   const navigate = useNavigate()
+  console.log({ getCartItems })
 
   const { search } = useLocation()
   const { sku } = queryString.parse(search)
@@ -58,6 +59,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [isPdpLoading, setIsPdpLoading] = useState(true)
   const [addingToCart, setAddingToCart] = useState(false)
   const [items, setItems] = useState({})
+  // const [packagedItemsCart, setPackagedItemCart] = useState(true)
 
   const { packagedata, text1, bulk } = RadioData
   const [value, setValue] = React.useState(1)
@@ -629,12 +631,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                     />
                   )}
                   {items?.bulkOrderItem?.length ? (
-                    items?.bulkOrderItem?.map(item => {
+                    items?.bulkOrderItem?.map((item, i) => {
                       console.log('bulkitem', item)
                       return (
-                        <>
+                        <div key={i}>
                           {isLoggedIn ? (
-                            <>
+                            <div>
                               <div className="table">
                                 <div className="cell-header align-left">
                                   BULK
@@ -738,7 +740,13 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                     )}
                                 </div>
                               </div>
-                            </>
+                              <div>
+                                <span>
+                                  Orders below 500L are subject to an
+                                  under-a-minimum fee.
+                                </span>
+                              </div>
+                            </div>
                           ) : (
                             <div className="table">
                               <div className="cell">BULK</div>
@@ -751,7 +759,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                               <div className="cell"></div>
                             </div>
                           )}
-                        </>
+                        </div>
                       )
                     })
                   ) : (
