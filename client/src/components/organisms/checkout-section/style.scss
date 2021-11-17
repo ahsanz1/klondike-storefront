@@ -429,15 +429,6 @@ $vw-viewport: 1440;
   }
 }
 
-.ant-modal-content {
-  width: get-vw(325px);
-  margin: auto;
-
-  @media (max-width: 768px) {
-    width: get-vw(300px);
-  }
-}
-
 .list-item {
   margin: get-vw(10px);
   cursor: pointer;
