@@ -35,22 +35,17 @@ const CartDropdown = () => {
       let itemsArr = []
 
       let sizes = []
-      let partnumber = []
       await data.items.map(async (item, i) => {
         let attributes = itemsRes?.data[i]?.attributes
         await attributes.map(attr => {
           if (attr.name === 'Package Size') {
             sizes.push(attr.value)
           }
-          if (attr.name === 'Part Number') {
-            partnumber.push(attr.value)
-          }
         })
 
         let itemObj = {
           ...item,
           size: sizes[i],
-          partnumber: partnumber[i],
           image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
           attributes: itemsRes?.data[i]?.attributes,
         }
