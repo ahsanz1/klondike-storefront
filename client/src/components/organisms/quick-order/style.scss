@@ -307,8 +307,12 @@
       display: flex;
 
       .quick-order-asterisk {
-        padding-left: 0;
+        padding-left: 0.6vw;
         color: rgb(192, 17, 17);
+
+        @media screen and(max-width: 768px) {
+          padding-left: 1.4vw;
+        }
       }
     }
 
