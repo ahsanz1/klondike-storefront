@@ -103,22 +103,28 @@ const Accounts = ({ orders }) => {
                   <div className="account-image-block">
                     <Image
                       className="account-image-block__image"
-                      src=""
+                      src={order.image}
                       alt=""
                     />
                   </div>
                   <div className="account-mobile-description">
                     {size < 768 && (
                       <p className="account-mobile-label">
-                        Vestibulum aliquam, magnis, Size Medium
+                        {order.orderReference}
                       </p>
                     )}
                     <Label className="account-mobile-orderPrice">
                       $ {order.orderTotal}
                     </Label>
-                    <Button className="account-mobile-orderCart">1</Button>
-                    <Button className="account-mobile-orderCart">2</Button>
-                    <Button className="account-mobile-orderCart">3</Button>
+                    <Button className="account-mobile-orderCart">
+                      Quantity: {order.totalQuantity}
+                    </Button>
+                    <Button className="account-mobile-orderCart">
+                      Items ({order.items.length})
+                    </Button>
+                    <Button className="account-mobile-orderCart">
+                      Status: {order.status.replace('_', ' ')}
+                    </Button>
                   </div>
                 </div>
               )
