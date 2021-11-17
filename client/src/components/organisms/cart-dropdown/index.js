@@ -47,6 +47,7 @@ const CartDropdown = () => {
           ...item,
           size: sizes[i],
           image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+          attributes: itemsRes?.data[i]?.attributes,
         }
 
         itemsArr.push(itemObj)
@@ -61,7 +62,7 @@ const CartDropdown = () => {
 
     getCart()
     setCartAmount(getCartItems?.totalAmount?.amount)
-  }, [])
+  }, [getCartItems])
 
   return (
     isModalVisible && (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Image from 'components/atoms/image'
@@ -13,6 +13,7 @@ import PDPInformation from 'components/molecules/pdpinforamation'
 // import PlpTabList from 'components/organisms/plp-tab-list'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import { useNavigate } from '@reach/router'
+import { AppContext } from 'libs/context'
 
 const PDPMobile = ({
   pdpdata,
@@ -47,6 +48,12 @@ const PDPMobile = ({
 
   const handleClose = () => setOpenCategories(false)
   const handleHowToBuy = () => navigate('/account/login')
+  const { showModal } = useContext(AppContext)
+
+  const addToCartFunction = () => {
+    onSubmit()
+    showModal()
+  }
 
   return (
     <>
@@ -331,7 +338,7 @@ const PDPMobile = ({
             <Button
               className="add-to-cart"
               disabled={btnDisabled}
-              onClick={onSubmit}
+              onClick={addToCartFunction}
             >
               {addingToCart ? 'Adding...' : 'ADD TO CART'}
             </Button>
