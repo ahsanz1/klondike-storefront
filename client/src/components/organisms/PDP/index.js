@@ -371,6 +371,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       items: itemsArr,
     }
     setGetCartItemsState(payload)
+    showcartPOPModal()
+    setAddingToCart(false)
   }
 
   const onSubmit = e => {
@@ -389,8 +391,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         if (res?.response?.data) {
           // setGetCartItemsState(res?.response?.data)
           getUpdatedCartData(res?.response?.data)
-          showcartPOPModal()
-          setAddingToCart(false)
         } else {
           setAddingToCart(false)
           if (res?.hasError) {
