@@ -5,25 +5,44 @@ import Label from 'components/atoms/label'
 import SearchList from 'components/molecules/searchList'
 import Dropdown from 'components/atoms/dropdown'
 import './style.scss'
-import { searchFilters } from 'libs/services/algolia'
+import { searchFilters, fetchItems } from 'libs/services/algolia'
 
 const SearchFilter = ({ searchHeading }) => {
   const filters = {}
   let [ps, setPS] = useState()
   let [pn, setPN] = useState('Part Number')
   let [uom, setUOM] = useState()
-  let { searchFilter, setSearchFilter, searchKey } = useContext(AppContext)
+  let {
+    searchFilter,
+    setSearchFilter,
+    searchKey,
+    getSearchParam,
+    setGetSearchParam,
+    setItemList,
+  } = useContext(AppContext)
   const [product, setProduct] = useState()
   const [isCalled, setIsCalledState] = useState(false)
   const [holdSearch, setHoldSearchState] = useState('')
   const [unit, setUnit] = useState()
   const [size, setSize] = useState()
+  // const [itemList, setItemList] = useState([])
   // const [selectedFilterList, setSelectFilterList] = useState([])
   // const [products, setProducts] = useState([])
   // const [filterCount, setFilterCount] = useState(0)
   // const [loading, setLoading] = useState(false)
-
   // let productitem = []
+
+  useEffect(() => {
+    const getSerachedValue = location.search.split('?')[1]
+    setGetSearchParam(getSerachedValue)
+    fetchItems(getSerachedValue)
+      .then(list => {
+        setItemList(list.hits)
+        setSearchFilter(list.hits)
+      })
+      .catch(error => console.log('Search Error:', error))
+  }, [])
+
   useEffect(() => {
     const setFilters = async searchFilter => {
       await setFilterResult(searchFilter)
@@ -62,15 +81,16 @@ const SearchFilter = ({ searchHeading }) => {
             label: data['Package Size'],
             value: data['Package Size'],
           })
+        console.log('objhere', objProduct, objSize, objUnit)
         arrProduct.push(objProduct)
         arrSize.push(objSize)
         arrUnit.push(objUnit)
       })
-    if (isCalled !== true) {
-      setProduct(arrProduct)
-      setUnit(arrSize)
-      setSize(arrUnit)
-    }
+    // if (isCalled !== true) {
+    setProduct(arrProduct)
+    setUnit(arrSize)
+    setSize(arrUnit)
+    // }
   }
 
   const changePN = async e => {
@@ -104,6 +124,7 @@ const SearchFilter = ({ searchHeading }) => {
       payload.push(`${v[0]}:${v[1]}`)
     })
 
+    console.log('payloadHereY', payload)
     await searchFilters(payload).then(res => {
       setSearchFilter(res)
     })
@@ -164,7 +185,7 @@ const SearchFilter = ({ searchHeading }) => {
       </div>
       <div className="search-key">
         <Label>
-          {searchKey} ({searchFilter.length})
+          {searchKey || getSearchParam} ({searchFilter.length})
         </Label>
       </div>
       <div className="filter-dropdown">

@@ -57,6 +57,7 @@ const CartDropdown = () => {
         ...data,
         items: itemsArr,
       }
+      console.log({ payload })
       setGetCartItemsState(payload)
     }
 
