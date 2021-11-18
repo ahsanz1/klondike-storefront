@@ -8,13 +8,19 @@ import Label from 'components/atoms/label'
 import PackageOrder from 'components/organisms/quick-order/package-order/index'
 import BulkOrder from 'components/organisms/quick-order/bulk-order/index'
 import AccordionComponent from 'components/molecules/accordionComponent'
-import DesktopCartPageItem from 'components/organisms/cart-and-total'
+// import DesktopCartPageItem from 'components/organisms/cart-and-total'
 import Link from 'components/atoms/link'
 import { fetchItems, searchFilters } from 'libs/services/algolia'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import { AppContext } from 'libs/context'
 // import useAddToCart from 'libs/api-hooks/useAddToCart'
 import Button from 'components/atoms/button'
+import {
+  getCartByUserId,
+  removeItemFromCart,
+  updateCartApi,
+} from 'libs/services/api/cart'
+import { getItemsBySkus } from 'libs/services/api/item'
 
 /* eslint-disable indent */
 
@@ -24,15 +30,16 @@ const QuickOrder = () => {
     user,
     showModal,
     setGetCartItemsState,
-    setCartState,
     getCartItems,
-    cartState,
+    // setCartState,
   } = useContext(AppContext)
+
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
   const [radioStateBulk, setRadioStateBulk] = useState(false)
-  const [qty, setQty] = useState([])
+  const [value, setValue] = useState(1)
+  // const [qty, setQty] = useState([])
   const [cartItems, setCartItems] = useState()
   const [productstitle, setProductstitle] = useState([])
   const [packgdata, setPackgdata] = useState([])
@@ -40,7 +47,7 @@ const QuickOrder = () => {
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
   const [accordianisActive, setAccordianIsActive] = useState(true)
   const [bulkdata, setBulkdata] = useState([])
-  const [amounttotal, setAmounttotal] = useState({})
+  // const [amounttotal, setAmounttotal] = useState({})
   const [addingToCart, setAddingToCart] = useState(false)
   let [pn, setPN] = useState()
   let [caseqty, setCaseqty] = useState([])
@@ -49,20 +56,42 @@ const QuickOrder = () => {
   let [totalqty, setTotalQty] = useState()
   let [qtyerror, setQtyError] = useState(false)
   // let total = []
-  console.log(fetcheditems, 'fetcheditems')
-  console.log('packgdata', packgdata)
   useEffect(() => {
     const data = async () => {
       const items = await fetchItems('')
       setFetcheditems(items.hits)
+      mapShowCartData()
       console.log('part', items)
     }
+
     data()
   }, [])
 
   useEffect(() => {
     total.length > 0 && itemtotalamount()
   }, [total])
+
+  useEffect(() => {
+    mapShowCartData()
+    let res = true
+    if (getCartItems?.items?.length) {
+      res = getCartItems?.items?.some(
+        item =>
+          item?.attributes?.find(att => att?.name === 'Packaged Order')?.value,
+      )
+      console.log('insideeloop', res)
+      setBulkComponent(!res)
+      setPackageComponent(res)
+      setRadioStateBulk(!res)
+      setRadioStatePackage(res)
+      setValue(res ? 1 : 2)
+    } else {
+      setRadioStateBulk(false)
+      setRadioStatePackage(false)
+      setValue(1)
+    }
+  }, [getCartItems])
+
   const itemtotalamount = () => {
     let sum = total.reduce(
       (previousValue, currentValue, currentIndex, array) => {
@@ -100,11 +129,62 @@ const QuickOrder = () => {
   const handleAccordianClick = () => {
     setAccordianIsActive(!accordianisActive)
   }
+
+  const mapShowCartData = async () => {
+    let skus = []
+    let res = await getCartByUserId(user.accessToken)
+    let data = res.data
+
+    setGetCartItemsState(data)
+    await data.items.map((item, i) => {
+      skus.push(item.sku)
+    })
+
+    let itemsRes = await getItemsBySkus(skus)
+
+    let itemsArr = []
+    let grandPrice = 0
+
+    let sizes = []
+    let partNumbers = []
+    await data.items.map(async (item, i) => {
+      let attributes = itemsRes?.data[i]?.attributes
+      await attributes.map(attr => {
+        if (attr.name === 'Package Size') {
+          sizes.push(attr.value)
+        }
+
+        if (attr.name === 'Part Number') {
+          partNumbers.push(attr.value)
+        }
+      })
+
+      let itemObj = {
+        ...item,
+      }
+
+      itemObj['Product Title'] = item.title
+      itemObj['cartId'] = data._id
+      itemObj['subtotal'] = item.price?.base * item.quantity
+      itemObj['Image URL'] = itemsRes?.data[i]?.images[0]?.source[0]?.url
+      itemObj['Package Size'] = sizes[i]
+      itemObj['Base Price'] = item.price?.base
+      itemObj['Part Number'] = partNumbers[i]
+
+      grandPrice += itemObj['subtotal']
+      itemsArr.push(itemObj)
+    })
+
+    setTotalQty(grandPrice)
+    setCartItems(itemsArr)
+  }
+
   const addedItemToCart = async searchedCartitems => {
     let items = []
     let obj = {}
     let arrayTotal = []
-    await packgdata.map(async (data, i) => {
+
+    packgdata.map(async (data, i) => {
       if (data !== undefined) {
         let baseprice = data['Base Price']
         obj = { ...obj, [i]: baseprice }
@@ -149,12 +229,9 @@ const QuickOrder = () => {
           userAuthToken: user.accessToken,
         }
         addProductToCart(payload)
-          .then(res => {
+          .then(async res => {
             if (res?.response?.data) {
-              setGetCartItemsState(res.response.data)
-              setAccordianIsActive(false)
-              setCartItems(searchedCartitems)
-              setAddingToCart(false)
+              getUpdatedCartData(res?.response?.data)
               console.log('sucres', res)
             } else {
               error(res?.response?.error)
@@ -169,31 +246,74 @@ const QuickOrder = () => {
       }
 
       if (packgdata.length - 1 === i) {
-        setAmounttotal(obj)
+        // setAmounttotal(obj)
         setTotal(arrayTotal)
       }
     })
   }
-  const itemremove = async i => {
-    let a = packgdata
-    a.splice(i, 1)
-    setPackgdata(a)
-    const list = [...inputList]
-    list.splice(i, 1)
-    setInputList(list)
+
+  const getUpdatedCartData = async resData => {
+    let skus = []
+    await resData?.items?.map(item => skus.push(item?.sku))
+    let itemsRes = await getItemsBySkus(skus)
+
+    let itemsArr = []
+
+    let sizes = []
+    await resData?.items.map(async (item, i) => {
+      let attributes = itemsRes?.data[i]?.attributes
+      await attributes.map(attr => {
+        if (attr.name === 'Package Size') {
+          sizes.push(attr.value)
+        }
+      })
+
+      let itemObj = {
+        ...item,
+        size: sizes[i],
+        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+        attributes: itemsRes?.data[i]?.attributes,
+      }
+
+      itemsArr.push(itemObj)
+    })
+
+    let payload = {
+      ...resData,
+      items: itemsArr,
+    }
+    setGetCartItemsState(payload)
+    setAccordianIsActive(false)
+    mapShowCartData()
+    setAddingToCart(false)
+    // showcartPOPModal()
   }
-  const onChangeqty = async (value, i) => {
-    let amounts = amounttotal[i] * value
-    // total[i] = amounts
-    const amountT = [...total]
-    amountT[i] = amounts
-    setTotal(amountT)
-    // itemtotalamount()
-    qtyIndex = {
+
+  const itemremove = async (i, data) => {
+    await removeItemFromCart(data.cartId, data.lineItemId)
+    await mapShowCartData()
+  }
+
+  const onChangeqty = async (value, i, item) => {
+    let qtyIndex = {
       ...caseqty,
       [`index-${i}`]: value,
     }
     setCaseqty(qtyIndex)
+
+    let updateCartPayload = {
+      items: [
+        {
+          lineItemId: item.lineItemId,
+          itemId: item.itemId,
+          quantity: value,
+          price: item.price,
+        },
+      ],
+    }
+
+    await updateCartApi(item?.cartId, updateCartPayload)
+    await mapShowCartData()
   }
   // const handleRemoveClick = index => {
   //   console.log(index, 'indexing')
@@ -269,7 +389,6 @@ const QuickOrder = () => {
           payload.push(res[0])
         }
 
-        console.log(payload, 'payload')
         setPackgdata(payload)
       })
       .catch(err => {
@@ -345,15 +464,15 @@ const QuickOrder = () => {
       return item.partnumber
     })
 
-    const quantitylist = inputList.map(item => {
-      return item.quantity
-    })
+    // const quantitylist = inputList.map(item => {
+    //   return item.quantity
+    // })
 
     const searchedCartitems = fetcheditems.filter(item =>
       partnumberlist.includes(item.title),
     )
 
-    setQty(quantitylist)
+    // setQty(quantitylist)
     // const cartItem = {
     //   ...searchedCartitems,
     //   quantitylist,
@@ -371,13 +490,13 @@ const QuickOrder = () => {
   const radioChangeBULK = () => {
     setPackageComponent(false)
     setBulkComponent(true)
-    setCartState('bulk')
+    // setCartState('bulk')
   }
 
-  const radioChangePACKAGE = () => {
+  const radioChangePACKAGE = e => {
     setBulkComponent(false)
     setPackageComponent(true)
-    setCartState('package')
+    // setCartState('package')
   }
 
   const OrderType = () => {
@@ -456,12 +575,12 @@ const QuickOrder = () => {
       </div>
     )
   }
-  const cartItem = cartItems
-    ? cartItems.map((cartItem, i) => {
-        return <DesktopCartPageItem {...cartItem} quantity={qty} key={i} />
-      })
-    : null
-  console.log('global checking:', cartState, getCartItems)
+  // const cartItem = cartItems
+  //   ? cartItems.map((cartItem, i) => {
+  //       return <DesktopCartPageItem {...cartItem} quantity={qty} key={i} />
+  //     })
+  //   : null
+
   return (
     <>
       <div className="quick-order-wrapper">
@@ -469,11 +588,16 @@ const QuickOrder = () => {
           <div className="orderComponent">
             {/* ^^^^Order list and order component div excluding orderTotal */}
             <div className="radio-wrapper">
-              <Radio.Group className="radio-group" defaultValue={1}>
+              <Radio.Group
+                value={value}
+                className="radio-group"
+                defaultValue={1}
+                onChange={e => setValue(e.target.value)}
+              >
                 <Radio
                   className={'radiobtn'}
                   value={1}
-                  defaultChecked={true}
+                  // defaultChecked={true}
                   disabled={radioStateBulk}
                   onChange={radioChangePACKAGE}
                   // disabled={
@@ -517,12 +641,12 @@ const QuickOrder = () => {
                 </span>
               </div>
             )}
-            {cartItem}
+            {/* {cartItem} */}
 
             {cartItems && (
               <div className="quickorder-wrapper">
-                {packgdata &&
-                  packgdata.map((data, i) => {
+                {cartItems &&
+                  cartItems.map((data, i) => {
                     if (data !== undefined) {
                       return size > 768 ? (
                         <div key={i} className="orders">
@@ -533,7 +657,7 @@ const QuickOrder = () => {
                               </div>
                               <button
                                 className="quick-orde_btn"
-                                onClick={e => itemremove(i)}
+                                onClick={e => itemremove(i, data)}
                               >
                                 Remove Item
                               </button>
@@ -579,20 +703,14 @@ const QuickOrder = () => {
                               min={0}
                               max={100}
                               defaultValue={1}
-                              value={caseqty[`index-${i}`]}
-                              onChange={e => onChangeqty(e, i)}
+                              value={data['quantity']}
+                              onChange={e => onChangeqty(e, i, data)}
                               size="middle"
                               className="input"
                             />
                           </div>
                           <div>
-                            <p className="quickorder-Price">
-                              $
-                              {(
-                                data['Base Price'] *
-                                Number(caseqty[`index-${i}`])
-                              ).toFixed(2)}
-                            </p>
+                            <p className="quickorder-Price">${data.subtotal}</p>
                           </div>
                         </div>
                       ) : (

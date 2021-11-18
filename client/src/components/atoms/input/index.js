@@ -14,6 +14,7 @@ const InputTextField = ({
   type = '',
   minLength = '',
   maxLength = '',
+  autoFocus = false,
 }) => {
   return (
     <input
@@ -34,6 +35,8 @@ const InputTextField = ({
       onChange={e => {
         onChange && onChange({ value: e.target.value, e })
       }}
+      // eslint-disable-next-line jsx-a11y/no-autofocus
+      autoFocus={autoFocus}
     />
   )
 }
@@ -50,6 +53,7 @@ InputTextField.propTypes = {
   type: PropTypes.string,
   minLength: PropTypes.string,
   maxLength: PropTypes.string,
+  autoFocus: PropTypes.bool,
 }
 
 export default InputTextField

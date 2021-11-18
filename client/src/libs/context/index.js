@@ -77,6 +77,8 @@ const AppProvider = ({ children }) => {
   const [subscribedItemData, setSubscribedItemData] = useState({})
   const [subscribedPlpData, setSubscribedPlpData] = useState([])
   const [subscriptionBillingInfo, setSubscriptionBillingInfo] = useState({})
+  const [getSearchParam, setGetSearchParam] = useState('')
+  const [itemList, setItemList] = useState([])
 
   const handleDisplayForm = () => {
     setIsNewAddress(!isNewAddress)
@@ -92,12 +94,13 @@ const AppProvider = ({ children }) => {
     })
 
     let itemsRes = await getItemsBySkus(skus)
-
+    console.log('itemsRes', itemsRes, 'user res', data)
     let itemsArr = []
 
     let sizes = []
     await data.items.map(async (item, i) => {
-      let attributes = itemsRes?.data[i]?.attributes
+      let itemRes = itemsRes?.data[i]
+      let attributes = itemRes?.attributes
       await attributes.map(attr => {
         if (attr.name === 'Package Size') {
           sizes.push(attr.value)
@@ -108,6 +111,7 @@ const AppProvider = ({ children }) => {
         ...item,
         size: sizes[i],
         image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+        attributes: itemsRes?.data[i]?.attributes,
       }
 
       itemsArr.push(itemObj)
@@ -117,7 +121,9 @@ const AppProvider = ({ children }) => {
       ...data,
       items: itemsArr,
     }
+
     setGetCartItemsState(payload)
+    setCartAmount(payload.totalAmount.amount)
     setIsModalVisible(true)
 
     if (size > 768) {
@@ -353,6 +359,10 @@ const AppProvider = ({ children }) => {
         setCheckoutData,
         creditLimit,
         setCreditLimit,
+        getSearchParam,
+        setGetSearchParam,
+        itemList,
+        setItemList,
         ...state,
       }}
     >
