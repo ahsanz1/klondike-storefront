@@ -64,7 +64,8 @@ const Dropdown = ({
         return (
           <Option
             className={optionClassName}
-            key={menuItem.id || menuItem.value || i}
+            // key={menuItem.id || menuItem.value || i}
+            key={i}
             value={menuItem.value || i}
             disabled={menuItem.disabled}
             style={menuItem.disabled ? disabledOptionStyle : {}}
