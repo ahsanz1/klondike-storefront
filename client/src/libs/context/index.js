@@ -77,6 +77,8 @@ const AppProvider = ({ children }) => {
   const [subscribedItemData, setSubscribedItemData] = useState({})
   const [subscribedPlpData, setSubscribedPlpData] = useState([])
   const [subscriptionBillingInfo, setSubscriptionBillingInfo] = useState({})
+  const [getSearchParam, setGetSearchParam] = useState('')
+  const [itemList, setItemList] = useState([])
 
   const handleDisplayForm = () => {
     setIsNewAddress(!isNewAddress)
@@ -354,6 +356,10 @@ const AppProvider = ({ children }) => {
         setCheckoutData,
         creditLimit,
         setCreditLimit,
+        getSearchParam,
+        setGetSearchParam,
+        itemList,
+        setItemList,
         ...state,
       }}
     >
