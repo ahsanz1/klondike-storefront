@@ -18,7 +18,7 @@ const Techtabllist = ({
   return (
     <div className={`categoryItem-tab trt ${className}`}>
       {categoriesXPM &&
-        categoriesXPM.length &&
+        categoriesXPM.length > 0 &&
         categoriesXPM.map((item, index) => (
           <>
             {item.categoryName.length > 0 && (
