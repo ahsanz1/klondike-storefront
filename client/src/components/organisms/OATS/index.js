@@ -12,9 +12,9 @@ const Oats = () => {
   const [otsdata, setOtsdata] = useState([])
   const [mu, setMu] = useState()
   const [fa, setFa] = useState()
+  const [fg, setFg] = useState()
   const [se, setSe] = useState()
   const [ya, setYa] = useState()
-  const [gr, setGr] = useState()
   let [query, setQuery] = useState('')
 
   const [abale, setAble] = useState(false)
@@ -23,6 +23,8 @@ const Oats = () => {
   const [family, setFamily] = useState([])
   const [manufacturer, setManufacturer] = useState([])
   const [manuquery, setManuQuery] = useState('')
+  const [familygroupquery, setfamilygroupquery] = useState([])
+  const [familygroups, setfamilygroup] = useState('')
 
   const [familyquery, setFamilyQuery] = useState('')
   const [seriesQuery, setSeriesQuery] = useState('')
@@ -43,7 +45,7 @@ const Oats = () => {
   }
   const getproducts = () => {
     const url = [
-      `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
+      `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&familygroup=${familygroups}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
     ]
     console.log('urlss', url)
     setOtsdata([])
@@ -55,6 +57,7 @@ const Oats = () => {
       console.log('response', response)
       let results = response.data.equipment_list
       console.log('res', results)
+
       if (response.data.equipment_list.equipment.length <= 0) {
         setNotFound(true)
       }
@@ -64,6 +67,7 @@ const Oats = () => {
       let seriesArray = [{ label: ' ' }]
       let familyArray = [{ label: ' ' }]
       let manufacturerArray = [{ label: ' ' }]
+      let arrayFamily = [{ label: ' ' }]
 
       response &&
         Object.entries(
@@ -111,6 +115,32 @@ const Oats = () => {
         familyArray && familyArray.push({ label: year[0], value: year[0] })
       })
       setFamily(familyArray)
+      response &&
+        Object.entries(
+          response &&
+            response.data &&
+            response.data.facets &&
+            response.data.facets.familygroup &&
+            response.data.facets.familygroup.buckets,
+        ).map((year, i) => {
+          arrayFamily && arrayFamily.push({ label: year[0], value: year[0] })
+          if (
+            Object.entries(
+              response &&
+                response.data &&
+                response.data.facets &&
+                response.data.facets.familygroup &&
+                response.data.facets.familygroup.buckets,
+            ).length -
+              1 ===
+            i
+          ) {
+            console.log('arrayfamily', arrayFamily)
+
+            setfamilygroupquery([...arrayFamily])
+          }
+        })
+      // console.log('arrayfamily' , arrayFamily)
     })
   }
   console.log('manufacturer', manufacturer)
@@ -155,7 +185,10 @@ const Oats = () => {
     setYa(value)
   }
   const familygroup = value => {
-    setGr(value)
+    let encodeValue = encodeURI(value).replace('&', '%26')
+    console.log('value', encodeValue)
+    setfamilygroup(encodeValue)
+    setFg(value)
   }
   const handleKeyPress = event => {
     console.log('event ', event)
@@ -167,6 +200,8 @@ const Oats = () => {
     getproducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [manuquery, familyquery, seriesQuery, yearQuery])
+
+  console.log('motoagain', familygroupquery)
 
   return (
     <>
@@ -187,20 +222,13 @@ const Oats = () => {
               value={query}
               onKeyPress={handleKeyPress}
             />
+            {console.log('familygroup', familygroups)}
             <div className="wrapper-two">
               <Dropdown
-                value={gr !== undefined ? gr : 'ALL'}
+                value={fg !== undefined ? fg : 'ALL'}
                 onChange={familygroup}
                 className="cars"
-                items={[
-                  { label: 'ALL' },
-                  { label: 'Cars, SUVs & Pickups' },
-                  { label: 'Light Trucks' },
-                  { label: 'Trucks' },
-                  { label: 'Agricultural' },
-                  { label: 'Off-Highway' },
-                  { label: 'Industrial' },
-                ]}
+                items={familygroupquery}
               />
               <div className="search_bar">
                 <Button className="btn-search" onClick={searchQuery}>
