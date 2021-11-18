@@ -10,24 +10,30 @@ const PCPBottom = ({ image, button, mobileButton, url }) => {
     <div className="bottom-plp">
       <div className="pcp-bottom">
         <div className="plp-bottom-image">
-          <Image
-            src={image.url}
-            alt={image.altText}
-            className="plp-bottom-img"
-          />
+          {image.url && (
+            <Image
+              src={image.url}
+              alt={image.altText}
+              className="plp-bottom-img"
+            />
+          )}
         </div>
         <div>
-          <Button className="dealer-botton">
-            <Link to={url} className="download-Pds_link">
-              {button}
-            </Link>
-          </Button>
+          {button && (
+            <Button className="dealer-botton">
+              <Link to={url} className="download-Pds_link">
+                {button}
+              </Link>
+            </Button>
+          )}
         </div>
-        <div className="mob">
-          <Button className="mob-button">
-            <Link to={url}>{mobileButton}</Link>
-          </Button>
-        </div>
+        {mobileButton && (
+          <div className="mob">
+            <Button className="mob-button">
+              <Link to={url}>{mobileButton}</Link>
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   )

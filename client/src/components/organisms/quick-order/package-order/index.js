@@ -25,6 +25,7 @@ const PackageOrder = ({
   let titleArray = productstitle
   let InputList = inputList
   console.log('inputList:', inputList)
+
   const cartHandler = () => {
     if (inputList[0].partnumber === '' || inputList[0].quantity === '') {
       setValidation(true)
@@ -32,6 +33,10 @@ const PackageOrder = ({
       setValidation(false)
       handleAddtoCart()
     }
+  }
+  const rowHandler = () => {
+    setValidation(false)
+    handleAddRow()
   }
   // const packageHandler = (e, i) => {
   //   inputList
@@ -68,7 +73,6 @@ const PackageOrder = ({
                   )}
                   <datalist id="partnumber">
                     {titleArray.map((item, i) => {
-                      console.log('it', item)
                       return <option key={i} value={item.value} />
                     })}
                   </datalist>
@@ -107,7 +111,7 @@ const PackageOrder = ({
           )
         })}
         <div className="submit-btns">
-          <Button className="row-btn" onClick={handleAddRow}>
+          <Button className="row-btn" onClick={rowHandler}>
             ADD ROW
           </Button>
           <Button className="add-btn" onClick={cartHandler}>

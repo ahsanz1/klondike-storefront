@@ -94,12 +94,13 @@ const AppProvider = ({ children }) => {
     })
 
     let itemsRes = await getItemsBySkus(skus)
-
+    console.log('itemsRes', itemsRes, 'user res', data)
     let itemsArr = []
 
     let sizes = []
     await data.items.map(async (item, i) => {
-      let attributes = itemsRes?.data[i]?.attributes
+      let itemRes = itemsRes?.data[i]
+      let attributes = itemRes?.attributes
       await attributes.map(attr => {
         if (attr.name === 'Package Size') {
           sizes.push(attr.value)
