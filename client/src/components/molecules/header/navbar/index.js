@@ -49,6 +49,7 @@ const Navbar = ({
   }
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
+
   const searchClick = () => {
     toggleSearch()
     setLoginBottom(false)
@@ -169,7 +170,10 @@ const Navbar = ({
               }}
             >
               <div className="cart-amount">
-                ${parseFloat(cartAmount || 0.0).toFixed(2)}
+                $
+                {parseFloat(
+                  cartAmount || getCartItems?.totalAmount?.amount || 0.0,
+                ).toFixed(2)}
               </div>
               <NavbarcartIcon
                 linkCartPageIcon={location.pathname === '/cart' && true}
