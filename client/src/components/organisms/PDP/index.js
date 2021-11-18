@@ -76,6 +76,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [contextPlp, setContextPlp] = useState(plpredirect)
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
+  const [techAttributes, setTechAttributes] = useState({})
   console.log({ loading })
   console.log({ products })
   console.log({ desc })
@@ -158,6 +159,14 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setIsPdpLoading(true)
     getProductBySKU(itemSku, 1)
       .then(res => {
+        console.log('pdp response:', res?.response?.data?.product?.attributes)
+        setTechAttributes(
+          res?.response?.data?.product?.attributes?.filter(
+            item => item.name === 'Technical Information',
+          ),
+        )
+        console.log('pdp response 2:', techAttributes)
+
         let newObj = {
           ...res?.response?.data?.product,
         }
@@ -199,6 +208,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       let bulkOrderItem = newItems?.filter(
         item => !item?.mappedAttributes['Packaged Order'],
       )
+      let info = newItems?.filter(
+        item => !item?.mappedAttributes['Technical Information'],
+      )
+      console.log('tech info:', info)
       setItems({
         packagedOrderItems: packagedOrderItems,
         bulkOrderItem: bulkOrderItem,
@@ -891,7 +904,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 </div>
               </div>
               <div className="pdp-info">
-                <PDPInformation pdpdatasheet={pdpdatasheet} />
+                <PDPInformation techInfo={techAttributes} />
               </div>
             </Col>
           )}
