@@ -242,13 +242,18 @@ const ProductAccordion = ({ question }) => {
                     </p>
                   </div>
                   <div>
-                    <p className="products-sizes">Price</p>
+                    <p className="products-sizes">
+                      {modalData.size !== 'Bulk:' ? 'Price' : 'Price Litre'}
+                    </p>
                     <p className="products-sizes detail ">
                       ${modalData?.price?.toFixed(2)}
                     </p>
                   </div>
                   <div>
-                    <p className="products-sizes">QTY</p>
+                    <p className="products-sizes">
+                      {' '}
+                      {modalData.size !== 'Bulk:' ? 'QTY' : 'Litre'}
+                    </p>
                     <p className="products-sizes detail">
                       <InputNumber
                         min={0}
@@ -305,7 +310,9 @@ const ProductAccordion = ({ question }) => {
                   </div>
                   <div>
                     <div className="product-pricing-block">
-                      <p className="products-sizes">Price</p>
+                      <p className="products-sizes">
+                        {modalData.size !== 'Bulk:' ? 'Price' : 'Price Litre'}
+                      </p>
                       <p className="products-sizes detail ">
                         ${modalData.price}
                       </p>
@@ -315,7 +322,9 @@ const ProductAccordion = ({ question }) => {
               </div>
               <div className="product-total-pricing">
                 <div className="total-pricing-block">
-                  <p className="products-sizes">LITRES:</p>
+                  <p className="products-sizes">
+                    {modalData.size !== 'Bulk:' ? 'QTY' : 'Litre'}
+                  </p>
                   <p className="products-sizes detail">
                     <InputNumber
                       min={0}
