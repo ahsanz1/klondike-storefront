@@ -83,14 +83,14 @@ export const categoriesXPM = [
       hits: [
         {
           title:
-            'Give Your Diesel Engine the Love it Deserves – Proper Maintenance Will Extend Its Service Life',
+            'Give Your Diesel Engine The Love It Deserves -  Proper Maintenance Will Extend Its Service Life',
         },
         {
-          title: 'New Products to Drive Business Growth',
+          title: 'New Products To Drive Business Growth',
         },
         {
           title:
-            'KEEP YOUR ENGINE RUNNING AT A STABLE TEMPERATURE WITH THE CORRECT ANTIFREEZE/ COOLANT',
+            'Keep your engine running at a stable temperature with the correct antifreeze/ coolant',
         },
 
         {
@@ -158,6 +158,11 @@ export const AboutUsXPM = [
     title: 'Testimonials',
     categoryName: 'Testimonials',
     link: 'testimonials',
+  },
+  {
+    title: 'Career',
+    categoryName: 'Career',
+    link: 'careers',
   },
 ]
 

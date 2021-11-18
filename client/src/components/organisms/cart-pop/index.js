@@ -11,7 +11,7 @@ import './style.scss'
 const CartPopUP = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
-  })
+  }, [])
   const {
     //  cartItems,
     cartData,
