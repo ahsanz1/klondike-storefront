@@ -47,6 +47,7 @@ const QuickOrder = () => {
   let [total, setTotal] = useState([])
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
+  let [qtyerror, setQtyError] = useState(false)
   // let total = []
   console.log(fetcheditems, 'fetcheditems')
   console.log('packgdata', packgdata)
@@ -202,6 +203,7 @@ const QuickOrder = () => {
   //   // itemremove(index)
   // }
   const handleChangePackageqty = async (e, index) => {
+    setQtyError(false)
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
@@ -276,6 +278,7 @@ const QuickOrder = () => {
   }
 
   const handleChangeBulk = async (e, index) => {
+    setQtyError(false)
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
@@ -332,6 +335,7 @@ const QuickOrder = () => {
     if (inputList[0].partnumber.length > 0 && inputList[0].quantity > 0) {
       setInputList([...inputList, { partnumber: '', quantity: '' }])
     }
+    inputList[0].quantity <= 0 && setQtyError(true)
   }
 
   // -----------------------------------
@@ -397,6 +401,7 @@ const QuickOrder = () => {
               handleAddRow={handleAddRow}
               handleRemoveClick={itemremove}
               addingToCart={addingToCart}
+              qtyerror={qtyerror}
             />
           </AccordionComponent>
         </div>
@@ -417,6 +422,7 @@ const QuickOrder = () => {
               handleAddtoCart={handleAddtoCart}
               bulkdata={bulkdata}
               inputList={inputList}
+              qtyerror={qtyerror}
               handleAddRow={handleAddRow}
               handleRemoveClick={itemremove}
               addingToCart={addingToCart}
@@ -554,7 +560,7 @@ const QuickOrder = () => {
                               </div>
                               <div>
                                 <p>
-                                  Per case
+                                  {data['QTY PER CASE'] ? 'Per case' : ''}
                                   <span className="quick-item-description">
                                     {data['QTY PER CASE']}
                                   </span>
@@ -612,7 +618,7 @@ const QuickOrder = () => {
                                 </span>
                               </p>
                               <p>
-                                Per case
+                                {data['QTY PER CASE'] ? 'Per case' : ''}
                                 <span className="span">
                                   {data['QTY PER CASE']}
                                 </span>
