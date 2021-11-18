@@ -1,7 +1,8 @@
 @import '~styles/globals';
 
 .pdp_mobile-container {
-  visibility: hidden;
+  // visibility: hidden;
+  display: none;
   position: absolute;
   width: 100%;
   margin: auto;

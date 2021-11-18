@@ -32,6 +32,7 @@ const ProductAccordion = ({ question }) => {
     const data = async () => {
       const items = await fetchCategory(question)
       setItemData(items.hits)
+      // console.log('item', items)
     }
 
     data()
@@ -162,7 +163,7 @@ const ProductAccordion = ({ question }) => {
                 >
                   <Col lg={8} className="custom-width">
                     <p className="text-setting-table">
-                      {data['product title']}
+                      {data['Product Title']}
                     </p>
                   </Col>
                   <Col lg={4} className="custom-width">
