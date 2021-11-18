@@ -100,7 +100,7 @@ const DesktopCartPageItem = props => {
       <div className="removebtn-div">
         <Button
           className="remove-button"
-          //   onClick={removeItem}
+          // onClick={removeItem}
           //   disabled={removing && true}
         >
           {/* {removing ? 'Removing' : 'Remove'} */}

@@ -25,6 +25,7 @@ const PackageOrder = ({
   let titleArray = productstitle
   let InputList = inputList
   console.log('inputList:', inputList)
+
   const cartHandler = () => {
     if (inputList[0].partnumber === '' || inputList[0].quantity === '') {
       setValidation(true)
@@ -72,7 +73,6 @@ const PackageOrder = ({
                   )}
                   <datalist id="partnumber">
                     {titleArray.map((item, i) => {
-                      console.log('it', item)
                       return <option key={i} value={item.value} />
                     })}
                   </datalist>
