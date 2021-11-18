@@ -21,7 +21,7 @@ import {
   // Spin,
   Modal,
 } from 'antd'
-import { ShareAltOutlined } from '@ant-design/icons'
+// import { ShareAltOutlined } from '@ant-design/icons'
 import { productListing } from 'libs/utils/gtm'
 import PDPMobile from '../PDPMobile'
 import Link from 'components/atoms/link'
@@ -33,6 +33,7 @@ import PlpTabList from 'components/organisms/plp-tab-list'
 import CartDropdown from '../cart-dropdown'
 import { useLocation, useNavigate } from '@reach/router'
 import queryString from 'query-string'
+import { getItemsBySkus } from 'libs/services/api/item'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   // const { data, imgdata, heading } = pdpdata
@@ -91,14 +92,20 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   useEffect(() => {
     let res = true
     if (getCartItems?.items?.length) {
-      res = getCartItems?.items?.some(item => item?.size === 'Bulk:')
-      setBulkItemsCart(res)
-      setPackagedItemsCart(!res)
-      setValue(packagedItemsCart ? 1 : 2)
+      res = getCartItems?.items?.some(
+        item =>
+          item?.attributes?.find(att => att?.name === 'Packaged Order')?.value,
+      )
+      console.log('insideeloop', res)
+      setPackagedOrder(res)
+      setBulkItemsCart(!res)
+      setPackagedItemsCart(res)
+      setValue(res ? 1 : 2)
     } else {
-      setBulkItemsCart(true)
-      setPackagedItemsCart(true)
-      setValue(packagedItemsCart ? 1 : 2)
+      setBulkItemsCart(res)
+      setPackagedItemsCart(res)
+      setPackagedOrder(true)
+      setValue(1)
     }
   }, [getCartItems])
 
@@ -149,7 +156,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   useEffect(() => {
     setIsPdpLoading(true)
-    getProductBySKU(itemSku || 'AUTO000', 1)
+    getProductBySKU(itemSku, 1)
       .then(res => {
         let newObj = {
           ...res?.response?.data?.product,
@@ -333,6 +340,39 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     })
   }
 
+  const getUpdatedCartData = async resData => {
+    let skus = []
+    await resData?.items?.map(item => skus.push(item?.sku))
+    let itemsRes = await getItemsBySkus(skus)
+
+    let itemsArr = []
+
+    let sizes = []
+    await resData?.items.map(async (item, i) => {
+      let attributes = itemsRes?.data[i]?.attributes
+      await attributes.map(attr => {
+        if (attr.name === 'Package Size') {
+          sizes.push(attr.value)
+        }
+      })
+
+      let itemObj = {
+        ...item,
+        size: sizes[i],
+        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+        attributes: itemsRes?.data[i]?.attributes,
+      }
+
+      itemsArr.push(itemObj)
+    })
+
+    let payload = {
+      ...resData,
+      items: itemsArr,
+    }
+    setGetCartItemsState(payload)
+  }
+
   const onSubmit = e => {
     setAddingToCart(true)
     console.log(productData?.requestArray, 'pkg')
@@ -347,7 +387,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       .then(res => {
         console.log('ressss', res)
         if (res?.response?.data) {
-          setGetCartItemsState(res?.response?.data)
+          // setGetCartItemsState(res?.response?.data)
+          getUpdatedCartData(res?.response?.data)
           showcartPOPModal()
           setAddingToCart(false)
         } else {
@@ -371,32 +412,41 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       <div className="customContainer">
         <Row>
           <Col className="breadcumb-column">
-            <Breadcrumb
-              className="breadCrumbStyle"
-              separator={<span style={{ color: '#FFFFFF' }}>/</span>}
-            >
-              <Breadcrumb.Item>
-                <Link to="/" style={{ color: '#FFFFFF' }}>
-                  Home
-                </Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link to="/PCP" style={{ color: '#FFFFFF' }}>
-                  Our Products
-                </Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
-                  {productData?.category}
-                </Link>
-              </Breadcrumb.Item>
-              {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
-              <Breadcrumb.Item className="notranslate">
-                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
-                  {productData?.title}
-                </Link>
-              </Breadcrumb.Item>
-            </Breadcrumb>
+            {isPdpLoading ? (
+              <Breadcrumb
+                className="breadCrumbStyle"
+                separator={<span style={{ color: '#FFFFFF' }}></span>}
+              >
+                <Breadcrumb.Item>Loading...</Breadcrumb.Item>
+              </Breadcrumb>
+            ) : (
+              <Breadcrumb
+                className="breadCrumbStyle"
+                separator={<span style={{ color: '#FFFFFF' }}>/</span>}
+              >
+                <Breadcrumb.Item>
+                  <Link to="/" style={{ color: '#FFFFFF' }}>
+                    Home
+                  </Link>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  <Link to="/PCP" style={{ color: '#FFFFFF' }}>
+                    Our Products
+                  </Link>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                    {productData?.category}
+                  </Link>
+                </Breadcrumb.Item>
+                {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
+                <Breadcrumb.Item className="notranslate">
+                  <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                    {productData?.title}
+                  </Link>
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            )}
           </Col>
         </Row>
         <Row style={{ flexFlow: 'row' }}>
@@ -479,12 +529,12 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                       {productData?.title}
                     </h1>
                   </div>
-                  <div className="share-icon">
+                  {/* <div className="share-icon">
                     <ShareAltOutlined
                       size="32px"
                       style={{ color: '#FFFFFF' }}
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div style={{ marginBottom: 10 }}>
                   {isLoggedIn && (
@@ -597,7 +647,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                               {isLoggedIn && (
                                 <InputNumber
                                   min={0}
-                                  max={100}
+                                  max={1000}
                                   defaultValue={0}
                                   onChange={e => onQtyChange(e, i)}
                                   disabled={!packagedOrder}
@@ -743,10 +793,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       }
                                     >
                                       <InputNumber
-                                        min={0}
-                                        max={100}
-                                        defaultValue={0}
+                                        min={1}
+                                        max={5000}
+                                        defaultValue={1}
                                         onChange={e => onBulkQtyChange(e)}
+                                        step={0.1}
                                         size="middle"
                                         className="input"
                                         disabled={packagedOrder}
@@ -776,12 +827,20 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                         ).toFixed(2)}
                                     </div>
                                   </div>
-                                  <div>
-                                    <span>
-                                      Orders below 500L are subject to an
-                                      under-a-minimum fee.
-                                    </span>
-                                  </div>
+                                  {!packagedOrder &&
+                                    Number(item?.quantity) < Number(200) && (
+                                      <div
+                                        style={{
+                                          display: 'flex',
+                                          justifyContent: 'flex-end',
+                                        }}
+                                      >
+                                        <span style={{ color: '#fa9200' }}>
+                                          Orders below 500L are subject to an
+                                          under-a-minimum fee.
+                                        </span>
+                                      </div>
+                                    )}
                                 </div>
                               ) : (
                                 <div className="table">
