@@ -26,14 +26,19 @@ import { getItemsBySkus } from 'libs/services/api/item'
 
 const QuickOrder = () => {
   const [size] = useWindowSize()
-  const { user, showModal, setGetCartItemsState, setCartState } = useContext(
-    AppContext,
-  )
+  const {
+    user,
+    showModal,
+    setGetCartItemsState,
+    getCartItems,
+    // setCartState,
+  } = useContext(AppContext)
 
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
   const [radioStatePackage, setRadioStatePackage] = useState(false)
   const [radioStateBulk, setRadioStateBulk] = useState(false)
+  const [value, setValue] = useState(1)
   // const [qty, setQty] = useState([])
   const [cartItems, setCartItems] = useState()
   const [productstitle, setProductstitle] = useState([])
@@ -67,6 +72,27 @@ const QuickOrder = () => {
   useEffect(() => {
     total.length > 0 && itemtotalamount()
   }, [total])
+
+  useEffect(() => {
+    mapShowCartData()
+    let res = true
+    if (getCartItems?.items?.length) {
+      res = getCartItems?.items?.some(
+        item =>
+          item?.attributes?.find(att => att?.name === 'Packaged Order')?.value,
+      )
+      console.log('insideeloop', res)
+      setBulkComponent(!res)
+      setPackageComponent(res)
+      setRadioStateBulk(!res)
+      setRadioStatePackage(res)
+      setValue(res ? 1 : 2)
+    } else {
+      setRadioStateBulk(false)
+      setRadioStatePackage(false)
+      setValue(1)
+    }
+  }, [getCartItems])
 
   const itemtotalamount = () => {
     let sum = total.reduce(
@@ -212,9 +238,7 @@ const QuickOrder = () => {
         addProductToCart(payload)
           .then(async res => {
             if (res?.response?.data) {
-              setAccordianIsActive(false)
-              mapShowCartData()
-              setAddingToCart(false)
+              getUpdatedCartData(res?.response?.data)
               console.log('sucres', res)
             } else {
               error(res?.response?.error)
@@ -234,6 +258,44 @@ const QuickOrder = () => {
       }
     })
   }
+
+  const getUpdatedCartData = async resData => {
+    let skus = []
+    await resData?.items?.map(item => skus.push(item?.sku))
+    let itemsRes = await getItemsBySkus(skus)
+
+    let itemsArr = []
+
+    let sizes = []
+    await resData?.items.map(async (item, i) => {
+      let attributes = itemsRes?.data[i]?.attributes
+      await attributes.map(attr => {
+        if (attr.name === 'Package Size') {
+          sizes.push(attr.value)
+        }
+      })
+
+      let itemObj = {
+        ...item,
+        size: sizes[i],
+        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+        attributes: itemsRes?.data[i]?.attributes,
+      }
+
+      itemsArr.push(itemObj)
+    })
+
+    let payload = {
+      ...resData,
+      items: itemsArr,
+    }
+    setGetCartItemsState(payload)
+    setAccordianIsActive(false)
+    mapShowCartData()
+    setAddingToCart(false)
+    // showcartPOPModal()
+  }
+
   const itemremove = async (i, data) => {
     setRemoveItem(true)
     await removeItemFromCart(data.cartId, data.lineItemId)
@@ -439,13 +501,13 @@ const QuickOrder = () => {
   const radioChangeBULK = () => {
     setPackageComponent(false)
     setBulkComponent(true)
-    setCartState('bulk')
+    // setCartState('bulk')
   }
 
-  const radioChangePACKAGE = () => {
+  const radioChangePACKAGE = e => {
     setBulkComponent(false)
     setPackageComponent(true)
-    setCartState('package')
+    // setCartState('package')
   }
 
   const OrderType = () => {
@@ -537,11 +599,16 @@ const QuickOrder = () => {
           <div className="orderComponent">
             {/* ^^^^Order list and order component div excluding orderTotal */}
             <div className="radio-wrapper">
-              <Radio.Group className="radio-group" defaultValue={1}>
+              <Radio.Group
+                value={value}
+                className="radio-group"
+                defaultValue={1}
+                onChange={e => setValue(e.target.value)}
+              >
                 <Radio
                   className={'radiobtn'}
                   value={1}
-                  defaultChecked={true}
+                  // defaultChecked={true}
                   disabled={radioStateBulk}
                   onChange={radioChangePACKAGE}
                   // disabled={
