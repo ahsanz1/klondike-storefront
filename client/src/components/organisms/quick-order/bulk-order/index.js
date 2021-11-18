@@ -16,11 +16,24 @@ const BulkOrder = ({
   addingToCart,
   qtyerror,
 }) => {
+  const [validation, setValidation] = React.useState(false)
   const handleSubmit = e => {
     e.preventDefault()
   }
   let titleArray = bulkdata
   let InputList = inputList
+  const cartHandler = () => {
+    if (inputList[0].partnumber === '' || inputList[0].quantity === '') {
+      setValidation(true)
+    } else {
+      setValidation(false)
+      handleAddtoCart()
+    }
+  }
+  const rowHandler = () => {
+    setValidation(false)
+    handleAddRow()
+  }
   return (
     <div>
       <div className="partname-and-qty">
@@ -46,7 +59,11 @@ const BulkOrder = ({
                     value={x.partnumber}
                     onChange={e => handleChangePackage(e, i)}
                   />
-
+                  {validation && inputList[0].partnumber === '' && (
+                    <div style={{ color: 'red' }} className="validation">
+                      Please Enter Part Number
+                    </div>
+                  )}
                   <datalist id="partnumber">
                     {titleArray.map((item, i) => {
                       console.log('itbulk', item)
@@ -66,6 +83,11 @@ const BulkOrder = ({
                   {qtyerror && (
                     <span className="packageqty-error">Please Entre QTY</span>
                   )}
+                  {validation && inputList[0].quantity === '' && (
+                    <div style={{ color: 'red' }} className="validation">
+                      Please Enter Liters
+                    </div>
+                  )}
                 </div>
                 <div className="remove-rowbtn">
                   {InputList.length > 1 && InputList.length - 1 === i && (
@@ -82,10 +104,10 @@ const BulkOrder = ({
           )
         })}
         <div className="submit-btns">
-          <Button className="row-btn" onClick={handleAddRow}>
+          <Button className="row-btn" onClick={rowHandler}>
             ADD ROW
           </Button>
-          <Button className="add-btn" onClick={() => handleAddtoCart()}>
+          <Button className="add-btn" onClick={cartHandler}>
             {addingToCart ? 'Adding...' : 'ADD TO CART'}
           </Button>
         </div>
