@@ -36,7 +36,7 @@ const InputTextField = ({
         onChange && onChange({ value: e.target.value, e })
       }}
       // eslint-disable-next-line jsx-a11y/no-autofocus
-      autoFocus={autoFocus && true}
+      autoFocus={autoFocus}
     />
   )
 }
