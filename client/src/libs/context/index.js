@@ -77,6 +77,8 @@ const AppProvider = ({ children }) => {
   const [subscribedItemData, setSubscribedItemData] = useState({})
   const [subscribedPlpData, setSubscribedPlpData] = useState([])
   const [subscriptionBillingInfo, setSubscriptionBillingInfo] = useState({})
+  const [getSearchParam, setGetSearchParam] = useState('')
+  const [itemList, setItemList] = useState([])
 
   const handleDisplayForm = () => {
     setIsNewAddress(!isNewAddress)
@@ -109,6 +111,7 @@ const AppProvider = ({ children }) => {
         ...item,
         size: sizes[i],
         image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+        attributes: itemsRes?.data[i]?.attributes,
       }
 
       itemsArr.push(itemObj)
@@ -118,7 +121,9 @@ const AppProvider = ({ children }) => {
       ...data,
       items: itemsArr,
     }
+
     setGetCartItemsState(payload)
+    setCartAmount(payload.totalAmount.amount)
     setIsModalVisible(true)
 
     if (size > 768) {
@@ -354,6 +359,10 @@ const AppProvider = ({ children }) => {
         setCheckoutData,
         creditLimit,
         setCreditLimit,
+        getSearchParam,
+        setGetSearchParam,
+        itemList,
+        setItemList,
         ...state,
       }}
     >
