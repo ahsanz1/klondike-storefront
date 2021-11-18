@@ -121,7 +121,9 @@ const AppProvider = ({ children }) => {
       ...data,
       items: itemsArr,
     }
+
     setGetCartItemsState(payload)
+    setCartAmount(payload.totalAmount.amount)
     setIsModalVisible(true)
 
     if (size > 768) {
