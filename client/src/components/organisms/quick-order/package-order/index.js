@@ -34,6 +34,10 @@ const PackageOrder = ({
       handleAddtoCart()
     }
   }
+  const rowHandler = () => {
+    setValidation(false)
+    handleAddRow()
+  }
   // const packageHandler = (e, i) => {
   //   inputList
   //   handleChangePackage(e, i)
@@ -107,7 +111,7 @@ const PackageOrder = ({
           )
         })}
         <div className="submit-btns">
-          <Button className="row-btn" onClick={handleAddRow}>
+          <Button className="row-btn" onClick={rowHandler}>
             ADD ROW
           </Button>
           <Button className="add-btn" onClick={cartHandler}>
