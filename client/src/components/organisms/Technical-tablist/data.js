@@ -159,6 +159,11 @@ export const AboutUsXPM = [
     categoryName: 'Testimonials',
     link: 'testimonials',
   },
+  {
+    title: 'Career',
+    categoryName: 'Career',
+    link: 'careers',
+  },
 ]
 
 export const IndustryAppXPM = [
