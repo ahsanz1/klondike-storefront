@@ -60,7 +60,6 @@ const QuickOrder = () => {
 
   const [isPackage, setIsPackage] = useState(true)
   const [hasCartData, setHasCartData] = useState(false)
-
   // let total = []
   useEffect(() => {
     const data = async () => {
@@ -729,6 +728,7 @@ const QuickOrder = () => {
                             <InputNumber
                               min={0}
                               max={100}
+                              type="number"
                               defaultValue={1}
                               value={data['quantity']}
                               onChange={e => onChangeqty(e, i, data)}
@@ -781,6 +781,7 @@ const QuickOrder = () => {
                                     <InputNumber
                                       min={0}
                                       max={100}
+                                      type="number"
                                       defaultValue={1}
                                       value={caseqty[`index-${i}`]}
                                       onChange={e => onChangeqty(e, i, data)}
