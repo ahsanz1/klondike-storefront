@@ -72,12 +72,21 @@ const ProductAccordion = ({ question }) => {
     setIsModalVisible(false)
   }
 
+  function error (msg) {
+    Modal.error({
+      title: 'This is an error message',
+      content:
+        msg ||
+        'Due to some technical reasons, this action cannot be performed!',
+    })
+  }
+
   const addItemToCart = async () => {
     let data = modalData
 
     let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
     if (creditLimit <= totalAmount) {
-      alert('You are exceeding your credit limit')
+      error('You are exceeding your credit limit')
       return
     }
 
@@ -111,8 +120,12 @@ const ProductAccordion = ({ question }) => {
       }
       addProductToCart(payload)
         .then(res => {
-          setGetCartItemsState(res.response.data)
-          showcartPOPModal()
+          if (res.hasError !== true) {
+            setGetCartItemsState(res.response.data)
+            showcartPOPModal()
+          } else {
+            error(res.response.error)
+          }
         })
         .catch(err => {
           console.log('errres', err)
@@ -128,7 +141,7 @@ const ProductAccordion = ({ question }) => {
 
     let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
     if (creditLimit <= totalAmount) {
-      alert('You are exceeding your credit limit')
+      error('You are exceeding your credit limit')
       return
     }
 
