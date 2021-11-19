@@ -598,11 +598,7 @@ const Checkoutsection = () => {
                 <span className="total-price">Total Amount</span>
                 {delivery ? (
                   <span className="total-amount">
-                    {`$${parseFloat(
-                      delivery
-                        ? cartPayload?.itemsTotal
-                        : cartPayload?.itemsTotal + 39,
-                    ).toFixed(2)}`}
+                    {`$${parseFloat(cartPayload?.itemsTotal + 39).toFixed(2)}`}
                   </span>
                 ) : (
                   <span className="total-amount">
