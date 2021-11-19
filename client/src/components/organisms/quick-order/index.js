@@ -57,9 +57,11 @@ const QuickOrder = () => {
   let [inputchange, setInputchange] = useState(false)
   const [removeItem, setRemoveItem] = useState(false)
   const [indexState, setIndexState] = useState(0)
-
+  const [inputvalue, setInputValue] = useState()
   const [isPackage, setIsPackage] = useState(true)
   const [hasCartData, setHasCartData] = useState(false)
+
+  console.log(inputvalue, inputvalue)
   // let total = []
   useEffect(() => {
     const data = async () => {
@@ -260,6 +262,7 @@ const QuickOrder = () => {
         setTotal(arrayTotal)
       }
     })
+    setInputList([{ partnumber: '', quantity: '' }])
   }
 
   const getUpdatedCartData = async resData => {
@@ -344,6 +347,7 @@ const QuickOrder = () => {
     const { name, value } = e.target
     const list = [...inputList]
     list[index][name] = value
+    setInputValue(value)
 
     if (qtyIndex.length > 0 && qtyIndex[`index-${index}`] === undefined) {
       qtyIndex = {
@@ -737,7 +741,9 @@ const QuickOrder = () => {
                             />
                           </div>
                           <div>
-                            <p className="quickorder-Price">${data.subtotal}</p>
+                            <p className="quickorder-Price">
+                              ${data.subtotal.toFixed(2)}
+                            </p>
                           </div>
                         </div>
                       ) : (
@@ -783,7 +789,7 @@ const QuickOrder = () => {
                                       max={100}
                                       type="number"
                                       defaultValue={1}
-                                      value={caseqty[`index-${i}`]}
+                                      value={data['quantity']}
                                       onChange={e => onChangeqty(e, i, data)}
                                       size="middle"
                                       className="input"
@@ -799,7 +805,7 @@ const QuickOrder = () => {
                                 <div>
                                   <p className="total-price">Total Price</p>
                                   <p className="total-price-value">
-                                    ${data.subtotal}
+                                    ${data.subtotal.toFixed(2)}
                                   </p>
                                 </div>
                               </div>
