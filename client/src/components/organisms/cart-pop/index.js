@@ -9,9 +9,6 @@ import Link from 'components/atoms/link'
 import './style.scss'
 
 const CartPopUP = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
   const {
     //  cartItems,
     cartData,
@@ -57,7 +54,9 @@ const CartPopUP = () => {
   console.log('cartData', cartData)
   useEffect(() => {
     setCartAmount(getCartItems?.totalAmount?.amount)
+    window.scrollTo(0, 0)
   }, [getCartItems])
+
   console.log('check cart data:', getCartItems)
   return (
     cartPopupModal && (
