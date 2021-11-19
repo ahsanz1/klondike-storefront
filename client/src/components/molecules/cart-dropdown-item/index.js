@@ -181,6 +181,7 @@ const CartDropdownItem = cart => {
                   className="product-quantity-spinner"
                   min={1}
                   max={1000}
+                  type="number"
                   defaultValue={cart?.quantity}
                   onChange={e => onChange(e, cart)}
                 />
@@ -219,6 +220,7 @@ const CartDropdownItem = cart => {
                 className="product-quantity-spinner"
                 min={1}
                 max={1000}
+                type="number"
                 defaultValue={cart?.quantity}
                 onChange={e => onChange(e, cart)}
               />

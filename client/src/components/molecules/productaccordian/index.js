@@ -327,6 +327,7 @@ const ProductAccordion = ({ question }) => {
                       <InputNumber
                         min={0}
                         value={qty}
+                        type="number"
                         defaultValue={1}
                         onChange={onChange}
                         size="middle"
@@ -408,6 +409,7 @@ const ProductAccordion = ({ question }) => {
                     <InputNumber
                       min={0}
                       value={qty}
+                      type="number"
                       defaultValue={1}
                       onChange={onChange}
                       size="middle"
