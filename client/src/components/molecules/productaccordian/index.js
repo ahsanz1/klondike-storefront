@@ -29,20 +29,36 @@ const ProductAccordion = ({ question }) => {
   let [showAddToCart, setShowAddToCart] = useState(false)
   let [itemId, setItemId] = useState(0)
   const [size] = useWindowSize()
-
   const [itemdata, setItemData] = useState([])
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isPackage, setIsPackage] = useState(false)
+  const [hasCartData, setHasCartData] = useState(false)
 
   useEffect(() => {
     const data = async () => {
       const items = await fetchCategory(question)
       setItemData(items.hits)
-      // console.log('item', items)
     }
-
     data()
   }, [])
 
-  const [isModalVisible, setIsModalVisible] = useState(false)
+  useEffect(() => {
+    if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
+      let res = false
+      res = getCartItems.items[0].attributes.find(
+        arr => arr.name === 'Packaged Order',
+      )
+
+      if (res && res.value) {
+        setIsPackage(true)
+      } else {
+        setIsPackage(false)
+      }
+      setHasCartData(true)
+    } else {
+      setHasCartData(false)
+    }
+  }, [getCartItems])
 
   const showModal = data => {
     let payload = {}
@@ -61,10 +77,9 @@ const ProductAccordion = ({ question }) => {
       }`,
       sku: data['SKU'],
     }
-    console.log('payload:', payload)
+
     setModalData(payload)
     setTotalPrice(payload.totalPrice)
-
     setIsModalVisible(true)
   }
 
@@ -158,7 +173,7 @@ const ProductAccordion = ({ question }) => {
   // const onOk = () => {
   //   setIsModalVisible(false)
   // }
-  console.log('modal data:', modalData)
+
   return (
     <>
       {/* <Panel header="This is panel header 2" key="2"> */}
@@ -231,6 +246,11 @@ const ProductAccordion = ({ question }) => {
                           <Button
                             onClick={e => showModal(JSON.stringify(data))}
                             className="hover-button"
+                            disabled={
+                              hasCartData
+                                ? !(isPackage === data['Packaged Order'])
+                                : false
+                            }
                           >
                             ADD TO CART
                           </Button>
@@ -261,11 +281,17 @@ const ProductAccordion = ({ question }) => {
                 <h1>{modalData.title}</h1>
                 <div className="product-detail">
                   <div>
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
+                      <p className="products-sizes">Size</p>
+                    ) : (
+                      <p className="products-sizes">Bulk</p>
+                    )}
                     {modalData.size !== 'Bulk' &&
                       modalData.size !== 'Bulk:' && (
-                      <p className="products-sizes">Size</p>
+                      <p className="products-sizes detail">
+                        {modalData.size}
+                      </p>
                     )}
-                    <p className="products-sizes detail">{modalData.size}</p>
                   </div>
                   <div>
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
@@ -301,6 +327,7 @@ const ProductAccordion = ({ question }) => {
                       <InputNumber
                         min={0}
                         value={qty}
+                        type="number"
                         defaultValue={1}
                         onChange={onChange}
                         size="middle"
@@ -334,9 +361,11 @@ const ProductAccordion = ({ question }) => {
                   {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                     <p className="products-sizes">SiZE</p>
                   ) : (
-                    <p className="products-sizes"></p>
+                    <p className="products-sizes">Bulk</p>
                   )}
-                  <p className="products-sizes detail">{modalData.size}</p>
+                  {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                    <p className="products-sizes detail">{modalData.size}</p>
+                  )}
                 </div>
                 {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                   <div className="product-detail-mobile">
@@ -380,6 +409,7 @@ const ProductAccordion = ({ question }) => {
                     <InputNumber
                       min={0}
                       value={qty}
+                      type="number"
                       defaultValue={1}
                       onChange={onChange}
                       size="middle"

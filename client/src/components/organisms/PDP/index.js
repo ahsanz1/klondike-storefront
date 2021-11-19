@@ -652,6 +652,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                   min={0}
                                   max={1000}
                                   defaultValue={0}
+                                  type="number"
                                   onChange={e => onQtyChange(e, i)}
                                   disabled={!packagedOrder}
                                   size="middle"
@@ -795,6 +796,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                         max={5000}
                                         defaultValue={0}
                                         onChange={e => onBulkQtyChange(e)}
+                                        type="number"
                                         // step={0.1}
                                         size="middle"
                                         className="input"

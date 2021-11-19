@@ -279,6 +279,7 @@ const PDPMobile = ({
                           min={0}
                           max={100}
                           defaultValue={0}
+                          type="number"
                           onChange={e => onQtyChange(e, i)}
                           disabled={!packagedOrder}
                           size="middle"
@@ -347,6 +348,7 @@ const PDPMobile = ({
                           onChange={e => onBulkQtyChange(e)}
                           disabled={packagedOrder}
                           size="middle"
+                          type="number"
                           className="input"
                           style={{
                             minWidth: '50%',

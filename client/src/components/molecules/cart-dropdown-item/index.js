@@ -143,8 +143,10 @@ const CartDropdownItem = cart => {
                   </Label>
 
                   <Label className="item-info">
-                    PER CASE:{' '}
-                    <Label className="item-subInfo">${cart?.price?.base}</Label>
+                    {cart['QTY PER CASE'] ? 'PER CASE:' : ''}
+                    <Label className="item-subInfo">
+                      {cart['QTY PER CASE']}
+                    </Label>
                   </Label>
                   <Label className="item-info">
                     PART NUM:{' '}
@@ -179,6 +181,7 @@ const CartDropdownItem = cart => {
                   className="product-quantity-spinner"
                   min={1}
                   max={1000}
+                  type="number"
                   defaultValue={cart?.quantity}
                   onChange={e => onChange(e, cart)}
                 />
@@ -217,6 +220,7 @@ const CartDropdownItem = cart => {
                 className="product-quantity-spinner"
                 min={1}
                 max={1000}
+                type="number"
                 defaultValue={cart?.quantity}
                 onChange={e => onChange(e, cart)}
               />
