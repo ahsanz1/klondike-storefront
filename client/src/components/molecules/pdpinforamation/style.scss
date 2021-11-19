@@ -21,6 +21,34 @@
     // margin: auto;
   }
 
+  strong {
+    width: 100% !important;
+    color: #f1a900;
+    font-size: 0.972vw;
+    text-align: left !important;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .coat {
+    margin-bottom: 1.18vw;
+    font-size: 0.833vw;
+    text-align: center;
+  }
+
+  .name-info {
+    margin-bottom: 3.95vw;
+    font-family: $OpenSans;
+    font-size: 1.66vw;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .button-pdp {
+    border: none;
+    background: none;
+  }
+
   h1 {
     color: white;
     font-family: $OpenSans;

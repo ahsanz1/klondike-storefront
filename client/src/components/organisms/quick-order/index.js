@@ -55,6 +55,8 @@ const QuickOrder = () => {
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
   let [qtyerror, setQtyError] = useState(false)
+  let [inputchange, setInputchange] = useState(false)
+  const [removeItem, setRemoveItem] = useState(false)
   // let total = []
   useEffect(() => {
     const data = async () => {
@@ -159,10 +161,15 @@ const QuickOrder = () => {
         }
       })
 
+      // let itemObj = {
+      //   ...item,
+      //   size: sizes[i],
+      //   image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
+      //   attributes: itemsRes?.data[i]?.attributes,
+      // }
       let itemObj = {
         ...item,
       }
-
       itemObj['Product Title'] = item.title
       itemObj['cartId'] = data._id
       itemObj['subtotal'] = item.price?.base * item.quantity
@@ -290,11 +297,14 @@ const QuickOrder = () => {
   }
 
   const itemremove = async (i, data) => {
+    setRemoveItem(true)
     await removeItemFromCart(data.cartId, data.lineItemId)
     await mapShowCartData()
+    setRemoveItem(false)
   }
 
   const onChangeqty = async (value, i, item) => {
+    setInputchange(true)
     let qtyIndex = {
       ...caseqty,
       [`index-${i}`]: value,
@@ -314,14 +324,15 @@ const QuickOrder = () => {
 
     await updateCartApi(item?.cartId, updateCartPayload)
     await mapShowCartData()
+    setInputchange(false)
   }
-  // const handleRemoveClick = index => {
-  //   console.log(index, 'indexing')
-  //   const list = [...inputList]
-  //   list.splice(index, 1)
-  //   setInputList(list)
-  //   // itemremove(index)
-  // }
+  const handleRemove = index => {
+    console.log(index, 'indexing')
+    const list = [...inputList]
+    list.splice(index, 1)
+    setInputList(list)
+    // itemremove(index)
+  }
   const handleChangePackageqty = async (e, index) => {
     setQtyError(false)
     const { name, value } = e.target
@@ -518,7 +529,7 @@ const QuickOrder = () => {
               productstitle={productstitle}
               inputList={inputList}
               handleAddRow={handleAddRow}
-              handleRemoveClick={itemremove}
+              handleRemoveClick={handleRemove}
               addingToCart={addingToCart}
               qtyerror={qtyerror}
             />
@@ -543,7 +554,7 @@ const QuickOrder = () => {
               inputList={inputList}
               qtyerror={qtyerror}
               handleAddRow={handleAddRow}
-              handleRemoveClick={itemremove}
+              handleRemoveClick={handleRemove}
               addingToCart={addingToCart}
             />
           </AccordionComponent>
@@ -631,7 +642,7 @@ const QuickOrder = () => {
               </Link>
             </div>
             {OrderType()}
-            {cartItems && (
+            {cartItems && cartItems.length > 0 && (
               <div className="wrapper itemList">
                 <span className="list-items-catagory">
                   <Label className="catagory-label">Item</Label>
@@ -659,7 +670,7 @@ const QuickOrder = () => {
                                 className="quick-orde_btn"
                                 onClick={e => itemremove(i, data)}
                               >
-                                Remove Item
+                                {removeItem ? 'Removing...' : 'Remove Item'}
                               </button>
                             </div>
                             <div className="part-wraper">
@@ -698,7 +709,15 @@ const QuickOrder = () => {
                               ${data['Base Price'].toFixed(2)}
                             </p>
                           </div>
-                          <div>
+                          <div style={{ position: 'relative' }}>
+                            {inputchange && (
+                              <span
+                                className="input-number"
+                                style={{ position: 'absolute', top: '-24px' }}
+                              >
+                                Please Wait...
+                              </span>
+                            )}
                             <InputNumber
                               min={0}
                               max={100}
@@ -719,7 +738,7 @@ const QuickOrder = () => {
                             <div className="quick-order-mobile__previous">
                               <img
                                 className="quick-order-mobile__image"
-                                src={data['Image URL'] && data['Image URL']}
+                                src={data['Image URL']}
                                 alt="img"
                               />
                               <p className="price">Price</p>
@@ -756,14 +775,14 @@ const QuickOrder = () => {
                                       max={100}
                                       defaultValue={1}
                                       value={caseqty[`index-${i}`]}
-                                      onChange={e => onChangeqty(e, i)}
+                                      onChange={e => onChangeqty(e, i, data)}
                                       size="middle"
                                       className="input"
                                     />
                                   </p>
                                   <button
                                     className="quick-orde_btn"
-                                    onClick={e => itemremove(i)}
+                                    onClick={e => itemremove(i, data)}
                                   >
                                     Remove
                                   </button>
@@ -771,11 +790,7 @@ const QuickOrder = () => {
                                 <div>
                                   <p className="total-price">Total Price</p>
                                   <p className="total-price-value">
-                                    $
-                                    {(
-                                      data['Base Price'] *
-                                      Number(caseqty[`index-${i}`])
-                                    ).toFixed(2)}
+                                    ${data.subtotal}
                                   </p>
                                 </div>
                               </div>
