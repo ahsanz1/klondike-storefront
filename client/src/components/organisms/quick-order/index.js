@@ -74,7 +74,7 @@ const QuickOrder = () => {
   }, [total])
 
   useEffect(() => {
-    mapShowCartData()
+    // mapShowCartData()
     let res = true
     if (getCartItems?.items?.length) {
       res = getCartItems?.items?.some(
