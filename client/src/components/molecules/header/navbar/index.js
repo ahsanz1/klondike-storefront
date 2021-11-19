@@ -58,6 +58,11 @@ const Navbar = ({
     setIsOpen(!isOpen)
   }
   console.log('cart amoutn check:', getCartItems, cartAmount, cartData)
+
+  let res = getCartItems?.items?.some(
+    item =>
+      item?.attributes?.find(att => att?.name === 'Packaged Order')?.value,
+  )
   return (
     <div
       className={
@@ -169,12 +174,19 @@ const Navbar = ({
                 paddingRight: '35px',
               }}
             >
-              <div className="cart-amount">
-                $
-                {parseFloat(
-                  cartAmount || getCartItems?.totalAmount?.amount || 0.0,
-                ).toFixed(2)}
-              </div>
+              {res ? (
+                <div className="cart-amount">
+                  $
+                  {parseFloat(
+                    cartAmount || getCartItems?.totalAmount?.amount || 0.0,
+                  ).toFixed(2)}
+                </div>
+              ) : (
+                <div className="cart-amount">
+                  {parseFloat(cartAmount || getCartItems?.quantity || 0)}{' '}
+                  {` ltrs`}
+                </div>
+              )}
               <NavbarcartIcon
                 linkCartPageIcon={location.pathname === '/cart' && true}
                 cartIcon={cartIcon}

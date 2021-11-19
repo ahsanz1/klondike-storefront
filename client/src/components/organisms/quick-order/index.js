@@ -82,10 +82,11 @@ const QuickOrder = () => {
       res = getCartItems.items[0].attributes.find(
         arr => arr.name === 'Packaged Order',
       )
+
       if (res && res.value) {
         setIsPackage(true)
       } else {
-        res && setIsPackage(false)
+        setIsPackage(false)
       }
       setHasCartData(true)
     } else {
@@ -186,7 +187,7 @@ const QuickOrder = () => {
 
     setTotalQty(grandPrice)
     setCartItems(itemsArr)
-    setGetCartItemsState(tempArray)
+    setGetCartItemsState({ items: tempArray })
   }
 
   const addedItemToCart = async searchedCartitems => {
