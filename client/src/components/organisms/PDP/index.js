@@ -639,7 +639,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                               item &&
                               item?.price &&
                               item?.price?.base
-                                ? '$' + item?.price?.base
+                                ? '$' + item?.price?.base?.toFixed(2)
                                 : ''}
                             </div>
                             <div
@@ -769,7 +769,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                           : 'cell'
                                       }
                                     >
-                                      ${item?.price?.base}
+                                      ${item?.price?.base?.toFixed(2)}
                                     </div>
                                     <div
                                       className={

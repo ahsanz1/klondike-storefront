@@ -599,9 +599,17 @@ const Checkoutsection = () => {
                 <Divider style={{ border: '1px solid #fff' }} />
                 <div className="item">
                   <span className="total-price">Total Amount</span>
-                  <span className="total-amount">
-                    {`$${parseFloat(cartPayload?.itemsTotal + 39).toFixed(2)}`}
-                  </span>
+                  {delivery ? (
+                    <span className="total-amount">
+                      {`$${parseFloat(cartPayload?.itemsTotal + 39).toFixed(
+                        2,
+                      )}`}
+                    </span>
+                  ) : (
+                    <span className="total-amount">
+                      {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                    </span>
+                  )}
                 </div>
               </Col>
               <div>
