@@ -14,6 +14,7 @@ import {
   Col,
   Divider,
   List,
+  Tooltip,
   // Typography,
 } from 'antd'
 import {
@@ -64,6 +65,7 @@ const Checkoutsection = () => {
   const [validatePO, setValidatePO] = useState(false)
   const [availablePickupLocations, setAvaiablePickupLocations] = useState([])
   const [selectedLocation, setSelectedLocation] = useState({})
+  const [tooltipVisible, setTooltipVisible] = useState(false)
   console.log({ cartItemIds })
   // console.log({ availableLocations })
 
@@ -85,6 +87,16 @@ const Checkoutsection = () => {
       kind: 'Mobile',
     },
   }
+
+  const secondtext = (
+    <div className="toltip-container">
+      <h1>Error!</h1>
+      <p>
+        Pickup orders have a $500 minimum requirement. You need to meet this
+        requirement in order to place order as Pickup.
+      </p>{' '}
+    </div>
+  )
 
   const getCart = async () => {
     if (user !== null) {
@@ -377,7 +389,7 @@ const Checkoutsection = () => {
           // header={<div>Header</div>}
           // footer={<div>Footer</div>}
           bordered
-          dataSource={availablePickupLocations}
+          dataSource={availablePickupLocations || []}
           renderItem={item => (
             <List.Item onClick={() => onListClick(item)} className="list-item">
               <List.Item.Meta
@@ -417,179 +429,201 @@ const Checkoutsection = () => {
             </div>
           </Col>
         </Row>
-        {isCartLoading ? (
-          <Row justify="center" align="center">
-            <h1 style={{ color: 'gray' }}>Loading...</h1>
-          </Row>
-        ) : (
-          <Row className="checkout-padding">
-            <Col xs={{ span: 24 }} lg={{ span: 16 }}>
-              <div style={{ margin: '0 0 36px 1vw' }} className="radio-group">
-                <Radio.Group
-                  onChange={onChange}
-                  value={value}
-                  defaultValue={1}
-                  size="large"
-                  optionType="button"
-                >
-                  <Radio
-                    value={1}
-                    style={{
-                      color: delivery ? 'white' : 'rgba(244, 244, 244, 0.5)',
-                    }}
-                    className="radio-btn"
+        <div>
+          {isCartLoading ? (
+            <Row justify="center" align="center">
+              <h1 style={{ color: 'gray' }}>Loading...</h1>
+            </Row>
+          ) : (
+            <Row className="checkout-padding">
+              <Col xs={{ span: 24 }} lg={{ span: 16 }}>
+                <div style={{ margin: '0 0 36px 1vw' }} className="radio-group">
+                  <Radio.Group
+                    onChange={onChange}
+                    value={value}
+                    defaultValue={1}
+                    size="large"
+                    optionType="button"
                   >
-                    DELIVERY
-                  </Radio>
-                  <Radio
-                    value={2}
-                    style={{
-                      color: delivery ? 'rgba(244, 244, 244, 0.5)' : 'white',
-                    }}
-                    className="radio-btn"
-                  >
-                    PICKUP
-                  </Radio>
-                </Radio.Group>
-              </div>
-              <div className="checkout-info">
-                <span>{personalInfo?.email}</span>
-              </div>
-              <div className="checkout-info-second">
-                {delivery ? (
-                  <div className="checkout-po">
-                    <span>
-                      <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
-                      <br />
-                      {`${address?.street1},`}
-                      <br />
-                      {`${address?.city}, ${address?.state} ${address?.zipCode}`}
-                      <br />
-                      {`${address?.phone?.number}`}
+                    <Radio
+                      value={1}
+                      style={{
+                        color: delivery ? 'white' : 'rgba(244, 244, 244, 0.5)',
+                      }}
+                      className="radio-btn"
+                      onMouseEnter={() => setTooltipVisible(false)}
+                    >
+                      DELIVERY
+                    </Radio>
+                    <Tooltip
+                      placement="bottomLeft"
+                      visible={tooltipVisible}
+                      title={secondtext}
+                    >
+                      <Radio
+                        value={2}
+                        style={{
+                          color: delivery
+                            ? 'rgba(244, 244, 244, 0.5)'
+                            : 'white',
+                        }}
+                        className="radio-btn"
+                        disabled={cartPayload?.itemsTotal < 500}
+                        onMouseEnter={() =>
+                          setTooltipVisible(cartPayload?.itemsTotal < 500)
+                        }
+                        onMouseLeave={() => setTooltipVisible(false)}
+                      >
+                        PICKUP
+                      </Radio>
+                    </Tooltip>
+                  </Radio.Group>
+                </div>
+                <div className="checkout-info">
+                  <span>{personalInfo?.email}</span>
+                </div>
+                <div className="checkout-info-second">
+                  {delivery ? (
+                    <div className="checkout-po">
+                      <span>
+                        <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+                        <br />
+                        {`${address?.street1},`}
+                        <br />
+                        {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                        <br />
+                        {`${address?.phone?.number}`}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="checkout-po">
+                      {Object.keys(selectedLocation).length === 0 ? (
+                        <span>Please choose location!</span>
+                      ) : (
+                        <span>
+                          {`${selectedLocation?.address?.street1},`}
+                          <br />
+                          {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
+                          <br />
+                          {`${selectedLocation?.address?.phone?.number ||
+                            '000-000-000'}`}
+                        </span>
+                      )}
+                      <Button
+                        ghost
+                        className="change-button"
+                        onClick={handlePickUpClick}
+                      >
+                        CHOOSE PICKUP LOCATION
+                      </Button>
+                    </div>
+                  )}
+                </div>
+                <div className="checkout-info-third">
+                  <div>
+                    <span className="checkout-po">
+                      PO Number: <strong>{`${poNumber}`}</strong>
                     </span>
                   </div>
-                ) : (
-                  <div className="checkout-po">
-                    {Object.keys(selectedLocation).length === 0 ? (
-                      <span>Please choose location!</span>
-                    ) : (
-                      <span>
-                        {`${selectedLocation?.address?.street1},`}
-                        <br />
-                        {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
-                        <br />
-                        {`${selectedLocation?.address?.phone?.number ||
-                          '000-000-000'}`}
-                      </span>
-                    )}
+                  <div className="checkout-po-button">
                     <Button
                       ghost
                       className="change-button"
-                      onClick={handlePickUpClick}
+                      onClick={handlePOChange}
                     >
-                      CHOOSE PICKUP LOCATION
+                      CHANGE
+                    </Button>
+                  </div>
+                </div>
+                <div>
+                  {inputField && (
+                    <div className="checkout-info">
+                      <div className="checkout-po">
+                        <span>Custom PO Number:</span>
+                        <div>
+                          <Input
+                            placeholder="Enter Custom PO Number"
+                            onChange={handlePOInput}
+                            maxLength={7}
+                            defaultValue={`R3G`}
+                            className="inputStyle"
+                          />
+                          {!validatePO && (
+                            <p style={{ color: '#f2a900' }}>
+                              Invalid PO Number
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                {size > 768 && (
+                  <div className="checkout-btn">
+                    <Button
+                      className="placeorder-btn"
+                      onClick={createShipping}
+                      loading={isLoading}
+                      disabled={
+                        (!delivery && !Object.keys(selectedLocation).length) ||
+                        (inputField && !validatePO)
+                      }
+                    >
+                      PLACE ORDER
+                    </Button>
+                  </div>
+                )}
+              </Col>
+              <Col
+                xs={{ span: 24 }}
+                lg={{ span: 8 }}
+                className="checkout-summary"
+              >
+                <div>
+                  <h2 className="summary-title">ORDER SUMMARY</h2>
+                </div>
+                <div className="item">
+                  <span>Items ({cartPayload?.items?.length})</span>
+                  <span>
+                    {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                  </span>
+                </div>
+                <div className="item">
+                  <span>Shipping &amp; Handling</span>
+                  <span>{delivery ? `$39.00` : 'TBD'}</span>
+                </div>
+                <div className="item">
+                  <span>Credit Limit</span>
+                  <span>${creditLimit}</span>
+                </div>
+                <Divider style={{ border: '1px solid #fff' }} />
+                <div className="item">
+                  <span className="total-price">Total Amount</span>
+                  <span className="total-amount">
+                    {`$${parseFloat(cartPayload?.itemsTotal + 39).toFixed(2)}`}
+                  </span>
+                </div>
+              </Col>
+              <div>
+                {size <= 768 && (
+                  <div className="checkout-btn">
+                    <Button
+                      className="placeorder-btn"
+                      onClick={createShipping}
+                      loading={isLoading}
+                      disabled={
+                        (!delivery && !Object.keys(selectedLocation).length) ||
+                        (inputField && !validatePO)
+                      }
+                    >
+                      PLACE ORDER
                     </Button>
                   </div>
                 )}
               </div>
-              <div className="checkout-info-third">
-                <div>
-                  <span className="checkout-po">
-                    PO Number: <strong>{`${poNumber}`}</strong>
-                  </span>
-                </div>
-                <div className="checkout-po-button">
-                  <Button
-                    ghost
-                    className="change-button"
-                    onClick={handlePOChange}
-                  >
-                    CHANGE
-                  </Button>
-                </div>
-              </div>
-              {inputField && (
-                <div className="checkout-info">
-                  <div className="checkout-po">
-                    <span>Custom PO Number:</span>
-                    <div>
-                      <Input
-                        placeholder="Enter Custom PO Number"
-                        onChange={handlePOInput}
-                        maxLength={7}
-                        defaultValue={`R3G`}
-                        className="inputStyle"
-                      />
-                      {!validatePO && (
-                        <p style={{ color: '#f2a900' }}>Invalid PO Number</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
-              {size > 768 && (
-                <div className="checkout-btn">
-                  <Button
-                    className="placeorder-btn"
-                    onClick={createShipping}
-                    loading={isLoading}
-                    disabled={
-                      (!delivery && !Object.keys(selectedLocation).length) ||
-                      (inputField && !validatePO)
-                    }
-                  >
-                    PLACE ORDER
-                  </Button>
-                </div>
-              )}
-            </Col>
-            <Col
-              xs={{ span: 24 }}
-              lg={{ span: 8 }}
-              className="checkout-summary"
-            >
-              <div>
-                <h2 className="summary-title">ORDER SUMMARY</h2>
-              </div>
-              <div className="item">
-                <span>Items ({cartPayload?.items?.length})</span>
-                <span>
-                  {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
-                </span>
-              </div>
-              <div className="item">
-                <span>Shipping &amp; Handling</span>
-                <span>{delivery ? `$39.00` : 'TBD'}</span>
-              </div>
-              <div className="item">
-                <span>Credit Limit</span>
-                <span>${creditLimit}</span>
-              </div>
-              <Divider style={{ border: '1px solid #fff' }} />
-              <div className="item">
-                <span className="total-price">Total Amount</span>
-                <span className="total-amount">
-                  {`$${parseFloat(cartPayload?.itemsTotal + 39).toFixed(2)}`}
-                </span>
-              </div>
-            </Col>
-            {size <= 768 && (
-              <div className="checkout-btn">
-                <Button
-                  className="placeorder-btn"
-                  onClick={createShipping}
-                  loading={isLoading}
-                  disabled={
-                    (!delivery && !Object.keys(selectedLocation).length) ||
-                    (inputField && !validatePO)
-                  }
-                >
-                  PLACE ORDER
-                </Button>
-              </div>
-            )}
-          </Row>
-        )}
+            </Row>
+          )}
+        </div>
       </div>
     </div>
   )
