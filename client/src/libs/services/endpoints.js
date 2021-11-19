@@ -36,6 +36,7 @@ const ENDPOINTS = {
   },
   POST: {
     addToCart: '/api-cart/cart/item',
+    historyByQuery: `/api-order/orders/query`,
     getInventory: '/api-inventory/inventory',
     getPricing: '/api-price/offer/get-by-itemIds',
     getOfferByItemIds: '/api-price/offer/get-by-itemIds',

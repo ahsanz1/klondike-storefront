@@ -52,6 +52,40 @@ export const getOrdersByUser = async (
   }
 }
 
+export const getOrdersByQuery = async (accessToken, payload, count = 1) => {
+  try {
+    const response = await axios.post(
+      apiDomain + ENDPOINTS.POST.historyByQuery,
+      JSON.stringify(payload),
+      {
+        headers: {
+          ...HEADERS.common,
+          'x-api-key': 'LfTYwnqk5frPWLcn8h946K31XpQDzRH87JYYP877', // orderApiKey,
+          Authorization: accessToken,
+        },
+      },
+    )
+    return {
+      hasError: false,
+      response: response,
+    }
+  } catch (e) {
+    console.log('api call')
+    console.log(e)
+    console.log(e.response)
+    if (e.response && e.response.status) {
+      const statusCode = e.response.status
+      if (statusCode === 500 && count < 4) {
+        return getOrdersByQuery(accessToken, payload, count + 1)
+      }
+    }
+    return {
+      hasError: true,
+      response: { error: e.message },
+    }
+  }
+}
+
 export const getSingle = async (
   orderId,
   accessToken,
