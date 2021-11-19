@@ -56,6 +56,7 @@ const AgriculturePage = ({
               <Label className="feat-title">{subHeading}</Label>
               <div className="feat-products">
                 {featuredProduct.map((item, i) => {
+                  console.log('check link:', item.productRedirect)
                   return (
                     <div key={i} className="feat-product">
                       <img
