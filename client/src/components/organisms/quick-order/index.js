@@ -135,7 +135,6 @@ const QuickOrder = () => {
     let res = await getCartByUserId(user.accessToken)
     let data = res.data
 
-    setGetCartItemsState(data)
     await data.items.map((item, i) => {
       skus.push(item.sku)
     })
@@ -144,6 +143,8 @@ const QuickOrder = () => {
 
     let itemsArr = []
     let grandPrice = 0
+
+    let tempArray = []
 
     let sizes = []
     let partNumbers = []
@@ -157,6 +158,10 @@ const QuickOrder = () => {
         if (attr.name === 'Part Number') {
           partNumbers.push(attr.value)
         }
+      })
+      tempArray.push({
+        ...item,
+        attributes: attributes,
       })
 
       // let itemObj = {
@@ -182,6 +187,7 @@ const QuickOrder = () => {
 
     setTotalQty(grandPrice)
     setCartItems(itemsArr)
+    setGetCartItemsState(tempArray)
   }
 
   const addedItemToCart = async searchedCartitems => {
@@ -287,6 +293,7 @@ const QuickOrder = () => {
       ...resData,
       items: itemsArr,
     }
+    console.log('insidelooppp', payload)
     setGetCartItemsState(payload)
     setAccordianIsActive(false)
     mapShowCartData()
