@@ -77,16 +77,42 @@ const QuickOrder = () => {
     total.length > 0 && itemtotalamount()
   }, [total])
 
+  // useEffect(() => {
+  //   radioDisable()
+  // }, [getCartItems])
+
+  // const radioDisable = () => {
+  //   if (getCartItems && getCartItems.length > 0 && ) {
+  //     return
+  //   }
+  //   if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
+  //     let res = false
+  //     res = getCartItems.items[0].attributes.find(
+  //       arr => arr.name === 'Packaged Order',
+  //     )
+  //     if (res && res.value) {
+  //       setIsPackage(true)
+  //     } else {
+  //       res && setIsPackage(false)
+  //     }
+  //     setHasCartData(true)
+  //   } else {
+  //     console.log('kuch b', getCartItems)
+  //     setHasCartData(false)
+  //   }
+  // }
+
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
       let res = false
       res = getCartItems.items[0].attributes.find(
         arr => arr.name === 'Packaged Order',
       )
+
       if (res && res.value) {
         setIsPackage(true)
       } else {
-        res && setIsPackage(false)
+        setIsPackage(false)
       }
       setHasCartData(true)
     } else {
@@ -187,7 +213,7 @@ const QuickOrder = () => {
 
     setTotalQty(grandPrice)
     setCartItems(itemsArr)
-    setGetCartItemsState(tempArray)
+    setGetCartItemsState({ items: tempArray })
   }
 
   const addedItemToCart = async searchedCartitems => {
