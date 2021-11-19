@@ -21,7 +21,6 @@ import {
   updateCartApi,
 } from 'libs/services/api/cart'
 import { getItemsBySkus } from 'libs/services/api/item'
-
 /* eslint-disable indent */
 
 const QuickOrder = () => {
@@ -61,7 +60,6 @@ const QuickOrder = () => {
 
   const [isPackage, setIsPackage] = useState(true)
   const [hasCartData, setHasCartData] = useState(false)
-
   // let total = []
   useEffect(() => {
     const data = async () => {
@@ -509,13 +507,13 @@ const QuickOrder = () => {
   const radioChangeBULK = () => {
     setPackageComponent(false)
     setBulkComponent(true)
-    // setCartState('bulk')
+    setInputList([{ partnumber: '', quantity: '' }])
   }
 
   const radioChangePACKAGE = e => {
     setBulkComponent(false)
     setPackageComponent(true)
-    // setCartState('package')
+    setInputList([{ partnumber: '', quantity: '' }])
   }
 
   const OrderType = () => {
@@ -730,6 +728,7 @@ const QuickOrder = () => {
                             <InputNumber
                               min={0}
                               max={100}
+                              type="number"
                               defaultValue={1}
                               value={data['quantity']}
                               onChange={e => onChangeqty(e, i, data)}
@@ -782,6 +781,7 @@ const QuickOrder = () => {
                                     <InputNumber
                                       min={0}
                                       max={100}
+                                      type="number"
                                       defaultValue={1}
                                       value={caseqty[`index-${i}`]}
                                       onChange={e => onChangeqty(e, i, data)}
