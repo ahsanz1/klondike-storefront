@@ -17,6 +17,7 @@ const Oats = () => {
   const [se, setSe] = useState()
   const [ya, setYa] = useState()
   let [query, setQuery] = useState('')
+  const [focus] = useState(true)
 
   // eslint-disable-next-line no-unused-vars
   const [abale, setAble] = useState(false)
@@ -234,6 +235,8 @@ const Oats = () => {
               placeholder="ENTER CODE  & MODEL"
               value={query}
               onKeyPress={handleKeyPress}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus={focus}
             />
             {console.log('familygroup', familygroups)}
             <div className="wrapper-two">
