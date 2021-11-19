@@ -30,7 +30,7 @@ const PlpTabList = ({
           <>
             {item.categoryName.length > 0 && (
               <Link
-                to="/plp-page"
+                // to="/plp-page"
                 className={itemName === item.categoryName && 'active-category'}
                 key={index}
                 onClick={() =>
