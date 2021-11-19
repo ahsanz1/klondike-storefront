@@ -80,6 +80,8 @@ const Oats = () => {
       let manufacturerArray = [{ label: ' ' }]
       let arrayFamily = [{ label: ' ' }]
 
+      console.log('responsesss', response)
+
       response &&
         Object.entries(
           response &&
@@ -170,8 +172,17 @@ const Oats = () => {
     setBgimg(true)
     if (query) {
       navigate(`${location.pathname}?${query}`)
+      console.log('query done')
       getproducts()
       setAble(true)
+      setYa()
+      setYearQuery('')
+      setSe()
+      setSeriesQuery('')
+      setMu()
+      setManuQuery('')
+      setFa()
+      setFamilyQuery('')
     }
   }
   const manuFunc = value => {
