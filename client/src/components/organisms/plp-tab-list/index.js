@@ -29,9 +29,13 @@ const PlpTabList = ({
         categories.map((item, index) => (
           <>
             {item.categoryName.length > 0 && (
-              <Link
+              <Label
                 // to="/plp-page"
-                className={itemName === item.categoryName && 'active-category'}
+                className={
+                  itemName === item.categoryName
+                    ? 'active-category'
+                    : 'deactive-category'
+                }
                 key={index}
                 onClick={() =>
                   clickCategoryHandler(item.categoryName, item.categoryDesc)
@@ -46,7 +50,11 @@ const PlpTabList = ({
                         <Label
                           key={index}
                           onClick={() => productClickHandler(item)}
-                          className={item.title === product && 'active-product'}
+                          className={
+                            item.title === product
+                              ? 'active-product'
+                              : 'deactive-product'
+                          }
                         >
                           <Link
                             to={`/PDP?sku=${item.sku}`}
@@ -58,7 +66,7 @@ const PlpTabList = ({
                       ))}
                   </div>
                 )}
-              </Link>
+              </Label>
             )}
           </>
         ))}
