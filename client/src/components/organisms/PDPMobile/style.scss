@@ -1,5 +1,14 @@
 @import '~styles/globals';
 
+$vw-viewport: 350;
+
+@function get-vw($font) {
+  $vw-context: $vw-viewport * 0.01;
+
+  @return ($font / $vw-context * 1vw);
+  // @return $font;
+}
+
 .pdp_mobile-container {
   // visibility: hidden;
   display: none;
@@ -16,14 +25,15 @@
     display: block;
     visibility: visible;
     position: unset;
-    top: 10vh;
+    top: get-vw(120);
     padding-top: 20vh;
   }
 }
 
 .top-section {
-  width: 90%;
+  width: 100%;
   margin: auto;
+  padding: get-vw(10);
   text-align: justify;
 }
 
@@ -35,31 +45,34 @@
 }
 
 .image-bg {
-  width: 187px;
-  height: 240px;
+  width: get-vw(187);
+  height: get-vw(240);
   background-color: #fff;
 }
 
 .categoryButton {
-  min-width: 100%;
-  height: 64px !important;
-  border: 2px solid #f2a900 !important;
-  border-radius: 5px !important;
+  box-sizing: border-box;
+  width: 100%;
+  height: get-vw(64) !important;
+  border: get-vw(2) solid #f2a900 !important;
+  border-radius: get-vw(5) !important;
   color: white !important;
   font-family: $OpenSans;
-  font-size: 20px !important;
+  font-size: get-vw(20) !important;
+  font-style: normal;
   font-weight: 400;
 }
 
 .breadCrumb {
-  min-width: 90%;
-  margin-top: 10px !important;
+  width: 100%;
+  margin-top: get-vw(10) !important;
+  padding: get-vw(11);
   color: #fff !important;
   font-family: $OpenSans;
-  font-size: 11px;
+  font-size: get-vw(11);
   font-style: normal;
   font-weight: bold;
-  line-height: 15px;
+  line-height: get-vw(15);
   text-transform: uppercase;
   font-feature-settings: 'pnum' on, 'lnum' on;
 
@@ -91,9 +104,9 @@
 }
 
 .radioGroup {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  margin-left: 20px;
+  margin-top: get-vw(50);
+  margin-bottom: get-vw(50);
+  margin-left: get-vw(12);
 }
 
 .radio-font {
@@ -125,9 +138,14 @@
   display: flex;
   flex-direction: column;
   // align-items: center;
-  min-width: 77px;
-  margin: 3px;
-  padding: 3px;
+  min-width: get-vw(70);
+  margin: get-vw(3);
+  padding: get-vw(3);
+
+  @media (max-width: 320px) {
+    min-width: 22vw !important;
+    max-width: 30vw;
+  }
 }
 
 .divider {
@@ -135,24 +153,26 @@
 }
 
 .head {
-  margin-bottom: 5px;
+  width: get-vw(65);
+  margin-bottom: get-vw(5);
   color: #fff;
   font-family: $OpenSans;
-  font-size: 11px;
+  font-size: get-vw(11);
   font-style: normal;
   font-weight: 800;
   letter-spacing: 0.03em;
-  line-height: 15px;
+  line-height: get-vw(15);
   text-transform: uppercase;
 }
 
 .value {
-  max-width: 75px;
+  // max-width: get-vw(60);
+  width: get-vw(65);
   overflow: hidden;
   opacity: 0.9;
   color: #c2bbb7;
   font-family: $OpenSans;
-  font-size: 12px;
+  font-size: get-vw(12);
   font-weight: bold;
   letter-spacing: 0.03em;
   line-height: 185.5%;
@@ -167,9 +187,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  min-width: 100px;
-  margin: 3px;
-  padding: 3px;
+  min-width: get-vw(90);
+  margin: get-vw(3);
+  padding: get-vw(3);
 
   .ant-input-number-input {
     font-family: $OpenSans;
