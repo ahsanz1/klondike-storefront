@@ -15,9 +15,13 @@ import { AppContext } from 'libs/context'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
-  const { user, showcartPOPModal, setGetCartItemsState } = useContext(
-    AppContext,
-  )
+  const {
+    user,
+    creditLimit,
+    getCartItems,
+    showcartPOPModal,
+    setGetCartItemsState,
+  } = useContext(AppContext)
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
@@ -69,8 +73,15 @@ const ProductAccordion = ({ question }) => {
   }
 
   const addItemToCart = async () => {
-    setAddToCart(true)
     let data = modalData
+
+    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
+    if (creditLimit <= totalAmount) {
+      alert('You are exceeding your credit limit')
+      return
+    }
+
+    setAddToCart(true)
     getProductBySKU(data.sku).then(res => {
       res = res.response.data
       let product = res.product
@@ -113,9 +124,17 @@ const ProductAccordion = ({ question }) => {
 
   const onChange = value => {
     let data = modalData
-    setQty(value)
     setTotalPrice(data.price * value)
+
+    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
+    if (creditLimit <= totalAmount) {
+      alert('You are exceeding your credit limit')
+      return
+    }
+
+    setQty(value)
   }
+
   const handleAddToCart = i => {
     setShowAddToCart(!showAddToCart)
     setItemId(i)
