@@ -639,7 +639,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                               item &&
                               item?.price &&
                               item?.price?.base
-                                ? '$' + item?.price?.base
+                                ? '$' + item?.price?.base?.toFixed(2)
                                 : ''}
                             </div>
                             <div
@@ -769,7 +769,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                           : 'cell'
                                       }
                                     >
-                                      ${item?.price?.base}
+                                      ${item?.price?.base?.toFixed(2)}
                                     </div>
                                     <div
                                       className={
@@ -906,7 +906,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         packagedOrder={packagedOrder}
         onBulkQtyChange={onBulkQtyChange}
         btnDisabled={btnDisabled}
-        pdpdatasheet={pdpdatasheet}
+        techInfoMobile={techAttributes}
         onSubmit={onSubmit}
         addingToCart={addingToCart}
         contextPlp={contextPlp}

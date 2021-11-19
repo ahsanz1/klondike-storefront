@@ -145,8 +145,8 @@ export const AboutUsXPM = [
     link: 'work-at-klondike',
   },
   {
-    title: 'Careers',
-    categoryName: 'Careers',
+    title: 'Careers Test',
+    categoryName: 'Careers Test',
     link: 'careers',
   },
   {
@@ -159,11 +159,11 @@ export const AboutUsXPM = [
     categoryName: 'Testimonials',
     link: 'testimonials',
   },
-  {
-    title: 'Career',
-    categoryName: 'Career',
-    link: 'careers',
-  },
+  // {
+  //   title: 'Career',
+  //   categoryName: 'Career',
+  //   link: 'careers',
+  // },
 ]
 
 export const IndustryAppXPM = [

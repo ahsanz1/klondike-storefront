@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 // import Link from 'components/atoms/link'
 import React from 'react'
 // import PropTypes from 'prop-types'
@@ -7,7 +8,7 @@ import './style.scss'
 
 const PDPInformation = props => {
   const [more, setMore] = React.useState(false)
-  console.log('tech info check:', props)
+  console.log('tech info check:', props.techInfo)
   return (
     <>
       <div className="Pdp-content">
@@ -39,12 +40,13 @@ const PDPInformation = props => {
               dangerouslySetInnerHTML={
                 more
                   ? {
-                    __html: item.value,
-                  }
+                      __html: item.value,
+                    }
                   : {
-                    __html: item.value.slice(0, 500) + '...',
-                  }
+                      __html: item.value.slice(0, 600) + '...',
+                    }
               }
+              className="info-desc"
             ></p>
             {!more && (
               <p>
