@@ -98,7 +98,14 @@ export const getAllShippingMethods = async (count = 1) => {
 export const getPickupPoints = async (itemId, count = 1) => {
   let response
   try {
-    response = await axiosObj.common.get(ENDPOINTS.GET.getPickupPoints(itemId))
+    response = await axiosObj.common.get(
+      ENDPOINTS.GET.getPickupPoints(itemId),
+      {
+        headers: {
+          ...HEADER.canada,
+        },
+      },
+    )
     response = { error: false, data: response.data, message: null }
   } catch (e) {
     // console.log(e.message);
