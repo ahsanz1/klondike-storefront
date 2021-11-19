@@ -165,13 +165,20 @@ const Oats = () => {
 
   const searchQuery = () => {
     console.log('bugs')
-    console.log('query', query)
     // setNotFound(true)
     setBgimg(true)
     if (query) {
       navigate(`${location.pathname}?${query}`)
       getproducts()
       setAble(true)
+      setYa()
+      setYearQuery('')
+      setSe()
+      setSeriesQuery('')
+      setMu()
+      setManuQuery('')
+      setFa()
+      setFamilyQuery('')
     }
   }
   const manuFunc = value => {
