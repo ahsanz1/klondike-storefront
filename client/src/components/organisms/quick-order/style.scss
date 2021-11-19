@@ -603,6 +603,8 @@
 }
 
 .checkout-and-pricelist {
+  margin-right: 1.73vw;
+
   .checkout {
     margin-top: 16.36vw;
     color: white;
@@ -625,7 +627,7 @@
       justify-content: center;
 
       .sub-total {
-        padding-right: 100px;
+        padding-right: 65px;
         color: #fff;
         font-size: 24px;
         letter-spacing: 0.02em;
@@ -637,6 +639,7 @@
 
         @media screen and (max-width: 768px) {
           &:lang(fr) {
+            width: 51vw;
             padding-right: 5.33vw;
           }
         }
