@@ -57,6 +57,7 @@ const QuickOrder = () => {
   let [qtyerror, setQtyError] = useState(false)
   let [inputchange, setInputchange] = useState(false)
   const [removeItem, setRemoveItem] = useState(false)
+  const [indexState, setIndexState] = useState(0)
   // let total = []
   useEffect(() => {
     const data = async () => {
@@ -298,12 +299,14 @@ const QuickOrder = () => {
 
   const itemremove = async (i, data) => {
     setRemoveItem(true)
+    setIndexState(i)
     await removeItemFromCart(data.cartId, data.lineItemId)
     await mapShowCartData()
     setRemoveItem(false)
   }
 
   const onChangeqty = async (value, i, item) => {
+    setIndexState(i)
     setInputchange(true)
     let qtyIndex = {
       ...caseqty,
@@ -670,7 +673,9 @@ const QuickOrder = () => {
                                 className="quick-orde_btn"
                                 onClick={e => itemremove(i, data)}
                               >
-                                {removeItem ? 'Removing...' : 'Remove Item'}
+                                {removeItem && indexState === i
+                                  ? 'Removing...'
+                                  : 'Remove Item'}
                               </button>
                             </div>
                             <div className="part-wraper">
@@ -710,7 +715,7 @@ const QuickOrder = () => {
                             </p>
                           </div>
                           <div style={{ position: 'relative' }}>
-                            {inputchange && (
+                            {inputchange && indexState === i && (
                               <span
                                 className="input-number"
                                 style={{ position: 'absolute', top: '-24px' }}

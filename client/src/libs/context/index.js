@@ -50,7 +50,7 @@ const AppProvider = ({ children }) => {
   const [cartData, setCartData] = useState({})
   const [cartState, setCartState] = useState('')
   const [checkoutData, setCheckoutData] = useState({})
-  const [creditLimit, setCreditLimit] = useState(5000)
+  const [creditLimit, setCreditLimit] = useState(2000)
   const [size] = useWindowSize()
   const initialState = {
     personalInfo: getItem('userPersonalInfo')

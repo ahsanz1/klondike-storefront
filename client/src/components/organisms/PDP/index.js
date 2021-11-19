@@ -906,7 +906,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         packagedOrder={packagedOrder}
         onBulkQtyChange={onBulkQtyChange}
         btnDisabled={btnDisabled}
-        pdpdatasheet={pdpdatasheet}
+        techInfoMobile={techAttributes}
         onSubmit={onSubmit}
         addingToCart={addingToCart}
         contextPlp={contextPlp}

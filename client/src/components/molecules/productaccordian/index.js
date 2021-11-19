@@ -17,9 +17,10 @@ const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
   const {
     user,
+    creditLimit,
+    getCartItems,
     showcartPOPModal,
     setGetCartItemsState,
-    getCartItems,
   } = useContext(AppContext)
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
@@ -87,8 +88,15 @@ const ProductAccordion = ({ question }) => {
   }
 
   const addItemToCart = async () => {
-    setAddToCart(true)
     let data = modalData
+
+    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
+    if (creditLimit <= totalAmount) {
+      alert('You are exceeding your credit limit')
+      return
+    }
+
+    setAddToCart(true)
     getProductBySKU(data.sku).then(res => {
       res = res.response.data
       let product = res.product
@@ -131,9 +139,17 @@ const ProductAccordion = ({ question }) => {
 
   const onChange = value => {
     let data = modalData
-    setQty(value)
     setTotalPrice(data.price * value)
+
+    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
+    if (creditLimit <= totalAmount) {
+      alert('You are exceeding your credit limit')
+      return
+    }
+
+    setQty(value)
   }
+
   const handleAddToCart = i => {
     setShowAddToCart(!showAddToCart)
     setItemId(i)
@@ -252,12 +268,19 @@ const ProductAccordion = ({ question }) => {
                 <h1>{modalData.title}</h1>
                 <div className="product-detail">
                   <div>
-                    <p className="products-sizes">Size</p>
+                    {modalData.size !== 'Bulk' &&
+                      modalData.size !== 'Bulk:' && (
+                      <p className="products-sizes">Size</p>
+                    )}
                     <p className="products-sizes detail">{modalData.size}</p>
                   </div>
                   <div>
-                    <p className="products-sizes">UNITS/CASE</p>
-                    <p className="products-sizes">{modalData.unit}</p>
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                      <>
+                        <p className="products-sizes">UNITS/CASE</p>
+                        <p className="products-sizes">{modalData.unit}</p>
+                      </>
+                    )}
                   </div>
                   <div>
                     <p className="products-sizes">Part Num</p>
@@ -267,7 +290,9 @@ const ProductAccordion = ({ question }) => {
                   </div>
                   <div>
                     <p className="products-sizes">
-                      {modalData.size !== 'Bulk:' ? 'Price' : 'Price Litre'}
+                      {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
+                        ? 'Price'
+                        : 'Price Litre'}
                     </p>
                     <p className="products-sizes detail ">
                       ${modalData?.price?.toFixed(2)}
@@ -275,8 +300,9 @@ const ProductAccordion = ({ question }) => {
                   </div>
                   <div>
                     <p className="products-sizes">
-                      {' '}
-                      {modalData.size !== 'Bulk:' ? 'QTY' : 'Litre'}
+                      {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
+                        ? 'QTY'
+                        : 'Litres'}
                     </p>
                     <p className="products-sizes detail">
                       <InputNumber
@@ -312,16 +338,20 @@ const ProductAccordion = ({ question }) => {
               </div>
               <div className="product-content-mobile">
                 <div className="product-detail-mobile">
-                  {modalData.size !== 'Bulk:' && (
+                  {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                     <p className="products-sizes">SiZE</p>
+                  ) : (
+                    <p className="products-sizes"></p>
                   )}
                   <p className="products-sizes detail">{modalData.size}</p>
                 </div>
-                {modalData.size !== 'Bulk:' && (
+                {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                   <div className="product-detail-mobile">
                     <p className="products-sizes">UNIT/CASE</p>
                     <p className="products-sizes detail">{modalData.unit}</p>
                   </div>
+                ) : (
+                  <div className="product-detail-mobile"></div>
                 )}
                 <div className="product-pricing-mobile">
                   <div>
@@ -335,7 +365,9 @@ const ProductAccordion = ({ question }) => {
                   <div>
                     <div className="product-pricing-block">
                       <p className="products-sizes">
-                        {modalData.size !== 'Bulk:' ? 'Price' : 'Price Litre'}
+                        {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
+                          ? 'Price'
+                          : 'Price Litre'}
                       </p>
                       <p className="products-sizes detail ">
                         ${modalData.price}
@@ -347,7 +379,9 @@ const ProductAccordion = ({ question }) => {
               <div className="product-total-pricing">
                 <div className="total-pricing-block">
                   <p className="products-sizes">
-                    {modalData.size !== 'Bulk:' ? 'QTY' : 'Litre'}
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
+                      ? 'QTY'
+                      : 'Litres'}
                   </p>
                   <p className="products-sizes detail">
                     <InputNumber
