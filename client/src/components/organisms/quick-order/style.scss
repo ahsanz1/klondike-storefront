@@ -518,17 +518,26 @@
     margin-top: 1rem;
     margin-bottom: 0;
     margin-left: 1rem;
+
+    @media screen and (max-width: 768px) {
+      font-weight: 800;
+    }
   }
 
   .price-value {
     margin-bottom: 0;
     margin-left: 1rem;
+
+    @media screen and (max-width: 768px) {
+      font-weight: 700;
+    }
   }
 
   &__next-container {
     display: flex;
     flex-direction: column;
     color: white;
+    font-weight: 800;
 
     &:lang(fr) {
       padding-right: 10px;
@@ -573,6 +582,10 @@
     .span {
       margin-left: 12px;
       opacity: 0.5;
+
+      @media screen and (max-width: 768px) {
+        font-weight: 700;
+      }
     }
 
     .total-price {
@@ -581,11 +594,17 @@
 
     .total-price-value {
       color: #f1a900;
+
+      @media screen and (max-width: 768px) {
+        font-weight: 700;
+      }
     }
   }
 }
 
 .checkout-and-pricelist {
+  margin-right: 1.73vw;
+
   .checkout {
     margin-top: 16.36vw;
     color: white;
@@ -608,7 +627,7 @@
       justify-content: center;
 
       .sub-total {
-        padding-right: 100px;
+        padding-right: 65px;
         color: #fff;
         font-size: 24px;
         letter-spacing: 0.02em;
