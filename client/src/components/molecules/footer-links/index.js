@@ -19,13 +19,11 @@ const FooterLinks = ({
       <Link to={headingLinks}>
         <h3>{heading}</h3>{' '}
       </Link>
-      {
-        !userLoginInfo(
-          <Link to="/account/login">
-            <h5>{footerAccount}</h5>
-          </Link>,
-        )
-      }
+      {!userLoginInfo && (
+        <Link to="/account/login">
+          <h5>{footerAccount}</h5>
+        </Link>
+      )}
       <ul className="footer-menu">
         {links &&
           links.length &&
