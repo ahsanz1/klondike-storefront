@@ -36,8 +36,8 @@ const QuickOrder = () => {
 
   const [packageComponent, setPackageComponent] = useState(true)
   const [bulkComponent, setBulkComponent] = useState(false)
-  const [radioStatePackage, setRadioStatePackage] = useState(false)
-  const [radioStateBulk, setRadioStateBulk] = useState(false)
+  // const [radioStatePackage, setRadioStatePackage] = useState(false)
+  // const [radioStateBulk, setRadioStateBulk] = useState(false)
   const [value, setValue] = useState(1)
   // const [qty, setQty] = useState([])
   const [cartItems, setCartItems] = useState()
@@ -58,15 +58,16 @@ const QuickOrder = () => {
   let [inputchange, setInputchange] = useState(false)
   const [removeItem, setRemoveItem] = useState(false)
   const [indexState, setIndexState] = useState(0)
-  // const [showPakagedComponent, setShowPackagedComponent] = useState(true)
-  // const [showCartComponent, setShowCartComponent] = useState(false)
+
+  const [isPackage, setIsPackage] = useState(true)
+  const [hasCartData, setHasCartData] = useState(false)
+
   // let total = []
   useEffect(() => {
     const data = async () => {
       const items = await fetchItems('')
       setFetcheditems(items.hits)
       mapShowCartData()
-      console.log('part', items)
     }
 
     data()
@@ -77,27 +78,19 @@ const QuickOrder = () => {
   }, [total])
 
   useEffect(() => {
-    // mapShowCartData()
-    let isPackaged = true
-    console.log('cartitems', getCartItems)
-    if (getCartItems?.items?.length) {
-      isPackaged = getCartItems?.items?.some(
-        item =>
-          item?.attributes?.find(att => att?.name === 'Packaged Order')?.value,
+    if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
+      let res = false
+      res = getCartItems.items[0].attributes.find(
+        arr => arr.name === 'Packaged Order',
       )
-      console.log('insideeloop', isPackaged)
-      // setShowPackagedComponent(isPackaged)
-      setBulkComponent(!isPackaged)
-      setPackageComponent(isPackaged)
-      setRadioStateBulk(isPackaged)
-      setRadioStatePackage(!isPackaged)
-      setValue(isPackaged ? 1 : 2)
+      if (res && res.value) {
+        setIsPackage(true)
+      } else {
+        res && setIsPackage(false)
+      }
+      setHasCartData(true)
     } else {
-      // setRadioStateBulk(false)
-      // setRadioStatePackage(false)
-      // setBulkComponent(false)
-      // setPackageComponent(true)
-      setValue(isPackaged ? 1 : 2)
+      setHasCartData(false)
     }
   }, [getCartItems])
 
@@ -109,8 +102,6 @@ const QuickOrder = () => {
       0,
     )
     let totalamount = sum.toFixed(2)
-    console.log('amounts', total, totalamount)
-
     setTotalQty(totalamount)
   }
 
@@ -126,7 +117,7 @@ const QuickOrder = () => {
   //   itemtotalamount()
   // }
 
-  function error (err) {
+  const error = err => {
     Modal.error({
       title: 'This is an error message',
       content: err
@@ -389,11 +380,11 @@ const QuickOrder = () => {
     console.log(titleArray, 'titleArray')
     const inputs = Object.values(inputList[0])
     console.log('arraaayy', inputs)
-    if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
-      setRadioStatePackage(true)
-    } else {
-      setRadioStatePackage(false)
-    }
+    // if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
+    //   setRadioStatePackage(true)
+    // } else {
+    //   setRadioStatePackage(false)
+    // }
   }
 
   const filters = {}
@@ -441,11 +432,11 @@ const QuickOrder = () => {
       }
       const inputs = Object.values(inputList[0])
       console.log('arraaayy', inputs)
-      if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
-        setRadioStateBulk(true)
-      } else {
-        setRadioStateBulk(false)
-      }
+      // if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
+      //   setRadioStateBulk(true)
+      // } else {
+      //   setRadioStateBulk(false)
+      // }
     }
 
     setCaseqty(qtyIndex)
@@ -625,7 +616,7 @@ const QuickOrder = () => {
                   className={'radiobtn'}
                   value={1}
                   // defaultChecked={true}
-                  disabled={radioStatePackage}
+                  disabled={hasCartData ? !isPackage : false}
                   onChange={radioChangePACKAGE}
                   // disabled={
                   //   cartState === 'bulk' && getCartItems?.items?.length > 0
@@ -639,7 +630,7 @@ const QuickOrder = () => {
                 <Radio
                   className="radiobtn"
                   value={2}
-                  disabled={radioStateBulk}
+                  disabled={hasCartData ? isPackage : false}
                   onChange={radioChangeBULK}
                   // disabled={
                   //   cartState === 'package' && getCartItems?.items?.length > 0
