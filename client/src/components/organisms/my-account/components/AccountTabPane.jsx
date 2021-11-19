@@ -20,16 +20,21 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
           </Label>
           <Label className="profile-mail">{user.email && user.email}</Label>
           {userOrder &&
+            userOrder.length > 0 &&
             userOrder.map(
               (row, i) =>
                 row.shipTo &&
                 row.shipTo.map((innerRow, rowIndex) => (
                   <div className="ship-address" key={rowIndex}>
                     <div>
-                      <strong>{data.heading}</strong>
-                      <Label>{`${innerRow.address.name.first &&
-                        innerRow.address.name.first} ${innerRow.address.name
-                        .last && innerRow.address.name.last}`}</Label>
+                      {data.heading && <strong>{data.heading}</strong>}
+                      {innerRow &&
+                        innerRow.address &&
+                        innerRow.address.name && (
+                        <Label>{`${innerRow.address.name.first &&
+                            innerRow.address.name.first} ${innerRow.address.name
+                          .last && innerRow.address.name.last}`}</Label>
+                      )}
                       <Label>
                         {innerRow.address.street1 && innerRow.address.street1}
                         {innerRow.address.state && innerRow.address.state}
@@ -40,9 +45,9 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                     </div>
                     <div>
                       <strong>{data.dropHeading}</strong>
-                      <Label>{`${innerRow.address.name.first &&
-                        innerRow.address.name.first} ${innerRow.address.name
-                        .last && innerRow.address.name.last}`}</Label>
+                      <Label>{`${innerRow?.address?.name?.first &&
+                        innerRow?.address?.name?.first} ${innerRow?.address
+                          ?.name?.last && innerRow?.address.name.last}`}</Label>
                       <Label>
                         {innerRow.address.street1 && innerRow.address.street1}
                         {innerRow.address.state && innerRow.address.state}

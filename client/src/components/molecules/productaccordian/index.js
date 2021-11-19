@@ -281,11 +281,17 @@ const ProductAccordion = ({ question }) => {
                 <h1>{modalData.title}</h1>
                 <div className="product-detail">
                   <div>
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
+                      <p className="products-sizes">Size</p>
+                    ) : (
+                      <p className="products-sizes">Bulk</p>
+                    )}
                     {modalData.size !== 'Bulk' &&
                       modalData.size !== 'Bulk:' && (
-                      <p className="products-sizes">Size</p>
+                      <p className="products-sizes detail">
+                        {modalData.size}
+                      </p>
                     )}
-                    <p className="products-sizes detail">{modalData.size}</p>
                   </div>
                   <div>
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
@@ -355,9 +361,11 @@ const ProductAccordion = ({ question }) => {
                   {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                     <p className="products-sizes">SiZE</p>
                   ) : (
-                    <p className="products-sizes"></p>
+                    <p className="products-sizes">Bulk</p>
                   )}
-                  <p className="products-sizes detail">{modalData.size}</p>
+                  {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                    <p className="products-sizes detail">{modalData.size}</p>
+                  )}
                 </div>
                 {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                   <div className="product-detail-mobile">
