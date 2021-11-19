@@ -584,3 +584,104 @@
     }
   }
 }
+
+.checkout-and-pricelist {
+  .checkout {
+    margin-top: 16.36vw;
+    color: white;
+    font-family: $OpenSans;
+    font-style: normal;
+    font-weight: bold;
+
+    @media screen and (max-width: 768px) {
+      display: grid;
+      margin-top: 0;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-style: normal;
+      font-weight: bold;
+      place-items: center;
+    }
+
+    .order-price {
+      display: flex;
+      justify-content: center;
+
+      .sub-total {
+        padding-right: 100px;
+        color: #fff;
+        font-size: 24px;
+        letter-spacing: 0.02em;
+        line-height: 30px;
+
+        &:lang(fr) {
+          padding-right: 1.33vw;
+        }
+
+        @media screen and (max-width: 768px) {
+          &:lang(fr) {
+            width: 51vw;
+            padding-right: 5.33vw;
+          }
+        }
+      }
+
+      .total {
+        color: #f1a900;
+        font-size: 24px;
+        letter-spacing: 0.02em;
+        line-height: 30px;
+
+        /* or 125% */
+
+        text-align: center;
+      }
+    }
+
+    .checkout-links {
+      display: grid;
+      grid-template-rows: auto auto;
+      margin-top: 25px;
+      place-items: center;
+
+      .checkout-btn {
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        width: 334px;
+        height: 64px;
+        margin-bottom: 20px;
+        border: 1px solid #f2a900;
+        border-radius: 5px;
+        background: #f2a900;
+        color: #fff;
+        font-size: 23px;
+        letter-spacing: -1px;
+        line-height: 24px;
+        text-transform: uppercase;
+      }
+
+      .view-btn {
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        width: 334px;
+        height: 64px;
+        border: 1px solid #f2a900;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 23px;
+        letter-spacing: -1px;
+        line-height: 24px;
+        text-transform: uppercase;
+
+        button {
+          border: none;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

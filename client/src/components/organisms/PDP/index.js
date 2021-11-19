@@ -63,6 +63,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [items, setItems] = useState({})
   const [bulkItemsCart, setBulkItemsCart] = useState(true)
   const [packagedItemsCart, setPackagedItemsCart] = useState(true)
+  const [tooltipVisible, setTooltipVisible] = useState(false)
 
   console.log('cartstate', bulkItemsCart, packagedItemsCart)
 
@@ -76,6 +77,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [contextPlp, setContextPlp] = useState(plpredirect)
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
+  const [techAttributes, setTechAttributes] = useState({})
   console.log({ loading })
   console.log({ products })
   console.log({ desc })
@@ -146,6 +148,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   }
 
   const onChange = e => {
+    setTooltipVisible(!tooltipVisible)
     setValue(e.target.value)
     if (e.target.value === 1) {
       setPackagedOrder(true)
@@ -158,6 +161,14 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setIsPdpLoading(true)
     getProductBySKU(itemSku, 1)
       .then(res => {
+        console.log('pdp response:', res?.response?.data?.product?.attributes)
+        setTechAttributes(
+          res?.response?.data?.product?.attributes?.filter(
+            item => item.name === 'Technical Information',
+          ),
+        )
+        console.log('pdp response 2:', techAttributes)
+
         let newObj = {
           ...res?.response?.data?.product,
         }
@@ -199,6 +210,10 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       let bulkOrderItem = newItems?.filter(
         item => !item?.mappedAttributes['Packaged Order'],
       )
+      let info = newItems?.filter(
+        item => !item?.mappedAttributes['Technical Information'],
+      )
+      console.log('tech info:', info)
       setItems({
         packagedOrderItems: packagedOrderItems,
         bulkOrderItem: bulkOrderItem,
@@ -441,9 +456,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 </Breadcrumb.Item>
                 {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
                 <Breadcrumb.Item className="notranslate">
-                  <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
-                    {productData?.title}
-                  </Link>
+                  {productData?.title}
                 </Breadcrumb.Item>
               </Breadcrumb>
             )}
@@ -536,7 +549,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                     />
                   </div> */}
                 </div>
-                <div style={{ marginBottom: 10 }}>
+                <div style={{ marginBottom: '2vw' }}>
                   {isLoggedIn && (
                     <Radio.Group
                       onChange={onChange}
@@ -546,44 +559,34 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                       optionType="button"
                     >
                       {packagedItemsCart && (
-                        <Tooltip placement="bottomLeft" title={text}>
+                        <Tooltip
+                          placement="bottomLeft"
+                          title={packagedOrder ? secondtext : text}
+                          visible={tooltipVisible}
+                        >
                           <Radio
                             value={1}
                             className="radio-style"
-                            // disabled={
-                            //   cartState === 'bulk' &&
-                            //   getCartItems?.items?.length > 0
-                            //     ? true
-                            //     : false
-                            // }
-                            // onChange={() => {
-                            //   setCartState('package')
-                            //   console.log('package selected...', cartState)
-                            // }}
+                            onMouseEnter={() =>
+                              setTooltipVisible(!packagedOrder)
+                            }
+                            onMouseLeave={() => setTooltipVisible(false)}
                           >
                             PACKAGED ORDER
                           </Radio>
                         </Tooltip>
                       )}
                       {bulkItemsCart && (
-                        <Tooltip placement="bottomRight" title={secondtext}>
-                          <Radio
-                            value={2}
-                            className="radio-style"
-                            // disabled={
-                            //   cartState === 'package' &&
-                            //   getCartItems?.items?.length > 0
-                            //     ? true
-                            //     : false
-                            // }
-                            // onChange={() => {
-                            //   setCartState('bulk')
-                            //   console.log('bulk selected...', cartState)
-                            // }}
-                          >
-                            BULK ORDER
-                          </Radio>
-                        </Tooltip>
+                        // <Tooltip placement="bottomRight" title={secondtext}>
+                        <Radio
+                          value={2}
+                          className="radio-style"
+                          onMouseEnter={() => setTooltipVisible(true)}
+                          onMouseLeave={() => setTooltipVisible(false)}
+                        >
+                          BULK ORDER
+                        </Radio>
+                        // </Tooltip>
                       )}
                     </Radio.Group>
                   )}
@@ -678,12 +681,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                         )
                       })}
                       {isLoggedIn && (
-                        <div
-                          style={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                          }}
-                        >
+                        <div className="table">
                           <div
                             className="cell totalPrice"
                             style={{
@@ -793,11 +791,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       }
                                     >
                                       <InputNumber
-                                        min={1}
+                                        min={0}
                                         max={5000}
-                                        defaultValue={1}
+                                        defaultValue={0}
                                         onChange={e => onBulkQtyChange(e)}
-                                        step={0.1}
+                                        // step={0.1}
                                         size="middle"
                                         className="input"
                                         disabled={packagedOrder}
@@ -828,7 +826,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                     </div>
                                   </div>
                                   {!packagedOrder &&
-                                    Number(item?.quantity) < Number(200) && (
+                                    Number(item?.quantity) < Number(500) && (
                                       <div
                                         style={{
                                           display: 'flex',
@@ -891,7 +889,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                 </div>
               </div>
               <div className="pdp-info">
-                <PDPInformation pdpdatasheet={pdpdatasheet} />
+                <PDPInformation techInfo={techAttributes} />
               </div>
             </Col>
           )}
@@ -908,7 +906,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         packagedOrder={packagedOrder}
         onBulkQtyChange={onBulkQtyChange}
         btnDisabled={btnDisabled}
-        pdpdatasheet={pdpdatasheet}
+        techInfoMobile={techAttributes}
         onSubmit={onSubmit}
         addingToCart={addingToCart}
         contextPlp={contextPlp}
@@ -918,6 +916,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         subItemClickHandler={subItemClickHandler}
         isPdpLoading={isPdpLoading}
         items={items}
+        packagedItemsCart={packagedItemsCart}
+        bulkItemsCart={bulkItemsCart}
       />
     </>
   )

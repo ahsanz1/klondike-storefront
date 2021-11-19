@@ -12,6 +12,12 @@
     width: 100%;
     // margin-left: 24px;
     // padding-top: 173px;
+    .item-and-amount {
+      font-family: $OpenSans !important;
+      font-size: 3.73vw;
+      font-weight: 700;
+    }
+
     .account-sections {
       display: flex;
       margin-bottom: 110px;
@@ -52,10 +58,22 @@
     margin-top: 0.97vw;
 
     .account-image-block__orderNumber {
-      margin-bottom: get-vw(68px);
+      margin-bottom: get-vw(13px);
       border: none;
       background-color: transparent;
       color: white;
+      font-size: get-vw(16px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: get-vw(22px);
+      text-transform: uppercase;
+    }
+
+    .account-image-block__orderNumberDetail {
+      margin-bottom: get-vw(13px);
+      border: none;
+      background-color: transparent;
+      color: #f1a900;
       font-size: get-vw(16px);
       font-style: normal;
       font-weight: 700;
@@ -74,6 +92,7 @@
       line-height: get-vw(22px);
       text-decoration: underline;
       text-transform: uppercase;
+      cursor: default;
     }
 
     .account-image-block__orderReview {
@@ -95,15 +114,15 @@
     align-items: center;
     margin-top: get-vw(32px);
 
-    .account-image-block__orderPrice {
-      margin-bottom: get-vw(18px);
-      color: #d99e08;
-      font-size: get-vw(14px);
-      font-style: normal;
-      font-weight: 700;
-      line-height: get-vw(20px);
-      text-align: right;
-    }
+    // .account-image-block__orderPrice {
+    //   margin-bottom: get-vw(18px);
+    //   color: #d99e08;
+    //   font-size: get-vw(14px);
+    //   font-style: normal;
+    //   font-weight: 700;
+    //   line-height: get-vw(20px);
+    //   text-align: right;
+    // }
 
     .account-image-block__orderReorder {
       border: none;
@@ -122,12 +141,26 @@
     margin-top: get-vw(10px);
     color: white;
 
+    .account-image-block__orderPricee {
+      margin-bottom: get-vw(18px);
+      color: #f1a900;
+      font-size: 1.38vw !important;
+      font-style: normal;
+      font-weight: 700;
+      line-height: get-vw(20px);
+      text-align: left;
+    }
+
     .account-image-block__orderDate {
       margin-bottom: get-vw(10px);
       font-size: 14px;
       font-style: normal;
       font-weight: 700;
       line-height: 20px;
+
+      @media (max-width: 768px) {
+        font-size: 100px;
+      }
     }
 
     .account-image-block__orderFullPrice {
@@ -161,6 +194,14 @@
   font-style: normal;
   font-weight: 700;
   line-height: 22px;
+
+  @media (max-width: 768px) {
+    font-family: $OpenSans !important;
+
+    &:first-child {
+      margin-bottom: 4.8vw;
+    }
+  }
 }
 
 .account-mobile-orderPrice {
@@ -170,6 +211,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: 22px;
+
+  @media (max-width: 768px) {
+    font-family: $OpenSans !important;
+  }
 }
 
 .account-mobile-orderCart {

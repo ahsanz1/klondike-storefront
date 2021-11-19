@@ -1,14 +1,24 @@
+/* eslint-disable indent */
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Image from 'components/atoms/image'
 // import Button from 'components/atoms/button'
 // import PDPInformation from 'components/molecules/pdpinforamation'
-import { Radio, InputNumber, Button, Breadcrumb, Space, Divider } from 'antd'
-// import { ShareAltOutlined } from '@ant-design/icons'
+import {
+  Radio,
+  InputNumber,
+  Button,
+  Breadcrumb,
+  Space,
+  Divider,
+  // Link,
+} from 'antd'
+import { DoubleRightOutlined } from '@ant-design/icons'
+import Link from 'components/atoms/link'
 import Heading from 'components/atoms/heading'
 // import Button from 'components/atoms/button'
-import { ShareAltOutlined } from '@ant-design/icons'
+// import { ShareAltOutlined } from '@ant-design/icons'
 import PDPInformation from 'components/molecules/pdpinforamation'
 // import PlpTabList from 'components/organisms/plp-tab-list'
 import PlpTabList from 'components/organisms/plp-tab-list'
@@ -36,8 +46,11 @@ const PDPMobile = ({
   contextPlp,
   isPdpLoading,
   items,
+  packagedItemsCart,
+  bulkItemsCart,
+  techInfoMobile,
 }) => {
-  console.log('responsive', pdpdata)
+  console.log('responsive', pdpdata, techInfoMobile)
   console.log({ categories })
   const [openCategories, setOpenCategories] = useState(false)
 
@@ -64,8 +77,9 @@ const PDPMobile = ({
             type="primary"
             ghost
             onClick={handleCategoryButton}
+            // icon={<DoubleRightOutlined />}
           >
-            PRODUCTS BY CATEGORY {'>>'}
+            PRODUCTS BY CATEGORY <DoubleRightOutlined />
           </Button>
           {openCategories && (
             <div
@@ -81,16 +95,37 @@ const PDPMobile = ({
               />
             </div>
           )}
-          <Breadcrumb
-            className="breadCrumb"
-            separator={<span style={{ color: '#FFFFFF' }}>/</span>}
-          >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>Our Products</Breadcrumb.Item>
-            <Breadcrumb.Item>{productData?.category}</Breadcrumb.Item>
-            {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
-            <Breadcrumb.Item>{productData?.title}</Breadcrumb.Item>
-          </Breadcrumb>
+          {isPdpLoading ? (
+            <Breadcrumb
+              className="breadCrumbStyle"
+              separator={<span style={{ color: '#FFFFFF' }}></span>}
+            >
+              <Breadcrumb.Item>Loading...</Breadcrumb.Item>
+            </Breadcrumb>
+          ) : (
+            <Breadcrumb
+              className="breadCrumb"
+              separator={<span style={{ color: '#FFFFFF' }}>/</span>}
+            >
+              <Breadcrumb.Item>
+                <Link to="/" style={{ color: '#FFFFFF' }}>
+                  Home
+                </Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/PCP" style={{ color: '#FFFFFF' }}>
+                  Our Products
+                </Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                  {productData?.category}
+                </Link>
+              </Breadcrumb.Item>
+              {/* <Breadcrumb.Item>Heavy Duty Engine Oil</Breadcrumb.Item> */}
+              <Breadcrumb.Item>{productData?.title}</Breadcrumb.Item>
+            </Breadcrumb>
+          )}
         </div>
         {isPdpLoading ? (
           <div
@@ -132,9 +167,9 @@ const PDPMobile = ({
                   />
                 ))}
               </div>
-              <div className="shareIcon">
+              {/* <div className="shareIcon">
                 <ShareAltOutlined size="32px" style={{ color: '#FFFFFF' }} />
-              </div>
+              </div> */}
             </div>
             <Heading className="pdp_mobile-heading">
               {productData && productData?.title}
@@ -158,18 +193,23 @@ const PDPMobile = ({
                   optionType="button"
                 >
                   <Space direction="vertical">
-                    <Radio value={1} className="radio-font">
-                      PACKAGED ORDER
-                    </Radio>
-                    <Radio value={2} className="radio-font">
-                      BULK ORDER
-                    </Radio>
+                    {packagedItemsCart && (
+                      <Radio value={1} className="radio-font">
+                        PACKAGED ORDER
+                      </Radio>
+                    )}
+                    {bulkItemsCart && (
+                      <Radio value={2} className="radio-font">
+                        BULK ORDER
+                      </Radio>
+                    )}
                   </Space>
                 </Radio.Group>
               </div>
             )}
-            {packagedOrder
-              ? pdpdata?.packagedOrderItems?.map((item, i) => {
+            {packagedItemsCart &&
+              packagedOrder &&
+              pdpdata?.packagedOrderItems?.map((item, i) => {
                 return (
                   <div
                     className="pdp-mobile-table"
@@ -178,87 +218,100 @@ const PDPMobile = ({
                     }}
                     key={i}
                   >
-                      <>
-                        <div className="oneCell">
-                          {((!isLoggedIn && i < 1) || isLoggedIn) && (
-                            <span className="head">SIZE</span>
-                          )}
-                          <span className="value">
-                            {item?.mappedAttributes['Package Size']}F
-                          </span>
-                        </div>
-                        <div className="oneCell">
-                          {((!isLoggedIn && i < 1) || isLoggedIn) && (
-                            <span className="head">UNITS/CASE</span>
-                          )}
-                          <span className="value">
-                            {item?.mappedAttributes['Unit of Measurement']}
-                          </span>
-                        </div>
-                        <div className="oneCell">
-                          {((!isLoggedIn && i < 1) || isLoggedIn) && (
-                            <span className="head">PART NUMBER</span>
-                          )}
-                          <span className="value">
-                            {item?.mappedAttributes['Part Number']}
-                          </span>
-                        </div>
-                      </>
-                      {isLoggedIn && (
-                        <div className="oneCell">
-                          <span className="head text-right">Price</span>
-                          <span className="value text-right">
-                            {isLoggedIn &&
-                            item &&
-                            item?.price &&
-                            item?.price?.base
-                              ? '$' + parseFloat(item?.price?.base).toFixed(2)
-                              : ''}{' '}
-                          </span>
-                        </div>
-                      )}
-                      <div className="oneCell"></div>
-                      <div className="oneCell"></div>
-
-                      {isLoggedIn && (
-                        <div className="value-qty">
-                          <span className="head">QTY:</span>
-                          <InputNumber
-                            min={0}
-                            max={100}
-                            defaultValue={0}
-                            onChange={e => onQtyChange(e, i)}
-                            disabled={!packagedOrder}
-                            size="middle"
-                            className="input"
-                            style={{
-                              minWidth: '50%',
-                              backgroundColor:
-                                !packagedOrder && 'rgba(255, 255, 255, 0.3)',
-                            }}
-                          />
-                        </div>
-                      )}
-                      {isLoggedIn && (
-                        <div className="oneCell">
-                          <span className="head text-right">Total Price</span>
+                    <>
+                      <div
+                        className="oneCell"
+                        style={{
+                          justifyContent: !isLoggedIn && 'space-between',
+                        }}
+                      >
+                        {((!isLoggedIn && i < 1) || isLoggedIn) && (
+                          <span className="head">SIZE</span>
+                        )}
+                        <span className="value">
+                          {item?.mappedAttributes['Package Size']}F
+                        </span>
+                      </div>
+                      <div className="oneCell">
+                        {((!isLoggedIn && i < 1) || isLoggedIn) && (
+                          <span className="head">UNITS/CASE</span>
+                        )}
+                        <span className="value">
+                          {item?.mappedAttributes['Unit of Measurement']}
+                        </span>
+                      </div>
+                      <div className="oneCell" style={{}}>
+                        {((!isLoggedIn && i < 1) || isLoggedIn) && (
                           <span
-                            className="value text-right"
-                            style={{
-                              color: item?.totalPrice > 0 ? '#f1a900' : '#ffff',
-                            }}
+                            className="head"
+                            style={{ width: !isLoggedIn && '25vw' }}
                           >
-                            {isLoggedIn &&
-                              '$' +
-                                parseFloat(item?.totalPrice || 0).toFixed(2)}
+                            PART NUMBER
                           </span>
-                        </div>
-                      )}
-                      {isLoggedIn && <Divider className="divider" />}
+                        )}
+                        <span
+                          className="value"
+                          style={{ width: !isLoggedIn && '25vw' }}
+                        >
+                          {item?.mappedAttributes['Part Number']}
+                        </span>
+                      </div>
+                    </>
+                    {isLoggedIn && (
+                      <div className="oneCell">
+                        <span className="head text-right">Price</span>
+                        <span className="value text-right">
+                          {isLoggedIn &&
+                          item &&
+                          item?.price &&
+                          item?.price?.base
+                            ? '$' + parseFloat(item?.price?.base).toFixed(2)
+                            : ''}{' '}
+                        </span>
+                      </div>
+                    )}
+                    {isLoggedIn && <div className="oneCell"></div>}
+
+                    {isLoggedIn && (
+                      <div className="value-qty">
+                        <span className="head">QTY:</span>
+                        <InputNumber
+                          min={0}
+                          max={100}
+                          defaultValue={0}
+                          onChange={e => onQtyChange(e, i)}
+                          disabled={!packagedOrder}
+                          size="middle"
+                          className="input"
+                          style={{
+                            minWidth: '50%',
+                            backgroundColor:
+                              !packagedOrder && 'rgba(255, 255, 255, 0.3)',
+                          }}
+                        />
+                      </div>
+                    )}
+                    {isLoggedIn && (
+                      <div className="oneCell">
+                        <span className="head text-right">Total Price</span>
+                        <span
+                          className="value text-right"
+                          style={{
+                            color: item?.totalPrice > 0 ? '#f1a900' : '#ffff',
+                          }}
+                        >
+                          {isLoggedIn &&
+                            '$' + parseFloat(item?.totalPrice || 0).toFixed(2)}
+                        </span>
+                      </div>
+                    )}
+                    {isLoggedIn && <Divider className="divider" />}
                   </div>
                 )
-              })
-              : pdpdata?.bulkOrderItem?.map((item, i) => {
+              })}
+            {bulkItemsCart &&
+              !packagedOrder &&
+              pdpdata?.bulkOrderItem?.map((item, i) => {
                 return (
                   <div
                     className="pdp-mobile-table"
@@ -278,7 +331,7 @@ const PDPMobile = ({
                       <span className="head">Price pER Litre</span>
                       <span className="value">
                         {item?.price?.base &&
-                            '$' + parseFloat(item?.price?.base)}
+                          '$' + parseFloat(item?.price?.base)}
                       </span>
                     </div>
                     <div className="oneCell">
@@ -298,11 +351,21 @@ const PDPMobile = ({
                           style={{
                             minWidth: '50%',
                             backgroundColor:
-                                packagedOrder && 'rgba(255, 255, 255, 0.3)',
+                              packagedOrder && 'rgba(255, 255, 255, 0.3)',
                           }}
                         />
                       </div>
                     )}
+                    <div>
+                      {!packagedOrder && Number(item?.quantity) < Number(500) && (
+                        <div>
+                          <span style={{ color: '#fa9200' }}>
+                            Orders below 500L are subject to an under-a-minimum
+                            fee.
+                          </span>
+                        </div>
+                      )}
+                    </div>
                     {isLoggedIn && <Divider className="divider" />}
                   </div>
                 )
@@ -322,12 +385,12 @@ const PDPMobile = ({
                     (packagedOrder
                       ? pdpdata?.totalPackagedOrderPrice > 0
                         ? parseFloat(pdpdata?.totalPackagedOrderPrice).toFixed(
-                          2,
-                        )
+                            2,
+                          )
                         : '0.00'
                       : parseFloat(
                           pdpdata?.bulkOrderItem[0]?.totalPrice || 0,
-                      ).toFixed(2))}
+                        ).toFixed(2))}
                 </span>
               </div>
             )}
@@ -350,9 +413,11 @@ const PDPMobile = ({
             </Button>
           </div>
         )}
-        <div>
-          <PDPInformation pdpdatasheet={pdpdatasheet} />
-        </div>
+        {techInfoMobile && techInfoMobile.length && (
+          <div>
+            <PDPInformation techInfo={techInfoMobile} />
+          </div>
+        )}
       </div>
     </>
   )
@@ -377,10 +442,13 @@ PDPMobile.propTypes = {
   itemName: PropTypes.string,
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
+  techInfoMobile: PropTypes.array,
   width: PropTypes.string,
   subItemClickHandler: PropTypes.func,
   contextPlp: PropTypes.string,
   isPdpLoading: PropTypes.bool,
   items: PropTypes.array,
+  packagedItemsCart: PropTypes.bool,
+  bulkItemsCart: PropTypes.bool,
 }
 export default PDPMobile
