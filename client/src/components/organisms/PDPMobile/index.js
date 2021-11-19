@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
@@ -47,8 +48,9 @@ const PDPMobile = ({
   items,
   packagedItemsCart,
   bulkItemsCart,
+  techInfoMobile,
 }) => {
-  console.log('responsive', pdpdata)
+  console.log('responsive', pdpdata, techInfoMobile)
   console.log({ categories })
   const [openCategories, setOpenCategories] = useState(false)
 
@@ -383,12 +385,12 @@ const PDPMobile = ({
                     (packagedOrder
                       ? pdpdata?.totalPackagedOrderPrice > 0
                         ? parseFloat(pdpdata?.totalPackagedOrderPrice).toFixed(
-                          2,
-                        )
+                            2,
+                          )
                         : '0.00'
                       : parseFloat(
                           pdpdata?.bulkOrderItem[0]?.totalPrice || 0,
-                      ).toFixed(2))}
+                        ).toFixed(2))}
                 </span>
               </div>
             )}
@@ -411,9 +413,11 @@ const PDPMobile = ({
             </Button>
           </div>
         )}
-        <div>
-          <PDPInformation pdpdatasheet={pdpdatasheet} />
-        </div>
+        {techInfoMobile && techInfoMobile.length && (
+          <div>
+            <PDPInformation techInfo={techInfoMobile} />
+          </div>
+        )}
       </div>
     </>
   )
@@ -438,6 +442,7 @@ PDPMobile.propTypes = {
   itemName: PropTypes.string,
   clickCategoryHandler: PropTypes.func,
   subItem: PropTypes.array,
+  techInfoMobile: PropTypes.array,
   width: PropTypes.string,
   subItemClickHandler: PropTypes.func,
   contextPlp: PropTypes.string,
