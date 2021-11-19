@@ -14,10 +14,13 @@ import { getItemsBySkus } from 'libs/services/api/item'
 // import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
 const CartDropdownItem = cart => {
-  console.log('check cart:', cart)
-  const { setGetCartItemsState, setCartAmount, cartData } = useContext(
-    AppContext,
-  )
+  const {
+    setGetCartItemsState,
+    creditLimit,
+    getCartItems,
+    setCartAmount,
+    cartData,
+  } = useContext(AppContext)
   const [isShow, SetIsShow] = useState(false)
   // const [removing, setRemoving] = useState(false)
   // const { removeFromCart, error } = useRemoveFromCart()
@@ -33,6 +36,14 @@ const CartDropdownItem = cart => {
 
   const onChange = async (qty, cart) => {
     if (qty === null) {
+      return
+    }
+
+    let totalAmount = Math.floor(
+      getCartItems?.totalAmount?.amount + cart?.price?.base * qty,
+    )
+    if (creditLimit <= totalAmount) {
+      alert('You are exceeding your credit limit')
       return
     }
 
