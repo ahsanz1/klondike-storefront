@@ -21,7 +21,6 @@ import {
   updateCartApi,
 } from 'libs/services/api/cart'
 import { getItemsBySkus } from 'libs/services/api/item'
-
 /* eslint-disable indent */
 
 const QuickOrder = () => {
@@ -508,13 +507,13 @@ const QuickOrder = () => {
   const radioChangeBULK = () => {
     setPackageComponent(false)
     setBulkComponent(true)
-    // setCartState('bulk')
+    setInputList([{ partnumber: '', quantity: '' }])
   }
 
   const radioChangePACKAGE = e => {
     setBulkComponent(false)
     setPackageComponent(true)
-    // setCartState('package')
+    setInputList([{ partnumber: '', quantity: '' }])
   }
 
   const OrderType = () => {
