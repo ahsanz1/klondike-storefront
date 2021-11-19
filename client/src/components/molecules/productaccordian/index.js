@@ -15,9 +15,13 @@ import { AppContext } from 'libs/context'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
-  const { user, showcartPOPModal, setGetCartItemsState } = useContext(
-    AppContext,
-  )
+  const {
+    user,
+    creditLimit,
+    getCartItems,
+    showcartPOPModal,
+    setGetCartItemsState,
+  } = useContext(AppContext)
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
@@ -68,9 +72,25 @@ const ProductAccordion = ({ question }) => {
     setIsModalVisible(false)
   }
 
+  function error (msg) {
+    Modal.error({
+      title: 'This is an error message',
+      content:
+        msg ||
+        'Due to some technical reasons, this action cannot be performed!',
+    })
+  }
+
   const addItemToCart = async () => {
-    setAddToCart(true)
     let data = modalData
+
+    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
+    if (creditLimit <= totalAmount) {
+      error('You are exceeding your credit limit')
+      return
+    }
+
+    setAddToCart(true)
     getProductBySKU(data.sku).then(res => {
       res = res.response.data
       let product = res.product
@@ -100,8 +120,12 @@ const ProductAccordion = ({ question }) => {
       }
       addProductToCart(payload)
         .then(res => {
-          setGetCartItemsState(res.response.data)
-          showcartPOPModal()
+          if (res.hasError !== true) {
+            setGetCartItemsState(res.response.data)
+            showcartPOPModal()
+          } else {
+            error(res.response.error)
+          }
         })
         .catch(err => {
           console.log('errres', err)
@@ -113,9 +137,17 @@ const ProductAccordion = ({ question }) => {
 
   const onChange = value => {
     let data = modalData
-    setQty(value)
     setTotalPrice(data.price * value)
+
+    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
+    if (creditLimit <= totalAmount) {
+      error('You are exceeding your credit limit')
+      return
+    }
+
+    setQty(value)
   }
+
   const handleAddToCart = i => {
     setShowAddToCart(!showAddToCart)
     setItemId(i)
