@@ -9,7 +9,7 @@
     margin-right: get-vw(91px);
     padding-top: get-vw(66px);
     padding-right: get-vw(77px);
-    padding-bottom: get-vw(101px);
+    padding-bottom: get-vw(87px);
     padding-left: get-vw(61px);
     background: rgba(3, 41, 57, 0.5);
 
@@ -52,6 +52,18 @@
 
         .safety-paragraph {
           font-weight: 600 !important;
+        }
+      }
+
+      &:nth-child(3) {
+        @media screen and (max-width: 768px) {
+          height: 430px;
+        }
+      }
+
+      &:nth-child(4) {
+        @media screen and (max-width: 768px) {
+          height: 420px;
         }
       }
     }
