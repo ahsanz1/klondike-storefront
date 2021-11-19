@@ -433,3 +433,9 @@ $vw-viewport: 1440;
   margin: get-vw(10px);
   cursor: pointer;
 }
+
+.justify-align-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
