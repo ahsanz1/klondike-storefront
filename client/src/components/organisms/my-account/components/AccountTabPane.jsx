@@ -1,13 +1,13 @@
-import React, { memo } from 'react'
+import React, { memo, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Accounts from 'components/molecules/accounts-page'
 // import Accounts from 'components/molecules/accounts-page'
 // import { getOrder } from 'libs/api/order'
-// import { AppContext } from 'libs/context'
+import { AppContext } from 'libs/context'
 
 const AccountTabPane = ({ data, user, title, userOrder }) => {
-  // const context = useContext(AppContext)
+  const { creditLimit } = useContext(AppContext)
 
   return (
     <div className="account-tabpane-content">
@@ -80,7 +80,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
       ) : (
         <>
           <Label className="credit-limit">{data.limit && data.limit}</Label>
-          <p className="credit-price">{data.price && data.price}</p>
+          <p className="credit-price">${creditLimit}</p>
         </>
       )}
     </div>
