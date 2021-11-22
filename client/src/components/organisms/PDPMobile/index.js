@@ -289,6 +289,11 @@ const PDPMobile = ({
                             backgroundColor:
                               !packagedOrder && 'rgba(255, 255, 255, 0.3)',
                           }}
+                          onKeyUp={e => {
+                            if (e.target.value < 0) {
+                              e.target.value = e.target.value * -1
+                            }
+                          }}
                         />
                       </div>
                     )}
@@ -354,6 +359,11 @@ const PDPMobile = ({
                             minWidth: '50%',
                             backgroundColor:
                               packagedOrder && 'rgba(255, 255, 255, 0.3)',
+                          }}
+                          onKeyUp={e => {
+                            if (e.target.value < 0) {
+                              e.target.value = e.target.value * -1
+                            }
                           }}
                         />
                       </div>
