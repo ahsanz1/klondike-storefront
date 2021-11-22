@@ -78,7 +78,7 @@ const BulkOrder = ({
                     className="quantity-number"
                     type="number"
                     value={x.quantity}
-                    onChange={e => handleChangePackageqty(e, i)}
+                    onChange={e => handleChangePackageqty(e, i, x)}
                   />
                   {qtyerror && (
                     <span className="packageqty-error">Please Entre QTY</span>

@@ -85,7 +85,7 @@ const PackageOrder = ({
                     type="number"
                     value={x.quantity}
                     // step={1}
-                    onChange={e => handleChangePackageqty(e, i)}
+                    onChange={e => handleChangePackageqty(e, i, x)}
                   />
                   {qtyerror && (
                     <span className="packageqty-error">Please Entre QTY</span>

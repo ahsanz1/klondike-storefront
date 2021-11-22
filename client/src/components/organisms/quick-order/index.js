@@ -61,7 +61,7 @@ const QuickOrder = () => {
   const [isPackage, setIsPackage] = useState(true)
   const [hasCartData, setHasCartData] = useState(false)
 
-  console.log(inputvalue, inputvalue)
+  console.log('cartItems', cartItems, inputvalue)
   // let total = []
   useEffect(() => {
     const data = async () => {
@@ -262,7 +262,7 @@ const QuickOrder = () => {
         setTotal(arrayTotal)
       }
     })
-    setInputList([{ partnumber: '', quantity: '' }])
+    // setInputList([{ partnumber: '', quantity: '' }])
   }
 
   const getUpdatedCartData = async resData => {
@@ -612,7 +612,7 @@ const QuickOrder = () => {
               <Radio.Group
                 value={value}
                 className="radio-group"
-                defaultValue={1}
+                // defaultValue={1}
                 onChange={e => setValue(e.target.value)}
               >
                 <Radio
@@ -733,7 +733,7 @@ const QuickOrder = () => {
                               min={0}
                               max={100}
                               type="number"
-                              defaultValue={1}
+                              defaultValue={caseqty[`index-${i}`]}
                               value={data['quantity']}
                               onChange={e => onChangeqty(e, i, data)}
                               size="middle"
