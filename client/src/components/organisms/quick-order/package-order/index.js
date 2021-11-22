@@ -80,6 +80,7 @@ const PackageOrder = ({
 
                 <div className="package-qty">
                   <input
+                    min="0"
                     name="quantity"
                     className="quantity-number"
                     type="number"

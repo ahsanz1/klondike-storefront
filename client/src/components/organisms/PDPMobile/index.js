@@ -234,7 +234,7 @@ const PDPMobile = ({
                       </div>
                       <div className="oneCell">
                         {((!isLoggedIn && i < 1) || isLoggedIn) && (
-                          <span className="head">UNITS/CASE</span>
+                          <span className="head">PER CASE</span>
                         )}
                         <span className="value">
                           {item?.mappedAttributes['Unit of Measurement']}
@@ -246,7 +246,7 @@ const PDPMobile = ({
                             className="head"
                             style={{ width: !isLoggedIn && '25vw' }}
                           >
-                            PART NUMBER
+                            PART NUM
                           </span>
                         )}
                         <span
