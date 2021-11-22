@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 17.36vw;
+  margin-left: 1.041vw;
 
   .active-category {
     border: 0.1vw solid #f2a900 !important;
@@ -26,7 +27,7 @@
     margin-bottom: 1vw;
     padding: 1vw;
     // background: rgba(5, 5, 5, 0.39);
-    color: rgba(236, 234, 233, 0.69);
+    color: #fff;
     font-family: $OpenSans;
     font-size: 0.69vw;
     font-weight: bold;
@@ -61,14 +62,18 @@
         background: none;
 
         .h-links {
-          color: #fff;
+          color: rgba(236, 234, 233, 0.69);
           line-height: get-vw(28px);
         }
       }
     }
 
     .active-product {
-      color: #fff;
+      a.c-link {
+        .h-links {
+          color: #fff;
+        }
+      }
     }
 
     @media (max-width: 768px) {
@@ -80,5 +85,6 @@
 
   @media (max-width: 768px) {
     width: 100%;
+    margin-left: 0;
   }
 }

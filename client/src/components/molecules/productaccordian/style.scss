@@ -97,6 +97,7 @@ $vw-viewport: 1440;
 
   .hover-button {
     box-sizing: border-box;
+    margin-top: -0.69vw;
     margin-bottom: 30px;
     padding: 12px;
     border: 1px solid #f1a900;
@@ -107,6 +108,14 @@ $vw-viewport: 1440;
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+      margin-top: -2.66vw;
+    }
+  }
+
+  .stop {
+    background: #f33;
   }
 
   .table-image {
@@ -210,7 +219,9 @@ body .ant-modal-mask {
       display: grid;
       grid-template-columns: 1.4fr 1.4fr 1fr 1fr 1fr 1.4fr;
       align-items: baseline;
+      margin-left: 3.5vw;
       padding-top: 3.26vw;
+      padding-left: 2.3vw;
       justify-items: center;
 
       .detail {
@@ -221,7 +232,7 @@ body .ant-modal-mask {
       div {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        // align-items: center;
         justify-content: center;
         //margin-right: get-vw(15px);
       }
@@ -254,10 +265,6 @@ body .ant-modal-mask {
       font-size: 1.597vw;
       font-weight: 700;
     }
-  }
-
-  .ant-input-number-handler-wrap {
-    right: -13px;
   }
 
   .ant-input-number-input-wrap {

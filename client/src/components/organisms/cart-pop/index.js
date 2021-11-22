@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { AppContext } from 'libs/context'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
@@ -8,7 +9,7 @@ import Button from 'components/atoms/button'
 import Link from 'components/atoms/link'
 import './style.scss'
 
-const CartPopUP = () => {
+const CartPopUP = ({ loading }) => {
   const {
     //  cartItems,
     cartData,
@@ -48,6 +49,7 @@ const CartPopUP = () => {
 
   // const latestItem = cartItems[cartItems.length - 1]
   const handleClick = () => {
+    loading()
     closePopUpModal()
     showModal()
   }
@@ -132,4 +134,8 @@ const CartPopUP = () => {
     )
   )
 }
+CartPopUP.propTypes = {
+  loading: PropTypes.func,
+}
+
 export default CartPopUP
