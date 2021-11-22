@@ -30,7 +30,7 @@ import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import PlpTabList from 'components/organisms/plp-tab-list'
-import CartDropdown from '../cart-dropdown'
+// import CartDropdown from '../cart-dropdown'
 import { useLocation, useNavigate } from '@reach/router'
 import queryString from 'query-string'
 import { getItemsBySkus } from 'libs/services/api/item'
@@ -78,6 +78,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
   const [techAttributes, setTechAttributes] = useState({})
+  // const [loding, setLoding] = useState(false)
   console.log({ loading })
   console.log({ products })
   console.log({ desc })
@@ -671,7 +672,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                               }
                               style={{
                                 color:
-                                  item?.totalPrice > 0 ? '#fa9200' : 'white',
+                                  item?.totalPrice > 0 ? '#f1a900' : 'white',
                               }}
                             >
                               {isLoggedIn &&
@@ -688,7 +689,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             style={{
                               color:
                                 items?.totalPackagedOrderPrice > 0
-                                  ? '#fa9200'
+                                  ? '#f1a900'
                                   : packagedOrder
                                   ? 'white'
                                   : 'rgba(255, 255, 255, 0.3)',
@@ -893,13 +894,15 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                   )}
                 </div>
               </div>
-              <div className="pdp-info">
-                <PDPInformation techInfo={techAttributes} />
-              </div>
+              {techAttributes[0]?.name && (
+                <div className="pdp-info">
+                  <PDPInformation techInfo={techAttributes} />
+                </div>
+              )}
             </Col>
           )}
         </Row>
-        <CartDropdown productData={productData} />
+        {/* <CartDropdown productData={productData} /> */}
       </div>
       <PDPMobile
         pdpdata={items}

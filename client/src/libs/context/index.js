@@ -79,6 +79,7 @@ const AppProvider = ({ children }) => {
   const [subscriptionBillingInfo, setSubscriptionBillingInfo] = useState({})
   const [getSearchParam, setGetSearchParam] = useState('')
   const [itemList, setItemList] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const handleDisplayForm = () => {
     setIsNewAddress(!isNewAddress)
@@ -86,6 +87,12 @@ const AppProvider = ({ children }) => {
 
   const showModal = async () => {
     let skus = []
+    setIsModalVisible(true)
+
+    if (size > 768) {
+      document.body.style.overflow = 'visible'
+    }
+
     let res = await getCartByUserId(initialState.user.accessToken)
     let data = res.data
 
@@ -124,12 +131,8 @@ const AppProvider = ({ children }) => {
 
     setGetCartItemsState(payload)
     setCartAmount(payload.totalAmount.amount)
-    setIsModalVisible(true)
-
-    if (size > 768) {
-      document.body.style.overflow = 'visible'
-    }
   }
+
   const showcartPOPModal = () => {
     setCartPopupModal(true)
     document.body.style.overflow = 'visible'
@@ -363,6 +366,8 @@ const AppProvider = ({ children }) => {
         setGetSearchParam,
         itemList,
         setItemList,
+        loading,
+        setLoading,
         ...state,
       }}
     >
