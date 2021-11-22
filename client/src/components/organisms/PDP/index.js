@@ -893,9 +893,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                   )}
                 </div>
               </div>
-              <div className="pdp-info">
-                <PDPInformation techInfo={techAttributes} />
-              </div>
+              {techAttributes[0]?.name && (
+                <div className="pdp-info">
+                  <PDPInformation techInfo={techAttributes} />
+                </div>
+              )}
             </Col>
           )}
         </Row>

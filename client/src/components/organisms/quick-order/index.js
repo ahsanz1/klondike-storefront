@@ -597,7 +597,7 @@ const QuickOrder = () => {
               <Radio.Group
                 value={value}
                 className="radio-group"
-                defaultValue={1}
+                defaultValue={!isPackage ? 1 : 2}
                 onChange={e => setValue(e.target.value)}
               >
                 <Radio
