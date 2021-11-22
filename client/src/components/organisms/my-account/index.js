@@ -4,7 +4,7 @@ import { navigate } from '@reach/router'
 import { Tabs } from 'antd'
 
 import { AppContext } from 'libs/context'
-import { getOrdersByUser } from 'libs/services/api/orders.api'
+import { getOrdersByQuery } from 'libs/services/api/orders.api'
 
 import TabsDropdown from 'components/molecules/tab-dropdown'
 import PageHeader from './components/PageHeader'
@@ -26,7 +26,6 @@ const MyAccount = ({
   title,
   logoutBtnText,
   accountTabsData,
-  accountOrderFormData,
   accountAddress,
 }) => {
   console.log(
@@ -50,7 +49,30 @@ const MyAccount = ({
         setUserName(_name)
 
         const fetchOrders = async () => {
-          const ordersByUser = await getOrdersByUser(user.accessToken)
+          let payload = {
+            offset: 0,
+            limit: 100,
+            sortBy: 'createdAt',
+            sortDirection: 'asc',
+            filters: {
+              status: [
+                'ORDER_CREATED',
+                'ORDER_CONFIRMED',
+                'ORDER_CANCELLED',
+                'ORDER_PARTIALLY_SHIPPED',
+                'ORDER_SHIPPED',
+                'ORDER_PARTIALLY_DELIVERED',
+                'ORDER_DELIVERED',
+                'ORDER_RETURNED',
+                'ORDER_PARTIALLY_RETURNED',
+                'ORDER_PAYMENT_AUTHORIZED',
+                'ORDER_PAYMENT_INVALID',
+              ],
+            },
+          }
+
+          const ordersByUser = await getOrdersByQuery(user.accessToken, payload)
+          console.log('orderss', ordersByUser)
           const _allOrders = await getAllOrders(ordersByUser)
 
           setUserOrder(

@@ -281,11 +281,17 @@ const ProductAccordion = ({ question }) => {
                 <h1>{modalData.title}</h1>
                 <div className="product-detail">
                   <div>
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
+                      <p className="products-sizes">Size</p>
+                    ) : (
+                      <p className="products-sizes">Bulk</p>
+                    )}
                     {modalData.size !== 'Bulk' &&
                       modalData.size !== 'Bulk:' && (
-                      <p className="products-sizes">Size</p>
+                      <p className="products-sizes detail">
+                        {modalData.size}
+                      </p>
                     )}
-                    <p className="products-sizes detail">{modalData.size}</p>
                   </div>
                   <div>
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
@@ -321,6 +327,7 @@ const ProductAccordion = ({ question }) => {
                       <InputNumber
                         min={0}
                         value={qty}
+                        type="number"
                         defaultValue={1}
                         onChange={onChange}
                         size="middle"
@@ -354,9 +361,11 @@ const ProductAccordion = ({ question }) => {
                   {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                     <p className="products-sizes">SiZE</p>
                   ) : (
-                    <p className="products-sizes"></p>
+                    <p className="products-sizes">Bulk</p>
                   )}
-                  <p className="products-sizes detail">{modalData.size}</p>
+                  {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                    <p className="products-sizes detail">{modalData.size}</p>
+                  )}
                 </div>
                 {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                   <div className="product-detail-mobile">
@@ -383,7 +392,7 @@ const ProductAccordion = ({ question }) => {
                           : 'Price Litre'}
                       </p>
                       <p className="products-sizes detail ">
-                        ${modalData.price}
+                        ${modalData?.price?.toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -400,6 +409,7 @@ const ProductAccordion = ({ question }) => {
                     <InputNumber
                       min={0}
                       value={qty}
+                      type="number"
                       defaultValue={1}
                       onChange={onChange}
                       size="middle"
@@ -409,7 +419,9 @@ const ProductAccordion = ({ question }) => {
                 </div>
                 <div className="prodcut-total-price">
                   <p className="products-sizes">Total Price</p>
-                  <p className="products-sizes details">${totalPrice}</p>
+                  <p className="products-sizes details">
+                    ${parseFloat(totalPrice).toFixed(2)}
+                  </p>
                 </div>
               </div>
               <Button

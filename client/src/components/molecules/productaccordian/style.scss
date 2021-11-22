@@ -211,6 +211,7 @@ body .ant-modal-mask {
       grid-template-columns: 1.4fr 1.4fr 1fr 1fr 1fr 1.4fr;
       align-items: baseline;
       padding-top: 3.26vw;
+      padding-left: 2.3vw;
       justify-items: center;
 
       .detail {
@@ -254,10 +255,6 @@ body .ant-modal-mask {
       font-size: 1.597vw;
       font-weight: 700;
     }
-  }
-
-  .ant-input-number-handler-wrap {
-    right: -13px;
   }
 
   .ant-input-number-input-wrap {
@@ -322,6 +319,7 @@ body .ant-modal-mask {
     justify-content: space-between;
     margin-top: 30px;
     color: white;
+    font-weight: bold !important;
 
     .product-pricing-mobile {
       display: flex;
