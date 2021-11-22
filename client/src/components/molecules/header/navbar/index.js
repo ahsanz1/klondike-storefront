@@ -183,8 +183,7 @@ const Navbar = ({
                 </div>
               ) : (
                 <div className="cart-amount">
-                  {parseFloat(cartAmount || getCartItems?.quantity || 0)}{' '}
-                  {` ltrs`}
+                  {parseFloat(getCartItems?.quantity || 0)} {` ltrs`}
                 </div>
               )}
               <NavbarcartIcon

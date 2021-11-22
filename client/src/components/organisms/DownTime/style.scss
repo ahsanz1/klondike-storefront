@@ -2,8 +2,8 @@
 
 .downtime-wrapper {
   display: flex;
-  justify-content: space-around;
-  padding: 4.1vw 5vw;
+  justify-content: space-between;
+  padding: 4.1vw 8.3vw;
   background: #013a4e;
 
   // @media screen and (min-width: 1600px) {
@@ -20,8 +20,9 @@
   //   padding: 15px 73px;
   // }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 768px) {
     flex-wrap: wrap;
     margin-left: 0;
+    padding: 4.1vw 5.3vw;
   }
 }

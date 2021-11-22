@@ -39,6 +39,7 @@
     }
 
     p {
+      padding-right: 2.3vw;
       color: #032939;
       font-family: $OpenSans;
       font-size: 1vw;
@@ -52,11 +53,12 @@
     }
 
     h3 {
+      padding-right: 8vw;
       color: #032939;
       font-family: $OpenSans;
       font-size: 0.97vw;
       font-style: normal;
-      font-weight: bold;
+      font-weight: 900;
       line-height: 140%;
 
       @media screen and (max-width: 500px) {
