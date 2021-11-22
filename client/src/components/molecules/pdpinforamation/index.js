@@ -8,7 +8,7 @@ import './style.scss'
 
 const PDPInformation = props => {
   const [more, setMore] = React.useState(false)
-  console.log('tech info check:', props.techInfo)
+  console.log('tech info check:', props.techInfo[0])
   return (
     <>
       <div className="Pdp-content">

@@ -7,9 +7,10 @@ const DownTime = ({ downTimeCosting }) => {
   return (
     <>
       <div className="downtime-wrapper">
-        {downTimeCosting.map((down, i) => (
-          <DowntimeCosting {...down} key={i} />
-        ))}
+        {downTimeCosting.length > 0 &&
+          downTimeCosting.map((down, i) => (
+            <DowntimeCosting {...down} key={i} />
+          ))}
       </div>
     </>
   )
