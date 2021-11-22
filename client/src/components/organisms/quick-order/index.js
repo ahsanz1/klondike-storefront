@@ -757,7 +757,7 @@ const QuickOrder = () => {
                               />
                               <p className="price">Price</p>
                               <p className="price-value">
-                                ${data['Base Price']}
+                                ${data['Base Price'].toFixed(2)}
                               </p>
                             </div>
                             <p>{data['product title']}</p>
