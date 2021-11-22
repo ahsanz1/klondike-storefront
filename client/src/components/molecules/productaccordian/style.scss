@@ -210,6 +210,7 @@ body .ant-modal-mask {
       display: grid;
       grid-template-columns: 1.4fr 1.4fr 1fr 1fr 1fr 1.4fr;
       align-items: baseline;
+      margin-left: 3.5vw;
       padding-top: 3.26vw;
       justify-items: center;
 
@@ -221,7 +222,7 @@ body .ant-modal-mask {
       div {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        // align-items: center;
         justify-content: center;
         //margin-right: get-vw(15px);
       }
