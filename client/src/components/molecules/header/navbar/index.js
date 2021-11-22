@@ -63,6 +63,7 @@ const Navbar = ({
     item =>
       item?.attributes?.find(att => att?.name === 'Packaged Order')?.value,
   )
+
   return (
     <div
       className={
@@ -194,6 +195,18 @@ const Navbar = ({
           )}
         </div>
       </div>
+      {/* {<div
+        className="loading"
+        style={{
+          color: '#ffff',
+          opacity: '0.9',
+          font: 'bolder',
+          background: 'lightgray',
+        }}
+      >
+        Loading ...
+      </div>} */}
+
       <div
         className={`header__mobile-menu ${
           isOpen ? 'header__mobile-menu--show' : ''

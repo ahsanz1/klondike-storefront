@@ -78,6 +78,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
   const [techAttributes, setTechAttributes] = useState({})
+  // const [loding, setLoding] = useState(false)
   console.log({ loading })
   console.log({ products })
   console.log({ desc })
