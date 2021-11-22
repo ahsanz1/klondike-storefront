@@ -70,7 +70,9 @@
 
     .active-product {
       a.c-link {
-        color: #fff;
+        .h-links {
+          color: #fff;
+        }
       }
     }
 
