@@ -671,7 +671,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                               }
                               style={{
                                 color:
-                                  item?.totalPrice > 0 ? '#fa9200' : 'white',
+                                  item?.totalPrice > 0 ? '#f1a900' : 'white',
                               }}
                             >
                               {isLoggedIn &&
@@ -688,7 +688,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             style={{
                               color:
                                 items?.totalPackagedOrderPrice > 0
-                                  ? '#fa9200'
+                                  ? '#f1a900'
                                   : packagedOrder
                                   ? 'white'
                                   : 'rgba(255, 255, 255, 0.3)',
