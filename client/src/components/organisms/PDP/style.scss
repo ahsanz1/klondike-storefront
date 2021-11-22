@@ -216,10 +216,10 @@ $vw-viewport: 1440;
 
 .customButton {
   box-sizing: border-box;
+  width: 20.83vw;
   height: get-vw(64);
   margin-top: 1vw;
   padding-right: get-vw(50);
-  // width: 15vw;
   padding-left: get-vw(50);
   border: get-vw(1) solid #f1a900;
   border-radius: 5px;
