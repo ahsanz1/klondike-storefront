@@ -591,7 +591,7 @@ const Checkoutsection = () => {
               </div>
               <div className="item">
                 <span>Credit Limit</span>
-                <span>${creditLimit}</span>
+                <span>${creditLimit.toFixed(2)}</span>
               </div>
               <Divider style={{ border: '1px solid #fff' }} />
               <div className="item">
