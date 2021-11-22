@@ -102,6 +102,11 @@ $vw-viewport: 1440;
   .flex {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+      display: grid;
+      grid-template-columns: 8fr 5fr 3fr 3fr 3fr 3fr;
+    }
   }
 
   .title {
