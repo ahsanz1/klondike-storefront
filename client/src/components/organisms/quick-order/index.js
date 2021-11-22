@@ -566,6 +566,11 @@ const QuickOrder = () => {
   const TotalCartPrice = () => {
     return (
       <div className="checkout-and-pricelist">
+        <div className="price-list-btn">
+          <Link className="price-list-text" to="/Price-List">
+            View Price List
+          </Link>
+        </div>
         <div className="checkout">
           <div className="order-price">
             <Label className="sub-total">Order Total</Label>
@@ -629,11 +634,6 @@ const QuickOrder = () => {
                   BULK ORDER
                 </Radio>
               </Radio.Group>
-            </div>
-            <div className="price-list-btn">
-              <Link className="price-list-text" to="/Price-List">
-                View Price List
-              </Link>
             </div>
             {OrderType()}
             {cartItems && cartItems.length > 0 && (
