@@ -245,7 +245,12 @@ const ProductAccordion = ({ question }) => {
                         <div className="table-button">
                           <Button
                             onClick={e => showModal(JSON.stringify(data))}
-                            className="hover-button"
+                            className={
+                              hasCartData &&
+                              !isPackage === data['Packaged Order']
+                                ? 'hover-button stop'
+                                : ' hover-button'
+                            }
                             disabled={
                               hasCartData
                                 ? !(isPackage === data['Packaged Order'])
@@ -392,7 +397,7 @@ const ProductAccordion = ({ question }) => {
                           : 'Price Litre'}
                       </p>
                       <p className="products-sizes detail ">
-                        ${modalData.price}
+                        ${modalData?.price?.toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -419,7 +424,9 @@ const ProductAccordion = ({ question }) => {
                 </div>
                 <div className="prodcut-total-price">
                   <p className="products-sizes">Total Price</p>
-                  <p className="products-sizes details">${totalPrice}</p>
+                  <p className="products-sizes details">
+                    ${parseFloat(totalPrice).toFixed(2)}
+                  </p>
                 </div>
               </div>
               <Button
