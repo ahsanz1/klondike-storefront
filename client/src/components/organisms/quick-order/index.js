@@ -580,7 +580,7 @@ const QuickOrder = () => {
           <div className="order-price">
             <Label className="sub-total">Order Total</Label>
             <Label className="total">
-              <span>${totalqty}</span>
+              <span>${parseFloat(totalqty).toFixed(2)}</span>
             </Label>
           </div>
           <div className="checkout-links">
@@ -757,7 +757,7 @@ const QuickOrder = () => {
                               />
                               <p className="price">Price</p>
                               <p className="price-value">
-                                ${data['Base Price']}
+                                ${data['Base Price'].toFixed(2)}
                               </p>
                             </div>
                             <p>{data['product title']}</p>

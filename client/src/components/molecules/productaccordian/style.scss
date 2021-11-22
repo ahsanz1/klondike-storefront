@@ -212,6 +212,7 @@ body .ant-modal-mask {
       align-items: baseline;
       margin-left: 3.5vw;
       padding-top: 3.26vw;
+      padding-left: 2.3vw;
       justify-items: center;
 
       .detail {
@@ -255,10 +256,6 @@ body .ant-modal-mask {
       font-size: 1.597vw;
       font-weight: 700;
     }
-  }
-
-  .ant-input-number-handler-wrap {
-    right: -13px;
   }
 
   .ant-input-number-input-wrap {
