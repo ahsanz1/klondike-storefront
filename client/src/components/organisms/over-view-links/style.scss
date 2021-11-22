@@ -88,7 +88,7 @@
   .about-us-links {
     display: flex;
     flex-wrap: wrap;
-    margin-top: get-vw(112px);
+    margin-top: get-vw(75px);
     margin-left: get-vw(160px);
 
     @media screen and (max-width: 768px) {
@@ -125,6 +125,7 @@
 
       .about-us-links-content {
         .links-title {
+          margin-bottom: get-vw(6px);
           color: #f1a900;
           font-size: get-vw(18px);
           font-style: normal;
