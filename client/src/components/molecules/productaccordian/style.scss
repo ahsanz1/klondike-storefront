@@ -97,6 +97,7 @@ $vw-viewport: 1440;
 
   .hover-button {
     box-sizing: border-box;
+    margin-top: -0.69vw;
     margin-bottom: 30px;
     padding: 12px;
     border: 1px solid #f1a900;
@@ -107,6 +108,10 @@ $vw-viewport: 1440;
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+      margin-top: -2.66vw;
+    }
   }
 
   .table-image {
