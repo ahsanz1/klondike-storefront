@@ -165,9 +165,12 @@ const QuickOrder = () => {
       itemsArr.push(itemObj)
     })
 
-    setTotalQty(grandPrice.toFixed(2))
     setCartItems(itemsArr)
-    setGetCartItemsState({ items: tempArray })
+    setTotalQty(grandPrice.toFixed(2))
+    setGetCartItemsState({
+      items: tempArray,
+      totalAmount: res?.data?.totalAmount,
+    })
   }
 
   const addedItemToCart = async searchedCartitems => {
@@ -299,8 +302,13 @@ const QuickOrder = () => {
 
     let price = item['Base Price'] * value
     let existingAmount = parseFloat(totalqty)
+    let calculatedPrice = Math.abs(item?.totalPrice?.amount - price)
 
-    if (packageComponent && creditLimit <= Math.floor(existingAmount + price)) {
+    if (
+      packageComponent &&
+      item.quantity < value &&
+      creditLimit <= Math.floor(existingAmount + calculatedPrice)
+    ) {
       error('You are exceeding your credit limit.')
       setAddingToCart(false)
       setInputchange(false)
