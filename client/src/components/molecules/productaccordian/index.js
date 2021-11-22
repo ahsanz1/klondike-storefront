@@ -245,7 +245,12 @@ const ProductAccordion = ({ question }) => {
                         <div className="table-button">
                           <Button
                             onClick={e => showModal(JSON.stringify(data))}
-                            className="hover-button"
+                            className={
+                              hasCartData &&
+                              !isPackage === data['Packaged Order']
+                                ? 'hover-button stop'
+                                : ' hover-button'
+                            }
                             disabled={
                               hasCartData
                                 ? !(isPackage === data['Packaged Order'])
