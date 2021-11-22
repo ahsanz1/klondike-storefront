@@ -46,7 +46,6 @@ const QuickOrder = () => {
   const [addingToCart, setAddingToCart] = useState(false)
   let [pn, setPN] = useState()
   let [caseqty, setCaseqty] = useState([])
-  let [total, setTotal] = useState([])
   let qtyIndex = {}
   let [totalqty, setTotalQty] = useState()
   let [qtyerror, setQtyError] = useState(false)
@@ -57,7 +56,7 @@ const QuickOrder = () => {
   const [isPackage, setIsPackage] = useState(true)
   const [hasCartData, setHasCartData] = useState(false)
 
-  console.log(inputvalue, setTotal(0))
+  console.log(inputvalue)
   useEffect(() => {
     const data = async () => {
       const items = await fetchItems('')
@@ -67,10 +66,6 @@ const QuickOrder = () => {
 
     data()
   }, [])
-
-  useEffect(() => {
-    total.length > 0 && itemtotalamount()
-  }, [total])
 
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
@@ -89,17 +84,6 @@ const QuickOrder = () => {
       setHasCartData(false)
     }
   }, [getCartItems])
-
-  const itemtotalamount = () => {
-    let sum = total.reduce(
-      (previousValue, currentValue, currentIndex, array) => {
-        return previousValue + currentValue
-      },
-      0,
-    )
-    let totalamount = sum.toFixed(2)
-    setTotalQty(totalamount)
-  }
 
   // const onChangeqty = async (value, index) => {
   //   qtyIndex = {
