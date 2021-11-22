@@ -21,7 +21,7 @@ const PackageOrder = ({
   const handleSubmit = e => {
     e.preventDefault()
   }
-  console.log(productstitle, 'productstitle')
+  console.log('productstitle', productstitle)
   let titleArray = productstitle
   let InputList = inputList
   console.log('inputList:', inputList)
@@ -63,6 +63,7 @@ const PackageOrder = ({
                     name="partnumber"
                     className="part-number"
                     placeholder="Enter Part Number"
+                    autoComplete="off"
                     value={x.partnumber}
                     onChange={e => handleChangePackage(e, i)}
                   />
