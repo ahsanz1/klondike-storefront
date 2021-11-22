@@ -1,8 +1,10 @@
 @import '~styles/globals';
 
 .plp {
-  padding: 4.1vw 9.37vw;
   padding-top: 1.6vw;
+  padding-right: 6.66vw;
+  padding-bottom: 4.1vw;
+  padding-left: 8.33vw;
 
   @media screen and (max-width: 500px) {
     margin-top: 27.73vw;
@@ -81,6 +83,7 @@
 
     .productItem {
       width: 80%;
+      margin-right: 0.69vw;
 
       @media (max-width: 768px) {
         width: 100%;

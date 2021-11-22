@@ -153,7 +153,6 @@ $vw-viewport: 350;
 }
 
 .head {
-  width: get-vw(65);
   margin-bottom: get-vw(5);
   color: #fff;
   font-family: $OpenSans;
@@ -191,6 +190,10 @@ $vw-viewport: 350;
   margin: get-vw(3);
   padding: get-vw(3);
 
+  @media (max-width: 768px) {
+    margin-left: 15vw;
+  }
+
   .ant-input-number-input {
     font-family: $OpenSans;
     font-family: $OpenSans;
@@ -224,8 +227,7 @@ $vw-viewport: 350;
 
 .add-to-cart {
   box-sizing: border-box;
-  width: 70%;
-  height: 60px !important;
+  height: 4.444vw !important;
   margin-top: 20px;
   border: 1px solid #f2a900 !important;
   border-radius: 5px !important;
@@ -235,6 +237,11 @@ $vw-viewport: 350;
   font-size: 23px !important;
   font-weight: 700 !important;
   line-height: 24px;
+
+  @media (max-width: 768px) {
+    width: 80vw !important;
+    height: 17.06vw !important;
+  }
 }
 
 .add-to-cart:disabled {

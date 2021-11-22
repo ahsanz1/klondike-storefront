@@ -30,7 +30,7 @@ import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import PlpTabList from 'components/organisms/plp-tab-list'
-import CartDropdown from '../cart-dropdown'
+// import CartDropdown from '../cart-dropdown'
 import { useLocation, useNavigate } from '@reach/router'
 import queryString from 'query-string'
 import { getItemsBySkus } from 'libs/services/api/item'
@@ -901,7 +901,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
             </Col>
           )}
         </Row>
-        <CartDropdown productData={productData} />
+        {/* <CartDropdown productData={productData} /> */}
       </div>
       <PDPMobile
         pdpdata={items}
