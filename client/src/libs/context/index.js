@@ -79,6 +79,7 @@ const AppProvider = ({ children }) => {
   const [subscriptionBillingInfo, setSubscriptionBillingInfo] = useState({})
   const [getSearchParam, setGetSearchParam] = useState('')
   const [itemList, setItemList] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const handleDisplayForm = () => {
     setIsNewAddress(!isNewAddress)
@@ -363,6 +364,8 @@ const AppProvider = ({ children }) => {
         setGetSearchParam,
         itemList,
         setItemList,
+        loading,
+        setLoading,
         ...state,
       }}
     >

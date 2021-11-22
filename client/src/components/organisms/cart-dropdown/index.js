@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
+import PropTypes from 'prop-types'
 import CartDropdownItem from 'components/molecules/cart-dropdown-item'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
@@ -156,5 +157,8 @@ const CartDropdown = () => {
       </>
     )
   )
+}
+CartDropdown.propTypes = {
+  loading: PropTypes.func,
 }
 export default CartDropdown
