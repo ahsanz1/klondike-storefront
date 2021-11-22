@@ -58,6 +58,12 @@
 
   .accordion-item {
     .ant-col {
+      &:nth-child(6) {
+        @media (max-width: 768px) {
+          margin-top: 0 !important;
+        }
+      }
+
       &:last-child {
         @media (max-width: 768px) {
           margin-top: -23px;
