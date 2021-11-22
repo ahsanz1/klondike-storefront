@@ -23,9 +23,9 @@ const Home = ({
     <>
       <div className="heroimgwrapper">
         <WebpagesHeroImages {...heroBanner} />
-      </div>
-      <div className="bannercontetwraper">
-        <HomeBanner {...bannercontent} />
+        <div className="bannercontetwraper">
+          <HomeBanner {...bannercontent} />
+        </div>
       </div>
       {/* <Oats/> */}
     </>
