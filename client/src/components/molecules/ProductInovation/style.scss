@@ -6,12 +6,16 @@
   background: #032939;
 
   .swiper-container {
-    width: 82vw;
+    width: 83.5vw;
     margin: 0 auto;
     padding-bottom: 4.1vw;
 
-    @media (max-width: 500px) {
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: 0;
+      padding-right: 5.3vw;
       padding-bottom: 33.1vw;
+      padding-left: 5.3vw;
     }
 
     .swiper-scrollbar {
