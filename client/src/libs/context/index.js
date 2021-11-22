@@ -86,6 +86,12 @@ const AppProvider = ({ children }) => {
 
   const showModal = async () => {
     let skus = []
+    setIsModalVisible(true)
+
+    if (size > 768) {
+      document.body.style.overflow = 'visible'
+    }
+
     let res = await getCartByUserId(initialState.user.accessToken)
     let data = res.data
 
@@ -124,12 +130,8 @@ const AppProvider = ({ children }) => {
 
     setGetCartItemsState(payload)
     setCartAmount(payload.totalAmount.amount)
-    setIsModalVisible(true)
-
-    if (size > 768) {
-      document.body.style.overflow = 'visible'
-    }
   }
+
   const showcartPOPModal = () => {
     setCartPopupModal(true)
     document.body.style.overflow = 'visible'
