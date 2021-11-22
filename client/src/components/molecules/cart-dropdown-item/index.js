@@ -171,7 +171,7 @@ const CartDropdownItem = cart => {
                 <Label className="product-price">
                   PRICE
                   <Label className="product-price-mobile">
-                    ${cart?.price?.base}
+                    ${cart?.price?.base.toFixed(2)}
                   </Label>
                 </Label>
               </div>
