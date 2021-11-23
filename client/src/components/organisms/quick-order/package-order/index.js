@@ -81,12 +81,18 @@ const PackageOrder = ({
 
                 <div className="package-qty">
                   <input
+                    min="0"
                     name="quantity"
                     className="quantity-number"
                     type="number"
                     value={x.quantity}
                     // step={1}
-                    onChange={e => handleChangePackageqty(e, i, x)}
+                    onChange={e => handleChangePackageqty(e, i)}
+                    onKeyUp={e => {
+                      if (e.target.value < 0) {
+                        e.target.value = e.target.value * -1
+                      }
+                    }}
                   />
                   {qtyerror && (
                     <span className="packageqty-error">Please Entre QTY</span>

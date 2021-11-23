@@ -9,7 +9,7 @@
 
   .distribute-heading {
     width: 80.2vw;
-    margin: 3.75vw 5.06vw;
+    margin: 3.75vw 9.86vw;
     color: white;
     font-family: $OpenSans;
     font-size: 3.19vw;
@@ -21,6 +21,8 @@
 
     @media screen and (max-width: 768px) {
       width: 331px;
+      margin: auto;
+      padding: 0;
       font-size: 20px;
     }
 
@@ -36,7 +38,7 @@
 .distribution-wraper {
   display: flex;
   justify-content: flex-start;
-  padding: 1.1vw 4.5vw;
+  padding: 1.1vw 8.33vw 2.08vw 8.33vw;
   background: #013a4e;
 
   // @media screen and (min-width: 1600px) {
@@ -66,7 +68,7 @@
     .imag-wrapper {
       width: 40.8vw;
       height: 34.72vw;
-      margin: 0.5vw;
+      // margin: 0.5vw;
       background: white;
 
       @media screen and (max-width: 500px) {
@@ -83,7 +85,7 @@
 
   .deleteouter-border {
     margin-right: 8.8vw;
-    margin-left: 2vw;
+    // margin-left: 2vw;
 
     // @media screen and (min-width: 1600px) {
     //   margin-right: 0;
@@ -97,7 +99,7 @@
     .imag-wrapper {
       width: 40.8vw;
       height: 34.72vw;
-      margin: 0.5vw;
+      // margin: 0.5vw;
       background: white;
 
       // @media screen and (max-width: 1366px) {
@@ -124,7 +126,14 @@
   }
 
   &:nth-child(even) {
+    .outer-border {
+      margin-left: 0;
+    }
+  }
+
+  &:nth-child(odd) {
     flex-direction: row-reverse;
+    // padding-right: 5vw;
     background: #032939;
 
     @media screen and (max-width: 768px) {
@@ -132,7 +141,7 @@
     }
 
     .outer-border {
-      margin-right: 3vw;
+      margin-right: 0;
       margin-left: 8.8vw;
 
       // @media screen and (min-width: 1600px) {
@@ -152,7 +161,7 @@
     }
 
     .deleteouter-border {
-      margin-right: 4.4vw;
+      margin-right: 0;
       margin-left: 8.8vw;
 
       @media screen and (max-width: 768px) {
@@ -167,12 +176,15 @@
     width: 26.6vw;
 
     @media screen and (max-width: 768px) {
+      margin-top: 12px !important;
+      // margin: auto;
       padding: 0 20px;
     }
 
     @media screen and (max-width: 500px) {
       width: 87.2vw;
       padding: 0 3.2vw;
+      padding-right: 0;
     }
 
     h1 {
@@ -184,12 +196,13 @@
       text-transform: uppercase;
 
       @media screen and (max-width: 500px) {
-        font-size: 8.5vw;
+        font-size: 24px;
       }
     }
 
     p {
       padding-top: 1.38vw;
+      padding-right: 1.5vw;
       padding-bottom: 1.38vw;
       color: white;
       font-family: $OpenSans;
@@ -199,8 +212,9 @@
       line-height: 140%;
 
       @media screen and (max-width: 500px) {
+        padding-right: 0;
         font-family: $Raleway;
-        font-size: 3.7vw;
+        font-size: 14px;
       }
     }
 
@@ -260,7 +274,7 @@
 
   .outer-border {
     margin-right: 8.8vw;
-    margin-left: 4vw;
+    margin-left: 0;
 
     @media screen and (max-width: 500px) {
       width: 87.2vw;
@@ -330,7 +344,7 @@
   }
 
   .outer-border {
-    margin-right: 3vw;
+    margin-right: 0;
     margin-left: 8.8vw;
 
     @media screen and (max-width: 768px) {
