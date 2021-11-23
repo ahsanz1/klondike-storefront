@@ -49,6 +49,9 @@ const CartPopUP = ({ loading }) => {
 
   // const latestItem = cartItems[cartItems.length - 1]
   const handleClick = () => {
+    closePopUpModal()
+    showModal()
+    loading()
     showModal()
     // loading()
     closePopUpModal()
