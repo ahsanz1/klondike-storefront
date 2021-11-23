@@ -39,6 +39,8 @@ const Navbar = ({
     cartAmount,
     getCartItems,
     cartData,
+    loadingState,
+    setLoadingState,
   } = useContext(AppContext)
   const wholesaleLinks =
     dynamicLinks ||
@@ -63,7 +65,9 @@ const Navbar = ({
     item =>
       item?.attributes?.find(att => att?.name === 'Packaged Order')?.value,
   )
-
+  const loadingFunc = () => {
+    setLoadingState(!loadingState)
+  }
   return (
     <div
       className={
@@ -72,7 +76,7 @@ const Navbar = ({
     >
       <div className="header__nav">
         <CartDropdown />
-        <CartPopUP />
+        <CartPopUP loading={loadingFunc} />
         <div className="mobile-home-logo">
           <Link to="/">
             <Image width={75} src={mobileLogo.url} alt="logo" />
@@ -184,7 +188,8 @@ const Navbar = ({
                 </div>
               ) : (
                 <div className="cart-amount">
-                  {parseFloat(getCartItems?.quantity || 0)} {` ltrs`}
+                  {parseFloat(cartAmount || getCartItems?.quantity || 0)}{' '}
+                  {` ltrs`}
                 </div>
               )}
               <NavbarcartIcon
@@ -195,7 +200,7 @@ const Navbar = ({
           )}
         </div>
       </div>
-      {/* {<div
+      {/* { loadingState && !isModalVisible && <div
         className="loading"
         style={{
           color: '#ffff',
