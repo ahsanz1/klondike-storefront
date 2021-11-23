@@ -75,7 +75,7 @@
       border: 0.1vw solid #f2a900;
       border-radius: 0.3vw;
       background: #f2a900;
-      color: white;
+      color: #ff8200;
       font-family: $Raleway;
       font-size: 1.1vw;
       font-weight: bold;
@@ -85,23 +85,21 @@
       text-transform: uppercase;
 
       @media screen and (max-width: 768px) {
-        width: auto;
-        height: auto;
+        width: 120px;
+        height: 40px;
         margin-top: 2.6vw;
         margin-bottom: 8vw;
         margin-left: 5.33vw;
-        //width: 150px;
-        //margin-bottom: 20px;
-        //background: $accent-color;
-        //color: white;
-        //font-size: 14px;
-        padding: 10px;
-        border: 0.5vw solid #ff8200;
-        border-radius: 1.3vw;
+        // padding: 10px;
+        border: 2px solid #ff8200;
+        border-radius: 5px;
         background: transparent;
         color: #032939;
-        font-size: 3.7vw;
-        line-height: 6.4vw;
+        font-family: $Raleway;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 24px;
         text-transform: none;
       }
 
