@@ -41,7 +41,7 @@ export const searchFilters = async query => {
   }
 }
 
-export const fetchItems = async (query, pageSize = 100, page = 0) => {
+export const fetchItems = async (query, pageSize = 500, page = 0) => {
   try {
     let response = await INDEX.search(query, {
       // restrictSearchableAttributes: ['title', 'description'],

@@ -663,6 +663,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       !packagedOrder &&
                                       'rgba(255, 255, 255, 0.3)',
                                   }}
+                                  onKeyUp={e => {
+                                    if (e.target.value < 0) {
+                                      e.target.value = e.target.value * -1
+                                    }
+                                  }}
                                 />
                               )}
                             </div>
@@ -809,6 +814,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                           backgroundColor:
                                             packagedOrder &&
                                             'rgba(255, 255, 255, 0.3)',
+                                        }}
+                                        onKeyUp={e => {
+                                          if (e.target.value < 0) {
+                                            e.target.value = e.target.value * -1
+                                          }
                                         }}
                                       />
                                     </div>
