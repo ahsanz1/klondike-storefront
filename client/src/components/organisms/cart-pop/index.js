@@ -52,6 +52,9 @@ const CartPopUP = ({ loading }) => {
     closePopUpModal()
     showModal()
     loading()
+    showModal()
+    // loading()
+    closePopUpModal()
   }
   console.log('cartData', cartData)
   useEffect(() => {

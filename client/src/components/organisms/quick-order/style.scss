@@ -402,10 +402,14 @@
   }
 
   .price-list-btn {
-    position: absolute;
-    top: get-vw(223px);
-    bottom: get-vw(623px);
-    left: get-vw(1284px);
+    // position: absolute;
+    // top: get-vw(223px);
+    // bottom: get-vw(623px);
+    // left: get-vw(1284px);
+    display: flex;
+    justify-content: end;
+    margin-top: get-vw(53px);
+    margin-right: 2vw;
     font-family: $OpenSans;
     font-size: get-vw(14px);
     font-weight: bold;
@@ -606,7 +610,7 @@
   margin-right: 1.73vw;
 
   .checkout {
-    margin-top: 16.36vw;
+    margin-top: 10.36vw;
     color: white;
     font-family: $OpenSans;
     font-style: normal;

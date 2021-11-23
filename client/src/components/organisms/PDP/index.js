@@ -663,6 +663,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       !packagedOrder &&
                                       'rgba(255, 255, 255, 0.3)',
                                   }}
+                                  onKeyUp={e => {
+                                    if (e.target.value < 0) {
+                                      e.target.value = e.target.value * -1
+                                    }
+                                  }}
                                 />
                               )}
                             </div>
@@ -672,7 +677,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                               }
                               style={{
                                 color:
-                                  item?.totalPrice > 0 ? '#fa9200' : 'white',
+                                  item?.totalPrice > 0 ? '#f1a900' : 'white',
                               }}
                             >
                               {isLoggedIn &&
@@ -689,7 +694,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             style={{
                               color:
                                 items?.totalPackagedOrderPrice > 0
-                                  ? '#fa9200'
+                                  ? '#f1a900'
                                   : packagedOrder
                                   ? 'white'
                                   : 'rgba(255, 255, 255, 0.3)',
@@ -809,6 +814,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                           backgroundColor:
                                             packagedOrder &&
                                             'rgba(255, 255, 255, 0.3)',
+                                        }}
+                                        onKeyUp={e => {
+                                          if (e.target.value < 0) {
+                                            e.target.value = e.target.value * -1
+                                          }
                                         }}
                                       />
                                     </div>
