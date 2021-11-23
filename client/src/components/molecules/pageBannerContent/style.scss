@@ -95,8 +95,8 @@
 
     button {
       box-sizing: border-box;
-      width: 12.7vw;
-      height: 2.6vw;
+      width: 12.78vw;
+      height: 2.78vw;
       border: 0.1vw solid #f2a900;
       border-radius: 0.3vw;
       background: transparent;
@@ -114,13 +114,17 @@
       }
 
       @media screen and (max-width: 768px) {
-        width: auto;
-        height: auto;
-        padding: 10px;
+        width: 49.066vw;
+        height: 10.66vw;
         border: 0.5vw solid #f2a900;
         border-radius: 1.3vw;
-        font-size: 3.7vw;
+        font-size: 3.73vw;
         line-height: 6.4vw;
+        text-align: center;
+
+        &:lang(fr) {
+          width: 55vw;
+        }
       }
     }
   }
