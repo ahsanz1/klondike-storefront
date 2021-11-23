@@ -228,6 +228,11 @@ $vw-viewport: 1440;
         margin-bottom: 15px;
         margin-left: 0;
         padding: 4vw;
+
+        &:last-child {
+          padding: 0;
+          padding-top: 5.33vw;
+        }
       }
 
       span {
@@ -242,6 +247,30 @@ $vw-viewport: 1440;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media (max-width: 768px) {
+          display: block;
+        }
+
+        .checkout-po-input {
+          @media (max-width: 768px) {
+            padding-top: 6.13vw;
+            padding-right: 6.13vw;
+            padding-bottom: 5.33vw;
+            padding-left: 35.73vw;
+          }
+          // .inputStyle {
+          //   @media (max-width: 768px) {
+          //     width: 45.33vw;
+          //   }
+          // }
+        }
+
+        .checkout-po-span {
+          @media (max-width: 768px) {
+            padding-left: 6.4vw;
+          }
+        }
       }
 
       // .change-button:hover {
