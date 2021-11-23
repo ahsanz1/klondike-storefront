@@ -55,6 +55,7 @@ const QuickOrder = () => {
   const [inputvalue, setInputValue] = useState()
   const [isPackage, setIsPackage] = useState(true)
   const [hasCartData, setHasCartData] = useState(false)
+  const [searchItem, setSearchItem] = useState()
 
   console.log(inputvalue)
   useEffect(() => {
@@ -381,11 +382,20 @@ const QuickOrder = () => {
     }
 
     const items = await fetchItems(value)
+      // console
+      //   .log('searchItem', items.hits)
+      .then(_list => {
+        setSearchItem(_list.hits)
+        // setSearchFilter(list.hits)
+        console.log('itemspckg', searchItem)
+      })
+      .catch(error => console.log('Part number Error:', error))
 
     const titleArray = items.hits.map(item => {
-      return item.title
+      return item['Part Number']
     })
-    console.log(titleArray, 'titleArray')
+    console.log('titleArray', titleArray, searchItem)
+
     const inputs = Object.values(inputList[0])
     console.log('arraaayy', inputs)
     // if (inputs[0] !== '' || inputs[1] !== '' || inputList.length > 1) {
@@ -394,6 +404,10 @@ const QuickOrder = () => {
     //   setRadioStatePackage(false)
     // }
   }
+
+  // useEffect(() => {
+  //   console.log('searchItem', searchItem)
+  // }, [searchItem])
 
   const filters = {}
 
@@ -454,8 +468,8 @@ const QuickOrder = () => {
     let packagearr = []
     let bulkararr = []
 
-    fetcheditems &&
-      fetcheditems.map((datas, i) => {
+    searchItem &&
+      searchItem.map((datas, i) => {
         if (datas['Packaged Order'] === true) {
           let packageorder = {
             label: datas['Part Number'],
@@ -472,9 +486,10 @@ const QuickOrder = () => {
       })
     setProductstitle(packagearr)
     setBulkdata(bulkararr)
-    console.log(packagearr, 'packageorder')
+    console.log('packagearr', packagearr)
     console.log(bulkararr, 'bulkararr')
-  }, [fetcheditems])
+    console.log('searchItem', searchItem)
+  }, [searchItem])
 
   const handleAddRow = () => {
     if (inputList[0].partnumber.length > 0 && inputList[0].quantity > 0) {
