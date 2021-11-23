@@ -349,7 +349,10 @@ const QuickOrder = () => {
 
   const handleChangePackageqty = async (e, index) => {
     setQtyError(false)
-    const { name, value } = e.target
+    let { name, value } = e.target
+    if (value < 0) {
+      value = value * -1
+    }
     const list = [...inputList]
     list[index][name] = value
     setInputValue(value)
@@ -424,7 +427,10 @@ const QuickOrder = () => {
 
   const handleChangeBulk = async (e, index) => {
     setQtyError(false)
-    const { name, value } = e.target
+    let { name, value } = e.target
+    if (value < 0) {
+      value = value * -1
+    }
     const list = [...inputList]
     list[index][name] = value
 
