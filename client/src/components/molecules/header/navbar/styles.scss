@@ -232,9 +232,14 @@
 
     @media screen and (max-width: 768px) {
       display: none;
-      min-width: 67.73vw !important;
+      min-width: 55.73vw !important;
       // min-height: auto !important;
       height: auto !important;
+      padding: 5px;
+      border-radius: 5px;
+      font-family: $OpenSans !important;
+      font-size: 5.33vw !important;
+      font-weight: 700;
 
       &:lang(fr) {
         width: 80vw !important;
