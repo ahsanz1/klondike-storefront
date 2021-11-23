@@ -733,7 +733,7 @@ const QuickOrder = () => {
                               min={0}
                               max={100}
                               type="number"
-                              defaultValue={caseqty[`index-${i}`]}
+                              defaultValue={1}
                               value={data['quantity']}
                               onChange={e => onChangeqty(e, i, data)}
                               size="middle"
