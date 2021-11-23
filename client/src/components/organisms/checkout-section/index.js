@@ -538,8 +538,10 @@ const Checkoutsection = () => {
                 {inputField && (
                   <div className="checkout-info">
                     <div className="checkout-po">
-                      <span>Custom PO Number:</span>
-                      <div>
+                      <span className="checkout-po-span">
+                        Custom PO Number:
+                      </span>
+                      <div className="checkout-po-input">
                         <Input
                           placeholder="Enter Custom PO Number"
                           onChange={handlePOInput}
