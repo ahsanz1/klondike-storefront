@@ -7,9 +7,9 @@
   padding-left: 8.33vw;
 
   @media screen and (max-width: 500px) {
-    margin-top: 27.73vw;
+    margin-top: 4.7vw;
     padding: 16vw 5.6vw;
-    padding-top: 1.6vw;
+    // padding-top: 0.2vw;
   }
 
   .navigation-button {
@@ -18,7 +18,7 @@
 
     @media (max-width: 500px) {
       display: flex !important;
-      margin-top: 10.93vw !important;
+      margin-top: 9vw !important;
       margin-bottom: 10.93vw !important;
     }
   }
