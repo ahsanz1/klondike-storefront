@@ -31,6 +31,7 @@
     color: white;
     font-family: $OpenSans;
     font-size: 1.6vw;
+    font-weight: bold;
     letter-spacing: -0.03vw;
     line-height: 110%;
     text-transform: uppercase;
@@ -94,13 +95,15 @@
     }
   }
 
-  // .last-item {
-  //   @media screen and (max-width: 768px) {
-  //     width: 327px;
-  //     margin: 0 auto;
-  //     font-size: 12px;
-  //   }
-  // }
+  .last-item {
+    width: 35.48vw;
+
+    @media screen and (max-width: 768px) {
+      width: 87.2vw;
+      //margin: 0 auto;
+      //font-size: 12px;
+    }
+  }
 
   ul {
     padding-left: 1.7vw;
@@ -116,6 +119,7 @@
         padding-top: 1.5vw;
         color: white;
         font-size: 0.9vw;
+        font-weight: bold;
 
         // @media screen and (max-width: 768px) {
         //   font-size: 12px;
