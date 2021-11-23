@@ -31,10 +31,20 @@
     // }
 
     @media screen and (max-width: 768px) {
+      width: 87.2vw;
+      height: 17.6vw;
+      margin-bottom: 2.53vw;
       padding-left: 5.3vw;
       font-size: 5.3vw;
       font-weight: bold;
       line-height: 111%;
+    }
+
+    font {
+      @media screen and (max-width: 768px) {
+        width: 87.2vw;
+        height: 17.6vw;
+      }
     }
   }
 }
