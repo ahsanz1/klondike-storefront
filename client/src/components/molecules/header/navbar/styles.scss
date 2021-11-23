@@ -150,7 +150,7 @@
 
       @media (max-width: 768px) {
         height: calc(100vh - 100px);
-        padding: 12px 25px 35px;
+        padding: 30px 25px 35px;
       }
 
       @media (max-width: 500px) {
@@ -290,7 +290,7 @@
       border: none;
 
       @media screen and(max-width: 500px) {
-        margin-right: 5.3vw !important;
+        margin-right: 3.73vw !important;
       }
 
       .h-links {
@@ -305,6 +305,15 @@
             height: 4.8vw;
           }
         }
+      }
+    }
+
+    .cart-button {
+      padding-right: 2.43vw;
+
+      @media screen and(max-width: 768px) {
+        padding-top: 2vw;
+        padding-right: 9.33vw;
       }
     }
 

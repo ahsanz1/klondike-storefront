@@ -49,9 +49,12 @@ const CartPopUP = ({ loading }) => {
 
   // const latestItem = cartItems[cartItems.length - 1]
   const handleClick = () => {
-    loading()
     closePopUpModal()
     showModal()
+    loading()
+    showModal()
+    // loading()
+    closePopUpModal()
   }
   console.log('cartData', cartData)
   useEffect(() => {
