@@ -35,7 +35,8 @@
     width: 100%;
     padding: 0 6.5vw;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 768px) {
+      top: 14%;
       flex-direction: column;
       text-align: center;
     }
@@ -50,7 +51,7 @@
         width: 26.2vw;
         color: white;
         font-family: $OpenSans;
-        font-size: 1.1vw;
+        font-size: 1.1805vw;
         font-weight: bold;
         line-height: 110%;
         text-align: center;
@@ -59,8 +60,9 @@
         // @media screen and (max-width: 768px) {
         //   width: 100%;
         // }
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 768px) {
           width: 90.9vw;
+          padding-top: 4.8vw;
           font-size: 6.4vw;
           text-align: left;
         }
@@ -93,8 +95,8 @@
 
     button {
       box-sizing: border-box;
-      width: 12.7vw;
-      height: 2.6vw;
+      width: 12.78vw;
+      height: 2.78vw;
       border: 0.1vw solid #f2a900;
       border-radius: 0.3vw;
       background: transparent;
@@ -112,13 +114,17 @@
       }
 
       @media screen and (max-width: 768px) {
-        width: auto;
-        height: auto;
-        padding: 10px;
+        width: 49.066vw;
+        height: 10.66vw;
         border: 0.5vw solid #f2a900;
         border-radius: 1.3vw;
-        font-size: 3.7vw;
+        font-size: 3.73vw;
         line-height: 6.4vw;
+        text-align: center;
+
+        &:lang(fr) {
+          width: 55vw;
+        }
       }
     }
   }
