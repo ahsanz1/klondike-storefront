@@ -3912,8 +3912,7 @@ export const pcp = {
   pcpbottom: [
     {
       image: {
-        url:
-          'https://greatwall-sandbox-sandbox-image.imgix.net/5167496365/xpm/plp-bottle.png?auto=compress',
+        url: '/static/images/bottom-image.png',
         altText: 'image',
       },
       button: 'DOWNLOAD PDS & MSDS',
@@ -4456,7 +4455,7 @@ export const ourProduct = [
   },
   {
     name: 'Hydraulic Fluids',
-    image: '/static/images/klondike3.png',
+    image: '/static/images/klondike3png',
   },
   {
     name: 'Industrial Oils',
