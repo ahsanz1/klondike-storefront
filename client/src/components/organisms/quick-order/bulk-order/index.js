@@ -79,6 +79,11 @@ const BulkOrder = ({
                     type="number"
                     value={x.quantity}
                     onChange={e => handleChangePackageqty(e, i)}
+                    onKeyUp={e => {
+                      if (e.target.value < 0) {
+                        e.target.value = e.target.value * -1
+                      }
+                    }}
                   />
                   {qtyerror && (
                     <span className="packageqty-error">Please Entre QTY</span>
