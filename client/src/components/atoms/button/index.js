@@ -11,12 +11,14 @@ const Button = ({
   onClick,
   type = 'default',
   disabled = false,
+  title = '',
 }) => {
   return (
     <button
       className={`c-button ${iconOnly ? 'icon-button' : ''} ${className}`}
       style={style}
       type={type}
+      title={title}
       onClick={() => {
         onClick && onClick()
       }}
@@ -35,6 +37,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
+  title: PropTypes.string,
 }
 
 export default Button
