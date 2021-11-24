@@ -90,7 +90,7 @@ $vw-viewport: 350;
 }
 
 .pdp_mobile-heading {
-  width: 90%;
+  width: 100%;
   margin: auto;
   margin-top: 31px;
   color: #fff;
@@ -137,15 +137,19 @@ $vw-viewport: 350;
 .oneCell {
   display: flex;
   flex-direction: column;
+  width: 22%;
   // align-items: center;
-  min-width: get-vw(72);
-  margin: get-vw(3);
+  margin-bottom: get-vw(10);
   padding: get-vw(3);
+}
 
-  @media (max-width: 320px) {
-    min-width: 22vw !important;
-    max-width: 30vw;
-  }
+.oneCellBulk {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  // align-items: center;
+  margin-bottom: get-vw(10);
+  padding: get-vw(3);
 }
 
 .divider {
@@ -153,6 +157,7 @@ $vw-viewport: 350;
 }
 
 .head {
+  width: 100%;
   margin-bottom: get-vw(5);
   color: #fff;
   font-family: $OpenSans;
@@ -166,7 +171,7 @@ $vw-viewport: 350;
 
 .value {
   // max-width: get-vw(60);
-  width: get-vw(65);
+  width: 100%;
   overflow: hidden;
   opacity: 0.9;
   color: #c2bbb7;
@@ -175,9 +180,9 @@ $vw-viewport: 350;
   font-weight: bold;
   letter-spacing: 0.03em;
   line-height: 185.5%;
-  text-overflow: ellipsis;
-  text-transform: uppercase;
-  white-space: nowrap;
+  // text-overflow: ellipsis;
+  // text-transform: uppercase;
+  // white-space: nowrap;
   // margin-top: 5px;
 }
 
@@ -186,8 +191,9 @@ $vw-viewport: 350;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  min-width: get-vw(90);
-  margin: get-vw(3);
+  // min-width: get-vw(90);
+  width: 30%;
+  // margin: get-vw(3);
   padding: get-vw(3);
 
   @media (max-width: 768px) {
@@ -210,7 +216,7 @@ $vw-viewport: 350;
 
 .total-price-container {
   @media (max-width: 768px) {
-    margin-right: 24px;
+    // margin-right: 24px;
     font-family: $OpenSans;
     text-align: right;
   }
