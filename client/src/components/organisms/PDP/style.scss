@@ -88,9 +88,10 @@ $vw-viewport: 1440;
 
 .cell {
   display: table-cell;
-  min-width: get-vw(80);
+  min-width: get-vw(90);
+  // min-width: get-vw(80);
   // width: get-vw(103);
-  max-width: get-vw(80);
+  max-width: get-vw(95);
   padding: 1vw;
   //padding-left: 0vw;
   opacity: 0.9;
@@ -128,10 +129,24 @@ $vw-viewport: 1440;
   color: rgba(255, 255, 255, 0.3) !important;
 }
 
+.empty-cell {
+  width: 6.5vw;
+}
+
+.logout-table {
+  display: flex;
+  justify-content: space-between;
+  width: get-vw(330);
+}
+
+.logout-cell {
+  max-width: 7vw !important;
+}
+
 .cell-header {
   display: table-cell;
   // width: get-vw(103);
-  min-width: get-vw(80);
+  min-width: get-vw(60);
   max-width: 6.6vw;
   padding: 1vw;
   // padding-left: 0vw;
@@ -145,10 +160,15 @@ $vw-viewport: 1440;
   line-height: get-vw(18);
   text-align: center;
   text-transform: uppercase;
+  // text-align: center;
 }
 
 .cell-header.size {
-  text-align: left;
+  text-align: left !important;
+}
+
+.cell.size {
+  text-align: left !important;
 }
 
 .input {
@@ -168,7 +188,7 @@ $vw-viewport: 1440;
   // margin: auto;
   // justify-content: center;
   width: 100%;
-  padding: 1vw;
+  // padding: 1vw;
 
   @media screen and (max-width: 768px) {
     // visibility: hidden;
@@ -180,6 +200,7 @@ $vw-viewport: 1440;
 }
 
 .breadcumb-column {
+  margin-left: get-vw(20);
   padding: get-vw(40);
 }
 
@@ -241,16 +262,22 @@ $vw-viewport: 1440;
 .sidebar {
   display: flex;
   justify-content: center;
-  width: get-vw(370);
+  width: get-vw(357);
 }
 
 .product-details {
-  width: get-vw(1070);
+  width: get-vw(1083);
 }
 
 .product-table {
-  width: get-vw(620);
-  margin: auto;
+  width: get-vw(754);
+  margin-right: get-vw(100);
+  margin-left: get-vw(50);
+  // margin: auto;
+}
+
+.w-600 {
+  width: get-vw(600);
 }
 
 .customButton :hover {

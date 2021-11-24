@@ -15,6 +15,7 @@ const CartDropdown = () => {
   const {
     user,
     isModalVisible,
+    miniCartLoading,
     closeModal,
     getCartItems,
     setGetCartItemsState,
@@ -65,7 +66,7 @@ const CartDropdown = () => {
     getCart()
     setCartAmount(getCartItems?.totalAmount?.amount)
   }, [])
-
+  console.log('minicart', miniCartLoading)
   return (
     isModalVisible && (
       // size > 768 &&
@@ -119,6 +120,9 @@ const CartDropdown = () => {
               </p>
             )}
           </div>
+          <h1 style={{ color: 'gray' }}>
+            {miniCartLoading ? 'Loading...' : ''}
+          </h1>
           <div className="cart-dropdown-items">
             {getCartItems.items && getCartItems.items.length > 0 ? (
               getCartItems.items.map((cartItem, id) => {

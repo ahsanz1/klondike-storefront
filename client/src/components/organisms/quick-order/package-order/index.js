@@ -27,7 +27,11 @@ const PackageOrder = ({
   console.log('inputList:', inputList)
 
   const cartHandler = () => {
-    if (inputList[0].partnumber === '' || inputList[0].quantity === '') {
+    if (
+      inputList[0].partnumber === '' ||
+      inputList[0].quantity === '' ||
+      inputList[0].quantity < 1
+    ) {
       setValidation(true)
     } else {
       setValidation(false)
@@ -58,45 +62,30 @@ const PackageOrder = ({
             <div key={i}>
               <div className="text-fields">
                 <div>
-                  <select
-                    name="cars"
-                    id="cars"
-                    className="part-number"
-                    onBlur={e => handleChangePackage(e, i)}
-                  >
-                    {titleArray.map((item, i) => {
-                      return (
-                        <optgroup label="KL-TF9080" key={i}>
-                          <option value="volvo">Volvo</option>
-                          <option value="saab">Saab</option>
-                        </optgroup>
-                      )
-                    })}
-                  </select>
-                  {/* <input
+                  <input
                     list="partnumber"
                     name="partnumber"
                     className="part-number"
                     placeholder="Enter Part Number"
-                    autoComplete="off"
+                    // autoComplete="off"
                     value={x.partnumber}
                     onChange={e => handleChangePackage(e, i)}
-                  /> */}
+                  />
                   {validation && inputList[0].partnumber === '' && (
                     <div style={{ color: 'red' }} className="validation">
                       Please Enter Part Number
                     </div>
                   )}
-                  {/* <datalist id="partnumber">
+                  <datalist id="partnumber">
                     {titleArray.map((item, i) => {
                       return <option key={i} value={item.value} />
                     })}
-                  </datalist> */}
+                  </datalist>
                 </div>
 
                 <div className="package-qty">
                   <input
-                    min="0"
+                    min="1"
                     name="quantity"
                     className="quantity-number"
                     type="number"

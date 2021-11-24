@@ -165,19 +165,22 @@ const Navbar = ({
             }
             className="header__User-icon"
           >
-            <Image
-              height={26}
-              src={userIcon.url}
-              alt={userIcon.altText}
-              onClick={() => setLoginBottom(false)}
-            />
+            <button>
+              <Image
+                height={26}
+                src={userIcon.url}
+                alt={userIcon.altText}
+                onClick={() => setLoginBottom(false)}
+              />
+            </button>
           </Link>
           {userLoginInfo && userLoginInfo.email && (
             <Button
               iconOnly
-              style={{
-                paddingRight: '35px',
-              }}
+              className="cart-button"
+              // style={{
+              //   paddingRight: '35px',
+              // }}
             >
               {res ? (
                 <div className="cart-amount">

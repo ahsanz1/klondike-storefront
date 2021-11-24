@@ -8,6 +8,7 @@
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;
     padding: 5.3vw !important;
+    padding-top: 2.4vw !important;
     overflow: hidden;
   }
 
@@ -17,6 +18,7 @@
 
   h1 {
     width: 19.5vw;
+    margin-top: 0;
     margin-left: 5.5vw;
     color: white;
     font-family: $OpenSans;

@@ -248,7 +248,7 @@ const Checkoutsection = () => {
     var shipToTaxes = await getShipToTaxes(shipToResponse?.data?.items)
     let req = {
       cartId: cartPayload?._id,
-      customerEmail: 'haseeb.shaukat@shopdev.co',
+      customerEmail: personalInfo?.email,
       paymentDetails: [
         {
           transactionDetails: {
@@ -479,8 +479,8 @@ const Checkoutsection = () => {
               <div className="checkout-info">
                 <span>{`${personalInfo?.email}`}</span>
               </div>
-              <div className="checkout-info-second">
-                {delivery ? (
+              {delivery ? (
+                <div className="checkout-info-second">
                   <div className="checkout-po">
                     <span>
                       <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
@@ -492,32 +492,40 @@ const Checkoutsection = () => {
                       {`${address?.phone?.number}`}
                     </span>
                   </div>
-                ) : (
-                  <div className="checkout-po">
-                    {Object.keys(selectedLocation).length === 0 ? (
-                      <div>
-                        <span>Please choose location!</span>
+                </div>
+              ) : (
+                <div className="checkout-info-second justify-align-center">
+                  {Object.keys(selectedLocation).length === 0 ? (
+                    <div>
+                      <div className="checkout-po">
+                        <div>
+                          <span>Please choose location!</span>
+                        </div>
                       </div>
-                    ) : (
-                      <span>
-                        {`${selectedLocation?.address?.street1},`}
-                        <br />
-                        {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
-                        <br />
-                        {`${selectedLocation?.address?.phone?.number ||
-                          '000-000-000'}`}
-                      </span>
-                    )}
-                    <Button
-                      ghost
-                      className="change-button"
-                      onClick={handlePickUpClick}
-                    >
-                      CHOOSE PICKUP LOCATION
-                    </Button>
-                  </div>
-                )}
-              </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="checkout-po">
+                        <span>
+                          {`${selectedLocation?.address?.street1},`}
+                          <br />
+                          {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
+                          <br />
+                          {`${selectedLocation?.address?.phone?.number ||
+                            '000-000-000'}`}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                  <Button
+                    ghost
+                    className="change-button"
+                    onClick={handlePickUpClick}
+                  >
+                    CHOOSE PICKUP LOCATION
+                  </Button>
+                </div>
+              )}
               <div className="checkout-info-third">
                 <div>
                   <span className="checkout-po">
@@ -538,8 +546,10 @@ const Checkoutsection = () => {
                 {inputField && (
                   <div className="checkout-info">
                     <div className="checkout-po">
-                      <span>Custom PO Number:</span>
-                      <div>
+                      <span className="checkout-po-span">
+                        Custom PO Number:
+                      </span>
+                      <div className="checkout-po-input">
                         <Input
                           placeholder="Enter Custom PO Number"
                           onChange={handlePOInput}
@@ -598,7 +608,11 @@ const Checkoutsection = () => {
                 <span className="total-price">Total Amount</span>
                 {delivery ? (
                   <span className="total-amount">
-                    {`$${parseFloat(cartPayload?.itemsTotal + 39).toFixed(2)}`}
+                    {`$${parseFloat(
+                      delivery
+                        ? cartPayload?.itemsTotal + 39
+                        : cartPayload?.itemsTotal,
+                    ).toFixed(2)}`}
                   </span>
                 ) : (
                   <span className="total-amount">
