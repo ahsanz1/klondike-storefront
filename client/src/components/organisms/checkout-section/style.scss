@@ -75,6 +75,10 @@ $vw-viewport: 1440;
     width: 100%;
     margin: 3vw 1vw;
 
+    @media (max-width: 768px) {
+      margin: 11.2vw 0;
+    }
+
     .placeorder-btn {
       box-sizing: border-box;
       width: 55vw;
@@ -88,7 +92,7 @@ $vw-viewport: 1440;
       font-weight: 700;
 
       @media (max-width: 768px) {
-        width: 100%;
+        width: 87.2vw;
         height: 64px !important;
         font-size: 4vw;
       }
