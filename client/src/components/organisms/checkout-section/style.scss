@@ -12,6 +12,10 @@ $vw-viewport: 1440;
 //   height: 100vh;
 // }
 
+.ant-radio-disabled + span {
+  color: rgba(244, 244, 244, 0.5) !important;
+}
+
 .checkout-wrapper {
   padding-bottom: 12vw;
   color: #fff;
@@ -461,4 +465,10 @@ $vw-viewport: 1440;
 .list-item {
   margin: get-vw(10px);
   cursor: pointer;
+}
+
+.justify-align-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

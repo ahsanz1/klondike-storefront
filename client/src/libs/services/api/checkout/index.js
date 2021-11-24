@@ -102,7 +102,7 @@ export const getPickupPoints = async (itemId, count = 1) => {
       ENDPOINTS.GET.getPickupPoints(itemId),
       {
         headers: {
-          ...HEADER.canada,
+          ...HEADER.common,
         },
       },
     )
