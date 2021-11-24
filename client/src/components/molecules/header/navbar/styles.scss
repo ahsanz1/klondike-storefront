@@ -291,6 +291,10 @@
 
       @media screen and(max-width: 500px) {
         margin-right: 3.73vw !important;
+
+        @supports (-webkit-touch-callout: none) {
+          margin-right: -5vw !important;
+        }
       }
 
       .h-links {
