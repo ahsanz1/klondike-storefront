@@ -27,7 +27,11 @@ const PackageOrder = ({
   console.log('inputList:', inputList)
 
   const cartHandler = () => {
-    if (inputList[0].partnumber === '' || inputList[0].quantity === '') {
+    if (
+      inputList[0].partnumber === '' ||
+      inputList[0].quantity === '' ||
+      inputList[0].quantity < 1
+    ) {
       setValidation(true)
     } else {
       setValidation(false)
@@ -81,7 +85,7 @@ const PackageOrder = ({
 
                 <div className="package-qty">
                   <input
-                    min="0"
+                    min="1"
                     name="quantity"
                     className="quantity-number"
                     type="number"

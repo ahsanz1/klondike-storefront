@@ -69,6 +69,7 @@ const QuickOrder = () => {
   }, [])
 
   useEffect(() => {
+    mapShowCartData(true)
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
       let res = false
       res = getCartItems.items[0].attributes.find(
@@ -111,7 +112,7 @@ const QuickOrder = () => {
     setAccordianIsActive(!accordianisActive)
   }
 
-  const mapShowCartData = async () => {
+  const mapShowCartData = async (recursiveCall = false) => {
     let skus = []
     let res = await getCartByUserId(user.accessToken)
     let data = res.data
@@ -168,10 +169,13 @@ const QuickOrder = () => {
 
     setCartItems(itemsArr)
     setTotalQty(grandPrice.toFixed(2))
-    setGetCartItemsState({
-      items: tempArray,
-      totalAmount: res?.data?.totalAmount,
-    })
+
+    if (recursiveCall === false) {
+      setGetCartItemsState({
+        items: tempArray,
+        totalAmount: res?.data?.totalAmount,
+      })
+    }
   }
 
   const addedItemToCart = async searchedCartitems => {
@@ -185,7 +189,7 @@ const QuickOrder = () => {
       if (data !== undefined) {
         skus.push(data['sku'])
         obj[data['sku']] = caseqty[`index-${i}`]
-        price += data['Base Price'] * caseqty[`index-${i}`]
+        price += data['Base Price'] * caseqty[`index-${i}`] || 0
       }
     })
 

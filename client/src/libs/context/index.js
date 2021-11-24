@@ -64,6 +64,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState)
   const [myAccountForm, setMyAccountForm] = useState([])
   const [isNewAddress, setIsNewAddress] = useState(false)
+  const [miniCartLoading, setMiniCartLoading] = useState(false)
   const [totalCheckoutCost, setTotalCheckoutCost] = useState('')
   const [sigunUpforExclusiveOffers, setSigunUpforExclusiveOffers] = useState(
     false,
@@ -87,6 +88,7 @@ const AppProvider = ({ children }) => {
 
   const showModal = async () => {
     let skus = []
+    setMiniCartLoading(true)
     setIsModalVisible(true)
 
     if (size > 768) {
@@ -101,7 +103,6 @@ const AppProvider = ({ children }) => {
     })
 
     let itemsRes = await getItemsBySkus(skus)
-    console.log('itemsRes', itemsRes, 'user res', data)
     let itemsArr = []
 
     let sizes = []
@@ -130,6 +131,7 @@ const AppProvider = ({ children }) => {
     }
 
     setGetCartItemsState(payload)
+    setMiniCartLoading(false)
     setCartAmount(payload.totalAmount.amount)
   }
 
@@ -286,6 +288,8 @@ const AppProvider = ({ children }) => {
         closePopUpModal,
         closeModal,
         getCartItems,
+        miniCartLoading,
+        setMiniCartLoading,
         setGetCartItemsState,
         pdpPurchaseType,
         setPdpPurchaseType,
