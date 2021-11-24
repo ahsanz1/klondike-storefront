@@ -57,7 +57,8 @@ const Oats = () => {
 
   const getproducts = () => {
     const url = [
-      `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query}&familygroup=${familygroups}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
+      `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query ||
+        yousearch}&familygroup=${familygroups}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
     ]
     console.log('urlss', url)
     setOtsdata([])
@@ -319,9 +320,19 @@ const Oats = () => {
                           {data && data.manufacturer}
                         </p>
                         <p className="custom-grid">{data && data.model}</p>
-                        <p className="custom-grid">
-                          {data && data.yearfrom} - {data && data.yearto}
-                        </p>
+                        {data && data.yearfrom === data.yearto ? (
+                          <>
+                            <p className="custom-grid">
+                              {data && data.yearfrom}
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="custom-grid">
+                              {data && data.yearfrom} - {data && data.yearto}
+                            </p>
+                          </>
+                        )}
                         <p className="custom-grid">
                           {data && data.alt_fueltype}
                         </p>
