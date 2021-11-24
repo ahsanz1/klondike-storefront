@@ -39,6 +39,10 @@
     }
 
     .safety-para {
+      a {
+        color: #f1a900;
+      }
+
       &:nth-child(1) {
         .title {
           @media screen and (max-width: 768px) {
