@@ -35,10 +35,18 @@ const SearchFlow = props => {
     // setSearchFilter(list.hits)
     // Promise Start
     await fetchItems(value)
-      .then(list => {
-        setItemList(list.hits)
-        setSearchFilter(list.hits)
+      .then(async list => {
+        let hits = []
+        await list.hits.map((data, i) => {
+          if (data['isVariant'] === false) {
+            hits.push(data)
+          }
+        })
+        setItemList(hits)
+        setSearchFilter(hits)
+        console.log('hits', hits)
       })
+
       .catch(error => console.log('Search Error:', error))
     // Promise End
   }
