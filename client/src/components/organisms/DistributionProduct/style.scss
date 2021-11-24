@@ -185,7 +185,7 @@
 
     @media screen and (max-width: 500px) {
       width: 87.2vw;
-      padding: 0 3.2vw;
+      padding: 0 4.5vw;
       padding-right: 0;
     }
 
@@ -198,7 +198,8 @@
       text-transform: uppercase;
 
       @media screen and (max-width: 500px) {
-        font-size: 24px;
+        width: 87.2vw;
+        font-size: 8.53vw;
       }
     }
 
@@ -214,6 +215,7 @@
       line-height: 140%;
 
       @media screen and (max-width: 500px) {
+        width: 87.2vw;
         padding-right: 0;
         font-family: $Raleway;
         font-size: 14px;
