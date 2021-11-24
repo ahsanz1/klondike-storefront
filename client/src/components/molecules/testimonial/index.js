@@ -22,7 +22,9 @@ const Testimonial = ({ testimonial }) => {
           <Slider {...settings}>
             {testimonial.map((slide, i) => (
               <div className="slide" key={i}>
-                <Image src={slide.image.url} className="slider-image" />
+                {slide.image.url && (
+                  <Image src={slide.image.url} className="slider-image" />
+                )}
                 <p>{slide.headingtext}</p>
                 <p className="comment">{slide.text}</p>
               </div>
