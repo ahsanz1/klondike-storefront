@@ -236,7 +236,7 @@ const PDPMobile = ({
                         {((!isLoggedIn && i < 1) || isLoggedIn) && (
                           <span className="head">PER CASE</span>
                         )}
-                        <span className="value">
+                        <span className="value per-case">
                           {item?.mappedAttributes['Unit of Measurement']}
                         </span>
                       </div>
