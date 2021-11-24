@@ -127,7 +127,9 @@
 
   &:nth-child(even) {
     .outer-border {
-      margin-left: 0;
+      @media (min-width: 768px) {
+        margin-left: 0;
+      }
     }
   }
 

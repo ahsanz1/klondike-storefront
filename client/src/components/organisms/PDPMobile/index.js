@@ -298,12 +298,12 @@ const PDPMobile = ({
                       </div>
                     )}
                     {isLoggedIn && (
-                      <div className="oneCell">
+                      <div className="oneCellBulk">
                         <span className="head text-right">Total Price</span>
                         <span
                           className="value text-right"
                           style={{
-                            color: item?.totalPrice > 0 ? '#f1a900' : '#ffff',
+                            color: item?.totalPrice > 0 ? '#F1A900;' : '#ffff',
                           }}
                         >
                           {isLoggedIn &&
@@ -327,20 +327,20 @@ const PDPMobile = ({
                     }}
                     key={i}
                   >
-                    <div className="oneCell">
+                    <div className="oneCellBulk">
                       {<span className="head text-right">PART NUM</span>}
                       <span className="value text-right">
                         {item?.mappedAttributes['Part Number']}
                       </span>
                     </div>
-                    <div className="oneCell">
+                    <div className="oneCellBulk">
                       <span className="head">Price pER Litre</span>
                       <span className="value">
                         {item?.price?.base &&
                           '$' + parseFloat(item?.price?.base)}
                       </span>
                     </div>
-                    <div className="oneCell">
+                    <div className="oneCellBulk">
                       <span className="head">Bulk</span>
                     </div>
                     {isLoggedIn && (

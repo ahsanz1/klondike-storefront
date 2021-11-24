@@ -476,18 +476,20 @@ const QuickOrder = () => {
 
     searchItem &&
       searchItem.map((datas, i) => {
-        if (datas['Packaged Order'] === true) {
-          let packageorder = {
-            label: datas['Part Number'],
-            value: datas['Part Number'],
+        if (datas['isVariant'] === true) {
+          if (datas['Packaged Order'] === true) {
+            let packageorder = {
+              label: datas['Part Number'],
+              value: datas['Part Number'],
+            }
+            packagearr.push(packageorder)
+          } else {
+            let bulkorder = {
+              label: datas['Part Number'],
+              value: datas['Part Number'],
+            }
+            bulkararr.push(bulkorder)
           }
-          packagearr.push(packageorder)
-        } else {
-          let bulkorder = {
-            label: datas['Part Number'],
-            value: datas['Part Number'],
-          }
-          bulkararr.push(bulkorder)
         }
       })
     setProductstitle(packagearr)
