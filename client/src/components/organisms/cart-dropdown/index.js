@@ -15,6 +15,7 @@ const CartDropdown = () => {
   const {
     user,
     isModalVisible,
+    miniCartLoading,
     closeModal,
     getCartItems,
     setGetCartItemsState,
@@ -65,7 +66,7 @@ const CartDropdown = () => {
     getCart()
     setCartAmount(getCartItems?.totalAmount?.amount)
   }, [])
-
+  console.log('minicart', miniCartLoading)
   return (
     isModalVisible && (
       // size > 768 &&
@@ -113,12 +114,15 @@ const CartDropdown = () => {
               <p className="free-shipping-banner-text">
                 You are{' '}
                 <p className="free-shipping-banner-text-price">{`$${parseFloat(
-                  500 - getCartItems?.totalAmount?.amount,
+                  500 - getCartItems?.totalAmount?.amount || 500,
                 ).toFixed(2)}`}</p>
                 away from free shipping
               </p>
             )}
           </div>
+          <h1 style={{ color: 'gray' }}>
+            {miniCartLoading ? 'Loading...' : ''}
+          </h1>
           <div className="cart-dropdown-items">
             {getCartItems.items && getCartItems.items.length > 0 ? (
               getCartItems.items.map((cartItem, id) => {
