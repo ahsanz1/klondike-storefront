@@ -295,7 +295,7 @@
       font-weight: bold;
       letter-spacing: get-vw(0.04px);
       line-height: get-vw(27px);
-      text-align: right;
+      text-align: left;
       text-transform: uppercase;
 
       @media screen and (max-width: 768px) {
@@ -303,6 +303,10 @@
         padding-right: 0;
         font-size: getmb-vw(14px);
         line-height: getmb-vw(19px);
+      }
+
+      @supports (-webkit-touch-callout: none) {
+        font-size: getmb-vw(13px);
       }
 
       .free-shipping-banner-text-price {
