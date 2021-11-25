@@ -375,6 +375,10 @@ const Checkoutsection = () => {
     window.history.go(-1)
   }
 
+  const redirectToHome = () => {
+    window.location.href = '/'
+  }
+
   return (
     <div>
       <Modal
@@ -409,26 +413,66 @@ const Checkoutsection = () => {
         />
       </Modal>
       <div className="checkout-wrapper">
-        <Row justify="center" align="center" className="checkoutHeader">
-          <Col>
-            <LinkIcon link="/" src="static\images\klondike.png" alt="pic" />
-          </Col>
-        </Row>
-        <Row className="checkout-heading-padding">
-          <Col>
-            <div className="page-title">
-              {/* <Link to="/plp"> */}
-              <Button onClick={goBack} className="goback">
-                <img
-                  className="checkout-back-icon"
-                  src="/static/images/arrowleft.png"
+        {window.innerWidth > 768 ? (
+          <>
+            <Row justify="center" align="center" className="checkoutHeader">
+              <Col>
+                <LinkIcon link="/" src="static\images\klondike.png" alt="pic" />
+              </Col>
+            </Row>
+            <Row className="checkout-heading-padding">
+              <Col>
+                <div className="page-title">
+                  {/* <Link to="/plp"> */}
+                  <Button onClick={goBack} className="goback">
+                    <img
+                      className="checkout-back-icon"
+                      src="/static/images/arrowleft.png"
+                      alt="pic"
+                    />
+                  </Button>
+                  <h1 className="checkout-title"> Checkout</h1>
+                </div>
+              </Col>
+            </Row>
+          </>
+        ) : (
+          <>
+            <Row className="checkoutHeader">
+              <Col>
+                <div className="page-title">
+                  <Button onClick={goBack} className="goback">
+                    <img
+                      className="checkout-back-icon"
+                      src="/static/images/arrowleft.png"
+                      alt="pic"
+                    />
+                  </Button>
+                  <h1 className="checkout-title"> Checkout</h1>
+                </div>
+              </Col>
+              <Col>
+                {/* <LinkIcon
+                  className="checkout-logo"
+                  link="/"
+                  src="static\images\klondike.png"
                   alt="pic"
-                />
-              </Button>
-              <h1 className="checkout-title"> Checkout</h1>
-            </div>
-          </Col>
-        </Row>
+                /> */}
+                <Button
+                  onClick={redirectToHome}
+                  className="checkout-logo-button"
+                >
+                  <img
+                    className="checkout-logo-image"
+                    src="static\images\klondike.png"
+                    alt="pic"
+                  />
+                </Button>
+              </Col>
+            </Row>
+          </>
+        )}
+
         {isCartLoading ? (
           <Row justify="center" align="center">
             <h1 style={{ color: 'gray' }}>Loading...</h1>
