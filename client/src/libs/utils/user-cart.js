@@ -55,6 +55,7 @@ export const setUserCart = async () => {
         ...item,
         size: obj.size,
         image: obj.image,
+        cartIdString: data?._id,
         partnumber: obj.partnumber,
         isPackaged: obj.isPackaged,
         attributes,

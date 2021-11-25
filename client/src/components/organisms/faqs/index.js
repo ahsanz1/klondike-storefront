@@ -24,7 +24,7 @@ const Faqs = ({
   const [faqs, setFaqs] = useState([...faqsData])
 
   // const { tableData } = faqsData
-  // console.log(faqsData)
+  console.log({ faqs })
 
   useEffect(() => {
     let newFaqs = [...faqs]

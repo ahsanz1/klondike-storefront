@@ -33,7 +33,8 @@ import PlpTabList from 'components/organisms/plp-tab-list'
 // import CartDropdown from '../cart-dropdown'
 import { useLocation, useNavigate } from '@reach/router'
 import queryString from 'query-string'
-import { getItemsBySkus } from 'libs/services/api/item'
+// import { getItemsBySkus } from 'libs/services/api/item'
+import { setUserCart } from 'libs/utils/user-cart'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   // const { data, imgdata, heading } = pdpdata
@@ -356,37 +357,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     })
   }
 
-  const getUpdatedCartData = async resData => {
-    let skus = []
-    await resData?.items?.map(item => skus.push(item?.sku))
-    let itemsRes = await getItemsBySkus(skus)
-
-    let itemsArr = []
-
-    let sizes = []
-    await resData?.items.map(async (item, i) => {
-      let attributes = itemsRes?.data[i]?.attributes
-      await attributes.map(attr => {
-        if (attr.name === 'Package Size') {
-          sizes.push(attr.value)
-        }
-      })
-
-      let itemObj = {
-        ...item,
-        size: sizes[i],
-        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
-        attributes: itemsRes?.data[i]?.attributes,
-      }
-
-      itemsArr.push(itemObj)
-    })
-
-    let payload = {
-      ...resData,
-      items: itemsArr,
-    }
-    setGetCartItemsState(payload)
+  const getUpdatedCartData = async () => {
+    setGetCartItemsState(await setUserCart())
     showcartPOPModal()
     setAddingToCart(false)
   }
@@ -405,8 +377,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       .then(res => {
         console.log('ressss', res)
         if (res?.response?.data) {
-          // setGetCartItemsState(res?.response?.data)
-          getUpdatedCartData(res?.response?.data)
+          getUpdatedCartData()
         } else {
           setAddingToCart(false)
           if (res?.hasError) {
