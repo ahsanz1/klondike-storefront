@@ -147,8 +147,8 @@ $vw-viewport: 1440;
     position: absolute;
     top: -35%;
     left: -15%;
-    width: 149.35px;
-    height: 191.57px;
+    width: get-vw(149.35px);
+    height: get-vw(191.57px);
   }
 }
 // &:hover {
@@ -368,7 +368,7 @@ body .ant-modal-mask {
   .product-total-pricing {
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: flex-end;
     margin-top: 38px;
     color: white;
 
@@ -379,6 +379,7 @@ body .ant-modal-mask {
     .total-pricing-block {
       display: flex;
       flex-direction: row;
+      align-items: center;
       margin-right: 20px;
 
       p {
@@ -393,6 +394,7 @@ body .ant-modal-mask {
           width: 59px !important;
 
           @media (max-width: 768px) {
+            border-radius: 3px;
             font-family: $OpenSans !important;
             font-size: 4vw !important;
             font-weight: bold !important;
@@ -400,11 +402,25 @@ body .ant-modal-mask {
         }
       }
     }
-  }
 
-  .prodcut-total-price {
-    .details {
-      color: #f1a900;
+    @media (max-width: 768px) {
+      margin-bottom: 19px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 15px;
+
+      .products-sizes {
+        margin-bottom: 4px;
+      }
+
+      .details {
+        color: #f1a900;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 140%;
+        text-align: right;
+      }
     }
   }
 
