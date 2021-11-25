@@ -44,12 +44,7 @@ const ProductAccordion = ({ question }) => {
 
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
-      let res = false
-      res = getCartItems.items[0].attributes.find(
-        arr => arr.name === 'Packaged Order',
-      )
-
-      if (res && res.value) {
+      if (getCartItems?.hasPackaged) {
         setIsPackage(true)
       } else {
         setIsPackage(false)
@@ -138,15 +133,19 @@ const ProductAccordion = ({ question }) => {
           if (res.hasError !== true) {
             setGetCartItemsState(res.response.data)
             showcartPOPModal()
+            setIsModalVisible(false)
+            setAddToCart(false)
           } else {
             error(res.response.error)
+            setIsModalVisible(false)
+            setAddToCart(false)
           }
         })
         .catch(err => {
           console.log('errres', err)
+          setIsModalVisible(false)
+          setAddToCart(false)
         })
-      setIsModalVisible(false)
-      setAddToCart(false)
     })
   }
 
@@ -201,71 +200,75 @@ const ProductAccordion = ({ question }) => {
 
         {itemdata &&
           itemdata.map((data, i) => {
-            return (
-              <>
-                <Row
-                  className="table-content flex"
-                  key={i}
-                  onClick={i => handleAddToCart(data.itemId)}
-                >
-                  <Col lg={8} className="custom-width">
-                    <p className="text-setting-table">
-                      {data['Product Title']}
-                    </p>
-                  </Col>
-                  <Col lg={4} className="custom-width">
-                    <p className="light-text-weight">{data['Package Size']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p>{data['Part Number']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-center">{data['Weight']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-center">
-                      {data['Unit of Measurement']}
-                    </p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-right text-setting-table">
-                      ${data['Order Price'].toFixed(2)}
-                    </p>
-                  </Col>
-                  {showAddToCart && itemId === data.itemId && (
-                    <>
-                      {/* <div className="hover-details"> */}
-                      <div className="">
-                        <div className="table-image">
-                          <Image
-                            src={data['Image URL'] || data['Image 1 URL']}
-                            className="table-image"
-                          />
+            if (data?.isVariant) {
+              return (
+                <>
+                  <Row
+                    className="table-content flex"
+                    key={i}
+                    onClick={i => handleAddToCart(data.itemId)}
+                  >
+                    <Col lg={8} className="custom-width">
+                      <p className="text-setting-table">
+                        {data['Product Title']}
+                      </p>
+                    </Col>
+                    <Col lg={4} className="custom-width">
+                      <p className="light-text-weight">
+                        {data['Package Size']}
+                      </p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p>{data['Part Number']}</p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-center">{data['Weight']}</p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-center">
+                        {data['Unit of Measurement']}
+                      </p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-right text-setting-table">
+                        ${data['Order Price'].toFixed(2)}
+                      </p>
+                    </Col>
+                    {showAddToCart && itemId === data.itemId && (
+                      <>
+                        {/* <div className="hover-details"> */}
+                        <div className="">
+                          <div className="table-image">
+                            <Image
+                              src={data['Image URL'] || data['Image 1 URL']}
+                              className="table-image"
+                            />
+                          </div>
+                          <div className="table-button">
+                            <Button
+                              onClick={e => showModal(JSON.stringify(data))}
+                              className={
+                                hasCartData &&
+                                !isPackage === data['Packaged Order']
+                                  ? 'hover-button stop'
+                                  : ' hover-button'
+                              }
+                              disabled={
+                                hasCartData
+                                  ? !(isPackage === data['Packaged Order'])
+                                  : false
+                              }
+                            >
+                              ADD TO CART
+                            </Button>
+                          </div>
                         </div>
-                        <div className="table-button">
-                          <Button
-                            onClick={e => showModal(JSON.stringify(data))}
-                            className={
-                              hasCartData &&
-                              !isPackage === data['Packaged Order']
-                                ? 'hover-button stop'
-                                : ' hover-button'
-                            }
-                            disabled={
-                              hasCartData
-                                ? !(isPackage === data['Packaged Order'])
-                                : false
-                            }
-                          >
-                            ADD TO CART
-                          </Button>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </Row>
-              </>
-            )
+                      </>
+                    )}
+                  </Row>
+                </>
+              )
+            }
           })}
       </div>
 

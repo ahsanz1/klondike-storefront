@@ -179,7 +179,7 @@ const Checkoutsection = () => {
 
   const mapItemsWithPickUpandShipping = async shipMethodId => {
     let req = {
-      shipToType: 'BOPIS',
+      shipToType: delivery ? 'BOPIS' : 'STORE_PICKUP',
       shipMethod: shipMethodId,
       taxCode: 'FR020000',
       warehouseId: selectedLocation?._id,
