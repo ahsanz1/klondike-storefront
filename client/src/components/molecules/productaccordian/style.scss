@@ -372,6 +372,10 @@ body .ant-modal-mask {
     margin-top: 38px;
     color: white;
 
+    @supports (-webkit-touch-callout: none) {
+      margin-left: auto;
+    }
+
     .total-pricing-block {
       display: flex;
       flex-direction: row;
