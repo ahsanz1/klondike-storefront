@@ -48,6 +48,7 @@
       left: 0;
       width: 100%;
       max-height: 100vh;
+      margin-top: 8px;
       padding-bottom: 20vw;
       overflow-y: scroll;
     }
@@ -125,7 +126,7 @@
       border-radius: 1.1vw;
       outline: none;
       background: url('../../../../static/images/search.png') no-repeat 1.8vw;
-      background-color: #013a4e !important;
+      background-color: #002a3a !important;
       background-size: 1.4vw;
       color: $white-color;
       font-family: $Poppins;
