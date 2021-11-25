@@ -8,12 +8,10 @@ import Label from 'components/atoms/label'
 import PackageOrder from 'components/organisms/quick-order/package-order/index'
 import BulkOrder from 'components/organisms/quick-order/bulk-order/index'
 import AccordionComponent from 'components/molecules/accordionComponent'
-// import DesktopCartPageItem from 'components/organisms/cart-and-total'
 import Link from 'components/atoms/link'
 import { fetchItems, searchFilters } from 'libs/services/algolia'
 import { addProductToCart } from 'libs/services/api/pdp.api'
 import { AppContext } from 'libs/context'
-// import useAddToCart from 'libs/api-hooks/useAddToCart'
 import Button from 'components/atoms/button'
 import {
   getCartByUserId,
@@ -86,18 +84,6 @@ const QuickOrder = () => {
       setHasCartData(false)
     }
   }, [getCartItems])
-
-  // const onChangeqty = async (value, index) => {
-  //   qtyIndex = {
-  //     ...caseqty,
-  //     [`index-${index}`]: value,
-  //   }
-  //   setCaseqty(qtyIndex)
-  //   let amounts = amounttotal * Number(caseqty[`index-${index}`])
-  //   console.log(amounts, 'amouunt')
-  //   total.push(amounts)
-  //   itemtotalamount()
-  // }
 
   const error = err => {
     Modal.error({
