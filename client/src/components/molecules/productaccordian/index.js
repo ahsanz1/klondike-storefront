@@ -12,6 +12,7 @@ import { fetchCategory } from 'libs/services/algolia'
 import './style.scss'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import { AppContext } from 'libs/context'
+import { setUserCart } from 'libs/utils/user-cart'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
@@ -130,9 +131,9 @@ const ProductAccordion = ({ question }) => {
         userAuthToken: user.accessToken,
       }
       addProductToCart(payload)
-        .then(res => {
+        .then(async res => {
           if (res.hasError !== true) {
-            setGetCartItemsState(res.response.data)
+            setGetCartItemsState(await setUserCart())
             showcartPOPModal()
             setIsModalVisible(false)
             setAddToCart(false)
