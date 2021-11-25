@@ -17,7 +17,6 @@ const CartDropdownItem = cart => {
     AppContext,
   )
 
-  const [isShow, SetIsShow] = useState(false)
   const [removing, setRemoving] = useState(false)
   const [updating, setUpdating] = useState(false)
 
@@ -61,39 +60,21 @@ const CartDropdownItem = cart => {
       ],
     }
 
-    SetIsShow(true)
     setUpdating(true)
     await updateCartApi(cart?.cartId, updateCartPayload)
     setGetCartItemsState(await setUserCart())
-    SetIsShow(false)
     setUpdating(false)
   }
 
   const removeItem = async (cartId, lineItemId) => {
-    SetIsShow(true)
     setRemoving(true)
     await removeItemFromCart(cartId, lineItemId)
     setGetCartItemsState(await setUserCart())
-    SetIsShow(false)
     setRemoving(false)
   }
 
   return (
     <>
-      {
-        <h3
-          className="preloader"
-          style={{
-            display: isShow === true ? 'block' : 'none',
-            color: '#ffff',
-            position: 'relative',
-            opacity: '0.9',
-            font: 'bolder',
-          }}
-        >
-          Please Wait ...
-        </h3>
-      }
       <div className="mini-cart-item">
         <div className="cart-item">
           <div>
