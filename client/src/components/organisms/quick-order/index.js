@@ -45,7 +45,6 @@ const QuickOrder = () => {
   let [inputchange, setInputchange] = useState(false)
   const [removeItem, setRemoveItem] = useState(false)
   const [indexState, setIndexState] = useState(0)
-  // const [inputvalue, setInputValue] = useState()
   const [isPackage, setIsPackage] = useState(true)
   const [hasCartData, setHasCartData] = useState(false)
   const [searchItem, setSearchItem] = useState()
@@ -258,7 +257,6 @@ const QuickOrder = () => {
     }
     const list = [...inputList]
     list[index][name] = value
-    // setInputValue(value)
 
     if (qtyIndex.length > 0 && qtyIndex[`index-${index}`] === undefined) {
       qtyIndex = {
@@ -284,33 +282,6 @@ const QuickOrder = () => {
       setSearchItem(_list.hits)
     })
   }
-
-  // const filters = {}
-
-  // const algoliaApi = async () => {
-  //   let payload = []
-  //   let res = Object.entries(filters)
-
-  //   res.map(v => {
-  //     payload.push(`${v[0]}:${v[1]}`)
-  //   })
-
-  //   searchFilters(payload)
-  //     .then(res => {
-  //       let payload = []
-  //       if (packgdata.length < 1) {
-  //         payload.push(res[0])
-  //       } else {
-  //         payload = packgdata
-  //         payload.push(res[0])
-  //       }
-
-  //       setPackgdata(payload)
-  //     })
-  //     .catch(err => {
-  //       console.log(err, 'error')
-  //     })
-  // }
 
   const handleChangeBulk = async (e, index) => {
     setQtyError(false)
@@ -453,14 +424,8 @@ const QuickOrder = () => {
                 <Radio
                   className={'radiobtn'}
                   value={1}
-                  // defaultChecked={true}
                   disabled={hasCartData ? !isPackage : false}
                   onChange={radioChangePACKAGE}
-                  // disabled={
-                  //   cartState === 'bulk' && getCartItems?.items?.length > 0
-                  //     ? true
-                  //     : false
-                  // }
                 >
                   PACKAGED ORDER
                 </Radio>
@@ -470,11 +435,6 @@ const QuickOrder = () => {
                   value={2}
                   disabled={hasCartData ? isPackage : false}
                   onChange={radioChangeBULK}
-                  // disabled={
-                  //   cartState === 'package' && getCartItems?.items?.length > 0
-                  //     ? true
-                  //     : false
-                  // }
                 >
                   BULK ORDER
                 </Radio>
