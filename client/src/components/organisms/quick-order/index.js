@@ -87,18 +87,6 @@ const QuickOrder = () => {
     }
   }, [getCartItems])
 
-  // const onChangeqty = async (value, index) => {
-  //   qtyIndex = {
-  //     ...caseqty,
-  //     [`index-${index}`]: value,
-  //   }
-  //   setCaseqty(qtyIndex)
-  //   let amounts = amounttotal * Number(caseqty[`index-${index}`])
-  //   console.log(amounts, 'amouunt')
-  //   total.push(amounts)
-  //   itemtotalamount()
-  // }
-
   const error = err => {
     Modal.error({
       title: 'This is an error message',

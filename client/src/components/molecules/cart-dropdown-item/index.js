@@ -7,11 +7,10 @@ import './styles.scss'
 import Label from 'components/atoms/label'
 import Button from 'components/atoms/button'
 
-import { InputNumber } from 'antd'
+import { InputNumber, Modal } from 'antd'
 import { removeItemFromCart, updateCartApi } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
 import { getItemsBySkus } from 'libs/services/api/item'
-// import useRemoveFromCart from 'libs/api-hooks/useRemoveFromCart'
 
 const CartDropdownItem = cart => {
   const {
@@ -21,18 +20,24 @@ const CartDropdownItem = cart => {
     setCartAmount,
     cartData,
   } = useContext(AppContext)
-  const [isShow, SetIsShow] = useState(false)
-  // const [removing, setRemoving] = useState(false)
-  // const { removeFromCart, error } = useRemoveFromCart()
 
-  // const removeItem = async () => {
-  //   setRemoving(true)
-  //   await removeFromCart(lineItemId)
-  //   setRemoving(false)
-  //   if (!error || error) {
-  //     setRemoving(false)
-  //   }
-  // }
+  const [isShow, SetIsShow] = useState(false)
+
+  useEffect(() => {
+    setCartAmount(cartData?.totalAmount?.amount)
+  }, [cartData])
+
+  useEffect(() => {
+    console.log('cartitems', cart)
+  }, [cart])
+
+  const error = err => {
+    Modal.error({
+      title: 'This is an error message',
+      content:
+        err || 'Due to some technical reasons, this request cannot be sent.',
+    })
+  }
 
   const onChange = async (qty, cart) => {
     if (qty === null) {
@@ -42,8 +47,9 @@ const CartDropdownItem = cart => {
     let totalAmount = Math.floor(
       getCartItems?.totalAmount?.amount + cart?.price?.base * qty,
     )
+
     if (creditLimit <= totalAmount) {
-      alert('You are exceeding your credit limit')
+      error('You are exceeding your credit limit')
       return
     }
 
@@ -59,7 +65,6 @@ const CartDropdownItem = cart => {
     }
 
     SetIsShow(true)
-
     let res = await updateCartApi(cart?.cartId, updateCartPayload)
     let payload = await refreshingCart(res.data, updateCartPayload)
     await setGetCartItemsState(payload)
@@ -70,7 +75,6 @@ const CartDropdownItem = cart => {
     SetIsShow(true)
     let res = await removeItemFromCart(cartId, lineItemId)
     let payload = await refreshingCart(res.data)
-    console.log({ payload })
     setGetCartItemsState(payload)
     SetIsShow(false)
   }
@@ -78,6 +82,7 @@ const CartDropdownItem = cart => {
   const refreshingCart = async data => {
     let skus = []
     let itemsArr = []
+
     await data.items.map(item => {
       skus.push(item.sku)
     })
@@ -106,11 +111,10 @@ const CartDropdownItem = cart => {
       ...data,
       items: itemsArr,
     }
+
     return payload
   }
-  useEffect(() => {
-    setCartAmount(cartData?.totalAmount?.amount)
-  }, [cartData])
+
   return (
     <>
       {

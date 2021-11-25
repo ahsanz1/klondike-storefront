@@ -4,7 +4,7 @@ import { navigate } from '@reach/router'
 import { Tabs } from 'antd'
 
 import { AppContext } from 'libs/context'
-import { getOrdersByQuery } from 'libs/services/api/orders.api'
+import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 import TabsDropdown from 'components/molecules/tab-dropdown'
 import PageHeader from './components/PageHeader'
@@ -22,24 +22,13 @@ import './style.scss'
 
 const { TabPane } = Tabs
 
-const MyAccount = ({
-  title,
-  logoutBtnText,
-  accountTabsData,
-  accountAddress,
-}) => {
-  console.log(
-    'acount adresssss muzzzaminksad111',
-    accountAddress,
-    accountTabsData,
-  )
+const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
   const [loading, setLoading] = useState(false)
   const [userName, setUserName] = useState('')
   const [tabKey, setTabKey] = useState('0')
   const [allOrders, setAllOrders] = useState([])
   const [userOrder, setUserOrder] = useState([])
   const { user, logout, personalInfo } = useContext(AppContext)
-  console.log('user info', personalInfo)
 
   useEffect(() => {
     const setData = async () => {
@@ -49,30 +38,29 @@ const MyAccount = ({
         setUserName(_name)
 
         const fetchOrders = async () => {
-          let payload = {
-            offset: 0,
-            limit: 100,
-            sortBy: 'createdAt',
-            sortDirection: 'asc',
-            filters: {
-              status: [
-                'ORDER_CREATED',
-                'ORDER_CONFIRMED',
-                'ORDER_CANCELLED',
-                'ORDER_PARTIALLY_SHIPPED',
-                'ORDER_SHIPPED',
-                'ORDER_PARTIALLY_DELIVERED',
-                'ORDER_DELIVERED',
-                'ORDER_RETURNED',
-                'ORDER_PARTIALLY_RETURNED',
-                'ORDER_PAYMENT_AUTHORIZED',
-                'ORDER_PAYMENT_INVALID',
-              ],
-            },
-          }
+          // let payload = {
+          //   offset: 0,
+          //   limit: 100,
+          //   sortBy: 'createdAt',
+          //   sortDirection: 'asc',
+          //   filters: {
+          //     status: [
+          //       'ORDER_CREATED',
+          //       'ORDER_CONFIRMED',
+          //       'ORDER_CANCELLED',
+          //       'ORDER_PARTIALLY_SHIPPED',
+          //       'ORDER_SHIPPED',
+          //       'ORDER_PARTIALLY_DELIVERED',
+          //       'ORDER_DELIVERED',
+          //       'ORDER_RETURNED',
+          //       'ORDER_PARTIALLY_RETURNED',
+          //       'ORDER_PAYMENT_AUTHORIZED',
+          //       'ORDER_PAYMENT_INVALID',
+          //     ],
+          //   },
+          // }
 
-          const ordersByUser = await getOrdersByQuery(user.accessToken, payload)
-          console.log('orderss', ordersByUser)
+          const ordersByUser = await getOrdersByUser(user.accessToken)
           const _allOrders = await getAllOrders(ordersByUser)
 
           setUserOrder(

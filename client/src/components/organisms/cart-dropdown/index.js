@@ -66,7 +66,7 @@ const CartDropdown = () => {
     getCart()
     setCartAmount(getCartItems?.totalAmount?.amount)
   }, [])
-  console.log('minicart', miniCartLoading)
+
   return (
     isModalVisible && (
       // size > 768 &&
@@ -120,19 +120,20 @@ const CartDropdown = () => {
               </p>
             )}
           </div>
-          <h1 style={{ color: 'gray' }}>
-            {miniCartLoading ? 'Loading...' : ''}
-          </h1>
-          <div className="cart-dropdown-items">
-            {getCartItems.items && getCartItems.items.length > 0 ? (
-              getCartItems.items.map((cartItem, id) => {
-                let cart = { cartId: getCartItems?._id, ...cartItem }
-                return <CartDropdownItem {...cart} key={id} />
-              })
-            ) : (
-              <Label className="no-item">No items are in your cart.</Label>
-            )}
-          </div>
+          {miniCartLoading ? (
+            <h1 style={{ color: 'gray' }}>Loading...</h1>
+          ) : (
+            <div className="cart-dropdown-items">
+              {getCartItems.items && getCartItems.items.length > 0 ? (
+                getCartItems.items.map((cartItem, id) => {
+                  let cart = { cartId: getCartItems?._id, ...cartItem }
+                  return <CartDropdownItem {...cart} key={id} />
+                })
+              ) : (
+                <Label className="no-item">No items are in your cart.</Label>
+              )}
+            </div>
+          )}
 
           {getCartItems.items && getCartItems.items.length > 0 ? (
             <div className="cart-dropdown-checkout-container">
