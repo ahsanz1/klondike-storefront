@@ -24,6 +24,7 @@ import PDPInformation from 'components/molecules/pdpinforamation'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import { useNavigate } from '@reach/router'
 import { AppContext } from 'libs/context'
+// import PackageOrder from 'components/organisms/PackageOrder'
 
 const PDPMobile = ({
   pdpdata,
@@ -68,8 +69,16 @@ const PDPMobile = ({
     showModal()
   }
 
+  // const order = {
+  //   heading: 'Heading',
+  //   paragraph1: 'This is one paragraph',
+  //   paragraph2: 'second paragraph',
+  // }
+
+  // if (true) return <PackageOrder order={order} />
+
   return (
-    <>
+    <div>
       <div className="pdp_mobile-container">
         <div className="top-section">
           <Button
@@ -127,98 +136,100 @@ const PDPMobile = ({
             </Breadcrumb>
           )}
         </div>
-        {isPdpLoading ? (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-evenly',
-              // width: '69vw',
-              flexWrap: 'wrap',
-            }}
-            className="product-details"
-          >
-            <h1 style={{ color: 'gray' }}>
-              {!isPdpLoading ? 'No Data Found for this Item' : 'Loading...'}
-            </h1>
-          </div>
-        ) : Object.keys(items).length === 0 ? (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-evenly',
-              // width: '69vw',
-              flexWrap: 'wrap',
-            }}
-            className="product-details"
-          >
-            {' '}
-            <h1 style={{ color: 'gray' }}>No Attributes Found for this Item</h1>
-          </div>
-        ) : (
-          <>
-            <div className="pdp-container">
-              <div className="image-bg">
-                {productData?.images?.map((img, i) => (
-                  <Image
-                    src={img?.source[0]?.url}
-                    key={i}
-                    width="100%"
-                    height="100%"
-                  />
-                ))}
-              </div>
-              {/* <div className="shareIcon">
+        <div>
+          {isPdpLoading ? (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-evenly',
+                // width: '69vw',
+                flexWrap: 'wrap',
+              }}
+              className="product-details"
+            >
+              <h1 style={{ color: 'gray' }}>
+                {!isPdpLoading ? 'No Data Found for this Item' : 'Loading...'}
+              </h1>
+            </div>
+          ) : Object.keys(items).length === 0 ? (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-evenly',
+                // width: '69vw',
+                flexWrap: 'wrap',
+              }}
+              className="product-details"
+            >
+              {' '}
+              <h1 style={{ color: 'gray' }}>
+                No Attributes Found for this Item
+              </h1>
+            </div>
+          ) : (
+            <>
+              <div className="pdp-container">
+                <div className="image-bg">
+                  {productData?.images?.map((img, i) => (
+                    <Image
+                      src={img?.source[0]?.url}
+                      key={i}
+                      width="100%"
+                      height="100%"
+                    />
+                  ))}
+                </div>
+                {/* <div className="shareIcon">
                 <ShareAltOutlined size="32px" style={{ color: '#FFFFFF' }} />
               </div> */}
-            </div>
-            <Heading className="pdp_mobile-heading">
-              {productData && productData?.title}
-            </Heading>
-            {!isLoggedIn && (
-              <div style={{ width: '90%', margin: 'auto' }}>
-                <Divider
-                  style={{
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                  }}
-                />
               </div>
-            )}{' '}
-            {isLoggedIn && (
-              <div className="radioGroup">
-                <Radio.Group
-                  onChange={onRadioChange}
-                  value={value}
-                  defaultValue={1}
-                  size="large"
-                  optionType="button"
-                >
-                  <Space direction="vertical">
-                    {packagedItemsCart && (
-                      <Radio value={1} className="radio-font">
-                        PACKAGED ORDER
-                      </Radio>
-                    )}
-                    {bulkItemsCart && (
-                      <Radio value={2} className="radio-font">
-                        BULK ORDER
-                      </Radio>
-                    )}
-                  </Space>
-                </Radio.Group>
-              </div>
-            )}
-            {packagedItemsCart &&
-              packagedOrder &&
-              pdpdata?.packagedOrderItems?.map((item, i) => {
-                return (
-                  <div
-                    className="pdp-mobile-table"
+              <Heading className="pdp_mobile-heading">
+                {productData && productData?.title}
+              </Heading>
+              {!isLoggedIn && (
+                <div style={{ width: '90%', margin: 'auto' }}>
+                  <Divider
                     style={{
-                      justifyContent: 'space-between',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
                     }}
-                    key={i}
+                  />
+                </div>
+              )}{' '}
+              {isLoggedIn && (
+                <div className="radioGroup">
+                  <Radio.Group
+                    onChange={onRadioChange}
+                    value={value}
+                    defaultValue={1}
+                    size="large"
+                    optionType="button"
                   >
-                    <>
+                    <Space direction="vertical">
+                      {packagedItemsCart && (
+                        <Radio value={1} className="radio-font">
+                          PACKAGED ORDER
+                        </Radio>
+                      )}
+                      {bulkItemsCart && (
+                        <Radio value={2} className="radio-font">
+                          BULK ORDER
+                        </Radio>
+                      )}
+                    </Space>
+                  </Radio.Group>
+                </div>
+              )}
+              {packagedItemsCart &&
+                packagedOrder &&
+                pdpdata?.packagedOrderItems?.map((item, i) => {
+                  return (
+                    <div
+                      className="pdp-mobile-table"
+                      style={{
+                        justifyContent: 'space-between',
+                      }}
+                      key={i}
+                    >
                       <div
                         className="oneCell"
                         style={{
@@ -256,158 +267,161 @@ const PDPMobile = ({
                           {item?.mappedAttributes['Part Number']}
                         </span>
                       </div>
-                    </>
-                    {isLoggedIn && (
-                      <div className="oneCell">
-                        <span className="head text-right">Price</span>
-                        <span className="value text-right">
-                          {isLoggedIn &&
-                          item &&
-                          item?.price &&
-                          item?.price?.base
-                            ? '$' + parseFloat(item?.price?.base).toFixed(2)
-                            : ''}{' '}
-                        </span>
-                      </div>
-                    )}
-                    {isLoggedIn && <div className="oneCell"></div>}
-
-                    {isLoggedIn && (
-                      <div className="value-qty">
-                        <span className="head">QTY:</span>
-                        <InputNumber
-                          min={0}
-                          max={100}
-                          defaultValue={0}
-                          type="number"
-                          onChange={e => onQtyChange(e, i)}
-                          disabled={!packagedOrder}
-                          size="middle"
-                          className="input"
-                          style={{
-                            minWidth: '50%',
-                            backgroundColor:
-                              !packagedOrder && 'rgba(255, 255, 255, 0.3)',
-                          }}
-                          onKeyUp={e => {
-                            if (e.target.value < 0) {
-                              e.target.value = e.target.value * -1
-                            }
-                          }}
-                        />
-                      </div>
-                    )}
-                    {isLoggedIn && (
-                      <div className="oneCellBulk">
-                        <span className="head text-right">Total Price</span>
-                        <span
-                          className="value text-right"
-                          style={{
-                            color: item?.totalPrice > 0 ? '#F1A900;' : '#ffff',
-                          }}
-                        >
-                          {isLoggedIn &&
-                            '$' + parseFloat(item?.totalPrice || 0).toFixed(2)}
-                        </span>
-                      </div>
-                    )}
-                    {isLoggedIn && <Divider className="divider" />}
-                  </div>
-                )
-              })}
-            {bulkItemsCart &&
-              !packagedOrder &&
-              pdpdata?.bulkOrderItem?.map((item, i) => {
-                return (
-                  <div
-                    className="pdp-mobile-table"
-                    style={{
-                      justifyContent: 'space-between',
-                      flexDirection: 'row-reverse',
-                    }}
-                    key={i}
-                  >
-                    <div className="oneCellBulk">
-                      {<span className="head text-right">PART NUM</span>}
-                      <span className="value text-right">
-                        {item?.mappedAttributes['Part Number']}
-                      </span>
-                    </div>
-                    <div className="oneCellBulk">
-                      <span className="head">Price pER Litre</span>
-                      <span className="value">
-                        {item?.price?.base &&
-                          '$' + parseFloat(item?.price?.base)}
-                      </span>
-                    </div>
-                    <div className="oneCellBulk">
-                      <span className="head">Bulk</span>
-                    </div>
-                    {isLoggedIn && (
-                      <div className="value-qty">
-                        <span className="head">LITRES:</span>
-                        <InputNumber
-                          min={0}
-                          max={100}
-                          defaultValue={0}
-                          onChange={e => onBulkQtyChange(e)}
-                          disabled={packagedOrder}
-                          size="middle"
-                          type="number"
-                          className="input"
-                          style={{
-                            minWidth: '50%',
-                            backgroundColor:
-                              packagedOrder && 'rgba(255, 255, 255, 0.3)',
-                          }}
-                          onKeyUp={e => {
-                            if (e.target.value < 0) {
-                              e.target.value = e.target.value * -1
-                            }
-                          }}
-                        />
-                      </div>
-                    )}
-                    <div>
-                      {!packagedOrder && Number(item?.quantity) < Number(500) && (
-                        <div>
-                          <span style={{ color: '#fa9200' }}>
-                            Orders below 500L are subject to an under-a-minimum
-                            fee.
+                      {isLoggedIn && (
+                        <div className="oneCell">
+                          <span className="head text-right">Price</span>
+                          <span className="value text-right">
+                            {isLoggedIn &&
+                            item &&
+                            item?.price &&
+                            item?.price?.base
+                              ? '$' + parseFloat(item?.price?.base).toFixed(2)
+                              : ''}{' '}
                           </span>
                         </div>
                       )}
+                      {isLoggedIn && <div className="oneCell"></div>}
+
+                      {isLoggedIn && (
+                        <div className="value-qty">
+                          <span className="head">QTY:</span>
+                          <InputNumber
+                            min={0}
+                            max={100}
+                            defaultValue={0}
+                            type="number"
+                            onChange={e => onQtyChange(e, i)}
+                            disabled={!packagedOrder}
+                            size="middle"
+                            className="input"
+                            style={{
+                              minWidth: '50%',
+                              backgroundColor:
+                                !packagedOrder && 'rgba(255, 255, 255, 0.3)',
+                            }}
+                            onKeyUp={e => {
+                              if (e.target.value < 0) {
+                                e.target.value = e.target.value * -1
+                              }
+                            }}
+                          />
+                        </div>
+                      )}
+                      {isLoggedIn && (
+                        <div className="oneCellBulk">
+                          <span className="head text-right">Total Price</span>
+                          <span
+                            className="value text-right"
+                            style={{
+                              color:
+                                item?.totalPrice > 0 ? '#F1A900;' : '#ffff',
+                            }}
+                          >
+                            {isLoggedIn &&
+                              '$' +
+                                parseFloat(item?.totalPrice || 0).toFixed(2)}
+                          </span>
+                        </div>
+                      )}
+                      {isLoggedIn && <Divider className="divider" />}
                     </div>
-                    {isLoggedIn && <Divider className="divider" />}
-                  </div>
-                )
-              })}
-            {isLoggedIn && (
-              <div className="total-price-container">
-                <span
-                  className="total-price"
-                  style={{
-                    color:
-                      pdpdata?.totalPackagedOrderPrice > 0
-                        ? '#f1a900'
-                        : '#ffff',
-                  }}
-                >
-                  {'$' +
-                    (packagedOrder
-                      ? pdpdata?.totalPackagedOrderPrice > 0
-                        ? parseFloat(pdpdata?.totalPackagedOrderPrice).toFixed(
-                            2,
-                          )
-                        : '0.00'
-                      : parseFloat(
-                          pdpdata?.bulkOrderItem[0]?.totalPrice || 0,
-                        ).toFixed(2))}
-                </span>
-              </div>
-            )}
-          </>
-        )}
+                  )
+                })}
+              {bulkItemsCart &&
+                !packagedOrder &&
+                pdpdata?.bulkOrderItem?.map((item, i) => {
+                  return (
+                    <div
+                      className="pdp-mobile-table"
+                      style={{
+                        justifyContent: 'space-between',
+                        flexDirection: 'row-reverse',
+                      }}
+                      key={i}
+                    >
+                      <div className="oneCellBulk">
+                        {<span className="head text-right">PART NUM</span>}
+                        <span className="value text-right">
+                          {item?.mappedAttributes['Part Number']}
+                        </span>
+                      </div>
+                      <div className="oneCellBulk">
+                        <span className="head">Price pER Litre</span>
+                        <span className="value">
+                          {item?.price?.base &&
+                            '$' + parseFloat(item?.price?.base)}
+                        </span>
+                      </div>
+                      <div className="oneCellBulk">
+                        <span className="head">Bulk</span>
+                      </div>
+                      {isLoggedIn && (
+                        <div className="value-qty">
+                          <span className="head">LITRES:</span>
+                          <InputNumber
+                            min={0}
+                            max={100}
+                            defaultValue={0}
+                            onChange={e => onBulkQtyChange(e)}
+                            disabled={packagedOrder}
+                            size="middle"
+                            type="number"
+                            className="input"
+                            style={{
+                              minWidth: '50%',
+                              backgroundColor:
+                                packagedOrder && 'rgba(255, 255, 255, 0.3)',
+                            }}
+                            onKeyUp={e => {
+                              if (e.target.value < 0) {
+                                e.target.value = e.target.value * -1
+                              }
+                            }}
+                          />
+                        </div>
+                      )}
+                      <div>
+                        {!packagedOrder &&
+                          Number(item?.quantity) < Number(500) && (
+                            <div>
+                              <span style={{ color: '#fa9200' }}>
+                                Orders below 500L are subject to an
+                                under-a-minimum fee.
+                              </span>
+                            </div>
+                          )}
+                      </div>
+                      {isLoggedIn && <Divider className="divider" />}
+                    </div>
+                  )
+                })}
+              {isLoggedIn && (
+                <div className="total-price-container">
+                  <span
+                    className="total-price"
+                    style={{
+                      color:
+                        pdpdata?.totalPackagedOrderPrice > 0
+                          ? '#f1a900'
+                          : '#ffff',
+                    }}
+                  >
+                    {'$' +
+                      (packagedOrder
+                        ? pdpdata?.totalPackagedOrderPrice > 0
+                          ? parseFloat(
+                              pdpdata?.totalPackagedOrderPrice,
+                            ).toFixed(2)
+                          : '0.00'
+                        : parseFloat(
+                            pdpdata?.bulkOrderItem[0]?.totalPrice || 0,
+                          ).toFixed(2))}
+                  </span>
+                </div>
+              )}
+            </>
+          )}
+        </div>
         {isLoggedIn ? (
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Button
@@ -431,7 +445,7 @@ const PDPMobile = ({
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 }
 PDPMobile.propTypes = {
