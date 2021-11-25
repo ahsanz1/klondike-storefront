@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Label from 'components/atoms/label'
-// import { IndustryApplicationsData } from 'components/organisms/industry-applications/data'
-import ReactReadMoreReadLess from 'react-read-more-read-less'
-// import Link from 'components/atoms/link'
+import Button from 'components/atoms/button'
 
 const IndustryApplications = ({ heading, text, videourl, paragraph }) => {
   // const { IndustryApplicationsWrapper, aboutUsLinks } = IndustryApplicationsData
-  console.log(videourl, 'videourl')
 
+  const [readMore, setReadMore] = useState(false)
   return (
     <>
       <div className="industry-applications">
@@ -37,48 +35,37 @@ const IndustryApplications = ({ heading, text, videourl, paragraph }) => {
               <Label className="details-paragragh2">{paragraph}</Label>
 
               <div className="overview-detail-section-mobile">
-                <ReactReadMoreReadLess
-                  charLimit={200}
-                  readMoreText={'Read more'}
-                  readLessText={'Read less'}
-                  readMoreClassName="read-more-less--more  details-paragragh-mobile"
-                  readLessClassName="read-more-less--less  details-paragragh-mobile"
-                >
-                  {paragraph}
-                </ReactReadMoreReadLess>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: readMore
+                      ? text.slice(0, text.length)
+                      : text.slice(0, 550),
+                  }}
+                ></p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: readMore
+                      ? paragraph.slice(0, paragraph.length)
+                      : paragraph.slice(250, 250),
+                  }}
+                ></p>
+                {text.length > 300 && (
+                  <span className={readMore ? 'read-less' : 'read-more'}>
+                    <Button
+                      href
+                      className="button"
+                      onClick={() => {
+                        setReadMore(!readMore)
+                      }}
+                    >
+                      {readMore ? 'Read Less' : 'Read More'}
+                    </Button>
+                  </span>
+                )}
               </div>
             </div>
           </div>
         </div>
-
-        {/* <div className="about-us-links">
-          {aboutUsLinks.map((item, i) => {
-            return (
-              <div key={i} className="about-us-links-item">
-                <div className="about-us-links-image">
-                  <img className="links-image" src={item.image} alt="" />
-                </div>
-
-                <div className="about-us-links-content">
-                  <Label className="links-title">{item.title}</Label>
-
-                  <Label className="links-paragraph">{item.paragragh}</Label>
-
-                  <Link className="discover-more">
-                    Discover More
-                    <span className="discover-more-img">
-                      <img
-                        className="discover-img"
-                        alt=""
-                        src="static/images/discover-more.png"
-                      />
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            )
-          })}
-        </div> */}
       </div>
     </>
   )
