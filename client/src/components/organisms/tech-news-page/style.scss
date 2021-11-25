@@ -168,9 +168,11 @@
           .item-top-bar {
             display: flex;
             align-items: center;
+            width: 34.72vw;
             border-bottom: get-vw(1px) solid #ffa500;
 
             @media (max-width: 768px) {
+              width: 82.93vw;
               padding-bottom: 8px;
             }
 
