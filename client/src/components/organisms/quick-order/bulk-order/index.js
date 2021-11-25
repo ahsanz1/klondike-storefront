@@ -20,20 +20,28 @@ const BulkOrder = ({
   const handleSubmit = e => {
     e.preventDefault()
   }
+
   let titleArray = bulkdata
   let InputList = inputList
+
   const cartHandler = () => {
-    if (inputList[0].partnumber === '' || inputList[0].quantity === '') {
+    if (
+      inputList[0].partnumber === '' ||
+      inputList[0].quantity === '' ||
+      inputList[0].quantity < 1
+    ) {
       setValidation(true)
     } else {
       setValidation(false)
       handleAddtoCart()
     }
   }
+
   const rowHandler = () => {
     setValidation(false)
     handleAddRow()
   }
+
   return (
     <div>
       <div className="partname-and-qty">
@@ -57,6 +65,7 @@ const BulkOrder = ({
                     className="part-number"
                     placeholder="Enter Part Number"
                     value={x.partnumber}
+                    autoComplete="off"
                     onChange={e => handleChangePackage(e, i)}
                   />
                   {validation && inputList[0].partnumber === '' && (
@@ -74,6 +83,7 @@ const BulkOrder = ({
 
                 <div>
                   <input
+                    min="1"
                     name="quantity"
                     className="quantity-number"
                     type="number"
@@ -112,6 +122,7 @@ const BulkOrder = ({
           <Button className="row-btn" onClick={rowHandler}>
             ADD ROW
           </Button>
+
           <Button className="add-btn" onClick={cartHandler}>
             {addingToCart ? 'Adding...' : 'ADD TO CART'}
           </Button>

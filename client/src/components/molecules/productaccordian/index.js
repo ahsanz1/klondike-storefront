@@ -82,7 +82,8 @@ const ProductAccordion = ({ question }) => {
     setIsModalVisible(false)
   }
 
-  function error (msg) {
+  // eslint-disable-next-line space-before-function-paren
+  function error(msg) {
     Modal.error({
       title: 'This is an error message',
       content:
@@ -294,11 +295,9 @@ const ProductAccordion = ({ question }) => {
                     ) : (
                       <p className="products-sizes">Bulk</p>
                     )}
-                    {modalData.size !== 'Bulk' &&
-                      modalData.size !== 'Bulk:' && (
-                      <p className="products-sizes detail">
-                        {modalData.size}
-                      </p>
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                      // eslint-disable-next-line indent
+                      <p className="products-sizes detail">{modalData.size}</p>
                     )}
                   </div>
                   <div>

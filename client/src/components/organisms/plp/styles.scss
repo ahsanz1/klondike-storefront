@@ -7,18 +7,23 @@
   padding-left: 8.33vw;
 
   @media screen and (max-width: 500px) {
-    margin-top: 4.7vw;
+    margin-top: 27.73vw;
     padding: 16vw 5.6vw;
-    // padding-top: 0.2vw;
+    padding-top: 1.6vw;
   }
 
   .navigation-button {
     display: none;
     text-align: center;
 
+    @supports (-webkit-touch-callout: none) {
+      margin-top: -50px;
+      padding-top: 0;
+    }
+
     @media (max-width: 500px) {
       display: flex !important;
-      margin-top: 9vw !important;
+      margin-top: 10.93 !important;
       margin-bottom: 10.93vw !important;
     }
   }

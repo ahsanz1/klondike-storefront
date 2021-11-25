@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { getItem } from 'libs/services/localStorage/localStorage'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import { CartReducer, sumItems } from './app-reducer'
-import { getCartByUserId } from 'libs/services/api/cart'
-import { getItemsBySkus } from 'libs/services/api/item'
+import { setUserCart } from 'libs/utils/user-cart'
 
 const AppContext = React.createContext({})
 const AppProvider = ({ children }) => {
@@ -64,6 +63,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState)
   const [myAccountForm, setMyAccountForm] = useState([])
   const [isNewAddress, setIsNewAddress] = useState(false)
+  const [miniCartLoading, setMiniCartLoading] = useState(false)
   const [totalCheckoutCost, setTotalCheckoutCost] = useState('')
   const [sigunUpforExclusiveOffers, setSigunUpforExclusiveOffers] = useState(
     false,
@@ -86,51 +86,15 @@ const AppProvider = ({ children }) => {
   }
 
   const showModal = async () => {
-    let skus = []
+    setMiniCartLoading(true)
     setIsModalVisible(true)
 
     if (size > 768) {
       document.body.style.overflow = 'visible'
     }
 
-    let res = await getCartByUserId(initialState.user.accessToken)
-    let data = res.data
-
-    await data.items.map((item, i) => {
-      skus.push(item.sku)
-    })
-
-    let itemsRes = await getItemsBySkus(skus)
-    console.log('itemsRes', itemsRes, 'user res', data)
-    let itemsArr = []
-
-    let sizes = []
-    await data.items.map(async (item, i) => {
-      let itemRes = itemsRes?.data[i]
-      let attributes = itemRes?.attributes
-      await attributes.map(attr => {
-        if (attr.name === 'Package Size') {
-          sizes.push(attr.value)
-        }
-      })
-
-      let itemObj = {
-        ...item,
-        size: sizes[i],
-        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
-        attributes: itemsRes?.data[i]?.attributes,
-      }
-
-      itemsArr.push(itemObj)
-    })
-
-    let payload = {
-      ...data,
-      items: itemsArr,
-    }
-
-    setGetCartItemsState(payload)
-    setCartAmount(payload.totalAmount.amount)
+    setGetCartItemsState(await setUserCart())
+    setMiniCartLoading(false)
   }
 
   const showcartPOPModal = () => {
@@ -286,6 +250,8 @@ const AppProvider = ({ children }) => {
         closePopUpModal,
         closeModal,
         getCartItems,
+        miniCartLoading,
+        setMiniCartLoading,
         setGetCartItemsState,
         pdpPurchaseType,
         setPdpPurchaseType,
