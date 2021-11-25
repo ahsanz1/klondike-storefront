@@ -44,7 +44,7 @@ const CartDropdownItem = cart => {
       totalAmount = Math.floor(existingAmount + cart?.price?.base * nQty)
     }
 
-    if (creditLimit <= totalAmount) {
+    if (getCartItems?.hasPackaged && creditLimit <= totalAmount) {
       error('You are exceeding your credit limit')
       return
     }
