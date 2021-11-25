@@ -97,9 +97,7 @@ const CartDropdownItem = cart => {
                   </Label>
                   <Label className="item-info">
                     PART NUM:{' '}
-                    <Label className="item-subInfo">
-                      {cart.partNum ? cart.partNum : cart.sku}
-                    </Label>
+                    <Label className="item-subInfo">{cart?.partnumber}</Label>
                   </Label>
                 </div>
               </div>
