@@ -27,7 +27,7 @@ $vw-viewport: 1440;
     .catagory-link {
       margin-left: get-vw(20px);
       opacity: 1 !important;
-      color: #f2a900 !important;
+      color: #f1a900 !important;
       // font-family: Open Sans;
       font-size: get-vw(10px);
       font-style: normal;
@@ -51,6 +51,7 @@ $vw-viewport: 1440;
   }
 
   .tablist-heading {
+    width: get-vw(250px);
     margin-bottom: get-vw(15px);
     padding: get-vw(9px);
     background: rgba(5, 5, 5, 0.39);
@@ -65,6 +66,7 @@ $vw-viewport: 1440;
     cursor: pointer;
 
     @media (max-width: 768px) {
+      width: 100%;
       //margin-top: 3.73vw;
       margin-top: 3.63vw;
       margin-bottom: 0;

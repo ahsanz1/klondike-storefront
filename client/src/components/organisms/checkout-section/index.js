@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import React, { useContext, useEffect, useState } from 'react'
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import './style.scss'
 import { useNavigate } from '@reach/router'
 
@@ -8,15 +9,17 @@ import {
   Button,
   Input,
   Modal,
-  Result,
+  // Result,
   Row,
   Col,
   Divider,
   List,
-  Typography,
+  Tooltip,
+  // Typography,
 } from 'antd'
 import {
   addShippingWithLineItems,
+  addPickupAndShippingWithLineItems,
   getCartByUserId,
 } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
@@ -24,37 +27,47 @@ import {
   // getAllShippingMethods,
   createShipTo,
   checkout,
-  retreivePickupPoints,
+  // retreivePickupPoints,
+  getPickupPoints,
 } from 'libs/services/api/checkout'
+import LinkIcon from 'components/atoms/link-icon'
 // import { LeftOutlined } from '@ant-design/icons'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 // import { Link } from 'react-router-dom'
 
 const Checkoutsection = () => {
   // let cart
-  const { user, personalInfo, creditLimit, setCheckoutData } = useContext(
-    AppContext,
-  )
+  const {
+    user,
+    personalInfo,
+    creditLimit,
+    setCheckoutData,
+    setGetCartItemsState,
+  } = useContext(AppContext)
   console.log({ personalInfo })
   console.log({ user })
   const navigate = useNavigate()
+  const [size] = useWindowSize()
 
   // const { checkData } = checkoutData
-  const [cartPayload, setCartPayloadState] = useState('')
+  const [cartPayload, setCartPayloadState] = useState({})
   const [isModalVisible, setIsModalVisible] = useState(false)
   // const [cartId] = useState('617fb67c3d8494000801e3f0')
-  const [isSuccess, setIsSuccess] = useState(false)
+  // const [isSuccess, setIsSuccess] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [delivery, setDelivery] = useState(true)
-  const [value, setValue] = useState(1)
+  // const [value, setValue] = useState(1)
   const [poNumber, setPONumber] = useState('R3G 2T3')
   const [isCartLoading, setIsCartLoading] = useState(true)
   console.log({ cartPayload })
   const [inputField, setInputField] = useState(false)
   const [cartItemIds, setCartItemIds] = useState([])
-  const [availableLocations, setAvaiableLocations] = useState([])
+  const [validatePO, setValidatePO] = useState(false)
+  const [availablePickupLocations, setAvaiablePickupLocations] = useState([])
+  const [selectedLocation, setSelectedLocation] = useState({})
+  const [tooltipVisible, setTooltipVisible] = useState(false)
   console.log({ cartItemIds })
-  console.log({ availableLocations })
+  // console.log({ availableLocations })
 
   const address = {
     street1: '1510 Wall Street NW ',
@@ -75,17 +88,16 @@ const Checkoutsection = () => {
     },
   }
 
-  const data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
-  ]
+  const secondtext = (
+    <div className="toltip-container">
+      <h1>Error!</h1>
+      <p>
+        Pickup orders have a $500 minimum requirement. You need to meet this
+        requirement in order to place order as Pickup.
+      </p>{' '}
+    </div>
+  )
 
-  // const [isActive, setIsAcive] = useState(true)
-  // const [pickup, setPickup] = useState(false)
-  // const [delivery, setDelivery] = useState(false)
   const getCart = async () => {
     if (user !== null) {
       console.log('token', user?.accessToken)
@@ -96,21 +108,33 @@ const Checkoutsection = () => {
           ...res?.data,
           itemsTotal: res?.data?.totalAmount?.amount,
           currency: res?.data?.totalAmount?.currency,
-          // totalItems: res?.data?.quantity,
-          // totalPrice: '12,000',
         }
         let tempArr = getCartItemIds(res?.data?.items)
         await setCartItemIds(tempArr)
         await setCartPayloadState(data)
-        if (tempArr?.length) {
-          let pickUpPoints = retreivePickupPoints(1)
-          pickUpPoints
-            .then(res => {
-              setAvaiableLocations(res?.data?.locations)
-            })
-            .catch(err => console.log({ err }))
-          console.log({ pickUpPoints })
+        let availableLocations = []
+        for (var i = 0; i < tempArr?.length; i++) {
+          let resp = await getPickupPoints(tempArr[i]?.itemId)
+          let locations = resp?.data?.locations
+          console.log({ locations })
+          availableLocations.push(...locations)
         }
+        console.log(availableLocations, 'filter')
+        const result = []
+        const map = new Map()
+        for (const item of availableLocations) {
+          if (!map.has(item._id)) {
+            map.set(item._id, true) // set any value to Map
+            result.push(item)
+          }
+        }
+        // const filteredLocations = await [
+        //   ...new Map(
+        //     availableLocations.map(item => [item['_id'], item]),
+        //   ).values(),
+        // ]
+        console.log(result, 'filtered')
+        await setAvaiablePickupLocations(result)
         setIsCartLoading(false)
       } else navigate('/plp-page')
     }
@@ -138,7 +162,6 @@ const Checkoutsection = () => {
 
   const mapItemsWithShipping = async shipToId => {
     let data = []
-
     await cartPayload?.items?.map((item, i) => {
       data.push({
         itemId: item?.itemId,
@@ -147,10 +170,49 @@ const Checkoutsection = () => {
       })
     })
     console.log('dataaa', data)
+    let res
 
-    let res = await addShippingWithLineItems(cartPayload?._id, data)
+    res = await addShippingWithLineItems(cartPayload?._id, data)
     console.log('line items res', res)
     return res
+  }
+
+  const mapItemsWithPickUpandShipping = async shipMethodId => {
+    let req = {
+      shipToType: 'BOPIS',
+      shipMethod: shipMethodId,
+      taxCode: 'FR020000',
+      warehouseId: selectedLocation?._id,
+      isPickup: true,
+      pickupPerson: {
+        name: {
+          first: personalInfo?.firstName,
+          last: personalInfo?.lastName,
+        },
+        email: personalInfo?.email,
+        phone: {
+          number: address?.phone?.number,
+          kind: 'Mobile',
+        },
+      },
+      altPickupPerson: {
+        name: {
+          first: 'Yousaf',
+          last: 'Khan',
+        },
+        email: 'yousaf.khan@shopdev.co',
+        phone: {
+          number: '8087769338',
+          kind: 'Mobile',
+        },
+      },
+    }
+    let response = await addPickupAndShippingWithLineItems(
+      cartPayload?._id,
+      req,
+    )
+    console.log({ response })
+    return response
   }
 
   const handleCancel = () => {
@@ -186,7 +248,7 @@ const Checkoutsection = () => {
     var shipToTaxes = await getShipToTaxes(shipToResponse?.data?.items)
     let req = {
       cartId: cartPayload?._id,
-      customerEmail: 'haseeb.shaukat@shopdev.co',
+      customerEmail: personalInfo?.email,
       paymentDetails: [
         {
           transactionDetails: {
@@ -198,9 +260,10 @@ const Checkoutsection = () => {
           },
           paymentMethod: 'PURCHASE_ORDER',
           paymentKind: 'PURCHASE_ORDER',
-          amount:
-            parseFloat(shipToResponse?.data?.totalAmount?.amount) +
-            shipMethodCost,
+          amount: delivery
+            ? parseFloat(shipToResponse?.data?.totalAmount?.amount) +
+              shipMethodCost
+            : parseFloat(shipToResponse?.data?.totalAmount?.amount),
           currency: 'USD',
           conversion: 1,
           billToAddress: address,
@@ -215,12 +278,15 @@ const Checkoutsection = () => {
     console.log({ finalResponse })
     if (finalResponse?.data?.checkoutComplete) {
       setCheckoutData({
-        orderId: shipToResponse?.data?.orderId,
-        totalAmount:
-          parseFloat(shipToResponse?.data?.totalAmount?.amount) +
-          shipMethodCost,
+        orderId: finalResponse?.data?.orderId,
+        totalAmount: delivery
+          ? parseFloat(shipToResponse?.data?.totalAmount?.amount) +
+            shipMethodCost
+          : parseFloat(shipToResponse?.data?.totalAmount?.amount),
+        selectedLocation: selectedLocation,
       })
       setIsLoading(false)
+      setGetCartItemsState([])
       navigate('checkout-success')
     } else error()
   }
@@ -242,14 +308,23 @@ const Checkoutsection = () => {
       taxCode: 'FR020000',
     }
     console.log({ req })
-    let response = await createShipTo(cartPayload?._id, req)
+    let response
+    if (delivery) {
+      response = await createShipTo(cartPayload?._id, req)
+    } else {
+      response = await mapItemsWithPickUpandShipping(
+        req?.shipMethod?.shipMethodId,
+      )
+    }
     console.log({ response })
     try {
       if (response?.status === 200) {
         let shipToId = response?.data?._id
+        // let shipMethodId = response?.data?.shipMethod?.shipMethodId
         let shipMethodCost = response?.data?.shipMethod?.cost?.amount
         console.log({ shipToId })
-        let responseofLineItems = await mapItemsWithShipping(shipToId)
+        let responseofLineItems
+        responseofLineItems = await mapItemsWithShipping(shipToId)
         console.log({ responseofLineItems })
         if (responseofLineItems?.error === false) {
           await finalCheckout(responseofLineItems, shipMethodCost)
@@ -260,16 +335,10 @@ const Checkoutsection = () => {
     }
   }
 
-  const handleClose = () => {
-    setIsSuccess(false)
-  }
-  const onChange = e => {
-    setValue(e.target.value)
-    if (e.target.value === 1) {
-      setDelivery(true)
-    } else {
-      setDelivery(false)
-    }
+  const onChange = async e => {
+    console.log('radio', e.target.value)
+    setDelivery(prev => !prev)
+    // setValue(e.target.value)
   }
 
   const handlePOChange = () => {
@@ -278,7 +347,12 @@ const Checkoutsection = () => {
 
   const handlePOInput = e => {
     if (e.target.value) {
+      var regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
       setPONumber(e.target.value)
+      var reg = new RegExp(regex)
+      let res = reg.test(e.target.value)
+      console.log('regex', res)
+      setValidatePO(res)
     }
   }
 
@@ -286,6 +360,7 @@ const Checkoutsection = () => {
     setIsModalVisible(true)
   }
   const onListClick = item => {
+    setSelectedLocation(item)
     setIsModalVisible(false)
   }
 
@@ -296,28 +371,21 @@ const Checkoutsection = () => {
       content: 'Due to Some technical reason there is an error!',
     })
   }
+  const goBack = () => {
+    window.history.go(-1)
+  }
+
+  const redirectToHome = () => {
+    window.location.href = '/'
+  }
 
   return (
-    <>
-      {isSuccess && (
-        <Modal
-          title="Basic Modal"
-          visible={isSuccess}
-          // onOk={handleOk}
-          onCancel={handleClose}
-        >
-          <Result
-            status="success"
-            title="Order Placed Successfully!"
-            subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-          />
-        </Modal>
-      )}
+    <div>
       <Modal
         // title="Basic Modal"
         visible={isModalVisible}
         // onOk={handleOk}
-        // centered
+        centered
         onCancel={handleCancel}
         bodyStyle={{ background: 'white', padding: 10 }}
       >
@@ -325,49 +393,100 @@ const Checkoutsection = () => {
           // header={<div>Header</div>}
           // footer={<div>Footer</div>}
           bordered
-          dataSource={data}
+          dataSource={availablePickupLocations || []}
           renderItem={item => (
-            <List.Item onClick={() => onListClick(item)}>
-              <Typography.Text mark>[WAREHOUSE]</Typography.Text> {item}
+            <List.Item onClick={() => onListClick(item)} className="list-item">
+              <List.Item.Meta
+                title={item.name}
+                description={
+                  <p>
+                    {`${item?.address?.street1},`}
+                    <br />
+                    {`${item?.address?.city}, ${item?.address?.state} ${item?.address?.zipCode}`}
+                    <br />
+                    {`${item?.address?.phone?.number || '000-000-000'}`}
+                  </p>
+                }
+              />
             </List.Item>
           )}
         />
       </Modal>
       <div className="checkout-wrapper">
-        <Row justify="center" align="center" className="checkoutHeader">
-          <Col>
-            <img src="static\images\klondike.png" alt="pic" />
-          </Col>
-        </Row>
-        <Row className="checkout-heading-padding">
-          <Col>
-            <div className="page-title">
-              {/* <Link to="/plp"> */}
-              <a href="/plp-page">
-                <img
-                  className="checkout-back-icon"
-                  src="/static/images/arrowleft.png"
+        {window.innerWidth > 768 ? (
+          <>
+            <Row justify="center" align="center" className="checkoutHeader">
+              <Col>
+                <LinkIcon link="/" src="static\images\klondike.png" alt="pic" />
+              </Col>
+            </Row>
+            <Row className="checkout-heading-padding">
+              <Col>
+                <div className="page-title">
+                  {/* <Link to="/plp"> */}
+                  <Button onClick={goBack} className="goback">
+                    <img
+                      className="checkout-back-icon"
+                      src="/static/images/arrowleft.png"
+                      alt="pic"
+                    />
+                  </Button>
+                  <h1 className="checkout-title"> Checkout</h1>
+                </div>
+              </Col>
+            </Row>
+          </>
+        ) : (
+          <>
+            <Row className="checkoutHeader">
+              <Col>
+                <div className="page-title">
+                  <Button onClick={goBack} className="goback">
+                    <img
+                      className="checkout-back-icon"
+                      src="/static/images/arrowleft.png"
+                      alt="pic"
+                    />
+                  </Button>
+                  <h1 className="checkout-title"> Checkout</h1>
+                </div>
+              </Col>
+              <Col>
+                {/* <LinkIcon
+                  className="checkout-logo"
+                  link="/"
+                  src="static\images\klondike.png"
                   alt="pic"
-                />
-              </a>
-              <h1 className="checkout-title"> Checkout</h1>
-            </div>
-          </Col>
-        </Row>
+                /> */}
+                <Button
+                  onClick={redirectToHome}
+                  className="checkout-logo-button"
+                >
+                  <img
+                    className="checkout-logo-image"
+                    src="static\images\klondike.png"
+                    alt="pic"
+                  />
+                </Button>
+              </Col>
+            </Row>
+          </>
+        )}
+
         {isCartLoading ? (
           <Row justify="center" align="center">
             <h1 style={{ color: 'gray' }}>Loading...</h1>
           </Row>
         ) : (
           <Row className="checkout-padding">
-            <Col xs={{ span: 23 }} lg={{ span: 16 }}>
-              <div style={{ margin: '0 0 3vw 1vw' }} className="radio-group">
+            <Col xs={{ span: 24 }} lg={{ span: 16 }}>
+              <div style={{ margin: '0 0 36px 1vw' }} className="radio-group">
                 <Radio.Group
-                  onChange={onChange}
-                  value={value}
+                  // value={value}
                   defaultValue={1}
                   size="large"
                   optionType="button"
+                  onChange={onChange}
                 >
                   <Radio
                     value={1}
@@ -375,50 +494,89 @@ const Checkoutsection = () => {
                       color: delivery ? 'white' : 'rgba(244, 244, 244, 0.5)',
                     }}
                     className="radio-btn"
+                    onMouseEnter={() => setTooltipVisible(false)}
                   >
                     DELIVERY
                   </Radio>
-                  <Radio
-                    value={2}
-                    style={{
-                      color: delivery ? 'rgba(244, 244, 244, 0.5)' : 'white',
-                    }}
-                    className="radio-btn"
+                  <Tooltip
+                    placement="bottomLeft"
+                    visible={tooltipVisible}
+                    title={secondtext}
                   >
-                    PICKUP
-                  </Radio>
+                    <Radio
+                      value={2}
+                      style={{
+                        color: delivery ? 'rgba(244, 244, 244, 0.5)' : 'white',
+                      }}
+                      className="radio-btn"
+                      disabled={cartPayload?.itemsTotal < 500}
+                      onMouseEnter={() =>
+                        setTooltipVisible(cartPayload?.itemsTotal < 500)
+                      }
+                      onMouseLeave={() => setTooltipVisible(false)}
+                    >
+                      PICKUP
+                    </Radio>
+                  </Tooltip>
                 </Radio.Group>
               </div>
               <div className="checkout-info">
-                <span>{personalInfo?.email}</span>
+                <span>{`${personalInfo?.email}`}</span>
               </div>
-              <div className="checkout-info-second">
-                <div className="checkout-po">
-                  <span>
-                    <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
-                    <br />
-                    {`${address?.street1},`}
-                    <br />
-                    {`${address?.city}, ${address?.state} ${address?.zipCode}`}
-                    <br />
-                    {`${address?.phone?.number}`}
-                  </span>
-                  {!delivery && (
-                    <Button
-                      ghost
-                      className="change-button"
-                      onClick={handlePickUpClick}
-                    >
-                      CHOOSE PICKUP LOCATION
-                    </Button>
-                  )}
+              {delivery ? (
+                <div className="checkout-info-second">
+                  <div className="checkout-po">
+                    <span>
+                      <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+                      <br />
+                      {`${address?.street1},`}
+                      <br />
+                      {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                      <br />
+                      {`${address?.phone?.number}`}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="checkout-info-second justify-align-center">
+                  {Object.keys(selectedLocation).length === 0 ? (
+                    <div>
+                      <div className="checkout-po">
+                        <div>
+                          <span>Please choose location!</span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="checkout-po">
+                        <span>
+                          {`${selectedLocation?.address?.street1},`}
+                          <br />
+                          {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
+                          <br />
+                          {`${selectedLocation?.address?.phone?.number ||
+                            '000-000-000'}`}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                  <Button
+                    ghost
+                    className="change-button"
+                    onClick={handlePickUpClick}
+                  >
+                    CHOOSE PICKUP LOCATION
+                  </Button>
+                </div>
+              )}
               <div className="checkout-info-third">
-                <div className="checkout-po">
-                  <span>
+                <div>
+                  <span className="checkout-po">
                     PO Number: <strong>{`${poNumber}`}</strong>
                   </span>
+                </div>
+                <div className="checkout-po-button">
                   <Button
                     ghost
                     className="change-button"
@@ -428,26 +586,44 @@ const Checkoutsection = () => {
                   </Button>
                 </div>
               </div>
-              {inputField && (
-                <div className="checkout-info">
-                  <div className="checkout-po">
-                    <span>Custom PO Number:</span>
-                    <Input
-                      placeholder="Enter Custom PO Number"
-                      onChange={handlePOInput}
-                    />
+              <div>
+                {inputField && (
+                  <div className="checkout-info">
+                    <div className="checkout-po">
+                      <span className="checkout-po-span">
+                        Custom PO Number:
+                      </span>
+                      <div className="checkout-po-input">
+                        <Input
+                          placeholder="Enter Custom PO Number"
+                          onChange={handlePOInput}
+                          maxLength={7}
+                          defaultValue={`R3G`}
+                          className="inputStyle"
+                        />
+                        {inputField && !validatePO && (
+                          <p style={{ color: '#f2a900' }}>Invalid PO Number</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
+                )}
+              </div>
+              {size > 768 && (
+                <div className="checkout-btn">
+                  <Button
+                    className="placeorder-btn"
+                    onClick={createShipping}
+                    loading={isLoading}
+                    disabled={
+                      (!delivery && !Object.keys(selectedLocation).length) ||
+                      (inputField && !validatePO)
+                    }
+                  >
+                    PLACE ORDER
+                  </Button>
                 </div>
               )}
-              <div className="checkout-btn">
-                <Button
-                  className="placeorder-btn"
-                  onClick={createShipping}
-                  loading={isLoading}
-                >
-                  PLACE ORDER
-                </Button>
-              </div>
             </Col>
             <Col
               xs={{ span: 24 }}
@@ -458,7 +634,7 @@ const Checkoutsection = () => {
                 <h2 className="summary-title">ORDER SUMMARY</h2>
               </div>
               <div className="item">
-                <span>Items ({cartPayload?.items?.length})</span>
+                <span>Items ({`${cartPayload?.items?.length}`})</span>
                 <span>
                   {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
                 </span>
@@ -469,20 +645,47 @@ const Checkoutsection = () => {
               </div>
               <div className="item">
                 <span>Credit Limit</span>
-                <span>${creditLimit}</span>
+                <span>${creditLimit.toFixed(2)}</span>
               </div>
               <Divider style={{ border: '1px solid #fff' }} />
               <div className="item">
                 <span className="total-price">Total Amount</span>
-                <span className="total-amount">
-                  {`$${(parseFloat(cartPayload?.itemsTotal) + 39).toFixed(2)}`}
-                </span>
+                {delivery ? (
+                  <span className="total-amount">
+                    {`$${parseFloat(
+                      delivery
+                        ? cartPayload?.itemsTotal + 39
+                        : cartPayload?.itemsTotal,
+                    ).toFixed(2)}`}
+                  </span>
+                ) : (
+                  <span className="total-amount">
+                    {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                  </span>
+                )}
               </div>
             </Col>
+            <div>
+              {size <= 768 && (
+                <div className="checkout-btn">
+                  <Button
+                    className="placeorder-btn"
+                    onClick={createShipping}
+                    loading={isLoading}
+                    disabled={
+                      (!delivery && !Object.keys(selectedLocation).length) ||
+                      (inputField && !validatePO)
+                    }
+                  >
+                    PLACE ORDER
+                  </Button>
+                </div>
+              )}
+            </div>
           </Row>
         )}
       </div>
-    </>
+    </div>
   )
 }
 export default Checkoutsection

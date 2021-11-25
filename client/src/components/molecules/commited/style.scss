@@ -18,6 +18,10 @@
     @media screen and (max-width: 500px) {
       width: 100%;
       padding: 0 5.3vw;
+
+      &:lang(fr) {
+        padding-top: 16px;
+      }
     }
 
     h1 {
@@ -35,6 +39,7 @@
     }
 
     p {
+      padding-right: 2.3vw;
       color: #032939;
       font-family: $OpenSans;
       font-size: 1vw;
@@ -48,11 +53,12 @@
     }
 
     h3 {
+      padding-right: 8vw;
       color: #032939;
       font-family: $OpenSans;
       font-size: 0.97vw;
       font-style: normal;
-      font-weight: bold;
+      font-weight: 900;
       line-height: 140%;
 
       @media screen and (max-width: 500px) {
@@ -69,7 +75,7 @@
       border: 0.1vw solid #f2a900;
       border-radius: 0.3vw;
       background: #f2a900;
-      color: white;
+      color: #ff8200;
       font-family: $Raleway;
       font-size: 1.1vw;
       font-weight: bold;
@@ -79,22 +85,21 @@
       text-transform: uppercase;
 
       @media screen and (max-width: 768px) {
-        width: 32vw;
-        height: auto;
+        width: 120px;
+        height: 40px;
         margin-top: 2.6vw;
         margin-bottom: 8vw;
-        //width: 150px;
-        //margin-bottom: 20px;
-        //background: $accent-color;
-        //color: white;
-        //font-size: 14px;
         margin-left: 5.33vw;
-        border: 0.5vw solid #ff8200;
-        border-radius: 1.3vw;
+        // padding: 10px;
+        border: 2px solid #ff8200;
+        border-radius: 5px;
         background: transparent;
         color: #032939;
-        font-size: 3.7vw;
-        line-height: 6.4vw;
+        font-family: $Raleway;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 24px;
         text-transform: none;
       }
 

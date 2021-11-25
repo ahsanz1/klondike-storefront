@@ -46,15 +46,15 @@ const Dropdown = ({
       onChange={value => {
         onChange && onChange(value)
         console.log(value, 'val')
-        const list = items.map(item => {
-          if (item['Part Number'] === value) {
-            item.Select = value
-          }
-          return item
-        })
-        const _selectedList = list.filter(item => item.Select === true)
-        console.log('selection', _selectedList)
-        setSelectFilterList(_selectedList)
+        // const list = items.map(item => {
+        //   if (item['Part Number'] === value) {
+        //     item.Select = value
+        //   }
+        //   return item
+        // })
+        // const _selectedList = list.filter(item => item.Select === true)
+        // console.log('selection', _selectedList)
+        // setSelectFilterList(_selectedList)
         // setChange(value)
       }}
       dropdownStyle={dropdownStyle}
@@ -64,7 +64,8 @@ const Dropdown = ({
         return (
           <Option
             className={optionClassName}
-            key={menuItem.id || menuItem.value || i}
+            // key={menuItem.id || menuItem.value || i}
+            key={i}
             value={menuItem.value || i}
             disabled={menuItem.disabled}
             style={menuItem.disabled ? disabledOptionStyle : {}}

@@ -38,9 +38,10 @@ $vw-viewport: 1440;
 
   .technical-data {
     width: 69.4vw;
-    height: 100%;
+    height: auto;
     margin-top: get-vw(100px);
     padding-right: get-vw(38px);
+    // padding-bottom: 5.347vw;
     background-color: #03293980;
 
     @media (max-width: 768px) {
@@ -94,6 +95,14 @@ $vw-viewport: 1440;
         }
       }
 
+      p {
+        margin-bottom: 1.388vw;
+
+        @media (max-width: 768px) {
+          margin-bottom: 0;
+        }
+      }
+
       > p {
         opacity: 0.9;
         color: #fff;
@@ -121,7 +130,8 @@ $vw-viewport: 1440;
       // margin-left: 8.3vw;
       width: 100vw;
       //margin-top: 11.2vw;
-      margin-bottom: 5.6vw;
+      // margin-bottom: 5.6vw;
+      padding-bottom: 6vw;
     }
   }
 
@@ -221,6 +231,7 @@ $vw-viewport: 1440;
 
     .mobile-heading {
       display: block;
+      margin-bottom: 31px;
     }
   }
 

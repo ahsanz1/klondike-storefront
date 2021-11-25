@@ -8,7 +8,7 @@ import // PcpBottom,
 import Techtabllist from '../Technical-tablist'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
-import Link from 'components/atoms/link'
+import Button from 'components/atoms/button'
 // import { techBlogData } from 'components/organisms/tech-news-page/data'
 import TechBlogItem from 'components/organisms/tech-news-page/tech-blog-item'
 import { Pagination } from 'antd'
@@ -20,27 +20,41 @@ const TechNews = ({
   categoryHeading,
 }) => {
   const perPageItems = 10
-  let [activeItems, setActiveItems] = useState([])
+  // let [activeItems, setActiveItems] = useState([])
 
   useEffect(() => {
     setPaginationData(1)
   }, [])
 
   const setPaginationData = page => {
-    let data = techBlogData
     let startIndex = page * perPageItems - perPageItems
     let endIndex = startIndex + perPageItems
 
+    let data = techBlogData
     data = data.slice(startIndex, endIndex)
-    setActiveItems(data)
+    setActiveCatagoryData(data)
   }
   const catagory = techBlogData.map(item => {
     return item.catagory.toUpperCase()
   })
   const toFindDuplicates = arry =>
     arry.filter((item, index) => arry.indexOf(item) === index)
-  const duplicateElementa = toFindDuplicates(catagory)
-  console.log('check response:', duplicateElementa)
+  const duplicateElement = toFindDuplicates(catagory)
+  const [activeCatagoryData, setActiveCatagoryData] = useState(techBlogData)
+  const handleCatagory = catagory => {
+    let data = techBlogData.filter(item => {
+      return item.catagory.toUpperCase() === catagory
+    })
+    setActiveCatagoryData(data)
+    data = data.filter(item => item.catagory.toUpperCase() === catagory)
+  }
+  const sidebarSubitem = title => {
+    let data = techBlogData.filter(item => {
+      return item.descHeading === title
+    })
+    setActiveCatagoryData(data)
+  }
+
   return (
     <>
       <div className="technacil-wriper">
@@ -49,6 +63,7 @@ const TechNews = ({
             className="warranty-tablist"
             itemName="Tech/News Blog"
             categories={categories}
+            sidebarSubitem={sidebarSubitem}
           />
         </div>
         <div className="technical-data">
@@ -57,11 +72,18 @@ const TechNews = ({
               <Label className="tech-news-title">{mainHeading}</Label>
               <Label className="pages-title">{categoryHeading}</Label>
               <div className="catagory-links">
-                {duplicateElementa.map((item, i) => (
-                  <Link key={i} className="links">
-                    {item}
-                  </Link>
-                ))}
+                {duplicateElement &&
+                  duplicateElement.length > 0 &&
+                  duplicateElement.map((item, i) => (
+                    <Button
+                      key={i}
+                      className="links"
+                      to={`/tech-resources/tech-news-blog`}
+                      onClick={() => handleCatagory(item)}
+                    >
+                      {item}
+                    </Button>
+                  ))}
               </div>
               <div className="blog-item">
                 <div className="page-no">
@@ -72,9 +94,19 @@ const TechNews = ({
                     onChange={e => setPaginationData(e)}
                   />
                 </div>
-                {activeItems.map((item, i) => (
+
+                {activeCatagoryData &&
+                  activeCatagoryData.length > 0 &&
+                  activeCatagoryData.map((item, i) => (
+                    <TechBlogItem
+                      key={i}
+                      {...item}
+                      handleCatagory={handleCatagory}
+                    />
+                  ))}
+                {/* {activeItems.map((item, i) => (
                   <TechBlogItem key={i} {...item} />
-                ))}
+                ))} */}
               </div>
             </div>
           </div>

@@ -27,9 +27,7 @@ export const getOrdersByUser = async (
         headers: {
           ...HEADERS.common,
           'x-api-key': orderApiKey,
-          Authorization:
-            accessToken ||
-            'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjI3Njk3OTQyOTliMDAwNzE0MGEyOSIsInJvbGVzIjpbeyJpZCI6IjVlMTk2MjUwNWVmNjEyMDAwODlmM2IyMiJ9XSwicGVybWlzc2lvbnMiOltdLCJhY2NvdW50aWQiOiI2MDIyNzY5Njk0Mjk5YjAwMDcxNDBhMjgiLCJhY2NvdW50SWQiOm51bGwsInVzZXJUeXBlIjp7ImtpbmQiOiJSRUdJU1RFUkVEIn0sImlhdCI6MTYxNzYwMzU1MywiZXhwIjoxNjE3NjA1MzUzfQ.SJO7ac5T9sWhTdO40aBgP-n17SiifVl2lathDE_zFDwTD7xpkcYyDbZT-ybo7F_ye14QdmZEqrRvHjlKSfLB0A',
+          Authorization: accessToken,
         },
       },
     )
@@ -45,6 +43,40 @@ export const getOrdersByUser = async (
       const statusCode = e.response.status
       if (statusCode === 500 && count < 4) {
         return getOrdersByUser(accessToken, page, pageSize, count + 1)
+      }
+    }
+    return {
+      hasError: true,
+      response: { error: e.message },
+    }
+  }
+}
+
+export const getOrdersByQuery = async (accessToken, payload, count = 1) => {
+  try {
+    const response = await axios.post(
+      apiDomain + ENDPOINTS.POST.historyByQuery,
+      JSON.stringify(payload),
+      {
+        headers: {
+          ...HEADERS.common,
+          'x-api-key': 'LfTYwnqk5frPWLcn8h946K31XpQDzRH87JYYP877', // orderApiKey,
+          Authorization: accessToken,
+        },
+      },
+    )
+    return {
+      hasError: false,
+      response: response,
+    }
+  } catch (e) {
+    console.log('api call')
+    console.log(e)
+    console.log(e.response)
+    if (e.response && e.response.status) {
+      const statusCode = e.response.status
+      if (statusCode === 500 && count < 4) {
+        return getOrdersByQuery(accessToken, payload, count + 1)
       }
     }
     return {

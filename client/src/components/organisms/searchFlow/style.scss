@@ -20,7 +20,7 @@
 
     @media (max-width: 500px) {
       margin-right: 6.4vw;
-      margin-left: 5.86vw;
+      margin-left: 2.86vw;
     }
 
     img {
@@ -48,6 +48,7 @@
       left: 0;
       width: 100%;
       max-height: 100vh;
+      margin-top: 8px;
       padding-bottom: 20vw;
       overflow-y: scroll;
     }
@@ -81,6 +82,10 @@
         &:nth-child(2) {
           width: 20%;
           text-align: right;
+
+          @media (max-width: 768px) {
+            margin-right: 9.33vw;
+          }
         }
       }
     }
@@ -121,7 +126,7 @@
       border-radius: 1.1vw;
       outline: none;
       background: url('../../../../static/images/search.png') no-repeat 1.8vw;
-      background-color: #013a4e !important;
+      background-color: #002a3a !important;
       background-size: 1.4vw;
       color: $white-color;
       font-family: $Poppins;
@@ -194,6 +199,7 @@
     justify-content: space-between;
     height: 100vh;
     padding: 2vw 8.3vw;
+    overflow: auto;
 
     // @media (max-width: 1250px) {
     //   padding: 30px;

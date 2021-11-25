@@ -5,13 +5,20 @@ import Link from 'components/atoms/link'
 
 import './style.scss'
 
-const FooterLinks = ({ heading = '', footerAccount, links = [] }) => {
+const FooterLinks = ({
+  heading = '',
+  headingLinks,
+  footerAccount,
+  links = [],
+}) => {
   console.log('footer link check:', links)
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
   return (
     <div className="footer-column menu-column">
-      <h3>{heading}</h3>{' '}
+      <Link to={headingLinks}>
+        <h3>{heading}</h3>{' '}
+      </Link>
       {!userLoginInfo && (
         <Link to="/account/login">
           <h5>{footerAccount}</h5>
@@ -33,6 +40,7 @@ const FooterLinks = ({ heading = '', footerAccount, links = [] }) => {
 FooterLinks.propTypes = {
   heading: PropTypes.string,
   footerAccount: PropTypes.string,
+  headingLinks: PropTypes.string,
   links: PropTypes.array,
 }
 

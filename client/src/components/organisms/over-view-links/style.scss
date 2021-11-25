@@ -26,7 +26,7 @@
 
   .title {
     margin-bottom: get-vw(9px);
-    padding-top: get-vw(56px);
+    padding-top: get-vw(54px);
     color: #f1a900;
     font-size: get-vw(24px);
     font-weight: bold;
@@ -88,8 +88,8 @@
   .about-us-links {
     display: flex;
     flex-wrap: wrap;
-    margin-top: get-vw(112px);
-    margin-left: get-vw(160px);
+    margin-top: get-vw(75px);
+    margin-left: get-vw(172px);
 
     @media screen and (max-width: 768px) {
       margin-top: 39px;
@@ -114,6 +114,7 @@
       .about-us-links-image {
         .links-image {
           width: get-vw(190px);
+          margin-top: get-vw(6px);
           margin-right: get-vw(12px);
 
           @media screen and (max-width: 768px) {
@@ -125,6 +126,7 @@
 
       .about-us-links-content {
         .links-title {
+          margin-bottom: get-vw(6px);
           color: #f1a900;
           font-size: get-vw(18px);
           font-style: normal;

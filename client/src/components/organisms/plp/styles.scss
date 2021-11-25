@@ -1,8 +1,10 @@
 @import '~styles/globals';
 
 .plp {
-  padding: 4.1vw 9.37vw;
   padding-top: 1.6vw;
+  padding-right: 6.66vw;
+  padding-bottom: 4.1vw;
+  padding-left: 8.33vw;
 
   @media screen and (max-width: 500px) {
     margin-top: 27.73vw;
@@ -14,9 +16,14 @@
     display: none;
     text-align: center;
 
+    @supports (-webkit-touch-callout: none) {
+      margin-top: -50px;
+      padding-top: 0;
+    }
+
     @media (max-width: 500px) {
       display: flex !important;
-      margin-top: 10.93vw !important;
+      margin-top: 10.93 !important;
       margin-bottom: 10.93vw !important;
     }
   }
@@ -42,7 +49,7 @@
       padding: 5.33vw 1.866vw;
       border: 0.26vw solid #ddaf34;
       border-radius: 1.33vw;
-      font-size: 23px;
+      font-size: 20px;
     }
   }
 
@@ -81,6 +88,7 @@
 
     .productItem {
       width: 80%;
+      margin-right: 0.69vw;
 
       @media (max-width: 768px) {
         width: 100%;

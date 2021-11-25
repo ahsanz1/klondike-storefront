@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { getItem } from 'libs/services/localStorage/localStorage'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import { CartReducer, sumItems } from './app-reducer'
-import { getCartByUserId } from 'libs/services/api/cart'
-import { getItemsBySkus } from 'libs/services/api/item'
+import { setUserCart } from 'libs/utils/user-cart'
 
 const AppContext = React.createContext({})
 const AppProvider = ({ children }) => {
+  const [cartAmount, setCartAmount] = useState('')
   const [searchKey, setSearchKey] = useState('')
   const [searchFilter, setSearchFilter] = useState([])
   const [plpredirect, setPlpRedirect] = useState('nano')
@@ -47,8 +47,9 @@ const AppProvider = ({ children }) => {
   const [paymentIndex, setPaymentIndex] = useState(0)
   const [billingIndex, setBillingIndex] = useState(0)
   const [cartData, setCartData] = useState({})
+  const [cartState, setCartState] = useState('')
   const [checkoutData, setCheckoutData] = useState({})
-  const [creditLimit, setCreditLimit] = useState(5000)
+  const [creditLimit, setCreditLimit] = useState(2000)
   const [size] = useWindowSize()
   const initialState = {
     personalInfo: getItem('userPersonalInfo')
@@ -62,6 +63,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState)
   const [myAccountForm, setMyAccountForm] = useState([])
   const [isNewAddress, setIsNewAddress] = useState(false)
+  const [miniCartLoading, setMiniCartLoading] = useState(false)
   const [totalCheckoutCost, setTotalCheckoutCost] = useState('')
   const [sigunUpforExclusiveOffers, setSigunUpforExclusiveOffers] = useState(
     false,
@@ -75,53 +77,26 @@ const AppProvider = ({ children }) => {
   const [subscribedItemData, setSubscribedItemData] = useState({})
   const [subscribedPlpData, setSubscribedPlpData] = useState([])
   const [subscriptionBillingInfo, setSubscriptionBillingInfo] = useState({})
+  const [getSearchParam, setGetSearchParam] = useState('')
+  const [itemList, setItemList] = useState([])
+  const [loadingState, setLoadingState] = useState(false)
 
   const handleDisplayForm = () => {
     setIsNewAddress(!isNewAddress)
   }
 
   const showModal = async () => {
-    let skus = []
-    let res = await getCartByUserId(initialState.user.accessToken)
-    let data = res.data
-
-    await data.items.map((item, i) => {
-      skus.push(item.sku)
-    })
-
-    let itemsRes = await getItemsBySkus(skus)
-
-    let itemsArr = []
-
-    let sizes = []
-    await data.items.map(async (item, i) => {
-      let attributes = itemsRes?.data[i]?.attributes
-      await attributes.map(attr => {
-        if (attr.name === 'Package Size') {
-          sizes.push(attr.value)
-        }
-      })
-
-      let itemObj = {
-        ...item,
-        size: sizes[i],
-        image: itemsRes?.data[i]?.images[0]?.source[0]?.url,
-      }
-
-      itemsArr.push(itemObj)
-    })
-
-    let payload = {
-      ...data,
-      items: itemsArr,
-    }
-    setGetCartItemsState(payload)
+    setMiniCartLoading(true)
     setIsModalVisible(true)
 
     if (size > 768) {
       document.body.style.overflow = 'visible'
     }
+
+    setGetCartItemsState(await setUserCart())
+    setMiniCartLoading(false)
   }
+
   const showcartPOPModal = () => {
     setCartPopupModal(true)
     document.body.style.overflow = 'visible'
@@ -229,6 +204,10 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        setCartState,
+        cartState,
+        setCartAmount,
+        cartAmount,
         removeProduct,
         addProduct,
         searchKey,
@@ -271,6 +250,8 @@ const AppProvider = ({ children }) => {
         closePopUpModal,
         closeModal,
         getCartItems,
+        miniCartLoading,
+        setMiniCartLoading,
         setGetCartItemsState,
         pdpPurchaseType,
         setPdpPurchaseType,
@@ -347,6 +328,12 @@ const AppProvider = ({ children }) => {
         setCheckoutData,
         creditLimit,
         setCreditLimit,
+        getSearchParam,
+        setGetSearchParam,
+        itemList,
+        setItemList,
+        loadingState,
+        setLoadingState,
         ...state,
       }}
     >

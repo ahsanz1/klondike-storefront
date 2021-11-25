@@ -22,53 +22,64 @@ import './style.scss'
 
 const { TabPane } = Tabs
 
-const MyAccount = ({
-  title,
-  logoutBtnText,
-  accountTabsData,
-  accountOrderFormData,
-  accountAddress,
-}) => {
-  console.log(
-    'acount adresssss muzzzaminksad111',
-    accountAddress,
-    accountTabsData,
-  )
+const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
   const [loading, setLoading] = useState(false)
   const [userName, setUserName] = useState('')
   const [tabKey, setTabKey] = useState('0')
   const [allOrders, setAllOrders] = useState([])
   const [userOrder, setUserOrder] = useState([])
   const { user, logout, personalInfo } = useContext(AppContext)
-  console.log('user info', personalInfo)
 
   useEffect(() => {
-    if (user.accessToken) {
-      setLoading(true)
-      const _name = getUserInfo(user)
-      setUserName(_name)
+    const setData = async () => {
+      if (user.accessToken) {
+        setLoading(true)
+        const _name = await getUserInfo(user)
+        setUserName(_name)
 
-      const fetchOrders = async () => {
-        const ordersByUser = await getOrdersByUser(user.accessToken)
-        const _allOrders = getAllOrders(ordersByUser)
+        const fetchOrders = async () => {
+          // let payload = {
+          //   offset: 0,
+          //   limit: 100,
+          //   sortBy: 'createdAt',
+          //   sortDirection: 'asc',
+          //   filters: {
+          //     status: [
+          //       'ORDER_CREATED',
+          //       'ORDER_CONFIRMED',
+          //       'ORDER_CANCELLED',
+          //       'ORDER_PARTIALLY_SHIPPED',
+          //       'ORDER_SHIPPED',
+          //       'ORDER_PARTIALLY_DELIVERED',
+          //       'ORDER_DELIVERED',
+          //       'ORDER_RETURNED',
+          //       'ORDER_PARTIALLY_RETURNED',
+          //       'ORDER_PAYMENT_AUTHORIZED',
+          //       'ORDER_PAYMENT_INVALID',
+          //     ],
+          //   },
+          // }
 
-        console.log('ordersByUser: ', ordersByUser)
-        console.log('allOrders: ', _allOrders)
+          const ordersByUser = await getOrdersByUser(user.accessToken)
+          const _allOrders = await getAllOrders(ordersByUser)
 
-        setUserOrder(
-          ordersByUser &&
-            ordersByUser.response &&
-            ordersByUser.response.data &&
-            ordersByUser.response.data.orders,
-        )
-        setAllOrders(_allOrders)
-        setLoading(false)
+          setUserOrder(
+            ordersByUser &&
+              ordersByUser.response &&
+              ordersByUser.response.data &&
+              ordersByUser.response.data.orders,
+          )
+          setAllOrders(_allOrders)
+          setLoading(false)
+        }
+
+        fetchOrders()
+      } else {
+        navigate('/account/login')
       }
-
-      fetchOrders()
-    } else {
-      navigate('/account/login')
     }
+
+    setData()
   }, [user])
   const logoutWord = logoutBtnText.split(' ')
   const logoutCapital = []
@@ -101,6 +112,7 @@ const MyAccount = ({
             <div className="accounts-tabs">
               <div className="tabs-container">
                 <TabsDropdown
+                  className="account-dropdown"
                   activeKey={tabKey}
                   onTabClick={key => setTabKey(key)}
                 >

@@ -4,7 +4,7 @@
 .links {
   display: flex;
 
-  div {
+  .menu-link-item {
     margin-right: 3.055vw;
 
     &:nth-child(3) {
@@ -117,7 +117,7 @@
     }
 
     .c-image {
-      top: 5.33vw;
+      top: 9.5vw;
       left: 2.66vw;
       transform: rotate(180deg);
     }
@@ -137,6 +137,10 @@
       margin-top: 8vw;
 
       li {
+        &:nth-child(1) {
+          display: none;
+        }
+
         button {
           font-size: 4.26vw;
           text-transform: uppercase;

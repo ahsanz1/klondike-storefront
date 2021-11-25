@@ -32,7 +32,7 @@ const ProductInovation = ({ productInovation }) => {
         <div>
           {productInovation.map((content, i) => (
             <SwiperSlide key={i}>
-              <div className="Product-content">
+              <div className="Product-content notranslate">
                 <div className="product_img_wraper">
                   <Link to={`/PDP?sku=${content.sku}`}>
                     <img
