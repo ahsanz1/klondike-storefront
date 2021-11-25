@@ -570,6 +570,10 @@
       background: #013a4e;
       color: #fff;
 
+      @supports (-webkit-touch-callout: none) {
+        font-size: 3.5vw !important;
+      }
+
       @media screen and (max-width: 500px) {
         background: url('../../../../static/images/arrowdown.png') no-repeat !important;
         background-color: #0d394b !important;
