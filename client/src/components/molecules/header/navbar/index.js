@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useLocation } from '@reach/router'
 import Links from 'components/molecules/header/links'
@@ -14,6 +14,7 @@ import { AppContext } from 'libs/context'
 import CartPopUP from 'components/organisms/cart-pop'
 
 import './styles.scss'
+import { setUserCart } from 'libs/utils/user-cart'
 
 const Navbar = ({
   logo = '',
@@ -36,19 +37,29 @@ const Navbar = ({
     user,
     loginBottom,
     setLoginBottom,
-    cartAmount,
+    setGetCartItemsState,
     getCartItems,
-    cartData,
     loadingState,
     setLoadingState,
   } = useContext(AppContext)
+
+  useEffect(() => {
+    const setCart = async () => {
+      setGetCartItemsState(await setUserCart())
+    }
+
+    setCart()
+  }, [user])
+
   const wholesaleLinks =
     dynamicLinks ||
     dynamicLinks.find(item => item.id === 'Wholesale').linksArray ||
     []
+
   if (user && user.isWholeSaleUser) {
     links = wholesaleLinks
   }
+
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
 
@@ -56,18 +67,15 @@ const Navbar = ({
     toggleSearch()
     setLoginBottom(false)
   }
+
   const menuToggle = () => {
     setIsOpen(!isOpen)
   }
-  console.log('cart amoutn check:', getCartItems, cartAmount, cartData)
 
-  let res = getCartItems?.items?.some(
-    item =>
-      item?.attributes?.find(att => att?.name === 'Packaged Order')?.value,
-  )
   const loadingFunc = () => {
     setLoadingState(!loadingState)
   }
+
   return (
     <div
       className={
@@ -175,24 +183,17 @@ const Navbar = ({
             </button>
           </Link>
           {userLoginInfo && userLoginInfo.email && (
-            <Button
-              iconOnly
-              className="cart-button"
-              // style={{
-              //   paddingRight: '35px',
-              // }}
-            >
-              {res ? (
+            <Button iconOnly className="cart-button">
+              {getCartItems?.hasPackaged ? (
                 <div className="cart-amount">
                   $
-                  {parseFloat(
-                    cartAmount || getCartItems?.totalAmount?.amount || 0.0,
-                  ).toFixed(2)}
+                  {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
+                    2,
+                  )}
                 </div>
               ) : (
                 <div className="cart-amount">
-                  {parseFloat(cartAmount || getCartItems?.quantity || 0)}{' '}
-                  {` ltrs`}
+                  {parseFloat(getCartItems?.quantity || 0.0)} {` ltrs`}
                 </div>
               )}
               <NavbarcartIcon
@@ -203,17 +204,6 @@ const Navbar = ({
           )}
         </div>
       </div>
-      {/* { loadingState && !isModalVisible && <div
-        className="loading"
-        style={{
-          color: '#ffff',
-          opacity: '0.9',
-          font: 'bolder',
-          background: 'lightgray',
-        }}
-      >
-        Loading ...
-      </div>} */}
 
       <div
         className={`header__mobile-menu ${
