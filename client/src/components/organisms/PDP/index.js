@@ -31,7 +31,7 @@ import { AppContext } from 'libs/context'
 import {
   getProductBySKU,
   addProductToCart,
-  getItemInStockStatus,
+  // getItemInStockStatus,
 } from 'libs/services/api/pdp.api'
 import PlpTabList from 'components/organisms/plp-tab-list'
 // import CartDropdown from '../cart-dropdown'
@@ -39,6 +39,7 @@ import { useLocation, useNavigate } from '@reach/router'
 import queryString from 'query-string'
 // import { getItemsBySkus } from 'libs/services/api/item'
 import { setUserCart } from 'libs/utils/user-cart'
+import { checkItemsInStock } from 'libs/utils/checkInventory'
 
 const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   // const { data, imgdata, heading } = pdpdata
@@ -51,6 +52,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     // cartState,
     getCartItems,
     setGetCartItemsState,
+    creditLimit,
   } = useContext(AppContext)
   console.log({ user })
   const navigate = useNavigate()
@@ -367,39 +369,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setAddingToCart(false)
   }
 
-  const checkItemsInStock = async payloadItems => {
-    let itemsWithQty = []
-    var itemsNotInStock = []
-    payloadItems?.forEach(item => {
-      itemsWithQty.push({
-        itemId: item?.itemId,
-        quantity: item?.quantity,
-      })
-    })
-
-    let res = await getItemInStockStatus(itemsWithQty)
-    console.log('itemsInNotStcok', res)
-    let retreivedData = res?.response?.data
-    retreivedData?.forEach(item => {
-      if (!item?.inStock) {
-        itemsNotInStock.push(
-          payloadItems?.find(pItem => pItem?.itemId === item?.itemId),
-        )
-      }
-    })
-    console.log('itemsInNotStcok', itemsNotInStock)
-    let filteredItems = []
-    if (itemsNotInStock?.length) {
-      itemsNotInStock?.forEach(item => {
-        filteredItems.push({
-          size: item?.size,
-          sku: item?.sku,
-        })
-      })
-    }
-    return filteredItems
-  }
-
   const onSubmit = async e => {
     setAddingToCart(true)
     console.log(productData?.requestArray, 'pkg')
@@ -410,8 +379,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       userAuthToken: isLoggedIn ? user?.accessToken : null,
     }
 
+    let checkLimit = parseFloat(
+      getCartItems?.totalAmount?.amount + items?.totalPackagedOrderPrice,
+    ).toFixed(2)
+    if (packagedOrder && checkLimit > creditLimit) {
+      error('You are exceeding your credit limit')
+      setAddingToCart(false)
+      return
+    }
+
     let itemsNotInStock = await checkItemsInStock(payload?.items)
-    console.log('itemsInNotStcok', itemsNotInStock)
     if (itemsNotInStock?.length) {
       error(`These Items ${JSON.stringify(itemsNotInStock)} are not in stock!`)
       setAddingToCart(false)
@@ -698,7 +675,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                     {isLoggedIn && (
                                       <InputNumber
                                         min={0}
-                                        max={1000}
+                                        max={5000}
                                         defaultValue={0}
                                         type="number"
                                         onChange={e => onQtyChange(e, i)}
