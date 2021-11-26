@@ -538,13 +538,20 @@ const Checkoutsection = () => {
                   </div>
                 </div>
               ) : (
-                <div className="checkout-info-second justify-align-center">
+                <div className="checkout-info-second">
                   {Object.keys(selectedLocation).length === 0 ? (
                     <div>
                       <div className="checkout-po">
-                        <div>
-                          <span>Please choose location!</span>
-                        </div>
+                        {/* <span>Please choose location!</span> */}
+                        <span>
+                          <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+                          <br />
+                          {`${address?.street1},`}
+                          <br />
+                          {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                          <br />
+                          {`${address?.phone?.number}`}
+                        </span>
                       </div>
                     </div>
                   ) : (
