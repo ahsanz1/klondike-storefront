@@ -154,7 +154,6 @@
     // border-radius: 16px;
     margin-left: 20px;
     // padding-bottom: 25px;
-
     .reset-button {
       margin-left: 20px;
       padding: 5px;
@@ -166,8 +165,10 @@
 
       @media (max-width: 768px) {
         position: relative;
-        top: 10px;
+        top: -5px;
         right: 10px;
+        align-self: center;
+        margin-left: 6.66vw;
       }
     }
 
@@ -186,6 +187,7 @@
     }
 
     @media (max-width: 768px) {
+      align-items: unset;
       width: 17.4vw;
       height: 19.2vw;
       margin-left: 0;
