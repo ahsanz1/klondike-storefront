@@ -58,7 +58,12 @@ export const getOrdersByUser = async (
     let res = await refreshToken(user.refreshToken)
 
     if (res.hasError === false && count < 4) {
-      window.location.reload()
+      return getOrdersByUser(
+        res?.response?.data?.accessToken,
+        page,
+        pageSize,
+        ++count,
+      )
     }
 
     return {
