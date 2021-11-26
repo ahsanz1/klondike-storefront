@@ -59,10 +59,10 @@
   .input_model {
     width: 31.1vw;
     height: 4.44vw;
-    margin-right: 0.69vw;
+    margin-right: 1.38vw;
     // height: 4.4vw;
     // margin-left: 22.9vw;
-    padding-left: 1.3vw;
+    padding: 1.25vw 1.9vw;
     border: 1px solid #e4eff4;
     border-radius: 1.1vw;
     outline: none;
@@ -114,8 +114,7 @@
 
   .wrapper-oats {
     display: flex;
-    margin-right: 22vw;
-    margin-left: 24vw;
+    margin: 0 23.19vw;
 
     @media (max-width: 768px) {
       // display: grid;
@@ -197,13 +196,14 @@
   .ant-select-selector {
     min-width: 11.45vw !important;
     height: 4.44vw !important;
-    //margin: 0 10px !important;
-    // padding-top: 15px !important;
-    padding-top: 1.2vw !important;
-    padding-left: 2vw !important;
+    padding: 1.25vw 1.66vw !important;
     border-radius: 1.11vw !important;
     background-color: #e4eff4 !important;
     font-family: $OpenSans;
+
+    .ant-select-selector::placeholder {
+      color: #07232f;
+    }
 
     @media (max-width: 768px) {
       height: 64px !important;
@@ -233,7 +233,12 @@
   }
 
   .ant-select-arrow {
+    margin-right: 1.25vw;
     color: black !important;
+  }
+
+  .ant-select-arrow::placeholder {
+    color: #07232f;
   }
 
   .dropdown-wrapper {

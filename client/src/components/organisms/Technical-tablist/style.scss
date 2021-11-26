@@ -24,6 +24,10 @@ $vw-viewport: 1440;
     border-bottom: 1px #f2a900 solid;
     border-left: 1px #f2a900 solid;
 
+    @media (max-width: 768px) {
+      margin: 0 !important;
+    }
+
     .catagory-link {
       margin-left: get-vw(20px);
       opacity: 1 !important;
@@ -67,9 +71,9 @@ $vw-viewport: 1440;
 
     @media (max-width: 768px) {
       width: 100%;
-      //margin-top: 3.73vw;
-      margin-top: 3.63vw;
-      margin-bottom: 0;
+
+      // margin-top: 3.63vw;
+      margin-bottom: 3.63vw;
       padding: 9px;
       padding-left: 0 !important;
       // border: 0.26vw #f2a900 solid !important;
@@ -79,7 +83,7 @@ $vw-viewport: 1440;
 
     .catagory-link {
       margin-left: get-vw(20px);
-      opacity: 0.6;
+      // opacity: 0.6;
       color: #eceae9;
       // font-family: Open Sans;
       font-size: get-vw(10px);

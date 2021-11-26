@@ -21,6 +21,7 @@ const TechNews = ({
 }) => {
   const perPageItems = 10
   // let [activeItems, setActiveItems] = useState([])
+  const [activeSubitem, setactiveSubitem] = useState()
 
   useEffect(() => {
     setPaginationData(1)
@@ -49,6 +50,7 @@ const TechNews = ({
     data = data.filter(item => item.catagory.toUpperCase() === catagory)
   }
   const sidebarSubitem = title => {
+    setactiveSubitem(title)
     let data = techBlogData.filter(item => {
       return item.descHeading === title
     })
@@ -64,6 +66,7 @@ const TechNews = ({
             itemName="Tech/News Blog"
             categories={categories}
             sidebarSubitem={sidebarSubitem}
+            subItemName={activeSubitem}
           />
         </div>
         <div className="technical-data">

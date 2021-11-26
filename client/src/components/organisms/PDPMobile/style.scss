@@ -27,6 +27,8 @@ $vw-viewport: 350;
     position: unset;
     top: get-vw(120);
     padding-top: 20vh;
+    padding-right: 6.66vw;
+    padding-left: 6.66vw;
   }
 }
 
@@ -61,6 +63,10 @@ $vw-viewport: 350;
   font-size: get-vw(20) !important;
   font-style: normal;
   font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 5.33vw !important;
+  }
 }
 
 .breadCrumb {
@@ -218,6 +224,12 @@ $vw-viewport: 350;
   }
 }
 
+.ant-input-number {
+  @media (max-width: 768px) {
+    min-width: 15.7vw !important;
+  }
+}
+
 .total-price-container {
   @media (max-width: 768px) {
     // margin-right: 24px;
@@ -238,7 +250,7 @@ $vw-viewport: 350;
 .add-to-cart {
   box-sizing: border-box;
   height: 4.444vw !important;
-  margin-top: 20px;
+  margin-top: 10.4vw;
   border: 1px solid #f2a900 !important;
   border-radius: 5px !important;
   background-color: #f2a900 !important;
