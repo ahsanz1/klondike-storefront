@@ -16,6 +16,7 @@ import Button from 'components/atoms/button'
 import { setUserCart } from 'libs/utils/user-cart'
 import { removeItemFromCart, updateCartApi } from 'libs/services/api/cart'
 import { getItemsBySkus } from 'libs/services/api/item'
+import { checkItemsInStock } from 'libs/utils/checkInventory'
 /* eslint-disable indent */
 
 const QuickOrder = () => {
@@ -163,6 +164,15 @@ const QuickOrder = () => {
       items,
       registeredUser: true,
       userAuthToken: user.accessToken,
+    }
+
+    let stockRes = await checkItemsInStock(items)
+    if (stockRes?.length) {
+      error(`These items ${JSON.stringify(stockRes)} are not in stock!`)
+      setPackgdata([])
+      setAddingToCart(false)
+      setInputList([{ partnumber: '', quantity: '' }])
+      return
     }
 
     let cartRes = await addProductToCart(payload)

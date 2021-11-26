@@ -29,6 +29,7 @@ export const setUserCart = async () => {
         if (itemRes.sku === item.sku) {
           attributes = itemRes.attributes
           await attributes.map(attr => {
+            console.log('atttttrr', attr)
             switch (attr.name) {
               case 'Package Size':
                 obj['size'] = attr.value
@@ -47,8 +48,8 @@ export const setUserCart = async () => {
                 break
 
               case 'Packaged Order':
-                obj['isPackaged'] = true
-                data['hasPackaged'] = true
+                obj['isPackaged'] = attr.value
+                data['hasPackaged'] = attr.value
                 break
             }
           })
