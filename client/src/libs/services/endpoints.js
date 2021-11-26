@@ -1,3 +1,5 @@
+import { apiDomain } from 'libs/general-config'
+
 const ENDPOINTS = {
   GET: {
     globalComponents: '/api-xpm/global-component/live',
@@ -45,7 +47,7 @@ const ENDPOINTS = {
     checkout: '/api-order/checkout',
     login: '/auth/local/login',
     signUp: '/user/local',
-    refreshToken: '/auth/local/refresh',
+    refreshToken: apiDomain + '/api-commerceIdentity/auth/local/refresh',
     resetPassRequest: '/auth/local/reset/token',
     subscribableItems: '/plans/get-by-itemIds',
     productsByItemsById: `/api-item/item/generic/item-ids`,

@@ -10,8 +10,6 @@ import TabsDropdown from 'components/molecules/tab-dropdown'
 import PageHeader from './components/PageHeader'
 import AccountTabPane from './components/AccountTabPane'
 import Link from 'components/atoms/link'
-
-import { accountTabs } from './static'
 import {
   getUserInfo,
   getAllOrders,
@@ -26,7 +24,7 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
   const [loading, setLoading] = useState(false)
   const [userName, setUserName] = useState('')
   const [tabKey, setTabKey] = useState('0')
-  const [allOrders, setAllOrders] = useState([])
+  // const [allOrders, setAllOrders] = useState([])
   const [userOrder, setUserOrder] = useState([])
   const { user, logout, personalInfo } = useContext(AppContext)
 
@@ -38,28 +36,6 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
         setUserName(_name)
 
         const fetchOrders = async () => {
-          // let payload = {
-          //   offset: 0,
-          //   limit: 100,
-          //   sortBy: 'createdAt',
-          //   sortDirection: 'asc',
-          //   filters: {
-          //     status: [
-          //       'ORDER_CREATED',
-          //       'ORDER_CONFIRMED',
-          //       'ORDER_CANCELLED',
-          //       'ORDER_PARTIALLY_SHIPPED',
-          //       'ORDER_SHIPPED',
-          //       'ORDER_PARTIALLY_DELIVERED',
-          //       'ORDER_DELIVERED',
-          //       'ORDER_RETURNED',
-          //       'ORDER_PARTIALLY_RETURNED',
-          //       'ORDER_PAYMENT_AUTHORIZED',
-          //       'ORDER_PAYMENT_INVALID',
-          //     ],
-          //   },
-          // }
-
           const ordersByUser = await getOrdersByUser(user.accessToken)
           const _allOrders = await getAllOrders(ordersByUser)
 
@@ -69,7 +45,7 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
               ordersByUser.response.data &&
               ordersByUser.response.data.orders,
           )
-          setAllOrders(_allOrders)
+          // setAllOrders(_allOrders)
           setLoading(false)
         }
 
@@ -87,12 +63,6 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
     logoutCapital.push(element.charAt(0).toUpperCase() + element.substring(1))
   })
   const log = logoutCapital.join(' ')
-
-  console.log('check join:', log)
-
-  console.log('orders: ', allOrders)
-  console.log('accountTabs: yesss   ', accountTabs)
-  console.log('response check: ', userOrder)
   const handleLogout = () => {
     logout()
     navigate('account/login')

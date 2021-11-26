@@ -2,12 +2,19 @@ import React, { memo, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Accounts from 'components/molecules/accounts-page'
-// import Accounts from 'components/molecules/accounts-page'
-// import { getOrder } from 'libs/api/order'
 import { AppContext } from 'libs/context'
+import { Pagination } from 'antd'
 
 const AccountTabPane = ({ data, user, title, userOrder }) => {
   const { creditLimit } = useContext(AppContext)
+
+  const setPaginationData = page => {
+    // let startIndex = page * perPageItems - perPageItems
+    // let endIndex = startIndex + perPageItems
+    // let data = techBlogData
+    // data = data.slice(startIndex, endIndex)
+    // setActiveCatagoryData(data)
+  }
 
   return (
     <div className="account-tabpane-content">
@@ -29,8 +36,8 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                     <div>
                       {data.heading && <strong>{data.heading}</strong>}
                       {innerRow &&
-                        innerRow.address &&
-                        innerRow.address.name && (
+                        innerRow?.address &&
+                        innerRow?.address?.name && (
                         <Label>{`${innerRow.address.name.first &&
                             innerRow.address.name.first} ${innerRow.address.name
                           .last && innerRow.address.name.last}`}</Label>
@@ -59,6 +66,14 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                   </div>
                 )),
             )}
+          <div className="page-no" key="pagination-shipment">
+            <Pagination
+              defaultCurrent={1}
+              pageSize={10}
+              total={100}
+              onChange={e => setPaginationData(e)}
+            />
+          </div>
         </>
       ) : title === 'All Orders' ? (
         <>

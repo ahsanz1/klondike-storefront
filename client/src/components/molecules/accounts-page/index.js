@@ -5,7 +5,7 @@ import './style.scss'
 
 import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
-// import Button from 'components/atoms/button'
+import { Pagination } from 'antd'
 import { getItemsBySkus } from 'libs/services/api/item'
 
 const Accounts = ({ orders }) => {
@@ -43,6 +43,14 @@ const Accounts = ({ orders }) => {
 
     fetchImages(orders)
   }, [orders])
+
+  const setPaginationData = page => {
+    // let startIndex = page * perPageItems - perPageItems
+    // let endIndex = startIndex + perPageItems
+    // let data = techBlogData
+    // data = data.slice(startIndex, endIndex)
+    // setActiveCatagoryData(data)
+  }
 
   return (
     <div className="account-page">
@@ -94,10 +102,25 @@ const Accounts = ({ orders }) => {
                         Status: {order.status.replace('_', ' ')}
                       </Label>
                     )}
+                    <a
+                      href="https://www.google.com"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View Invoice
+                    </a>
                   </div>
                 </div>
               )
             })}
+          <div className="page-no" key="pagination-order-desktop">
+            <Pagination
+              defaultCurrent={1}
+              pageSize={10}
+              total={100}
+              onChange={e => setPaginationData(e)}
+            />
+          </div>
         </div>
       ) : (
         <>
@@ -160,6 +183,14 @@ const Accounts = ({ orders }) => {
                 </div>
               )
             })}
+          <div className="page-no" key="pagination-order-mobile">
+            <Pagination
+              defaultCurrent={1}
+              pageSize={10}
+              total={100}
+              onChange={e => setPaginationData(e)}
+            />
+          </div>
         </>
       )}
     </div>
@@ -169,6 +200,6 @@ Accounts.defaultProps = {
   orders: '',
 }
 Accounts.propTypes = {
-  orders: PropTypes.string,
+  orders: PropTypes.array,
 }
 export default Accounts
