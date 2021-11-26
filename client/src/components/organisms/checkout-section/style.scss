@@ -61,6 +61,7 @@ $vw-viewport: 1440;
   .checkout-btn {
     width: 100%;
     margin: 3vw 1vw;
+    margin-top: 1.38vw;
 
     .placeorder-btn {
       box-sizing: border-box;
@@ -107,6 +108,8 @@ $vw-viewport: 1440;
 
   .checkout-summary {
     padding: 1vw 4vw 1vw 8.88vw;
+    padding-right: 6.94vw;
+    padding-left: 4.65vw;
     color: #fff;
 
     .summary-title {
@@ -273,7 +276,7 @@ $vw-viewport: 1440;
       }
 
       span {
-        font-size: 1.2vw;
+        font-size: 0.972vw;
 
         @media (max-width: 768px) {
           font-size: 4vw;
@@ -356,9 +359,17 @@ $vw-viewport: 1440;
 }
 
 .radio-group {
-  input[type='radio'] {
-    width: 50px !important;
-    height: 50px !important;
-    border: 0 !important;
+  .ant-radio-group {
+    .ant-radio-wrapper.ant-radio-wrapper-checked.radio-btn {
+      span {
+        color: #f4f4f4;
+      }
+    }
+
+    input[type='radio'] {
+      width: 50px !important;
+      height: 50px !important;
+      border: 0 !important;
+    }
   }
 }
