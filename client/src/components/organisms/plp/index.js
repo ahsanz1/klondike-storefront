@@ -66,6 +66,8 @@ const PLP = props => {
             itemName={contextPlp}
             clickCategoryHandler={clickCategoryHandler}
             subItem={subItem}
+            categoryName={contextPlp}
+            subItemHandler={subItemHandler}
           />
         )}
         <div className="productItem">
