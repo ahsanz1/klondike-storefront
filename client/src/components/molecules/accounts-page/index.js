@@ -77,7 +77,7 @@ const Accounts = () => {
                     {order.image && (
                       <Image
                         className="account-image-block__image"
-                        src={order.image}
+                        src={order.image || ''}
                         alt=""
                       />
                     )}
