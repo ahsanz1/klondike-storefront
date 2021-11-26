@@ -1,4 +1,11 @@
 .search-Items {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+
   .search-img {
     cursor: pointer;
   }

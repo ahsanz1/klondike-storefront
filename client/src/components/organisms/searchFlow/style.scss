@@ -216,9 +216,10 @@
 
     @media (max-width: 500px) {
       height: 100%;
-      padding: 4.4vw;
       padding-right: 12.13vw;
       padding-bottom: 30.6vw;
+      // padding: 4.4vw;
+      padding-left: 24px;
       overflow-y: scroll;
     }
 

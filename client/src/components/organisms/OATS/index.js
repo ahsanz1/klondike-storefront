@@ -56,22 +56,22 @@ const Oats = () => {
     setOtsdata([])
   }
 
+  const [test, setTest] = useState(false)
+
   const getproducts = () => {
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query ||
-        (yousearch &&
-          yousearch)}&familygroup=${familygroups}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
+        yousearch}&familygroup=${familygroups}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
     ]
     console.log('urlss', url)
     setOtsdata([])
 
     axios.get(url).then(response => {
       if (response.data.equipment_list.equipment.length > 0) {
-        setNotFound(false)
+        setTest(false)
       } else {
-        setNotFound(true)
+        setTest(true)
       }
-      console.log('response', response)
       let results = response.data.equipment_list
       console.log('res', results)
 
@@ -163,6 +163,7 @@ const Oats = () => {
   }
   console.log('manufacturer', manufacturer)
   const filterData = e => {
+    setTest('')
     setQuery(e.target.value)
     setNotFound(false)
   }
@@ -345,6 +346,12 @@ const Oats = () => {
                   })
                 : ''}
               {notFound && (
+                <Label className="not-found">
+                  Sorry, no results matched your search
+                </Label>
+              )}
+
+              {test && query !== '' && (
                 <Label className="not-found">
                   Sorry, no results matched your search
                 </Label>
