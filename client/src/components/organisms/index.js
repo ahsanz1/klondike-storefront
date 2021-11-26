@@ -76,6 +76,7 @@ import Dealership from 'components/organisms/Dealership-page'
 import AgriculturePage from 'components/organisms/agriculture-page'
 import TestimonialSection from 'components/organisms/testimonial-section'
 import Accounts from 'components/molecules/accounts-page'
+import ErrorComponent from './error-component'
 export default {
   ContactAddres: params => <ContactAddres {...params} />,
   ClientTestimonial: params => <ClientTestimonial {...params} />,
@@ -161,4 +162,5 @@ export default {
   AgriculturePage: params => <AgriculturePage {...params} />,
   TestimonialSection: params => <TestimonialSection {...params} />,
   Accounts: params => <Accounts {...params} />,
+  ErrorComponent: params => <ErrorComponent {...params} />,
 }
