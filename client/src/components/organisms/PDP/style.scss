@@ -266,7 +266,14 @@ $vw-viewport: 1440;
 }
 
 .product-details {
+  display: flex;
+  flex-direction: column;
   width: get-vw(1083);
+}
+
+.product-information {
+  display: flex;
+  flex-direction: row;
 }
 
 .product-table {
