@@ -37,10 +37,11 @@ const Oats = () => {
   const [yousearch, setYousearch] = useState('')
   useEffect(() => {
     const tstName = location.search.split('?')[1]
-    setYousearch(tstName)
+    console.log('bbbb', tstName)
+    tstName !== 'undefined' && setYousearch(tstName)
   }, [])
 
-  console.log('search', yousearch)
+  // console.log('search', yousearch)
 
   const resetFunction = () => {
     setYearQuery('')
@@ -55,6 +56,8 @@ const Oats = () => {
     setOtsdata([])
   }
 
+  const [test, setTest] = useState(false)
+
   const getproducts = () => {
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query ||
@@ -65,15 +68,16 @@ const Oats = () => {
 
     axios.get(url).then(response => {
       if (response.data.equipment_list.equipment.length > 0) {
-        setNotFound(false)
+        setTest(false)
+      } else {
+        setTest(true)
       }
-      console.log('response', response)
       let results = response.data.equipment_list
       console.log('res', results)
 
-      if (response.data.equipment_list.equipment.length <= 0) {
-        setNotFound(true)
-      }
+      // if (response.data.equipment_list.equipment.length <= 0) {
+      //   setNotFound(true)
+      // }
       setOtsdata(results)
 
       let yearsArray = [{ label: ' ' }]
@@ -159,6 +163,7 @@ const Oats = () => {
   }
   console.log('manufacturer', manufacturer)
   const filterData = e => {
+    setTest('')
     setQuery(e.target.value)
     setNotFound(false)
   }
@@ -166,8 +171,9 @@ const Oats = () => {
   const [bgImg, setBgimg] = useState(false)
 
   const searchQuery = () => {
-    console.log('bugs')
-    // setNotFound(true)
+    console.log('queryqueryqueryquery', query.length)
+    // query.length <= 0 && setNotFound(true)
+    // query.length <=0 && setNotFound(true)
     setBgimg(true)
     if (query) {
       navigate(`${location.pathname}?${query}`)
@@ -215,6 +221,7 @@ const Oats = () => {
   const handleKeyPress = event => {
     console.log('event ', event)
     if (event.key === 'Enter') {
+      query.length <= 0 && setNotFound(true)
       searchQuery()
     }
   }
@@ -222,8 +229,6 @@ const Oats = () => {
     getproducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [manuquery, familyquery, seriesQuery, yearQuery, yousearch])
-
-  console.log('motoagain', familygroupquery)
 
   return (
     <>
@@ -340,7 +345,13 @@ const Oats = () => {
                     )
                   })
                 : ''}
-              {notFound && query && (
+              {notFound && (
+                <Label className="not-found">
+                  Sorry, no results matched your search
+                </Label>
+              )}
+
+              {test && query !== '' && (
                 <Label className="not-found">
                   Sorry, no results matched your search
                 </Label>

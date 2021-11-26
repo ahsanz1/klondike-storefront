@@ -90,10 +90,8 @@ const CartDropdownItem = cart => {
                   </Label>
 
                   <Label className="item-info">
-                    {cart['QTY PER CASE'] ? 'PER CASE:' : ''}
-                    <Label className="item-subInfo">
-                      {cart['QTY PER CASE']}
-                    </Label>
+                    {cart?.percase ? 'PER CASE:' : ''}
+                    <Label className="item-subInfo">{cart?.percase}</Label>
                   </Label>
                   <Label className="item-info">
                     PART NUM:{' '}

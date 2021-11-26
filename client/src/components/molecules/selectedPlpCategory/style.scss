@@ -3,6 +3,10 @@
 .selected-category {
   margin-bottom: 3.4vw;
 
+  @media (max-width: 768px) {
+    padding: 0 6.4vw !important;
+  }
+
   h2 {
     color: #eceae9;
     font-family: $OpenSans;
