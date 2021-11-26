@@ -241,6 +241,7 @@ $vw-viewport: 1440;
       border-radius: get-vw(5px);
       font-size: 1.2vw !important;
       // border-color: #f2a900 !important;
+
       @media (max-width: 768px) {
         height: auto !important;
         padding: 10px 30px 10px 30px;
@@ -325,6 +326,9 @@ $vw-viewport: 1440;
     }
 
     .checkout-info-second {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       width: 55.13vw;
       margin: 1vw;
       // margin-left: 0;
@@ -336,6 +340,7 @@ $vw-viewport: 1440;
       word-break: break-all;
 
       @media (max-width: 768px) {
+        display: block;
         width: 100%;
         margin-bottom: 15px;
         margin-left: 0;
