@@ -34,6 +34,10 @@ export const setUserCart = async () => {
                 obj['size'] = attr.value
                 break
 
+              case 'QTY PER CASE':
+                obj['percase'] = attr.value
+                break
+
               case 'Image URL':
                 obj['image'] = attr.value
                 break
@@ -53,11 +57,8 @@ export const setUserCart = async () => {
 
       let itemObj = {
         ...item,
-        size: obj.size,
-        image: obj.image,
+        ...obj,
         cartIdString: data?._id,
-        partnumber: obj.partnumber,
-        isPackaged: obj.isPackaged,
         attributes,
       }
 
