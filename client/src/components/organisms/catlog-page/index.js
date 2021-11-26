@@ -1,68 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import PropTypes from 'prop-types'
 import Techtabllist from 'components/organisms/Technical-tablist'
 import './style.scss'
-import ReadMoreReact from 'read-more-react'
-// import { cataogData } from './data'
-import { useWindowSize } from 'libs/custom-hooks'
 
+import { useWindowSize } from 'libs/custom-hooks'
 import Label from 'components/atoms/label'
 import Image from 'components/atoms/image'
-// import Link from 'components/atoms/link'
+import Button from 'components/atoms/button'
+
 import MobileTabListTech from '../Technical-tablist/mobile-tab'
-// const Catlogdata = ({ cataogData }) => {
-//   const { catData } = cataogData
-//   const size = useWindowSize()
-//   return (
-//     <>
-//       <div className="catlog-main">
-//         <div className="catlog-tab"></div>
-//         <div className="catlog-warp">
-//           <Label className="catlog-label">{heading}</Label>
-//           <div className="img-deading">
-//             <div className="imge-catlog">
-//               <Image src="/static/images/Catalog.png" />
-//             </div>
-//             <div className="heading-catlog">
-//               {catData.map((data, i) => {
-//                 return size[0] > 768 ? (
-//                   <> {data.text}</>
-//                 ) : (
-//                   <>
-//                     <ReadMoreReact
-//                       text={data.text}
-//                       dangerouslySetInnerHTML={{ __html: data.text }}
-//                       min={150}
-//                       ideal={300}
-//                       max={500}
-//                       readMoreText={data.read}
-//                     />
-//                   </>
-//                 )
-//               })}
-//               <br />
-//               <br />
-//               Download an electronic copy of the
-//               <Link className="english-link"> ENGLISH catalog </Link>
-//               or the<Link className="english-link"> FRENCH catalog.</Link>
-//               <br />
-//               <br />
-//               Request your free printed catalog at
-//               <Link className="english-link">info@klondikelubricants.com</Link>
-//               now!
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
 
 const Catlog = ({ heading, catData, image }) => {
   // console.log('zdfgsdf',cataogData)
   const size = useWindowSize()
-
+  const [readMore, setReadMore] = useState(false)
   const renderCatlogdata = () => {
     return (
       <>
@@ -80,40 +32,34 @@ const Catlog = ({ heading, catData, image }) => {
                     return size[0] > 768 ? (
                       <p dangerouslySetInnerHTML={{ __html: data.text }}></p>
                     ) : (
-                      <>
-                        <ReadMoreReact
-                          text={data.mobileText}
-                          dangerouslySetInnerHTML={{ __html: data.text }}
-                          min={150}
-                          ideal={300}
-                          max={500}
-                          readMoreText={data.read}
-                        />
-                      </>
+                      <div className="overview-detail-section-mobile">
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: readMore
+                              ? data.text.slice(0, data.text.length)
+                              : data.text.slice(0, 480),
+                          }}
+                        ></p>
+
+                        {data.text.length > 300 && (
+                          <span
+                            className={readMore ? 'read-less' : 'read-more'}
+                          >
+                            <Button
+                              href
+                              className="button"
+                              onClick={() => {
+                                setReadMore(!readMore)
+                              }}
+                            >
+                              {readMore ? 'Read Less' : 'Read More'}
+                            </Button>
+                          </span>
+                        )}
+                      </div>
                     )
                   })}
                 <br />
-                {/* Download an electronic copy of the
-                <Link
-                  className="english-link"
-                  to="https://klondikelubricants.com/wp-content/uploads/2021/07/2021.06.01_KLONDIKE-Catalogue-Spring_Summer-2021-Edition_English_website.pdf"
-                >
-                  ENGLISH catalog
-                </Link>
-                or the
-                <Link
-                  className="english-link"
-                  to="https://klondikelubricants.com/wp-content/uploads/2021/07/2021.06.01_KLONDIKE-Catalogue-Spring_Summer-2021-Edition_English_website.pdf"
-                >
-                  FRENCH catalog.
-                </Link>
-                <br />
-                <br />
-                Request your free printed catalog at
-                <Link className="english-link">
-                  info@klondikelubricants.com
-                </Link>
-                now! */}
               </div>
             </div>
           </div>

@@ -18,14 +18,16 @@
     overflow: hidden;
 
     img {
-      width: 100%;
+      width: 14.44vw;
       max-width: 19.4vw;
-      height: 100%;
+      height: 15.83vw;
       transition: all 0.3s ease;
       border: 0.2vw solid #013a4e;
       object-fit: contain;
 
       @media (max-width: 768px) {
+        width: 70%;
+        height: 90%;
         border: none;
       }
     }

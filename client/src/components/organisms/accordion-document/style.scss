@@ -43,6 +43,7 @@ $vw-viewport: 1440;
 
     &::-webkit-scrollbar {
       width: 10px;
+      height: 2px;
     }
 
     /* Track */
@@ -107,7 +108,7 @@ $vw-viewport: 1440;
       font-weight: 400;
 
       @media (max-width: 768px) {
-        font-size: 3.73vw;
+        font-size: 14px;
       }
     }
   }

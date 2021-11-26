@@ -46,7 +46,7 @@ const Techtabllist = ({
                     {item.subItem &&
                       item.subItem.hits &&
                       item.subItem.hits.map((item, index) => {
-                        console.log('item', item)
+                        console.log('item-1', item)
                         return (
                           <div key={index}>
                             <Link

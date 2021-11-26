@@ -187,7 +187,7 @@ $vw-viewport: 1440;
   .table-wrapper-technical {
     max-width: 100%;
     margin: 0 auto;
-    padding-top: 36px;
+    padding-top: 22px;
     color: #fff;
 
     .ant-col-lg-8 {
@@ -203,11 +203,26 @@ $vw-viewport: 1440;
 
     .title {
       color: #f1a900;
+
+      .ant-col-lg-8 {
+        p {
+          @media screen and (max-width: 768px) {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 140%;
+          }
+        }
+      }
     }
 
     @media (max-width: 768px) {
       min-width: 900px;
       overflow-x: auto;
+    }
+
+    .table-content {
+      margin-top: 10px;
     }
   }
 
