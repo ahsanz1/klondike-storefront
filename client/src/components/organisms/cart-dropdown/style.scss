@@ -283,6 +283,10 @@
       justify-content: center;
       height: getmb-vw(50px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+      @supports (-webkit-touch-callout: none) {
+        width: 90.4vw;
+      }
     }
 
     .free-shipping-banner-text {
