@@ -4,17 +4,12 @@ import { navigate } from '@reach/router'
 import { Tabs } from 'antd'
 
 import { AppContext } from 'libs/context'
-import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 import TabsDropdown from 'components/molecules/tab-dropdown'
 import PageHeader from './components/PageHeader'
 import AccountTabPane from './components/AccountTabPane'
 import Link from 'components/atoms/link'
-import {
-  getUserInfo,
-  getAllOrders,
-  //  getTrackOrderData
-} from './utils'
+import { getUserInfo } from './utils'
 
 import './style.scss'
 
@@ -24,9 +19,7 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
   const [loading, setLoading] = useState(false)
   const [userName, setUserName] = useState('')
   const [tabKey, setTabKey] = useState('0')
-  // const [allOrders, setAllOrders] = useState([])
-  const [userOrder, setUserOrder] = useState([])
-  const { user, logout, personalInfo } = useContext(AppContext)
+  const { user, logout } = useContext(AppContext)
 
   useEffect(() => {
     const setData = async () => {
@@ -34,22 +27,7 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
         setLoading(true)
         const _name = await getUserInfo(user)
         setUserName(_name)
-
-        const fetchOrders = async () => {
-          const ordersByUser = await getOrdersByUser(user.accessToken)
-          const _allOrders = await getAllOrders(ordersByUser)
-
-          setUserOrder(
-            ordersByUser &&
-              ordersByUser.response &&
-              ordersByUser.response.data &&
-              ordersByUser.response.data.orders,
-          )
-          // setAllOrders(_allOrders)
-          setLoading(false)
-        }
-
-        fetchOrders()
+        setLoading(false)
       } else {
         navigate('/account/login')
       }
@@ -57,6 +35,7 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
 
     setData()
   }, [user])
+
   const logoutWord = logoutBtnText.split(' ')
   const logoutCapital = []
   logoutWord.forEach(element => {
@@ -91,9 +70,7 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
                       <TabPane tab={item.tabTitle} key={index}>
                         <AccountTabPane
                           data={item.data}
-                          user={personalInfo}
                           title={item.tabTitle}
-                          userOrder={userOrder}
                         />
                       </TabPane>
                     ))}

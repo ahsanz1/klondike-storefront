@@ -1,19 +1,30 @@
-import React, { memo, useContext } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Accounts from 'components/molecules/accounts-page'
 import { AppContext } from 'libs/context'
 import { Pagination } from 'antd'
+import { getOrdersByUser } from 'libs/services/api/orders.api'
 
-const AccountTabPane = ({ data, user, title, userOrder }) => {
-  const { creditLimit } = useContext(AppContext)
+const AccountTabPane = ({ data, title }) => {
+  const perPageItems = 3
+  const { creditLimit, user, personalInfo } = useContext(AppContext)
+  const [totalOrders, setTotalOrders] = useState(0)
+  const [shipmentDetails, setShipmentDetails] = useState('')
 
-  const setPaginationData = page => {
-    // let startIndex = page * perPageItems - perPageItems
-    // let endIndex = startIndex + perPageItems
-    // let data = techBlogData
-    // data = data.slice(startIndex, endIndex)
-    // setActiveCatagoryData(data)
+  useEffect(() => {
+    fetchShipment(0)
+  }, [])
+
+  const fetchShipment = async offset => {
+    const ordersByUser = await getOrdersByUser(
+      user.accessToken,
+      offset,
+      perPageItems,
+    )
+    let data = ordersByUser.response.data
+    setShipmentDetails(data.orders)
+    setTotalOrders(data?.query?.count)
   }
 
   return (
@@ -22,13 +33,16 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
         <>
           <Label className="session">{data.session && data.session}</Label>
           <Label className="zip">
-            {`${user.firstName && user.firstName} ${user.lastName &&
-              user.lastName}`}
+            {`${personalInfo.firstName &&
+              personalInfo.firstName} ${personalInfo.lastName &&
+              personalInfo.lastName}`}
           </Label>
-          <Label className="profile-mail">{user.email && user.email}</Label>
-          {userOrder &&
-            userOrder.length > 0 &&
-            userOrder.map(
+          <Label className="profile-mail">
+            {personalInfo.email && personalInfo.email}
+          </Label>
+          {shipmentDetails &&
+            shipmentDetails.length > 0 &&
+            shipmentDetails.map(
               (row, i) =>
                 row.shipTo &&
                 row.shipTo.map((innerRow, rowIndex) => (
@@ -69,15 +83,15 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
           <div className="page-no" key="pagination-shipment">
             <Pagination
               defaultCurrent={1}
-              pageSize={10}
-              total={100}
-              onChange={e => setPaginationData(e)}
+              pageSize={perPageItems}
+              total={totalOrders}
+              onChange={e => fetchShipment(e)}
             />
           </div>
         </>
       ) : title === 'All Orders' ? (
         <>
-          {userOrder && userOrder.length === 0 ? (
+          {shipmentDetails && shipmentDetails.length === 0 ? (
             'No Orders Found!'
           ) : (
             <>
@@ -93,7 +107,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                   </div>
                 )}
               </div>
-              {<Accounts orders={userOrder} />}
+              {<Accounts />}
             </>
           )}
         </>
@@ -109,9 +123,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
 
 AccountTabPane.propTypes = {
   data: PropTypes.object,
-  user: PropTypes.object,
   title: PropTypes.string,
-  userOrder: PropTypes.array,
 }
 
 export default memo(AccountTabPane)

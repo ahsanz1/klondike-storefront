@@ -33,7 +33,7 @@ export const refreshToken = async token => {
 export const getOrdersByUser = async (
   accessToken,
   page = 0,
-  pageSize = 5,
+  pageSize = 500,
   count = 1,
 ) => {
   try {

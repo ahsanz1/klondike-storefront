@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext, useEffect, useState } from 'react'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import './style.scss'
 
@@ -7,10 +6,20 @@ import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
 import { Pagination } from 'antd'
 import { getItemsBySkus } from 'libs/services/api/item'
+import { AppContext } from 'libs/context'
+import { getOrdersByUser } from 'libs/services/api/orders.api'
 
-const Accounts = ({ orders }) => {
+const Accounts = () => {
+  const perPageItems = 3
+  const { user } = useContext(AppContext)
   const [size] = useWindowSize()
   const [fetchedOrders, setFetchedOrders] = useState('')
+  const [orders, setOrders] = useState({})
+  const [totalOrders, setTotalOrders] = useState(0)
+
+  useEffect(() => {
+    fetchOrders(0)
+  }, [])
 
   useEffect(() => {
     let fetchImages = async orders => {
@@ -44,12 +53,15 @@ const Accounts = ({ orders }) => {
     fetchImages(orders)
   }, [orders])
 
-  const setPaginationData = page => {
-    // let startIndex = page * perPageItems - perPageItems
-    // let endIndex = startIndex + perPageItems
-    // let data = techBlogData
-    // data = data.slice(startIndex, endIndex)
-    // setActiveCatagoryData(data)
+  const fetchOrders = async offset => {
+    const ordersByUser = await getOrdersByUser(
+      user.accessToken,
+      offset,
+      perPageItems,
+    )
+    let data = ordersByUser.response.data
+    setOrders(data.orders)
+    setTotalOrders(data?.query?.count)
   }
 
   return (
@@ -116,9 +128,9 @@ const Accounts = ({ orders }) => {
           <div className="page-no" key="pagination-order-desktop">
             <Pagination
               defaultCurrent={1}
-              pageSize={10}
-              total={100}
-              onChange={e => setPaginationData(e)}
+              pageSize={perPageItems}
+              total={totalOrders}
+              onChange={e => fetchOrders(e)}
             />
           </div>
         </div>
@@ -186,9 +198,9 @@ const Accounts = ({ orders }) => {
           <div className="page-no" key="pagination-order-mobile">
             <Pagination
               defaultCurrent={1}
-              pageSize={10}
-              total={100}
-              onChange={e => setPaginationData(e)}
+              pageSize={perPageItems}
+              total={totalOrders}
+              onChange={e => fetchedOrders(e)}
             />
           </div>
         </>
@@ -196,10 +208,6 @@ const Accounts = ({ orders }) => {
     </div>
   )
 }
-Accounts.defaultProps = {
-  orders: '',
-}
-Accounts.propTypes = {
-  orders: PropTypes.array,
-}
+Accounts.defaultProps = {}
+Accounts.propTypes = {}
 export default Accounts
