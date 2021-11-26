@@ -86,20 +86,11 @@ export const retreiveProductAttributes = async (sku, count = 1) => {
   }
 }
 
-export const getItemInStockStatus = async (itemIds, count = 1) => {
+export const getItemInStockStatus = async (items, count = 1) => {
   let response
 
-  let itemIdsWithQty = []
-
-  itemIds.forEach(itemId => {
-    itemIdsWithQty.push({
-      itemId,
-      quantity: 1,
-    })
-  })
-
   const payload = {
-    items: itemIdsWithQty,
+    items: items,
     channelId: '12',
   }
 
@@ -113,7 +104,7 @@ export const getItemInStockStatus = async (itemIds, count = 1) => {
     if (e.response && e.response.status) {
       // const statusCode = e.response.status
       if (count < 4) {
-        return getItemInStockStatus(itemIds, count + 1)
+        return getItemInStockStatus(items, count + 1)
       }
     }
     response = {

@@ -206,12 +206,28 @@ const PDPMobile = ({
                   >
                     <Space direction="vertical">
                       {packagedItemsCart && (
-                        <Radio value={1} className="radio-font">
+                        <Radio
+                          value={1}
+                          className="radio-font"
+                          style={{
+                            color: packagedOrder
+                              ? '#fff'
+                              : 'rgba(244, 244, 244, 0.5)',
+                          }}
+                        >
                           PACKAGED ORDER
                         </Radio>
                       )}
                       {bulkItemsCart && (
-                        <Radio value={2} className="radio-font">
+                        <Radio
+                          value={2}
+                          className="radio-font"
+                          style={{
+                            color: !packagedOrder
+                              ? '#fff'
+                              : 'rgba(244, 244, 244, 0.5)',
+                          }}
+                        >
                           BULK ORDER
                         </Radio>
                       )}
@@ -313,8 +329,7 @@ const PDPMobile = ({
                           <span
                             className="value text-right"
                             style={{
-                              color:
-                                item?.totalPrice > 0 ? '#F1A900;' : '#ffff',
+                              color: item?.totalPrice > 0 ? '#F1A900' : '#ffff',
                             }}
                           >
                             {isLoggedIn &&

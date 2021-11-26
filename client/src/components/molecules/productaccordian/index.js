@@ -13,6 +13,7 @@ import './style.scss'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import { AppContext } from 'libs/context'
 import { setUserCart } from 'libs/utils/user-cart'
+import { checkItemsInStock } from 'libs/utils/checkInventory'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
@@ -103,7 +104,7 @@ const ProductAccordion = ({ question }) => {
     }
 
     setAddToCart(true)
-    getProductBySKU(data.sku).then(res => {
+    getProductBySKU(data.sku).then(async res => {
       res = res.response.data
       let product = res.product
       let payload = {
@@ -129,6 +130,12 @@ const ProductAccordion = ({ question }) => {
 
         registeredUser: true,
         userAuthToken: user.accessToken,
+      }
+      let stockRes = await checkItemsInStock(payload?.items)
+      if (stockRes?.length) {
+        error(`This item ${JSON.stringify(stockRes)} is not in stock!`)
+        setAddToCart(false)
+        return
       }
       addProductToCart(payload)
         .then(async res => {
