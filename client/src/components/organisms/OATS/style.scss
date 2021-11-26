@@ -244,7 +244,7 @@
   .dropdown-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 140px;
+    margin-top: 9.79vw;
 
     @media (max-width: 768px) {
       display: block;
@@ -264,8 +264,7 @@
 
       .ant-select-selector {
         height: 4.4vw !important;
-        padding-top: 1.2vw !important;
-        padding-left: 2vw !important;
+        padding: 1.25vw 1.66vw !important;
         border-radius: 1.11vw !important;
         background-color: #e4eff4 !important;
         font-family: $OpenSans;
