@@ -28,7 +28,11 @@ import Link from 'components/atoms/link'
 
 import { AppContext } from 'libs/context'
 // import { constant } from 'lodash'
-import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
+import {
+  getProductBySKU,
+  addProductToCart,
+  getItemInStockStatus,
+} from 'libs/services/api/pdp.api'
 import PlpTabList from 'components/organisms/plp-tab-list'
 // import CartDropdown from '../cart-dropdown'
 import { useLocation, useNavigate } from '@reach/router'
@@ -363,7 +367,40 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     setAddingToCart(false)
   }
 
-  const onSubmit = e => {
+  const checkItemsInStock = async payloadItems => {
+    let itemsWithQty = []
+    var itemsNotInStock = []
+    payloadItems?.forEach(item => {
+      itemsWithQty.push({
+        itemId: item?.itemId,
+        quantity: item?.quantity,
+      })
+    })
+
+    let res = await getItemInStockStatus(itemsWithQty)
+    console.log('itemsInNotStcok', res)
+    let retreivedData = res?.response?.data
+    retreivedData?.forEach(item => {
+      if (!item?.inStock) {
+        itemsNotInStock.push(
+          payloadItems?.find(pItem => pItem?.itemId === item?.itemId),
+        )
+      }
+    })
+    console.log('itemsInNotStcok', itemsNotInStock)
+    let filteredItems = []
+    if (itemsNotInStock?.length) {
+      itemsNotInStock?.forEach(item => {
+        filteredItems.push({
+          size: item?.size,
+          sku: item?.sku,
+        })
+      })
+    }
+    return filteredItems
+  }
+
+  const onSubmit = async e => {
     setAddingToCart(true)
     console.log(productData?.requestArray, 'pkg')
     let payload = {
@@ -373,25 +410,32 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       userAuthToken: isLoggedIn ? user?.accessToken : null,
     }
 
-    addProductToCart(payload)
-      .then(res => {
-        console.log('ressss', res)
-        if (res?.response?.data) {
-          getUpdatedCartData()
-        } else {
-          setAddingToCart(false)
-          if (res?.hasError) {
-            error(res?.response?.error)
+    let itemsNotInStock = await checkItemsInStock(payload?.items)
+    console.log('itemsInNotStcok', itemsNotInStock)
+    if (itemsNotInStock?.length) {
+      error(`These Items ${JSON.stringify(itemsNotInStock)} are not in stock!`)
+      setAddingToCart(false)
+    } else {
+      addProductToCart(payload)
+        .then(res => {
+          console.log('ressss', res)
+          if (res?.response?.data) {
+            getUpdatedCartData()
+          } else {
+            setAddingToCart(false)
+            if (res?.hasError) {
+              error(res?.response?.error)
+            }
           }
-        }
-      })
-      .catch(e => {
-        if (e) {
-          alert('Some Error Occured! Please try again!')
-          setAddingToCart(false)
-          console.log('errr', e)
-        }
-      })
+        })
+        .catch(e => {
+          if (e) {
+            error('Some Error Occured! Please try again!')
+            setAddingToCart(false)
+            console.log('errr', e)
+          }
+        })
+    }
   }
 
   return (
@@ -542,6 +586,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                 setTooltipVisible(!packagedOrder)
                               }
                               onMouseLeave={() => setTooltipVisible(false)}
+                              style={{
+                                color: packagedOrder
+                                  ? '#fff'
+                                  : 'rgba(244, 244, 244, 0.5)',
+                              }}
                             >
                               PACKAGED ORDER
                             </Radio>
@@ -554,6 +603,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             className="radio-style"
                             onMouseEnter={() => setTooltipVisible(true)}
                             onMouseLeave={() => setTooltipVisible(false)}
+                            style={{
+                              color: !packagedOrder
+                                ? '#fff'
+                                : 'rgba(244, 244, 244, 0.5)',
+                            }}
                           >
                             BULK ORDER
                           </Radio>
@@ -634,7 +688,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                 {isLoggedIn && (
                                   <InputNumber
                                     min={0}
-                                    max={1000}
+                                    max={100000000}
                                     defaultValue={0}
                                     type="number"
                                     onChange={e => onQtyChange(e, i)}
