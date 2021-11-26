@@ -66,6 +66,7 @@ $vw-viewport: 1440;
 
       @media (max-width: 768px) {
         padding-left: 6.4vw;
+        line-height: 2.5;
       }
     }
   }
@@ -455,7 +456,7 @@ $vw-viewport: 1440;
         @media (max-width: 768px) {
           display: flex;
           align-items: center;
-          justify-content: end;
+          justify-content: start;
           padding-top: 9.33vw;
         }
       }
