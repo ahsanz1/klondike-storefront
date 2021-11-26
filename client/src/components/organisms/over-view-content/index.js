@@ -14,44 +14,59 @@ const OverViewContent = ({ mainHeading, overviewWrapper }) => {
       <div className="company-overview">
         <div className="company-overview-detail-container">
           <div className="overview-details">
-            <Label className="title">{mainHeading}</Label>
-            {overviewWrapper?.map((item, i) => {
-              return (
-                <div key={i} className="overview-detail-section">
-                  <Label className="details-title">{item.subHeading}</Label>
-                  {item.subSection.map((data, i) => (
-                    <>
-                      <Label className="details-paragragh" key={i}>
-                        {data.paragraph.slice(3, data.paragraph.length - 5)}
-                      </Label>
-                    </>
-                  ))}
-                  <div className="overview-detail-section-mobile">
-                    {readMore === item.subHeading
-                      ? item.subSection.map((data, i) => (
-                          <>
-                            <Label className="details-paragragh-mobile" key={i}>
+            {mainHeading && <Label className="title">{mainHeading}</Label>}
+            {overviewWrapper.length > 0 &&
+              overviewWrapper.map((item, i) => {
+                return (
+                  <div key={i} className="overview-detail-section">
+                    {item.subHeading && (
+                      <Label className="details-title">{item.subHeading}</Label>
+                    )}
+                    {item.subSection.length > 0 &&
+                      item.subSection.map((data, i) => (
+                        <>
+                          {data.paragraph && (
+                            <Label className="details-paragragh" key={i}>
                               {data.paragraph.slice(
                                 3,
                                 data.paragraph.length - 5,
                               )}
                             </Label>
-                          </>
-                          // eslint-disable-next-line indent
-                        ))
-                      : item.subSection[0].paragraph.slice(3, 200) + '...'}
+                          )}
+                        </>
+                      ))}
+                    <div className="overview-detail-section-mobile">
+                      {readMore === item.subHeading
+                        ? item.subSection.length > 0 &&
+                          item.subSection.map((data, i) => (
+                            <>
+                              {data.paragraph && (
+                                <Label
+                                  className="details-paragragh-mobile"
+                                  key={i}
+                                >
+                                  {data.paragraph.slice(
+                                    3,
+                                    data.paragraph.length - 5,
+                                  )}
+                                </Label>
+                              )}
+                            </>
+                            // eslint-disable-next-line indent
+                          ))
+                        : item.subSection[0].paragraph.slice(3, 200) + '...'}
+                    </div>
+                    {readMore !== item.subHeading && (
+                      <button
+                        className="read-more"
+                        onClick={() => more(item.subHeading)}
+                      >
+                        Read more
+                      </button>
+                    )}
                   </div>
-                  {readMore !== item.subHeading && (
-                    <button
-                      className="read-more"
-                      onClick={() => more(item.subHeading)}
-                    >
-                      Read more
-                    </button>
-                  )}
-                </div>
-              )
-            })}
+                )
+              })}
           </div>
         </div>
       </div>

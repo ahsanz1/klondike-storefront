@@ -12,28 +12,49 @@ import { fetchCategory } from 'libs/services/algolia'
 import './style.scss'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import { AppContext } from 'libs/context'
+import { setUserCart } from 'libs/utils/user-cart'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
-  const { user } = useContext(AppContext)
+  const {
+    user,
+    creditLimit,
+    getCartItems,
+    showcartPOPModal,
+    setGetCartItemsState,
+  } = useContext(AppContext)
   let [qty, setQty] = useState(1)
   let [totalPrice, setTotalPrice] = useState('')
   let [modalData, setModalData] = useState('')
+  let [addToCart, setAddToCart] = useState(false)
   let [showAddToCart, setShowAddToCart] = useState(false)
+  let [itemId, setItemId] = useState(0)
   const [size] = useWindowSize()
-
   const [itemdata, setItemData] = useState([])
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isPackage, setIsPackage] = useState(false)
+  const [hasCartData, setHasCartData] = useState(false)
 
   useEffect(() => {
     const data = async () => {
       const items = await fetchCategory(question)
       setItemData(items.hits)
     }
-
     data()
   }, [])
 
-  const [isModalVisible, setIsModalVisible] = useState(false)
+  useEffect(() => {
+    if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
+      if (getCartItems?.hasPackaged) {
+        setIsPackage(true)
+      } else {
+        setIsPackage(false)
+      }
+      setHasCartData(true)
+    } else {
+      setHasCartData(false)
+    }
+  }, [getCartItems])
 
   const showModal = data => {
     let payload = {}
@@ -55,7 +76,6 @@ const ProductAccordion = ({ question }) => {
 
     setModalData(payload)
     setTotalPrice(payload.totalPrice)
-
     setIsModalVisible(true)
   }
 
@@ -63,8 +83,26 @@ const ProductAccordion = ({ question }) => {
     setIsModalVisible(false)
   }
 
+  // eslint-disable-next-line space-before-function-paren
+  function error(msg) {
+    Modal.error({
+      title: 'This is an error message',
+      content:
+        msg ||
+        'Due to some technical reasons, this action cannot be performed!',
+    })
+  }
+
   const addItemToCart = async () => {
     let data = modalData
+
+    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
+    if (creditLimit <= totalAmount) {
+      error('You are exceeding your credit limit')
+      return
+    }
+
+    setAddToCart(true)
     getProductBySKU(data.sku).then(res => {
       res = res.response.data
       let product = res.product
@@ -93,23 +131,42 @@ const ProductAccordion = ({ question }) => {
         userAuthToken: user.accessToken,
       }
       addProductToCart(payload)
-        .then(res => {
-          console.log('sucres', res)
+        .then(async res => {
+          if (res.hasError !== true) {
+            setGetCartItemsState(await setUserCart())
+            showcartPOPModal()
+            setIsModalVisible(false)
+            setAddToCart(false)
+          } else {
+            error(res.response.error)
+            setIsModalVisible(false)
+            setAddToCart(false)
+          }
         })
         .catch(err => {
           console.log('errres', err)
+          setIsModalVisible(false)
+          setAddToCart(false)
         })
-      setIsModalVisible(false)
     })
   }
 
   const onChange = value => {
     let data = modalData
-    setQty(value)
     setTotalPrice(data.price * value)
+
+    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
+    if (creditLimit <= totalAmount) {
+      error('You are exceeding your credit limit')
+      return
+    }
+
+    setQty(value)
   }
-  const handleAddToCart = () => {
+
+  const handleAddToCart = i => {
     setShowAddToCart(!showAddToCart)
+    setItemId(i)
   }
   // const showModal = () => {
   //   setIsModalVisible(true)
@@ -145,61 +202,75 @@ const ProductAccordion = ({ question }) => {
 
         {itemdata &&
           itemdata.map((data, i) => {
-            return (
-              <>
-                <Row
-                  className="table-content flex"
-                  key={i}
-                  onClick={handleAddToCart}
-                >
-                  <Col lg={8} className="custom-width">
-                    <p className="text-setting-table">
-                      {data['product title']}
-                    </p>
-                  </Col>
-                  <Col lg={4} className="custom-width">
-                    <p className="light-text-weight">{data['Package Size']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p>{data['Part Number']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-center">{data['Weight']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-center">
-                      {data['Unit of Measurement']}
-                    </p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-right text-setting-table">
-                      ${data['Order Price']}
-                    </p>
-                  </Col>
-                  {showAddToCart && (
-                    <>
-                      {/* <div className="hover-details"> */}
-                      <div className="">
-                        <div className="table-image">
-                          <Image
-                            src={data['Image URL'] || data['Image 1 URL']}
-                            className="table-image"
-                          />
+            if (data?.isVariant) {
+              return (
+                <>
+                  <Row
+                    className="table-content flex"
+                    key={i}
+                    onClick={i => handleAddToCart(data.itemId)}
+                  >
+                    <Col lg={8} className="custom-width">
+                      <p className="text-setting-table">
+                        {data['Product Title']}
+                      </p>
+                    </Col>
+                    <Col lg={4} className="custom-width">
+                      <p className="light-text-weight">
+                        {data['Package Size']}
+                      </p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p>{data['Part Number']}</p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-center">{data['Weight']}</p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-center">
+                        {data['Unit of Measurement']}
+                      </p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-right text-setting-table">
+                        ${data['Order Price'].toFixed(2)}
+                      </p>
+                    </Col>
+                    {showAddToCart && itemId === data.itemId && (
+                      <>
+                        {/* <div className="hover-details"> */}
+                        <div className="">
+                          <div className="table-image">
+                            <Image
+                              src={data['Image URL'] || data['Image 1 URL']}
+                              className="table-image"
+                            />
+                          </div>
+                          <div className="table-button">
+                            <Button
+                              onClick={e => showModal(JSON.stringify(data))}
+                              className={
+                                hasCartData &&
+                                !isPackage === data['Packaged Order']
+                                  ? 'hover-button stop'
+                                  : ' hover-button'
+                              }
+                              disabled={
+                                hasCartData
+                                  ? !(isPackage === data['Packaged Order'])
+                                  : false
+                              }
+                            >
+                              ADD TO CART
+                            </Button>
+                          </div>
                         </div>
-                        <div className="table-button">
-                          <Button
-                            onClick={e => showModal(JSON.stringify(data))}
-                            className="hover-button"
-                          >
-                            ADD TO CART
-                          </Button>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </Row>
-              </>
-            )
+                      </>
+                    )}
+                  </Row>
+                </>
+              )
+            }
           })}
       </div>
 
@@ -220,12 +291,23 @@ const ProductAccordion = ({ question }) => {
                 <h1>{modalData.title}</h1>
                 <div className="product-detail">
                   <div>
-                    <p className="products-sizes">Size</p>
-                    <p className="products-sizes detail">{modalData.size}</p>
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
+                      <p className="products-sizes">Size</p>
+                    ) : (
+                      <p className="products-sizes">Bulk</p>
+                    )}
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                      // eslint-disable-next-line indent
+                      <p className="products-sizes detail">{modalData.size}</p>
+                    )}
                   </div>
                   <div>
-                    <p className="products-sizes">UNITS/CASE</p>
-                    <p className="products-sizes">{modalData.unit}</p>
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                      <>
+                        <p className="products-sizes">UNITS/CASE</p>
+                        <p className="products-sizes">{modalData.unit}</p>
+                      </>
+                    )}
                   </div>
                   <div>
                     <p className="products-sizes">Part Num</p>
@@ -234,15 +316,26 @@ const ProductAccordion = ({ question }) => {
                     </p>
                   </div>
                   <div>
-                    <p className="products-sizes">Price</p>
-                    <p className="products-sizes detail ">${modalData.price}</p>
+                    <p className="products-sizes">
+                      {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
+                        ? 'Price'
+                        : 'Price Litre'}
+                    </p>
+                    <p className="products-sizes detail ">
+                      ${modalData?.price?.toFixed(2)}
+                    </p>
                   </div>
                   <div>
-                    <p className="products-sizes">QTY</p>
+                    <p className="products-sizes">
+                      {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
+                        ? 'QTY'
+                        : 'Litres'}
+                    </p>
                     <p className="products-sizes detail">
                       <InputNumber
                         min={0}
                         value={qty}
+                        type="number"
                         defaultValue={1}
                         onChange={onChange}
                         size="middle"
@@ -261,7 +354,7 @@ const ProductAccordion = ({ question }) => {
                   className="pricelist-addcart "
                   onClick={e => addItemToCart(e)}
                 >
-                  Add TO CART
+                  {addToCart ? 'Adding...' : 'Add To Cart'}
                 </Button>
               </div>
             </div>
@@ -273,8 +366,23 @@ const ProductAccordion = ({ question }) => {
               </div>
               <div className="product-content-mobile">
                 <div className="product-detail-mobile">
-                  <p className="products-sizes detail">{modalData.size}</p>
+                  {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
+                    <p className="products-sizes">SiZE</p>
+                  ) : (
+                    <p className="products-sizes">Bulk</p>
+                  )}
+                  {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                    <p className="products-sizes detail">{modalData.size}</p>
+                  )}
                 </div>
+                {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
+                  <div className="product-detail-mobile">
+                    <p className="products-sizes">UNIT/CASE</p>
+                    <p className="products-sizes detail">{modalData.unit}</p>
+                  </div>
+                ) : (
+                  <div className="product-detail-mobile"></div>
+                )}
                 <div className="product-pricing-mobile">
                   <div>
                     <div>
@@ -286,9 +394,13 @@ const ProductAccordion = ({ question }) => {
                   </div>
                   <div>
                     <div className="product-pricing-block">
-                      <p className="products-sizes">Price</p>
+                      <p className="products-sizes">
+                        {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
+                          ? 'Price'
+                          : 'Price Litre'}
+                      </p>
                       <p className="products-sizes detail ">
-                        ${modalData.price}
+                        ${modalData?.price?.toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -296,11 +408,16 @@ const ProductAccordion = ({ question }) => {
               </div>
               <div className="product-total-pricing">
                 <div className="total-pricing-block">
-                  <p className="products-sizes">LITRES:</p>
+                  <p className="products-sizes">
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
+                      ? 'QTY'
+                      : 'Litres'}
+                  </p>
                   <p className="products-sizes detail">
                     <InputNumber
                       min={0}
                       value={qty}
+                      type="number"
                       defaultValue={1}
                       onChange={onChange}
                       size="middle"
@@ -310,7 +427,9 @@ const ProductAccordion = ({ question }) => {
                 </div>
                 <div className="prodcut-total-price">
                   <p className="products-sizes">Total Price</p>
-                  <p className="products-sizes details">${totalPrice}</p>
+                  <p className="products-sizes details">
+                    ${parseFloat(totalPrice).toFixed(2)}
+                  </p>
                 </div>
               </div>
               <Button

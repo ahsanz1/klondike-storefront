@@ -8,7 +8,7 @@
     margin-left: 30vw;
     color: #f1a900;
     font-family: $OpenSans;
-    font-size: 36px;
+    font-size: 18px;
     font-style: normal;
     font-weight: bold;
     line-height: 49px;
@@ -38,8 +38,8 @@
       /* or 20px */
       font-feature-settings: 'pnum' on, 'lnum' on;
 
-      .sku-link {
-        color: yellow;
+      a {
+        color: #f1a900;
       }
     }
 

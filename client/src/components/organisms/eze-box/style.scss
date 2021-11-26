@@ -17,6 +17,18 @@
     }
   }
 
+  .desktop {
+    @media (max-width: 768px) {
+      display: none !important;
+    }
+  }
+
+  .desk-bene {
+    @media (max-width: 768px) {
+      display: none !important;
+    }
+  }
+
   .tablist-heading {
     width: 17.29vw;
 
@@ -217,8 +229,11 @@
 
       .sub-heading {
         margin-bottom: 0.69vw;
+        margin-bottom: 20px;
         color: #f1a900;
-        font-size: 1.1vw;
+        font-size: 1.2vw;
+        font-weight: bold;
+        text-transform: capitalize;
 
         @media (max-width: 768px) {
           padding-bottom: 2.9vw;
@@ -226,6 +241,12 @@
           font-size: 3.73vw;
         }
       }
+    }
+  }
+
+  .custom-tech {
+    @media (min-width: 768px) {
+      display: none !important;
     }
   }
 }

@@ -13,7 +13,7 @@ const searchSuggestions = ({ itemList, close }) => {
         {itemList &&
           itemList.length > 0 &&
           itemList.map((item, i) => (
-            <li key={i}>
+            <li key={i} className="notranslate">
               <Label>
                 <Link to={`/PDP?sku=${item.sku}`} onClick={close}>
                   {item.title}

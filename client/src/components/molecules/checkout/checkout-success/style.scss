@@ -1,13 +1,19 @@
 @import '~styles/globals';
 
 .checkout-success {
-  padding: 30px 0;
+  padding: 2.43vw 0;
   color: #fff;
   font-family: $OpenSans;
   text-align: center;
 
   @media (max-width: 768px) {
     margin-top: 35vw;
+    padding-top: 2.66vw;
+  }
+
+  @media (max-width: 992px) and (min-width: 768px) {
+    margin-top: 11vw;
+    padding-top: 2.66vw;
   }
 
   h3 {
@@ -38,40 +44,189 @@
     }
   }
 
-  .received-text {
-    font-size: get-vw(14px);
-  }
+  // .received-text {
+  //   font-size: get-vw(14px);
+  // }
 
   .thankyou-text {
+    margin: 0;
     color: #fff;
     font-family: $OpenSans;
     font-size: get-vw(48px);
     font-style: normal;
-    font-weight: bold;
+    font-weight: 700;
 
     @media (max-width: 768px) {
-      font-size: 10vw;
+      align-items: center;
+      margin-right: 6.4vw;
+      margin-left: 6.4vw;
+      font-size: 8.53vw;
+      font-weight: 700;
+      text-align: left;
+    }
+  }
+
+  .received-text {
+    margin-top: 1.25vw;
+    margin-bottom: 0;
+    font-size: 0.97vw;
+
+    @media (max-width: 768px) {
+      width: 87.2vw;
+      margin-top: 5.6vw;
+      margin-right: 6.4vw;
+      margin-bottom: 0;
+      margin-left: 6.4vw;
+      font-size: 3.73vw;
+      text-align: left;
+    }
+
+    .received-text-mail {
+      margin-left: 0.27vw;
+      font-weight: bold;
+
+      @media (max-width: 768px) {
+        margin-left: 1.06vw;
+      }
     }
   }
 
   .columns {
     display: flex;
     flex-direction: column;
-    padding: 5vw;
+    padding-top: 8.19vw;
+    padding-right: 2.77vw;
+    padding-bottom: 10.76vw;
+    padding-left: 8.19vw;
+
+    &:nth-child(1) {
+      @media (max-width: 768px) {
+        padding-bottom: 13.06vw;
+      }
+    }
+
+    &:nth-child(2) {
+      @media (max-width: 768px) {
+        padding-top: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 15.46vw 5vw 15.73vw;
+      text-align: left;
+    }
+
+    h3 {
+      color: #fff;
+      font-family: $OpenSans;
+      font-style: normal;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      @media (max-width: 768px) {
+        margin-bottom: 3.46vw;
+        font-size: 3.73vw;
+      }
+    }
 
     .shipping-address {
       width: 26.5vw;
       height: 12.15vw;
-      padding: 2vw;
+      padding-top: 2.04vw;
+      padding-right: 8.4vw;
+      padding-bottom: 1.49vw;
+      padding-left: 2.08vw;
       background: #002a3a;
+      font-size: 0.97vw;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      @media (max-width: 768px) {
+        width: 87.2vw;
+        height: 55.46vw;
+        padding-top: 6.4vw;
+        padding-right: 18.13vw;
+        padding-bottom: 18.93vw;
+        padding-left: 7.2vw;
+        font-size: 3.73vw;
+      }
+
+      p {
+        margin-bottom: 0.76vw;
+        text-align: left;
+
+        @media (max-width: 768px) {
+          margin-bottom: 2.93vw;
+        }
+      }
+    }
+
+    .order-number {
+      font-size: 0.9vw;
       text-align: left;
 
-      span {
-        font-size: 0.972vw;
+      @media (max-width: 768px) {
+        padding-bottom: 8.53vw;
+        font-size: 3.73vw;
+        font-weight: bold;
+      }
+    }
+
+    .order-number-two {
+      width: 25vw;
+      padding-left: 1.31vw;
+      font-size: 1.11vw;
+      text-align: left;
+
+      @media (max-width: 768px) {
+        padding-bottom: 8.53vw;
+        padding-left: 5.33vw;
+        font-size: 4.26vw;
+        font-weight: bold;
+      }
+    }
+
+    .bold {
+      font-size: 0.9vw;
+      text-align: left;
+
+      @media (max-width: 768px) {
+        padding-bottom: 2.66vw;
+        font-size: 3.73vw;
+        font-weight: bold;
+      }
+    }
+
+    .bold-two {
+      padding-left: 1.18vw;
+      font-size: 1.11;
+
+      @media (max-width: 768px) {
+        padding-bottom: 2.66vw;
+        padding-left: 6.66vw;
+        font-size: 4.26vw;
+        font-weight: bold;
+      }
+    }
+
+    .para-heading {
+      @media (max-width: 768px) {
+        margin-top: 15.2vw;
+        margin-bottom: 0;
+        font-size: 3.73vw;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+    }
+
+    .para {
+      font-size: get-vw(14px);
+
+      @media (max-width: 768px) {
+        margin-top: 2.93vw;
+        margin-bottom: 0;
+        font-size: 3.73vw;
       }
     }
   }
 }
-
-// @media (max-width: 999px) {
-// }

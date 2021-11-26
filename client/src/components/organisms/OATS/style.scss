@@ -59,10 +59,10 @@
   .input_model {
     width: 31.1vw;
     height: 4.44vw;
-    margin-right: 0.69vw;
+    margin-right: 1.38vw;
     // height: 4.4vw;
     // margin-left: 22.9vw;
-    padding-left: 1.3vw;
+    padding: 1.25vw 1.9vw;
     border: 1px solid #e4eff4;
     border-radius: 1.1vw;
     outline: none;
@@ -95,8 +95,8 @@
   }
 
   .btn-search {
-    width: 3.5vw;
-    height: 3vw;
+    // width: 3.5vw;
+    // height: 3vw;
     margin-left: 0.69vw;
     padding: 0;
     border-radius: 1.11vw;
@@ -114,8 +114,7 @@
 
   .wrapper-oats {
     display: flex;
-    margin-right: 22vw;
-    margin-left: 24vw;
+    margin: 0 23.19vw;
 
     @media (max-width: 768px) {
       // display: grid;
@@ -144,13 +143,33 @@
   }
 
   .search_bar {
+    display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    align-items: center;
     // left: 1038px;
     width: 72px;
     height: 4.4vw;
 
     // border-radius: 16px;
     margin-left: 20px;
-    padding-bottom: 25px;
+    // padding-bottom: 25px;
+
+    .reset-button {
+      margin-left: 20px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #f1a900;
+      color: #fff;
+      font-weight: bold;
+
+      @media (max-width: 768px) {
+        position: relative;
+        top: 10px;
+        right: 10px;
+      }
+    }
 
     .img-icon {
       width: 4.7vw;
@@ -170,20 +189,21 @@
       width: 17.4vw;
       height: 19.2vw;
       margin-left: 0;
-      padding-left: 36px;
+      padding-left: 5px;
     }
   }
 
   .ant-select-selector {
     min-width: 11.45vw !important;
     height: 4.44vw !important;
-    //margin: 0 10px !important;
-    // padding-top: 15px !important;
-    padding-top: 1.2vw !important;
-    padding-left: 2vw !important;
+    padding: 1.25vw 1.66vw !important;
     border-radius: 1.11vw !important;
     background-color: #e4eff4 !important;
     font-family: $OpenSans;
+
+    .ant-select-selector::placeholder {
+      color: #07232f;
+    }
 
     @media (max-width: 768px) {
       height: 64px !important;
@@ -213,7 +233,12 @@
   }
 
   .ant-select-arrow {
+    margin-right: 1.25vw;
     color: black !important;
+  }
+
+  .ant-select-arrow::placeholder {
+    color: #07232f;
   }
 
   .dropdown-wrapper {

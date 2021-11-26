@@ -4,84 +4,44 @@ import { navigate } from '@reach/router'
 import { Tabs } from 'antd'
 
 import { AppContext } from 'libs/context'
-import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 import TabsDropdown from 'components/molecules/tab-dropdown'
 import PageHeader from './components/PageHeader'
 import AccountTabPane from './components/AccountTabPane'
 import Link from 'components/atoms/link'
-
-import { accountTabs } from './static'
-import {
-  getUserInfo,
-  getAllOrders,
-  //  getTrackOrderData
-} from './utils'
+import { getUserInfo } from './utils'
 
 import './style.scss'
 
 const { TabPane } = Tabs
 
-const MyAccount = ({
-  title,
-  logoutBtnText,
-  accountTabsData,
-  accountOrderFormData,
-  accountAddress,
-}) => {
-  console.log(
-    'acount adresssss muzzzaminksad111',
-    accountAddress,
-    accountTabsData,
-  )
+const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
   const [loading, setLoading] = useState(false)
   const [userName, setUserName] = useState('')
   const [tabKey, setTabKey] = useState('0')
-  const [allOrders, setAllOrders] = useState([])
-  const [userOrder, setUserOrder] = useState([])
-  const { user, logout, personalInfo } = useContext(AppContext)
-  console.log('user info', personalInfo)
+  const { user, logout } = useContext(AppContext)
 
   useEffect(() => {
-    if (user.accessToken) {
-      setLoading(true)
-      const _name = getUserInfo(user)
-      setUserName(_name)
-
-      const fetchOrders = async () => {
-        const ordersByUser = await getOrdersByUser(user.accessToken)
-        const _allOrders = getAllOrders(ordersByUser)
-
-        console.log('ordersByUser: ', ordersByUser)
-        console.log('allOrders: ', _allOrders)
-
-        setUserOrder(
-          ordersByUser &&
-            ordersByUser.response &&
-            ordersByUser.response.data &&
-            ordersByUser.response.data.orders,
-        )
-        setAllOrders(_allOrders)
+    const setData = async () => {
+      if (user.accessToken) {
+        setLoading(true)
+        const _name = await getUserInfo(user)
+        setUserName(_name)
         setLoading(false)
+      } else {
+        navigate('/account/login')
       }
-
-      fetchOrders()
-    } else {
-      navigate('/account/login')
     }
+
+    setData()
   }, [user])
+
   const logoutWord = logoutBtnText.split(' ')
   const logoutCapital = []
   logoutWord.forEach(element => {
     logoutCapital.push(element.charAt(0).toUpperCase() + element.substring(1))
   })
   const log = logoutCapital.join(' ')
-
-  console.log('check join:', log)
-
-  console.log('orders: ', allOrders)
-  console.log('accountTabs: yesss   ', accountTabs)
-  console.log('response check: ', userOrder)
   const handleLogout = () => {
     logout()
     navigate('account/login')
@@ -101,6 +61,7 @@ const MyAccount = ({
             <div className="accounts-tabs">
               <div className="tabs-container">
                 <TabsDropdown
+                  className="account-dropdown"
                   activeKey={tabKey}
                   onTabClick={key => setTabKey(key)}
                 >
@@ -109,9 +70,7 @@ const MyAccount = ({
                       <TabPane tab={item.tabTitle} key={index}>
                         <AccountTabPane
                           data={item.data}
-                          user={personalInfo}
                           title={item.tabTitle}
-                          userOrder={userOrder}
                         />
                       </TabPane>
                     ))}

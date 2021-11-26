@@ -10,6 +10,7 @@
   background: #0000008c;
 
   @media screen and (max-width: 768px) {
+    display: none;
     z-index: 0;
   }
 }
@@ -155,7 +156,6 @@
 
     @media screen and (max-width: 768px) {
       width: getmb-vw(325px);
-      max-height: 58vh;
       overflow: scroll;
       box-shadow: none;
     }
@@ -172,9 +172,8 @@
 
   .cart-dropdown-checkout-container {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: get-vw(19px);
-    // height: get-vw(172px);
     margin-right: get-vw(41px);
     margin-bottom: get-vw(40px);
     overflow: hidden;
@@ -187,9 +186,9 @@
       align-items: flex-end;
       justify-content: flex-start;
       width: 100%;
+      margin-bottom: 5.6vw;
       padding: 10px;
       background: #013a4e;
-      // margin-top: 4.8vw;
     }
 
     .cart-dropdown-checkout-details {
@@ -203,18 +202,14 @@
       .order-subtotal-and-checkout-btn {
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-between;
 
         @media screen and (max-width: 768px) {
           justify-content: space-between;
         }
 
-        @media screen and (max-width: 768px) {
-          justify-content: unset;
-        }
-
         .subtotal-title {
-          padding-right: get-vw(50px);
+          // padding-right: 8.63vw;
           font-size: get-vw(24px);
           font-style: normal;
           font-weight: bold;
@@ -300,13 +295,18 @@
       font-weight: bold;
       letter-spacing: get-vw(0.04px);
       line-height: get-vw(27px);
-      text-align: right;
+      text-align: left;
       text-transform: uppercase;
 
       @media screen and (max-width: 768px) {
         justify-content: center;
+        padding-right: 0;
         font-size: getmb-vw(14px);
         line-height: getmb-vw(19px);
+      }
+
+      @supports (-webkit-touch-callout: none) {
+        font-size: getmb-vw(13px);
       }
 
       .free-shipping-banner-text-price {

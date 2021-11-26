@@ -20,6 +20,15 @@ const HEADERS = {
       site: site,
     }),
   },
+  canada: {
+    'Content-Type': 'application/json',
+    'x-site-context': JSON.stringify({
+      date: new Date().toISOString(), // '2021-04-05T21:18:35.927Z',
+      channel: 13,
+      account: account,
+      stage: stage,
+    }),
+  },
 }
 
 export default HEADERS

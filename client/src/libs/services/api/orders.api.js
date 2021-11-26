@@ -2,21 +2,38 @@ import axios from 'axios'
 import ENDPOINTS from 'libs/services/endpoints'
 import { orderApiKey, apiDomain } from 'libs/general-config'
 import HEADERS from 'libs/services/axios/headers'
+import { getItem, saveItem } from '../localStorage/localStorage'
 
-// export const ordersAxios = axios.create({
-//   baseURL: apiDomain,
-//   headers: {
-//     ...HEADERS.common,
-//     'x-api-key': orderApiKey,
-//     Authorization:
-//       'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZTIzMzBjMGViYmYxMDAwODYzOTJmZCIsInJvbGVzIjpbIkFkbWluIl0sInBlcm1pc3Npb25zIjpbIndyaXRlOmNvbGxlY3Rpb24iLCJ3cml0ZTpyb2xlIiwicmVhZDpyb2xlIiwicmVhZDphdHRyaWJ1dGUtZ3JvdXAiLCJ3cml0ZTpza3VzZXQiLCJ3cml0ZTphdHRyaWJ1dGUtZ3JvdXAiLCJ3cml0ZTp1c2VyIiwid3JpdGU6YXR0cmlidXRlIiwicmVhZDpwZXJtaXNzaW9uIiwicmVhZDpza3VzZXQiLCJyZWFkOmF0dHJpYnV0ZSIsInJlYWQ6Y29sbGVjdGlvbiIsInJlYWQ6dXNlciJdLCJhY2NvdW50IjoiNWYzMjhiZjBiN2MxNTcwMDA3MTIzM2I5IiwiYWNjb3VudElkIjo4NzM5MzkyMjk0LCJ1c2VyVHlwZSI6eyJraW5kIjoiUkVHSVNURVJFRCJ9LCJpYXQiOjE2MTExNDEzNTgsImV4cCI6MTcxMTE0MzE1OH0.DPMYtQNpcPGryK1f5Pv5DM74yRMIF7Ytd-D-UmCv1Hu5ajp_y9QPMNR4vPDumJrleR7VB6lOmfJRwv2hop_Bag',
-//   },
-// })
+export const refreshToken = async token => {
+  try {
+    const response = await axios.post(
+      ENDPOINTS.POST.refreshToken,
+      JSON.stringify({ refreshToken: token }),
+      {
+        headers: {
+          ...HEADERS.common,
+        },
+      },
+    )
+
+    saveItem('x-sd-user', JSON.stringify(response.data))
+
+    return {
+      hasError: false,
+      response: response,
+    }
+  } catch (e) {
+    return {
+      hasError: true,
+      response: { error: e.message },
+    }
+  }
+}
 
 export const getOrdersByUser = async (
   accessToken,
   page = 0,
-  pageSize = 10,
+  pageSize = 500,
   count = 1,
 ) => {
   try {
@@ -27,9 +44,40 @@ export const getOrdersByUser = async (
         headers: {
           ...HEADERS.common,
           'x-api-key': orderApiKey,
-          Authorization:
-            accessToken ||
-            'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjI3Njk3OTQyOTliMDAwNzE0MGEyOSIsInJvbGVzIjpbeyJpZCI6IjVlMTk2MjUwNWVmNjEyMDAwODlmM2IyMiJ9XSwicGVybWlzc2lvbnMiOltdLCJhY2NvdW50aWQiOiI2MDIyNzY5Njk0Mjk5YjAwMDcxNDBhMjgiLCJhY2NvdW50SWQiOm51bGwsInVzZXJUeXBlIjp7ImtpbmQiOiJSRUdJU1RFUkVEIn0sImlhdCI6MTYxNzYwMzU1MywiZXhwIjoxNjE3NjA1MzUzfQ.SJO7ac5T9sWhTdO40aBgP-n17SiifVl2lathDE_zFDwTD7xpkcYyDbZT-ybo7F_ye14QdmZEqrRvHjlKSfLB0A',
+          Authorization: accessToken,
+        },
+      },
+    )
+
+    return {
+      hasError: false,
+      response: response,
+    }
+  } catch (e) {
+    let user = JSON.parse(getItem('x-sd-user'))
+    let res = await refreshToken(user.refreshToken)
+
+    if (res.hasError === false && count < 4) {
+      window.location.reload()
+    }
+
+    return {
+      hasError: true,
+      response: { error: e.message },
+    }
+  }
+}
+
+export const getOrdersByQuery = async (accessToken, payload, count = 1) => {
+  try {
+    const response = await axios.post(
+      apiDomain + ENDPOINTS.POST.historyByQuery,
+      JSON.stringify(payload),
+      {
+        headers: {
+          ...HEADERS.common,
+          'x-api-key': 'LfTYwnqk5frPWLcn8h946K31XpQDzRH87JYYP877', // orderApiKey,
+          Authorization: accessToken,
         },
       },
     )
@@ -44,7 +92,7 @@ export const getOrdersByUser = async (
     if (e.response && e.response.status) {
       const statusCode = e.response.status
       if (statusCode === 500 && count < 4) {
-        return getOrdersByUser(accessToken, page, pageSize, count + 1)
+        return getOrdersByQuery(accessToken, payload, count + 1)
       }
     }
     return {

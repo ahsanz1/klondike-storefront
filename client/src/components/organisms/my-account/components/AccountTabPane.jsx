@@ -1,12 +1,31 @@
-import React, { memo } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
-// import Accounts from 'components/molecules/accounts-page'
-// import { getOrder } from 'libs/api/order'
-// import { AppContext } from 'libs/context'
+import Accounts from 'components/molecules/accounts-page'
+import { AppContext } from 'libs/context'
+import { Pagination } from 'antd'
+import { getOrdersByUser } from 'libs/services/api/orders.api'
 
-const AccountTabPane = ({ data, user, title, userOrder }) => {
-  // const context = useContext(AppContext)
+const AccountTabPane = ({ data, title }) => {
+  const perPageItems = 3
+  const { creditLimit, user, personalInfo } = useContext(AppContext)
+  const [totalOrders, setTotalOrders] = useState(0)
+  const [shipmentDetails, setShipmentDetails] = useState('')
+
+  useEffect(() => {
+    fetchShipment(0)
+  }, [])
+
+  const fetchShipment = async offset => {
+    const ordersByUser = await getOrdersByUser(
+      user.accessToken,
+      offset,
+      perPageItems,
+    )
+    let data = ordersByUser.response.data
+    setShipmentDetails(data.orders)
+    setTotalOrders(data?.query?.count)
+  }
 
   return (
     <div className="account-tabpane-content">
@@ -14,21 +33,29 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
         <>
           <Label className="session">{data.session && data.session}</Label>
           <Label className="zip">
-            {`${user.firstName && user.firstName} ${user.lastName &&
-              user.lastName}`}
+            {`${personalInfo.firstName &&
+              personalInfo.firstName} ${personalInfo.lastName &&
+              personalInfo.lastName}`}
           </Label>
-          <Label className="profile-mail">{user.email && user.email}</Label>
-          {userOrder &&
-            userOrder.map(
+          <Label className="profile-mail">
+            {personalInfo.email && personalInfo.email}
+          </Label>
+          {shipmentDetails &&
+            shipmentDetails.length > 0 &&
+            shipmentDetails.map(
               (row, i) =>
                 row.shipTo &&
                 row.shipTo.map((innerRow, rowIndex) => (
                   <div className="ship-address" key={rowIndex}>
                     <div>
-                      <strong>{data.heading}</strong>
-                      <Label>{`${innerRow.address.name.first &&
-                        innerRow.address.name.first} ${innerRow.address.name
-                        .last && innerRow.address.name.last}`}</Label>
+                      {data.heading && <strong>{data.heading}</strong>}
+                      {innerRow &&
+                        innerRow?.address &&
+                        innerRow?.address?.name && (
+                        <Label>{`${innerRow.address.name.first &&
+                            innerRow.address.name.first} ${innerRow.address.name
+                          .last && innerRow.address.name.last}`}</Label>
+                      )}
                       <Label>
                         {innerRow.address.street1 && innerRow.address.street1}
                         {innerRow.address.state && innerRow.address.state}
@@ -39,9 +66,9 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                     </div>
                     <div>
                       <strong>{data.dropHeading}</strong>
-                      <Label>{`${innerRow.address.name.first &&
-                        innerRow.address.name.first} ${innerRow.address.name
-                        .last && innerRow.address.name.last}`}</Label>
+                      <Label>{`${innerRow?.address?.name?.first &&
+                        innerRow?.address?.name?.first} ${innerRow?.address
+                          ?.name?.last && innerRow?.address.name.last}`}</Label>
                       <Label>
                         {innerRow.address.street1 && innerRow.address.street1}
                         {innerRow.address.state && innerRow.address.state}
@@ -53,10 +80,18 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                   </div>
                 )),
             )}
+          <div className="page-no" key="pagination-shipment">
+            <Pagination
+              defaultCurrent={1}
+              pageSize={perPageItems}
+              total={totalOrders}
+              onChange={e => fetchShipment(e)}
+            />
+          </div>
         </>
       ) : title === 'All Orders' ? (
         <>
-          {userOrder && userOrder.length === 0 ? (
+          {shipmentDetails && shipmentDetails.length === 0 ? (
             'No Orders Found!'
           ) : (
             <>
@@ -72,49 +107,14 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
                   </div>
                 )}
               </div>
-              <div>
-                {userOrder &&
-                  userOrder.map((item, index) =>
-                    item.items.map((dataItem, i) => (
-                      <div className="order-image" key={index}>
-                        {/* <div className="image">
-                      <img src={item.image?.url} />
-                    </div> */}
-                        <div className="product-info">
-                          <div>
-                            <Label className="order-number">
-                              {item.orderId}
-                            </Label>
-                            <Label className="price">{dataItem.price}</Label>
-                            <Label className="link">{data.cart}</Label>
-                            <Label className="link">{data.review}</Label>
-                          </div>
-                          <div className="order">
-                            <Label className="price">{dataItem.price}</Label>
-                            <Label>{data.reorder}</Label>
-                          </div>
-                          <div className="status">
-                            <Label>{item.createdAt.slice(0, 10)}</Label>
-                            <Label className="price">{item.orderTotal}</Label>
-                            <Label>
-                              Status:
-                              {(item.status === 'ORDER_CREATED' &&
-                                'ORDER CREATED') ||
-                                item.status}
-                            </Label>
-                          </div>
-                        </div>
-                      </div>
-                    )),
-                  )}
-              </div>
+              {<Accounts />}
             </>
           )}
         </>
       ) : (
         <>
           <Label className="credit-limit">{data.limit && data.limit}</Label>
-          <p className="credit-price">{data.price && data.price}</p>
+          <p className="credit-price">${creditLimit}</p>
         </>
       )}
     </div>
@@ -123,9 +123,7 @@ const AccountTabPane = ({ data, user, title, userOrder }) => {
 
 AccountTabPane.propTypes = {
   data: PropTypes.object,
-  user: PropTypes.object,
   title: PropTypes.string,
-  userOrder: PropTypes.array,
 }
 
 export default memo(AccountTabPane)

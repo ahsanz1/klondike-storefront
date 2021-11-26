@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
-import Link from 'components/atoms/link'
 import Button from 'components/atoms/button'
 
-const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
+const TechBlogItem = ({
+  date,
+  catagory,
+  text,
+  image,
+  descHeading,
+  handleCatagory,
+}) => {
   const [textVal, setTextVal] = useState('')
   const [textState, setTextState] = useState(false)
   const [btnText, setBtnText] = useState('')
@@ -37,7 +43,12 @@ const TechBlogItem = ({ date, catagory, text, image, descHeading }) => {
       <div className="item-descriptions">
         <div className="item-top-bar">
           <Label className="item-date">{date}</Label>
-          <Link className="links">{catagory}</Link>
+          <button
+            onClick={() => handleCatagory(catagory.toUpperCase())}
+            className="links"
+          >
+            {catagory}
+          </button>
         </div>
         <div className="item-desc-box">
           <Label className="item-title">{descHeading}</Label>
@@ -62,6 +73,8 @@ TechBlogItem.DefaultProps = {
   title: '',
   text: '',
   image: '',
+  descHeading: '',
+  handleCatagory: () => {},
 }
 
 TechBlogItem.propTypes = {
@@ -71,6 +84,7 @@ TechBlogItem.propTypes = {
   text: PropTypes.string,
   image: PropTypes.string,
   descHeading: PropTypes.string,
+  handleCatagory: PropTypes.func,
 }
 
 export default TechBlogItem

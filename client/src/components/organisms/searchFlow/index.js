@@ -16,21 +16,41 @@ const SearchFlow = props => {
     ? JSON.parse(localStorage.getItem('recentData'))
     : []
   const [searchValue, setSearchValue] = useState('')
-  const [itemList, setItemList] = useState([])
+  // const [itemList, setItemList] = useState([])
   // const [recent, setRecent] = useState([])
   const [showRecent, setShowRecent] = useState(false)
   const [localRecent, setLocalRecent] = useState([])
-  const { setSearchFilter, setSearchKey } = useContext(AppContext)
+  const { setSearchFilter, setSearchKey, itemList, setItemList } = useContext(
+    AppContext,
+  )
+  const [searchName, setSearchName] = useState('')
 
   const searchValueHandler = async ({ value }) => {
-    console.log('value check:', value)
+    setSearchName(value)
     setSearchValue(value)
     setShowRecent(false)
-    const list = await fetchItems(value)
-    console.log('check list:', list.hits)
-    setItemList(list.hits)
-    setSearchFilter(list.hits)
+    // const list = await fetchItems(value)
+    // console.log('check Search list:', list.hits)
+    // setItemList(list.hits)
+    // setSearchFilter(list.hits)
+    // Promise Start
+    await fetchItems(value)
+      .then(async list => {
+        let hits = []
+        await list.hits.map((data, i) => {
+          if (data['isVariant'] === false) {
+            hits.push(data)
+          }
+        })
+        setItemList(hits)
+        setSearchFilter(hits)
+        console.log('hits', hits)
+      })
+
+      .catch(error => console.log('Search Error:', error))
+    // Promise End
   }
+
   const clear = () => {
     setSearchValue('')
     setItemList([])
@@ -57,7 +77,7 @@ const SearchFlow = props => {
     console.log('check store Data:', storeData)
     localStorage.setItem('recentData', JSON.stringify(storeData))
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
-    navigate('/search-filter')
+    navigate(`/search-filter?${searchName}`)
     props.toggleSearch()
     setSearchKey(searchValue)
   }
@@ -73,7 +93,7 @@ const SearchFlow = props => {
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
     // setRecent(JSON.parse(localStorage.getItem('recentData')))
   }, [])
-  console.log('bugssss...')
+
   return (
     <>
       <div className="serach-flow">
@@ -84,6 +104,8 @@ const SearchFlow = props => {
               value={searchValue}
               onChange={searchValueHandler}
               onFocus={focusInput}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus={true}
             />
           </form>
           <Button onClick={clear} className="clear">

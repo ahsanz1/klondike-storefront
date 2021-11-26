@@ -2,7 +2,8 @@
 
 .testimonial-wrapper {
   display: flex;
-  padding: 2.7vw;
+  padding: 2.7vw !important;
+  padding-left: 8.3vw !important;
   background: #ff8200;
 
   @media screen and (max-width: 768px) {
@@ -15,7 +16,7 @@
 
   h1 {
     width: 19.5vw;
-    margin-left: 5.5vw;
+    margin-left: 0 !important;
     color: white;
     font-family: $OpenSans;
     font-size: 3.3vw;
@@ -72,7 +73,7 @@
     // }
 
     .slide {
-      padding: 40px 0 20px;
+      padding: 140px 0 20px;
       background-color: white;
 
       @media screen and (max-width: 768px) {

@@ -1,19 +1,78 @@
+@import '~styles/globals';
+
+@function get-vw($pixel) {
+  $vw: ($pixel / 1400) * 100;
+
+  @return $vw * 1vw;
+}
+
 .Pdp-content {
   width: 100%;
-  margin: 0 auto;
+  // margin: 0 auto;
   margin-top: 100px;
   padding: 40px 120px;
+  padding-right: 14.93vw;
+  padding-left: 13.75vw;
   background: #032939;
+  font-family: $OpenSans;
 
   @media screen and (max-width: 768px) {
-    padding: 40px 40px;
+    padding: 26px 20px;
+    // margin: auto;
+  }
+
+  strong {
+    width: 100% !important;
+    color: #f1a900;
+    font-size: 0.972vw;
+    text-align: left !important;
+    text-decoration: underline;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      font-size: 3.2vw;
+    }
+  }
+
+  .coat {
+    margin-bottom: 1.18vw;
+    font-size: 0.833vw;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 3.2vw;
+    }
+  }
+
+  .name-info {
+    margin-bottom: 3.95vw;
+    font-family: $OpenSans;
+    font-size: 1.66vw;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      margin-bottom: 13.86vw;
+      font-size: 5.33vw;
+    }
+  }
+
+  .info-desc {
+    font-weight: normal !important;
+  }
+
+  .button-pdp {
+    border: none;
+    background: none;
+    cursor: pointer;
   }
 
   h1 {
     color: white;
-    font-family: Open-Sans, Arial, Helvetica, sans-serif;
+    font-family: $OpenSans;
     font-size: 24px;
-    font-style: Bold;
+    font-style: normal;
+    font-weight: 700;
     line-height: 33px;
 
     @media screen and (max-width: 768px) {
@@ -22,16 +81,32 @@
   }
 
   p {
+    // line-height: 1.16vw;
+    margin-bottom: 0.027vw;
     color: white;
-    font-family: Open-Sans, Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-family: $OpenSans;
+    font-size: 0.833vw;
     font-style: normal;
-    font-weight: normal;
     letter-spacing: -0.015em;
-    line-height: 160%;
 
     @media screen and (max-width: 768px) {
-      font-size: 12px;
+      font-size: 3.2vw;
+    }
+  }
+
+  p:nth-child(2) {
+    margin-bottom: 2.15vw;
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 7.73vw !important;
+    }
+  }
+
+  p:nth-child(3) {
+    margin-bottom: 1.25vw;
+
+    @media screen and (max-width: 768px) {
+      // margin-bottom: 20px !important;
     }
   }
 
@@ -42,10 +117,26 @@
 
   a {
     color: #f1a900;
+    font-size: 0.97vw;
+    font-weight: 700;
+
+    @media screen and (max-width: 768px) {
+      font-size: 3.2vw;
+    }
   }
 
   .display-text-group {
     margin-top: 30px;
     color: white;
+    font-family: $OpenSans;
+    font-size: 0.97vw;
+    font-weight: 400;
+    line-height: 1.36vw;
+
+    @media screen and (max-width: 768px) {
+      margin-top: 7.73vw;
+      font-size: 3.733vw;
+      line-height: 5.22vw;
+    }
   }
 }

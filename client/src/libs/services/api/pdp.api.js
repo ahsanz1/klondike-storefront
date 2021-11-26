@@ -58,7 +58,7 @@ export const addProductToCart = async (payload, count = 1) => {
     }
     return {
       hasError: true,
-      response: { error: e.message },
+      response: { error: e.response?.data?.message },
     }
   }
 }

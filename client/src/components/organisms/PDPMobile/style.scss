@@ -1,56 +1,91 @@
 @import '~styles/globals';
 
+$vw-viewport: 350;
+
+@function get-vw($font) {
+  $vw-context: $vw-viewport * 0.01;
+
+  @return ($font / $vw-context * 1vw);
+  // @return $font;
+}
+
 .pdp_mobile-container {
-  visibility: hidden;
+  // visibility: hidden;
+  display: none;
   position: absolute;
   width: 100%;
   margin: auto;
-  padding: 10px;
+  padding: 2.5vw;
+
+  // @media screen and (min-width: 768px) {
+  //   display: none;
+  // }
 
   @media screen and (max-width: 768px) {
+    display: block;
     visibility: visible;
     position: unset;
-    top: 150px;
-    padding-top: 150px;
+    top: get-vw(120);
+    padding-top: 20vh;
+    padding-right: 6.66vw;
+    padding-left: 6.66vw;
   }
 }
 
 .top-section {
-  width: 90%;
+  width: 100%;
   margin: auto;
-  text-align: justify;
+  padding: get-vw(10);
+  // text-align: justify;
 }
 
 .pdp-container {
   display: flex;
   justify-content: center;
+  width: 90%;
   margin: 30px auto;
 }
 
 .image-bg {
-  width: 187px;
-  height: 240px;
+  width: get-vw(187);
+  height: get-vw(240);
   background-color: #fff;
 }
 
 .categoryButton {
-  min-width: 100%;
-  height: 64px !important;
-  border: 2px solid #f2a900 !important;
-  border-radius: 5px !important;
+  box-sizing: border-box;
+  width: 100%;
+  height: get-vw(64) !important;
+  border: get-vw(2) solid #f2a900 !important;
+  border-radius: get-vw(5) !important;
   color: white !important;
-  font-size: 20px !important;
+  font-family: $OpenSans;
+  font-size: get-vw(20) !important;
+  font-style: normal;
   font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 5.33vw !important;
+  }
 }
 
 .breadCrumb {
-  min-width: 90%;
-  margin-top: 10px !important;
+  width: 100%;
+  margin-top: get-vw(10) !important;
+  padding: get-vw(11);
   color: #fff !important;
-  font-size: 14px !important;
-  font-weight: 700;
-  line-height: 14.98px !important;
+  font-family: $OpenSans;
+  font-size: get-vw(11);
+  font-style: normal;
+  font-weight: bold;
+  line-height: get-vw(15);
   text-transform: uppercase;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  @media (max-width: 768px) {
+    font-size: 2.93vw !important;
+    word-spacing: 0.53vw;
+  }
 }
 
 .product-img {
@@ -61,33 +96,66 @@
 }
 
 .pdp_mobile-heading {
+  width: 100%;
+  margin: auto;
   margin-top: 31px;
-  color: white;
+  color: #fff;
   font-family: $OpenSans;
   font-size: 20px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 22px;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+  line-height: 110%;
   text-align: center;
 }
 
 .radioGroup {
-  margin: 20px 10px;
+  margin-top: get-vw(50);
+  margin-bottom: get-vw(50);
+  margin-left: get-vw(12);
+}
+
+.radio-font {
+  color: #f4f4f4 !important;
+  font-family: $OpenSans !important;
+  font-size: 17px !important;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  line-height: 23px !important;
+  text-transform: uppercase;
 }
 
 .pdp-mobile-table {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+
+  span.ant-radio + * {
+    font-family: $OpenSans !important;
+  }
+}
+
+.text-right {
+  text-align: right !important;
 }
 
 .oneCell {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 80px;
-  margin: 3px;
-  padding: 3px;
+  width: 22%;
+  // align-items: center;
+  margin-bottom: get-vw(10);
+  padding: get-vw(3);
+}
+
+.oneCellBulk {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  // align-items: center;
+  margin-bottom: get-vw(10);
+  padding: get-vw(3);
 }
 
 .divider {
@@ -95,23 +163,37 @@
 }
 
 .head {
+  width: 100%;
+  margin-bottom: get-vw(5);
   color: #fff;
-  font-size: 11px;
+  font-family: $OpenSans;
+  font-size: get-vw(11);
+  font-style: normal;
   font-weight: 800;
   letter-spacing: 0.03em;
+  line-height: get-vw(15);
   text-transform: uppercase;
 }
 
 .value {
-  max-width: 75px;
+  // max-width: get-vw(60);
+  width: 100%;
   overflow: hidden;
+  opacity: 0.9;
   color: #c2bbb7;
-  font-size: 12px;
+  font-family: $OpenSans;
+  font-size: get-vw(12);
   font-weight: bold;
   letter-spacing: 0.03em;
-  text-overflow: ellipsis;
-  text-transform: uppercase;
-  white-space: nowrap;
+  line-height: 185.5%;
+  // text-overflow: ellipsis;
+  // text-transform: uppercase;
+  // white-space: nowrap;
+  // margin-top: 5px;
+}
+
+.per-case {
+  text-align: center;
 }
 
 .value-qty {
@@ -119,20 +201,46 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  min-width: 100px;
-  margin: 3px;
-  padding: 3px;
+  // min-width: get-vw(90);
+  width: 30%;
+  // margin: get-vw(3);
+  padding: get-vw(3);
+
+  @media (max-width: 768px) {
+    margin-left: 15vw;
+  }
+
+  .ant-input-number-input {
+    font-family: $OpenSans;
+    font-family: $OpenSans;
+    font-size: 1.0416vw;
+    font-weight: 700;
+    line-height: 1.5vw;
+
+    @media (max-width: 768px) {
+      font-size: 4vw;
+      line-height: 4.533vw;
+    }
+  }
+}
+
+.ant-input-number {
+  @media (max-width: 768px) {
+    min-width: 15.7vw !important;
+  }
 }
 
 .total-price-container {
   @media (max-width: 768px) {
-    margin-right: 24px;
+    // margin-right: 24px;
+    font-family: $OpenSans;
     text-align: right;
   }
 
   .total-price {
     //display: flex;
     justify-content: flex-end;
+    font-family: $OpenSans;
     font-size: 24px;
     font-weight: 700;
     line-height: 30px;
@@ -141,16 +249,21 @@
 
 .add-to-cart {
   box-sizing: border-box;
-  width: 70%;
-  height: 50px !important;
-  margin-top: 20px;
-  border: 1px solid #f2a900;
+  height: 4.444vw !important;
+  margin-top: 10.4vw;
+  border: 1px solid #f2a900 !important;
   border-radius: 5px !important;
   background-color: #f2a900 !important;
   color: #fff !important;
-  font-size: 20px !important;
+  font-family: $OpenSans;
+  font-size: 23px !important;
   font-weight: 700 !important;
   line-height: 24px;
+
+  @media (max-width: 768px) {
+    width: 80vw !important;
+    height: 17.06vw !important;
+  }
 }
 
 .add-to-cart:disabled {
@@ -165,6 +278,7 @@
   justify-content: center;
   width: 30px;
   height: 30px;
+  margin-left: 20px;
   padding: 5px;
   border: 1px solid #013a4e;
   border-radius: 50%;

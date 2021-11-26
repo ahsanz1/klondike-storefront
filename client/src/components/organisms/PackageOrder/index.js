@@ -16,7 +16,7 @@ const PackageOrder = ({ order }) => {
   )
 }
 PackageOrder.propTypes = {
-  order: PropTypes.array,
+  order: PropTypes.object,
 }
 
 export default PackageOrder

@@ -13,13 +13,12 @@ const Techtabllist = ({
   subItem,
   className,
   subItemName,
+  sidebarSubitem,
 }) => {
-  console.log('subitem', subItem)
-  console.log('check categories:', categories)
   return (
     <div className={`categoryItem-tab trt ${className}`}>
       {categoriesXPM &&
-        categoriesXPM.length &&
+        categoriesXPM.length > 0 &&
         categoriesXPM.map((item, index) => (
           <>
             {item.categoryName.length > 0 && (
@@ -47,15 +46,19 @@ const Techtabllist = ({
                     {item.subItem &&
                       item.subItem.hits &&
                       item.subItem.hits.map((item, index) => {
-                        console.log('item', item)
+                        console.log('item-1', item)
                         return (
                           <div key={index}>
                             <Link
                               className={
                                 item.title === subItemName && 'active-product'
                               }
-                              // onClick={() => productClickHandler(item.title)}
-                              to={item.links}
+                              onClick={() => sidebarSubitem(item.title)}
+                              to={
+                                item.links && item.links.length > 0
+                                  ? item.links
+                                  : '/tech-resources/tech-news-blog'
+                              }
                             >
                               <ul>
                                 <li>{item.title}</li>
@@ -81,6 +84,7 @@ Techtabllist.DefaultProps = {
   subItem: [],
   className: '',
   subItemName: '',
+  sidebarSubitem: {},
 }
 
 Techtabllist.propTypes = {
@@ -91,5 +95,6 @@ Techtabllist.propTypes = {
   subItem: PropTypes.array,
   className: PropTypes.string,
   subItemName: PropTypes.string,
+  sidebarSubitem: PropTypes.func,
 }
 export default Techtabllist

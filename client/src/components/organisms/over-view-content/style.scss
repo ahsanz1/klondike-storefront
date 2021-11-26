@@ -21,6 +21,11 @@
 
     .overview-details {
       padding: 0 get-vw(69px);
+
+      @media screen and (max-width: 768px) {
+        padding-right: 26px;
+        padding-left: 29px;
+      }
     }
   }
 
