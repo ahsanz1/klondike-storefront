@@ -14,6 +14,9 @@ import { saveItem } from 'libs/services/localStorage'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import 'antd/dist/antd.css'
+import ErrorComponent from 'components/organisms/error-component'
+import { ErrorBoundary } from 'react-error-boundary'
+
 // const PreviewPage = lazyLoad(() => import('components/pages/cmsPreview'));
 // const XPM = lazyLoad(() => import('components/xpm-manager'))
 // const XPM = loadable(() => import('components/xpm-manager'))
@@ -59,14 +62,20 @@ const App = () => {
     return <Splash />
   }
 
+  const logError = error => {
+    console.log('Error!', error)
+  }
+
   return (
     <AppProvider>
-      <AppShell>
-        <Router>
-          <XPM path="/*" />
-          <PreviewPage exact path="/cms/preview" />
-        </Router>
-      </AppShell>
+      <ErrorBoundary FallbackComponent={ErrorComponent} onError={logError}>
+        <AppShell>
+          <Router>
+            <XPM path="/*" />
+            <PreviewPage exact path="/cms/preview" />
+          </Router>
+        </AppShell>
+      </ErrorBoundary>
     </AppProvider>
   )
 }

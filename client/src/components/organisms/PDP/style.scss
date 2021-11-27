@@ -76,7 +76,7 @@ $vw-viewport: 1440;
 }
 
 .radio-style {
-  color: #f4f4f4 !important;
+  // color: #f4f4f4 !important;
   font-family: $OpenSans !important;
   font-size: 17px !important;
   font-style: normal;
@@ -161,13 +161,23 @@ $vw-viewport: 1440;
   text-align: center;
   text-transform: uppercase;
   // text-align: center;
+
+  &:nth-child(3) {
+    padding-left: 0;
+  }
+
+  &:nth-child(4) {
+    padding-left: 0;
+  }
 }
 
 .cell-header.size {
+  padding-left: 0;
   text-align: left !important;
 }
 
 .cell.size {
+  padding-left: 0;
   text-align: left !important;
 }
 
@@ -219,6 +229,8 @@ $vw-viewport: 1440;
 }
 
 .align-left {
+  font-size: 0.97vw;
+  font-weight: 700 !important;
   text-align: left !important;
 }
 
@@ -266,7 +278,14 @@ $vw-viewport: 1440;
 }
 
 .product-details {
+  display: flex;
+  flex-direction: column;
   width: get-vw(1083);
+}
+
+.product-information {
+  display: flex;
+  flex-direction: row;
 }
 
 .product-table {

@@ -64,7 +64,7 @@
 
       @media (max-width: 500px) {
         margin-bottom: 7.4vw;
-        margin-left: 11.466vw;
+        // margin-left: 11.466vw;
         padding-bottom: 7.4vw;
       }
 
@@ -76,7 +76,7 @@
         text-align: left;
 
         @media (max-width: 500px) {
-          padding-left: 0;
+          padding-left: 7.73vw;
           font-family: $OpenSans;
           font-size: 4.8vw;
         }
@@ -216,9 +216,10 @@
 
     @media (max-width: 500px) {
       height: 100%;
-      padding: 4.4vw;
       padding-right: 12.13vw;
       padding-bottom: 30.6vw;
+      // padding: 4.4vw;
+      padding-left: 24px;
       overflow-y: scroll;
     }
 
