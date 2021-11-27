@@ -8,6 +8,13 @@ export const setUserCart = async () => {
     let skus = []
     let res = await getCartByUserId(user.accessToken)
 
+    if (res.error === true) {
+      return {
+        items: [],
+        attributes: [],
+      }
+    }
+
     let data = res.data
     let itemsArr = []
 
