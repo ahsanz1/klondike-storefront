@@ -11,13 +11,13 @@ import Image from 'components/atoms/image'
 import './styles.scss'
 
 const PLP = props => {
-  const { setStep, plpredirect, setPlpRedirect } = useContext(AppContext)
+  const { setStep, plpredirect } = useContext(AppContext)
   const [desc, setDesc] = useState('')
   const [subItem, setSubItem] = useState({})
   const [showTab, setShowtab] = useState(true)
   const [contextPlp, setContextPlp] = useState(plpredirect)
   console.log('contextPlp', contextPlp)
-  setPlpRedirect(contextPlp)
+  // setPlpRedirect(contextPlp)
   useEffect(() => {
     setStep(1)
   }, [])

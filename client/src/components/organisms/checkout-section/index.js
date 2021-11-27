@@ -43,6 +43,7 @@ const Checkoutsection = () => {
     creditLimit,
     setCheckoutData,
     setGetCartItemsState,
+    getCartItems,
   } = useContext(AppContext)
   console.log({ personalInfo })
   console.log({ user })
@@ -624,7 +625,8 @@ const Checkoutsection = () => {
                     loading={isLoading}
                     disabled={
                       (!delivery && !Object.keys(selectedLocation).length) ||
-                      (inputField && !validatePO)
+                      (inputField && !validatePO) ||
+                      (getCartItems.items || []).length === 0
                     }
                   >
                     PLACE ORDER
@@ -641,14 +643,24 @@ const Checkoutsection = () => {
                 <h2 className="summary-title">ORDER SUMMARY</h2>
               </div>
               <div className="item">
-                <span>Items ({`${cartPayload?.items?.length}`})</span>
-                <span>
-                  {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
-                </span>
+                <span>Items ({`${cartPayload?.items?.length || 0}`})</span>
+                {(getCartItems.items || []).length === 0 ? (
+                  <span>{`$0.00`}</span>
+                ) : (
+                  <span>
+                    {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                  </span>
+                )}
               </div>
               <div className="item">
                 <span>Shipping &amp; Handling</span>
-                <span>{delivery ? `$39.00` : 'TBD'}</span>
+                <span>
+                  {(getCartItems.items || []).length === 0
+                    ? 'TBD'
+                    : delivery
+                      ? `$39.00`
+                      : 'TBD'}
+                </span>
               </div>
               <div className="item">
                 <span>Credit Limit</span>
@@ -657,7 +669,9 @@ const Checkoutsection = () => {
               <Divider style={{ border: '1px solid #fff' }} />
               <div className="item">
                 <span className="total-price">Total Amount</span>
-                {delivery ? (
+                {(getCartItems.items || []).length === 0 ? (
+                  <span className="total-amount">{`$0.00`}</span>
+                ) : delivery ? (
                   <span className="total-amount">
                     {`$${parseFloat(
                       delivery
@@ -681,7 +695,8 @@ const Checkoutsection = () => {
                     loading={isLoading}
                     disabled={
                       (!delivery && !Object.keys(selectedLocation).length) ||
-                      (inputField && !validatePO)
+                      (inputField && !validatePO) ||
+                      (getCartItems.items || []).length === 0
                     }
                   >
                     PLACE ORDER
