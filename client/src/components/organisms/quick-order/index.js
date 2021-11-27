@@ -48,7 +48,6 @@ const QuickOrder = () => {
   const [indexState, setIndexState] = useState(0)
   const [isPackage, setIsPackage] = useState(true)
   const [hasCartData, setHasCartData] = useState(false)
-  const [searchItem, setSearchItem] = useState()
 
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
@@ -62,35 +61,6 @@ const QuickOrder = () => {
       setHasCartData(false)
     }
   }, [getCartItems])
-
-  useEffect(() => {
-    let bulkararr = []
-    let packagearr = []
-
-    searchItem &&
-      searchItem.map((datas, i) => {
-        if (datas['isVariant'] === true) {
-          if (datas['Packaged Order'] === true) {
-            let packageorder = {
-              label: datas['Part Number'],
-              value: datas['Part Number'],
-              price: datas['Base Price'],
-            }
-            packagearr.push(packageorder)
-          } else {
-            let bulkorder = {
-              label: datas['Part Number'],
-              value: datas['Part Number'],
-              price: datas['Base Price'],
-            }
-            bulkararr.push(bulkorder)
-          }
-        }
-      })
-
-    setBulkData(bulkararr)
-    setPacakageData(packagearr)
-  }, [searchItem])
 
   const error = err => {
     Modal.error({
@@ -118,6 +88,7 @@ const QuickOrder = () => {
       if (data !== undefined) {
         skus.push(data?.partnumber)
         obj[data?.partnumber] = data?.quantity
+        price += data?.price * data?.quantity
       }
     })
 
@@ -283,14 +254,43 @@ const QuickOrder = () => {
   }
 
   const handleChange = async (e, index) => {
-    const { name, value } = e.target
-    const list = [...inputList]
+    let bulkararr = []
+    let packagearr = []
+    let { name, value } = e.target
+    let list = [...inputList]
     list[index][name] = value
-    setInputList(list)
 
-    await fetchItems(value).then(_list => {
-      setSearchItem(_list.hits)
+    fetchItems(value).then(_list => {
+      if (_list?.hits?.length > 0) {
+        _list.hits.map((datas, i) => {
+          if (datas['isVariant'] === true) {
+            if (datas['Packaged Order'] === true) {
+              let packageorder = {
+                label: datas['Part Number'],
+                value: datas['Part Number'],
+                ...datas,
+              }
+              packagearr.push(packageorder)
+            } else {
+              let bulkorder = {
+                label: datas['Part Number'],
+                value: datas['Part Number'],
+                ...datas,
+              }
+              bulkararr.push(bulkorder)
+            }
+
+            list[index]['price'] =
+              datas['SKU'] === value ? datas['Base Price'] : 0
+          }
+        })
+
+        setBulkData(bulkararr)
+        setPacakageData(packagearr)
+      }
     })
+
+    setInputList(list)
   }
 
   const handleChangeBulk = async (e, index) => {
