@@ -1,6 +1,6 @@
 @import '~styles/globals';
 
-$vw-viewport: 350;
+$vw-viewport: 375;
 
 @function get-vw($font) {
   $vw-context: $vw-viewport * 0.01;
@@ -27,8 +27,8 @@ $vw-viewport: 350;
     position: unset;
     top: get-vw(120);
     padding-top: 20vh;
-    padding-right: 6.66vw;
-    padding-left: 6.66vw;
+    padding-right: get-vw(25);
+    padding-left: get-vw(25);
   }
 }
 
