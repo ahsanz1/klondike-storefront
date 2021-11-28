@@ -459,6 +459,12 @@
   margin-top: 30px;
   font-size: 1.11vw;
   line-height: 1.52vw;
+
+  @media (min-width: 1024px) {
+    .ant-skeleton {
+      padding-right: 10px;
+    }
+  }
 }
 
 .credit-limit {

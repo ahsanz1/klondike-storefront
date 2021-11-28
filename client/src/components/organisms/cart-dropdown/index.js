@@ -8,6 +8,7 @@ import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 import Image from 'components/atoms/image'
 import './style.scss'
+import { Skeleton } from 'antd'
 
 const CartDropdown = () => {
   const {
@@ -88,8 +89,12 @@ const CartDropdown = () => {
             )}
           </div>
           {miniCartLoading ? (
-            <h1 style={{ color: 'gray' }}>Loading...</h1>
+            <div className="cart-dropdown-skeleton">
+              <Skeleton.Image />
+              <Skeleton active paragraph={{ rows: 3 }} />
+            </div>
           ) : (
+            // <h1 style={{ color: 'gray' }}>Loading...</h1>
             <div className="cart-dropdown-items">
               {getCartItems.items && getCartItems.items.length > 0 ? (
                 getCartItems.items.map((cartItem, id) => {
