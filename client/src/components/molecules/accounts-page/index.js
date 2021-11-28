@@ -4,7 +4,7 @@ import './style.scss'
 
 import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
-import { Pagination } from 'antd'
+import { Pagination, Skeleton } from 'antd'
 import { getItemsBySkus } from 'libs/services/api/item'
 import { AppContext } from 'libs/context'
 import { getOrdersByUser } from 'libs/services/api/orders.api'
@@ -68,6 +68,16 @@ const Accounts = () => {
     <div className="account-page">
       {size > 768 ? (
         <div className="account-sections">
+          {!fetchedOrders ? (
+            <>
+              {[1, 2, 3].map(index => (
+                <div className="order-history-skeleton" key={index}>
+                  <Skeleton.Image />
+                  <Skeleton active title={false} paragraph={{ rows: 5 }} />
+                </div>
+              ))}
+            </>
+          ) : null}
           {fetchedOrders &&
             fetchedOrders.length > 0 &&
             fetchedOrders.map((order, i) => {
@@ -136,6 +146,16 @@ const Accounts = () => {
         </div>
       ) : (
         <>
+          {!fetchedOrders ? (
+            <>
+              {[1, 2, 3].map(index => (
+                <div className="order-history-skeleton" key={index}>
+                  <Skeleton.Image />
+                  <Skeleton active title={false} paragraph={{ rows: 3 }} />
+                </div>
+              ))}
+            </>
+          ) : null}
           {fetchedOrders &&
             fetchedOrders.length > 0 &&
             fetchedOrders.map((order, i) => {
