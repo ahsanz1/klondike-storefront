@@ -596,32 +596,28 @@ const Checkoutsection = () => {
               ) : (
                 <div className="checkout-info-second">
                   {Object.keys(selectedLocation).length === 0 ? (
-                    <div>
-                      <div className="checkout-po">
-                        {/* <span>Please choose location!</span> */}
-                        <span>
-                          <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
-                          <br />
-                          {`${address?.street1},`}
-                          <br />
-                          {`${address?.city}, ${address?.state} ${address?.zipCode}`}
-                          <br />
-                          {`${address?.phone?.number}`}
-                        </span>
-                      </div>
+                    <div className="checkout-po">
+                      {/* <span>Please choose location!</span> */}
+                      <span>
+                        <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+                        <br />
+                        {`${address?.street1},`}
+                        <br />
+                        {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                        <br />
+                        {`${address?.phone?.number}`}
+                      </span>
                     </div>
                   ) : (
-                    <div>
-                      <div className="checkout-po">
-                        <span>
-                          {`${selectedLocation?.address?.street1},`}
-                          <br />
-                          {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
-                          <br />
-                          {`${selectedLocation?.address?.phone?.number ||
-                            '000-000-000'}`}
-                        </span>
-                      </div>
+                    <div className="checkout-po">
+                      <span>
+                        {`${selectedLocation?.address?.street1},`}
+                        <br />
+                        {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
+                        <br />
+                        {`${selectedLocation?.address?.phone?.number ||
+                          '000-000-000'}`}
+                      </span>
                     </div>
                   )}
                   <Button
