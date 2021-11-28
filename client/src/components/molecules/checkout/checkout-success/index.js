@@ -7,7 +7,13 @@ import { Row, Col } from 'antd'
 import { navigate } from '@reach/router'
 
 const CheckoutSuccess = () => {
-  const { personalInfo, clearLocalCart, checkoutData } = useContext(AppContext)
+  const {
+    personalInfo,
+    clearLocalCart,
+    checkoutData,
+    creditLimit,
+    setCreditLimit,
+  } = useContext(AppContext)
   const [poNumber] = useState('R3G 2T3')
   if (Object.keys(checkoutData || {}).length === 0) {
     navigate('/')
@@ -16,6 +22,9 @@ const CheckoutSuccess = () => {
   useEffect(() => {
     clearCart()
     clearLocalCart()
+    if (checkoutData?.totalAmount) {
+      setCreditLimit(Number(creditLimit - checkoutData.totalAmount))
+    }
   }, [])
 
   const address = {

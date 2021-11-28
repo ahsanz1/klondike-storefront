@@ -335,10 +335,11 @@ $vw-viewport: 1440;
       width: 55.13vw;
       margin: 1vw;
       // margin-left: 0;
-      padding-top: get-vw(10px);
-      padding-right: 2vw;
-      padding-bottom: get-vw(11px);
-      padding-left: 2vw;
+      // padding-top: get-vw(10px);
+      // padding-right: 1.4vw;
+      // padding-bottom: get-vw(11px);
+      // padding-left: 1.4vw;
+      padding: 1.44vw;
       background-color: #002a3a;
       word-break: break-all;
 
@@ -418,7 +419,7 @@ $vw-viewport: 1440;
       justify-content: space-between;
       width: 55.13vw;
       margin: 1vw;
-      padding: get-vw(16px);
+      padding: 1.44vw;
       background-color: #002a3a;
       word-break: break-all;
 
@@ -464,8 +465,9 @@ $vw-viewport: 1440;
         @media (max-width: 768px) {
           display: flex;
           align-items: center;
-          justify-content: start;
+          // justify-content: start;
           padding-top: 9.33vw;
+          border-radius: 5px;
         }
       }
     }
