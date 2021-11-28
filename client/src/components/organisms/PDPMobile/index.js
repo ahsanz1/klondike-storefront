@@ -429,7 +429,7 @@ const PDPMobile = ({
                             ).toFixed(2)
                           : '0.00'
                         : parseFloat(
-                            pdpdata?.bulkOrderItem[0]?.totalPrice || 0,
+                            pdpdata?.bulkOrderItem[0]?.totalPrice || 0.0,
                           ).toFixed(2))}
                   </span>
                 </div>

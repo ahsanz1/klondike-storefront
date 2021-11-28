@@ -378,11 +378,13 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       registeredUser: isLoggedIn,
       userAuthToken: isLoggedIn ? user?.accessToken : null,
     }
-
-    let checkLimit = parseFloat(
-      getCartItems?.totalAmount?.amount + items?.totalPackagedOrderPrice,
-    ).toFixed(2)
-    if (packagedOrder && checkLimit > creditLimit) {
+    let currentPrice = packagedOrder
+      ? items?.totalPackagedOrderPrice
+      : items?.bulkOrderItem[0]?.totalPrice
+    let checkLimit =
+      Number(getCartItems?.totalAmount?.amount) + Number(currentPrice)
+    console.log('checklimit', checkLimit)
+    if (checkLimit > creditLimit) {
       error('You are exceeding your credit limit')
       setAddingToCart(false)
       return
@@ -469,7 +471,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
             <Col
               style={{
                 display: 'flex',
-                justifyContent: 'space-evenly',
+                justifyContent: 'center',
+                alignItems: 'center',
                 // width: '69vw',
                 flexWrap: 'wrap',
               }}
