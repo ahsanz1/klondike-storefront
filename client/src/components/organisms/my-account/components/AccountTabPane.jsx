@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Accounts from 'components/molecules/accounts-page'
 import { AppContext } from 'libs/context'
-import { Pagination } from 'antd'
+import { Pagination, Skeleton } from 'antd'
 import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 const AccountTabPane = ({ data, title }) => {
@@ -40,6 +40,14 @@ const AccountTabPane = ({ data, title }) => {
           <Label className="profile-mail">
             {personalInfo.email && personalInfo.email}
           </Label>
+          {!shipmentDetails ? (
+            <div className="addresses-skeleton">
+              <div className="ship-address">
+                <Skeleton title={false} paragraph={{ rows: 3 }} active />
+                <Skeleton title={false} paragraph={{ rows: 3 }} active />
+              </div>
+            </div>
+          ) : null}
           {shipmentDetails &&
             shipmentDetails.length > 0 &&
             shipmentDetails.map(
