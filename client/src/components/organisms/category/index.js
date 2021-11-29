@@ -122,19 +122,22 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
         ) : (
           <>
             {products &&
-              products.map((product, index) => (
-                <Col span={12} md={12} lg={6} key={index}>
-                  <ProductItem
-                    item={{
-                      ...product,
-                      subscriptions: subscriptionItems[product.itemId] || [
-                        { ...dData },
-                      ],
-                    }}
-                    id={index}
-                  />
-                </Col>
-              ))}
+              products.map(
+                (product, index) =>
+                  !product.isVariant && (
+                    <Col span={12} md={12} lg={6} key={index}>
+                      <ProductItem
+                        item={{
+                          ...product,
+                          subscriptions: subscriptionItems[product.itemId] || [
+                            { ...dData },
+                          ],
+                        }}
+                        id={index}
+                      />
+                    </Col>
+                  ),
+              )}
           </>
         )}
       </Row>

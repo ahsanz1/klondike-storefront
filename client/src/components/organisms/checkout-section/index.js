@@ -72,8 +72,8 @@ const Checkoutsection = () => {
   console.log({ cartItemIds })
   const [shippingDetails, setShippingDetails] = useState({})
   // console.log({ availableLocations })
-  let freeShippingAmount = 500
-  let freeShippingQuantity = 900
+  let freeShippingAmount = 900
+  let freeShippingQuantity = 500
 
   const address = {
     street1: '1510 Wall Street NW ',

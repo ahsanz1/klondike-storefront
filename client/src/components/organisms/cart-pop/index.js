@@ -22,8 +22,6 @@ const CartPopUP = ({ loading }) => {
     // subTotal,
   } = useContext(AppContext)
 
-  const freeShippingAmount = 500
-
   // const cartItems = [
   //   {
   //     mainImage: 'static/images/klondike4.png',
@@ -94,16 +92,35 @@ const CartPopUP = ({ loading }) => {
                 ${parseFloat(getCartItems?.totalAmount?.amount).toFixed(2)}
               </Label>
             </div>
-            {getCartItems?.totalAmount?.amount >= freeShippingAmount ? (
+            {getCartItems?.hasPackaged ? (
+              getCartItems?.totalAmount?.amount >= 900 ? (
+                <Label className="free-shipping-banner">
+                  Congrats! You have got the free shipping!
+                </Label>
+              ) : (
+                <Label className="free-shipping-banner">
+                  You are
+                  <Label className="free-shipping-banner-text-price">{`$${parseFloat(
+                    900 - getCartItems?.totalAmount?.amount,
+                  ).toFixed(2)}`}</Label>
+                  away from free shipping
+                </Label>
+              )
+            ) : getCartItems?.quantity >= 500 ? (
               <Label className="free-shipping-banner">
                 Congrats! You have got the free shipping!
               </Label>
             ) : (
               <Label className="free-shipping-banner">
                 You are
-                <Label className="free-shipping-banner-text-price">{`$${parseFloat(
-                  freeShippingAmount - getCartItems?.totalAmount?.amount,
-                ).toFixed(2)}`}</Label>
+                <Label className="free-shipping-banner-text-price">
+                  {`${
+                    getCartItems?.quantity
+                      ? parseFloat(500 - getCartItems?.quantity || 0)
+                      : 500
+                  }`}{' '}
+                  ltrs{' '}
+                </Label>
                 away from free shipping
               </Label>
             )}

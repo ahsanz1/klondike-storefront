@@ -18,10 +18,10 @@ const PlpTabList = ({
   subItemHandler,
 }) => {
   const [product, setProduct] = useState(itemName)
-  console.log('props:', categories)
+  console.log('props plp tab:', subItem)
   const productClickHandler = productName => {
     console.log({ productName })
-    setProduct(productName.title)
+    setProduct(productName.sku)
     subItemClickHandler(productName)
     handleClose()
   }
@@ -52,24 +52,27 @@ const PlpTabList = ({
                       <div className="subItem">
                         {subItem &&
                           subItem.hits &&
-                          subItem.hits.map((item, index) => (
-                            <Label
-                              key={index}
-                              onClick={() => productClickHandler(item)}
-                              className={
-                                item.title === product
-                                  ? 'active-product'
-                                  : 'deactive-product'
-                              }
-                            >
-                              <Link
-                                to={`/PDP?sku=${item.sku}`}
-                                className="notranslate"
-                              >
-                                {item.title}
-                              </Link>
-                            </Label>
-                          ))}
+                          subItem.hits.map(
+                            (item, index) =>
+                              !item.isVariant && (
+                                <Label
+                                  key={index}
+                                  onClick={() => productClickHandler(item)}
+                                  className={
+                                    item.sku === product
+                                      ? 'active-product'
+                                      : 'deactive-product'
+                                  }
+                                >
+                                  <Link
+                                    to={`/PDP?sku=${item.sku}`}
+                                    className="notranslate"
+                                  >
+                                    {item.title}
+                                  </Link>
+                                </Label>
+                              ),
+                          )}
                       </div>
                     </>
                   )}
