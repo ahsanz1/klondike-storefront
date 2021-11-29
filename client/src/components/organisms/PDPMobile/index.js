@@ -24,7 +24,7 @@ import PDPInformation from 'components/molecules/pdpinforamation'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import { useNavigate } from '@reach/router'
 import { AppContext } from 'libs/context'
-// import PackageOrder from 'components/organisms/PackageOrder'
+import PackageOrder from 'components/organisms/PackageOrder'
 
 const PDPMobile = ({
   pdpdata,
@@ -69,13 +69,13 @@ const PDPMobile = ({
     showModal()
   }
 
-  // const order = {
-  //   heading: 'Heading',
-  //   paragraph1: 'This is one paragraph',
-  //   paragraph2: 'second paragraph',
-  // }
+  const order = {
+    heading: 'Heading',
+    paragraph1: 'This is one paragraph',
+    paragraph2: 'second paragraph',
+  }
 
-  // if (true) return <PackageOrder order={order} />
+  if (packagedOrder) return <PackageOrder order={order} />
 
   return (
     <div>
