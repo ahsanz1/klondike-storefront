@@ -386,8 +386,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
     console.log('checklimit', checkLimit)
     if (checkLimit > creditLimit) {
       error('You are exceeding your credit limit')
-      setAddingToCart(false)
-      return
+      // setAddingToCart(false)
+      // return
     }
 
     let itemsNotInStock = await checkItemsInStock(payload?.items)

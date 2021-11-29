@@ -97,9 +97,9 @@ const Accounts = () => {
                     <Label className="account-image-block__orderNumber">
                       Order Number :
                     </Label>
-                    {order.orderReference && (
+                    {order?.orderId && (
                       <Label className="account-image-block__orderNumberDetail">
-                        {order.orderReference}
+                        {order?.orderId}
                       </Label>
                     )}
                   </div>
@@ -116,7 +116,7 @@ const Accounts = () => {
                     )}
                     {order.orderTotal && (
                       <Label className="account-image-block__orderPricee">
-                        ${order.orderTotal}
+                        ${order?.orderTotal.toFixed(2)}
                       </Label>
                     )}
                     {order.status && (
@@ -182,17 +182,17 @@ const Accounts = () => {
                       )}
                     </div>
                     <div className="account-mobile-description">
-                      {size < 768 && order.orderReference && (
+                      {size < 768 && order.orderId && (
                         <div>
                           <p className="account-mobile-label">Order Number :</p>
                           <p className="account-mobile-label">
-                            {order.orderReference}
+                            {order?.orderId}
                           </p>
                         </div>
                       )}
                       {order.orderTotal && (
                         <Label className="account-mobile-orderPrice">
-                          $ {order.orderTotal}
+                          $ {order?.orderTotal.toFixed(2)}
                         </Label>
                       )}
                       {/* {order.totalQuantity && (
