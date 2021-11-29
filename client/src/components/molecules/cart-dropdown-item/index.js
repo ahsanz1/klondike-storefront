@@ -147,9 +147,9 @@ const CartDropdownItem = cart => {
           </div>
         </div>
         <div className="total-and-quantity-cart">
-          <div className="removebtn-div">
+          <div className="removebtn">
             <Button
-              className="remove-button"
+              className="remove_button"
               onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
               disabled={removing}
             >
