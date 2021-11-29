@@ -100,7 +100,6 @@ const ProductAccordion = ({ question }) => {
     let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
     if (creditLimit <= totalAmount) {
       error('You are exceeding your credit limit')
-      return
     }
 
     setAddToCart(true)
@@ -165,7 +164,6 @@ const ProductAccordion = ({ question }) => {
     let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
     if (creditLimit <= totalAmount) {
       error('You are exceeding your credit limit')
-      return
     }
 
     setQty(value)

@@ -46,7 +46,6 @@ const CartDropdownItem = cart => {
 
     if (getCartItems?.hasPackaged && creditLimit <= totalAmount) {
       error('You are exceeding your credit limit')
-      return
     }
 
     let updateCartPayload = {
