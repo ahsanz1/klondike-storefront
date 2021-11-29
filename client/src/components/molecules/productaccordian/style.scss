@@ -329,6 +329,10 @@ body .ant-modal-mask {
       width: 64px;
       color: #c2bbb7;
       font-weight: 700;
+
+      &:last-child {
+        width: 100%;
+      }
     }
   }
 
@@ -361,6 +365,7 @@ body .ant-modal-mask {
 
       .product-pricing-block {
         margin-left: 30px;
+        text-align: right;
       }
     }
   }

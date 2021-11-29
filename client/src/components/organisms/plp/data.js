@@ -416,12 +416,16 @@ export const products = [
 
 export const categoriesXPM = [
   {
+    title: 'Nano',
+    categoryName: 'Nano',
+  },
+  {
     title: 'Heavy Duty Engine Oils',
     categoryName: 'Heavy Duty Engine Oils',
   },
   {
-    title: 'Nano',
-    categoryName: 'Nano',
+    title: 'Automotive Engine Oils',
+    categoryName: 'Automotive Engine Oils',
   },
   {
     title: 'Gear Lubricants',
@@ -450,6 +454,10 @@ export const categoriesXPM = [
   {
     title: 'Chemicals',
     categoryName: 'Chemicals',
+  },
+  {
+    title: 'Food Grade Lubricants',
+    categoryName: 'Food Grade Lubricants',
   },
 ]
 export const filterSelect = [
