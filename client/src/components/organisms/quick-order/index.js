@@ -51,12 +51,13 @@ const QuickOrder = () => {
 
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
-      setHasCartData(true)
       if (getCartItems?.hasPackaged) {
         setIsPackage(true)
       } else {
         setIsPackage(false)
       }
+
+      setHasCartData(true)
     } else {
       setHasCartData(false)
     }
@@ -96,7 +97,6 @@ const QuickOrder = () => {
     if (packageComponent && creditLimit <= Math.floor(existingAmount + price)) {
       error('You are exceeding your credit limit.')
       setAddingToCart(false)
-      return
     }
 
     let skuRes = await getItemsBySkus(skus)
@@ -194,7 +194,6 @@ const QuickOrder = () => {
     if (getCartItems?.hasPackaged && creditLimit <= totalAmount) {
       setInputchange(false)
       error('You are exceeding your credit limit')
-      return
     }
 
     let updateCartPayload = {
@@ -504,12 +503,12 @@ const QuickOrder = () => {
                                 </p>
                               </div>
                               <div>
-                                {/* <p>
-                                  {data['QTY PER CASE'] ? 'Per case' : ''}
+                                <p>
+                                  {item?.percase ? 'Per case' : ''}
                                   <span className="quick-item-description">
-                                    {data['QTY PER CASE']}
+                                    {item?.percase}
                                   </span>
-                                </p> */}
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -565,12 +564,12 @@ const QuickOrder = () => {
                                 Size
                                 <span className="span">{item?.size}</span>
                               </p>
-                              {/* <p>
-                                {data['QTY PER CASE'] ? 'Per case' : ''}
-                                <span className="span">
-                                  {data['QTY PER CASE']}
+                              <p>
+                                {item?.percase ? 'Per case' : ''}
+                                <span className="quick-item-description">
+                                  {item?.percase}
                                 </span>
-                              </p> */}
+                              </p>
                               <p>
                                 Part Num
                                 <span className="span">{item?.partnumber}</span>
