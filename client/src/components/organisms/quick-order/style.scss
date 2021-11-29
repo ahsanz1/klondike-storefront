@@ -1,6 +1,8 @@
 @import '~styles/globals';
 
 .quick-order-wrapper {
+  overflow-x: hidden;
+
   .radio-wrapper {
     padding-top: get-vw(53px);
     padding-left: get-vw(39px);
