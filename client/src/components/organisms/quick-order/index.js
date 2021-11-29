@@ -96,7 +96,6 @@ const QuickOrder = () => {
     // Check for credit limit
     if (packageComponent && creditLimit <= Math.floor(existingAmount + price)) {
       error('You are exceeding your credit limit.')
-      setAddingToCart(false)
     }
 
     let skuRes = await getItemsBySkus(skus)
@@ -192,7 +191,6 @@ const QuickOrder = () => {
     }
 
     if (getCartItems?.hasPackaged && creditLimit <= totalAmount) {
-      setInputchange(false)
       error('You are exceeding your credit limit')
     }
 
