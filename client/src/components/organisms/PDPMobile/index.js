@@ -24,7 +24,7 @@ import PDPInformation from 'components/molecules/pdpinforamation'
 import PlpTabList from 'components/organisms/plp-tab-list'
 import { useNavigate } from '@reach/router'
 import { AppContext } from 'libs/context'
-// import PackageOrder from 'components/organisms/PackageOrder'
+import PackageOrder from 'components/organisms/PackageOrder'
 
 const PDPMobile = ({
   pdpdata,
@@ -50,6 +50,8 @@ const PDPMobile = ({
   packagedItemsCart,
   bulkItemsCart,
   techInfoMobile,
+  modalVisible,
+  setModalVisible,
 }) => {
   console.log('responsive', pdpdata, techInfoMobile)
   console.log({ categories })
@@ -69,13 +71,29 @@ const PDPMobile = ({
     showModal()
   }
 
-  // const order = {
-  //   heading: 'Heading',
-  //   paragraph1: 'This is one paragraph',
-  //   paragraph2: 'second paragraph',
-  // }
+  const packageOrderStarted = {
+    heading: 'PACKAGED ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be for packaged delivery.',
+    paragraph2: 'Please complete your order before placing a bulk order.',
+  }
 
-  // if (true) return <PackageOrder order={order} />
+  const bulkOrderStarted = {
+    heading: 'BULK ORDER STARTED',
+    paragraph1:
+      'Additional items added to this order need to be ordered in bulk.',
+    paragraph2:
+      'Please complete your order before placing an order with packaged items.',
+  }
+
+  if (modalVisible) {
+    return (
+      <PackageOrder
+        order={packagedOrder ? packageOrderStarted : bulkOrderStarted}
+        setModalVisible={setModalVisible}
+      />
+    )
+  }
 
   return (
     <div>
@@ -224,7 +242,7 @@ const PDPMobile = ({
                           className="radio-font"
                           style={{
                             color: !packagedOrder
-                              ? '#fff'
+                              ? '#ffff'
                               : 'rgba(244, 244, 244, 0.5)',
                           }}
                         >
@@ -491,5 +509,7 @@ PDPMobile.propTypes = {
   items: PropTypes.array,
   packagedItemsCart: PropTypes.bool,
   bulkItemsCart: PropTypes.bool,
+  modalVisible: PropTypes.bool,
+  setModalVisible: PropTypes.func,
 }
 export default PDPMobile

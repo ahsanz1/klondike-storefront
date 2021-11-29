@@ -85,6 +85,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([])
   const [techAttributes, setTechAttributes] = useState({})
+  const [modalVisible, setModalVisible] = useState(false)
   // const [loding, setLoding] = useState(false)
   console.log({ loading })
   console.log({ products })
@@ -156,6 +157,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   }
 
   const onChange = e => {
+    setModalVisible(true)
     setTooltipVisible(!tooltipVisible)
     setValue(e.target.value)
     if (e.target.value === 1) {
@@ -986,6 +988,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         items={items}
         packagedItemsCart={packagedItemsCart}
         bulkItemsCart={bulkItemsCart}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
     </div>
   )
