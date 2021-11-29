@@ -444,6 +444,12 @@ const ProductAccordion = ({ question }) => {
                   </p>
                 </div>
               </div>
+
+              <div className="product-subtotal-price-wrapper">
+                <p className="product-subtotal-price">
+                  ${parseFloat(totalPrice).toFixed(2)}
+                </p>
+              </div>
               <Button
                 className="pricelist-addcart-mobile "
                 onClick={e => addItemToCart(e)}
