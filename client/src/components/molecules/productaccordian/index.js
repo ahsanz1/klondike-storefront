@@ -63,7 +63,8 @@ const ProductAccordion = ({ question }) => {
       data['Weight'] !== undefined ? data['Weight'] : data['QTY PER CASE']
     data = JSON.parse(data)
     payload = {
-      img: data['Image 1 URL'],
+      ...data,
+      img: data['Image URL'],
       title: data['title'],
       size: data['Package Size'],
       partNumber: data['Part Number'],
@@ -72,7 +73,7 @@ const ProductAccordion = ({ question }) => {
       unit: `${data['Unit of Measurement']}${
         perCase !== undefined ? '/' + perCase : ''
       }`,
-      sku: data['SKU'],
+      sku: data['sku'],
     }
 
     setModalData(payload)
@@ -105,55 +106,61 @@ const ProductAccordion = ({ question }) => {
     setAddToCart(true)
     getProductBySKU(data.sku).then(async res => {
       res = res.response.data
-      let product = res.product
-      let payload = {
-        cartId: null,
-        items: [
-          {
-            extra: {},
-            group: product.group,
-            itemId: product.itemId,
-            sku: product.sku,
-            quantity: qty,
-            price: {
-              base: Number(totalPrice),
-              currency: 'USD',
-              sale: false,
-              discount: {
-                price: 0,
+      // let product = res.product
+      let variants = res?.items
+      if (variants?.length) {
+        let selectedItem = await variants?.find(item => data?.sku === item?.sku)
+        console.log('selectedITEM', selectedItem)
+        let payload = {
+          cartId: null,
+          items: [
+            {
+              extra: {},
+              group: selectedItem.group,
+              itemId: selectedItem.itemId,
+              sku: selectedItem.sku,
+              quantity: qty,
+              price: {
+                base: Number(totalPrice),
+                currency: 'USD',
+                sale: false,
+                discount: {
+                  price: 0,
+                },
               },
+              size: data.size,
             },
-            size: false,
-          },
-        ],
+          ],
 
-        registeredUser: true,
-        userAuthToken: user.accessToken,
-      }
-      let stockRes = await checkItemsInStock(payload?.items)
-      if (stockRes?.length) {
-        error(`This item ${JSON.stringify(stockRes)} is not in stock!`)
-        setAddToCart(false)
-        return
-      }
-      addProductToCart(payload)
-        .then(async res => {
-          if (res.hasError !== true) {
-            setGetCartItemsState(await setUserCart())
-            showcartPOPModal()
-            setIsModalVisible(false)
-            setAddToCart(false)
-          } else {
-            error(res.response.error)
-            setIsModalVisible(false)
-            setAddToCart(false)
-          }
-        })
-        .catch(err => {
-          console.log('errres', err)
-          setIsModalVisible(false)
+          registeredUser: true,
+          userAuthToken: user.accessToken,
+        }
+        console.log('selectedITEMP', payload)
+        let stockRes = await checkItemsInStock(payload?.items)
+        if (stockRes?.length) {
+          error(`This item ${JSON.stringify(stockRes)} is not in stock!`)
           setAddToCart(false)
-        })
+          return
+        }
+        addProductToCart(payload)
+          .then(async res => {
+            if (res.hasError !== true) {
+              setGetCartItemsState(await setUserCart())
+              showcartPOPModal()
+              setIsModalVisible(false)
+              setAddToCart(false)
+            } else {
+              error(res.response.error)
+              setIsModalVisible(false)
+              setAddToCart(false)
+            }
+          })
+          .catch(err => {
+            console.log('errres', err)
+            setIsModalVisible(false)
+            setAddToCart(false)
+          })
+      }
     })
   }
 
