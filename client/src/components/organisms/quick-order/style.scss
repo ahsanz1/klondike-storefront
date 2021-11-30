@@ -446,7 +446,10 @@
 
     @media screen and (max-width: 768px) {
       // display: flex;
-      position: static;
+      position: absolute;
+      top: 166px;
+      right: 0;
+      left: auto;
       justify-content: end;
       margin-right: 17px;
       font-size: 14px;
