@@ -10,7 +10,7 @@ import { navigate } from '@reach/router'
 // import { object } from 'yup/lib/locale'
 const Oats = () => {
   const { mainHeading } = tableOatsData
-  const [otsdata, setOtsdata] = useState([])
+  const [otsdata, setOtsdata] = useState({})
   const [mu, setMu] = useState()
   const [fa, setFa] = useState()
   const [fg, setFg] = useState()
@@ -33,8 +33,8 @@ const Oats = () => {
   const [seriesQuery, setSeriesQuery] = useState('')
   const [yearQuery, setYearQuery] = useState('')
   const [notFound, setNotFound] = useState(false)
-
   const [yousearch, setYousearch] = useState('')
+  const [reset, setReset] = useState(false)
   useEffect(() => {
     const tstName = location.search.split('?')[1]
     console.log('bbbb', tstName)
@@ -43,21 +43,7 @@ const Oats = () => {
 
   // console.log('search', yousearch)
 
-  const resetFunction = () => {
-    setYearQuery('')
-    setYa()
-    setSeriesQuery('')
-    setSe()
-    setManuQuery('')
-    setMu()
-    setFamilyQuery('')
-    setFa()
-    setQuery('')
-    setOtsdata([])
-  }
-
   const [test, setTest] = useState(false)
-
   const getproducts = () => {
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query ||
@@ -79,12 +65,12 @@ const Oats = () => {
       //   setNotFound(true)
       // }
       setOtsdata(results)
-
-      let yearsArray = [{ label: ' ' }]
-      let seriesArray = [{ label: ' ' }]
-      let familyArray = [{ label: ' ' }]
-      let manufacturerArray = [{ label: ' ' }]
-      let arrayFamily = [{ label: ' ' }]
+      setReset(true)
+      let yearsArray = [{ label: '' }]
+      let seriesArray = [{ label: '' }]
+      let familyArray = [{ label: '' }]
+      let manufacturerArray = [{ label: '' }]
+      let arrayFamily = [{ label: '' }]
 
       response &&
         Object.entries(
@@ -191,7 +177,6 @@ const Oats = () => {
   }
   const manuFunc = value => {
     setOtsdata([])
-    console.log('hhhh', otsdata)
     // getproducts()
     setMu(value)
     setManuQuery(value)
@@ -229,14 +214,25 @@ const Oats = () => {
     getproducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [manuquery, familyquery, seriesQuery, yearQuery, yousearch])
-
+  const resetFunction = () => {
+    setOtsdata([])
+    setReset(true)
+    setYearQuery('')
+    setYa()
+    setSeriesQuery('')
+    setSe()
+    setManuQuery('')
+    setMu()
+    setFamilyQuery('')
+    setFa()
+    setQuery('')
+    console.log('empty', otsdata)
+  }
   return (
     <>
       <div
         className={`${
-          otsdata && otsdata.equipment && otsdata.equipment.length === 0
-            ? 'img'
-            : 'bg-search'
+          (otsdata.equipment || []).length || !reset ? 'bg-search' : 'img'
         }`}
       >
         <div className="oats">
@@ -267,12 +263,12 @@ const Oats = () => {
                     className="img-icon"
                   />
                 </Button>
+
                 <Button className="reset-button" onClick={resetFunction}>
                   Reset
                 </Button>
               </div>
             </div>
-            {/* {abale && <h1>heloo</h1>} */}
           </div>
           {otsdata && otsdata.equipment && otsdata.equipment.length > 0 && (
             <div className="dropdown-wrapper">
@@ -315,7 +311,7 @@ const Oats = () => {
               )}
               {otsdata && otsdata.equipment && otsdata.equipment.length > 0
                 ? otsdata.equipment.map((data, i) => {
-                    console.log('dataHere', data)
+                    console.log('dataHere', otsdata)
                     return (
                       <div className="table-content flex" key={i}>
                         <p className="custom-grid">
@@ -325,16 +321,15 @@ const Oats = () => {
                           {data && data.manufacturer}
                         </p>
                         <p className="custom-grid">{data && data.model}</p>
-                        {data && data.yearfrom === data.yearto ? (
+                        {(data && data.yearfrom === data.yearto) ||
+                        !data.yearto ? (
                           <>
-                            <p className="custom-grid">
-                              {data && data.yearfrom}
-                            </p>
+                            <p className="custom-grid">{data.yearfrom}</p>
                           </>
                         ) : (
                           <>
                             <p className="custom-grid">
-                              {data && data.yearfrom} - {data && data.yearto}
+                              {data.yearfrom} - {data.yearto}
                             </p>
                           </>
                         )}

@@ -4,12 +4,12 @@
   overflow-x: hidden;
 
   .radio-wrapper {
-    padding-top: get-vw(53px);
+    padding-top: get-vw(41px);
     padding-left: get-vw(39px);
 
     .radiobtn {
       padding-right: get-vw(38px);
-      padding-bottom: get-vw(47px);
+      padding-bottom: get-vw(34px);
       color: #f4f4f4;
       font-family: $OpenSans;
       font-size: get-vw(17px);
@@ -171,6 +171,7 @@
     display: grid;
     // grid-template-rows: auto auto;
     padding: get-vw(28px);
+    padding-top: get-vw(17px);
     font-size: get-vw(15px);
     font-style: normal;
     font-weight: bold;
@@ -526,6 +527,11 @@
       font-weight: 700;
       line-height: 1.75vw;
     }
+
+    .subtotal-color {
+      padding-left: 1vw;
+      color: #f1a900 !important;
+    }
   }
 }
 
@@ -548,7 +554,7 @@
   }
 
   .price {
-    margin-top: 1rem;
+    margin-top: 3.1rem;
     margin-bottom: 0;
     margin-left: 1rem;
 
@@ -560,8 +566,19 @@
   .price-value {
     margin-bottom: 0;
     margin-left: 1rem;
+    color: #a7a7a7db;
 
     @media screen and (max-width: 768px) {
+      font-weight: 700;
+    }
+  }
+
+  .quick-order_mobile_wrapper {
+    padding-left: 15px;
+
+    .quick-mobile-title {
+      font-family: $OpenSans;
+      font-size: 16px;
       font-weight: 700;
     }
   }
