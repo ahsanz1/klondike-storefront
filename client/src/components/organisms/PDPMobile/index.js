@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Image from 'components/atoms/image'
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 // import Button from 'components/atoms/button'
 // import PDPInformation from 'components/molecules/pdpinforamation'
 import {
@@ -53,6 +54,7 @@ const PDPMobile = ({
   modalVisible,
   setModalVisible,
 }) => {
+  const [size] = useWindowSize()
   console.log('responsive', pdpdata, techInfoMobile)
   console.log({ categories })
   const [openCategories, setOpenCategories] = useState(false)
@@ -86,7 +88,7 @@ const PDPMobile = ({
       'Please complete your order before placing an order with packaged items.',
   }
 
-  if (modalVisible) {
+  if (modalVisible && size < 768) {
     return (
       <PackageOrder
         order={packagedOrder ? packageOrderStarted : bulkOrderStarted}
@@ -360,6 +362,27 @@ const PDPMobile = ({
                     </div>
                   )
                 })}
+              {!isLoggedIn && (
+                <div
+                  className="pdp-mobile-table"
+                  style={{
+                    justifyContent: 'space-between',
+                    flexDirection: 'row-reverse',
+                  }}
+                >
+                  <div className="oneCellBulk">
+                    <span className="value text-right">
+                      {items?.bulkOrderItem[0]?.mappedAttributes['Part Number']}
+                    </span>
+                  </div>
+                  <div className="oneCellBulk">
+                    <span className="value text-right"></span>
+                  </div>
+                  <div className="oneCellBulk">
+                    <span className="value">Bulk</span>
+                  </div>
+                </div>
+              )}
               {bulkItemsCart &&
                 !packagedOrder &&
                 pdpdata?.bulkOrderItem?.map((item, i) => {
@@ -379,7 +402,7 @@ const PDPMobile = ({
                         </span>
                       </div>
                       <div className="oneCellBulk">
-                        <span className="head">Price pER Litre</span>
+                        <span className="head">Price Per Litre</span>
                         <span className="value">
                           {item?.price?.base &&
                             '$' + parseFloat(item?.price?.base)}
