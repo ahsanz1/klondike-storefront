@@ -8,7 +8,7 @@
     padding-left: get-vw(69px);
     font-family: $OpenSans;
 
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 768px) {
       padding-top: 11.2vw;
       padding-bottom: 0;
       padding-left: 8vw;
@@ -25,7 +25,7 @@
       line-height: get-vw(49px);
       text-transform: uppercase;
 
-      @media only screen and (max-width: 500px) {
+      @media only screen and (max-width: 768px) {
         font-size: 6.4vw;
       }
     }
@@ -34,7 +34,7 @@
       display: flex;
       flex-direction: row;
 
-      @media (max-width: 500px) {
+      @media (max-width: 768px) {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
