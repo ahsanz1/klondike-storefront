@@ -136,7 +136,7 @@ const QuickOrder = () => {
     }
 
     let stockRes = await checkItemsInStock(items)
-    console.log('stock res', stockRes)
+
     if (stockRes?.length) {
       error(`These items ${JSON.stringify(stockRes)} are not in stock!`)
       setPackgdata([])
