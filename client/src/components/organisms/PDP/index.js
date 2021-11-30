@@ -169,6 +169,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
   useEffect(() => {
     setIsPdpLoading(true)
+    setButtonDisabled(true)
     getProductBySKU(itemSku, 1)
       .then(res => {
         console.log('pdp response:', res?.response?.data?.product?.attributes)
@@ -921,7 +922,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             ) : (
                               <div style={{ width: '100%', margin: 'auto' }}>
                                 <h5 style={{ color: 'gray' }}>
-                                  Bulk Order is no available.
+                                  Bulk Order is not available.
                                 </h5>
                               </div>
                             )}

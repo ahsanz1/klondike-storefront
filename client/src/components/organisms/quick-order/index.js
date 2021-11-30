@@ -34,7 +34,6 @@ const QuickOrder = () => {
   const [bulkData, setBulkData] = useState([])
   const [packageData, setPacakageData] = useState([])
 
-  const [value, setValue] = useState(1)
   const [packgdata, setPackgdata] = useState([])
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
   const [accordianisActive, setAccordianIsActive] = useState(true)
@@ -46,7 +45,7 @@ const QuickOrder = () => {
   let [inputchange, setInputchange] = useState(false)
   const [removeItem, setRemoveItem] = useState(false)
   const [indexState, setIndexState] = useState(0)
-  const [isPackage, setIsPackage] = useState(true)
+  const [isPackage, setIsPackage] = useState()
   const [hasCartData, setHasCartData] = useState(false)
 
   useEffect(() => {
@@ -184,7 +183,7 @@ const QuickOrder = () => {
 
     if (item?.quantity > value) {
       // minimizing
-      totalAmount = Math.floor(existingAmount - item?.price?.base * value)
+      totalAmount = 0
     } else {
       let nQty = Math.abs(item?.quantity - value)
       totalAmount = Math.floor(existingAmount + item?.price?.base * nQty)
@@ -323,6 +322,7 @@ const QuickOrder = () => {
 
   const radioChangeBULK = () => {
     setPackgdata([])
+    setIsPackage(false)
     setPackageComponent(false)
     setBulkComponent(true)
     setInputList([{ partnumber: '', quantity: '' }])
@@ -330,6 +330,7 @@ const QuickOrder = () => {
 
   const radioChangePACKAGE = e => {
     setPackgdata([])
+    setIsPackage(true)
     setBulkComponent(false)
     setPackageComponent(true)
     setInputList([{ partnumber: '', quantity: '' }])
@@ -399,7 +400,12 @@ const QuickOrder = () => {
           <div className="order-price">
             <Label className="sub-total">Order Total</Label>
             <Label className="total">
-              <span>${getCartItems?.totalAmount?.amount.toFixed(2)}</span>
+              <span>
+                $
+                {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
+                  2,
+                )}
+              </span>
             </Label>
           </div>
           <div className="checkout-links">
@@ -423,10 +429,8 @@ const QuickOrder = () => {
             {/* ^^^^Order list and order component div excluding orderTotal */}
             <div className="radio-wrapper">
               <Radio.Group
-                value={value}
+                value={isPackage === undefined ? 1 : !isPackage ? 2 : 1}
                 className="radio-group"
-                defaultValue={!isPackage ? 1 : 2}
-                onChange={e => setValue(e.target.value)}
               >
                 <Radio
                   className={'radiobtn'}
@@ -537,7 +541,7 @@ const QuickOrder = () => {
                             />
                           </div>
                           <div>
-                            <p className="quickorder-Price">
+                            <p className="quickorder-Price subtotal-color">
                               ${item?.totalPrice?.amount.toFixed(2)}
                             </p>
                           </div>
