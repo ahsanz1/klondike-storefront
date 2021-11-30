@@ -35,7 +35,7 @@ const Accordion = ({
     <>
       <div className="accordion-faqs">
         <Row className="accordion-item">
-          <Col md={2} xs={6} sm={6} className="test">
+          <Col md={2} xs={6} sm={6} className="accordion-item-column">
             <h4
               className="accordion-question notranslate"
               onClick={() => {
@@ -45,7 +45,7 @@ const Accordion = ({
               {question}
             </h4>
           </Col>
-          <Col md={2} xs={6} sm={6} className="test">
+          <Col md={2} xs={6} sm={6} className="accordion-item-column">
             <div className="accordion-arrow">
               {isOpen ? (
                 <Image
