@@ -14,7 +14,7 @@ const Accounts = () => {
   const { user } = useContext(AppContext)
   const [size] = useWindowSize()
   const [fetchedOrders, setFetchedOrders] = useState('')
-  const [orders, setOrders] = useState({})
+  const [orders, setOrders] = useState([])
   const [totalOrders, setTotalOrders] = useState(0)
 
   useEffect(() => {
@@ -121,7 +121,7 @@ const Accounts = () => {
                     )}
                     {order.status && (
                       <Label className="account-image-block__orderStatus">
-                        Status: {order.status.replace('_', ' ')}
+                        Status: {order.status.replace('ORDER_', ' ')}
                       </Label>
                     )}
                     <a
@@ -204,12 +204,12 @@ const Accounts = () => {
                        <Button className="account-mobile-orderCart">
                          Items ({order.items.length})
                        </Button>
-                     )}
-                     {order.status && (
-                       <Button className="account-mobile-orderCart">
-                         Status: {order.status.replace('_', ' ')}
-                       </Button>
                      )} */}
+                      {order.status && (
+                        <Label className="account-image-block__orderStatus">
+                          Status: {order.status.replace('ORDER_', ' ')}
+                        </Label>
+                      )}
                     </div>
                   </div>
                 </div>

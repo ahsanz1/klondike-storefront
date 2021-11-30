@@ -36,7 +36,6 @@ export const setUserCart = async () => {
         if (itemRes.sku === item.sku) {
           attributes = itemRes.attributes
           await attributes.map(attr => {
-            console.log('atttttrr', attr)
             switch (attr.name) {
               case 'Package Size':
                 obj['size'] = attr.value

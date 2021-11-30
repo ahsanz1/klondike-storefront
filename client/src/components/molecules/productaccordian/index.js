@@ -22,6 +22,7 @@ const ProductAccordion = ({ question }) => {
     creditLimit,
     getCartItems,
     showcartPOPModal,
+    setPdpProductData,
     setGetCartItemsState,
   } = useContext(AppContext)
   let [qty, setQty] = useState(1)
@@ -146,6 +147,7 @@ const ProductAccordion = ({ question }) => {
           .then(async res => {
             if (res.hasError !== true) {
               setGetCartItemsState(await setUserCart())
+              setPdpProductData(selectedItem)
               showcartPOPModal()
               setIsModalVisible(false)
               setAddToCart(false)
@@ -167,11 +169,6 @@ const ProductAccordion = ({ question }) => {
   const onChange = value => {
     let data = modalData
     setTotalPrice(data.price * value)
-
-    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
-    if (creditLimit <= totalAmount) {
-      error('You are exceeding your credit limit')
-    }
 
     setQty(value)
   }
@@ -443,6 +440,12 @@ const ProductAccordion = ({ question }) => {
                     ${parseFloat(totalPrice).toFixed(2)}
                   </p>
                 </div>
+              </div>
+
+              <div className="product-subtotal-price-wrapper">
+                <p className="product-subtotal-price">
+                  ${parseFloat(totalPrice).toFixed(2)}
+                </p>
               </div>
               <Button
                 className="pricelist-addcart-mobile "
