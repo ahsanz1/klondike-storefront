@@ -377,6 +377,7 @@ const Checkoutsection = () => {
     setDelivery(prev => !prev)
     setInputField(false)
     setPONumber(zipCode)
+    setSelectedLocation({})
     // setValue(e.target.value)
   }
 
