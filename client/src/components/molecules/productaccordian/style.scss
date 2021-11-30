@@ -134,7 +134,7 @@ $vw-viewport: 1440;
     font-weight: 400;
     line-height: 1.25vw;
     text-align: left;
-    text-transform: lowercase;
+    text-transform: none;
 
     @media (max-width: 768px) {
       width: 240px;
@@ -303,6 +303,21 @@ body .ant-modal-mask {
   margin-left: 25px;
   font-family: $OpenSans;
 
+  .product-subtotal-price-wrapper {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    .product-subtotal-price {
+      margin-bottom: 39px;
+      padding-top: 18px;
+      color: #f1a900;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      line-height: 30px;
+      text-align: right;
+    }
+  }
+
   .product-heading-mobile {
     margin: 0 auto 26px auto;
     color: white;
@@ -329,6 +344,10 @@ body .ant-modal-mask {
       width: 64px;
       color: #c2bbb7;
       font-weight: 700;
+
+      &:last-child {
+        width: 100%;
+      }
     }
   }
 
@@ -361,6 +380,7 @@ body .ant-modal-mask {
 
       .product-pricing-block {
         margin-left: 30px;
+        text-align: right;
       }
     }
   }

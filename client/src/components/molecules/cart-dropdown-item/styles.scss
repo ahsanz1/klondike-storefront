@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
     width: 100%;
 
     @media (max-width: 768px) {
@@ -148,6 +148,24 @@
     //     }
     //   }
     // }
+    .removebtn {
+      border: none;
+      background: transparent;
+
+      .remove_button {
+        padding-left: 0.694vw;
+        border: none !important;
+        background-color: transparent !important;
+        color: #c2bbb7 !important;
+        font-family: $OpenSans;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 22px;
+        text-align: left;
+        text-decoration: underline;
+      }
+    }
   }
 
   .cart-item {
@@ -397,7 +415,7 @@
             width: 20.53vw;
             height: 7.46vw;
             margin-top: 2.93vw;
-            margin-left: 2.66vw;
+            margin-left: 8vw;
             padding-top: 0;
             font-size: 12px;
             line-height: 185.5%;

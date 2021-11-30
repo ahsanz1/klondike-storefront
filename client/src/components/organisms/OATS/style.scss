@@ -204,7 +204,7 @@
     font-family: $OpenSans;
 
     .ant-select-selector::placeholder {
-      color: #07232f;
+      color: #07232f !important;
     }
 
     @media (max-width: 768px) {
@@ -226,6 +226,7 @@
 
   .ant-select-selection-item {
     opacity: 0.5;
+    color: #07232f !important;
     font-size: 1.11vw;
     font-weight: bold;
 
@@ -240,7 +241,7 @@
   }
 
   .ant-select-arrow::placeholder {
-    color: #07232f;
+    color: #07232f !important;
   }
 
   .dropdown-wrapper {
