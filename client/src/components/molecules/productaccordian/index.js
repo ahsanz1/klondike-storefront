@@ -301,7 +301,7 @@ const ProductAccordion = ({ question }) => {
                 <div className="product-detail">
                   <div>
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
-                      <p className="products-sizes">Size</p>
+                      <p className="products-sizes">SIZE</p>
                     ) : (
                       <p className="products-sizes">Bulk</p>
                     )}
@@ -314,20 +314,20 @@ const ProductAccordion = ({ question }) => {
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
                       <>
                         <p className="products-sizes">UNITS/CASE</p>
-                        <p className="products-sizes">{modalData.unit}</p>
+                        <p className="products-sizes qty">{modalData.unit}</p>
                       </>
                     )}
                   </div>
                   <div>
-                    <p className="products-sizes">Part Num</p>
-                    <p className="products-sizes detail">
+                    <p className="products-sizes">PART NUM</p>
+                    <p className="products-sizes detail part-value">
                       {modalData.partNumber}
                     </p>
                   </div>
                   <div>
-                    <p className="products-sizes">
+                    <p className="products-sizes price-value">
                       {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
-                        ? 'Price'
+                        ? 'PRICE'
                         : 'Price Litre'}
                     </p>
                     <p className="products-sizes detail ">
@@ -335,7 +335,7 @@ const ProductAccordion = ({ question }) => {
                     </p>
                   </div>
                   <div>
-                    <p className="products-sizes">
+                    <p className="products-sizes qty">
                       {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
                         ? 'QTY'
                         : 'Litres'}
@@ -353,8 +353,8 @@ const ProductAccordion = ({ question }) => {
                     </p>
                   </div>
                   <div>
-                    <p className="products-sizes">Total Price</p>
-                    <p className="products-sizes detail">
+                    <p className="products-sizes">TOTAL PRICE</p>
+                    <p className="products-sizes detail value-color">
                       $ {parseFloat(totalPrice).toFixed(2)}
                     </p>
                   </div>

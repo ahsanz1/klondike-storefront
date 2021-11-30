@@ -65,25 +65,27 @@ const SearchFilter = ({ searchHeading }) => {
 
     searchFilters &&
       searchFilters.map((data, index) => {
-        data['Part Number'] &&
-          (objProduct = {
-            label: data['Part Number'] ? data['Part Number'] : '',
-            value: data['Part Number'] ? data['Part Number'] : '',
-          })
-        data['Unit of Measurement'] &&
-          (objSize = {
-            label: data['Unit of Measurement'],
-            value: data['Unit of Measurement'],
-          })
-        data['Package Size'] &&
-          (objUnit = {
-            label: data['Package Size'],
-            value: data['Package Size'],
-          })
+        if (data?.isVariant === false) {
+          data['Part Number'] &&
+            (objProduct = {
+              label: data['Part Number'] ? data['Part Number'] : '',
+              value: data['Part Number'] ? data['Part Number'] : '',
+            })
+          data['Unit of Measurement'] &&
+            (objSize = {
+              label: data['Unit of Measurement'],
+              value: data['Unit of Measurement'],
+            })
+          data['Package Size'] &&
+            (objUnit = {
+              label: data['Package Size'],
+              value: data['Package Size'],
+            })
 
-        arrProduct.push(objProduct)
-        arrSize.push(objSize)
-        arrUnit.push(objUnit)
+          arrProduct.push(objProduct)
+          arrSize.push(objSize)
+          arrUnit.push(objUnit)
+        }
       })
 
     return {
