@@ -107,24 +107,25 @@ const CartDropdown = () => {
             </div>
           )}
 
+          {!getCartItems?.hasPackaged && getCartItems?.quantity < 500 ? (
+            <div
+              style={{
+                display: 'flex',
+                'justify-content': 'flex-end',
+                'margin-right': '65px',
+                'font-size': '16px',
+              }}
+            >
+              <span style={{ color: 'rgb(250, 146, 0)' }}>
+                Orders below 500L are subject to an under-a-minimum fee.
+              </span>
+            </div>
+          ) : (
+            ''
+          )}
           {getCartItems?.items && getCartItems?.items.length > 0 ? (
             <div className="cart-dropdown-checkout-container">
               <div className="cart-dropdown-checkout-details">
-                {!getCartItems?.hasPackaged && getCartItems?.quantity < 500 ? (
-                  <div
-                    style={{
-                      display: 'flex',
-                      'justify-content': 'flex-end',
-                    }}
-                  >
-                    <span style={{ color: 'rgb(250, 146, 0)' }}>
-                      Orders below 500L are subject to an under-a-minimum fee.
-                    </span>
-                  </div>
-                ) : (
-                  ''
-                )}
-
                 <div className="order-subtotal-and-checkout-btn">
                   <p className="subtotal-title">Subtotal</p>
                   <p className="subtotal-price">
