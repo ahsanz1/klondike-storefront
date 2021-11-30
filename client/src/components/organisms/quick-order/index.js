@@ -184,7 +184,7 @@ const QuickOrder = () => {
 
     if (item?.quantity > value) {
       // minimizing
-      totalAmount = Math.floor(existingAmount - item?.price?.base * value)
+      totalAmount = 0
     } else {
       let nQty = Math.abs(item?.quantity - value)
       totalAmount = Math.floor(existingAmount + item?.price?.base * nQty)

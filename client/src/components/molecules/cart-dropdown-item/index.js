@@ -38,7 +38,7 @@ const CartDropdownItem = cart => {
 
     if (cart?.quantity > qty) {
       // minimizing
-      totalAmount = Math.floor(existingAmount - cart?.price?.base * qty)
+      totalAmount = 0
     } else {
       let nQty = Math.abs(cart?.quantity - qty)
       totalAmount = Math.floor(existingAmount + cart?.price?.base * nQty)
