@@ -22,6 +22,7 @@ const ProductAccordion = ({ question }) => {
     creditLimit,
     getCartItems,
     showcartPOPModal,
+    setPdpProductData,
     setGetCartItemsState,
   } = useContext(AppContext)
   let [qty, setQty] = useState(1)
@@ -146,6 +147,7 @@ const ProductAccordion = ({ question }) => {
           .then(async res => {
             if (res.hasError !== true) {
               setGetCartItemsState(await setUserCart())
+              setPdpProductData(selectedItem)
               showcartPOPModal()
               setIsModalVisible(false)
               setAddToCart(false)
