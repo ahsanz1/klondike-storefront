@@ -33,7 +33,7 @@ export const setUserCart = async () => {
 
       let attributes = null
       itemsRes.data.map(async (itemRes, j) => {
-        if (itemRes.sku === item.sku) {
+        if (itemRes.sku.toLowerCase() === item.sku.toLowerCase()) {
           attributes = itemRes.attributes
           await attributes.map(attr => {
             switch (attr.name) {

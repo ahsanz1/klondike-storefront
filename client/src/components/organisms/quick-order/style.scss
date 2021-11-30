@@ -367,6 +367,12 @@
       right: 5px;
       width: 20px;
     }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      position: absolute;
+      right: 30px;
+      left: auto;
+    }
   }
 
   .remove-row {
@@ -440,7 +446,10 @@
 
     @media screen and (max-width: 768px) {
       // display: flex;
-      position: static;
+      position: absolute;
+      top: 166px;
+      right: 0;
+      left: auto;
       justify-content: end;
       margin-right: 17px;
       font-size: 14px;
