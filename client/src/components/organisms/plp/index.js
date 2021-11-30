@@ -29,7 +29,7 @@ const PLP = props => {
   const clickCategoryHandler = (name, desc) => {
     // setItemName(name)
     console.log('hello')
-    navigate(`/plp-page?category=${name.split(' ').join('-')}`)
+    // navigate(`/plp-page?category=${name.split(' ').join('-')}`)
     setContextPlp(name)
     setDesc(desc)
   }
