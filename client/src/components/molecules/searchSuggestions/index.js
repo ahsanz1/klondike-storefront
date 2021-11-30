@@ -8,7 +8,6 @@ const searchSuggestions = ({ itemList, close }) => {
   console.log('suggestion:', itemList)
   return (
     <div className="search-suggestion">
-      {/* <Label className="suggestion-heading">Suggestion</Label> */}
       <ul>
         {itemList &&
           itemList.length > 0 &&
