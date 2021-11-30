@@ -43,7 +43,7 @@ const CartDropdown = () => {
                   <Label className="cart-text">CART</Label>
                 </div>
                 <div className="cart-dropdown-header-item-no">
-                  {getCartItems?.items?.length} Items
+                  {getCartItems?.items.length} Items
                 </div>
               </div>
             </div>
@@ -96,8 +96,8 @@ const CartDropdown = () => {
           ) : (
             // <h1 style={{ color: 'gray' }}>Loading...</h1>
             <div className="cart-dropdown-items">
-              {getCartItems.items && getCartItems.items.length > 0 ? (
-                getCartItems.items.map((cartItem, id) => {
+              {getCartItems?.items && getCartItems?.items.length > 0 ? (
+                getCartItems?.items.map((cartItem, id) => {
                   let cart = { cartId: getCartItems?._id, ...cartItem }
                   return <CartDropdownItem {...cart} key={id} />
                 })
@@ -107,7 +107,7 @@ const CartDropdown = () => {
             </div>
           )}
 
-          {getCartItems.items && getCartItems.items.length > 0 ? (
+          {getCartItems?.items && getCartItems?.items.length > 0 ? (
             <div className="cart-dropdown-checkout-container">
               <div className="cart-dropdown-checkout-details">
                 {!getCartItems?.hasPackaged && getCartItems?.quantity < 500 ? (
