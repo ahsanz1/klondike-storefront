@@ -80,7 +80,7 @@ const AppProvider = ({ children }) => {
   const [itemList, setItemList] = useState([])
   const [loadingState, setLoadingState] = useState(false)
   const [creditLimit, setCreditLimit] = useState(
-    initialState?.personalInfo?.creditLimit,
+    initialState?.personalInfo?.creditLimit || 5000,
   )
 
   const handleDisplayForm = () => {
