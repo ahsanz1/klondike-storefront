@@ -135,7 +135,10 @@ $vw-viewport: 1440;
 
   @media (max-width: 768px) {
     .accordion-heading {
+      width: 87.2vw;
+      margin: 0 6.4vw;
       font-size: 36px;
+      text-align: left;
     }
 
     .accordion-container {
