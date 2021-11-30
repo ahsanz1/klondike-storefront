@@ -8,7 +8,8 @@
 
   .accordion-question {
     position: relative;
-    width: 100%;
+    width: 64vw;
+    //width: 100%;
     // width: 480px;
     // height: auto;
     margin-bottom: 0;
@@ -38,8 +39,12 @@
       margin-left: 1.38vw;
       color: #fff;
       font-family: $OpenSans;
-      font-size: 16px;
+      font-size: 0.9722vw;
       line-height: 22.4px;
+
+      @media (max-width: 768px) {
+        font-size: 4.26vw;
+      }
     }
   }
 
@@ -73,13 +78,22 @@
   }
 
   .ant-row.accordion-item {
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0;
     padding-top: 15px;
     padding-bottom: 15px;
     border-top: 1px solid #eceae9;
+
+    @media (max-width: 768px) {
+      padding-top: 5.33vw;
+      padding-bottom: 5.33vw;
+    }
+
+    .test {
+      z-index: 100;
+    }
   }
 
   .accordion-item {
@@ -114,7 +128,8 @@
     }
 
     .accordion-question {
-      font-size: 20px;
+      font-size: 3.733vw;
+      font-weight: 800;
     }
 
     .footerLinks {

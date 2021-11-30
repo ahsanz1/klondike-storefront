@@ -35,7 +35,17 @@ const Accordion = ({
     <>
       <div className="accordion-faqs">
         <Row className="accordion-item">
-          <Col md={2} xs={6} sm={6}>
+          <Col md={2} xs={6} sm={6} className="test">
+            <h4
+              className="accordion-question notranslate"
+              onClick={() => {
+                isOpenHandler(faqId)
+              }}
+            >
+              {question}
+            </h4>
+          </Col>
+          <Col md={2} xs={6} sm={6} className="test">
             <div className="accordion-arrow">
               {isOpen ? (
                 <Image
@@ -57,14 +67,6 @@ const Accordion = ({
             </div>
           </Col>
           <Col md={table ? 24 : 22} xs={24} sm={18}>
-            <h4
-              className="accordion-question notranslate"
-              onClick={() => {
-                isOpenHandler(faqId)
-              }}
-            >
-              {question}
-            </h4>
             <div
               className={
                 isOpen
