@@ -402,6 +402,14 @@ $vw-viewport: 1440;
             font-size: 4vw;
           }
         }
+
+        span {
+          font-size: 1.2vw;
+
+          @media (max-width: 768px) {
+            font-size: 4vw;
+          }
+        }
       }
 
       // .change-button:hover {
@@ -431,14 +439,6 @@ $vw-viewport: 1440;
         padding: 4vw;
       }
 
-      span {
-        font-size: 1.2vw;
-
-        @media (max-width: 768px) {
-          font-size: 4vw;
-        }
-      }
-
       .checkout-po {
         @media (max-width: 768px) {
           display: flex;
@@ -452,6 +452,14 @@ $vw-viewport: 1440;
 
           @media (max-width: 768px) {
             width: 40%;
+            font-size: 4vw;
+          }
+        }
+
+        span {
+          font-size: 1.2vw;
+
+          @media (max-width: 768px) {
             font-size: 4vw;
           }
         }
