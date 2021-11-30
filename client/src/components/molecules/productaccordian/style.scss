@@ -345,8 +345,8 @@ body .ant-modal-mask {
       color: #c2bbb7;
       font-weight: 700;
 
-      &:last-child {
-        width: 100%;
+      &:first-child {
+        width: 47px;
       }
     }
   }
