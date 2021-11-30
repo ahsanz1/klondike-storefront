@@ -541,7 +541,7 @@ const QuickOrder = () => {
                             />
                           </div>
                           <div>
-                            <p className="quickorder-Price">
+                            <p className="quickorder-Price subtotal-color">
                               ${item?.totalPrice?.amount.toFixed(2)}
                             </p>
                           </div>
