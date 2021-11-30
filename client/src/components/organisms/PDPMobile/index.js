@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import Image from 'components/atoms/image'
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 // import Button from 'components/atoms/button'
 // import PDPInformation from 'components/molecules/pdpinforamation'
 import {
@@ -53,6 +54,7 @@ const PDPMobile = ({
   modalVisible,
   setModalVisible,
 }) => {
+  const [size] = useWindowSize()
   console.log('responsive', pdpdata, techInfoMobile)
   console.log({ categories })
   const [openCategories, setOpenCategories] = useState(false)
@@ -86,7 +88,7 @@ const PDPMobile = ({
       'Please complete your order before placing an order with packaged items.',
   }
 
-  if (modalVisible) {
+  if (modalVisible && size < 768) {
     return (
       <PackageOrder
         order={packagedOrder ? packageOrderStarted : bulkOrderStarted}
