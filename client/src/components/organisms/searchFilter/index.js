@@ -25,12 +25,6 @@ const SearchFilter = ({ searchHeading }) => {
   const [holdSearch, setHoldSearchState] = useState('')
   const [unit, setUnit] = useState()
   const [size, setSize] = useState()
-  // const [itemList, setItemList] = useState([])
-  // const [selectedFilterList, setSelectFilterList] = useState([])
-  // const [products, setProducts] = useState([])
-  // const [filterCount, setFilterCount] = useState(0)
-  // const [loading, setLoading] = useState(false)
-  // let productitem = []
 
   useEffect(() => {
     const getSerachedValue = location.search.split('?')[1]
@@ -45,11 +39,16 @@ const SearchFilter = ({ searchHeading }) => {
 
   useEffect(() => {
     const setFilters = async searchFilter => {
-      await setFilterResult(searchFilter)
+      let res = await setFilterResult(searchFilter)
       console.log('is called state', isCalled)
-      if (isCalled !== true) {
+
+      if (res?.product.length > 0 && isCalled !== true) {
+        setProduct(res?.product)
+        setUnit(res?.size)
+        setSize(res?.unit)
         setHoldSearchState(searchFilter)
         setIsCalledState(true)
+        console.log('ress', res)
       }
     }
 
@@ -81,16 +80,17 @@ const SearchFilter = ({ searchHeading }) => {
             label: data['Package Size'],
             value: data['Package Size'],
           })
-        console.log('objhere', objProduct, objSize, objUnit)
+
         arrProduct.push(objProduct)
         arrSize.push(objSize)
         arrUnit.push(objUnit)
       })
-    // if (isCalled !== true) {
-    setProduct(arrProduct)
-    setUnit(arrSize)
-    setSize(arrUnit)
-    // }
+
+    return {
+      product: arrProduct,
+      size: arrSize,
+      unit: arrUnit,
+    }
   }
 
   const changePN = async e => {
