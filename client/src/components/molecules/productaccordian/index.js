@@ -168,11 +168,6 @@ const ProductAccordion = ({ question }) => {
     let data = modalData
     setTotalPrice(data.price * value)
 
-    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
-    if (creditLimit <= totalAmount) {
-      error('You are exceeding your credit limit')
-    }
-
     setQty(value)
   }
 
