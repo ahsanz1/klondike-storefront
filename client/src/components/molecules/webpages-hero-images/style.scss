@@ -36,6 +36,11 @@
   @media (max-width: 768px) {
     display: block;
   }
+
+  @media (min-width: 500px) and (max-width: 768px) {
+    display: block;
+    top: 41.8vw;
+  }
 }
 
 @media (max-width: 768px) {
