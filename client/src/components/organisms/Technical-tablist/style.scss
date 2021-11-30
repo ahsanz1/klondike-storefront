@@ -141,6 +141,9 @@ $vw-viewport: 1440;
 
       .h-links {
         ul {
+          padding-right: get-vw(10px);
+          padding-left: get-vw(35px);
+
           @media (max-width: 768px) {
             padding-left: 45px;
           }

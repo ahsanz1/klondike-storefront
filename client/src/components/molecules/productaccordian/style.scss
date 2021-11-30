@@ -303,6 +303,21 @@ body .ant-modal-mask {
   margin-left: 25px;
   font-family: $OpenSans;
 
+  .product-subtotal-price-wrapper {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    .product-subtotal-price {
+      margin-bottom: 39px;
+      padding-top: 18px;
+      color: #f1a900;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      line-height: 30px;
+      text-align: right;
+    }
+  }
+
   .product-heading-mobile {
     margin: 0 auto 26px auto;
     color: white;
