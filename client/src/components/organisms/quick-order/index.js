@@ -184,7 +184,7 @@ const QuickOrder = () => {
 
     if (item?.quantity > value) {
       // minimizing
-      totalAmount = Math.floor(existingAmount - item?.price?.base * value)
+      totalAmount = 0
     } else {
       let nQty = Math.abs(item?.quantity - value)
       totalAmount = Math.floor(existingAmount + item?.price?.base * nQty)
@@ -399,7 +399,9 @@ const QuickOrder = () => {
           <div className="order-price">
             <Label className="sub-total">Order Total</Label>
             <Label className="total">
-              <span>${getCartItems?.totalAmount?.amount.toFixed(2)}</span>
+              <span>
+                ${parseFloat(getCartItems?.totalAmount?.amount || 0).toFixed(2)}
+              </span>
             </Label>
           </div>
           <div className="checkout-links">
