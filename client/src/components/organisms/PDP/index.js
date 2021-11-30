@@ -623,103 +623,130 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                             </div>
                             {items?.packagedOrderItems?.map((item, i) => {
                               return (
-                                <div className="table" key={i}>
-                                  <div
-                                    className={
-                                      !packagedOrder
-                                        ? 'cell color-disabled size'
-                                        : 'cell size'
-                                    }
-                                  >
-                                    {item?.mappedAttributes['Package Size']}
-                                  </div>
-                                  <div
-                                    className={
-                                      !packagedOrder
-                                        ? 'cell color-disabled'
-                                        : 'cell'
-                                    }
-                                  >
-                                    {
-                                      // eslint-disable-next-line standard/computed-property-even-spacing
-                                      item?.mappedAttributes[
-                                        'Unit of Measurement'
-                                      ]
-                                    }
-                                  </div>
-                                  <div
-                                    className={
-                                      !packagedOrder
-                                        ? 'cell color-disabled'
-                                        : 'cell'
-                                    }
-                                  >
-                                    {item?.mappedAttributes['Part Number']}
-                                  </div>
-                                  <div
-                                    className={
-                                      !packagedOrder
-                                        ? 'cell color-disabled'
-                                        : 'cell'
-                                    }
-                                  >
-                                    {isLoggedIn &&
-                                    item &&
-                                    item?.price &&
-                                    item?.price?.base
-                                      ? '$' +
-                                        parseFloat(item?.price?.base).toFixed(2)
-                                      : ''}
-                                  </div>
-                                  <div
-                                    className={
-                                      !packagedOrder
-                                        ? 'cell color-disabled'
-                                        : 'cell'
-                                    }
-                                  >
-                                    {isLoggedIn && (
-                                      <InputNumber
-                                        min={0}
-                                        max={5000}
-                                        defaultValue={0}
-                                        type="number"
-                                        onChange={e => onQtyChange(e, i)}
-                                        disabled={!packagedOrder}
-                                        size="middle"
-                                        className="input"
+                                <div key={i}>
+                                  {isLoggedIn ? (
+                                    <div className="table" key={i}>
+                                      <div
+                                        className={
+                                          !packagedOrder
+                                            ? 'cell color-disabled size'
+                                            : 'cell size'
+                                        }
+                                      >
+                                        {item?.mappedAttributes['Package Size']}
+                                      </div>
+                                      <div
+                                        className={
+                                          !packagedOrder
+                                            ? 'cell color-disabled'
+                                            : 'cell'
+                                        }
+                                      >
+                                        {
+                                          // eslint-disable-next-line standard/computed-property-even-spacing
+                                          item?.mappedAttributes[
+                                            'Unit of Measurement'
+                                          ]
+                                        }
+                                      </div>
+                                      <div
+                                        className={
+                                          !packagedOrder
+                                            ? 'cell color-disabled'
+                                            : 'cell'
+                                        }
+                                      >
+                                        {item?.mappedAttributes['Part Number']}
+                                      </div>
+                                      <div
+                                        className={
+                                          !packagedOrder
+                                            ? 'cell color-disabled'
+                                            : 'cell'
+                                        }
+                                      >
+                                        {isLoggedIn &&
+                                        item &&
+                                        item?.price &&
+                                        item?.price?.base
+                                          ? '$' +
+                                            parseFloat(
+                                              item?.price?.base,
+                                            ).toFixed(2)
+                                          : ''}
+                                      </div>
+                                      <div
+                                        className={
+                                          !packagedOrder
+                                            ? 'cell color-disabled'
+                                            : 'cell'
+                                        }
+                                      >
+                                        {isLoggedIn && (
+                                          <InputNumber
+                                            min={0}
+                                            max={5000}
+                                            defaultValue={0}
+                                            type="number"
+                                            onChange={e => onQtyChange(e, i)}
+                                            disabled={!packagedOrder}
+                                            size="middle"
+                                            className="input"
+                                            style={{
+                                              backgroundColor:
+                                                !packagedOrder &&
+                                                'rgba(255, 255, 255, 0.3)',
+                                            }}
+                                            onKeyUp={e => {
+                                              if (e.target.value < 0) {
+                                                e.target.value =
+                                                  e.target.value * -1
+                                              }
+                                            }}
+                                          />
+                                        )}
+                                      </div>
+                                      <div
+                                        className={
+                                          !packagedOrder
+                                            ? 'cell color-disabled'
+                                            : 'cell'
+                                        }
                                         style={{
-                                          backgroundColor:
-                                            !packagedOrder &&
-                                            'rgba(255, 255, 255, 0.3)',
+                                          color:
+                                            item?.totalPrice > 0
+                                              ? '#f1a900'
+                                              : 'white',
                                         }}
-                                        onKeyUp={e => {
-                                          if (e.target.value < 0) {
-                                            e.target.value = e.target.value * -1
-                                          }
-                                        }}
-                                      />
-                                    )}
-                                  </div>
-                                  <div
-                                    className={
-                                      !packagedOrder
-                                        ? 'cell color-disabled'
-                                        : 'cell'
-                                    }
-                                    style={{
-                                      color:
-                                        item?.totalPrice > 0
-                                          ? '#f1a900'
-                                          : 'white',
-                                    }}
-                                  >
-                                    {isLoggedIn &&
-                                      '$' +
-                                        parseFloat(
-                                          item?.totalPrice || 0,
-                                        ).toFixed(2)}
-                                  </div>
+                                      >
+                                        {isLoggedIn &&
+                                          '$' +
+                                            parseFloat(
+                                              item?.totalPrice || 0,
+                                            ).toFixed(2)}
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <div className="logout-table">
+                                      <div className="logout-cell cell size">
+                                        {
+                                          // eslint-disable-next-line standard/computed-property-even-spacing
+                                          item?.mappedAttributes['Package Size']
+                                        }
+                                      </div>
+                                      <div className="logout-cell cell">
+                                        {parseFloat(item?.price?.base).toFixed(
+                                          2,
+                                        )}
+                                      </div>
+                                      <div className="logout-cell cell">
+                                        {
+                                          // eslint-disable-next-line standard/computed-property-even-spacing
+                                          item?.mappedAttributes['Part Number']
+                                        }
+                                      </div>
+                                    </div>
+                                  )}
                                 </div>
                               )
                             })}
@@ -899,7 +926,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       </div>
                                     ) : (
                                       <div className="logout-table">
-                                        <div className="logout-cell cell">
+                                        <div className="logout-cell cell size">
                                           BULK
                                         </div>
                                         <div className="logout-cell cell"></div>
@@ -911,9 +938,6 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                             ]
                                           }
                                         </div>
-                                        {/* <div className="cell"></div>
-                                    <div className="cell"></div>
-                                    <div className="cell"></div> */}
                                       </div>
                                     )}
                                   </div>
