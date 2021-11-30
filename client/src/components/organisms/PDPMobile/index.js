@@ -124,7 +124,7 @@ const PDPMobile = ({
           )}
           {isPdpLoading ? (
             <Breadcrumb
-              className="breadCrumbStyle"
+              className="breadCrumb"
               separator={<span style={{ color: '#FFFFFF' }}></span>}
             >
               <Breadcrumb.Item>Loading...</Breadcrumb.Item>
