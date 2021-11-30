@@ -34,7 +34,6 @@ const QuickOrder = () => {
   const [bulkData, setBulkData] = useState([])
   const [packageData, setPacakageData] = useState([])
 
-  const [value, setValue] = useState(1)
   const [packgdata, setPackgdata] = useState([])
   const [inputList, setInputList] = useState([{ partnumber: '', quantity: '' }])
   const [accordianisActive, setAccordianIsActive] = useState(true)
@@ -46,7 +45,7 @@ const QuickOrder = () => {
   let [inputchange, setInputchange] = useState(false)
   const [removeItem, setRemoveItem] = useState(false)
   const [indexState, setIndexState] = useState(0)
-  const [isPackage, setIsPackage] = useState(true)
+  const [isPackage, setIsPackage] = useState()
   const [hasCartData, setHasCartData] = useState(false)
 
   useEffect(() => {
@@ -323,6 +322,7 @@ const QuickOrder = () => {
 
   const radioChangeBULK = () => {
     setPackgdata([])
+    setIsPackage(false)
     setPackageComponent(false)
     setBulkComponent(true)
     setInputList([{ partnumber: '', quantity: '' }])
@@ -330,6 +330,7 @@ const QuickOrder = () => {
 
   const radioChangePACKAGE = e => {
     setPackgdata([])
+    setIsPackage(true)
     setBulkComponent(false)
     setPackageComponent(true)
     setInputList([{ partnumber: '', quantity: '' }])
@@ -400,7 +401,10 @@ const QuickOrder = () => {
             <Label className="sub-total">Order Total</Label>
             <Label className="total">
               <span>
-                ${parseFloat(getCartItems?.totalAmount?.amount || 0).toFixed(2)}
+                $
+                {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
+                  2,
+                )}
               </span>
             </Label>
           </div>
@@ -425,10 +429,8 @@ const QuickOrder = () => {
             {/* ^^^^Order list and order component div excluding orderTotal */}
             <div className="radio-wrapper">
               <Radio.Group
-                value={value}
+                value={isPackage === undefined ? 1 : !isPackage ? 2 : 1}
                 className="radio-group"
-                defaultValue={!isPackage ? 1 : 2}
-                onChange={e => setValue(e.target.value)}
               >
                 <Radio
                   className={'radiobtn'}
@@ -539,7 +541,7 @@ const QuickOrder = () => {
                             />
                           </div>
                           <div>
-                            <p className="quickorder-Price">
+                            <p className="quickorder-Price subtotal-color">
                               ${item?.totalPrice?.amount.toFixed(2)}
                             </p>
                           </div>
@@ -558,55 +560,49 @@ const QuickOrder = () => {
                                 ${item?.price?.base.toFixed(2)}
                               </p>
                             </div>
-                            <div className="quick-order_mobile_wrapper">
-                              <p className="quick-mobile-title">
-                                {item?.title}
+                            <p>{item?.title}</p>
+                            <div className="quick-order-mobile__next-container">
+                              <p>
+                                Size
+                                <span className="span">{item?.size}</span>
                               </p>
-                              <div className="quick-order-mobile__next-container">
-                                <p>
-                                  Size
-                                  <span className="span">{item?.size}</span>
-                                </p>
-                                <p>
-                                  {item?.percase ? 'Per case' : ''}
-                                  <span className="quick-item-description">
-                                    {item?.percase}
-                                  </span>
-                                </p>
-                                <p>
-                                  Part Num
-                                  <span className="span">
-                                    {item?.partnumber}
-                                  </span>
-                                </p>
-                                <div className="quantity-container">
-                                  <div className="remove-button">
-                                    <p>
-                                      <span className="quantity">QTY:</span>
-                                      <InputNumber
-                                        min={0}
-                                        max={100}
-                                        type="number"
-                                        defaultValue={1}
-                                        value={item?.quantity}
-                                        onChange={e => onChangeqty(e, i, item)}
-                                        size="middle"
-                                        className="input"
-                                      />
-                                    </p>
-                                    <button
-                                      className="quick-orde_btn"
-                                      onClick={e => itemremove(i, item)}
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                  <div>
-                                    <p className="total-price">Total Price</p>
-                                    <p className="total-price-value">
-                                      ${item?.totalPrice?.amount.toFixed(2)}
-                                    </p>
-                                  </div>
+                              <p>
+                                {item?.percase ? 'Per case' : ''}
+                                <span className="quick-item-description">
+                                  {item?.percase}
+                                </span>
+                              </p>
+                              <p>
+                                Part Num
+                                <span className="span">{item?.partnumber}</span>
+                              </p>
+                              <div className="quantity-container">
+                                <div className="remove-button">
+                                  <p>
+                                    <span className="quantity">QTY:</span>
+                                    <InputNumber
+                                      min={0}
+                                      max={100}
+                                      type="number"
+                                      defaultValue={1}
+                                      value={item?.quantity}
+                                      onChange={e => onChangeqty(e, i, item)}
+                                      size="middle"
+                                      className="input"
+                                    />
+                                  </p>
+                                  <button
+                                    className="quick-orde_btn"
+                                    onClick={e => itemremove(i, item)}
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                                <div>
+                                  <p className="total-price">Total Price</p>
+                                  <p className="total-price-value">
+                                    ${item?.totalPrice?.amount.toFixed(2)}
+                                  </p>
                                 </div>
                               </div>
                             </div>
