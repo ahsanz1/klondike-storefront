@@ -367,9 +367,10 @@
     font-weight: bold;
 
     @media (max-width: 768px) {
-      top: 2.66vw;
-      right: 4vw;
-      font-size: 3.2vw;
+      top: 3px;
+      right: 8vw;
+      font-size: 12px;
+      line-height: 185.5%;
     }
   }
 
