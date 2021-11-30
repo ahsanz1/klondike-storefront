@@ -1,6 +1,6 @@
 // export default CartDropdownItem
 
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import './styles.scss'
@@ -12,13 +12,18 @@ import { removeItemFromCart, updateCartApi } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
 import { setUserCart } from 'libs/utils/user-cart'
 
-const CartDropdownItem = cart => {
+const CartDropdownItem = (cartData, key) => {
   const { setGetCartItemsState, creditLimit, getCartItems } = useContext(
     AppContext,
   )
 
+  const [cart, setCart] = useState(cartData)
   const [removing, setRemoving] = useState(false)
   const [updating, setUpdating] = useState(false)
+
+  useEffect(() => {
+    setCart(cartData)
+  }, [cartData])
 
   const error = err => {
     Modal.error({
@@ -38,7 +43,7 @@ const CartDropdownItem = cart => {
 
     if (cart?.quantity > qty) {
       // minimizing
-      totalAmount = Math.floor(existingAmount - cart?.price?.base * qty)
+      totalAmount = 0
     } else {
       let nQty = Math.abs(cart?.quantity - qty)
       totalAmount = Math.floor(existingAmount + cart?.price?.base * nQty)
@@ -73,109 +78,108 @@ const CartDropdownItem = cart => {
   }
 
   return (
-    <>
-      <div className="mini-cart-item">
-        <div className="cart-item">
-          <div>
-            <img src={cart?.image} className="cart-item-image" alt="" />
-          </div>
-          <div>
-            <div className="item-desc-and-price">
-              <div className="item-desc">
-                <Label className="item-title notranslate">{cart?.title}</Label>
-                <div className="product-detail-info-cart">
-                  <Label className="item-info">
-                    SIZE: <Label className="item-subInfo">{cart?.size}</Label>
-                  </Label>
+    <div className="mini-cart-item" key={key}>
+      <div className="cart-item">
+        <div>
+          <img src={cart?.image} className="cart-item-image" alt="" />
+        </div>
+        <div>
+          <div className="item-desc-and-price">
+            <div className="item-desc">
+              <Label className="item-title notranslate">{cart?.title}</Label>
+              <div className="product-detail-info-cart">
+                <Label className="item-info">
+                  SIZE: <Label className="item-subInfo">{cart?.size}</Label>
+                </Label>
 
-                  <Label className="item-info">
-                    {cart?.percase ? 'PER CASE:' : ''}
-                    <Label className="item-subInfo">{cart?.percase}</Label>
-                  </Label>
-                  <Label className="item-info">
-                    PART NUM:{' '}
-                    <Label className="item-subInfo">{cart?.partnumber}</Label>
-                  </Label>
-                </div>
-              </div>
-
-              <div className="product-price-info">
-                <Label className="product-price">
-                  <p className="product-price-mobile">PRICE</p>$
-                  {cart?.price?.base.toFixed(2)}
+                <Label className="item-info">
+                  {cart?.percase ? 'PER CASE:' : ''}
+                  <Label className="item-subInfo">{cart?.percase}</Label>
+                </Label>
+                <Label className="item-info">
+                  PART NUM:{' '}
+                  <Label className="item-subInfo">{cart?.partnumber}</Label>
                 </Label>
               </div>
             </div>
-          </div>
-          <div className="total-and-quantity-cart-MOBILE">
-            <div className="total-and-quantity-cart-and-remove-btn">
-              <div className="product-price-info">
-                <Label className="product-price">
-                  PRICE
-                  <Label className="product-price-mobile">
-                    ${cart?.price?.base.toFixed(2)}
-                  </Label>
-                </Label>
-              </div>
-              <div className="quantity-box">
-                <Label className="product-quantity-mobile">QTY:</Label>
-                <InputNumber
-                  className="product-quantity-spinner"
-                  min={1}
-                  max={1000}
-                  type="number"
-                  disabled={updating}
-                  defaultValue={cart?.quantity}
-                  onChange={e => onChange(e, cart)}
-                />
-              </div>
-              <Label className="total-price">
-                <p className="product-total-mobile">TOTAL PRICE</p>$
-                {cart?.totalPrice?.amount?.toFixed(2)}
+
+            <div className="product-price-info">
+              <Label className="product-price">
+                <p className="product-price-mobile">PRICE</p>$
+                {cart?.price?.base.toFixed(2)}
               </Label>
-            </div>
-            <div className="removebtn-div">
-              <Button
-                className="remove-button"
-                onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
-                disabled={removing}
-              >
-                {removing ? 'Removing...' : 'Remove'}
-              </Button>
             </div>
           </div>
         </div>
-        <div className="total-and-quantity-cart">
-          <div className="removebtn">
-            <Button
-              className="remove_button"
-              onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
-              disabled={removing}
-            >
-              {removing ? 'Removing...' : 'Remove'}
-            </Button>
-          </div>
-          <div className="quantity-block">
+        <div className="total-and-quantity-cart-MOBILE">
+          <div className="total-and-quantity-cart-and-remove-btn">
+            <div className="product-price-info">
+              <Label className="product-price">
+                PRICE
+                <Label className="product-price-mobile">
+                  ${cart?.price?.base.toFixed(2)}
+                </Label>
+              </Label>
+            </div>
             <div className="quantity-box">
               <Label className="product-quantity-mobile">QTY:</Label>
               <InputNumber
                 className="product-quantity-spinner"
                 min={1}
                 max={1000}
-                disabled={updating}
                 type="number"
+                disabled={updating}
                 defaultValue={cart?.quantity}
+                value={cart?.quantity}
                 onChange={e => onChange(e, cart)}
               />
             </div>
-            <Label className="total-price-desktop">
-              <p className="product-total-desktop">TOTAL PRICE</p>$
+            <Label className="total-price">
+              <p className="product-total-mobile">TOTAL PRICE</p>$
               {cart?.totalPrice?.amount?.toFixed(2)}
             </Label>
           </div>
+          <div className="removebtn-div">
+            <Button
+              className="remove-button"
+              onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
+              disabled={removing}
+            >
+              {removing ? 'Removing...' : 'Remove'}
+            </Button>
+          </div>
         </div>
       </div>
-    </>
+      <div className="total-and-quantity-cart">
+        <div className="removebtn">
+          <Button
+            className="remove_button"
+            onClick={e => removeItem(cart?.cartId, cart?.lineItemId)}
+            disabled={removing}
+          >
+            {removing ? 'Removing...' : 'Remove'}
+          </Button>
+        </div>
+        <div className="quantity-block">
+          <div className="quantity-box">
+            <Label className="product-quantity-mobile">QTY:</Label>
+            <InputNumber
+              className="product-quantity-spinner"
+              min={1}
+              max={1000}
+              disabled={updating}
+              type="number"
+              defaultValue={cart?.quantity}
+              onChange={e => onChange(e, cart)}
+            />
+          </div>
+          <Label className="total-price-desktop">
+            <p className="product-total-desktop">TOTAL PRICE</p>$
+            {cart?.totalPrice?.amount?.toFixed(2)}
+          </Label>
+        </div>
+      </div>
+    </div>
   )
 }
 

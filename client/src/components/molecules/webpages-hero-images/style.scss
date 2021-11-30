@@ -22,7 +22,7 @@
   right: 21.1vw;
   width: get-vw(394px);
 
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     display: none;
   }
 }
@@ -33,7 +33,7 @@
   top: 36.8vw;
   right: 10.93vw;
 
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     display: block;
   }
 }
