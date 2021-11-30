@@ -554,7 +554,7 @@
   }
 
   .price {
-    margin-top: 1rem;
+    margin-top: 3.1rem;
     margin-bottom: 0;
     margin-left: 1rem;
 
@@ -566,8 +566,19 @@
   .price-value {
     margin-bottom: 0;
     margin-left: 1rem;
+    color: #a7a7a7db;
 
     @media screen and (max-width: 768px) {
+      font-weight: 700;
+    }
+  }
+
+  .quick-order_mobile_wrapper {
+    padding-left: 15px;
+
+    .quick-mobile-title {
+      font-family: $OpenSans;
+      font-size: 16px;
       font-weight: 700;
     }
   }
