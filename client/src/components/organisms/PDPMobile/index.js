@@ -362,6 +362,27 @@ const PDPMobile = ({
                     </div>
                   )
                 })}
+              {!isLoggedIn && (
+                <div
+                  className="pdp-mobile-table"
+                  style={{
+                    justifyContent: 'space-between',
+                    flexDirection: 'row-reverse',
+                  }}
+                >
+                  <div className="oneCellBulk">
+                    <span className="value text-right">
+                      {items?.bulkOrderItem[0]?.mappedAttributes['Part Number']}
+                    </span>
+                  </div>
+                  <div className="oneCellBulk">
+                    <span className="value text-right"></span>
+                  </div>
+                  <div className="oneCellBulk">
+                    <span className="value">Bulk</span>
+                  </div>
+                </div>
+              )}
               {bulkItemsCart &&
                 !packagedOrder &&
                 pdpdata?.bulkOrderItem?.map((item, i) => {
@@ -381,7 +402,7 @@ const PDPMobile = ({
                         </span>
                       </div>
                       <div className="oneCellBulk">
-                        <span className="head">Price pER Litre</span>
+                        <span className="head">Price Per Litre</span>
                         <span className="value">
                           {item?.price?.base &&
                             '$' + parseFloat(item?.price?.base)}

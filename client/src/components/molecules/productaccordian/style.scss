@@ -245,7 +245,7 @@ body .ant-modal-mask {
       align-items: baseline;
       margin-left: 3.5vw;
       padding-top: 3.26vw;
-      padding-left: 2.3vw;
+      // padding-left: 2.3vw;
       justify-items: center;
 
       .detail {
@@ -259,6 +259,23 @@ body .ant-modal-mask {
         // align-items: center;
         justify-content: center;
         //margin-right: get-vw(15px);
+      }
+
+      p.value-color {
+        color: #f1a900;
+        text-align: right;
+      }
+
+      p.qty {
+        text-align: center;
+      }
+
+      p.price-value {
+        text-align: right;
+      }
+
+      p.part-value {
+        margin-right: 0.5vw !important;
       }
 
       .products-sizes {

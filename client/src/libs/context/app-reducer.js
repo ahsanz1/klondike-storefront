@@ -162,6 +162,7 @@ export const CartReducer = (state, action) => {
         lastName: action.payload.lastName,
         email: action.payload.email,
         phone: action.payload.phone,
+        creditLimit: action.payload.creditLimit,
       }
       saveItem('userPersonalInfo', JSON.stringify(info))
       return { ...state, personalInfo: info }

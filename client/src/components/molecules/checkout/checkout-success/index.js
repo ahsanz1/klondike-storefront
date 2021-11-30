@@ -13,6 +13,7 @@ const CheckoutSuccess = () => {
     checkoutData,
     creditLimit,
     setCreditLimit,
+    setPersonalInfo,
   } = useContext(AppContext)
   const [poNumber] = useState('R3G 2T3')
   if (Object.keys(checkoutData || {}).length === 0) {
@@ -23,6 +24,10 @@ const CheckoutSuccess = () => {
     clearCart()
     clearLocalCart()
     if (checkoutData?.totalAmount) {
+      setPersonalInfo({
+        ...personalInfo,
+        creditLimit: Number(creditLimit - checkoutData.totalAmount),
+      })
       setCreditLimit(Number(creditLimit - checkoutData.totalAmount))
     }
   }, [])

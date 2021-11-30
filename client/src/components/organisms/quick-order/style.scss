@@ -367,6 +367,12 @@
       right: 5px;
       width: 20px;
     }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      position: absolute;
+      right: 30px;
+      left: auto;
+    }
   }
 
   .remove-row {

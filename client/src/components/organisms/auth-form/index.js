@@ -265,6 +265,7 @@ const AuthForm = ({
           middleName: nameInfo.middle,
           lastName: nameInfo.last,
           email: data.email,
+          creditLimit: 5000,
         }
 
         const userTags =
