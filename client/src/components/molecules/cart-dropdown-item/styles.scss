@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
     width: 100%;
 
     @media (max-width: 768px) {
@@ -36,6 +36,7 @@
 
         .product-quantity-mobile {
           margin-right: get-vw(11px);
+          color: #f4f4f4;
           font-size: get-vw(11px);
 
           @media screen and (max-width: 768px) {
@@ -73,6 +74,14 @@
     .removebtn-div {
       display: flex;
       flex: 1;
+      padding-top: 2.0833vw;
+
+      button {
+        width: 5.34vw;
+        height: 1.944vw;
+        padding-left: 0;
+        opacity: 90%;
+      }
 
       .remove-button {
         // margin-top: 1.3vw;
@@ -83,7 +92,7 @@
         font-size: get-vw(12px);
         font-style: normal;
         font-weight: 600;
-        line-height: 185.5%;
+        line-height: 22.26px;
         text-decoration-line: underline;
 
         @media screen and (max-width: 768px) {
@@ -139,6 +148,24 @@
     //     }
     //   }
     // }
+    .removebtn {
+      border: none;
+      background: transparent;
+
+      .remove_button {
+        padding-left: 0.694vw;
+        border: none !important;
+        background-color: transparent !important;
+        color: #c2bbb7 !important;
+        font-family: $OpenSans;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 22px;
+        text-align: left;
+        text-decoration: underline;
+      }
+    }
   }
 
   .cart-item {
@@ -382,6 +409,20 @@
         }
       }
 
+      .removebtn-div {
+        button {
+          @media screen and (max-width: 768px) {
+            width: 20.53vw;
+            height: 7.46vw;
+            margin-top: 2.93vw;
+            margin-left: 8vw;
+            padding-top: 0;
+            font-size: 12px;
+            line-height: 185.5%;
+          }
+        }
+      }
+
       .remove-button {
         padding-top: 12px;
         border: none;
@@ -393,10 +434,13 @@
         line-height: 185.5%;
         text-decoration-line: underline;
 
-        @media screen and (max-width: 768px) {
+        /*  @media screen and (max-width: 768px) {
           font-size: 12px;
           line-height: 185.5%;
-        }
+          width: 20.53vw;
+          height: 1.944vw;
+          padding-top: 0vw;
+        } */
       }
     }
   }

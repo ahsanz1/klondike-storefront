@@ -16,6 +16,7 @@ import { productListingClick } from 'libs/utils/gtm'
 import './style.scss'
 
 const ProductItem = ({ item, id }) => {
+  console.log('check item:', item)
   // const { addToCartApiCall } = useAddToCart()
   // const [adding, setAdding] = useState(false)
   const [addToCartButtonText, setAddToCartButtonText] = useState('ADDING...')

@@ -5,7 +5,7 @@ import Accordion from 'components/molecules/accordion'
 import Heading from 'components/atoms/heading'
 // import { tableAccoData } from './data'
 import './style.scss'
-import Link from 'components/atoms/link'
+
 // import Button from 'components/atoms/button'
 
 const Faqs = ({
@@ -24,7 +24,7 @@ const Faqs = ({
   const [faqs, setFaqs] = useState([...faqsData])
 
   // const { tableData } = faqsData
-  // console.log(faqsData)
+  console.log({ faqs })
 
   useEffect(() => {
     let newFaqs = [...faqs]
@@ -56,38 +56,39 @@ const Faqs = ({
             __html: `${introduction || '<p></p>'}`,
           }}
         ></p>
-
-        {faqs &&
-          faqs.map((faq, index) => (
-            <Accordion
-              short={short}
-              key={index}
-              question={faq.question}
-              answer={faq.answer}
-              isOpen={faq.isOpen}
-              table={faq.table}
-              isOpenHandler={isOpenHandler}
-              faqId={index}
-            />
-          ))}
+        <div className="accordion-block">
+          {faqs &&
+            faqs.map((faq, index) => (
+              <Accordion
+                short={short}
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={faq.isOpen}
+                table={faq.table}
+                isOpenHandler={isOpenHandler}
+                faqId={index}
+              />
+            ))}
+        </div>
         <div className="price-list-pdf">
-          <Link
+          <a
             className="link-pdf"
             href="https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf"
             target="_blank"
             rel="noreferrer"
           >
             Price List as .pdf
-          </Link>
+          </a>
 
-          <Link
+          <a
             className="link-pdf"
             href="https://klondikelubricants.com/wp-content/uploads/documents/KLONDIKE-nano-Full-Synthetic-EP-1.5-Grease-PDS.pdf"
             target="_blank"
             rel="noreferrer"
           >
-            Price List as .pdf
-          </Link>
+            Price List as .xls
+          </a>
         </div>
       </div>
     </div>

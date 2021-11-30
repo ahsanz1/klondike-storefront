@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext, useEffect, useState } from 'react'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import './style.scss'
 
 import Image from 'components/atoms/image'
 import Label from 'components/atoms/label'
-// import Button from 'components/atoms/button'
+import { Pagination, Skeleton } from 'antd'
 import { getItemsBySkus } from 'libs/services/api/item'
+import { AppContext } from 'libs/context'
+import { getOrdersByUser } from 'libs/services/api/orders.api'
 
-const Accounts = ({ orders }) => {
+const Accounts = () => {
+  const perPageItems = 3
+  const { user } = useContext(AppContext)
   const [size] = useWindowSize()
   const [fetchedOrders, setFetchedOrders] = useState('')
+  const [orders, setOrders] = useState([])
+  const [totalOrders, setTotalOrders] = useState(0)
+
+  useEffect(() => {
+    fetchOrders(0)
+  }, [])
 
   useEffect(() => {
     let fetchImages = async orders => {
@@ -44,10 +53,31 @@ const Accounts = ({ orders }) => {
     fetchImages(orders)
   }, [orders])
 
+  const fetchOrders = async offset => {
+    const ordersByUser = await getOrdersByUser(
+      user.accessToken,
+      offset,
+      perPageItems,
+    )
+    let data = ordersByUser.response.data
+    setOrders(data.orders)
+    setTotalOrders(data?.query?.count)
+  }
+
   return (
     <div className="account-page">
       {size > 768 ? (
         <div className="account-sections">
+          {!fetchedOrders ? (
+            <>
+              {[1, 2, 3].map(index => (
+                <div className="order-history-skeleton" key={index}>
+                  <Skeleton.Image />
+                  <Skeleton active title={false} paragraph={{ rows: 5 }} />
+                </div>
+              ))}
+            </>
+          ) : null}
           {fetchedOrders &&
             fetchedOrders.length > 0 &&
             fetchedOrders.map((order, i) => {
@@ -57,7 +87,7 @@ const Accounts = ({ orders }) => {
                     {order.image && (
                       <Image
                         className="account-image-block__image"
-                        src={order.image}
+                        src={order.image || ''}
                         alt=""
                       />
                     )}
@@ -67,9 +97,9 @@ const Accounts = ({ orders }) => {
                     <Label className="account-image-block__orderNumber">
                       Order Number :
                     </Label>
-                    {order.orderReference && (
+                    {order?.orderId && (
                       <Label className="account-image-block__orderNumberDetail">
-                        {order.orderReference}
+                        {order?.orderId}
                       </Label>
                     )}
                   </div>
@@ -86,21 +116,46 @@ const Accounts = ({ orders }) => {
                     )}
                     {order.orderTotal && (
                       <Label className="account-image-block__orderPricee">
-                        ${order.orderTotal}
+                        ${order?.orderTotal.toFixed(2)}
                       </Label>
                     )}
                     {order.status && (
                       <Label className="account-image-block__orderStatus">
-                        Status: {order.status.replace('_', ' ')}
+                        Status: {order.status.replace('ORDER_', ' ')}
                       </Label>
                     )}
+                    <a
+                      href="https://www.google.com"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View Invoice
+                    </a>
                   </div>
                 </div>
               )
             })}
+          <div className="page-no" key="pagination-order-desktop">
+            <Pagination
+              defaultCurrent={1}
+              pageSize={perPageItems}
+              total={totalOrders}
+              onChange={e => fetchOrders(e)}
+            />
+          </div>
         </div>
       ) : (
         <>
+          {!fetchedOrders ? (
+            <>
+              {[1, 2, 3].map(index => (
+                <div className="order-history-skeleton" key={index}>
+                  <Skeleton.Image />
+                  <Skeleton active title={false} paragraph={{ rows: 3 }} />
+                </div>
+              ))}
+            </>
+          ) : null}
           {fetchedOrders &&
             fetchedOrders.length > 0 &&
             fetchedOrders.map((order, i) => {
@@ -127,17 +182,17 @@ const Accounts = ({ orders }) => {
                       )}
                     </div>
                     <div className="account-mobile-description">
-                      {size < 768 && order.orderReference && (
+                      {size < 768 && order.orderId && (
                         <div>
                           <p className="account-mobile-label">Order Number :</p>
                           <p className="account-mobile-label">
-                            {order.orderReference}
+                            {order?.orderId}
                           </p>
                         </div>
                       )}
                       {order.orderTotal && (
                         <Label className="account-mobile-orderPrice">
-                          $ {order.orderTotal}
+                          $ {order?.orderTotal.toFixed(2)}
                         </Label>
                       )}
                       {/* {order.totalQuantity && (
@@ -149,26 +204,30 @@ const Accounts = ({ orders }) => {
                        <Button className="account-mobile-orderCart">
                          Items ({order.items.length})
                        </Button>
-                     )}
-                     {order.status && (
-                       <Button className="account-mobile-orderCart">
-                         Status: {order.status.replace('_', ' ')}
-                       </Button>
                      )} */}
+                      {order.status && (
+                        <Label className="account-image-block__orderStatus">
+                          Status: {order.status.replace('ORDER_', ' ')}
+                        </Label>
+                      )}
                     </div>
                   </div>
                 </div>
               )
             })}
+          <div className="page-no" key="pagination-order-mobile">
+            <Pagination
+              defaultCurrent={1}
+              pageSize={perPageItems}
+              total={totalOrders}
+              onChange={e => fetchedOrders(e)}
+            />
+          </div>
         </>
       )}
     </div>
   )
 }
-Accounts.defaultProps = {
-  orders: '',
-}
-Accounts.propTypes = {
-  orders: PropTypes.string,
-}
+Accounts.defaultProps = {}
+Accounts.propTypes = {}
 export default Accounts

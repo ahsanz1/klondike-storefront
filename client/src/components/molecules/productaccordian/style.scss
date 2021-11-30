@@ -134,7 +134,7 @@ $vw-viewport: 1440;
     font-weight: 400;
     line-height: 1.25vw;
     text-align: left;
-    text-transform: lowercase;
+    text-transform: none;
 
     @media (max-width: 768px) {
       width: 240px;
@@ -147,8 +147,8 @@ $vw-viewport: 1440;
     position: absolute;
     top: -35%;
     left: -15%;
-    width: 149.35px;
-    height: 191.57px;
+    width: get-vw(149.35px);
+    height: get-vw(191.57px);
   }
 }
 // &:hover {
@@ -303,6 +303,21 @@ body .ant-modal-mask {
   margin-left: 25px;
   font-family: $OpenSans;
 
+  .product-subtotal-price-wrapper {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    .product-subtotal-price {
+      margin-bottom: 39px;
+      padding-top: 18px;
+      color: #f1a900;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      line-height: 30px;
+      text-align: right;
+    }
+  }
+
   .product-heading-mobile {
     margin: 0 auto 26px auto;
     color: white;
@@ -329,6 +344,10 @@ body .ant-modal-mask {
       width: 64px;
       color: #c2bbb7;
       font-weight: 700;
+
+      &:last-child {
+        width: 100%;
+      }
     }
   }
 
@@ -361,6 +380,7 @@ body .ant-modal-mask {
 
       .product-pricing-block {
         margin-left: 30px;
+        text-align: right;
       }
     }
   }
@@ -368,13 +388,18 @@ body .ant-modal-mask {
   .product-total-pricing {
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: flex-end;
     margin-top: 38px;
     color: white;
+
+    @supports (-webkit-touch-callout: none) {
+      margin-left: auto;
+    }
 
     .total-pricing-block {
       display: flex;
       flex-direction: row;
+      align-items: center;
       margin-right: 20px;
 
       p {
@@ -389,6 +414,7 @@ body .ant-modal-mask {
           width: 59px !important;
 
           @media (max-width: 768px) {
+            border-radius: 3px;
             font-family: $OpenSans !important;
             font-size: 4vw !important;
             font-weight: bold !important;
@@ -396,11 +422,25 @@ body .ant-modal-mask {
         }
       }
     }
-  }
 
-  .prodcut-total-price {
-    .details {
-      color: #f1a900;
+    @media (max-width: 768px) {
+      margin-bottom: 19px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 15px;
+
+      .products-sizes {
+        margin-bottom: 4px;
+      }
+
+      .details {
+        color: #f1a900;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 140%;
+        text-align: right;
+      }
     }
   }
 

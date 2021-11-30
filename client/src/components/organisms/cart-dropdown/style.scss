@@ -186,9 +186,9 @@
       align-items: flex-end;
       justify-content: flex-start;
       width: 100%;
+      margin-bottom: 5.6vw;
       padding: 10px;
       background: #013a4e;
-      // margin-top: 4.8vw;
     }
 
     .cart-dropdown-checkout-details {
@@ -283,6 +283,10 @@
       justify-content: center;
       height: getmb-vw(50px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+      @supports (-webkit-touch-callout: none) {
+        width: 90.4vw;
+      }
     }
 
     .free-shipping-banner-text {
@@ -295,7 +299,7 @@
       font-weight: bold;
       letter-spacing: get-vw(0.04px);
       line-height: get-vw(27px);
-      text-align: right;
+      text-align: left;
       text-transform: uppercase;
 
       @media screen and (max-width: 768px) {
@@ -303,6 +307,10 @@
         padding-right: 0;
         font-size: getmb-vw(14px);
         line-height: getmb-vw(19px);
+      }
+
+      @supports (-webkit-touch-callout: none) {
+        font-size: getmb-vw(13px);
       }
 
       .free-shipping-banner-text-price {
@@ -362,5 +370,52 @@
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background: #fff;
+  }
+}
+
+.cart-dropdown-skeleton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    padding: 10px 0 10px 0;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0;
+  }
+
+  .ant-skeleton-element {
+    .ant-skeleton-image {
+      width: 26.11vw;
+      height: 32.264vw;
+
+      @media (min-width: 768px) {
+        width: 22vw;
+        height: 21vw;
+      }
+
+      @media (min-width: 1024px) {
+        width: 9vw;
+        height: 12vw;
+      }
+
+      @media (min-width: 1200px) {
+        height: 11vw;
+      }
+
+      @media (min-width: 1366px) {
+        height: 10vw;
+      }
+
+      @media (min-width: 1440px) {
+        height: 9vw;
+      }
+    }
+  }
+
+  .ant-skeleton-active {
+    padding-left: 20px;
   }
 }

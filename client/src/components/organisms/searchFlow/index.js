@@ -115,7 +115,7 @@ const SearchFlow = props => {
             />
           </Button>
         </div>
-        {itemList.length > 0 && (
+        {itemList.length > 0 && !showRecent && searchValue && (
           <Label className="suggestion-heading">Suggestion</Label>
         )}
         <div className="search-list">
@@ -136,33 +136,37 @@ const SearchFlow = props => {
                 ))}
             </div>
           )}
-          <div className="suggestion-name">
-            <Suggestion
-              itemList={searchValue ? itemList : []}
-              close={props.toggleSearch}
-            />
-          </div>
-          <div className="products">
-            <ul>
-              {searchValue &&
-                itemList &&
-                itemList.map((item, i) => (
-                  <li key={i}>
-                    <SearchList
-                      image={{
-                        url: item['Image URL']
-                          ? item['Image URL']
-                          : item['Image 1 URL'],
-                      }}
-                      title={item.title}
-                      category={item.Category}
-                      sku={item.sku}
-                      close={props.toggleSearch}
-                    />
-                  </li>
-                ))}
-            </ul>
-          </div>
+          {!showRecent && (
+            <>
+              <div className="suggestion-name">
+                <Suggestion
+                  itemList={searchValue ? itemList : []}
+                  close={props.toggleSearch}
+                />
+              </div>
+              <div className="products">
+                <ul>
+                  {searchValue &&
+                    itemList &&
+                    itemList.map((item, i) => (
+                      <li key={i}>
+                        <SearchList
+                          image={{
+                            url: item['Image URL']
+                              ? item['Image URL']
+                              : item['Image 1 URL'],
+                          }}
+                          title={item.title}
+                          category={item.Category}
+                          sku={item.sku}
+                          close={props.toggleSearch}
+                        />
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

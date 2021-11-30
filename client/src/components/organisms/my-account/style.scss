@@ -95,6 +95,20 @@
       }
     }
   }
+
+  .ant-pagination-item {
+    background: #f1a900 !important;
+    color: #fff !important;
+  }
+
+  .ant-pagination-item a {
+    color: #fff !important;
+  }
+
+  .ant-pagination-item-link {
+    background: #f1a900 !important;
+    color: #fff !important;
+  }
 }
 
 .account__masthead {
@@ -426,6 +440,10 @@
     top: 0;
   }
 
+  @media (min-width: 768px) and (max-width: 1440px) {
+    width: 100%;
+  }
+
   .main-header__wrapper--fix {
     position: relative;
 
@@ -459,6 +477,12 @@
   margin-top: 30px;
   font-size: 1.11vw;
   line-height: 1.52vw;
+
+  @media (min-width: 1024px) {
+    .ant-skeleton {
+      padding-right: 10px;
+    }
+  }
 }
 
 .credit-limit {
@@ -569,6 +593,10 @@
     select {
       background: #013a4e;
       color: #fff;
+
+      @supports (-webkit-touch-callout: none) {
+        font-size: 3.5vw !important;
+      }
 
       @media screen and (max-width: 500px) {
         background: url('../../../../static/images/arrowdown.png') no-repeat !important;

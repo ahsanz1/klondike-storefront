@@ -12,6 +12,8 @@ import { fetchCategory } from 'libs/services/algolia'
 import './style.scss'
 import { getProductBySKU, addProductToCart } from 'libs/services/api/pdp.api'
 import { AppContext } from 'libs/context'
+import { setUserCart } from 'libs/utils/user-cart'
+import { checkItemsInStock } from 'libs/utils/checkInventory'
 
 const ProductAccordion = ({ question }) => {
   // const { tableData } = tableProAccoData
@@ -20,6 +22,7 @@ const ProductAccordion = ({ question }) => {
     creditLimit,
     getCartItems,
     showcartPOPModal,
+    setPdpProductData,
     setGetCartItemsState,
   } = useContext(AppContext)
   let [qty, setQty] = useState(1)
@@ -44,12 +47,7 @@ const ProductAccordion = ({ question }) => {
 
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
-      let res = false
-      res = getCartItems.items[0].attributes.find(
-        arr => arr.name === 'Packaged Order',
-      )
-
-      if (res && res.value) {
+      if (getCartItems?.hasPackaged) {
         setIsPackage(true)
       } else {
         setIsPackage(false)
@@ -66,7 +64,8 @@ const ProductAccordion = ({ question }) => {
       data['Weight'] !== undefined ? data['Weight'] : data['QTY PER CASE']
     data = JSON.parse(data)
     payload = {
-      img: data['Image 1 URL'],
+      ...data,
+      img: data['Image URL'],
       title: data['title'],
       size: data['Package Size'],
       partNumber: data['Part Number'],
@@ -75,7 +74,7 @@ const ProductAccordion = ({ question }) => {
       unit: `${data['Unit of Measurement']}${
         perCase !== undefined ? '/' + perCase : ''
       }`,
-      sku: data['SKU'],
+      sku: data['sku'],
     }
 
     setModalData(payload)
@@ -87,7 +86,8 @@ const ProductAccordion = ({ question }) => {
     setIsModalVisible(false)
   }
 
-  function error (msg) {
+  // eslint-disable-next-line space-before-function-paren
+  function error(msg) {
     Modal.error({
       title: 'This is an error message',
       content:
@@ -102,63 +102,73 @@ const ProductAccordion = ({ question }) => {
     let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
     if (creditLimit <= totalAmount) {
       error('You are exceeding your credit limit')
-      return
     }
 
     setAddToCart(true)
-    getProductBySKU(data.sku).then(res => {
+    getProductBySKU(data.sku).then(async res => {
       res = res.response.data
-      let product = res.product
-      let payload = {
-        cartId: null,
-        items: [
-          {
-            extra: {},
-            group: product.group,
-            itemId: product.itemId,
-            sku: product.sku,
-            quantity: qty,
-            price: {
-              base: Number(totalPrice),
-              currency: 'USD',
-              sale: false,
-              discount: {
-                price: 0,
+      // let product = res.product
+      let variants = res?.items
+      if (variants?.length) {
+        let selectedItem = await variants?.find(item => data?.sku === item?.sku)
+        console.log('selectedITEM', selectedItem)
+        let payload = {
+          cartId: null,
+          items: [
+            {
+              extra: {},
+              group: selectedItem.group,
+              itemId: selectedItem.itemId,
+              sku: selectedItem.sku,
+              quantity: qty,
+              price: {
+                base: Number(totalPrice),
+                currency: 'USD',
+                sale: false,
+                discount: {
+                  price: 0,
+                },
               },
+              size: data.size,
             },
-            size: false,
-          },
-        ],
+          ],
 
-        registeredUser: true,
-        userAuthToken: user.accessToken,
+          registeredUser: true,
+          userAuthToken: user.accessToken,
+        }
+        console.log('selectedITEMP', payload)
+        let stockRes = await checkItemsInStock(payload?.items)
+        if (stockRes?.length) {
+          error(`This item ${JSON.stringify(stockRes)} is not in stock!`)
+          setAddToCart(false)
+          return
+        }
+        addProductToCart(payload)
+          .then(async res => {
+            if (res.hasError !== true) {
+              setGetCartItemsState(await setUserCart())
+              setPdpProductData(selectedItem)
+              showcartPOPModal()
+              setIsModalVisible(false)
+              setAddToCart(false)
+            } else {
+              error(res.response.error)
+              setIsModalVisible(false)
+              setAddToCart(false)
+            }
+          })
+          .catch(err => {
+            console.log('errres', err)
+            setIsModalVisible(false)
+            setAddToCart(false)
+          })
       }
-      addProductToCart(payload)
-        .then(res => {
-          if (res.hasError !== true) {
-            setGetCartItemsState(res.response.data)
-            showcartPOPModal()
-          } else {
-            error(res.response.error)
-          }
-        })
-        .catch(err => {
-          console.log('errres', err)
-        })
-      setIsModalVisible(false)
-      setAddToCart(false)
     })
   }
 
   const onChange = value => {
     let data = modalData
     setTotalPrice(data.price * value)
-
-    let totalAmount = Math.floor(getCartItems?.totalAmount?.amount + totalPrice)
-    if (creditLimit <= totalAmount) {
-      error('You are exceeding your credit limit')
-      return
-    }
 
     setQty(value)
   }
@@ -201,71 +211,75 @@ const ProductAccordion = ({ question }) => {
 
         {itemdata &&
           itemdata.map((data, i) => {
-            return (
-              <>
-                <Row
-                  className="table-content flex"
-                  key={i}
-                  onClick={i => handleAddToCart(data.itemId)}
-                >
-                  <Col lg={8} className="custom-width">
-                    <p className="text-setting-table">
-                      {data['Product Title']}
-                    </p>
-                  </Col>
-                  <Col lg={4} className="custom-width">
-                    <p className="light-text-weight">{data['Package Size']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p>{data['Part Number']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-center">{data['Weight']}</p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-center">
-                      {data['Unit of Measurement']}
-                    </p>
-                  </Col>
-                  <Col lg={3} className="custom-width">
-                    <p className="text-class-right text-setting-table">
-                      ${data['Order Price'].toFixed(2)}
-                    </p>
-                  </Col>
-                  {showAddToCart && itemId === data.itemId && (
-                    <>
-                      {/* <div className="hover-details"> */}
-                      <div className="">
-                        <div className="table-image">
-                          <Image
-                            src={data['Image URL'] || data['Image 1 URL']}
-                            className="table-image"
-                          />
+            if (data?.isVariant) {
+              return (
+                <>
+                  <Row
+                    className="table-content flex"
+                    key={i}
+                    onClick={i => handleAddToCart(data.itemId)}
+                  >
+                    <Col lg={8} className="custom-width">
+                      <p className="text-setting-table">
+                        {data['Product Title']}
+                      </p>
+                    </Col>
+                    <Col lg={4} className="custom-width">
+                      <p className="light-text-weight">
+                        {data['Package Size']}
+                      </p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p>{data['Part Number']}</p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-center">{data['Weight']}</p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-center">
+                        {data['Unit of Measurement']}
+                      </p>
+                    </Col>
+                    <Col lg={3} className="custom-width">
+                      <p className="text-class-right text-setting-table">
+                        ${data['Order Price'].toFixed(2)}
+                      </p>
+                    </Col>
+                    {showAddToCart && itemId === data.itemId && (
+                      <>
+                        {/* <div className="hover-details"> */}
+                        <div className="">
+                          <div className="table-image">
+                            <Image
+                              src={data['Image URL'] || data['Image 1 URL']}
+                              className="table-image"
+                            />
+                          </div>
+                          <div className="table-button">
+                            <Button
+                              onClick={e => showModal(JSON.stringify(data))}
+                              className={
+                                hasCartData &&
+                                !isPackage === data['Packaged Order']
+                                  ? 'hover-button stop'
+                                  : ' hover-button'
+                              }
+                              disabled={
+                                hasCartData
+                                  ? !(isPackage === data['Packaged Order'])
+                                  : false
+                              }
+                            >
+                              ADD TO CART
+                            </Button>
+                          </div>
                         </div>
-                        <div className="table-button">
-                          <Button
-                            onClick={e => showModal(JSON.stringify(data))}
-                            className={
-                              hasCartData &&
-                              !isPackage === data['Packaged Order']
-                                ? 'hover-button stop'
-                                : ' hover-button'
-                            }
-                            disabled={
-                              hasCartData
-                                ? !(isPackage === data['Packaged Order'])
-                                : false
-                            }
-                          >
-                            ADD TO CART
-                          </Button>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </Row>
-              </>
-            )
+                      </>
+                    )}
+                  </Row>
+                </>
+              )
+            }
           })}
       </div>
 
@@ -291,11 +305,9 @@ const ProductAccordion = ({ question }) => {
                     ) : (
                       <p className="products-sizes">Bulk</p>
                     )}
-                    {modalData.size !== 'Bulk' &&
-                      modalData.size !== 'Bulk:' && (
-                      <p className="products-sizes detail">
-                        {modalData.size}
-                      </p>
+                    {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
+                      // eslint-disable-next-line indent
+                      <p className="products-sizes detail">{modalData.size}</p>
                     )}
                   </div>
                   <div>
@@ -428,6 +440,12 @@ const ProductAccordion = ({ question }) => {
                     ${parseFloat(totalPrice).toFixed(2)}
                   </p>
                 </div>
+              </div>
+
+              <div className="product-subtotal-price-wrapper">
+                <p className="product-subtotal-price">
+                  ${parseFloat(totalPrice).toFixed(2)}
+                </p>
               </div>
               <Button
                 className="pricelist-addcart-mobile "

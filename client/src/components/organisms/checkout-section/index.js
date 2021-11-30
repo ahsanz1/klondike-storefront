@@ -24,7 +24,7 @@ import {
 } from 'libs/services/api/cart'
 import { AppContext } from 'libs/context'
 import {
-  // getAllShippingMethods,
+  getAllShippingMethods,
   createShipTo,
   checkout,
   // retreivePickupPoints,
@@ -43,9 +43,11 @@ const Checkoutsection = () => {
     creditLimit,
     setCheckoutData,
     setGetCartItemsState,
+    getCartItems,
   } = useContext(AppContext)
-  console.log({ personalInfo })
-  console.log({ user })
+  console.log('user', user)
+  console.log('personalInfo', personalInfo)
+  console.log('getcartitems', getCartItems)
   const navigate = useNavigate()
   const [size] = useWindowSize()
 
@@ -57,7 +59,8 @@ const Checkoutsection = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [delivery, setDelivery] = useState(true)
   // const [value, setValue] = useState(1)
-  const [poNumber, setPONumber] = useState('R3G 2T3')
+  let zipCode = 'R3G 2T3'
+  const [poNumber, setPONumber] = useState(zipCode)
   const [isCartLoading, setIsCartLoading] = useState(true)
   console.log({ cartPayload })
   const [inputField, setInputField] = useState(false)
@@ -67,7 +70,10 @@ const Checkoutsection = () => {
   const [selectedLocation, setSelectedLocation] = useState({})
   const [tooltipVisible, setTooltipVisible] = useState(false)
   console.log({ cartItemIds })
+  const [shippingDetails, setShippingDetails] = useState({})
   // console.log({ availableLocations })
+  let freeShippingAmount = 900
+  let freeShippingQuantity = 500
 
   const address = {
     street1: '1510 Wall Street NW ',
@@ -102,8 +108,8 @@ const Checkoutsection = () => {
     if (user !== null) {
       console.log('token', user?.accessToken)
       let res = await getCartByUserId(user?.accessToken)
-      console.log({ res })
-      if (res && res?.data) {
+      console.log('responsefromcart', res)
+      if (res && res?.data && !res?.error) {
         let data = {
           ...res?.data,
           itemsTotal: res?.data?.totalAmount?.amount,
@@ -128,11 +134,6 @@ const Checkoutsection = () => {
             result.push(item)
           }
         }
-        // const filteredLocations = await [
-        //   ...new Map(
-        //     availableLocations.map(item => [item['_id'], item]),
-        //   ).values(),
-        // ]
         console.log(result, 'filtered')
         await setAvaiablePickupLocations(result)
         setIsCartLoading(false)
@@ -160,6 +161,12 @@ const Checkoutsection = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (!isCartLoading) {
+      retreiveShippingMethods()
+    }
+  }, [isCartLoading])
+
   const mapItemsWithShipping = async shipToId => {
     let data = []
     await cartPayload?.items?.map((item, i) => {
@@ -179,7 +186,7 @@ const Checkoutsection = () => {
 
   const mapItemsWithPickUpandShipping = async shipMethodId => {
     let req = {
-      shipToType: 'BOPIS',
+      shipToType: delivery ? 'BOPIS' : 'STORE_PICKUP',
       shipMethod: shipMethodId,
       taxCode: 'FR020000',
       warehouseId: selectedLocation?._id,
@@ -291,29 +298,59 @@ const Checkoutsection = () => {
     } else error()
   }
 
+  const retreiveShippingMethods = async () => {
+    let req = {}
+    try {
+      let shippingMethods = await getAllShippingMethods()
+      console.log('shippingMethods', shippingMethods)
+      if (shippingMethods?.data?.length) {
+        let selectedShipping = shippingMethods?.data[0]
+        req = {
+          address: address,
+          shipToType: 'SHIP_TO_ADDRESS',
+          shipMethod: {
+            shipMethodId: selectedShipping?.shippingMethodId,
+            shipmentCarrier: selectedShipping?.name,
+            shipmentMethod: selectedShipping?.description,
+            cost: {
+              currency: 'USD',
+              amount: await getAmount(selectedShipping),
+            },
+          },
+          taxCode: selectedShipping?.taxCode,
+        }
+        setShippingDetails(req)
+      } else error('No Shipping Method Available!')
+    } catch (e) {
+      error('Error in getting shipping methods!')
+    }
+  }
+
+  const getAmount = selectedShipping => {
+    let amount
+    if (getCartItems?.hasPackaged) {
+      amount =
+        Number(getCartItems?.totalAmount?.amount) >= Number(freeShippingAmount)
+          ? 0
+          : selectedShipping?.cost
+    } else {
+      amount =
+        Number(getCartItems?.quantity) >= Number(freeShippingQuantity)
+          ? 0
+          : selectedShipping?.cost
+    }
+    return amount
+  }
+
   const createShipping = async () => {
     setIsLoading(true)
-    let req = {
-      address: address,
-      shipToType: 'SHIP_TO_ADDRESS',
-      shipMethod: {
-        shipMethodId: 10009,
-        shipmentCarrier: 'KLONDIKE - Delivery Shipping ',
-        shipmentMethod: 'Next Day',
-        cost: {
-          currency: 'USD',
-          amount: 39,
-        },
-      },
-      taxCode: 'FR020000',
-    }
-    console.log({ req })
+
     let response
     if (delivery) {
-      response = await createShipTo(cartPayload?._id, req)
+      response = await createShipTo(cartPayload?._id, shippingDetails)
     } else {
       response = await mapItemsWithPickUpandShipping(
-        req?.shipMethod?.shipMethodId,
+        shippingDetails?.shipMethod?.shipMethodId,
       )
     }
     console.log({ response })
@@ -338,6 +375,9 @@ const Checkoutsection = () => {
   const onChange = async e => {
     console.log('radio', e.target.value)
     setDelivery(prev => !prev)
+    setInputField(false)
+    setPONumber(zipCode)
+    setSelectedLocation({})
     // setValue(e.target.value)
   }
 
@@ -346,9 +386,9 @@ const Checkoutsection = () => {
   }
 
   const handlePOInput = e => {
+    setPONumber(e.target.value)
     if (e.target.value) {
       var regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
-      setPONumber(e.target.value)
       var reg = new RegExp(regex)
       let res = reg.test(e.target.value)
       console.log('regex', res)
@@ -375,60 +415,121 @@ const Checkoutsection = () => {
     window.history.go(-1)
   }
 
+  const redirectToHome = () => {
+    window.location.href = '/'
+  }
+
   return (
     <div>
       <Modal
         // title="Basic Modal"
         visible={isModalVisible}
         // onOk={handleOk}
-        centered
+        // centered
         onCancel={handleCancel}
-        bodyStyle={{ background: 'white', padding: 10 }}
+        bodyStyle={{
+          background: 'white',
+          padding: 10,
+          height: '50vh',
+          overflowY: 'scroll',
+        }}
       >
         <List
           // header={<div>Header</div>}
           // footer={<div>Footer</div>}
-          bordered
+          // bordered
           dataSource={availablePickupLocations || []}
-          renderItem={item => (
-            <List.Item onClick={() => onListClick(item)} className="list-item">
-              <List.Item.Meta
-                title={item.name}
-                description={
-                  <p>
-                    {`${item?.address?.street1},`}
-                    <br />
-                    {`${item?.address?.city}, ${item?.address?.state} ${item?.address?.zipCode}`}
-                    <br />
-                    {`${item?.address?.phone?.number || '000-000-000'}`}
-                  </p>
-                }
-              />
-            </List.Item>
-          )}
+          renderItem={item =>
+            item ? (
+              <List.Item
+                onClick={() => onListClick(item)}
+                className="list-item"
+              >
+                <List.Item.Meta
+                  title={item.name}
+                  description={
+                    <p>
+                      {`${item?.address?.street1},`}
+                      <br />
+                      {`${item?.address?.city}, ${item?.address?.state} ${item?.address?.zipCode}`}
+                      <br />
+                      {`${item?.address?.phone?.number || ''}`}
+                    </p>
+                  }
+                />
+              </List.Item>
+            ) : (
+              <List.Item
+                onClick={() => onListClick(item)}
+                className="list-item"
+              >
+                No Locations Found!
+              </List.Item>
+            )
+          }
         />
       </Modal>
       <div className="checkout-wrapper">
-        <Row justify="center" align="center" className="checkoutHeader">
-          <Col>
-            <LinkIcon link="/" src="static\images\klondike.png" alt="pic" />
-          </Col>
-        </Row>
-        <Row className="checkout-heading-padding">
-          <Col>
-            <div className="page-title">
-              {/* <Link to="/plp"> */}
-              <Button onClick={goBack} className="goback">
-                <img
-                  className="checkout-back-icon"
-                  src="/static/images/arrowleft.png"
+        {window.innerWidth > 768 ? (
+          <div>
+            <Row justify="center" align="center" className="checkoutHeader">
+              <Col>
+                <LinkIcon link="/" src="static\images\klondike.png" alt="pic" />
+              </Col>
+            </Row>
+            <Row className="checkout-heading-padding">
+              <Col>
+                <div className="page-title">
+                  {/* <Link to="/plp"> */}
+                  <Button onClick={goBack} className="goback">
+                    <img
+                      className="checkout-back-icon"
+                      src="/static/images/arrowleft.png"
+                      alt="pic"
+                    />
+                  </Button>
+                  <h1 className="checkout-title"> Checkout</h1>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        ) : (
+          <div>
+            <Row className="checkoutHeader">
+              <Col>
+                <div className="page-title">
+                  <Button onClick={goBack} className="goback">
+                    <img
+                      className="checkout-back-icon"
+                      src="/static/images/arrowleft.png"
+                      alt="pic"
+                    />
+                  </Button>
+                  <h1 className="checkout-title"> Checkout</h1>
+                </div>
+              </Col>
+              <Col>
+                {/* <LinkIcon
+                  className="checkout-logo"
+                  link="/"
+                  src="static\images\klondike.png"
                   alt="pic"
-                />
-              </Button>
-              <h1 className="checkout-title"> Checkout</h1>
-            </div>
-          </Col>
-        </Row>
+                /> */}
+                <Button
+                  onClick={redirectToHome}
+                  className="checkout-logo-button"
+                >
+                  <img
+                    className="checkout-logo-image"
+                    src="static\images\klondike.png"
+                    alt="pic"
+                  />
+                </Button>
+              </Col>
+            </Row>
+          </div>
+        )}
+
         {isCartLoading ? (
           <Row justify="center" align="center">
             <h1 style={{ color: 'gray' }}>Loading...</h1>
@@ -494,27 +595,29 @@ const Checkoutsection = () => {
                   </div>
                 </div>
               ) : (
-                <div className="checkout-info-second justify-align-center">
+                <div className="checkout-info-second">
                   {Object.keys(selectedLocation).length === 0 ? (
-                    <div>
-                      <div className="checkout-po">
-                        <div>
-                          <span>Please choose location!</span>
-                        </div>
-                      </div>
+                    <div className="checkout-po">
+                      <span>Please choose location!</span>
+                      {/* <span>
+                        <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
+                        <br />
+                        {`${address?.street1},`}
+                        <br />
+                        {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                        <br />
+                        {`${address?.phone?.number}`}
+                      </span> */}
                     </div>
                   ) : (
-                    <div>
-                      <div className="checkout-po">
-                        <span>
-                          {`${selectedLocation?.address?.street1},`}
-                          <br />
-                          {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
-                          <br />
-                          {`${selectedLocation?.address?.phone?.number ||
-                            '000-000-000'}`}
-                        </span>
-                      </div>
+                    <div className="checkout-po">
+                      <span>
+                        {`${selectedLocation?.address?.street1},`}
+                        <br />
+                        {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
+                        <br />
+                        {`${selectedLocation?.address?.phone?.number || '-'}`}
+                      </span>
                     </div>
                   )}
                   <Button
@@ -542,7 +645,7 @@ const Checkoutsection = () => {
                   </Button>
                 </div>
               </div>
-              <div>
+              <>
                 {inputField && (
                   <div className="checkout-info">
                     <div className="checkout-po">
@@ -558,13 +661,17 @@ const Checkoutsection = () => {
                           className="inputStyle"
                         />
                         {inputField && !validatePO && (
-                          <p style={{ color: '#f2a900' }}>Invalid PO Number</p>
+                          <p style={{ color: '#f2a900' }}>
+                            {poNumber?.length === 0
+                              ? 'Required!'
+                              : 'Invalid PO Number'}
+                          </p>
                         )}
                       </div>
                     </div>
                   </div>
                 )}
-              </div>
+              </>
               {size > 768 && (
                 <div className="checkout-btn">
                   <Button
@@ -573,7 +680,8 @@ const Checkoutsection = () => {
                     loading={isLoading}
                     disabled={
                       (!delivery && !Object.keys(selectedLocation).length) ||
-                      (inputField && !validatePO)
+                      (inputField && !validatePO) ||
+                      (getCartItems.items || []).length === 0
                     }
                   >
                     PLACE ORDER
@@ -590,14 +698,26 @@ const Checkoutsection = () => {
                 <h2 className="summary-title">ORDER SUMMARY</h2>
               </div>
               <div className="item">
-                <span>Items ({`${cartPayload?.items?.length}`})</span>
-                <span>
-                  {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
-                </span>
+                <span>Items ({`${cartPayload?.items?.length || 0}`})</span>
+                {(getCartItems.items || []).length === 0 ? (
+                  <span>{`$0.00`}</span>
+                ) : (
+                  <span>
+                    {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                  </span>
+                )}
               </div>
               <div className="item">
                 <span>Shipping &amp; Handling</span>
-                <span>{delivery ? `$39.00` : 'TBD'}</span>
+                <span>
+                  {(getCartItems.items || []).length === 0
+                    ? 'TBD'
+                    : delivery
+                      ? `$${parseFloat(
+                        shippingDetails?.shipMethod?.cost?.amount || 0.0,
+                      ).toFixed(2)}`
+                      : 'TBD'}
+                </span>
               </div>
               <div className="item">
                 <span>Credit Limit</span>
@@ -606,11 +726,18 @@ const Checkoutsection = () => {
               <Divider style={{ border: '1px solid #fff' }} />
               <div className="item">
                 <span className="total-price">Total Amount</span>
-                {delivery ? (
+                {(getCartItems.items || []).length === 0 ? (
+                  <span className="total-amount">{`$0.00`}</span>
+                ) : delivery ? (
                   <span className="total-amount">
                     {`$${parseFloat(
                       delivery
-                        ? cartPayload?.itemsTotal + 39
+                        ? parseFloat(
+                          Number(cartPayload?.itemsTotal) +
+                              Number(
+                                shippingDetails?.shipMethod?.cost?.amount,
+                              ) || 0,
+                        ).toFixed(2)
                         : cartPayload?.itemsTotal,
                     ).toFixed(2)}`}
                   </span>
@@ -630,7 +757,8 @@ const Checkoutsection = () => {
                     loading={isLoading}
                     disabled={
                       (!delivery && !Object.keys(selectedLocation).length) ||
-                      (inputField && !validatePO)
+                      (inputField && !validatePO) ||
+                      (getCartItems.items || []).length === 0
                     }
                   >
                     PLACE ORDER

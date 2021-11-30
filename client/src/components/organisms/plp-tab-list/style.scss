@@ -30,7 +30,7 @@
     margin-bottom: 1vw;
     padding: 1vw;
     // background: rgba(5, 5, 5, 0.39);
-    color: #fff;
+    color: #eceae9;
     font-family: $OpenSans;
     font-size: 0.69vw;
     font-weight: bold;
@@ -44,6 +44,7 @@
     @media (max-width: 500px) {
       margin-bottom: 2.6vw;
       padding: 2.6vw;
+      padding-left: 8.16vw;
     }
 
     &:hover {
@@ -83,6 +84,18 @@
       padding: 4vw 0 0 0;
       border: none;
       background: none;
+    }
+  }
+
+  .productItem-mobile {
+    display: none;
+    width: 80%;
+    //margin-right: 0.69vw;
+
+    @media (max-width: 768px) {
+      display: block;
+      width: 100%;
+      padding: 0 5.6vw;
     }
   }
 

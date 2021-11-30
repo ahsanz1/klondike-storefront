@@ -179,6 +179,20 @@
       line-height: 20px;
     }
   }
+
+  .ant-pagination-item {
+    background: #f1a900 !important;
+    color: #fff !important;
+  }
+
+  .ant-pagination-item a {
+    color: #fff !important;
+  }
+
+  .ant-pagination-item-link {
+    background: #f1a900 !important;
+    color: #fff !important;
+  }
 }
 
 .account-mobile-description {
@@ -230,4 +244,33 @@
   text-align: left;
   text-decoration: underline;
   text-transform: uppercase;
+}
+
+.order-history-skeleton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0 10px 0;
+
+  .ant-skeleton-element {
+    padding-right: 10px;
+
+    .ant-skeleton-image {
+      width: 83px;
+      height: 83px;
+
+      @media (min-width: 1024px) {
+        width: 155px;
+        height: 155px;
+      }
+    }
+  }
+
+  .ant-skeleton-active {
+    .ant-skeleton-content {
+      .ant-skeleton-paragraph {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
