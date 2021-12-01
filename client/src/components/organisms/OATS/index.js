@@ -226,6 +226,7 @@ const Oats = () => {
     setFamilyQuery('')
     setFa()
     setQuery('')
+    setfamilygroupquery([])
     console.log('empty', otsdata)
   }
   return (

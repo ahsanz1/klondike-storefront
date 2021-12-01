@@ -500,6 +500,7 @@
     overflow-x: auto;
   }
 }
-// .ant-select-item:nth-child(1){
-//   color: aqua;
-//   }
+
+.ant-select-item:nth-child(1) {
+  display: none;
+}
