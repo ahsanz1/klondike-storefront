@@ -908,7 +908,9 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                         </div>
                                         {!packagedOrder &&
                                           Number(item?.quantity) <
-                                            Number(500) && (
+                                            Number(
+                                              500 - getCartItems?.quantity,
+                                            ) && (
                                             <div
                                               style={{
                                                 display: 'flex',
@@ -1015,6 +1017,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         bulkItemsCart={bulkItemsCart}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
+        getCartItems={getCartItems}
       />
     </div>
   )
