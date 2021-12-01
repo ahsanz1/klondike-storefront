@@ -257,7 +257,7 @@ const QuickOrder = () => {
     let list = [...inputList]
     list[index][name] = value
 
-    fetchItems(value).then(_list => {
+    fetchItems(value, 500, 0, false).then(_list => {
       if (_list?.hits?.length > 0) {
         _list.hits.map((datas, i) => {
           if (datas['isVariant'] === true) {
