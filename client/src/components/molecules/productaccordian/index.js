@@ -406,9 +406,9 @@ const ProductAccordion = ({ question }) => {
                       <p className="products-sizes">
                         {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
                           ? 'Price'
-                          : 'Price Litre'}
+                          : 'Price Litres'}
                       </p>
-                      <p className="products-sizes detail ">
+                      <p className="products-sizes detail detail-price ">
                         ${modalData?.price?.toFixed(2)}
                       </p>
                     </div>
@@ -420,7 +420,7 @@ const ProductAccordion = ({ question }) => {
                   <p className="products-sizes">
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
                       ? 'QTY:'
-                      : 'Litres'}
+                      : 'Litres:'}
                   </p>
                   <p className="products-sizes detail">
                     <InputNumber
