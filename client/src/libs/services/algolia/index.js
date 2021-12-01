@@ -8,11 +8,16 @@ import { algoliaClient } from 'libs/general-config'
 const ALGOLIA_CLIENT = algoliasearch(algoliaClient.appId, algoliaClient.apiKey)
 const INDEX = ALGOLIA_CLIENT.initIndex(algoliaClient.searchIndex)
 
-export const fetchCategory = async (categoryName, page = 0) => {
+export const fetchCategory = async (
+  categoryName,
+  page = 0,
+  filterParents = false,
+) => {
   try {
     let response = await INDEX.search(categoryName, {
       restrictSearchableAttributes: ['Category'],
       hitsPerPage: algoliaClient.HITS_PER_PAGE,
+      facetFilters: filterParents ? [['isVariant:false']] : [],
       page,
     })
     return response
@@ -41,11 +46,19 @@ export const searchFilters = async query => {
   }
 }
 
-export const fetchItems = async (query, pageSize = 500, page = 0) => {
+export const fetchItems = async (
+  query,
+  pageSize = 500,
+  page = 0,
+  filterParents = false,
+) => {
   try {
     let response = await INDEX.search(query, {
       // restrictSearchableAttributes: ['title', 'description'],
       hitsPerPage: pageSize,
+      facetFilters: filterParents
+        ? [['isVariant:false']]
+        : [['isVariant:true']],
       page,
     })
     return response

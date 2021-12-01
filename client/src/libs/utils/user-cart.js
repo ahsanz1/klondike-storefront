@@ -19,6 +19,7 @@ export const setUserCart = async () => {
     let itemsArr = []
 
     data['hasPackaged'] = false
+    data['totalPackagedOrderLitres'] = 0
 
     await data.items.map((item, i) => {
       skus.push(item.sku)
@@ -34,6 +35,7 @@ export const setUserCart = async () => {
       let attributes = null
       itemsRes.data.map(async (itemRes, j) => {
         if (itemRes.sku.toLowerCase() === item.sku.toLowerCase()) {
+          console.log('itemRes', item)
           attributes = itemRes.attributes
           await attributes.map(attr => {
             switch (attr.name) {
@@ -56,6 +58,11 @@ export const setUserCart = async () => {
               case 'Packaged Order':
                 obj['isPackaged'] = attr.value
                 data['hasPackaged'] = attr.value
+                break
+
+              case 'Unit of Measurement':
+                obj['units'] = Number(attr?.value * item?.quantity).toFixed(2)
+                data['totalPackagedOrderLitres'] += Number(obj['units'])
                 break
             }
           })
