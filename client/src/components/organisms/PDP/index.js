@@ -123,7 +123,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
     try {
       setLoading(true)
-      const results = await fetchCategory(category, pageNumber)
+      const results = await fetchCategory(category, pageNumber, true)
       console.log({ results })
       let serverResults = (results || { hits: [] }).hits
       serverResults.sort(

@@ -34,7 +34,7 @@ const SearchFlow = props => {
     // setItemList(list.hits)
     // setSearchFilter(list.hits)
     // Promise Start
-    await fetchItems(value)
+    await fetchItems(value, 500, 0, true)
       .then(async list => {
         let hits = []
         await list.hits.map((data, i) => {

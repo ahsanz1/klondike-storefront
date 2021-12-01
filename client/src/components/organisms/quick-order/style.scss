@@ -555,15 +555,17 @@
   .quick-order-mobile__previous {
     display: flex;
     flex-direction: column;
+    align-items: baseline;
   }
 
   &__image {
     width: 110px;
+    height: 150px;
     background: white;
   }
 
   .price {
-    margin-top: 3.1rem;
+    margin-top: 5.1rem;
     margin-bottom: 0;
     margin-left: 1rem;
 
@@ -686,7 +688,7 @@
       justify-content: center;
 
       .sub-total {
-        padding-right: 65px;
+        padding-right: 90px;
         color: #fff;
         font-size: 24px;
         letter-spacing: 0.02em;
@@ -727,7 +729,7 @@
         box-sizing: border-box;
         align-items: center;
         justify-content: center;
-        width: 334px;
+        width: 315px;
         height: 64px;
         margin-bottom: 20px;
         border: 1px solid #f2a900;
@@ -745,7 +747,7 @@
         box-sizing: border-box;
         align-items: center;
         justify-content: center;
-        width: 334px;
+        width: 315px;
         height: 64px;
         border: 1px solid #f2a900;
         border-radius: 5px;
