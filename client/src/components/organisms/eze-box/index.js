@@ -116,7 +116,7 @@ const EzeBox = ({
                           <>
                             <div>
                               <span className="first">{item.heading[0]}</span>
-                              <span>
+                              <span className="remaining-heading">
                                 {item.heading.slice(1, item.heading.length)}
                               </span>
                             </div>

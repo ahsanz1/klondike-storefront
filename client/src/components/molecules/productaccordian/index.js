@@ -419,7 +419,7 @@ const ProductAccordion = ({ question }) => {
                 <div className="total-pricing-block">
                   <p className="products-sizes">
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
-                      ? 'QTY'
+                      ? 'QTY:'
                       : 'Litres'}
                   </p>
                   <p className="products-sizes detail">

@@ -53,40 +53,46 @@ const AccountTabPane = ({ data, title }) => {
             shipmentDetails.map(
               (row, i) =>
                 row.shipTo &&
-                row.shipTo.map((innerRow, rowIndex) => (
-                  <div className="ship-address" key={rowIndex}>
-                    <div>
-                      {data.heading && <strong>{data.heading}</strong>}
-                      {innerRow &&
-                        innerRow?.address &&
-                        innerRow?.address?.name && (
-                        <Label>{`${innerRow.address.name.first &&
-                            innerRow.address.name.first} ${innerRow.address.name
-                          .last && innerRow.address.name.last}`}</Label>
-                      )}
-                      <Label>
-                        {innerRow.address.street1 && innerRow.address.street1}
-                        {innerRow.address.state && innerRow.address.state}
-                      </Label>
-                      <Label>
-                        {innerRow.address.zipCode && innerRow.address.zipCode}
-                      </Label>
+                row.shipTo.map((innerRow, rowIndex) => {
+                  let address =
+                    innerRow?.address?.name !== undefined
+                      ? innerRow?.address
+                      : innerRow?.pickupPerson
+                  return (
+                    <div className="ship-address" key={rowIndex}>
+                      <div>
+                        {data.heading && (
+                          <strong className="ship-address-heading">
+                            {data.heading}
+                          </strong>
+                        )}
+                        {address && address?.name && (
+                          <Label>{`${address?.name?.first &&
+                            address?.name?.first} ${address?.name?.last &&
+                            address?.name?.last}`}</Label>
+                        )}
+                        <Label>
+                          {address?.street1 && address?.street1}
+                          {address?.state && address?.state}
+                        </Label>
+                        <Label>{address?.zipCode && address?.zipCode}</Label>
+                      </div>
+                      <div>
+                        <strong className="ship-address-heading">
+                          {data.dropHeading}
+                        </strong>
+                        <Label>{`${address?.name?.first &&
+                          address?.name?.first} ${address?.name?.last &&
+                          address?.name?.last}`}</Label>
+                        <Label>
+                          {address?.street1 && address?.street1}
+                          {address?.state && address?.state}
+                        </Label>
+                        <Label>{address?.zipCode && address?.zipCode}</Label>
+                      </div>
                     </div>
-                    <div>
-                      <strong>{data.dropHeading}</strong>
-                      <Label>{`${innerRow?.address?.name?.first &&
-                        innerRow?.address?.name?.first} ${innerRow?.address
-                          ?.name?.last && innerRow?.address.name.last}`}</Label>
-                      <Label>
-                        {innerRow.address.street1 && innerRow.address.street1}
-                        {innerRow.address.state && innerRow.address.state}
-                      </Label>
-                      <Label>
-                        {innerRow.address.zipCode && innerRow.address.zipCode}
-                      </Label>
-                    </div>
-                  </div>
-                )),
+                  )
+                }),
             )}
           <div className="page-no" key="pagination-shipment">
             <Pagination

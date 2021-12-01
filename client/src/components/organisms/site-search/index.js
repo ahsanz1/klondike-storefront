@@ -30,7 +30,7 @@ const SiteSearch = ({ pdpUrl = '/products' }) => {
 
   const performAlgoliaSearch = async (term, pageNumber) => {
     try {
-      const results = await fetchItems(term, PAGESIZE, pageNumber - 1)
+      const results = await fetchItems(term, PAGESIZE, pageNumber - 1, true)
       let serverResults = (results || { hits: [] }).hits
       if (serverResults && serverResults.length > 0) {
         let temp = []

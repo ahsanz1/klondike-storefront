@@ -29,7 +29,7 @@ const SearchFilter = ({ searchHeading }) => {
   useEffect(() => {
     const getSerachedValue = location.search.split('?')[1]
     setGetSearchParam(getSerachedValue)
-    fetchItems(getSerachedValue)
+    fetchItems(getSerachedValue, 500, 0, true)
       .then(list => {
         setItemList(list.hits)
         setSearchFilter(list.hits)

@@ -60,7 +60,7 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
   const perfomeAlgoliaSearch = async (category, pageNumber = 0) => {
     try {
       setLoading(true)
-      const results = await fetchCategory(category, pageNumber)
+      const results = await fetchCategory(category, 0, true)
       let serverResults = (results || { hits: [] }).hits
       serverResults.sort((a, b) =>
         a.rank > b.rank ? 1 : b.rank > a.rank ? -1 : 0,
@@ -70,7 +70,6 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
       }
       setProducts(serverResults)
       setLoading(false)
-      console.log('check results:', results)
       subItemHandler(results)
     } catch (e) {
       setLoading(false)
