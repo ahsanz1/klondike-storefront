@@ -48,10 +48,15 @@
       // font-size: 2.7vw;
       width: 100%;
       height: auto;
+      margin-top: 41px;
       padding: 5.33vw 1.866vw;
       border: 0.26vw solid #ddaf34;
       border-radius: 1.33vw;
       font-size: 20px;
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      margin-top: 15px !important;
     }
   }
 
