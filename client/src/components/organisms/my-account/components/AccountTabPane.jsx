@@ -61,7 +61,11 @@ const AccountTabPane = ({ data, title }) => {
                   return (
                     <div className="ship-address" key={rowIndex}>
                       <div>
-                        {data.heading && <strong>{data.heading}</strong>}
+                        {data.heading && (
+                          <strong className="ship-address-heading">
+                            {data.heading}
+                          </strong>
+                        )}
                         {address && address?.name && (
                           <Label>{`${address?.name?.first &&
                             address?.name?.first} ${address?.name?.last &&
@@ -74,7 +78,9 @@ const AccountTabPane = ({ data, title }) => {
                         <Label>{address?.zipCode && address?.zipCode}</Label>
                       </div>
                       <div>
-                        <strong>{data.dropHeading}</strong>
+                        <strong className="ship-address-heading">
+                          {data.dropHeading}
+                        </strong>
                         <Label>{`${address?.name?.first &&
                           address?.name?.first} ${address?.name?.last &&
                           address?.name?.last}`}</Label>
