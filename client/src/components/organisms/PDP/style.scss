@@ -299,8 +299,12 @@ $vw-viewport: 1440;
   width: get-vw(600);
 }
 
-.customButton :hover {
+.customButton:hover {
   background-color: #fa9200;
+}
+
+.customButton:active {
+  color: #013a4e;
 }
 
 .p-10 {

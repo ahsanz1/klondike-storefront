@@ -11,7 +11,7 @@ const FooterLinks = ({
   footerAccount,
   links = [],
 }) => {
-  console.log('footer link check:', links)
+  console.log('footer link check:', links, headingLinks)
   let userLoginInfo = localStorage.getItem('userPersonalInfo')
   userLoginInfo = JSON.parse(userLoginInfo)
   return (

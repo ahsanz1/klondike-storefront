@@ -24,6 +24,13 @@
     }
   }
 
+  .page-no {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    border-top: 1px solid wheat;
+  }
+
   .account-section-block {
     display: flex;
     justify-content: space-between;
@@ -177,6 +184,10 @@
       font-style: normal;
       font-weight: 700;
       line-height: 20px;
+    }
+
+    a {
+      color: white;
     }
   }
 

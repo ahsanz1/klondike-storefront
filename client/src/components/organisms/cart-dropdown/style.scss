@@ -238,6 +238,17 @@
         }
       }
 
+      .message-style {
+        margin-bottom: 0.555vw;
+        font-size: 1.11vw;
+        text-align: left;
+
+        @media (max-width: 768px) {
+          margin-bottom: 2.13vw;
+          font-size: 4.26vw;
+        }
+      }
+
       .cart-dropdown-checkout {
         display: flex;
         align-items: center;

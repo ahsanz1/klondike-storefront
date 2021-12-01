@@ -97,7 +97,7 @@ const PackageOrder = ({
                   {qtyerror && (
                     <span className="packageqty-error">Please Entre QTY</span>
                   )}
-                  {validation && inputList[0].quantity === '' && (
+                  {!qtyerror && validation && inputList[0].quantity === '' && (
                     <div style={{ color: 'red' }} className="validation">
                       Please Enter Quantity
                     </div>

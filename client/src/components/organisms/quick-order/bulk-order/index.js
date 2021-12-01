@@ -96,9 +96,11 @@ const BulkOrder = ({
                     }}
                   />
                   {qtyerror && (
-                    <span className="packageqty-error">Please Entre QTY</span>
+                    <span className="packageqty-error">
+                      Please Entre Liters
+                    </span>
                   )}
-                  {validation && inputList[0].quantity === '' && (
+                  {!qtyerror && validation && inputList[0].quantity === '' && (
                     <div style={{ color: 'red' }} className="validation">
                       Please Enter Liters
                     </div>
