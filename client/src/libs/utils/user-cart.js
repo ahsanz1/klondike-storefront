@@ -61,9 +61,7 @@ export const setUserCart = async () => {
                 break
 
               case 'Unit of Measurement':
-                obj['units'] = Number(
-                  attr?.value || 1 * item?.quantity,
-                ).toFixed(2)
+                obj['units'] = Number(attr?.value * item?.quantity).toFixed(2)
                 data['totalPackagedOrderLitres'] += Number(obj['units'])
                 break
             }
