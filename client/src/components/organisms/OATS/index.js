@@ -174,6 +174,7 @@ const Oats = () => {
       setFa()
       setFamilyQuery('')
     }
+    query.length <= 0 && setNotFound(true)
   }
   const manuFunc = value => {
     setOtsdata([])
