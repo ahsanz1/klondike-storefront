@@ -107,7 +107,7 @@ const CartDropdown = () => {
             </div>
           )}
 
-          {getCartItems?.items?.length &&
+          {/* {getCartItems?.items?.length &&
           !getCartItems?.hasPackaged &&
           getCartItems?.quantity < 500 ? (
               <div
@@ -124,7 +124,7 @@ const CartDropdown = () => {
               </div>
             ) : (
               ''
-            )}
+            )} */}
           {getCartItems?.items && getCartItems?.items.length > 0 ? (
             <div className="cart-dropdown-checkout-container">
               <div className="cart-dropdown-checkout-details">
@@ -137,6 +137,17 @@ const CartDropdown = () => {
                     {/* {getCartItems?.totalAmount?.currency} */}
                   </p>
                 </div>
+                {getCartItems?.items?.length &&
+                !getCartItems?.hasPackaged &&
+                getCartItems?.quantity < 500 ? (
+                    <div className="message-style">
+                      <span style={{ color: 'rgb(250, 146, 0)' }}>
+                      Orders below 500L are subject to an under-a-minimum fee.
+                      </span>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                 <div className="cart-dropdown-checkout">
                   <Link
                     className="cart-dropdown-checkout"
