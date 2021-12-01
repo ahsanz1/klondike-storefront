@@ -32,7 +32,7 @@
         height: 3.39vw;
       }
 
-      @media (min-width: 768px) and (max-width: 1399px) {
+      @media (min-width: 768px) and (max-width: 992px) {
         width: 1.8vw;
         height: 1.8vw;
       }
@@ -127,7 +127,7 @@
     }
 
     form {
-      @media (max-width: 1399px) and (min-width: 768px) {
+      @media (max-width: 992px) and (min-width: 768px) {
         width: 100%;
       }
     }
@@ -151,7 +151,7 @@
         width: 85%;
       }
 
-      @media (min-width: 768px) and (max-width: 1399px) {
+      @media (min-width: 768px) and (max-width: 992px) {
         width: 100%;
         font-size: 2.3vw;
       }
@@ -197,7 +197,7 @@
       display: none;
     }
 
-    @media screen and (min-width: 768px) and (max-width: 1399px) {
+    @media screen and (min-width: 768px) and (max-width: 992px) {
       font-size: 2.6vw;
     }
   }
@@ -221,7 +221,7 @@
     padding-top: 0;
     overflow: auto;
 
-    @media (min-width: 768px) and (max-width: 1399px) {
+    @media (min-width: 768px) and (max-width: 992px) {
       flex-direction: column;
     }
 
@@ -270,7 +270,7 @@
       margin: 0;
       list-style: none;
 
-      @media (min-width: 768px) and (max-width: 1399px) {
+      @media (min-width: 768px) and (max-width: 992px) {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -285,7 +285,7 @@
         margin: 0 0.6vw;
         float: left;
 
-        @media (min-width: 768px) and (max-width: 1399px) {
+        @media (min-width: 768px) and (max-width: 992px) {
           width: 30.3%;
           margin-right: 10px !important;
           line-height: 1.2;
@@ -314,7 +314,7 @@
               background: $white-color;
               object-fit: contain;
 
-              @media (min-width: 768px) and (max-width: 1399px) {
+              @media (min-width: 768px) and (max-width: 992px) {
                 width: 16.8vw;
                 margin-top: 1.3vw;
               }
@@ -351,7 +351,7 @@
             font-weight: 600;
             line-height: 110%;
 
-            @media (min-width: 768px) and (max-width: 1399px) {
+            @media (min-width: 768px) and (max-width: 992px) {
               font-size: 2vw;
             }
 
