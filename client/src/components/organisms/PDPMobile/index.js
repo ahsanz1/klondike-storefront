@@ -66,7 +66,7 @@ const PDPMobile = ({
 
   const handleClose = () => setOpenCategories(false)
   const handleHowToBuy = () => navigate('/account/login')
-  const { showModal } = useContext(AppContext)
+  const { showModal, getCartItems } = useContext(AppContext)
 
   const addToCartFunction = () => {
     onSubmit()
@@ -89,6 +89,7 @@ const PDPMobile = ({
   }
 
   if (modalVisible && size < 768) {
+    window.scrollTo(0, 0)
     return (
       <PackageOrder
         order={packagedOrder ? packageOrderStarted : bulkOrderStarted}
@@ -416,7 +417,6 @@ const PDPMobile = ({
                           <span className="head">LITRES:</span>
                           <InputNumber
                             min={0}
-                            max={100}
                             defaultValue={0}
                             onChange={e => onBulkQtyChange(e)}
                             disabled={packagedOrder}
@@ -438,7 +438,8 @@ const PDPMobile = ({
                       )}
                       <div>
                         {!packagedOrder &&
-                          Number(item?.quantity) < Number(500) && (
+                          Number(item?.quantity) <
+                            Number(500 - getCartItems?.quantity) && (
                             <div>
                               <span style={{ color: '#fa9200' }}>
                                 Orders below 500L are subject to an
@@ -457,7 +458,8 @@ const PDPMobile = ({
                     className="total-price"
                     style={{
                       color:
-                        pdpdata?.totalPackagedOrderPrice > 0
+                        pdpdata?.totalPackagedOrderPrice ||
+                        pdpdata?.bulkOrderItem[0]?.totalPrice > 0
                           ? '#f1a900'
                           : '#ffff',
                     }}

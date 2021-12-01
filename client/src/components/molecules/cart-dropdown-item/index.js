@@ -72,8 +72,11 @@ const CartDropdownItem = (cartData, key) => {
 
   const removeItem = async (cartId, lineItemId) => {
     setRemoving(true)
-    await removeItemFromCart(cartId, lineItemId)
-    setGetCartItemsState(await setUserCart())
+    const removeItemRes = await removeItemFromCart(cartId, lineItemId)
+    if (removeItemRes && removeItemRes.data) {
+      const userCartRes = await setUserCart()
+      setGetCartItemsState(userCartRes)
+    }
     setRemoving(false)
   }
 
@@ -164,12 +167,12 @@ const CartDropdownItem = (cartData, key) => {
           <div className="quantity-box">
             <Label className="product-quantity-mobile">QTY:</Label>
             <InputNumber
-              className="product-quantity-spinner"
+              className="product-quantity-spinner desktop"
               min={1}
               max={1000}
               disabled={updating}
               type="number"
-              defaultValue={cart?.quantity}
+              value={cart?.quantity}
               onChange={e => onChange(e, cart)}
             />
           </div>

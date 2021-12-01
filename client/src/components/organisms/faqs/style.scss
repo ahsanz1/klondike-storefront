@@ -81,14 +81,19 @@ $vw-viewport: 1440;
       // position: none !important;
       padding-top: 40vw;
     }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      padding-top: 18vw;
+      font-size: 30px !important;
+    }
   }
 
   .desktop-heading {
     display: block;
 
-    @media (max-width: 768px) {
-      // width: 6.72vw;
-    }
+    // @media (max-width: 768px) {
+    //   width: 6.72vw;
+    // }
   }
 
   .mobile-heading {
@@ -137,7 +142,7 @@ $vw-viewport: 1440;
     .accordion-heading {
       width: 87.2vw;
       margin: 0 6.4vw;
-      font-size: 36px;
+      font-size: 10.66vw;
       text-align: left;
     }
 
@@ -161,6 +166,10 @@ $vw-viewport: 1440;
 
     .desktop-heading {
       display: none;
+
+      @media screen and (min-width: 768px) and (max-width: 1024px) {
+        display: block;
+      }
     }
 
     .mobile-heading {

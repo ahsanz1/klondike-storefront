@@ -212,7 +212,7 @@
       font-family: $OpenSans !important;
       font-size: 3.7vw !important;
       font-style: normal !important;
-      font-weight: bold !important;
+      font-weight: normal !important;
       line-height: 5vw !important;
     }
 
@@ -586,6 +586,12 @@
 
     div {
       margin-bottom: 5.3vw;
+    }
+
+    .ship-address-heading {
+      font-size: 3.2vw;
+      font-weight: 700;
+      text-transform: uppercase;
     }
   }
 
