@@ -121,6 +121,11 @@ body {
   box-shadow: unset !important;
 }
 
+select.goog-te-combo {
+  width: 60px !important;
+  height: 30px !important;
+}
+
 // Tidio Chat
 iframe {
   @media screen and (min-width: 1440px) {
