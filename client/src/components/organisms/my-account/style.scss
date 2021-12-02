@@ -99,6 +99,10 @@
         font-size: 3.7vw;
       }
     }
+
+    @media screen and (min-width: 1536px) {
+      margin-left: 76vw;
+    }
   }
 
   .ant-pagination-item {
