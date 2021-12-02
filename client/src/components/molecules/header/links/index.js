@@ -6,7 +6,6 @@ import Button from 'components/atoms/button'
 import { AppContext } from 'libs/context'
 import Product from 'components/organisms/ourProduct'
 import Image from 'components/atoms/image'
-import useWindowSize from 'libs/custom-hooks/useWindowSize'
 import './styles.scss'
 
 const Links = ({
@@ -27,7 +26,6 @@ const Links = ({
   const [clickedArray, setClickedArray] = useState([])
   const [hoverSection, setHoverSection] = useState(false)
   const [hoverName, setHoverName] = useState('')
-  const [size] = useWindowSize()
   const { user, loginBottom, setLoginBottom } = useContext(AppContext)
   const getToken = user && user.accessToken
   const toggleFunc = (name, data) => {
@@ -80,7 +78,7 @@ const Links = ({
           {links.map((link, i) => {
             if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
               return (
-                size < 992 && (
+                (!link.mobileOnly || mobile) && (
                   <div
                     className="menu-link-item"
                     onMouseEnter={() => hoverFunc(link.label)}
