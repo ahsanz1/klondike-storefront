@@ -94,10 +94,10 @@ $vw-viewport: 1440;
       text-align: left;
 
       @media (max-width: 768px) {
-        margin-left: 31px;
+        margin-left: 8.266vw;
         // padding-left: 10px;
-        font-size: 10px;
-        line-height: 28px;
+        font-size: 2.666vw;
+        line-height: 7.466vw;
       }
 
       .down-arrow-mobile {
