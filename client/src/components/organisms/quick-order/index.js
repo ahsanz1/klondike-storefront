@@ -48,8 +48,6 @@ const QuickOrder = () => {
   const [isPackage, setIsPackage] = useState()
   const [hasCartData, setHasCartData] = useState(false)
 
-  console.log('getcartdata', getCartItems)
-
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
       if (getCartItems?.hasPackaged) {
