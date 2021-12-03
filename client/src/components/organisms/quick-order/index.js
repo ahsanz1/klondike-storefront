@@ -549,68 +549,72 @@ const QuickOrder = () => {
                         </div>
                       ) : (
                         <>
-                          <div className="quick-order-mobile">
-                            <div className="quick-order-mobile__previous">
-                              <img
-                                className="quick-order-mobile__image"
-                                src={item?.image}
-                                alt="img"
-                              />
-                              <p className="price">Price</p>
-                              <p className="price-value">
-                                ${item?.price?.base.toFixed(2)}
-                              </p>
-                            </div>
-                            <div className="quick-order_mobile_wrapper">
-                              <p className="quick-mobile-title">
-                                {item?.title}
-                              </p>
-                              <div className="quick-order-mobile__next-container">
-                                <p>
-                                  Size
-                                  <span className="span">{item?.size}</span>
+                          <div>
+                            <div className="quick-order-mobile">
+                              <div className="quick-order-mobile__previous">
+                                <img
+                                  className="quick-order-mobile__image"
+                                  src={item?.image}
+                                  alt="img"
+                                />
+                              </div>
+                              <div className="quick-order_mobile_wrapper">
+                                <p className="quick-mobile-title">
+                                  {item?.title}
                                 </p>
-                                <p>
-                                  {item?.percase ? 'Per case' : ''}
-                                  <span className="quick-item-description">
-                                    {item?.percase}
-                                  </span>
-                                </p>
-                                <p>
-                                  Part Num
-                                  <span className="span">
-                                    {item?.partnumber}
-                                  </span>
-                                </p>
-                                <div className="quantity-container">
-                                  <div className="remove-button">
-                                    <p>
-                                      <span className="quantity">QTY:</span>
-                                      <InputNumber
-                                        min={0}
-                                        max={100}
-                                        type="number"
-                                        defaultValue={1}
-                                        value={item?.quantity}
-                                        onChange={e => onChangeqty(e, i, item)}
-                                        size="middle"
-                                        className="input"
-                                      />
-                                    </p>
-                                    <button
-                                      className="quick-orde_btn"
-                                      onClick={e => itemremove(i, item)}
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                  <div>
-                                    <p className="total-price">Total Price</p>
-                                    <p className="total-price-value">
-                                      ${item?.totalPrice?.amount.toFixed(2)}
-                                    </p>
-                                  </div>
+                                <div className="quick-order-mobile__next-container">
+                                  <p>
+                                    Size
+                                    <span className="span">{item?.size}</span>
+                                  </p>
+                                  <p>
+                                    {item?.percase ? 'Per case' : ''}
+                                    <span className="quick-item-description">
+                                      {item?.percase}
+                                    </span>
+                                  </p>
+                                  <p>
+                                    Part Num
+                                    <span className="span">
+                                      {item?.partnumber}
+                                    </span>
+                                  </p>
                                 </div>
+                              </div>
+                            </div>
+                            <div className="quantity-container">
+                              <div className="price-wrapper">
+                                <p className="price white">Price</p>
+                                <p className="price-value">
+                                  ${item?.price?.base.toFixed(2)}
+                                </p>
+                              </div>
+                              <div className="remove-button">
+                                <p>
+                                  <span className="quantity white">QTY:</span>
+                                  <InputNumber
+                                    min={0}
+                                    max={100}
+                                    type="number"
+                                    defaultValue={1}
+                                    value={item?.quantity}
+                                    onChange={e => onChangeqty(e, i, item)}
+                                    size="middle"
+                                    className="input"
+                                  />
+                                </p>
+                                <button
+                                  className="quick-orde_btn"
+                                  onClick={e => itemremove(i, item)}
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                              <div className="Total_price">
+                                <p className="total-price white">Total Price</p>
+                                <p className="total-price-value">
+                                  ${item?.totalPrice?.amount.toFixed(2)}
+                                </p>
                               </div>
                             </div>
                           </div>

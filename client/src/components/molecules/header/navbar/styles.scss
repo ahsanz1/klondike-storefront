@@ -42,7 +42,7 @@
     }
 
     .mobile-home-logo {
-      @media (min-width: 992px) {
+      @media (min-width: 769px) {
         display: none;
       }
 
@@ -93,6 +93,14 @@
     img {
       @media (max-width: 500px) {
         width: 4.8vw;
+      }
+    }
+
+    .icon-button {
+      img {
+        @media (min-width: 769px) and (max-width: 992px) {
+          max-width: initial;
+        }
       }
     }
   }
@@ -371,6 +379,11 @@
       right: 8vw;
       font-size: 12px;
       line-height: 185.5%;
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      right: -3vw;
+      font-size: 1.6vw;
     }
   }
 
