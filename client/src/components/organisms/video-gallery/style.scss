@@ -24,6 +24,12 @@
         font-family: $OpenSans;
       }
 
+      .small-videos {
+        @media (min-width: 768px) {
+          width: 35%;
+        }
+      }
+
       .videos {
         display: flex;
         flex-direction: row;
@@ -102,7 +108,7 @@
         padding-left: get-vw(41px);
 
         @media (max-width: 768px) {
-          margin-right: 80px;
+          margin-right: 45px;
           padding-left: 0;
         }
 
