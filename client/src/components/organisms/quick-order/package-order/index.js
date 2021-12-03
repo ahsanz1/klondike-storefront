@@ -48,7 +48,7 @@ const PackageOrder = ({
           Part Number<Label className="quick-order-asterisk"> *</Label>
         </p>
         <p>
-          Case Qty<Label className="quick-order-asterisk"> *</Label>
+          Qty<Label className="quick-order-asterisk"> *</Label>
         </p>
       </div>
       <form onSubmit={e => handleSubmit(e)}>

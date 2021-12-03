@@ -48,6 +48,8 @@ const QuickOrder = () => {
   const [isPackage, setIsPackage] = useState()
   const [hasCartData, setHasCartData] = useState(false)
 
+  console.log('getcartdata', getCartItems)
+
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
       if (getCartItems?.hasPackaged) {
@@ -550,6 +552,17 @@ const QuickOrder = () => {
                       ) : (
                         <>
                           <div>
+                            <div className="item_count_mobile">
+                              <Label className="item-count">
+                                <i
+                                  className="fas fa-check"
+                                  aria-hidden="true"
+                                ></i>{' '}
+                                {`You added ${getCartItems &&
+                                  getCartItems.items
+                                    .length}  new item to your cart`}
+                              </Label>
+                            </div>
                             <div className="quick-order-mobile">
                               <div className="quick-order-mobile__previous">
                                 <img
@@ -564,17 +577,17 @@ const QuickOrder = () => {
                                 </p>
                                 <div className="quick-order-mobile__next-container">
                                   <p>
-                                    Size
+                                    SIZE
                                     <span className="span">{item?.size}</span>
                                   </p>
                                   <p>
-                                    {item?.percase ? 'Per case' : ''}
+                                    {item?.percase ? 'PER CASE' : ''}
                                     <span className="quick-item-description">
                                       {item?.percase}
                                     </span>
                                   </p>
                                   <p>
-                                    Part Num
+                                    PART NUM
                                     <span className="span">
                                       {item?.partnumber}
                                     </span>
@@ -584,7 +597,7 @@ const QuickOrder = () => {
                             </div>
                             <div className="quantity-container">
                               <div className="price-wrapper">
-                                <p className="price white">Price</p>
+                                <p className="price white">PRICE</p>
                                 <p className="price-value">
                                   ${item?.price?.base.toFixed(2)}
                                 </p>
@@ -611,7 +624,7 @@ const QuickOrder = () => {
                                 </button>
                               </div>
                               <div className="Total_price">
-                                <p className="total-price white">Total Price</p>
+                                <p className="total-price white">TOTAL PRICE</p>
                                 <p className="total-price-value">
                                   ${item?.totalPrice?.amount.toFixed(2)}
                                 </p>
