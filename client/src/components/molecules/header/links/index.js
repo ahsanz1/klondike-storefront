@@ -78,7 +78,7 @@ const Links = ({
           {links.map((link, i) => {
             if (!link.loggedInOnly || (link.loggedInOnly && user.accessToken)) {
               return (
-                (!link.mobileOnly || mobile) && (
+                !link.mobileOnly && (
                   <div
                     className="menu-link-item"
                     onMouseEnter={() => hoverFunc(link.label)}
