@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Accounts from 'components/molecules/accounts-page'
 import { AppContext } from 'libs/context'
-import { Pagination, Skeleton } from 'antd'
+// import { Pagination, Skeleton } from 'antd'
+import { Skeleton } from 'antd'
 import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 const AccountTabPane = ({ data, title }) => {
   const perPageItems = 3
   const { creditLimit, user, personalInfo } = useContext(AppContext)
-  const [totalOrders, setTotalOrders] = useState(0)
+  // const [totalOrders, setTotalOrders] = useState(0)
   const [shipmentDetails, setShipmentDetails] = useState('')
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const AccountTabPane = ({ data, title }) => {
     )
     let data = ordersByUser.response.data
     setShipmentDetails(data.orders)
-    setTotalOrders(data?.query?.count)
+    // setTotalOrders(data?.query?.count)
   }
 
   return (
@@ -94,14 +95,14 @@ const AccountTabPane = ({ data, title }) => {
                   )
                 }),
             )}
-          <div className="page-no" key="pagination-shipment">
+          {/* <div className="page-no" key="pagination-shipment">
             <Pagination
               defaultCurrent={1}
               pageSize={perPageItems}
               total={totalOrders}
               onChange={e => fetchShipment(e)}
             />
-          </div>
+          </div> */}
         </>
       ) : title === 'All Orders' ? (
         <>
