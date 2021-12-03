@@ -63,7 +63,7 @@ const PackageOrder = ({
                     name="partnumber"
                     className="part-number"
                     placeholder="Enter Part Number"
-                    autoComplete="off"
+                    // autoComplete="off"
                     value={x.partnumber}
                     onChange={e => handleChangePackage(e, i)}
                   />
