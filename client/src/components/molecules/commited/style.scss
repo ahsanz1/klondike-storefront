@@ -102,6 +102,10 @@
         font-weight: bold;
         line-height: 24px;
         text-transform: none;
+
+        &:lang(fr) {
+          width: 48.33vw;
+        }
       }
 
       // @media screen and (max-width: 500px) {

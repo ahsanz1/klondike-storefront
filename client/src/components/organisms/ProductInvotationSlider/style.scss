@@ -38,6 +38,10 @@
       font-size: 5.3vw;
       font-weight: bold;
       line-height: 111%;
+
+      &:lang(fr) {
+        margin-bottom: 7.33vw;
+      }
     }
 
     font {
