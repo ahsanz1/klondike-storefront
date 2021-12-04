@@ -78,8 +78,8 @@ const AccountTabPane = ({ data, title }) => {
                         </Label>
                         <Label>{address?.zipCode && address?.zipCode}</Label>
                       </div>
-                      <div>
-                        <strong className="ship-address-heading">
+                      <div className="ship-address-details">
+                        <strong className="ship-address-heading drop-shipping-address">
                           {data.dropHeading}
                         </strong>
                         <Label>{`${address?.name?.first &&

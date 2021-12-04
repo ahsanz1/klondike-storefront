@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'libs/context'
 import PropTypes from 'prop-types'
@@ -52,8 +53,13 @@ const CheckoutSuccess = () => {
   }
 
   const getDate = () => {
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }
     var today = new Date()
-    var transformedDate = today.toDateString()
+    var transformedDate = today.toLocaleDateString('en-US', options)
     return transformedDate
   }
 
@@ -98,8 +104,9 @@ const CheckoutSuccess = () => {
                   className="para"
                   style={{ marginTop: '5vw', textAlign: 'left' }}
                 >
-                  If you need to make changes to your order. please email
+                  If you need to make changes to your order, please email
                   clientcare@klondikelubricants.com or call 1-877-293-4691
+                  Immediately.
                 </p>
               ) : (
                 <>
@@ -122,20 +129,20 @@ const CheckoutSuccess = () => {
               <div className="shipping-address">
                 {checkoutData &&
                 Object.keys(checkoutData?.selectedLocation || {}).length ? (
-                    <span>
-                      <p>{`${checkoutData?.selectedLocation?.address?.street1},`}</p>
-                      <p>{`${checkoutData?.selectedLocation?.address?.city}, ${checkoutData?.selectedLocation?.address?.state} ${checkoutData?.selectedLocation?.address?.zipCode}`}</p>
-                      <p>{`${checkoutData?.selectedLocation?.address?.phone
-                        ?.number || ''}`}</p>
-                    </span>
-                  ) : (
-                    <span>
-                      <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
-                      <p>{`${address?.street1},`}</p>
-                      <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
-                      <p>{`${address?.phone?.number}`}</p>
-                    </span>
-                  )}
+                  <span>
+                    <p>{`${checkoutData?.selectedLocation?.address?.street1},`}</p>
+                    <p>{`${checkoutData?.selectedLocation?.address?.city}, ${checkoutData?.selectedLocation?.address?.state} ${checkoutData?.selectedLocation?.address?.zipCode}`}</p>
+                    <p>{`${checkoutData?.selectedLocation?.address?.phone
+                      ?.number || ''}`}</p>
+                  </span>
+                ) : (
+                  <span>
+                    <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
+                    <p>{`${address?.street1},`}</p>
+                    <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
+                    <p>{`${address?.phone?.number}`}</p>
+                  </span>
+                )}
               </div>
             </Col>
           </Row>

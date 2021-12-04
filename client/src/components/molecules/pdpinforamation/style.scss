@@ -1,11 +1,5 @@
 @import '~styles/globals';
 
-@function get-vw($pixel) {
-  $vw: ($pixel / 1400) * 100;
-
-  @return $vw * 1vw;
-}
-
 .Pdp-content {
   width: 100%;
   // margin: 0 auto;
@@ -41,6 +35,7 @@
 
     @media (max-width: 768px) {
       font-size: 3.2vw;
+      font-weight: 700;
     }
   }
 
@@ -90,7 +85,7 @@
     letter-spacing: -0.015em;
 
     @media screen and (max-width: 768px) {
-      font-size: 3.2vw;
+      font-size: 14px;
     }
   }
 
@@ -99,6 +94,7 @@
 
     @media screen and (max-width: 768px) {
       margin-bottom: 7.73vw !important;
+      font-weight: 700;
     }
   }
 
