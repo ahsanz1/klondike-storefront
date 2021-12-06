@@ -1,5 +1,4 @@
-/* eslint-disable indent */
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
 import PropTypes from 'prop-types'
 import './style.scss'
@@ -16,7 +15,7 @@ const CheckoutSuccess = () => {
     setCreditLimit,
     setPersonalInfo,
   } = useContext(AppContext)
-  const [poNumber] = useState('R3G 2T3')
+  // const [poNumber] = useState('R3G 2T3')
   if (Object.keys(checkoutData || {}).length === 0) {
     navigate('/')
   }
@@ -38,8 +37,7 @@ const CheckoutSuccess = () => {
     city: 'Winnipeg',
     state: 'MB',
     country: 'Canada',
-    zipCode: poNumber,
-    // zipCode: 'R3G 2T3',
+    zipCode: checkoutData?.poNumber,
     kind: 'shipping',
     name: {
       first: personalInfo?.firstName,
@@ -129,20 +127,20 @@ const CheckoutSuccess = () => {
               <div className="shipping-address">
                 {checkoutData &&
                 Object.keys(checkoutData?.selectedLocation || {}).length ? (
-                  <span>
-                    <p>{`${checkoutData?.selectedLocation?.address?.street1},`}</p>
-                    <p>{`${checkoutData?.selectedLocation?.address?.city}, ${checkoutData?.selectedLocation?.address?.state} ${checkoutData?.selectedLocation?.address?.zipCode}`}</p>
-                    <p>{`${checkoutData?.selectedLocation?.address?.phone
-                      ?.number || ''}`}</p>
-                  </span>
-                ) : (
-                  <span>
-                    <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
-                    <p>{`${address?.street1},`}</p>
-                    <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
-                    <p>{`${address?.phone?.number}`}</p>
-                  </span>
-                )}
+                    <span>
+                      <p>{`${checkoutData?.selectedLocation?.address?.street1},`}</p>
+                      <p>{`${checkoutData?.selectedLocation?.address?.city}, ${checkoutData?.selectedLocation?.address?.state} ${checkoutData?.selectedLocation?.address?.zipCode}`}</p>
+                      <p>{`${checkoutData?.selectedLocation?.address?.phone
+                        ?.number || ''}`}</p>
+                    </span>
+                  ) : (
+                    <span>
+                      <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
+                      <p>{`${address?.street1},`}</p>
+                      <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
+                      <p>{`${address?.phone?.number}`}</p>
+                    </span>
+                  )}
               </div>
             </Col>
           </Row>

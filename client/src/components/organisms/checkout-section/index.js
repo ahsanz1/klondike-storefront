@@ -291,6 +291,7 @@ const Checkoutsection = () => {
             shipMethodCost
           : parseFloat(shipToResponse?.data?.totalAmount?.amount),
         selectedLocation: selectedLocation,
+        poNumber: poNumber,
       })
       setIsLoading(false)
       setGetCartItemsState([])
@@ -725,7 +726,7 @@ const Checkoutsection = () => {
               </div>
               <Divider style={{ border: '1px solid #fff' }} />
               <div className="item">
-                <span className="total-price">Total Amount</span>
+                <span className="total-price">Total</span>
                 {(getCartItems.items || []).length === 0 ? (
                   <span className="total-amount">{`$0.00`}</span>
                 ) : delivery ? (
