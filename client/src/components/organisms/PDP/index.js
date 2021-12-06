@@ -388,7 +388,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
       Number(getCartItems?.totalAmount?.amount) + Number(currentPrice)
     console.log('checklimit', checkLimit)
     if (checkLimit > creditLimit) {
-      error('You are exceeding your credit limit')
+      error('You are exceeding your credit limit!')
       // setAddingToCart(false)
       // return
     }

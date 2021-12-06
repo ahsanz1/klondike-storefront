@@ -427,10 +427,11 @@ const Checkoutsection = () => {
         visible={isModalVisible}
         // onOk={handleOk}
         // centered
+        className="locations-modal"
         onCancel={handleCancel}
         bodyStyle={{
           background: 'white',
-          padding: 10,
+          padding: 15,
           height: '50vh',
           overflowY: 'scroll',
         }}
@@ -447,7 +448,7 @@ const Checkoutsection = () => {
                 className="list-item"
               >
                 <List.Item.Meta
-                  title={item.name}
+                  title={item?.name}
                   description={
                     <p>
                       {`${item?.address?.street1},`}
