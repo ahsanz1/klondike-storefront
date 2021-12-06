@@ -155,7 +155,7 @@
     @media (max-width: 768px) {
       // width: 219px;
       display: flex;
-      padding-top: 18px;
+      padding-top: 4.8vw;
       // margin-left: 23px;
       // margin-left: -29px;
 
@@ -173,20 +173,27 @@
     margin-left: 20px;
 
     .reset-button {
+      height: 4.4vw;
       margin-left: 20px;
-      padding: 5px;
+      padding-right: 1.05vw;
+      padding-left: 1.05vw;
+      // padding: 5px;
       border: none;
-      border-radius: 5px;
+      border-radius: 1.11vw;
       background: #f1a900;
-      color: #fff;
+      // color: #fff;
       font-weight: bold;
 
       @media (max-width: 768px) {
         position: relative;
-        top: 12px;
-        right: 10px;
+        top: 3.46vw;
+        right: 2.66vw;
         align-self: center;
-        margin-left: 6.66vw;
+        height: 64px;
+        margin-left: 5.5vw;
+        padding-right: 2.66vw;
+        padding-left: 2.66vw;
+        border-radius: 4.26vw;
       }
 
       @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -194,12 +201,16 @@
         top: -6px;
         right: 40px;
         align-self: center;
+        width: 72px;
         margin-left: 6.66vw;
+        padding-right: 15px;
+        padding-left: 15px;
+        border-radius: 16px;
       }
     }
 
     .img-icon {
-      width: 4.7vw;
+      // width: 4.7vw;
       height: 4.4vw;
       margin: -2px;
       object-fit: cover;
