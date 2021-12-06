@@ -8,7 +8,7 @@
   .bannercontetwraper {
     position: absolute;
     top: 25%;
-    width: 35%;
+    //width: 35%;
     margin-left: 8.3vw;
 
     @media (max-width: 768px) {
@@ -26,4 +26,8 @@
 
 .price-sheet {
   position: relative;
+}
+
+.homepage-banner-content-wrapper {
+  max-width: 750px;
 }
