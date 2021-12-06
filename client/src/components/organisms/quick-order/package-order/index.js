@@ -48,7 +48,7 @@ const PackageOrder = ({
           Part Number<Label className="quick-order-asterisk"> *</Label>
         </p>
         <p>
-          Case Qty<Label className="quick-order-asterisk"> *</Label>
+          Qty<Label className="quick-order-asterisk"> *</Label>
         </p>
       </div>
       <form onSubmit={e => handleSubmit(e)}>
@@ -63,7 +63,7 @@ const PackageOrder = ({
                     name="partnumber"
                     className="part-number"
                     placeholder="Enter Part Number"
-                    autoComplete="off"
+                    // autoComplete="off"
                     value={x.partnumber}
                     onChange={e => handleChangePackage(e, i)}
                   />
@@ -97,7 +97,7 @@ const PackageOrder = ({
                   {qtyerror && (
                     <span className="packageqty-error">Please Entre QTY</span>
                   )}
-                  {validation && inputList[0].quantity === '' && (
+                  {!qtyerror && validation && inputList[0].quantity === '' && (
                     <div style={{ color: 'red' }} className="validation">
                       Please Enter Quantity
                     </div>

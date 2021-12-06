@@ -8,7 +8,7 @@ exports.default = Types.Component({
   displaying text as paragraph or dialogue`,
 
   attributes: {
-    distributionheading: Types.String({ label: 'Text' }),
+    distributionheading: Types.RichText({ label: 'Text' }),
     LubricantContent: Types.Array({
       label: 'Product List',
       children: Types.Shape({

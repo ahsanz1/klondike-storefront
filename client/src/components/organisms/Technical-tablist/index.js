@@ -4,6 +4,8 @@ import Label from 'components/atoms/label'
 import './style.scss'
 import { categoriesXPM } from './data'
 import Link from 'components/atoms/link'
+import SubpageData from 'components/molecules/sub-pagedata'
+import useWindowSize from 'libs/custom-hooks/useWindowSize'
 
 const Techtabllist = ({
   categories,
@@ -14,7 +16,10 @@ const Techtabllist = ({
   className,
   subItemName,
   sidebarSubitem,
+  datasubpage,
 }) => {
+  const [size] = useWindowSize()
+
   return (
     <div className={`categoryItem-tab trt ${className}`}>
       {categoriesXPM &&
@@ -37,37 +42,49 @@ const Techtabllist = ({
                   {item.categoryName}
                 </Link>
                 {item.subItem && itemName === item.categoryName && (
-                  <div className="subItem">
-                    {item.subItemHeading && (
-                      <Label className="subitems-heading">
-                        {item.subItemHeading}
-                      </Label>
+                  <>
+                    <div className="subItem">
+                      {item.subItemHeading && (
+                        <Label className="subitems-heading">
+                          {item.subItemHeading}
+                        </Label>
+                      )}
+                      {item.subItem &&
+                        item.subItem.hits &&
+                        item.subItem.hits.map((item, index) => {
+                          console.log('item-1', item)
+                          return (
+                            <div key={index}>
+                              <Link
+                                className={
+                                  item.title === subItemName && 'active-product'
+                                }
+                                onClick={() => sidebarSubitem(item.title)}
+                                to={
+                                  item.links && item.links.length > 0
+                                    ? item.links
+                                    : '/tech-resources/tech-news-blog'
+                                }
+                              >
+                                <ul>
+                                  <li>{item.title}</li>
+                                </ul>
+                              </Link>
+                            </div>
+                          )
+                        })}
+                    </div>
+                    {size < 768 ? (
+                      <div className="sub-pages__subpages oem-sub_category">
+                        {datasubpage.length > 0 &&
+                          datasubpage.map((down, i) => (
+                            <SubpageData {...down} key={i} />
+                          ))}
+                      </div>
+                    ) : (
+                      ''
                     )}
-                    {item.subItem &&
-                      item.subItem.hits &&
-                      item.subItem.hits.map((item, index) => {
-                        console.log('item-1', item)
-                        return (
-                          <div key={index}>
-                            <Link
-                              className={
-                                item.title === subItemName && 'active-product'
-                              }
-                              onClick={() => sidebarSubitem(item.title)}
-                              to={
-                                item.links && item.links.length > 0
-                                  ? item.links
-                                  : '/tech-resources/tech-news-blog'
-                              }
-                            >
-                              <ul>
-                                <li>{item.title}</li>
-                              </ul>
-                            </Link>
-                          </div>
-                        )
-                      })}
-                  </div>
+                  </>
                 )}
               </Label>
             )}
@@ -96,5 +113,6 @@ Techtabllist.propTypes = {
   className: PropTypes.string,
   subItemName: PropTypes.string,
   sidebarSubitem: PropTypes.func,
+  datasubpage: PropTypes.array,
 }
 export default Techtabllist

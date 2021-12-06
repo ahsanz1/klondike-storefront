@@ -145,6 +145,7 @@ const Footer = ({
                       <FooterLinks
                         heading={fLinks.heading}
                         footerAccount={fLinks.footerAccount}
+                        headingLinks={fLinks.headingLinks}
                         links={fLinks.links}
                       />
 

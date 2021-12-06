@@ -66,11 +66,11 @@ const Oats = () => {
       // }
       setOtsdata(results)
       setReset(true)
-      let yearsArray = [{ label: '' }]
-      let seriesArray = [{ label: '' }]
-      let familyArray = [{ label: '' }]
-      let manufacturerArray = [{ label: '' }]
-      let arrayFamily = [{ label: '' }]
+      let yearsArray = [{ label: ' ' }]
+      let seriesArray = [{ label: ' ' }]
+      let familyArray = [{ label: ' ' }]
+      let manufacturerArray = [{ label: ' ' }]
+      let arrayFamily = [{ label: ' ' }]
 
       response &&
         Object.entries(
@@ -174,6 +174,7 @@ const Oats = () => {
       setFa()
       setFamilyQuery('')
     }
+    query.length <= 0 && setNotFound(true)
   }
   const manuFunc = value => {
     setOtsdata([])
@@ -226,6 +227,7 @@ const Oats = () => {
     setFamilyQuery('')
     setFa()
     setQuery('')
+    setfamilygroupquery([])
     console.log('empty', otsdata)
   }
   return (

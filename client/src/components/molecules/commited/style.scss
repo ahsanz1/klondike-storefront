@@ -76,7 +76,7 @@
       border: 0.1vw solid #f2a900;
       border-radius: 0.3vw;
       background: #f2a900;
-      color: #ff8200;
+      color: #fff;
       font-family: $Raleway;
       font-size: 1.1vw;
       font-weight: bold;
@@ -102,6 +102,10 @@
         font-weight: bold;
         line-height: 24px;
         text-transform: none;
+
+        &:lang(fr) {
+          width: 48.33vw;
+        }
       }
 
       // @media screen and (max-width: 500px) {
