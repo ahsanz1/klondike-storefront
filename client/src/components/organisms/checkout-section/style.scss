@@ -536,3 +536,7 @@ $vw-viewport: 1440;
   align-items: center;
   justify-content: space-between;
 }
+
+.locations-modal {
+  width: get-vw(325px) !important;
+}
