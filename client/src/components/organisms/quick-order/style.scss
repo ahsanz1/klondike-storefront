@@ -315,10 +315,14 @@
 
     :first-child {
       display: flex;
-      padding-left: 0.3vw;
+      // padding-left: 0.3vw;
 
       @media screen and(max-width: 768px) {
         padding-left: 0.9vw;
+
+        &:lang(fr) {
+          padding-left: 2.3vw;
+        }
       }
 
       .quick-order-asterisk {
@@ -333,7 +337,7 @@
 
     :nth-child(2) {
       display: flex;
-      padding-left: 15px;
+      padding-left: 25px;
 
       .quick-order-asterisk {
         padding-left: 0.6vw;
