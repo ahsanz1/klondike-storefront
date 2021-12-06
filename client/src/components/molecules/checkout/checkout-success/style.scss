@@ -162,13 +162,14 @@
     }
 
     .order-number {
-      font-size: 0.9vw;
+      font-size: get-vw(13px);
+      font-weight: bold;
       text-align: left;
+      text-transform: uppercase;
 
       @media (max-width: 768px) {
         padding-bottom: 8.53vw;
-        font-size: 3.73vw;
-        font-weight: bold;
+        font-size: 14px;
       }
     }
 
@@ -181,31 +182,33 @@
       @media (max-width: 768px) {
         padding-bottom: 8.53vw;
         padding-left: 5.33vw;
-        font-size: 4.26vw;
+        font-size: 16px;
         font-weight: bold;
       }
     }
 
     .bold {
       font-size: 0.9vw;
+      font-weight: bold;
       text-align: left;
+      text-transform: uppercase;
 
       @media (max-width: 768px) {
         padding-bottom: 2.66vw;
-        font-size: 3.73vw;
-        font-weight: bold;
+        font-size: 14px;
       }
     }
 
     .bold-two {
       padding-left: 1.18vw;
       font-size: 1.11;
+      font-weight: bold;
+      text-transform: capitalize;
 
       @media (max-width: 768px) {
         padding-bottom: 2.66vw;
         padding-left: 6.66vw;
-        font-size: 4.26vw;
-        font-weight: bold;
+        font-size: 16px;
       }
     }
 
@@ -220,6 +223,7 @@
     }
 
     .para {
+      width: 70%;
       font-size: get-vw(14px);
 
       @media (max-width: 768px) {
