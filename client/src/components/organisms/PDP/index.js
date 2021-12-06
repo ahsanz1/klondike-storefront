@@ -638,8 +638,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       <div
                                         className={
                                           !packagedOrder
-                                            ? 'cell color-disabled'
-                                            : 'cell'
+                                            ? 'cell color-disabled text-center'
+                                            : 'cell text-center'
                                         }
                                       >
                                         {
@@ -652,8 +652,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       <div
                                         className={
                                           !packagedOrder
-                                            ? 'cell color-disabled'
-                                            : 'cell'
+                                            ? 'cell color-disabled text-center'
+                                            : 'cell text-center'
                                         }
                                       >
                                         {item?.mappedAttributes['Part Number']}
@@ -661,8 +661,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       <div
                                         className={
                                           !packagedOrder
-                                            ? 'cell color-disabled'
-                                            : 'cell'
+                                            ? 'cell color-disabled text-center'
+                                            : 'cell text-center'
                                         }
                                       >
                                         {isLoggedIn &&
@@ -834,8 +834,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                           <div
                                             className={
                                               packagedOrder
-                                                ? 'cell color-disabled'
-                                                : 'cell'
+                                                ? 'cell color-disabled text-center'
+                                                : 'cell text-center'
                                             }
                                           >
                                             {'$' +
@@ -846,8 +846,8 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                           <div
                                             className={
                                               packagedOrder
-                                                ? 'cell color-disabled'
-                                                : 'cell'
+                                                ? 'cell color-disabled text-center'
+                                                : 'cell text-center'
                                             }
                                           >
                                             {
