@@ -16,8 +16,10 @@ const PlpTabList = ({
   handleClose,
   categoryName,
   subItemHandler,
+  sku,
 }) => {
-  const [product, setProduct] = useState(itemName)
+  console.log('itemName', itemName)
+  const [product, setProduct] = useState(sku)
   console.log('props plp tab:', subItem)
   const productClickHandler = productName => {
     console.log({ productName })
@@ -104,6 +106,7 @@ PlpTabList.propTypes = {
   handleClose: PropTypes.func,
   categoryName: PropTypes.string,
   subItemHandler: PropTypes.func,
+  sku: PropTypes.string,
 }
 
 export default PlpTabList

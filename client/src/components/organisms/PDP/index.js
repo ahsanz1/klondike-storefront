@@ -468,6 +468,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               clickCategoryHandler={clickCategoryHandler}
               subItem={subItem}
               subItemClickHandler={subItemClickHandler}
+              sku={itemSku}
             />
           </Col>
           {isPdpLoading ? (
@@ -496,7 +497,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
               className="product-details"
             >
               {' '}
-              <h1 style={{ color: 'gray' }}>
+              <h1 style={{ color: 'gray', margin: 'auto' }}>
                 No Attributes Found for this Item
               </h1>
             </Col>
@@ -1018,6 +1019,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         getCartItems={getCartItems}
+        itemSku={itemSku}
       />
     </div>
   )

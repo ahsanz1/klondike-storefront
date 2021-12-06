@@ -45,6 +45,7 @@ const Oats = () => {
 
   const [test, setTest] = useState(false)
   const getproducts = () => {
+    setYousearch(query)
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query ||
         yousearch}&familygroup=${familygroups}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
@@ -217,6 +218,7 @@ const Oats = () => {
     }
   }
   useEffect(() => {
+    console.log('manuquery', manuquery)
     getproducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [manuquery, familyquery, seriesQuery, yearQuery, yousearch])
@@ -234,13 +236,16 @@ const Oats = () => {
     setQuery('')
     // setfamilygroupquery([])
     setFg(null)
+    setYousearch('')
     console.log('empty', otsdata)
   }
   return (
     <>
       <div
         className={`${
-          (otsdata.equipment || []).length || !reset ? 'bg-search' : 'img'
+          (otsdata?.equipment || [])?.length || !reset || yousearch
+            ? 'bg-search'
+            : 'img'
         }`}
       >
         <div className="oats">
@@ -278,7 +283,8 @@ const Oats = () => {
               </div>
             </div>
           </div>
-          {otsdata && otsdata.equipment && otsdata.equipment.length > 0 && (
+          {console.log('otsdata', otsdata, yousearch)}
+          {otsdata && otsdata.equipment && yousearch && (
             <div className="dropdown-wrapper">
               <Dropdown
                 onChange={yearFunc}
@@ -350,13 +356,13 @@ const Oats = () => {
                 : ''}
               {notFound && (
                 <Label className="not-found">
-                  Sorry, no results matched your search
+                  Sorry, no results matched your search!
                 </Label>
               )}
 
-              {test && query !== '' && (
-                <Label className="not-found">
-                  Sorry, no results matched your search
+              {test && query && yousearch !== '' && (
+                <Label className="not-found-second">
+                  Sorry, no results matched your search!
                 </Label>
               )}
             </div>
