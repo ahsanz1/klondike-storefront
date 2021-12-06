@@ -8,7 +8,7 @@ const HomeBanner = ({ bannerheading, bannerbutton }) => {
   return (
     <>
       <div className="content-wrapper">
-        <h1>{bannerheading}</h1>
+        <h1 className="banner-heading">{bannerheading}</h1>
         {bannerbutton && (
           <Button>
             <Link to="/contact-us">{bannerbutton}</Link>

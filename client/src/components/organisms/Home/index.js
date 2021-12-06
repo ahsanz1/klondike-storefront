@@ -23,7 +23,7 @@ const Home = ({
     <>
       <div className="heroimgwrapper">
         <WebpagesHeroImages {...heroBanner} />
-        <div className="bannercontetwraper">
+        <div className="bannercontetwraper homepage-banner-content-wrapper">
           <HomeBanner {...bannercontent} />
         </div>
       </div>
