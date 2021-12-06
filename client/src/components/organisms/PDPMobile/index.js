@@ -53,6 +53,7 @@ const PDPMobile = ({
   techInfoMobile,
   modalVisible,
   setModalVisible,
+  itemSku,
 }) => {
   const [size] = useWindowSize()
   console.log('responsive', pdpdata, techInfoMobile)
@@ -122,6 +123,7 @@ const PDPMobile = ({
                 subItem={subItem}
                 subItemClickHandler={subItemClickHandler}
                 handleClose={handleClose}
+                sku={itemSku}
               />
             </div>
           )}
@@ -541,5 +543,6 @@ PDPMobile.propTypes = {
   bulkItemsCart: PropTypes.bool,
   modalVisible: PropTypes.bool,
   setModalVisible: PropTypes.func,
+  itemSku: PropTypes.string,
 }
 export default PDPMobile
