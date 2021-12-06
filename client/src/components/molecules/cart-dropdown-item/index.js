@@ -92,15 +92,15 @@ const CartDropdownItem = (cartData, key) => {
               <Label className="item-title notranslate">{cart?.title}</Label>
               <div className="product-detail-info-cart">
                 <Label className="item-info">
-                  SIZE: <Label className="item-subInfo">{cart?.size}</Label>
+                  SIZE <Label className="item-subInfo">{cart?.size}</Label>
                 </Label>
 
                 <Label className="item-info">
-                  {cart?.percase ? 'PER CASE:' : ''}
+                  {cart?.percase ? 'PER CASE' : ''}
                   <Label className="item-subInfo">{cart?.percase}</Label>
                 </Label>
                 <Label className="item-info">
-                  PART NUM:{' '}
+                  PART NUM{' '}
                   <Label className="item-subInfo">{cart?.partnumber}</Label>
                 </Label>
               </div>
@@ -125,7 +125,7 @@ const CartDropdownItem = (cartData, key) => {
               </Label>
             </div>
             <div className="quantity-box">
-              <Label className="product-quantity-mobile">QTY:</Label>
+              <Label className="product-quantity-mobile">QTY</Label>
               <InputNumber
                 className="product-quantity-spinner"
                 min={1}
@@ -165,7 +165,7 @@ const CartDropdownItem = (cartData, key) => {
         </div>
         <div className="quantity-block">
           <div className="quantity-box">
-            <Label className="product-quantity-mobile">QTY:</Label>
+            <Label className="product-quantity-mobile">QTY</Label>
             <InputNumber
               className="product-quantity-spinner desktop"
               min={1}

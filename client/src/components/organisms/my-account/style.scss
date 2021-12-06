@@ -598,7 +598,7 @@
     }
 
     .ship-address-heading {
-      font-size: 3.2vw;
+      font-size: get-vw(12px);
       font-weight: 700;
       text-transform: uppercase;
     }

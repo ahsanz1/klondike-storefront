@@ -48,8 +48,17 @@ const PromoRail = ({
   //     '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
   //   script.async = true
 
-  //   document.body.appendChild(script)
+  // document.body.appendChild(script)
+
+  // window.onload = () => {
+  //   var a = document.getElementsByClassName('goog-te-combo')[0]
+  //   a.options[0].remove()
+
+  //   toggleUI()
+  //   document.getElementsByClassName('goog-te-combo').onChange = toggleUI()
+  // }
   // }, [])
+
   return (
     <div className={`promo-rail ${showPromo}`}>
       <div className="promo-rail__page-width">

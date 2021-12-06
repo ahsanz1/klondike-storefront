@@ -184,12 +184,16 @@ const Navbar = ({
           </Link>
           {userLoginInfo && userLoginInfo.email && (
             <Button iconOnly className="cart-button">
-              <div className="cart-amount">
-                $
-                {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
-                  2,
-                )}
-              </div>
+              {getCartItems?.totalAmount?.amount > 0 ? (
+                <div className="cart-amount">
+                  $
+                  {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
+                    2,
+                  )}
+                </div>
+              ) : (
+                ''
+              )}
               <NavbarcartIcon
                 linkCartPageIcon={location.pathname === '/cart' && true}
                 cartIcon={cartIcon}
