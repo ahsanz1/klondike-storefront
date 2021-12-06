@@ -397,27 +397,31 @@ const QuickOrder = () => {
             View Price List
           </Link>
         </div>
-        <div className="checkout">
-          <div className="order-price">
-            <Label className="sub-total">Order Total</Label>
-            <Label className="total">
-              <span>
-                $
-                {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
-                  2,
-                )}
-              </span>
-            </Label>
-          </div>
-          <div className="checkout-links">
-            <Link className="checkout-btn" to="/Checkoutsection">
-              PROCEED TO CHECK OUT
-            </Link>
-            <div className="view-btn" to="/cart">
-              <Button onClick={showModal}>VIEW CART </Button>
+        {getCartItems?.totalAmount?.amount > 0 ? (
+          <div className="checkout">
+            <div className="order-price">
+              <Label className="sub-total">Order Total</Label>
+              <Label className="total">
+                <span>
+                  $
+                  {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
+                    2,
+                  )}
+                </span>
+              </Label>
+            </div>
+            <div className="checkout-links">
+              <Link className="checkout-btn" to="/Checkoutsection">
+                PROCEED TO CHECK OUT
+              </Link>
+              <div className="view-btn" to="/cart">
+                <Button onClick={showModal}>VIEW CART </Button>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          ''
+        )}
       </div>
     )
   }

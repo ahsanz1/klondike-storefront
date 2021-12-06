@@ -48,6 +48,7 @@ const CartPopUP = ({ loading }) => {
 
         <div className="cart-pop-Up">
           <div className="cart-message-and-image">
+            <Label className="pop-up-text">Added to cart</Label>
             {pdpProductData?.images?.map((img, i) => (
               <Image
                 src={img?.source[0]?.url}
@@ -55,7 +56,6 @@ const CartPopUP = ({ loading }) => {
                 className="pop-up-image"
               />
             ))}
-            <Label className="pop-up-text">Added to cart</Label>
           </div>
           <div className="subtotal-and-free-delivery-info">
             <div className="subtotal-section">

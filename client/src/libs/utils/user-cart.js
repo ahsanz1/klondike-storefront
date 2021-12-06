@@ -18,7 +18,7 @@ export const setUserCart = async () => {
     let data = res.data
     let itemsArr = []
 
-    data['hasPackaged'] = false
+    data['hasPackaged'] = true
     data['totalPackagedOrderLitres'] = 0
 
     await data.items.map((item, i) => {
@@ -29,7 +29,7 @@ export const setUserCart = async () => {
 
     await data.items.map(async (item, i) => {
       let obj = {
-        isPackaged: false,
+        isPackaged: true,
       }
 
       let attributes = null
