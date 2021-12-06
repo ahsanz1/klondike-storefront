@@ -43,7 +43,9 @@ const CartDropdown = () => {
                   <Label className="cart-text">CART</Label>
                 </div>
                 <div className="cart-dropdown-header-item-no">
-                  {getCartItems?.items.length} Items
+                  {`${getCartItems?.items.length} ${
+                    getCartItems?.items.length < 2 ? 'Item' : 'Items'
+                  }`}
                 </div>
               </div>
             </div>
