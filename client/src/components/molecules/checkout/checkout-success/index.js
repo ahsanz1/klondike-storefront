@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
 import PropTypes from 'prop-types'
 import './style.scss'
@@ -15,7 +15,7 @@ const CheckoutSuccess = () => {
     setCreditLimit,
     setPersonalInfo,
   } = useContext(AppContext)
-  const [poNumber] = useState('R3G 2T3')
+  // const [poNumber] = useState('R3G 2T3')
   if (Object.keys(checkoutData || {}).length === 0) {
     navigate('/')
   }
@@ -37,8 +37,7 @@ const CheckoutSuccess = () => {
     city: 'Winnipeg',
     state: 'MB',
     country: 'Canada',
-    zipCode: poNumber,
-    // zipCode: 'R3G 2T3',
+    zipCode: checkoutData?.poNumber,
     kind: 'shipping',
     name: {
       first: personalInfo?.firstName,
