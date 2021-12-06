@@ -2,8 +2,7 @@
 import React, { useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { AppContext } from 'libs/context/index'
-import { saveItem, getItem } from 'libs/services/localStorage'
-import { fetchCart } from 'libs/services/cart-service'
+import { getItem } from 'libs/services/localStorage'
 import { useLocation, useNavigate } from '@reach/router'
 import { init } from 'libs/utils/gtm'
 import Header from 'components/organisms/header'
@@ -15,14 +14,14 @@ import './styles.scss'
 const AppShell = ({ children = null }) => {
   const location = useLocation()
   const navigate = useNavigate()
-  const { setLocalCart, user } = useContext(AppContext)
+  const { user } = useContext(AppContext)
 
   useEffect(() => {
     const fetchData = async () => {
-      const getLocalCart = await JSON.parse(window.localStorage.getItem('CART'))
-      let getfetch = getLocalCart && (await fetchCart(getLocalCart._id))
-      getfetch && saveItem('CART', JSON.stringify(getfetch.cartResponse.data))
-      getfetch && setLocalCart(getfetch.processCartResponse)
+      // const getLocalCart = await JSON.parse(window.localStorage.getItem('CART'))
+      // let getfetch = getLocalCart && (await fetchCart(getLocalCart._id))
+      // getfetch && saveItem('CART', JSON.stringify(getfetch.cartResponse.data))
+      // getfetch && setLocalCart(getfetch.processCartResponse)
     }
     fetchData()
   }, [])

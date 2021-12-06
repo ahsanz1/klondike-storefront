@@ -51,8 +51,13 @@ const CheckoutSuccess = () => {
   }
 
   const getDate = () => {
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }
     var today = new Date()
-    var transformedDate = today.toDateString()
+    var transformedDate = today.toLocaleDateString('en-US', options)
     return transformedDate
   }
 
@@ -97,8 +102,9 @@ const CheckoutSuccess = () => {
                   className="para"
                   style={{ marginTop: '5vw', textAlign: 'left' }}
                 >
-                  If you need to make changes to your order. please email
+                  If you need to make changes to your order, please email
                   clientcare@klondikelubricants.com or call 1-877-293-4691
+                  Immediately.
                 </p>
               ) : (
                 <>
