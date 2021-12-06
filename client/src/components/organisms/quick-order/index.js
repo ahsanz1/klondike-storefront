@@ -457,7 +457,7 @@ const QuickOrder = () => {
               </Radio.Group>
             </div>
             {OrderType()}
-            {getCartItems && getCartItems?.items.length > 0 && (
+            {getCartItems && getCartItems?.items?.length > 0 && (
               <div className="wrapper itemList">
                 <span className="list-items-catagory">
                   <Label className="catagory-label">Item</Label>
@@ -471,7 +471,8 @@ const QuickOrder = () => {
             {getCartItems && (
               <div className="quickorder-wrapper">
                 {getCartItems &&
-                  getCartItems.items.map((item, i) => {
+                  getCartItems?.items?.length > 0 &&
+                  getCartItems?.items.map((item, i) => {
                     if (item !== undefined) {
                       return size > 768 ? (
                         <div key={i} className="orders">
@@ -560,9 +561,8 @@ const QuickOrder = () => {
                                   className="fas fa-check"
                                   aria-hidden="true"
                                 ></i>{' '}
-                                {`You added ${getCartItems &&
-                                  getCartItems.items
-                                    .length}  new item to your cart`}
+                                You added {getCartItems?.items?.length} new item
+                                to your cart
                               </Label>
                             </div>
                             <div className="quick-order-mobile">
