@@ -243,7 +243,7 @@ const Oats = () => {
             <input
               onChange={filterData}
               className="input_model"
-              placeholder="ENTER CODE  & MODEL"
+              placeholder="ENTER CODE &amp; MODEL"
               value={query}
               onKeyPress={handleKeyPress}
               // eslint-disable-next-line jsx-a11y/no-autofocus
