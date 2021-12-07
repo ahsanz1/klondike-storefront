@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from 'libs/context'
 import PropTypes from 'prop-types'
@@ -79,6 +80,10 @@ const CheckoutSuccess = () => {
           </Row>
           <Row justify="center" align="center">
             <Col xs={{ span: 24 }} lg={{ span: 12 }} className="columns">
+              <span className="order-detail">
+                Order Detail:
+                <span className="order-receipt">Print receipt</span>
+              </span>
               <span className="order-number">
                 Order Number:
                 <span className="order-number-two">
@@ -127,20 +132,20 @@ const CheckoutSuccess = () => {
               <div className="shipping-address">
                 {checkoutData &&
                 Object.keys(checkoutData?.selectedLocation || {}).length ? (
-                    <span>
-                      <p>{`${checkoutData?.selectedLocation?.address?.street1},`}</p>
-                      <p>{`${checkoutData?.selectedLocation?.address?.city}, ${checkoutData?.selectedLocation?.address?.state} ${checkoutData?.selectedLocation?.address?.zipCode}`}</p>
-                      <p>{`${checkoutData?.selectedLocation?.address?.phone
-                        ?.number || ''}`}</p>
-                    </span>
-                  ) : (
-                    <span>
-                      <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
-                      <p>{`${address?.street1},`}</p>
-                      <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
-                      <p>{`${address?.phone?.number}`}</p>
-                    </span>
-                  )}
+                  <span>
+                    <p>{`${checkoutData?.selectedLocation?.address?.street1},`}</p>
+                    <p>{`${checkoutData?.selectedLocation?.address?.city}, ${checkoutData?.selectedLocation?.address?.state} ${checkoutData?.selectedLocation?.address?.zipCode}`}</p>
+                    <p>{`${checkoutData?.selectedLocation?.address?.phone
+                      ?.number || ''}`}</p>
+                  </span>
+                ) : (
+                  <span>
+                    <p>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</p>
+                    <p>{`${address?.street1},`}</p>
+                    <p>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</p>
+                    <p>{`${address?.phone?.number}`}</p>
+                  </span>
+                )}
               </div>
             </Col>
           </Row>
