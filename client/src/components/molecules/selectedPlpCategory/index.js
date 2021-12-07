@@ -9,7 +9,6 @@ const SelectedPlpCategory = ({ name = '', desc = '' }) => {
   const [readMore, setReadMore] = useState(size[0] < 768 ? 200 : desc.length)
   const [string, setString] = useState('')
   const truncate = (str, maxlength) => {
-    console.log('check str:', str, maxlength)
     str.length > maxlength && size[0] < 768
       ? setString(str.slice(0, maxlength - 1) + '…')
       : setString(str)
