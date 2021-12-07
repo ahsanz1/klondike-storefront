@@ -584,7 +584,7 @@ const QuickOrder = () => {
                                   </p>
                                   <p>
                                     {item?.percase ? 'PER CASE' : ''}
-                                    <span className="quick-item-description">
+                                    <span className="span">
                                       {item?.percase}
                                     </span>
                                   </p>

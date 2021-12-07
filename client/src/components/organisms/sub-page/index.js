@@ -19,8 +19,8 @@ const SubItem = ({ ActiveSubItem, datasubpage }) => {
       )}
       {size > 768 ? (
         <div className="sub-pages__subpages">
-          {datasubpage.length > 0 &&
-            datasubpage.map((down, i) => <SubpageData {...down} key={i} />)}
+          {datasubpage?.length > 0 &&
+            datasubpage?.map((down, i) => <SubpageData {...down} key={i} />)}
         </div>
       ) : (
         ''
