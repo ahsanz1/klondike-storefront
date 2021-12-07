@@ -99,7 +99,7 @@
       outline: none;
     }
 
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    /* @media screen and (min-width: 768px) and (max-width: 1024px) {
       flex-direction: column;
       justify-content: center;
       width: 82.6vw;
@@ -114,7 +114,7 @@
       font-size: 3.26vw;
       font-style: normal;
       font-weight: bold;
-    }
+    } */
   }
 
   .btn-search {
@@ -155,7 +155,7 @@
     @media (max-width: 768px) {
       // width: 219px;
       display: flex;
-      padding-top: 18px;
+      padding-top: 4.8vw;
       // margin-left: 23px;
       // margin-left: -29px;
 
@@ -168,52 +168,63 @@
   .search_bar {
     display: flex;
     align-items: center;
-    width: 72px;
+    width: 5vw;
     height: 4.4vw;
     margin-left: 20px;
 
     .reset-button {
+      height: 4.4vw;
       margin-left: 20px;
-      padding: 5px;
+      padding-right: 1.05vw;
+      padding-left: 1.05vw;
+      // padding: 5px;
       border: none;
-      border-radius: 5px;
+      border-radius: 1.11vw;
       background: #f1a900;
-      color: #fff;
+      // color: #fff;
       font-weight: bold;
 
       @media (max-width: 768px) {
         position: relative;
-        top: 12px;
-        right: 10px;
+        top: 3.46vw;
+        right: 2.66vw;
         align-self: center;
-        margin-left: 6.66vw;
+        height: 64px;
+        margin-left: 5.5vw;
+        padding-right: 2.66vw;
+        padding-left: 2.66vw;
+        border-radius: 4.26vw;
       }
 
       @media screen and (min-width: 768px) and (max-width: 1024px) {
         position: relative;
-        top: -6px;
+        // top: -6px;
         right: 40px;
         align-self: center;
+        width: 72px;
         margin-left: 6.66vw;
+        padding-right: 1.041vw;
+        padding-left: 1.041vw;
+        border-radius: 1.11vw;
       }
     }
 
     .img-icon {
-      width: 4.7vw;
+      // width: 4.7vw;
       height: 4.4vw;
       margin: -2px;
       object-fit: cover;
 
-      @media (max-width: 768px) {
-        width: 20vw;
+      @media (max-width: 767px) {
+        //  width: 20vw;
         height: 64px;
         // height: 100%;
         object-fit: revert;
       }
 
       @media screen and (min-width: 768px) and (max-width: 1024px) {
-        width: 72px;
-        height: 64px;
+        width: 5vw;
+        height: 4.44vw;
         margin: -2px;
         object-fit: cover;
       }
@@ -486,8 +497,18 @@
   }
 
   .not-found {
-    margin-top: 0;
-    margin-left: 23.88vw;
+    margin-top: 1vw;
+    margin-left: 23vw;
+
+    @media (max-width: 768px) {
+      margin-left: 7.73vw;
+    }
+  }
+
+  .not-found-second {
+    margin-top: 1vw;
+    margin-left: 14vw;
+    padding-bottom: 5vw;
 
     @media (max-width: 768px) {
       margin-left: 7.73vw;

@@ -53,6 +53,7 @@ const PDPMobile = ({
   techInfoMobile,
   modalVisible,
   setModalVisible,
+  itemSku,
 }) => {
   const [size] = useWindowSize()
   console.log('responsive', pdpdata, techInfoMobile)
@@ -122,6 +123,7 @@ const PDPMobile = ({
                 subItem={subItem}
                 subItemClickHandler={subItemClickHandler}
                 handleClose={handleClose}
+                sku={itemSku}
               />
             </div>
           )}
@@ -404,9 +406,9 @@ const PDPMobile = ({
                       </div>
                       <div className="oneCellBulk">
                         <span className="head">Price Per Litre</span>
-                        <span className="value">
+                        <span className="value text-center">
                           {item?.price?.base &&
-                            '$' + parseFloat(item?.price?.base)}
+                            '$' + parseFloat(item?.price?.base).toFixed(2)}
                         </span>
                       </div>
                       <div className="oneCellBulk">
@@ -414,7 +416,12 @@ const PDPMobile = ({
                       </div>
                       {isLoggedIn && (
                         <div className="value-qty">
-                          <span className="head">LITRES:</span>
+                          <span
+                            className="head"
+                            style={{ marginRight: '10px' }}
+                          >
+                            LITRES:
+                          </span>
                           <InputNumber
                             min={0}
                             defaultValue={0}
@@ -536,5 +543,6 @@ PDPMobile.propTypes = {
   bulkItemsCart: PropTypes.bool,
   modalVisible: PropTypes.bool,
   setModalVisible: PropTypes.func,
+  itemSku: PropTypes.string,
 }
 export default PDPMobile

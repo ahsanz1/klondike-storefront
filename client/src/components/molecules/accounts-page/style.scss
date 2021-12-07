@@ -35,6 +35,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.39vw;
+    padding-right: 7vw;
   }
 
   .account-image-block {
@@ -192,7 +193,8 @@
   }
 
   .ant-pagination-item {
-    background: #f1a900 !important;
+    border: 1px solid #ffa500 !important;
+    background: #013a4e !important;
     color: #fff !important;
   }
 
@@ -200,8 +202,12 @@
     color: #fff !important;
   }
 
+  .ant-pagination-item-active {
+    background: #f1a200 !important;
+  }
+
   .ant-pagination-item-link {
-    background: #f1a900 !important;
+    background: #ffa500 !important;
     color: #fff !important;
   }
 }

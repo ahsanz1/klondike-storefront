@@ -13,7 +13,7 @@ const Oats = () => {
   const [otsdata, setOtsdata] = useState({})
   const [mu, setMu] = useState()
   const [fa, setFa] = useState()
-  const [fg, setFg] = useState()
+  const [fg, setFg] = useState(null)
   const [se, setSe] = useState()
   const [ya, setYa] = useState()
   let [query, setQuery] = useState('')
@@ -45,6 +45,7 @@ const Oats = () => {
 
   const [test, setTest] = useState(false)
   const getproducts = () => {
+    setYousearch(query)
     const url = [
       `https://klondike-ws-canada.phoenix.earlweb.net/search?&q=${query ||
         yousearch}&familygroup=${familygroups}&manufacturer=${manuquery}&family=${familyquery}&series=${seriesQuery}&year=${yearQuery}&token=LiEoiv0tqygb`,
@@ -70,7 +71,7 @@ const Oats = () => {
       let seriesArray = [{ label: ' ' }]
       let familyArray = [{ label: ' ' }]
       let manufacturerArray = [{ label: ' ' }]
-      let arrayFamily = [{ label: ' ' }]
+      let arrayFamily = [{ label: '' }, { label: 'All', value: '' }]
 
       response &&
         Object.entries(
@@ -199,10 +200,15 @@ const Oats = () => {
     setYa(value)
   }
   const familygroup = value => {
-    let encodeValue = encodeURI(value).replace('&', '%26')
-    console.log('value', encodeValue)
-    setfamilygroup(encodeValue)
-    setFg(value)
+    if (value === 1) {
+      setfamilygroup('')
+      setFg(value)
+    } else {
+      let encodeValue = encodeURI(value).replace('&', '%26')
+      console.log('value', encodeValue)
+      setfamilygroup(encodeValue)
+      setFg(value)
+    }
   }
   const handleKeyPress = event => {
     console.log('event ', event)
@@ -212,6 +218,7 @@ const Oats = () => {
     }
   }
   useEffect(() => {
+    console.log('manuquery', manuquery)
     getproducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [manuquery, familyquery, seriesQuery, yearQuery, yousearch])
@@ -227,14 +234,18 @@ const Oats = () => {
     setFamilyQuery('')
     setFa()
     setQuery('')
-    setfamilygroupquery([])
+    // setfamilygroupquery([])
+    setFg(null)
+    setYousearch('')
     console.log('empty', otsdata)
   }
   return (
     <>
       <div
         className={`${
-          (otsdata.equipment || []).length || !reset ? 'bg-search' : 'img'
+          (otsdata?.equipment || [])?.length || !reset || yousearch
+            ? 'bg-search'
+            : 'img'
         }`}
       >
         <div className="oats">
@@ -243,16 +254,16 @@ const Oats = () => {
             <input
               onChange={filterData}
               className="input_model"
-              placeholder="ENTER CODE  & MODEL"
+              placeholder="ENTER CODE &amp; MODEL"
               value={query}
               onKeyPress={handleKeyPress}
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus={focus}
             />
-            {console.log('familygroup', familygroups)}
+            {console.log('familygroupquery', familygroupquery)}
             <div className="wrapper-two">
               <Dropdown
-                value={fg !== undefined ? fg : 'ALL'}
+                value={fg !== null ? fg : 'All'}
                 onChange={familygroup}
                 className="cars"
                 items={familygroupquery}
@@ -272,7 +283,8 @@ const Oats = () => {
               </div>
             </div>
           </div>
-          {otsdata && otsdata.equipment && otsdata.equipment.length > 0 && (
+          {console.log('otsdata', otsdata, yousearch)}
+          {otsdata && otsdata.equipment && yousearch && (
             <div className="dropdown-wrapper">
               <Dropdown
                 onChange={yearFunc}
@@ -344,13 +356,13 @@ const Oats = () => {
                 : ''}
               {notFound && (
                 <Label className="not-found">
-                  Sorry, no results matched your search
+                  Sorry, no results matched your search!
                 </Label>
               )}
 
-              {test && query !== '' && (
-                <Label className="not-found">
-                  Sorry, no results matched your search
+              {test && query && yousearch !== '' && (
+                <Label className="not-found-second">
+                  Sorry, no results matched your search!
                 </Label>
               )}
             </div>

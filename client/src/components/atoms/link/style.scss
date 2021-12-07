@@ -28,7 +28,7 @@
       .h-links {
         border-bottom: 2px solid #f2a900;
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
           border: none;
         }
       }
@@ -37,12 +37,12 @@
         display: flex !important;
         justify-content: space-between !important;
 
-        @media (max-width: 768px) {
-          display: block !important;
-          justify-content: unset !important;
-        }
+        // @media (max-width: 768px) {
+        // 	display: block !important;
+        // 	justify-content: unset !important;
+        // }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
           display: none !important;
           justify-content: unset !important;
           padding: 4vw 0 !important;
@@ -52,7 +52,7 @@
 
       .show-products-image {
         // display: block;
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
           display: none;
         }
       }

@@ -30,7 +30,11 @@ const Catlog = ({ heading, catData, image }) => {
                 {catData &&
                   catData.map((data, i) => {
                     return size[0] > 768 ? (
-                      <p dangerouslySetInnerHTML={{ __html: data.text }}></p>
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: data.text.replace(/your/gi, ''),
+                        }}
+                      ></p>
                     ) : (
                       <div className="overview-detail-section-mobile">
                         <p
