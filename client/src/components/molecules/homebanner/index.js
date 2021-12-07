@@ -10,9 +10,11 @@ const HomeBanner = ({ bannerheading, bannerbutton }) => {
       <div className="content-wrapper">
         <h1 className="banner-heading">{bannerheading}</h1>
         {bannerbutton && (
-          <Button>
-            <Link to="/contact-us">{bannerbutton}</Link>
-          </Button>
+          <Link to="/contact-us">
+            <Button>
+              <Link to="/contact-us">{bannerbutton}</Link>
+            </Button>
+          </Link>
         )}
       </div>
     </>

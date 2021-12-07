@@ -76,8 +76,8 @@ const Techtabllist = ({
                     </div>
                     {size < 768 ? (
                       <div className="sub-pages__subpages oem-sub_category">
-                        {datasubpage.length > 0 &&
-                          datasubpage.map((down, i) => (
+                        {datasubpage?.length > 0 &&
+                          datasubpage?.map((down, i) => (
                             <SubpageData {...down} key={i} />
                           ))}
                       </div>
