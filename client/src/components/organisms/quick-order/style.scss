@@ -565,13 +565,16 @@
   .item_count_mobile {
     .item-count {
       margin: 0 13px 20px 13px;
-      padding-bottom: 25px;
-      border-bottom: 1px solid gray;
+      padding-bottom: 10px;
       color: $accent-color;
       font-size: 18px;
       font-weight: bold;
       line-height: 20px;
       text-align: center;
+
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
     }
   }
 
@@ -581,6 +584,8 @@
     margin-right: 12px;
     margin-bottom: 40px;
     margin-left: 12px;
+    padding-top: 15px;
+    border-top: 1px solid gray;
     color: white;
 
     .quick-order-mobile__previous {
