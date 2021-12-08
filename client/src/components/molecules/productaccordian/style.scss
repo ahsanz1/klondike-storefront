@@ -120,6 +120,10 @@ $vw-viewport: 1440;
     @media (max-width: 768px) {
       margin-top: -2vw;
     }
+
+    @media (min-width: 1600px) {
+      margin-top: 0;
+    }
   }
 
   .stop {

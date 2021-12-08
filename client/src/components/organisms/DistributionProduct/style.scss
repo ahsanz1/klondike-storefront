@@ -7,6 +7,12 @@
     padding: 5.3vw 0;
   }
 
+  &:nth-child(9) {
+    @media screen and (max-width: 768px) {
+      background: #032939;
+    }
+  }
+
   .distribute-heading {
     width: 80.2vw;
     margin: 3.75vw 9.86vw;
