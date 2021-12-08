@@ -432,7 +432,7 @@ const Checkoutsection = () => {
         bodyStyle={{
           background: 'white',
           padding: 15,
-          height: '50vh',
+          height: '35vh',
           overflowY: 'scroll',
         }}
       >
