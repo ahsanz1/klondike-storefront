@@ -4650,6 +4650,126 @@ export const EzeBox = {
     },
   ],
 }
+export const EzeKEG = {
+  mainHeading: 'EZE-KEG',
+  topImage: { url: '/static/images/eze-image.png', altText: '' },
+  easeDescription:
+    'KLONDIKE is introducing the new generation of efficiency and convenience – EZE-BOX! It’s a new 22 L oil box with an easy-to-pour valve. EZE-BOX bag-in-box oil dispensing system allows for maximum efficiency when used with EZE-RACK.',
+  benifits: [
+    {
+      heading: 'Benefits of EZE-BOX',
+      desc: [
+        {
+          heading: 'Effective, stackable and space-saving design',
+          description:
+            'When used with EZE-RACK, you can store and use 8 EZE-BOXES taking only 26” by 30” floor space: boxes are positioned 2 per shelf for a total of 6 boxes ready for dispensing and 2 boxes on the bottom inventory shelf. EZE-BOX can also easily fit on a retail shelf or be stacked for easy transportation, storage and display.',
+        },
+        {
+          heading: 'Zero product contamination',
+          description:
+            'The EZE-BOX valve allows for adjustable and easy oil flow. The flexible internal bladder allows for virtually all oil to dispense without letting any contaminants such as airborne dust and moisture to come in contact with the fluid.',
+        },
+        {
+          heading: 'Efficient and time-saving packaging',
+          description:
+            'EZE-BOX makes an oil change faster and easier when compared to traditional quart bottles, thus saving valuable time for you and your customers. The cardboard box folds down completely for easy and quick recycling.',
+        },
+      ],
+    },
+  ],
+  whyEze: [
+    {
+      heading: 'Why Choose EZE-BOX?',
+      desc: [
+        {
+          heading: 'Purchase less',
+          description:
+            'No need to purchase huge quantities of bulk oil anymore. Simply replace bulk oil with EZE-BOX!',
+        },
+        {
+          heading: 'Increase product selection',
+          description:
+            'Due to its effective, stackable and space-saving design, EZE-BOX allows you to increase the number of different lubricants you stock to meet and exceed the ever-growing customer needs.',
+        },
+        {
+          heading: 'Optimize inventory',
+          description:
+            'By purchasing less while increasing your product variety, EZE-BOX minimizes your cash outlay into slow-moving inventory.',
+        },
+      ],
+    },
+  ],
+  EzePproducts: [
+    {
+      heading: 'EZE-BOX Products to Suit All Your Lubricant Needs',
+      productlist: [
+        {
+          subHeading: 'Automotive Engine Oils',
+          product: [
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+          ],
+        },
+        {
+          subHeading: 'Heavy Duty Engine Oils',
+          product: [
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+          ],
+        },
+        {
+          subHeading: 'Transmission Fluids',
+          product: [
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+            {
+              image: { url: '/static/images/oilcontainer.png', altText: '' },
+              name: '5W-20 SP/GF-6 Synthetic Blend',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
 export const techresource = {
   desktopImage: {
     url: '/static/images/Logging_backgro.png',

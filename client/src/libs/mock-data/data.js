@@ -89,6 +89,7 @@ import {
   smallVideodata,
   rendersubpage,
   EzeBox,
+  EzeKEG,
 } from 'libs/data/data'
 const mockData = {
   // '/': [
@@ -237,7 +238,12 @@ const mockData = {
       params: EzeBox,
     },
   ],
-
+  '/about-klondike/eze-keg': [
+    {
+      id: 'EzeKEG',
+      params: EzeKEG,
+    },
+  ],
   '/cart': [
     {
       id: 'CartPage',
