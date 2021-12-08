@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 import Category from 'components/organisms/category'
+import { AppContext } from 'libs/context'
 
 import './style.scss'
 
@@ -18,16 +19,15 @@ const PlpTabList = ({
   subItemHandler,
   sku,
 }) => {
-  console.log('itemName', itemName)
+  const { setPlpDescription } = useContext(AppContext)
   const [product, setProduct] = useState(sku)
-  console.log('props plp tab:', subItem)
+
   const productClickHandler = productName => {
-    console.log({ productName })
     setProduct(productName.sku)
     subItemClickHandler(productName)
     handleClose()
   }
-  console.log('check categories:', categories)
+
   return (
     <div className="categoryItem trt">
       {categories &&
@@ -36,6 +36,9 @@ const PlpTabList = ({
           <>
             {item.categoryName.length > 0 && (
               <>
+                {itemName === item.categoryName
+                  ? setPlpDescription(item.categoryDesc)
+                  : null}
                 <Label
                   // to="/plp-page"
                   className={
@@ -44,9 +47,9 @@ const PlpTabList = ({
                       : 'deactive-category'
                   }
                   key={index}
-                  onClick={() =>
+                  onClick={() => {
                     clickCategoryHandler(item.categoryName, item.categoryDesc)
-                  }
+                  }}
                 >
                   {item.categoryName}
                   {itemName === item.categoryName && (

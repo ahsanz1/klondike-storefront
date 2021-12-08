@@ -11,13 +11,11 @@ import './styles.scss'
 import { navigate } from '@reach/router'
 
 const PLP = props => {
-  const { setStep, plpredirect } = useContext(AppContext)
-  const [desc, setDesc] = useState('')
+  const { setStep, plpredirect, plpDescription } = useContext(AppContext)
   const [subItem, setSubItem] = useState({})
   const [showTab, setShowtab] = useState(true)
   const [contextPlp, setContextPlp] = useState(plpredirect)
-  console.log('contextPlp', contextPlp)
-  // setPlpRedirect(contextPlp)
+
   useEffect(() => {
     setStep(1)
     navigate('/plp-page')
@@ -26,23 +24,11 @@ const PLP = props => {
     setContextPlp(plpredirect)
   }, [plpredirect])
   const clickCategoryHandler = (name, desc) => {
-    // setItemName(name)
-    console.log('hello')
-    // navigate(`/plp-page?category=${name.split(' ').join('-')}`)
     setContextPlp(name)
-    setDesc(desc)
   }
   const subItemHandler = list => {
-    console.log('list check:', list)
     setSubItem(list)
   }
-  // const changeHandler = async e => {
-  //   console.log('check change:', e.target.value, itemName)
-  //   let response = await sortProducts(itemName, e.target.value, 0)
-  //   console.log('check resp:', response.hits)
-  //   setProductList(response.hits)
-  // }
-  console.log('PLP-props:', props.mobileBanner)
   return (
     <div className="plp">
       <div className="navigation-button">
@@ -61,7 +47,7 @@ const PLP = props => {
         style={{ marginBottom: '23px' }}
         className="mobile-banner"
       />
-      <SelectedCategory name={contextPlp} desc={desc} />
+      <SelectedCategory name={contextPlp} desc={plpDescription} />
       <div className="custom-plp">
         {showTab && (
           <PlpTabList

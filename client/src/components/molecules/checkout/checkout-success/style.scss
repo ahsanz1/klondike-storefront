@@ -161,6 +161,26 @@
       }
     }
 
+    .order-detail {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+        padding-bottom: 32px;
+        font-size: 14px;
+
+        .order-receipt {
+          padding-left: 20px;
+          color: #c2bbb7;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: bold;
+          letter-spacing: 0.04px;
+          line-height: 18px;
+        }
+      }
+    }
+
     .order-number {
       font-size: get-vw(13px);
       font-weight: bold;
@@ -168,7 +188,7 @@
       text-transform: uppercase;
 
       @media (max-width: 768px) {
-        padding-bottom: 8.53vw;
+        padding-bottom: 10px;
         font-size: 14px;
       }
     }

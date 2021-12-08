@@ -59,6 +59,7 @@
     display: grid;
     grid-template-columns: get-vw(993px) auto;
     padding: get-vw(13px);
+    padding-right: 0;
     font-family: $OpenSans;
     font-family: $OpenSans;
     font-style: normal;
@@ -431,7 +432,7 @@
   }
 
   .ant-input-number {
-    width: 59px;
+    width: 59px !important;
 
     @media screen and (min-width: 768px) and (max-width: 1024px) {
       min-width: 8.2vw !important;
@@ -488,7 +489,6 @@
   .orders {
     display: grid;
     grid-template-columns: 3.2fr 1fr 1fr 1fr;
-    // width: 95%;
     margin-top: 1%;
     margin-left: 0.61vw;
     margin-left: 1%;
@@ -496,6 +496,14 @@
     padding-bottom: 15px;
     border-top: 1px solid white;
     color: white;
+
+    @media screen and (min-width: 1600px) {
+      width: 95%;
+    }
+
+    @media screen and (min-width: 1920px) {
+      width: 90%;
+    }
 
     .item-wraper {
       display: flex;
@@ -516,10 +524,12 @@
         margin-top: 20px;
         padding: 10px;
         border: 1px solid $accent-color;
+        border-radius: 4px;
         background: transparent;
       }
 
       .part-wraper {
+        width: 17.36vw;
         margin-left: 0.91vw;
 
         .quik-product-heading {
@@ -533,7 +543,7 @@
         }
 
         p .quick-item-description {
-          padding-left: 10px;
+          padding-left: 15px;
           color: gray;
         }
       }
@@ -567,7 +577,7 @@
 
   .quick-order-mobile {
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
     margin-right: 12px;
     margin-bottom: 40px;
     margin-left: 12px;
@@ -660,6 +670,7 @@
     margin-bottom: 5vw;
 
     .white {
+      margin-bottom: 0;
       color: white;
       font-size: 12px;
       font-weight: bold;
@@ -686,6 +697,7 @@
       // }
 
       button {
+        padding-left: 45px;
         border: none;
         opacity: 0.7;
         background-color: transparent;
@@ -710,7 +722,7 @@
     .Total_price {
       .total-price-value {
         color: #f2a900;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
       }
     }
@@ -754,6 +766,7 @@
 
         &:lang(fr) {
           padding-right: 1.33vw;
+          padding-left: 15px;
         }
 
         @media screen and (max-width: 768px) {
