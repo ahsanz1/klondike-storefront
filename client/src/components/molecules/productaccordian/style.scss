@@ -91,6 +91,10 @@ $vw-viewport: 1440;
     min-width: 150px;
     margin-left: 20px;
 
+    @media (max-width: 768px) {
+      right: -170px;
+    }
+
     @media (min-width: 1600px) {
       position: absolute;
       top: 5px;
@@ -99,6 +103,7 @@ $vw-viewport: 1440;
 
   .hover-button {
     box-sizing: border-box;
+    height: 50px;
     margin-top: -0.69vw;
     margin-bottom: 30px;
     padding: 12px;
