@@ -538,5 +538,25 @@ $vw-viewport: 1440;
 }
 
 .locations-modal {
+  top: calc(32vh - 1em) !important;
   width: get-vw(325px) !important;
+  height: get-vw(510px) !important;
+  vertical-align: middle !important;
+
+  @media (max-width: 768px) {
+    width: auto !important;
+    height: 510px !important;
+    margin: 25px !important;
+  }
+}
+
+.ant-list-item-meta-title {
+  color: #464646 !important;
+  font-size: get-vw(14px) !important;
+  font-weight: bold !important;
+  text-decoration: underline;
+}
+
+.ant-list-item-meta-description {
+  color: #464646 !important;
 }
