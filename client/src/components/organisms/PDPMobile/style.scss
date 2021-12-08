@@ -91,10 +91,12 @@ $vw-viewport: 375;
 }
 
 .product-img {
-  max-width: 195px;
-  height: 240px;
-  margin: 0 auto;
-  background: white;
+  @media (max-width: 768px) {
+    max-width: 195px;
+    height: 240px;
+    margin: 0 auto;
+    background: white;
+  }
 }
 
 .pdp_mobile-heading {
