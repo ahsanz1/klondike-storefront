@@ -57,7 +57,6 @@
 
   .wrapper {
     display: grid;
-    // grid-template-columns: 3.2fr 1fr 1fr 1fr;
     grid-template-columns: get-vw(993px) auto;
     padding: get-vw(13px);
     padding-right: 0;
@@ -490,7 +489,6 @@
   .orders {
     display: grid;
     grid-template-columns: 3.2fr 1fr 1fr 1fr;
-    //  width: 95%;
     margin-top: 1%;
     margin-left: 0.61vw;
     margin-left: 1%;
