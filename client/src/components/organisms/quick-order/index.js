@@ -1,4 +1,5 @@
 /* eslint-disable no-unneeded-ternary */
+/* eslint-disable eqeqeq */
 import React, { useEffect, useState, useContext } from 'react'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
 
@@ -150,7 +151,47 @@ const QuickOrder = () => {
     if (cartRes.hasError === true) {
       setPackgdata([])
       setAddingToCart(false)
-      error(cartRes.response.error)
+      let outOfStockItems = []
+      /**
+       * NOTE: cart response for out of stock items only tells which itemIds are out of stock, which is
+       * not meaningful info for user, therefore this temporary solution for communicating proper out
+       * of stock SKUs to user is implemented. This should be removed in future, once a more robust solution
+       * is found
+       */
+      if (cartRes.response?.error?.includes('not in stock')) {
+        const errorTokens = cartRes.response.error.split(' ')
+        for (let i = 0; i < errorTokens.length; i++) {
+          if (errorTokens[i].includes(',')) {
+            const itemIds = errorTokens[i].split(',')
+            for (let j = 0; j < itemIds.length; j++) {
+              const outOfStockItem = payload.items.find(
+                item => item.itemId == itemIds[j],
+              )
+              if (outOfStockItem) {
+                outOfStockItems.push(outOfStockItem)
+              }
+            }
+          } else {
+            const outOfStockItem = payload.items.find(
+              item => item.itemId == errorTokens[i],
+            )
+            if (outOfStockItem) {
+              outOfStockItems.push(outOfStockItem)
+            }
+          }
+        }
+      }
+      if (outOfStockItems.length > 1) {
+        error(
+          `Part numbers ${outOfStockItems.map(
+            item => `${item.sku}`,
+          )} are out of stock.`,
+        )
+      } else if (outOfStockItems.length === 1) {
+        error(`Part number ${outOfStockItems[0].sku} is out of stock.`)
+      } else {
+        error(cartRes.response.error)
+      }
       setInputList([{ partnumber: '', quantity: '' }])
       return
     }
@@ -518,7 +559,7 @@ const QuickOrder = () => {
                               </div>
                               <div>
                                 <p>
-                                  {item?.percase ? 'Per case' : ''}
+                                  {item?.percase ? 'PER CASE' : ''}
                                   <span className="quick-item-description">
                                     {item?.percase}
                                   </span>

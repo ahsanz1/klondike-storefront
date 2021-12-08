@@ -32,7 +32,7 @@ $vw-viewport: 1440;
   .table-content {
     position: relative;
     align-items: center;
-    padding-top: 10px;
+    //padding-top: 10px;
 
     &:nth-child(odd) {
       background: #013a4e;
@@ -118,7 +118,7 @@ $vw-viewport: 1440;
     }
 
     @media (max-width: 768px) {
-      margin-top: -2.66vw;
+      margin-top: -2vw;
     }
   }
 

@@ -186,10 +186,9 @@ const Navbar = ({
             <Button iconOnly className="cart-button">
               {getCartItems?.totalAmount?.amount > 0 ? (
                 <div className="cart-amount">
-                  $
-                  {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
-                    2,
-                  )}
+                  {`$${parseFloat(
+                    getCartItems?.totalAmount?.amount || 0.0,
+                  ).toFixed(2)}`}
                 </div>
               ) : (
                 ''
