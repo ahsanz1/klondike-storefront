@@ -173,14 +173,14 @@ const Navbar = ({
             }
             className="header__User-icon"
           >
-            <button>
+            <Button>
               <Image
                 height={26}
                 src={userIcon.url}
                 alt={userIcon.altText}
                 onClick={() => setLoginBottom(false)}
               />
-            </button>
+            </Button>
           </Link>
           {userLoginInfo && userLoginInfo.email && (
             <Button iconOnly className="cart-button">
