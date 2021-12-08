@@ -470,6 +470,12 @@ const QuickOrder = () => {
 
             {getCartItems && (
               <div className="quickorder-wrapper">
+                <div className="item_count_mobile">
+                  <Label className="item-count">
+                    <i className="fas fa-check" aria-hidden="true"></i> You
+                    added {getCartItems?.items?.length} new item to your cart
+                  </Label>
+                </div>
                 {getCartItems &&
                   getCartItems?.items?.length > 0 &&
                   getCartItems?.items.map((item, i) => {
@@ -555,16 +561,6 @@ const QuickOrder = () => {
                       ) : (
                         <>
                           <div>
-                            <div className="item_count_mobile">
-                              <Label className="item-count">
-                                <i
-                                  className="fas fa-check"
-                                  aria-hidden="true"
-                                ></i>{' '}
-                                You added {getCartItems?.items?.length} new item
-                                to your cart
-                              </Label>
-                            </div>
                             <div className="quick-order-mobile">
                               <div className="quick-order-mobile__previous">
                                 <img
