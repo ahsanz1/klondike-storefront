@@ -578,12 +578,14 @@ const QuickOrder = () => {
                                     SIZE
                                     <span className="span">{item?.size}</span>
                                   </p>
-                                  <p>
-                                    {item?.percase ? 'PER CASE' : ''}
-                                    <span className="span">
-                                      {item?.percase}
-                                    </span>
-                                  </p>
+                                  {item?.percase && (
+                                    <p>
+                                      {item?.percase ? 'PER CASE' : ''}
+                                      <span className="span">
+                                        {item?.percase}
+                                      </span>
+                                    </p>
+                                  )}
                                   <p>
                                     PART NUM
                                     <span className="span">
