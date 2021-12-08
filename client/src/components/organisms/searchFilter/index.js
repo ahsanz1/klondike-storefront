@@ -37,15 +37,38 @@ const SearchFilter = ({ searchHeading }) => {
       .catch(error => console.log('Search Error:', error))
   }, [])
 
+  const removeDuplicateValues = (items = []) => {
+    let newFilterValues = []
+    if (items.length) {
+      newFilterValues.push(items[0])
+    }
+    for (let i = 0; i < items.length; i++) {
+      const filterFound = newFilterValues.find(
+        newFilter => newFilter.value === items[i].value,
+      )
+      if (!filterFound) {
+        /**
+         * NOTE: Added extra check to prevent adding "Bulk:" to size array, this should be removed
+         * once "Bulk:" has been changed to "Bulk" from PIM
+         */
+        if (items[i].value !== 'Bulk:') {
+          newFilterValues.push(items[i])
+        }
+      }
+    }
+    return newFilterValues
+  }
+
   useEffect(() => {
     const setFilters = async searchFilter => {
       let res = await setFilterResult(searchFilter)
       console.log('is called state', isCalled)
 
       if (res?.product.length > 0 && isCalled !== true) {
-        setProduct(res?.product)
-        setUnit(res?.size)
-        setSize(res?.unit)
+        // const { unit = [], size = [], product = [] } = res
+        setSize(removeDuplicateValues(res?.unit))
+        setProduct(removeDuplicateValues(res?.product))
+        setUnit(removeDuplicateValues(res?.size))
         setHoldSearchState(searchFilter)
         setIsCalledState(true)
         console.log('ress', res)
