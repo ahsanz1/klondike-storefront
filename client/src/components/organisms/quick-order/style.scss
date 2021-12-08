@@ -57,6 +57,7 @@
 
   .wrapper {
     display: grid;
+    // grid-template-columns: 3.2fr 1fr 1fr 1fr;
     grid-template-columns: get-vw(993px) auto;
     padding: get-vw(13px);
     padding-right: 0;
@@ -489,7 +490,7 @@
   .orders {
     display: grid;
     grid-template-columns: 3.2fr 1fr 1fr 1fr;
-    // width: 95%;
+    //  width: 95%;
     margin-top: 1%;
     margin-left: 0.61vw;
     margin-left: 1%;
@@ -497,6 +498,14 @@
     padding-bottom: 15px;
     border-top: 1px solid white;
     color: white;
+
+    @media screen and (min-width: 1600px) {
+      width: 95%;
+    }
+
+    @media screen and (min-width: 1920px) {
+      width: 90%;
+    }
 
     .item-wraper {
       display: flex;
@@ -521,6 +530,7 @@
       }
 
       .part-wraper {
+        width: 17.36vw;
         margin-left: 0.91vw;
 
         .quik-product-heading {
