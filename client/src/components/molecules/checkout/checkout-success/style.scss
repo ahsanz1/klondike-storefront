@@ -168,6 +168,8 @@
         display: block;
         padding-bottom: 32px;
         font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
 
         .order-receipt {
           padding-left: 20px;
@@ -190,13 +192,14 @@
       @media (max-width: 768px) {
         padding-bottom: 10px;
         font-size: 14px;
+        letter-spacing: 2px;
       }
     }
 
     .order-number-two {
-      width: 25vw;
+      // width: 25vw;
       padding-left: 1.31vw;
-      font-size: 1.11vw;
+      font-size: get-vw(16px);
       text-align: left;
 
       @media (max-width: 768px) {
@@ -204,6 +207,13 @@
         padding-left: 5.33vw;
         font-size: 16px;
         font-weight: bold;
+        letter-spacing: 0;
+      }
+    }
+
+    .po-num {
+      @media (max-width: 768px) {
+        display: none;
       }
     }
 
@@ -216,6 +226,8 @@
       @media (max-width: 768px) {
         padding-bottom: 2.66vw;
         font-size: 14px;
+        letter-spacing: 2px;
+        letter-spacing: 0;
       }
     }
 
