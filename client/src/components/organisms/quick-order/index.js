@@ -165,7 +165,7 @@ const QuickOrder = () => {
             const itemIds = errorTokens[i].split(',')
             for (let j = 0; j < itemIds.length; j++) {
               const outOfStockItem = payload.items.find(
-                item => item.itemId == itemIds[i],
+                item => item.itemId == itemIds[j],
               )
               if (outOfStockItem) {
                 outOfStockItems.push(outOfStockItem)
