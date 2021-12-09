@@ -1,13 +1,13 @@
 export const categoriesXPM = [
   {
     title: 'Technical Documents',
-    categoryLink: '/tech-resources/Technical-doucment',
+    categoryLink: '/tech-resources/technical-documents',
     categoryName: 'Technical Documents',
     link: 'Technical-doucment',
   },
   {
     title: 'OEM Approvals',
-    categoryLink: '/tech-resources/OEMApprovals',
+    categoryLink: '/tech-resources/oem-approvals',
     categoryName: 'OEM Approvals',
     link: 'OEMApprovals',
     subItem: {
@@ -57,7 +57,7 @@ export const categoriesXPM = [
   },
   {
     title: 'Catalog',
-    categoryLink: '/tech-resources/catlog',
+    categoryLink: '/tech-resources/catalog',
     categoryName: 'Catalog',
     link: 'catlog',
   },
