@@ -3,22 +3,22 @@ export const categoriesXPM = [
     title: 'Technical Documents',
     categoryLink: '/tech-resources/technical-documents',
     categoryName: 'Technical Documents',
-    link: 'Technical-doucment',
+    link: 'technical-documents',
   },
   {
     title: 'OEM Approvals',
     categoryLink: '/tech-resources/oem-approvals',
     categoryName: 'OEM Approvals',
-    link: 'OEMApprovals',
+    link: 'oem-approvals',
     subItem: {
       hits: [
         {
           title: 'Audi Approved',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/audi-approved',
         },
         {
           title: 'Cummins Approved',
-          links: '/tech-resources/oem-approvals/cummins-approval',
+          links: '/tech-resources/oem-approvals/cummins-approved',
         },
         {
           title: 'Detroit Diesel ',
@@ -54,12 +54,6 @@ export const categoriesXPM = [
         },
       ],
     },
-  },
-  {
-    title: 'Catalog',
-    categoryLink: '/tech-resources/catalog',
-    categoryName: 'Catalog',
-    link: 'catlog',
   },
   {
     title: 'Warranty',
@@ -98,6 +92,12 @@ export const categoriesXPM = [
         },
       ],
     },
+  },
+  {
+    title: 'Catalog',
+    categoryLink: '/tech-resources/catalog',
+    categoryName: 'Catalog',
+    link: 'catalog',
   },
   //   {
   //     title: 'Greases',
