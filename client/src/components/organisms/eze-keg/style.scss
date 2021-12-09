@@ -194,8 +194,17 @@
         }
       }
 
-      li {
+      .product-set {
+        width: 20%;
         margin-right: 30px;
+
+        @media (max-width: 768px) {
+          width: 40%;
+        }
+      }
+
+      li {
+        // margin-right: 30px;
         margin-bottom: 20px;
         list-style: none;
 
@@ -211,7 +220,7 @@
 
         img {
           width: 100%;
-          height: 250px;
+          // height: 250px;
           border: 5px solid #002a3a;
           background: $white-color;
           cursor: pointer;
