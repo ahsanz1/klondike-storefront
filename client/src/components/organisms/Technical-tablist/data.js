@@ -14,11 +14,11 @@ export const categoriesXPM = [
       hits: [
         {
           title: 'Audi Approved',
-          links: '/tech-resources/oemapprovals/audi-approved',
+          links: '/tech-resources/oem-approvals/audi-approved',
         },
         {
           title: 'Cummins Approved',
-          links: '/tech-resources/oem-approvals/cummins-approval',
+          links: '/tech-resources/oem-approvals/cummins-approved',
         },
         {
           title: 'Detroit Diesel ',
