@@ -67,7 +67,9 @@ const Techtabllist = ({
                                 }
                               >
                                 <ul>
-                                  <li>{item.title}</li>
+                                  <li className="oem-subitem-title">
+                                    {item.title}
+                                  </li>
                                 </ul>
                               </Link>
                             </div>

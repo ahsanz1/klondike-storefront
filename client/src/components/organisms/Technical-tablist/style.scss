@@ -56,7 +56,7 @@ $vw-viewport: 1440;
 
   .tablist-heading {
     width: get-vw(250px);
-    margin-bottom: get-vw(15px);
+    margin-bottom: get-vw(13.63px);
     padding: get-vw(9px);
     background: rgba(5, 5, 5, 0.39);
     // color: rgba(236, 234, 233, 0.69);
@@ -117,6 +117,17 @@ $vw-viewport: 1440;
     padding: 10px 0 0 0;
 
     div {
+      a {
+        span {
+          ul {
+            .oem-subitem-title {
+              font-size: 0.69vw;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+
       .active-product {
         color: #f2a900;
       }
@@ -138,6 +149,7 @@ $vw-viewport: 1440;
       border: none;
       background: none;
       color: #eceae9;
+      font-weight: 400;
 
       .h-links {
         ul {

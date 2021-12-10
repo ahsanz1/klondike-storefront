@@ -14,7 +14,7 @@ const searchSuggestions = ({ itemList, close }) => {
           itemList.map((item, i) => (
             <li key={i} className="notranslate">
               <Label>
-                <Link to={`/PDP?sku=${item.sku}`} onClick={close}>
+                <Link to={`/product?sku=${item.sku}`} onClick={close}>
                   {item.title}
                 </Link>
               </Label>
