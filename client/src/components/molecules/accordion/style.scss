@@ -54,6 +54,12 @@
     }
   }
 
+  .accordion-content :nth-child(2) {
+    div {
+      margin-top: 35px;
+    }
+  }
+
   .accordion-show {
     margin: 0 0 0;
   }
