@@ -63,7 +63,10 @@ const CartPopUP = ({ loading }) => {
                 Cart Subtotal ({getCartItems?.items?.length} items):
               </Label>
               <Label className="subtotal-section-price">
-                ${parseFloat(getCartItems?.totalAmount?.amount).toFixed(2)}
+                $
+                {Number(
+                  parseFloat(getCartItems?.totalAmount?.amount).toFixed(2),
+                ).toLocaleString()}
               </Label>
             </div>
             {getCartItems?.hasPackaged ? (

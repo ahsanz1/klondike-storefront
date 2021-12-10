@@ -144,7 +144,7 @@ const CartDropdown = () => {
                   <p className="subtotal-title">Subtotal</p>
                   <p className="subtotal-price">
                     {console.log('updating', subTotal)}
-                    <span>{`$${subTotal}`}</span>
+                    <span>{`$${Number(subTotal).toLocaleString()}`}</span>
                   </p>
                 </div>
                 {cartState?.items?.length &&

@@ -705,7 +705,9 @@ const Checkoutsection = () => {
                   <span>{`$0.00`}</span>
                 ) : (
                   <span>
-                    {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                    {`$${Number(
+                      parseFloat(cartPayload?.itemsTotal).toFixed(2),
+                    ).toLocaleString()}`}
                   </span>
                 )}
               </div>
@@ -715,15 +717,17 @@ const Checkoutsection = () => {
                   {(getCartItems.items || []).length === 0
                     ? 'TBD'
                     : delivery
-                      ? `$${parseFloat(
-                        shippingDetails?.shipMethod?.cost?.amount || 0.0,
-                      ).toFixed(2)}`
+                      ? `$${Number(
+                        parseFloat(
+                          shippingDetails?.shipMethod?.cost?.amount || 0.0,
+                        ).toFixed(2),
+                      ).toLocaleString()}`
                       : 'TBD'}
                 </span>
               </div>
               <div className="item">
                 <span>Credit Limit</span>
-                <span>${creditLimit.toFixed(2)}</span>
+                <span>${Number(creditLimit.toFixed(2)).toLocaleString()}</span>
               </div>
               <Divider style={{ border: '1px solid #fff' }} />
               <div className="item">
@@ -732,20 +736,24 @@ const Checkoutsection = () => {
                   <span className="total-amount">{`$0.00`}</span>
                 ) : delivery ? (
                   <span className="total-amount">
-                    {`$${parseFloat(
-                      delivery
-                        ? parseFloat(
-                          Number(cartPayload?.itemsTotal) +
-                              Number(
-                                shippingDetails?.shipMethod?.cost?.amount,
-                              ) || 0,
-                        ).toFixed(2)
-                        : cartPayload?.itemsTotal,
-                    ).toFixed(2)}`}
+                    {`$${Number(
+                      parseFloat(
+                        delivery
+                          ? parseFloat(
+                            Number(cartPayload?.itemsTotal) +
+                                Number(
+                                  shippingDetails?.shipMethod?.cost?.amount,
+                                ) || 0,
+                          ).toFixed(2)
+                          : cartPayload?.itemsTotal,
+                      ).toFixed(2),
+                    ).toLocaleString()}`}
                   </span>
                 ) : (
                   <span className="total-amount">
-                    {`$${parseFloat(cartPayload?.itemsTotal).toFixed(2)}`}
+                    {`$${Number(
+                      parseFloat(cartPayload?.itemsTotal).toFixed(2),
+                    ).toLocaleString()}`}
                   </span>
                 )}
               </div>

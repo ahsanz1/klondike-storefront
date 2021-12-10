@@ -98,9 +98,9 @@ const CheckoutSuccess = () => {
               </span>
               <span className="bold">
                 Order Total:{' '}
-                <span className="bold-two">{`$${parseFloat(
-                  checkoutData?.totalAmount,
-                ).toFixed(2)}`}</span>
+                <span className="bold-two">{`$${Number(
+                  parseFloat(checkoutData?.totalAmount).toFixed(2),
+                ).toLocaleString()}`}</span>
               </span>
               {window.innerWidth > 768 ? (
                 <p
