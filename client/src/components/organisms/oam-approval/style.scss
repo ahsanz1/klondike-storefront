@@ -30,7 +30,7 @@ $vw-viewport: 1440;
       > h1 {
         margin-top: 0;
         margin-bottom: 0.4861vw;
-        padding-top: 4.6vw;
+        padding-top: 4.86vw;
         padding-left: 6.04vw;
         color: #f1a900;
         font-family: $OpenSans;
@@ -167,6 +167,7 @@ $vw-viewport: 1440;
           font-family: $OpenSans;
           font-size: 0.97vw;
           font-style: normal;
+          font-weight: 600;
           line-height: 1.3vw;
 
           .img-arow {
