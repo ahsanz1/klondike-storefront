@@ -532,7 +532,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/PDP': [
+  '/product': [
     {
       id: 'PDP',
       params: { pdpdata, pdpdatasheet, RadioData, categories },
