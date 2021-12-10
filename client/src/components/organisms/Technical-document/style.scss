@@ -72,6 +72,7 @@ $vw-viewport: 1440;
       }
 
       > h1 {
+        margin-bottom: 0.97vw !important;
         color: #f1a900;
         font-family: $OpenSans;
         font-size: 36px;
@@ -96,6 +97,8 @@ $vw-viewport: 1440;
       }
 
       p {
+        width: 59.86vw;
+        height: 4.51vw;
         margin-bottom: 1.388vw;
 
         @media (max-width: 768px) {
