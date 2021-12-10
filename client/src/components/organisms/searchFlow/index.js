@@ -23,10 +23,10 @@ const SearchFlow = props => {
   const { setSearchFilter, setSearchKey, itemList, setItemList } = useContext(
     AppContext,
   )
-  const [searchName, setSearchName] = useState('')
+  // const [searchName, setSearchName] = useState('')
 
   const searchValueHandler = async ({ value }) => {
-    setSearchName(value)
+    // setSearchName(value)
     setSearchValue(value)
     setShowRecent(false)
     // const list = await fetchItems(value)
@@ -77,7 +77,7 @@ const SearchFlow = props => {
     console.log('check store Data:', storeData)
     localStorage.setItem('recentData', JSON.stringify(storeData))
     setLocalRecent(JSON.parse(localStorage.getItem('recentData')))
-    navigate(`/search-filter?${searchName}`)
+    navigate(`/search-results?query=${searchValue}`)
     props.toggleSearch()
     setSearchKey(searchValue)
   }

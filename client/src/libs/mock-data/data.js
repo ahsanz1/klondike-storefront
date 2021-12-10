@@ -227,7 +227,7 @@ const mockData = {
       params: searchFlow,
     },
   ],
-  '/search-filter': [
+  '/search-results': [
     {
       id: 'SearchFilter',
     },
@@ -532,7 +532,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/PDP': [
+  '/product': [
     {
       id: 'PDP',
       params: { pdpdata, pdpdatasheet, RadioData, categories },
@@ -560,7 +560,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/quickorder': [
+  '/quick-order': [
     {
       id: 'QuickOrder',
       params: {},

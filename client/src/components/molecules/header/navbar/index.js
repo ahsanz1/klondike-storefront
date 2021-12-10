@@ -139,7 +139,7 @@ const Navbar = ({
             style={{ color: '#fff' }}
             to={
               userLoginInfo && userLoginInfo.email
-                ? '/quickorder'
+                ? '/quick-order'
                 : 'contact-us'
             }
           >
