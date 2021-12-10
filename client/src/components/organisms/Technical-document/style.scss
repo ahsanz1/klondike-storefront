@@ -96,7 +96,7 @@ $vw-viewport: 1440;
       }
 
       p {
-        margin-bottom: 1.388vw;
+        // margin-bottom: 1.388vw;
 
         @media (max-width: 768px) {
           margin-bottom: 0;
@@ -104,6 +104,7 @@ $vw-viewport: 1440;
       }
 
       > p {
+        width: 59.86vw;
         opacity: 0.9;
         color: #fff;
         font-family: $OpenSans;
@@ -121,6 +122,7 @@ $vw-viewport: 1440;
           height: 42.4vw;
           margin-top: 6.66vw;
           margin-bottom: 8.53vw;
+          margin-left: 2.93vw;
           font-size: 3.73vw;
         }
       }
