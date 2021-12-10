@@ -227,7 +227,7 @@ const mockData = {
       params: searchFlow,
     },
   ],
-  '/search-filter': [
+  '/search-results': [
     {
       id: 'SearchFilter',
     },
@@ -560,7 +560,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/quickorder': [
+  '/quick-order': [
     {
       id: 'QuickOrder',
       params: {},
