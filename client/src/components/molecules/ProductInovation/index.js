@@ -34,7 +34,7 @@ const ProductInovation = ({ productInovation }) => {
             <SwiperSlide key={i}>
               <div className="Product-content notranslate">
                 <div className="product_img_wraper">
-                  <Link to={`/PDP?sku=${content.sku}`}>
+                  <Link to={`/product?sku=${content.sku}`}>
                     <img
                       className="img-design"
                       src={content.image.url}

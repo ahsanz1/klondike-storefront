@@ -93,6 +93,7 @@ $vw-viewport: 1440;
 
           @media (max-width: 768px) {
             width: 60.2vw;
+            margin-top: 0;
           }
         }
       }
@@ -198,6 +199,8 @@ $vw-viewport: 1440;
       @media (max-width: 768px) {
         display: flex;
         flex-direction: column;
+        padding-bottom: 10.4vw;
+        padding-left: 8vw;
       }
     }
   }
