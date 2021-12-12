@@ -22,7 +22,7 @@ export const categoriesXPM = [
         },
         {
           title: 'Detroit Diesel ',
-          links: '/tech-resources/oem-approvals/detroit-diesel-approved',
+          links: '/tech-resources/oem-approvals/detroit-diesel',
         },
         {
           title: 'Dexos1® Approved',

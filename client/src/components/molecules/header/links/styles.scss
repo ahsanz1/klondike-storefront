@@ -5,6 +5,7 @@
   display: flex;
 
   .menu-link-item {
+    margin-top: get-vw(5px);
     margin-right: 3.055vw;
 
     &:nth-child(3) {

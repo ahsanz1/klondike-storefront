@@ -15,7 +15,7 @@
   }
 
   .menu-link-item {
-    line-height: 7.46vw;
+    line-height: get-vw(100px);
 
     @media (max-width: 500px) {
       display: block;
