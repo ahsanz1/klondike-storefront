@@ -70,8 +70,8 @@
     // width: 100%;
     // margin: auto;
     margin-right: get-vw(27px);
-    padding-top: get-vw(20px);
-    padding-bottom: get-vw(20px);
+    padding-top: get-vw(45px);
+    padding-bottom: get-vw(27px);
     border-top: none;
     border-bottom: get-vw(2px) solid rgba(255, 255, 255, 0.2);
     background-color: #013a4e;
@@ -137,8 +137,10 @@
     .cart-dropdown-header-item-no {
       display: flex;
       align-items: center;
-      padding-left: get-vw(20px);
+      padding-left: get-vw(13px);
       font-size: get-vw(14px);
+      font-weight: 700px;
+      line-height: get-vw(19px);
 
       @media screen and (max-width: 768px) {
         padding-left: getmb-vw(14px);
@@ -284,7 +286,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    height: get-vw(80px);
+    height: 5.13vw;
     margin-right: get-vw(24px);
     border-bottom: get-vw(1px) solid rgba(255, 255, 255, 0.2);
     color: white;

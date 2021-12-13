@@ -2,7 +2,7 @@
 
 .mini-cart-item {
   padding-top: get-vw(15px);
-  padding-bottom: get-vw(20px);
+  padding-bottom: get-vw(30px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   font-family: $OpenSans;
@@ -149,6 +149,7 @@
     //   }
     // }
     .removebtn {
+      padding-top: get-vw(20px);
       border: none;
       background: transparent;
 
@@ -170,7 +171,8 @@
 
   .cart-item {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
+    justify-items: flex-start;
 
     .cart-image-container {
       @media screen and (max-width: 768px) {
