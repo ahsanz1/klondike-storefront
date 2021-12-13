@@ -83,7 +83,7 @@ const CartDropdownItem = (cartData, key) => {
   return (
     <div className="mini-cart-item" key={key}>
       <div className="cart-item">
-        <div>
+        <div className="cart-image-container">
           <img src={cart?.image} className="cart-item-image" alt="" />
         </div>
         <div>
@@ -106,26 +106,26 @@ const CartDropdownItem = (cartData, key) => {
               </div>
             </div>
 
-            <div className="product-price-info">
+            {/* <div className="product-price-info">
               <Label className="product-price">
-                <p className="product-price-mobile">PRICE</p>$
+                <p className="product-price-mobile ">45454</p>$
                 {cart?.price?.base.toFixed(2)}
               </Label>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="total-and-quantity-cart-MOBILE">
           <div className="total-and-quantity-cart-and-remove-btn">
             <div className="product-price-info">
               <Label className="product-price">
-                PRICE
-                <Label className="product-price-mobile">
+                Price
+                <Label className="product-price-mobile mobile-pricing">
                   ${cart?.price?.base.toFixed(2)}
                 </Label>
               </Label>
             </div>
             <div className="quantity-box">
-              <Label className="product-quantity-mobile">QTY</Label>
+              <Label className="product-quantity-mobile">QTY:</Label>
               <InputNumber
                 className="product-quantity-spinner"
                 min={1}
