@@ -9,6 +9,13 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
+    margin: 0 !important;
+  }
+
+  .our-story-page-wrapper {
+    @media (max-width: 768px) {
+      margin: 0 4.2vw;
+    }
   }
 
   .categoryItem-tab {
