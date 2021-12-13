@@ -236,6 +236,12 @@
         float: right;
       }
     }
+
+    .accordion-content :nth-child(2) {
+      div {
+        margin-top: 35px;
+      }
+    }
   }
 
   .footer-text {
