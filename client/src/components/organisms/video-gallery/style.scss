@@ -100,10 +100,10 @@
           height: get-vw(290px);
 
           @media (max-width: 768px) {
-            width: 380px !important;
-            height: 209px;
-            margin-left: -18px;
-            padding-right: 5px;
+            width: 101.33vw !important;
+            height: 55.73vw;
+            margin-left: -5.86vw;
+            // padding-right: 1.33vw;
           }
         }
       }
@@ -113,6 +113,7 @@
 
         @media (max-width: 768px) {
           margin-right: 45px;
+          margin-left: 2.93vw;
           padding-left: 0;
         }
 
@@ -131,7 +132,7 @@
           @media (max-width: 768px) {
             margin-top: 5.33vw;
             margin-bottom: 6.66vw;
-            margin-left: 3.2vw;
+            // margin-left: 3.2vw;
             font-size: 18px;
             font-style: normal;
             font-weight: normal;
