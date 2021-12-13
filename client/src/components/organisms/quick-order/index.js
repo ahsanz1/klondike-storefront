@@ -445,9 +445,11 @@ const QuickOrder = () => {
               <Label className="total">
                 <span>
                   $
-                  {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
-                    2,
-                  )}
+                  {Number(
+                    parseFloat(
+                      getCartItems?.totalAmount?.amount || 0.0,
+                    ).toFixed(2),
+                  ).toLocaleString()}
                 </span>
               </Label>
             </div>
@@ -603,7 +605,10 @@ const QuickOrder = () => {
                           </div>
                           <div>
                             <p className="quickorder-Price subtotal-color">
-                              ${item?.totalPrice?.amount.toFixed(2)}
+                              $
+                              {Number(
+                                item?.totalPrice?.amount.toFixed(2),
+                              ).toLocaleString()}
                             </p>
                           </div>
                         </div>
