@@ -247,11 +247,13 @@
           }
 
           .paragragh-text {
+            height: get-vw(97px);
             color: #fff;
             font-size: get-vw(14px);
             font-style: normal;
             font-weight: 600;
             line-height: get-vw(19px);
+            font-feature-settings: 'pnum' on, 'lnum' on;
 
             @media (max-width: 768px) {
               width: 84.26vw;
@@ -264,7 +266,7 @@
           .read-more {
             border: none;
             background: none;
-            color: rgba(255, 165, 0, 1);
+            color: #ffa500;
             font-weight: bold;
           }
         }

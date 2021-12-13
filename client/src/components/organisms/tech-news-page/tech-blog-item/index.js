@@ -11,14 +11,17 @@ const TechBlogItem = ({
   descHeading,
   handleCatagory,
 }) => {
+  console.log('readmoretext', text)
   const [textVal, setTextVal] = useState('')
   const [textState, setTextState] = useState(false)
   const [btnText, setBtnText] = useState('')
 
+  let textLength = 220
+
   useEffect(() => {
-    setTextState(!(text.length > 20))
-    setBtnText(text.length > 20 ? 'Read More' : '')
-    setTextVal(text.length > 20 ? text.substring(0, 20) : text)
+    setTextState(!(text.length > textLength))
+    setBtnText(text.length > textLength ? 'Read More' : '')
+    setTextVal(text.length > textLength ? text.substring(0, textLength) : text)
   }, [])
 
   const changeState = text => {
@@ -31,7 +34,7 @@ const TechBlogItem = ({
     } else {
       setTextState(false)
       setBtnText('Read More')
-      setTextVal(text.substring(0, 20))
+      setTextVal(text.substring(0, textLength))
     }
   }
 
@@ -55,8 +58,8 @@ const TechBlogItem = ({
         </div>
         <div>
           <Label className="paragragh-text">
-            <span>{textVal.slice(3, textVal.length)}</span>
-            <span>{' ...'}</span>
+            <span>{textVal.slice(0, textVal.length)}</span>
+            <span>{!textState ? ' ...' : '.'}</span>
             <Button className="read-more" onClick={e => changeState(text)}>
               {btnText}
             </Button>
