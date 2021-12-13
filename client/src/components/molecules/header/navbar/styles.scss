@@ -319,12 +319,12 @@
         border: none;
 
         img {
-          width: 1.66vw;
-          height: 1.66vw;
+          width: get-vw(24px);
+          height: get-vw(25.84px);
 
           @media screen and(max-width: 500px) {
-            width: 6vw;
-            height: 6vw;
+            width: 24px;
+            height: 25.84px;
           }
         }
       }
