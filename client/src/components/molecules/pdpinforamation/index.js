@@ -38,17 +38,17 @@ const PDPInformation = props => {
             </p>
             <p
               dangerouslySetInnerHTML={
-                more
+                !more && item.value.length > 1500
                   ? {
-                      __html: item.value,
+                      __html: item.value.slice(0, 1500) + '...',
                     }
                   : {
-                      __html: item.value.slice(0, 600) + '...',
+                      __html: item.value,
                     }
               }
               className="info-desc"
             ></p>
-            {!more && (
+            {!more && item.value.length > 1500 && (
               <p>
                 <button onClick={() => setMore(true)} className="button-pdp">
                   Read more

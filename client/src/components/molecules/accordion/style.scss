@@ -36,6 +36,7 @@
     }
 
     p {
+      margin-top: 1.18vw;
       margin-left: 1.38vw;
       color: #fff;
       font-family: $OpenSans;
@@ -43,12 +44,19 @@
       line-height: 22.4px;
 
       @media (max-width: 768px) {
+        margin-top: 4vw;
         font-size: 4.26vw;
       }
 
       @media screen and (min-width: 768px) and(max-width: 1024px) {
         font-size: 2vw !important;
       }
+    }
+  }
+
+  .accordion-content :nth-child(2) {
+    div {
+      margin-top: 35px;
     }
   }
 

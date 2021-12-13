@@ -540,7 +540,7 @@ $vw-viewport: 1440;
 .locations-modal {
   top: calc(32vh - 1em) !important;
   width: get-vw(325px) !important;
-  height: get-vw(510px) !important;
+  // height: get-vw(510px) !important;
   vertical-align: middle !important;
 
   @media (max-width: 768px) {
@@ -555,6 +555,10 @@ $vw-viewport: 1440;
   font-size: get-vw(14px) !important;
   font-weight: bold !important;
   text-decoration: underline;
+
+  @media (max-width: 768px) {
+    font-size: 14px !important;
+  }
 }
 
 .ant-list-item-meta-description {

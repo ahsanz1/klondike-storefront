@@ -57,6 +57,11 @@
         padding: 4px;
         border: #f2a900 solid 1px;
 
+        @media (max-width: 768px) {
+          width: 130px;
+          height: 120px;
+        }
+
         .c-image {
           width: 100%;
           max-width: none !important;
@@ -71,6 +76,11 @@
         padding: 4px;
         border: #f2a900 solid 1px;
 
+        @media (max-width: 768px) {
+          width: 130px;
+          height: 120px;
+        }
+
         .c-image {
           width: 100%;
           max-width: none !important;
@@ -84,6 +94,11 @@
         height: 162px;
         padding: 4px;
         border: #f2a900 solid 1px;
+
+        @media (max-width: 768px) {
+          width: 130px;
+          height: 120px;
+        }
 
         .c-image {
           width: 100%;

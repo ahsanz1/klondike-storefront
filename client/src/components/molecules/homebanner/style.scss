@@ -10,7 +10,7 @@
     text-transform: uppercase;
 
     @media screen and(max-width: 500px) {
-      font-size: 8.5vw;
+      font-size: 8.5vw !important;
       letter-spacing: -0.064vw;
     }
   }
@@ -67,6 +67,6 @@
   }
 
   .banner-heading {
-    font-size: 3.08vw;
+    font-size: 2.22vw;
   }
 }
