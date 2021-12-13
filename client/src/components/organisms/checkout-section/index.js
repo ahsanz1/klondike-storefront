@@ -539,7 +539,7 @@ const Checkoutsection = () => {
         ) : (
           <Row className="checkout-padding">
             <Col xs={{ span: 24 }} lg={{ span: 16 }}>
-              <div style={{ margin: '0 0 36px 1vw' }} className="radio-group">
+              <div className="radio-group">
                 <Radio.Group
                   // value={value}
                   defaultValue={1}
@@ -634,7 +634,8 @@ const Checkoutsection = () => {
               <div className="checkout-info-third">
                 <div>
                   <span className="checkout-po">
-                    PO Number: <strong>{`${poNumber}`}</strong>
+                    PO Number:{' '}
+                    <strong className="poNumber">{`${poNumber}`}</strong>
                   </span>
                 </div>
                 <div className="checkout-po-button">
@@ -659,7 +660,7 @@ const Checkoutsection = () => {
                           placeholder="Enter Custom PO Number"
                           onChange={handlePOInput}
                           maxLength={7}
-                          defaultValue={`R3G`}
+                          // defaultValue={`R3G`}
                           className="inputStyle"
                         />
                         {inputField && !validatePO && (
@@ -700,7 +701,7 @@ const Checkoutsection = () => {
                 <h2 className="summary-title">ORDER SUMMARY</h2>
               </div>
               <div className="item">
-                <span>Items ({`${cartPayload?.items?.length || 0}`})</span>
+                <span>{`Items (${cartPayload?.items?.length || 0})`}</span>
                 {(getCartItems.items || []).length === 0 ? (
                   <span>{`$0.00`}</span>
                 ) : (
@@ -719,7 +720,7 @@ const Checkoutsection = () => {
                     : delivery
                       ? `$${Number(
                         parseFloat(
-                          shippingDetails?.shipMethod?.cost?.amount || 0.0,
+                          shippingDetails?.shipMethod?.cost?.amount || 0,
                         ).toFixed(2),
                       ).toLocaleString()}`
                       : 'TBD'}
