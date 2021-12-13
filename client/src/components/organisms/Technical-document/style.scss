@@ -27,7 +27,7 @@ $vw-viewport: 1440;
     width: get-vw(249px);
     margin: get-vw(61px);
     margin-top: get-vw(51px);
-    margin-right: 1.39vw;
+    margin-right: get-vw(38.31px);
     margin-left: 4.2vw;
 
     @media (max-width: 768px) {
@@ -72,6 +72,7 @@ $vw-viewport: 1440;
       }
 
       > h1 {
+        margin-bottom: 0.97vw !important;
         color: #f1a900;
         font-family: $OpenSans;
         font-size: 36px;
@@ -96,7 +97,7 @@ $vw-viewport: 1440;
       }
 
       p {
-        margin-bottom: 1.388vw;
+        // margin-bottom: 1.388vw;
 
         @media (max-width: 768px) {
           margin-bottom: 0;
@@ -104,6 +105,7 @@ $vw-viewport: 1440;
       }
 
       > p {
+        width: 59.86vw;
         opacity: 0.9;
         color: #fff;
         font-family: $OpenSans;
@@ -121,6 +123,7 @@ $vw-viewport: 1440;
           height: 42.4vw;
           margin-top: 6.66vw;
           margin-bottom: 8.53vw;
+          margin-left: 2.93vw;
           font-size: 3.73vw;
         }
       }
@@ -131,7 +134,7 @@ $vw-viewport: 1440;
       width: 100vw;
       //margin-top: 11.2vw;
       // margin-bottom: 5.6vw;
-      padding-bottom: 6vw;
+      padding-bottom: 11.2vw;
     }
   }
 

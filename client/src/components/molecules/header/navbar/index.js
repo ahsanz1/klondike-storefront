@@ -139,7 +139,7 @@ const Navbar = ({
             style={{ color: '#fff' }}
             to={
               userLoginInfo && userLoginInfo.email
-                ? '/quickorder'
+                ? '/quick-order'
                 : 'contact-us'
             }
           >
@@ -173,22 +173,24 @@ const Navbar = ({
             }
             className="header__User-icon"
           >
-            <button>
+            <Button>
               <Image
                 height={26}
                 src={userIcon.url}
                 alt={userIcon.altText}
                 onClick={() => setLoginBottom(false)}
               />
-            </button>
+            </Button>
           </Link>
           {userLoginInfo && userLoginInfo.email && (
             <Button iconOnly className="cart-button">
               {getCartItems?.totalAmount?.amount > 0 ? (
                 <div className="cart-amount">
-                  {`$${parseFloat(
-                    getCartItems?.totalAmount?.amount || 0.0,
-                  ).toFixed(2)}`}
+                  {`$${Number(
+                    parseFloat(
+                      getCartItems?.totalAmount?.amount || 0.0,
+                    ).toFixed(2),
+                  ).toLocaleString()}`}
                 </div>
               ) : (
                 ''

@@ -10,7 +10,7 @@ const SearchList = ({ image, category, title, sku, close }) => {
   return (
     <div className="search-Items">
       <div className="search-img">
-        <Link to={`/PDP?sku=${sku}`} onClick={close}>
+        <Link to={`/product?sku=${sku}`} onClick={close}>
           <img src={image.url} alt="" />
         </Link>
       </div>

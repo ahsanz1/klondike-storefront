@@ -445,9 +445,11 @@ const QuickOrder = () => {
               <Label className="total">
                 <span>
                   $
-                  {parseFloat(getCartItems?.totalAmount?.amount || 0.0).toFixed(
-                    2,
-                  )}
+                  {Number(
+                    parseFloat(
+                      getCartItems?.totalAmount?.amount || 0.0,
+                    ).toFixed(2),
+                  ).toLocaleString()}
                 </span>
               </Label>
             </div>
@@ -512,10 +514,18 @@ const QuickOrder = () => {
             {getCartItems && (
               <div className="quickorder-wrapper">
                 <div className="item_count_mobile">
-                  <Label className="item-count">
-                    <i className="fas fa-check" aria-hidden="true"></i> You
-                    added {getCartItems?.items?.length} new item to your cart
-                  </Label>
+                  {getCartItems?.items?.length > 0 && (
+                    <Label className="item-count">
+                      <i className="fas fa-check" aria-hidden="true"></i>
+                      You added
+                      {` ${getCartItems?.items.length} ${
+                        getCartItems?.items.length < 2
+                          ? ' new item '
+                          : ' new items '
+                      }`}
+                      to your cart
+                    </Label>
+                  )}
                 </div>
                 {getCartItems &&
                   getCartItems?.items?.length > 0 &&
@@ -595,7 +605,10 @@ const QuickOrder = () => {
                           </div>
                           <div>
                             <p className="quickorder-Price subtotal-color">
-                              ${item?.totalPrice?.amount.toFixed(2)}
+                              $
+                              {Number(
+                                item?.totalPrice?.amount.toFixed(2),
+                              ).toLocaleString()}
                             </p>
                           </div>
                         </div>

@@ -76,10 +76,10 @@ const Accordiondocment = ({
                       <p>PRODUCT</p>
                     </Col>
                     <Col lg={4}>
-                      <p>PSD ENGLISH</p>
+                      <p>PDS ENGLISH</p>
                     </Col>
                     <Col lg={3}>
-                      <p>PSD FRENCH</p>
+                      <p>PDS FRENCH</p>
                     </Col>
                     <Col lg={3}>
                       <p className="text-class-center">SDS ENGLISH</p>

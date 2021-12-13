@@ -87,7 +87,13 @@ $vw-viewport: 1440;
   .table-button {
     position: absolute;
     top: 15px;
-    right: -130px;
+    //right: -130px;
+    min-width: 150px;
+    margin-left: 20px;
+
+    @media (max-width: 768px) {
+      right: -170px;
+    }
 
     @media (min-width: 1600px) {
       position: absolute;
@@ -97,6 +103,7 @@ $vw-viewport: 1440;
 
   .hover-button {
     box-sizing: border-box;
+    height: 50px;
     margin-top: -0.69vw;
     margin-bottom: 30px;
     padding: 12px;
@@ -111,6 +118,8 @@ $vw-viewport: 1440;
 
     &:lang(fr) {
       left: 2.91vw;
+      padding-right: 5px;
+      padding-left: 5px;
 
       @media (max-width: 768px) {
         left: 11.2vw;
@@ -120,10 +129,14 @@ $vw-viewport: 1440;
     @media (max-width: 768px) {
       margin-top: -2vw;
     }
+
+    @media (min-width: 1600px) {
+      margin-top: 0;
+    }
   }
 
   .stop {
-    position: relative;
+    //position: relative;
     background: rgba(255, 255, 255, 0.3);
   }
 

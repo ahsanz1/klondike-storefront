@@ -70,7 +70,7 @@ const PlpTabList = ({
                                   }
                                 >
                                   <Link
-                                    to={`/PDP?sku=${item.sku}`}
+                                    to={`/product?sku=${item.sku}`}
                                     className="notranslate"
                                   >
                                     {item.title}

@@ -129,7 +129,9 @@ const AccountTabPane = ({ data, title }) => {
       ) : (
         <>
           <Label className="credit-limit">{data.limit && data.limit}</Label>
-          <p className="credit-price">${creditLimit}</p>
+          <p className="credit-price">
+            ${Number(creditLimit).toLocaleString()}
+          </p>
         </>
       )}
     </div>

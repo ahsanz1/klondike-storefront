@@ -115,7 +115,7 @@ const ProductItem = ({ item, id }) => {
     <div className="product">
       <div className="product-img">
         <Link
-          to={`/PDP?sku=${item.sku}`}
+          to={`/product?sku=${item.sku}`}
           onClick={() => productListingClick(item)}
         >
           <Image src={item && item['Image 1 URL'] && item['Image 1 URL']} />
@@ -126,7 +126,7 @@ const ProductItem = ({ item, id }) => {
           className="product-title"
           style={{ marginBottom: titles.length > 1 && '0' }}
         >
-          <Link className="notranslate" to={`/PDP?sku=${item.sku}`}>
+          <Link className="notranslate" to={`/product?sku=${item.sku}`}>
             {titles[0] && titles[0]}
             {titles.length > 1 ? ' & ' : ''}
           </Link>
@@ -134,7 +134,7 @@ const ProductItem = ({ item, id }) => {
       )}
       {titles.length > 1 && (
         <h3 className="product-title">
-          <Link to={`/PDP?sku=${item.sku}`}>{titles[1] && titles[1]}</Link>
+          <Link to={`/product?sku=${item.sku}`}>{titles[1] && titles[1]}</Link>
         </h3>
       )}
 
