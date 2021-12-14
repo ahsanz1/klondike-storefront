@@ -47,8 +47,8 @@ $vw-viewport: 1440;
 
     .checkout-logo-image {
       @media (max-width: 768px) {
-        width: 10.26vw;
-        height: 9.46vw;
+        width: 40px;
+        height: 35.48px;
         margin: 0 !important;
         padding: 0 !important;
       }
@@ -106,8 +106,8 @@ $vw-viewport: 1440;
 
   .checkout-btn {
     width: 100%;
-    margin: 3vw 1vw;
-    margin-top: 1.38vw;
+    // margin: 3vw 1vw;
+    margin-top: get-vw(19px);
 
     @media (max-width: 768px) {
       margin: 11.2vw 0 0 0;
@@ -115,9 +115,9 @@ $vw-viewport: 1440;
 
     .placeorder-btn {
       box-sizing: border-box;
-      width: 55vw;
+      width: get-vw(792px);
       height: 4.444vw;
-      margin-top: 1vw;
+      margin-top: get-vw(19px);
       border: 1px solid #f2a900;
       border-radius: 5px;
       background-color: #f2a900;
@@ -151,7 +151,7 @@ $vw-viewport: 1440;
   // }
 
   .checkout-heading-padding {
-    padding: 2.43vw 1vw 0 8.33vw;
+    padding: 2.43vw 0 0 get-vw(120px);
 
     .radio-btn {
       font-size: 1vw !important;
@@ -169,6 +169,7 @@ $vw-viewport: 1440;
     color: #fff;
 
     @media (max-width: 768px) {
+      margin-top: 30px;
       padding: 0;
     }
 
@@ -178,6 +179,7 @@ $vw-viewport: 1440;
       font-size: get-vw(24px);
       font-style: normal;
       font-weight: bold;
+      line-height: get-vw(33px);
       text-transform: uppercase;
 
       @media (max-width: 768px) {
@@ -221,7 +223,7 @@ $vw-viewport: 1440;
   }
 
   .checkout-padding {
-    padding: 1vw 1vw 0 7.43vw;
+    padding: 0 1vw 0 get-vw(120px);
 
     @media (max-width: 768px) {
       padding-top: 10.4vw;
@@ -238,17 +240,20 @@ $vw-viewport: 1440;
     }
 
     .change-button {
-      height: 2.5vw !important;
-      padding: 0 1vw 0 1vw;
+      height: get-vw(42px) !important;
+      padding: 0 1.5vw 0 1.5vw;
       border: 0.15vw solid #f2a900 !important;
       border-radius: get-vw(5px);
       font-size: 1.2vw !important;
       // border-color: #f2a900 !important;
 
       @media (max-width: 768px) {
-        height: auto !important;
+        box-sizing: border-box;
+        // height: auto !important;
+        height: 42px !important;
         padding: 10px 30px 10px 30px;
-        border-radius: get-vw(5px);
+        border: 1px solid #f1a900;
+        border-radius: 5px;
         font-size: 4vw !important;
       }
 
@@ -262,10 +267,10 @@ $vw-viewport: 1440;
     }
 
     .checkout-info {
-      width: 55.13vw;
-      margin: 1vw;
+      width: get-vw(794px);
+      margin-bottom: get-vw(15px);
       // margin-left: 0;
-      padding: get-vw(20.8px);
+      padding: get-vw(24px);
       background-color: #002a3a;
       word-break: break-all;
 
@@ -274,6 +279,7 @@ $vw-viewport: 1440;
         margin-bottom: 15px;
         margin-left: 0;
         padding: 4vw;
+        // height: 127px;
 
         &:last-child {
           padding: 0;
@@ -299,11 +305,23 @@ $vw-viewport: 1440;
         }
 
         .checkout-po-input {
+          width: get-vw(227px);
+          height: get-vw(46px);
+
           @media (max-width: 768px) {
+            width: get-vw(170px);
+            height: get-vw(36px);
             padding-top: 6.13vw;
             padding-right: 6.13vw;
             padding-bottom: 5.33vw;
             padding-left: 35.73vw;
+          }
+
+          .invalid-po-number {
+            @media (max-width: 768px) {
+              width: 200px;
+              font-size: 12px;
+            }
           }
           // .inputStyle {
           //   @media (max-width: 768px) {
@@ -333,13 +351,13 @@ $vw-viewport: 1440;
       align-items: center;
       justify-content: space-between;
       width: 55.13vw;
-      margin: 1vw;
+      margin-bottom: get-vw(15px);
       // margin-left: 0;
       // padding-top: get-vw(10px);
       // padding-right: 1.4vw;
       // padding-bottom: get-vw(11px);
       // padding-left: 1.4vw;
-      padding: 1.44vw;
+      padding: get-vw(24px);
       background-color: #002a3a;
       word-break: break-all;
 
@@ -352,19 +370,21 @@ $vw-viewport: 1440;
       }
 
       .change-button {
-        height: 2.5vw !important;
+        height: get-vw(42px) !important;
         padding: 0 1vw 0 1vw;
         border: 0.15vw solid #f2a900 !important;
         border-radius: get-vw(5px);
-        font-size: 1.2vw !important;
+        font-size: get-vw(16px) !important;
         // border-color: #f2a900 !important;
         @media (max-width: 768px) {
-          height: auto !important;
+          box-sizing: border-box;
+          height: 42px !important;
           margin-top: 6.66vw;
           margin-left: 9.73vw;
           padding: 10px 30px 10px 30px;
-          border-radius: get-vw(5px);
-          font-size: 4vw !important;
+          border: 1px solid #f1a900;
+          border-radius: 5px;
+          font-size: 16px !important;
         }
 
         &:hover {
@@ -404,7 +424,8 @@ $vw-viewport: 1440;
         }
 
         span {
-          font-size: 1.2vw;
+          font-size: get-vw(14px);
+          text-decoration: underline;
 
           @media (max-width: 768px) {
             font-size: 4vw;
@@ -426,15 +447,15 @@ $vw-viewport: 1440;
       align-items: center;
       justify-content: space-between;
       width: 55.13vw;
-      margin: 1vw;
-      padding: 1.44vw;
+      margin-bottom: get-vw(15px);
+      padding: get-vw(24px);
       background-color: #002a3a;
       word-break: break-all;
 
       @media (max-width: 768px) {
         display: block;
         width: 100%;
-        margin-bottom: 36px;
+        // margin-bottom: 36px;
         margin-left: 0;
         padding: 4vw;
       }
@@ -444,6 +465,10 @@ $vw-viewport: 1440;
           display: flex;
           align-items: center;
           justify-content: space-between;
+        }
+
+        .poNumber {
+          margin-left: get-vw(16px);
         }
 
         input {
@@ -495,7 +520,18 @@ $vw-viewport: 1440;
 }
 
 .radio-group {
+  // margin-top: get-vw(5px);
+  margin-bottom: get-vw(60px);
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
+
   .ant-radio-group {
+    .ant-radio-wrapper {
+      margin-right: 55px !important;
+    }
+
     .ant-radio-wrapper.ant-radio-wrapper-checked.radio-btn {
       span {
         color: #f4f4f4;
@@ -517,12 +553,12 @@ $vw-viewport: 1440;
 }
 
 .inputStyle {
-  width: 25%;
-  font-size: get-vw(14px);
+  // width: 25%;
+  // font-size: get-vw(14px);
 
   @media (max-width: 768px) {
-    width: 40%;
-    font-size: 4vw;
+    width: 170px !important;
+    height: 36px !important;
   }
 }
 
@@ -563,4 +599,10 @@ $vw-viewport: 1440;
 
 .ant-list-item-meta-description {
   color: #464646 !important;
+}
+
+.h-127 {
+  @media (max-width: 768px) {
+    height: 127px !important;
+  }
 }
