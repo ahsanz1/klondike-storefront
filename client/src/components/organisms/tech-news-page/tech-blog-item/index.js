@@ -59,7 +59,7 @@ const TechBlogItem = ({
         <div>
           <Label className="paragragh-text">
             <span>{textVal.slice(0, textVal.length)}</span>
-            <span>{!textState ? ' ...' : '.'}</span>
+            <span>{!textState ? ' ... ' : '. '}</span>
             <Button className="read-more" onClick={e => changeState(text)}>
               {btnText}
             </Button>
