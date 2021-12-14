@@ -256,8 +256,8 @@ body .ant-modal-mask {
   display: flex;
 
   .product-img {
-    width: 10.84vw;
-    max-width: 10.84vw;
+    width: 156px;
+    // max-width: 156px;
     height: 191.57px;
     margin: 0;
     margin-top: 3px !important;
@@ -265,7 +265,7 @@ body .ant-modal-mask {
     background: white;
 
     img {
-      width: 100%;
+      // width: 100%;
       height: 100%;
       object-fit: cover;
     }
@@ -318,8 +318,8 @@ body .ant-modal-mask {
       }
 
       p.qty {
-        margin-left: 7px;
-        //text-align: center;
+        // margin-left: 7px;
+        text-align: center;
         text-transform: uppercase;
       }
 
@@ -337,6 +337,10 @@ body .ant-modal-mask {
         height: 89px;
         font-size: 14px;
         text-align: left;
+      }
+
+      p.size {
+        width: 79px;
       }
 
       .products-sizes {
