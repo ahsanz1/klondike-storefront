@@ -137,7 +137,7 @@ const Checkoutsection = () => {
         console.log(result, 'filtered')
         await setAvaiablePickupLocations(result)
         setIsCartLoading(false)
-      } else navigate('/plp-page')
+      } else navigate('/category')
     }
   }
 
