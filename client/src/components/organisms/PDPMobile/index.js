@@ -150,7 +150,7 @@ const PDPMobile = ({
                 </Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                <Link to="/category" style={{ color: '#FFFFFF' }}>
                   {productData?.category}
                 </Link>
               </Breadcrumb.Item>
