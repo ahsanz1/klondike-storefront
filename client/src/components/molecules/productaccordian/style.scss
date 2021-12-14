@@ -245,13 +245,19 @@ body .ant-modal-mask {
 // }
 //   }
 // }
+.product-content-mobile {
+  p.bulk {
+    width: 79px;
+    height: 19px;
+  }
+}
 
 .model-parent {
   display: flex;
 
   .product-img {
-    width: 10.84vw;
-    max-width: 10.84vw;
+    width: 156px;
+    // max-width: 156px;
     height: 191.57px;
     margin: 0;
     margin-top: 3px !important;
@@ -259,8 +265,8 @@ body .ant-modal-mask {
     background: white;
 
     img {
-      width: 100%;
-      height: 100%;
+      width: 156px;
+      height: 191px;
       object-fit: cover;
     }
   }
@@ -312,8 +318,8 @@ body .ant-modal-mask {
       }
 
       p.qty {
-        margin-left: 7px;
-        //text-align: center;
+        // margin-left: 7px;
+        text-align: center;
         text-transform: uppercase;
       }
 
@@ -331,6 +337,10 @@ body .ant-modal-mask {
         height: 89px;
         font-size: 14px;
         text-align: left;
+      }
+
+      p.size {
+        width: 79px;
       }
 
       .products-sizes {
@@ -416,7 +426,7 @@ body .ant-modal-mask {
 
   @media (max-width: 768px) {
     .products-sizes {
-      //height: 19px;
+      height: 19px;
       margin-top: 9px;
       font-size: 11px;
       font-weight: 800;
@@ -469,6 +479,11 @@ body .ant-modal-mask {
     color: white;
     font-weight: bold !important;
 
+    /* p.bulk {
+      width: 79px;
+      height: 19px;
+    } */
+
     .product-pricing-mobile {
       display: flex;
       flex-direction: row;
@@ -501,6 +516,10 @@ body .ant-modal-mask {
       align-items: center;
       margin-right: 20px;
 
+      @media (max-width: 768px) {
+        margin-bottom: 8px;
+      }
+
       p {
         margin-right: 11px;
         margin-bottom: 0;
@@ -513,10 +532,14 @@ body .ant-modal-mask {
           width: 59px !important;
 
           @media (max-width: 768px) {
+            width: 59px;
+            height: 30px;
+            margin-top: -8px;
             border-radius: 3px;
             font-family: $OpenSans !important;
             font-size: 4vw !important;
             font-weight: bold !important;
+            text-align: center;
           }
         }
       }
