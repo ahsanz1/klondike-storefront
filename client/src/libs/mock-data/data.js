@@ -397,7 +397,7 @@ const mockData = {
       params: { ...category },
     },
   ],
-  '/plp-page': [
+  '/category': [
     {
       id: 'WebpageGlobalHeroBanner',
       params: shopBanner,

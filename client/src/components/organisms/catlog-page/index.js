@@ -71,7 +71,6 @@ const Catlog = ({ heading, catData, image }) => {
       </>
     )
   }
-
   // const [size, setSize] = useState(useWindowSize)
   return size[0] > 768 ? (
     <>
