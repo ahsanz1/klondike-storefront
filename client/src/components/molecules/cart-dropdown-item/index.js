@@ -83,7 +83,7 @@ const CartDropdownItem = (cartData, key) => {
   return (
     <div className="mini-cart-item" key={key}>
       <div className="cart-item">
-        <div>
+        <div className="cart-image-container">
           <img src={cart?.image} className="cart-item-image" alt="" />
         </div>
         <div>
@@ -108,7 +108,7 @@ const CartDropdownItem = (cartData, key) => {
 
             <div className="product-price-info">
               <Label className="product-price">
-                <p className="product-price-mobile">PRICE</p>$
+                <p className="product-price-mobile ">PRICE</p>$
                 {cart?.price?.base.toFixed(2)}
               </Label>
             </div>
@@ -118,14 +118,14 @@ const CartDropdownItem = (cartData, key) => {
           <div className="total-and-quantity-cart-and-remove-btn">
             <div className="product-price-info">
               <Label className="product-price">
-                PRICE
-                <Label className="product-price-mobile">
+                Price
+                <Label className="product-price-mobile mobile-pricing">
                   ${cart?.price?.base.toFixed(2)}
                 </Label>
               </Label>
             </div>
             <div className="quantity-box">
-              <Label className="product-quantity-mobile">QTY</Label>
+              <Label className="product-quantity-mobile">QTY:</Label>
               <InputNumber
                 className="product-quantity-spinner"
                 min={1}
@@ -138,8 +138,10 @@ const CartDropdownItem = (cartData, key) => {
               />
             </div>
             <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>$
-              {cart?.totalPrice?.amount?.toFixed(2)}
+              <p className="product-total-mobile">TOTAL PRICE</p>
+              <span className="product-total-amount">
+                ${cart?.totalPrice?.amount?.toFixed(2)}
+              </span>
             </Label>
           </div>
           <div className="removebtn-div">
@@ -165,7 +167,7 @@ const CartDropdownItem = (cartData, key) => {
         </div>
         <div className="quantity-block">
           <div className="quantity-box">
-            <Label className="product-quantity-mobile">QTY</Label>
+            <Label className="product-quantity-mobile">QTY:</Label>
             <InputNumber
               className="product-quantity-spinner desktop"
               min={1}

@@ -67,6 +67,11 @@
   }
 
   .banner-heading {
+    width: get-vw(584px);
     font-size: 2.22vw;
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
   }
 }

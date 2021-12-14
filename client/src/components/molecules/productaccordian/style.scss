@@ -21,6 +21,10 @@ $vw-viewport: 1440;
     }
   }
 
+  .unit-col {
+    margin-right: 1.38vw;
+  }
+
   .text-class-right {
     text-align: right;
   }
@@ -184,13 +188,14 @@ $vw-viewport: 1440;
   height: 15.27vw;
 
   .ant-modal-body {
-    padding-top: 4.86vw;
-    padding-right: 6.94vw;
-    padding-left: 10.9vw;
+    padding-top: 4.652vw;
+    padding-right: 10.97vw;
+    padding-left: 10.625vw;
     background: #013a4e;
 
     @media (max-width: 768px) {
-      padding-top: 40px;
+      height: 743px;
+      padding-top: 60px;
       padding-right: 0;
       padding-left: 0;
     }
@@ -205,6 +210,21 @@ $vw-viewport: 1440;
   .ant-modal-close-x {
     color: white;
     font-size: 20px;
+
+    svg {
+      width: 12.83px;
+      height: 12.73px;
+      margin-top: 32px;
+      margin-right: 33px;
+      margin-left: 10px;
+
+      @media (max-width: 768px) {
+        margin-top: 16px;
+        margin-right: 16px;
+        margin-bottom: 10px;
+        margin-left: 12px;
+      }
+    }
   }
 }
 
@@ -230,17 +250,18 @@ body .ant-modal-mask {
   display: flex;
 
   .product-img {
-    width: 10.9vw;
-    max-width: 10.9vw;
-    height: 192px;
+    width: 10.84vw;
+    max-width: 10.84vw;
+    height: 191.57px;
     margin: 0;
+    margin-top: 3px !important;
     // max-width: 150px;
     background: white;
 
     img {
-      object-fit: cover;
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -248,8 +269,11 @@ body .ant-modal-mask {
     //padding-left: 2.5vw;
 
     h1 {
+      width: 586px;
+      height: 67px;
       margin-top: 0;
-      margin-left: 3vw;
+      margin-bottom: 0;
+      margin-left: 33px;
       color: white;
       font-family: $OpenSans;
       font-size: 24px;
@@ -262,10 +286,10 @@ body .ant-modal-mask {
 
     .product-detail {
       display: grid;
-      grid-template-columns: 1.4fr 1.4fr 1fr 1fr 1fr 1.4fr;
+      grid-template-columns: 1.4fr 0.5fr 1.2fr 1.4fr 1.2fr 1.5fr;
       align-items: baseline;
-      margin-left: 3.5vw;
-      padding-top: 3.26vw;
+      margin-left: 33px;
+      padding-top: 1.388vw;
       // padding-left: 2.3vw;
       justify-items: center;
 
@@ -293,10 +317,18 @@ body .ant-modal-mask {
 
       p.price-value {
         text-align: right;
+        text-transform: uppercase;
       }
 
       p.part-value {
         margin-right: 0.5vw !important;
+      }
+
+      p.bulk {
+        width: 104px;
+        height: 89px;
+        font-size: 14px;
+        text-align: left;
       }
 
       .products-sizes {
@@ -316,7 +348,7 @@ body .ant-modal-mask {
       width: 20.83vw;
       height: 64px;
       margin-top: 0.97vw;
-      margin-right: 2.08vw;
+      margin-right: 2.43vw;
       margin-bottom: 30px;
       float: right;
       border: 1px solid #f2a900;
@@ -341,6 +373,11 @@ body .ant-modal-mask {
   margin-left: 25px;
   font-family: $OpenSans;
 
+  @media (max-width: 768px) {
+    margin-right: 25px;
+    margin-left: 25px;
+  }
+
   .product-subtotal-price-wrapper {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 
@@ -363,10 +400,15 @@ body .ant-modal-mask {
     font-size: 24px;
     font-weight: bold;
     line-height: 110%;
+
+    @media (max-width: 768px) {
+      text-align: center;
+    }
   }
 
   @media (max-width: 768px) {
     .products-sizes {
+      margin-top: 9px;
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.03em;
@@ -390,16 +432,22 @@ body .ant-modal-mask {
   }
 
   .product-img-mobile {
-    width: 178px;
-    max-width: 178px;
-    height: 192px;
+    //width: 178px;
+    //max-width: 178px;
+    // height: 192px;
     margin: 0 auto;
     // max-width: 150px;
     background: white;
 
+    @media (max-width: 768px) {
+      width: 195px;
+      max-width: 195px;
+      height: 240px;
+    }
+
     img {
       object-fit: cover;
-      width: 178px;
+      width: 100%;
       height: 100%;
     }
   }
@@ -466,7 +514,8 @@ body .ant-modal-mask {
     }
 
     @media (max-width: 768px) {
-      margin-bottom: 19px;
+      margin-top: 29px;
+      margin-bottom: 18px;
       font-size: 11px;
       font-weight: 800;
       line-height: 15px;
@@ -487,10 +536,12 @@ body .ant-modal-mask {
   }
 
   .pricelist-addcart-mobile {
-    width: 100%;
+    width: 300px;
     height: 64px;
     margin-top: 0.97vw;
+    margin-right: 12px;
     margin-bottom: 30px;
+    margin-left: 13px;
     float: right;
     border: 1px solid #f2a900;
     border-radius: 5px;
