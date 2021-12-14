@@ -5,7 +5,8 @@ import Lable from 'components/atoms/label'
 import Image from 'components/atoms/image'
 import MobileTabList from '../mobile-tablist'
 import './style.scss'
-import { navigate } from '@reach/router'
+// import { navigate } from '@reach/router'
+import Link from 'components/atoms/link'
 
 const EzeBox = ({
   mainHeading,
@@ -76,14 +77,18 @@ const EzeBox = ({
                       <>
                         <div className="product-set" key={i}>
                           <li>
-                            <div className="product-image-section">
-                              <Image
-                                src={data && data.image.url}
-                                alt="alt"
-                                onClick={() => navigate('/PDP')}
-                              />
-                            </div>
-                            <div className="name notranslate">{data?.name}</div>
+                            <Link to={data.sku}>
+                              <div className="product-image-section">
+                                <Image
+                                  src={data && data.image.url}
+                                  alt="alt"
+                                  // onClick={() => navigate('/PDP')}
+                                />
+                              </div>
+                              <div className="name notranslate">
+                                {data?.name}
+                              </div>
+                            </Link>
                           </li>
                         </div>
                       </>
@@ -157,16 +162,18 @@ const EzeBox = ({
                             <>
                               <div className="product-set" key={i}>
                                 <li>
-                                  <div className="product-image-section">
-                                    <Image
-                                      src={data && data.image.url}
-                                      alt="alt"
-                                      onClick={() => navigate('/PDP')}
-                                    />
-                                  </div>
-                                  <div className="name notranslate">
-                                    {data?.name}
-                                  </div>
+                                  <Link to={data.sku}>
+                                    <div className="product-image-section">
+                                      <Image
+                                        src={data && data.image.url}
+                                        alt="alt"
+                                        // onClick={() => navigate('/PDP')}
+                                      />
+                                    </div>
+                                    <div className="name notranslate">
+                                      {data?.name}
+                                    </div>
+                                  </Link>
                                 </li>
                               </div>
                             </>
