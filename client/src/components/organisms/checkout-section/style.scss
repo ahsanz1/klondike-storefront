@@ -47,8 +47,8 @@ $vw-viewport: 1440;
 
     .checkout-logo-image {
       @media (max-width: 768px) {
-        width: 10.26vw;
-        height: 9.46vw;
+        width: 40px;
+        height: 35.48px;
         margin: 0 !important;
         padding: 0 !important;
       }
@@ -169,6 +169,7 @@ $vw-viewport: 1440;
     color: #fff;
 
     @media (max-width: 768px) {
+      margin-top: 30px;
       padding: 0;
     }
 
@@ -178,6 +179,7 @@ $vw-viewport: 1440;
       font-size: get-vw(24px);
       font-style: normal;
       font-weight: bold;
+      line-height: get-vw(33px);
       text-transform: uppercase;
 
       @media (max-width: 768px) {
@@ -274,6 +276,7 @@ $vw-viewport: 1440;
         margin-bottom: 15px;
         margin-left: 0;
         padding: 4vw;
+        // height: 127px;
 
         &:last-child {
           padding: 0;
@@ -303,10 +306,19 @@ $vw-viewport: 1440;
           height: get-vw(46px);
 
           @media (max-width: 768px) {
+            width: get-vw(170px);
+            height: get-vw(36px);
             padding-top: 6.13vw;
             padding-right: 6.13vw;
             padding-bottom: 5.33vw;
             padding-left: 35.73vw;
+          }
+
+          .invalid-po-number {
+            @media (max-width: 768px) {
+              width: 200px;
+              font-size: 12px;
+            }
           }
           // .inputStyle {
           //   @media (max-width: 768px) {
@@ -438,7 +450,7 @@ $vw-viewport: 1440;
       @media (max-width: 768px) {
         display: block;
         width: 100%;
-        margin-bottom: 36px;
+        // margin-bottom: 36px;
         margin-left: 0;
         padding: 4vw;
       }
@@ -507,6 +519,10 @@ $vw-viewport: 1440;
   margin-bottom: get-vw(60px);
 
   .ant-radio-group {
+    .ant-radio-wrapper {
+      margin-right: 55px !important;
+    }
+
     .ant-radio-wrapper.ant-radio-wrapper-checked.radio-btn {
       span {
         color: #f4f4f4;
@@ -528,12 +544,12 @@ $vw-viewport: 1440;
 }
 
 .inputStyle {
-  width: 25%;
-  font-size: get-vw(14px);
+  // width: 25%;
+  // font-size: get-vw(14px);
 
   @media (max-width: 768px) {
-    width: 40%;
-    font-size: 4vw;
+    width: 170px !important;
+    height: 36px !important;
   }
 }
 
@@ -574,4 +590,10 @@ $vw-viewport: 1440;
 
 .ant-list-item-meta-description {
   color: #464646 !important;
+}
+
+.h-127 {
+  @media (max-width: 768px) {
+    height: 127px !important;
+  }
 }

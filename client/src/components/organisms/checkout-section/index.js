@@ -383,6 +383,7 @@ const Checkoutsection = () => {
   }
 
   const handlePOChange = () => {
+    setPONumber('')
     setInputField(true)
   }
 
@@ -431,7 +432,7 @@ const Checkoutsection = () => {
         onCancel={handleCancel}
         bodyStyle={{
           background: 'white',
-          padding: 15,
+          padding: '10px 15px 20px 25px',
           maxHeight: '36vh',
           overflowY: 'scroll',
         }}
@@ -614,6 +615,8 @@ const Checkoutsection = () => {
                   ) : (
                     <div className="checkout-po">
                       <span>
+                        <strong>{`${selectedLocation?.name}`}</strong>
+                        <br />
                         {`${selectedLocation?.address?.street1},`}
                         <br />
                         {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
@@ -650,7 +653,7 @@ const Checkoutsection = () => {
               </div>
               <>
                 {inputField && (
-                  <div className="checkout-info">
+                  <div className="checkout-info h-127">
                     <div className="checkout-po">
                       <span className="checkout-po-span">
                         Custom PO Number:
@@ -664,7 +667,10 @@ const Checkoutsection = () => {
                           className="inputStyle"
                         />
                         {inputField && !validatePO && (
-                          <p style={{ color: '#f2a900' }}>
+                          <p
+                            style={{ color: '#f2a900' }}
+                            className="invalid-po-number"
+                          >
                             {poNumber?.length === 0
                               ? 'Required!'
                               : 'Invalid PO Number'}
