@@ -378,7 +378,7 @@ const ProductAccordion = ({ question }) => {
                   {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                     <p className="products-sizes">SiZE</p>
                   ) : (
-                    <p className="products-sizes">Bulk</p>
+                    <p className="products-sizes  bulk">Bulk</p>
                   )}
                   {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
                     <p className="products-sizes detail">{modalData.size}</p>
