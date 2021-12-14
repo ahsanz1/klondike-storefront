@@ -240,17 +240,20 @@ $vw-viewport: 1440;
     }
 
     .change-button {
-      height: 2.5vw !important;
-      padding: 0 1vw 0 1vw;
+      height: get-vw(42px) !important;
+      padding: 0 1.5vw 0 1.5vw;
       border: 0.15vw solid #f2a900 !important;
       border-radius: get-vw(5px);
       font-size: 1.2vw !important;
       // border-color: #f2a900 !important;
 
       @media (max-width: 768px) {
-        height: auto !important;
+        box-sizing: border-box;
+        // height: auto !important;
+        height: 42px !important;
         padding: 10px 30px 10px 30px;
-        border-radius: get-vw(5px);
+        border: 1px solid #f1a900;
+        border-radius: 5px;
         font-size: 4vw !important;
       }
 
@@ -267,7 +270,7 @@ $vw-viewport: 1440;
       width: get-vw(794px);
       margin-bottom: get-vw(15px);
       // margin-left: 0;
-      padding: get-vw(20.8px);
+      padding: get-vw(24px);
       background-color: #002a3a;
       word-break: break-all;
 
@@ -354,7 +357,7 @@ $vw-viewport: 1440;
       // padding-right: 1.4vw;
       // padding-bottom: get-vw(11px);
       // padding-left: 1.4vw;
-      padding: 1.44vw;
+      padding: get-vw(24px);
       background-color: #002a3a;
       word-break: break-all;
 
@@ -367,19 +370,21 @@ $vw-viewport: 1440;
       }
 
       .change-button {
-        height: 2.5vw !important;
+        height: get-vw(42px) !important;
         padding: 0 1vw 0 1vw;
         border: 0.15vw solid #f2a900 !important;
         border-radius: get-vw(5px);
-        font-size: 1.2vw !important;
+        font-size: get-vw(16px) !important;
         // border-color: #f2a900 !important;
         @media (max-width: 768px) {
-          height: auto !important;
+          box-sizing: border-box;
+          height: 42px !important;
           margin-top: 6.66vw;
           margin-left: 9.73vw;
           padding: 10px 30px 10px 30px;
-          border-radius: get-vw(5px);
-          font-size: 4vw !important;
+          border: 1px solid #f1a900;
+          border-radius: 5px;
+          font-size: 16px !important;
         }
 
         &:hover {
@@ -443,7 +448,7 @@ $vw-viewport: 1440;
       justify-content: space-between;
       width: 55.13vw;
       margin-bottom: get-vw(15px);
-      padding: 1.44vw;
+      padding: get-vw(24px);
       background-color: #002a3a;
       word-break: break-all;
 
@@ -517,6 +522,10 @@ $vw-viewport: 1440;
 .radio-group {
   // margin-top: get-vw(5px);
   margin-bottom: get-vw(60px);
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
 
   .ant-radio-group {
     .ant-radio-wrapper {
