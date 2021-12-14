@@ -11,7 +11,7 @@ const ProductItem = ({ image, title }) => {
       <div className="overviewtitle">
         <div className="outr-border">
           <div className="productimg-wraper">
-            <Link to="plp-page" onClick={() => setPlpRedirect(title)}>
+            <Link to="category" onClick={() => setPlpRedirect(title)}>
               <img src={image.url} alt="" />
             </Link>
           </div>
