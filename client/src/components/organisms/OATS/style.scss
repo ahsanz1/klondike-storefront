@@ -79,6 +79,7 @@
     font-size: 1.11vw;
     font-style: normal;
     font-weight: bold;
+    line-height: 28px;
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -95,6 +96,7 @@
       font-size: 4.26vw;
       font-style: normal;
       font-weight: bold;
+      line-height: 28px;
     }
 
     .input_model:focus {
@@ -256,6 +258,7 @@ font-weight: bold;
     border-radius: 1.11vw !important;
     background-color: #e4eff4 !important;
     font-family: $OpenSans;
+    line-height: 28px !important;
 
     .ant-select-selector::placeholder {
       color: #07232f !important;
@@ -268,6 +271,7 @@ font-weight: bold;
       border-radius: 16px !important;
       font-family: $OpenSans;
       font-size: 3.5vw !important;
+      line-height: 28px !important;
     }
 
     &.cars {
@@ -283,6 +287,7 @@ font-weight: bold;
     color: #07232f !important;
     font-size: 1.11vw;
     font-weight: bold;
+    line-height: 28px !important;
 
     @media (max-width: 768px) {
       font-size: 4.26vw;
@@ -291,6 +296,7 @@ font-weight: bold;
     @media screen and (min-width: 768px) and (max-width: 1024px) {
       margin-top: -13px !important;
       font-size: 1.5vw !important;
+      line-height: 28px !important;
     }
   }
 
@@ -334,7 +340,7 @@ font-weight: bold;
         border-radius: 1.11vw !important;
         background-color: #e4eff4 !important;
         font-family: $OpenSans;
-        line-height: 28px;
+        line-height: 28px !important;
 
         @media (max-width: 768px) {
           height: 64px !important;
@@ -343,6 +349,7 @@ font-weight: bold;
           border-radius: 16px !important;
           font-family: $OpenSans;
           font-size: 3.5vw !important;
+          line-height: 28px !important;
         }
       }
 
@@ -356,7 +363,7 @@ font-weight: bold;
       }
 
       &.year_range {
-        width: 19.8vw;
+        width: 19.86vw;
 
         @media (max-width: 768px) {
           width: 76.2vw;
@@ -366,7 +373,7 @@ font-weight: bold;
       }
 
       &.family {
-        width: 12.9vw;
+        width: 12.91vw;
         // border-radius: 16px;
         @media (max-width: 768px) {
           width: 49.6vw;
@@ -455,6 +462,7 @@ font-weight: bold;
     @media (max-width: 768px) {
       margin-left: 11px;
       font-size: 4.26vw;
+      line-height: 28px;
     }
   }
 
@@ -463,14 +471,14 @@ font-weight: bold;
     font-size: 0.97vw;
     font-style: normal;
     font-weight: normal;
-    line-height: 1.94vw;
+    line-height: 28px;
 
     @media (max-width: 768px) {
       font-family: $OpenSans;
       font-size: 3.73vw;
       font-style: normal;
       font-weight: normal;
-      line-height: 5.6vw;
+      line-height: 28px;
     }
   }
   // @media (max-width: 768px) {
@@ -513,6 +521,16 @@ font-weight: bold;
 
     @media (max-width: 768px) {
       margin-left: 7.73vw;
+      color: #fff;
+      font-family: $OpenSans;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 140%;
+
+      /* or 17px */
+
+      font-feature-settings: 'pnum' on, 'lnum' on;
     }
   }
 
