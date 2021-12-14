@@ -9,7 +9,7 @@ import Link from 'components/atoms/link'
 import Button from 'components/atoms/button'
 // import PropTypes from 'prop-types'
 
-const SubpageData = ({ heading, Paragraph, image }) => {
+const SubpageData = ({ heading, Paragraph, image, link }) => {
   const [readMore, setReadMore] = React.useState(false)
   const size = useWindowSize()
   const more = () => {
@@ -45,21 +45,21 @@ const SubpageData = ({ heading, Paragraph, image }) => {
           <div className="image-subpage">
             <div className="image-one">
               {image.url && (
-                <Link>
+                <Link to={link}>
                   <Image src={image.url} />
                 </Link>
               )}
             </div>
             <div className="image-two">
               {image.url && (
-                <Link>
+                <Link to={link}>
                   <Image src={image.url} />
                 </Link>
               )}
             </div>
             <div className="image-three">
               {image.url && (
-                <Link>
+                <Link to={link}>
                   <Image src={image.url} />
                 </Link>
               )}
@@ -74,5 +74,6 @@ SubpageData.propTypes = {
   heading: PropTypes.string,
   Paragraph: PropTypes.string,
   image: PropTypes.string,
+  link: PropTypes.string,
 }
 export default SubpageData

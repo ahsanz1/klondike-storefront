@@ -127,7 +127,7 @@
     object-fit: cover;
 
     @media (max-width: 768px) {
-      width: 18vw;
+      width: 19vw;
       height: 64px;
       border-radius: 4.26vw;
       background-color: #f1a900;
@@ -160,7 +160,7 @@
       // margin-left: -29px;
 
       .ant-select {
-        width: 60vw !important;
+        width: 44.5vw !important;
       }
     }
   }
@@ -189,6 +189,7 @@
         top: 3.46vw;
         right: 2.66vw;
         align-self: center;
+        width: 72px !important;
         height: 64px;
         margin-left: 5.5vw;
         padding-right: 2.66vw;
@@ -216,7 +217,7 @@
       object-fit: cover;
 
       @media (max-width: 767px) {
-        //  width: 20vw;
+        width: 64px;
         height: 64px;
         // height: 100%;
         object-fit: revert;
@@ -478,6 +479,8 @@
     background: #094256;
 
     @media (max-width: 768px) {
+      height: 80px;
+      padding-top: 12px;
       padding-left: 32px;
     }
   }
@@ -487,6 +490,8 @@
     background: #1f586c;
 
     @media (max-width: 768px) {
+      height: 80px;
+      padding-top: 12px;
       padding-left: 32px;
     }
   }
