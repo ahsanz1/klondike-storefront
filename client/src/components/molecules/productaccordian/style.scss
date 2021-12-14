@@ -312,7 +312,9 @@ body .ant-modal-mask {
       }
 
       p.qty {
-        text-align: center;
+        margin-left: 7px;
+        //text-align: center;
+        text-transform: uppercase;
       }
 
       p.price-value {
@@ -332,6 +334,7 @@ body .ant-modal-mask {
       }
 
       .products-sizes {
+        height: 19px;
         margin-right: 1.041vw;
         margin-bottom: 1.94vw;
         color: white;
@@ -362,7 +365,7 @@ body .ant-modal-mask {
   }
 
   .ant-input-number-input-wrap {
-    width: 49px;
+    width: 59px;
   }
 }
 
@@ -379,11 +382,16 @@ body .ant-modal-mask {
   }
 
   .product-subtotal-price-wrapper {
+    margin-bottom: 39px;
+    padding-top: 18px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 
     .product-subtotal-price {
-      margin-bottom: 39px;
-      padding-top: 18px;
+      height: 32px;
+      margin-bottom: 0;
+      //margin-bottom: 39px;
+      //padding-top: 18px;
+      margin-left: 176px;
       color: #f1a900;
       font-size: 24px;
       font-weight: bold;
@@ -408,6 +416,7 @@ body .ant-modal-mask {
 
   @media (max-width: 768px) {
     .products-sizes {
+      //height: 19px;
       margin-top: 9px;
       font-size: 11px;
       font-weight: 800;
@@ -538,7 +547,7 @@ body .ant-modal-mask {
   .pricelist-addcart-mobile {
     width: 300px;
     height: 64px;
-    margin-top: 0.97vw;
+    //margin-top: 0.97vw;
     margin-right: 12px;
     margin-bottom: 30px;
     margin-left: 13px;
