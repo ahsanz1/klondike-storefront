@@ -122,7 +122,7 @@ $vw-viewport: 1440;
           ul {
             .oem-subitem-title {
               @media (max-width: 768px) {
-                font-size: 14px;
+                font-size: 10px;
                 font-weight: 400;
               }
 
@@ -175,7 +175,7 @@ $vw-viewport: 1440;
     }
 
     .subitems-heading {
-      margin-left: get-vw(20px);
+      margin-left: 8.38889vw;
       color: white;
       font-size: get-vw(10px);
       font-weight: bold;

@@ -303,7 +303,7 @@ const ProductAccordion = ({ question }) => {
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                       <p className="products-sizes">SIZE</p>
                     ) : (
-                      <p className="products-sizes">Bulk</p>
+                      <p className="products-sizes bulk">Bulk</p>
                     )}
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
                       // eslint-disable-next-line indent
@@ -319,19 +319,19 @@ const ProductAccordion = ({ question }) => {
                     )}
                   </div>
                   <div>
-                    <p className="products-sizes">PART NUM</p>
-                    <p className="products-sizes detail part-value">
-                      {modalData.partNumber}
-                    </p>
-                  </div>
-                  <div>
                     <p className="products-sizes price-value">
                       {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
                         ? 'PRICE'
-                        : 'Price Litre'}
+                        : 'Price/Litre'}
                     </p>
                     <p className="products-sizes detail ">
                       ${modalData?.price?.toFixed(2)}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="products-sizes">PART NUM</p>
+                    <p className="products-sizes detail part-value">
+                      {modalData.partNumber}
                     </p>
                   </div>
                   <div>
@@ -451,7 +451,7 @@ const ProductAccordion = ({ question }) => {
                 className="pricelist-addcart-mobile "
                 onClick={e => addItemToCart(e)}
               >
-                Add TO CART
+                ADD TO CART
               </Button>
             </div>
           )}

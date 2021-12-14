@@ -6,6 +6,7 @@ import { categoriesXPM } from './data'
 import Link from 'components/atoms/link'
 import SubpageData from 'components/molecules/sub-pagedata'
 import useWindowSize from 'libs/custom-hooks/useWindowSize'
+import { useLocation } from '@reach/router'
 
 const Techtabllist = ({
   categories,
@@ -19,6 +20,7 @@ const Techtabllist = ({
   datasubpage,
 }) => {
   const [size] = useWindowSize()
+  const location = useLocation()
 
   return (
     <div className={`categoryItem-tab trt ${className}`}>
@@ -59,7 +61,12 @@ const Techtabllist = ({
                                 className={
                                   item.title === subItemName && 'active-product'
                                 }
-                                onClick={() => sidebarSubitem(item.title)}
+                                onClick={
+                                  location.pathname ===
+                                  '/tech-resources/tech-news-blog'
+                                    ? () => sidebarSubitem(item.title)
+                                    : () => {}
+                                }
                                 to={
                                   item.links && item.links.length > 0
                                     ? item.links
