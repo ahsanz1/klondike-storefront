@@ -20,10 +20,10 @@
     display: flex;
 
     /* or 25px */
-    padding-top: get-vw(14.5px);
+    // padding-top: get-vw(14.43px);
     padding-right: get-vw(28px);
-    padding-bottom: get-vw(13.7px);
-    padding-left: get-vw(125px);
+    // padding-bottom: get-vw(13.7px);
+    // padding-left: get-vw(125px);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     font-size: get-vw(18px);
     font-style: normal;
@@ -41,8 +41,8 @@
     }
 
     .pop-up-text {
-      margin-top: get-vw(37px);
-      margin-bottom: get-vw(40.3px);
+      margin-top: get-vw(50px);
+      margin-bottom: get-vw(54px);
 
       @media screen and (max-width: 768px) {
         margin-top: 1vw;
@@ -55,13 +55,15 @@
     .pop-up-image {
       width: get-vw(85.3px);
       height: get-vw(98.87px);
-      margin-left: get-vw(40px);
+      margin-top: get-vw(14.43px);
+      margin-right: get-vw(39.72px);
+      margin-bottom: get-vw(13.7px);
+      margin-left: get-vw(124.98px);
       background: white;
     }
   }
 
   .subtotal-and-free-delivery-info {
-    display: flex;
     flex-direction: column;
     padding-right: get-vw(66px);
     padding-left: get-vw(33px);
@@ -113,7 +115,7 @@
     }
 
     .free-shipping-banner {
-      display: flex;
+      margin-bottom: get-vw(29px);
       font-size: get-vw(16px);
       font-weight: bold;
       line-height: get-vw(22px);
@@ -128,6 +130,7 @@
       }
 
       .free-shipping-banner-text-price {
+        display: inline;
         margin-right: get-vw(10px);
         margin-left: get-vw(10px);
         color: #f1a900;
@@ -137,7 +140,7 @@
 
   .viewcart-and-checkout-btn {
     display: flex;
-    margin-top: get-vw(42px);
+    margin-top: get-vw(41px);
     margin-bottom: get-vw(44px);
 
     .viewcartBtn {
@@ -183,6 +186,7 @@
   }
 
   .cart-pop-header-icon {
+    margin-top: get-vw(23px);
     margin-bottom: get-vw(91.27px);
     margin-left: get-vw(54px);
 

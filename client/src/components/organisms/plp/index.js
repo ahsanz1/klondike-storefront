@@ -18,7 +18,7 @@ const PLP = props => {
 
   useEffect(() => {
     setStep(1)
-    navigate('/plp-page')
+    navigate('/category')
   }, [])
   useEffect(() => {
     setContextPlp(plpredirect)
