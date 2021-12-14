@@ -59,6 +59,9 @@ const Oamspproval = ({ oam, heading }) => {
             <Techtabllist
               className="catlog-tablist"
               itemName="OEM Approvals"
+              sidebarSubitem={title => {
+                console.log(title)
+              }}
               // categories={categories}
             />
           </div>

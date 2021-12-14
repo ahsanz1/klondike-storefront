@@ -121,6 +121,11 @@ $vw-viewport: 1440;
         span {
           ul {
             .oem-subitem-title {
+              @media (max-width: 768px) {
+                font-size: 10px;
+                font-weight: 400;
+              }
+
               font-size: 0.69vw;
               font-weight: 400;
             }

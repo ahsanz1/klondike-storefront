@@ -165,7 +165,7 @@ const CartDropdownItem = (cartData, key) => {
         </div>
         <div className="quantity-block">
           <div className="quantity-box">
-            <Label className="product-quantity-mobile">QTY</Label>
+            <Label className="product-quantity-mobile">QTY:</Label>
             <InputNumber
               className="product-quantity-spinner desktop"
               min={1}
