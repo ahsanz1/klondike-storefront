@@ -8,7 +8,7 @@ import { Skeleton } from 'antd'
 import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 const AccountTabPane = ({ data, title }) => {
-  const perPageItems = 3
+  // const perPageItems = 3
   const { creditLimit, user, personalInfo } = useContext(AppContext)
   // const [totalOrders, setTotalOrders] = useState(0)
   const [shipmentDetails, setShipmentDetails] = useState('')
@@ -18,11 +18,7 @@ const AccountTabPane = ({ data, title }) => {
   }, [])
 
   const fetchShipment = async offset => {
-    const ordersByUser = await getOrdersByUser(
-      user.accessToken,
-      offset,
-      perPageItems,
-    )
+    const ordersByUser = await getOrdersByUser(user.accessToken, offset, 2)
     let data = ordersByUser.response.data
     setShipmentDetails(data.orders)
     // setTotalOrders(data?.query?.count)

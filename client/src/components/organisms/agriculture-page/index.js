@@ -65,7 +65,7 @@ const AgriculturePage = ({
                         src={item.imgURL.url}
                       />
                       <Link
-                        to={`/${item.productRedirect}`}
+                        to={item.productRedirect}
                         className="feat-link notranslate"
                       >
                         {item.produckSKU}
