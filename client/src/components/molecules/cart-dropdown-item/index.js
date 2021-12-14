@@ -106,12 +106,12 @@ const CartDropdownItem = (cartData, key) => {
               </div>
             </div>
 
-            {/* <div className="product-price-info">
+            <div className="product-price-info">
               <Label className="product-price">
-                <p className="product-price-mobile ">45454</p>$
+                <p className="product-price-mobile ">PRICE</p>$
                 {cart?.price?.base.toFixed(2)}
               </Label>
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="total-and-quantity-cart-MOBILE">
@@ -138,8 +138,10 @@ const CartDropdownItem = (cartData, key) => {
               />
             </div>
             <Label className="total-price">
-              <p className="product-total-mobile">TOTAL PRICE</p>$
-              {cart?.totalPrice?.amount?.toFixed(2)}
+              <p className="product-total-mobile">TOTAL PRICE</p>
+              <span className="product-total-amount">
+                ${cart?.totalPrice?.amount?.toFixed(2)}
+              </span>
             </Label>
           </div>
           <div className="removebtn-div">

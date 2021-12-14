@@ -205,7 +205,7 @@ const ProductAccordion = ({ question }) => {
             <p className="text-class-center">PER PALLET</p>
           </Col>
           <Col lg={3}>
-            <p className="text-class-right">UNIT PRICE</p>
+            <p className="text-class-right unit-col">UNIT PRICE</p>
           </Col>
         </Row>
 
