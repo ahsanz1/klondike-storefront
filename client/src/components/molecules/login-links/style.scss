@@ -29,3 +29,15 @@
     }
   }
 }
+
+.forgot-password-container {
+  display: inline-flex;
+  padding-bottom: 3vw;
+  padding-left: 9vw;
+
+  .c-button {
+    width: 12vw;
+    margin-left: 20px;
+    border-radius: 1.1vw;
+  }
+}

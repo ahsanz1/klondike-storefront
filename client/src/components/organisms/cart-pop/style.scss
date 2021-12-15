@@ -6,6 +6,7 @@
   top: get-vw(110px);
   right: 0%;
   width: 100%;
+  height: 8.81vw;
   background: #013a4e;
   color: white;
   font-family: $OpenSans;
@@ -147,6 +148,7 @@
       box-sizing: border-box;
       //   height: get-vw(42px);
       width: get-vw(128px);
+      height: 2.91vw;
       margin-right: get-vw(19px);
       border: get-vw(1px) solid #f1a900;
       border-radius: 5px;
@@ -167,6 +169,7 @@
       align-items: center;
       justify-content: center;
       width: get-vw(241px);
+      height: get-vw(42px);
       border: get-vw(1px) solid #f1a900;
       border-radius: get-vw(5px);
       background: #f1a900;
@@ -186,6 +189,8 @@
   }
 
   .cart-pop-header-icon {
+    width: 0.89vw;
+    height: 0.88vw;
     margin-top: get-vw(23px);
     margin-bottom: get-vw(91.27px);
     margin-left: get-vw(54px);
