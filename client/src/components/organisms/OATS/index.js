@@ -356,13 +356,13 @@ const Oats = () => {
                 : ''}
               {notFound && (
                 <Label className="not-found">
-                  Sorry, no results matched your search!
+                  Sorry, no results matched your search
                 </Label>
               )}
 
               {test && query && yousearch !== '' && (
                 <Label className="not-found-second">
-                  Sorry, no results matched your search!
+                  Sorry, no results matched your search
                 </Label>
               )}
             </div>

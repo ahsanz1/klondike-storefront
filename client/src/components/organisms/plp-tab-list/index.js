@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Label from 'components/atoms/label'
 import Link from 'components/atoms/link'
 import Category from 'components/organisms/category'
 import { AppContext } from 'libs/context'
+import { navigate, useLocation } from '@reach/router'
 
 import './style.scss'
 
@@ -21,7 +24,8 @@ const PlpTabList = ({
 }) => {
   const { setPlpDescription } = useContext(AppContext)
   const [product, setProduct] = useState(sku)
-
+  const location = useLocation()
+  console.log('check loc:', location.pathname.slice(0, 9))
   const productClickHandler = productName => {
     setProduct(productName.sku)
     subItemClickHandler(productName)
@@ -51,7 +55,21 @@ const PlpTabList = ({
                     clickCategoryHandler(item.categoryName, item.categoryDesc)
                   }}
                 >
-                  {item.categoryName}
+                  <span
+                    onClick={
+                      location.pathname.slice(0, 9) === '/category'
+                        ? () =>
+                          navigate(
+                            `/category?category=${item.categoryName
+                              .split(' ')
+                              .join('-')
+                              .toLowerCase()}`,
+                          )
+                        : () => {}
+                    }
+                  >
+                    {item.categoryName}
+                  </span>
                   {itemName === item.categoryName && (
                     <>
                       <div className="subItem">

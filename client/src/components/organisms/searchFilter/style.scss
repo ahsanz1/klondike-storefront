@@ -45,6 +45,7 @@
       }
 
       li {
+        // width: 13.8vw;
         margin-right: 2.2vw !important;
 
         @media (max-width: 500px) {
@@ -93,11 +94,12 @@
             font-weight: 600;
             text-overflow: ellipsis;
             -webkit-line-clamp: 2;
-            line-clamp: 2 !important;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
 
             @media (max-width: 500px) {
               font-size: 3.73vw;
+              font-weight: 700;
               line-height: 140%;
             }
           }
