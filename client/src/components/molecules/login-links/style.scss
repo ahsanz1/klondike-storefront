@@ -41,3 +41,22 @@
     border-radius: 1.1vw;
   }
 }
+
+@media (max-width: 375px) {
+  .ant-modal .ant-modal-body {
+    height: 260px;
+  }
+
+  .forgot-password-container {
+    display: block;
+    padding-left: 6vw;
+
+    .c-button {
+      width: 87.2vw;
+      height: 17vw;
+      margin-top: 10px;
+      margin-left: 0;
+      border-radius: 4.2vw;
+    }
+  }
+}
