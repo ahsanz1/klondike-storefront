@@ -140,7 +140,7 @@
       .tech-blog-item {
         display: flex;
         flex-direction: row;
-        margin-bottom: get-vw(40px);
+        // margin-bottom: get-vw(40px);
 
         @media (max-width: 768px) {
           display: contents;

@@ -179,7 +179,7 @@ $vw-viewport: 1440;
     }
 
     .subitems-heading {
-      margin-left: 8.38889vw;
+      margin-left: get-vw(21px);
       color: white;
       font-size: get-vw(10px);
       font-weight: bold;
