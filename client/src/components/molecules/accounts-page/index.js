@@ -160,7 +160,7 @@ const Accounts = () => {
             fetchedOrders.length > 0 &&
             fetchedOrders.map((order, i) => {
               return (
-                <div key={i}>
+                <div key={i} className="total-item">
                   {order.items && (
                     <Label className="item-and-amount">
                       Items ({order.items.length})
