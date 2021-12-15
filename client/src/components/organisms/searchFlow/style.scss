@@ -69,6 +69,7 @@
 
       @media (max-width: 500px) {
         margin-bottom: 7.4vw;
+        padding-top: 7.4vw;
         // margin-left: 11.466vw;
         padding-bottom: 7.4vw;
       }
@@ -78,6 +79,7 @@
         border: none;
         background: transparent;
         font-size: 1.25vw;
+        font-weight: 400;
         text-align: left;
 
         @media (max-width: 500px) {
@@ -140,7 +142,7 @@
       border-radius: 1.1vw;
       outline: none;
       background: url('../../../../static/images/search.png') no-repeat 1.8vw;
-      background: #013a4e !important;
+      background-color: #013a4e !important;
       background-size: 1.4vw;
       color: $white-color;
       font-family: $Poppins;
@@ -174,7 +176,7 @@
 
   ::placeholder {
     margin-left: 4.4vw;
-    color: #8c8885;
+    color: #fff;
     font-size: 1.1vw;
 
     @media screen and(max-width: 500px) {
