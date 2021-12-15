@@ -22,6 +22,10 @@ const LoginLinks = ({ links = [] }) => {
   }
 
   const forgotPassword = async e => {
+    if (targetEmail === '') {
+      return
+    }
+
     let res = await resetPasswordEmail({ username: targetEmail })
     if (res.hasError === true) {
       console.log('error found', res)
@@ -48,14 +52,21 @@ const LoginLinks = ({ links = [] }) => {
         ))}
       </div>
       <Modal visible={isModalVisible} onCancel={e => handleCancel(e)}>
-        <input
-          type="email"
-          className="input-email"
-          onChange={e => setEmail(e)}
-        />
-        <button type="button" onClick={e => forgotPassword(e)}>
-          Send Email
-        </button>
+        <div className="forgot-password-container">
+          <input
+            type="email"
+            placeholder="Enter Email"
+            className="label-input__input"
+            onChange={e => setEmail(e)}
+          />
+          <button
+            type="button"
+            className="c-button request-form__submit-button"
+            onClick={e => forgotPassword(e)}
+          >
+            Send Email
+          </button>
+        </div>
       </Modal>
     </>
   )
