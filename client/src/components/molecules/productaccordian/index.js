@@ -205,7 +205,7 @@ const ProductAccordion = ({ question }) => {
             <p className="text-class-center">PER PALLET</p>
           </Col>
           <Col lg={3}>
-            <p className="text-class-right">UNIT PRICE</p>
+            <p className="text-class-right unit-col">UNIT PRICE</p>
           </Col>
         </Row>
 
@@ -301,7 +301,7 @@ const ProductAccordion = ({ question }) => {
                 <div className="product-detail">
                   <div>
                     {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
-                      <p className="products-sizes">SIZE</p>
+                      <p className="products-sizes size">SIZE</p>
                     ) : (
                       <p className="products-sizes bulk">Bulk</p>
                     )}
@@ -319,6 +319,12 @@ const ProductAccordion = ({ question }) => {
                     )}
                   </div>
                   <div>
+                    <p className="products-sizes">PART NUM</p>
+                    <p className="products-sizes detail part-value">
+                      {modalData.partNumber}
+                    </p>
+                  </div>
+                  <div>
                     <p className="products-sizes price-value">
                       {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:'
                         ? 'PRICE'
@@ -326,12 +332,6 @@ const ProductAccordion = ({ question }) => {
                     </p>
                     <p className="products-sizes detail ">
                       ${modalData?.price?.toFixed(2)}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="products-sizes">PART NUM</p>
-                    <p className="products-sizes detail part-value">
-                      {modalData.partNumber}
                     </p>
                   </div>
                   <div>
@@ -378,7 +378,7 @@ const ProductAccordion = ({ question }) => {
                   {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' ? (
                     <p className="products-sizes">SiZE</p>
                   ) : (
-                    <p className="products-sizes">Bulk</p>
+                    <p className="products-sizes  bulk">Bulk</p>
                   )}
                   {modalData.size !== 'Bulk' && modalData.size !== 'Bulk:' && (
                     <p className="products-sizes detail">{modalData.size}</p>

@@ -140,7 +140,7 @@
       .tech-blog-item {
         display: flex;
         flex-direction: row;
-        margin-bottom: get-vw(40px);
+        // margin-bottom: get-vw(40px);
 
         @media (max-width: 768px) {
           display: contents;
@@ -247,7 +247,6 @@
           }
 
           .paragragh-text {
-            height: get-vw(97px);
             color: #fff;
             font-size: get-vw(14px);
             font-style: normal;
@@ -264,6 +263,7 @@
           }
 
           .read-more {
+            padding: 0;
             border: none;
             background: none;
             color: #ffa500;

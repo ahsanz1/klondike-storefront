@@ -18,10 +18,19 @@ const PLP = props => {
 
   useEffect(() => {
     setStep(1)
-    navigate('/plp-page')
+    navigate(
+      `/category?category=${contextPlp
+        .split(' ')
+        .join('-')
+        .toLowerCase()}`,
+    )
   }, [])
   useEffect(() => {
     setContextPlp(plpredirect)
+    console.log('name pro:', plpredirect, contextPlp)
+    // if (plpredirect !== 'Products Overview') {
+    // navigate(`/category?category=${contextPlp.split(' ').join('-')}`)
+    // }
   }, [plpredirect])
   const clickCategoryHandler = (name, desc) => {
     setContextPlp(name)
