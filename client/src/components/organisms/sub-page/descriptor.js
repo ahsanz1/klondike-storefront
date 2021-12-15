@@ -13,7 +13,7 @@ exports.default = Types.Component({
         children: {
           heading: Types.String({ label: 'heading' }),
           Paragraph: Types.RichText({ label: 'Paragraph' }),
-          link: Types.RichText({ label: 'sku' }),
+          link: Types.String({ label: 'sku' }),
           image: Types.Image({
             label: 'Image',
             url: Types.String({ label: 'URL' }),
