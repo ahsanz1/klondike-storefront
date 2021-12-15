@@ -18,7 +18,12 @@ const PLP = props => {
 
   useEffect(() => {
     setStep(1)
-    navigate(`/category?category=${contextPlp}`)
+    navigate(
+      `/category?category=${contextPlp
+        .split(' ')
+        .join('-')
+        .toLowerCase()}`,
+    )
   }, [])
   useEffect(() => {
     setContextPlp(plpredirect)
