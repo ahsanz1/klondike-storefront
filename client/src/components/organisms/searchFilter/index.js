@@ -27,7 +27,13 @@ const SearchFilter = ({ searchHeading }) => {
   const [size, setSize] = useState()
 
   useEffect(() => {
-    const getSerachedValue = location.search.split('?')[1]
+    console.log(
+      'check search loc:',
+      location.search.split('?')[1].slice(6, location.search.length),
+    )
+    const getSerachedValue = location.search
+      .split('?')[1]
+      .slice(6, location.search.length)
     setGetSearchParam(getSerachedValue)
     fetchItems(getSerachedValue, 500, 0, true)
       .then(list => {
