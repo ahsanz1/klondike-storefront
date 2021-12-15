@@ -8,7 +8,13 @@ import './style.scss'
 const SearchList = ({ image, category, title, sku, close }) => {
   const size = useWindowSize()
   return (
-    <div className="search-Items">
+    <div
+      className={
+        location.pathname === '/search-results'
+          ? 'search-Items search-product'
+          : 'search-Items'
+      }
+    >
       <div className="search-img">
         <Link to={`/product?sku=${sku}`} onClick={close}>
           <img src={image.url} alt="" />
