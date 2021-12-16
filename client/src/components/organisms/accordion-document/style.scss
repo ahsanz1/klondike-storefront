@@ -43,7 +43,7 @@ $vw-viewport: 1440;
     line-height: get-vw(23px);
 
     &::-webkit-scrollbar {
-      width: 10px;
+      width: 2px;
       height: 2px;
     }
 
@@ -121,7 +121,7 @@ $vw-viewport: 1440;
     margin: 0 0 0;
 
     @media (max-width: 768px) {
-      max-height: 42vw;
+      max-height: 40vw;
     }
   }
 
