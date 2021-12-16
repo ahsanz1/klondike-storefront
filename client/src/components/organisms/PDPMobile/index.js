@@ -314,7 +314,10 @@ const PDPMobile = ({
                             item &&
                             item?.price &&
                             item?.price?.base
-                              ? '$' + parseFloat(item?.price?.base).toFixed(2)
+                              ? '$' +
+                                Number(
+                                  parseFloat(item?.price?.base).toFixed(2),
+                                ).toLocaleString()
                               : ''}{' '}
                           </span>
                         </div>
@@ -355,9 +358,12 @@ const PDPMobile = ({
                               color: item?.totalPrice > 0 ? '#F1A900' : '#ffff',
                             }}
                           >
-                            {isLoggedIn &&
+                            {(isLoggedIn &&
                               '$' +
-                                parseFloat(item?.totalPrice || 0).toFixed(2)}
+                                Number(
+                                  parseFloat(item?.totalPrice || 0).toFixed(2),
+                                ).toLocaleString()) ||
+                              ''}
                           </span>
                         </div>
                       )}
@@ -474,13 +480,18 @@ const PDPMobile = ({
                     {'$' +
                       (packagedOrder
                         ? pdpdata?.totalPackagedOrderPrice > 0
-                          ? parseFloat(
-                              pdpdata?.totalPackagedOrderPrice,
-                            ).toFixed(2)
+                          ? Number(
+                              parseFloat(
+                                pdpdata?.totalPackagedOrderPrice,
+                              ).toFixed(2),
+                            ).toLocaleString()
                           : '0.00'
-                        : parseFloat(
-                            pdpdata?.bulkOrderItem[0]?.totalPrice || 0.0,
-                          ).toFixed(2))}
+                        : Number(
+                            parseFloat(
+                              pdpdata?.bulkOrderItem[0]?.totalPrice || 0.0,
+                            ).toFixed(2),
+                          )
+                      ).toLocaleString()}
                   </span>
                 </div>
               )}

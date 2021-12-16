@@ -109,7 +109,7 @@ const CartDropdownItem = (cartData, key) => {
             <div className="product-price-info">
               <Label className="product-price">
                 <p className="product-price-mobile ">PRICE</p>$
-                {cart?.price?.base.toFixed(2)}
+                {Number(cart?.price?.base.toFixed(2)).toLocaleString() || ''}
               </Label>
             </div>
           </div>
@@ -120,7 +120,7 @@ const CartDropdownItem = (cartData, key) => {
               <Label className="product-price">
                 Price
                 <Label className="product-price-mobile mobile-pricing">
-                  ${cart?.price?.base.toFixed(2)}
+                  ${Number(cart?.price?.base.toFixed(2)).toLocaleString() || ''}
                 </Label>
               </Label>
             </div>
@@ -140,7 +140,10 @@ const CartDropdownItem = (cartData, key) => {
             <Label className="total-price">
               <p className="product-total-mobile">TOTAL PRICE</p>
               <span className="product-total-amount">
-                ${cart?.totalPrice?.amount?.toFixed(2)}
+                $
+                {Number(
+                  cart?.totalPrice?.amount?.toFixed(2),
+                ).toLocaleString() || ''}
               </span>
             </Label>
           </div>
@@ -180,7 +183,8 @@ const CartDropdownItem = (cartData, key) => {
           </div>
           <Label className="total-price-desktop">
             <p className="product-total-desktop">TOTAL PRICE</p>$
-            {cart?.totalPrice?.amount?.toFixed(2)}
+            {Number(cart?.totalPrice?.amount?.toFixed(2)).toLocaleString() ||
+              ''}
           </Label>
         </div>
       </div>
