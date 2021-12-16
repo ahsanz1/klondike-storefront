@@ -580,7 +580,10 @@ const QuickOrder = () => {
 
                           <div>
                             <p className="quickorder-Price">
-                              ${item?.price?.base.toFixed(2)}
+                              $
+                              {Number(
+                                item?.price?.base.toFixed(2),
+                              ).toLocaleString() || ''}
                             </p>
                           </div>
                           <div style={{ position: 'relative' }}>
@@ -653,7 +656,10 @@ const QuickOrder = () => {
                               <div className="price-wrapper">
                                 <p className="price white">PRICE</p>
                                 <p className="price-value">
-                                  ${item?.price?.base.toFixed(2)}
+                                  $
+                                  {Number(
+                                    item?.price?.base.toFixed(2),
+                                  ).toLocaleString() || ''}
                                 </p>
                               </div>
                               <div className="remove-button">
@@ -680,7 +686,10 @@ const QuickOrder = () => {
                               <div className="Total_price">
                                 <p className="total-price white">TOTAL PRICE</p>
                                 <p className="total-price-value">
-                                  ${item?.totalPrice?.amount.toFixed(2)}
+                                  $
+                                  {Number(
+                                    item?.totalPrice?.amount.toFixed(2),
+                                  ).toLocaleString() || ''}
                                 </p>
                               </div>
                             </div>
