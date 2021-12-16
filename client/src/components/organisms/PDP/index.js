@@ -395,7 +395,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
     let itemsNotInStock = await checkItemsInStock(payload?.items)
     if (itemsNotInStock?.length) {
-      error(`These Items ${JSON.stringify(itemsNotInStock)} are not in stock!`)
+      // error(`These Items ${JSON.stringify(itemsNotInStock)} are not in stock!`)
+      if (itemsNotInStock.length === 1) {
+        error(`Part number ${itemsNotInStock[0].sku} is out of stock.`)
+      } else {
+        error(
+          `Part numbers ${itemsNotInStock.map(
+            item => `${item.sku}`,
+          )} are out of stock.`,
+        )
+      }
       setAddingToCart(false)
     } else {
       addProductToCart(payload)
