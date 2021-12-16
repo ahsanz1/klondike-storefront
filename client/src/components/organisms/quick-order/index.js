@@ -139,7 +139,15 @@ const QuickOrder = () => {
     let stockRes = await checkItemsInStock(items)
 
     if (stockRes?.length) {
-      error(`These items ${JSON.stringify(stockRes)} are not in stock!`)
+      if (stockRes.length === 1) {
+        error(`Part number ${stockRes[0].sku} is out of stock.`)
+      } else {
+        error(
+          `Part numbers ${stockRes.map(
+            item => `${item.sku}`,
+          )} are out of stock.`,
+        )
+      }
       setPackgdata([])
       setAddingToCart(false)
       setInputList([{ partnumber: '', quantity: '' }])
