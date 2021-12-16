@@ -265,6 +265,7 @@ $vw-viewport: 1440;
       border-radius: get-vw(5px);
       font-size: 1.2vw !important;
       // border-color: #f2a900 !important;
+      font-weight: 700;
 
       @media (max-width: 768px) {
         box-sizing: border-box;

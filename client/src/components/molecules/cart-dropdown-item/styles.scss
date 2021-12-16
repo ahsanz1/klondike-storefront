@@ -38,6 +38,7 @@
           margin-right: get-vw(11px);
           color: #f4f4f4;
           font-size: get-vw(11px);
+          font-weight: 800;
 
           @media screen and (max-width: 768px) {
             display: block;
@@ -407,6 +408,7 @@
         .product-quantity-mobile {
           display: flex;
           align-items: center;
+          font-weight: 800;
 
           @media screen and (max-width: 768px) {
             padding-right: 11px;
