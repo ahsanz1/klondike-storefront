@@ -41,7 +41,7 @@ $vw-viewport: 1440;
     height: auto;
     margin-top: get-vw(100px);
     padding-right: get-vw(38px);
-    // padding-bottom: 5.347vw;
+    padding-bottom: 5.347vw;
     background-color: #03293980;
 
     @media (max-width: 768px) {
@@ -225,7 +225,7 @@ $vw-viewport: 1440;
     }
 
     .table-content {
-      margin-top: 10px;
+      // margin-top: 10px;
     }
   }
 

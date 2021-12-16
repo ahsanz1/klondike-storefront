@@ -36,6 +36,7 @@ $vw-viewport: 1440;
     // right: get-vw(29px);
     // height: initial;
     margin-bottom: 0;
+    padding-bottom: get-vw(4px);
     padding-left: get-vw(26px);
     transition: all 0.3s;
     font-size: get-vw(16px);
@@ -135,6 +136,7 @@ $vw-viewport: 1440;
   .ant-row.accordion-item {
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
     margin-bottom: 0;
     // padding-top: 15px;
     //padding-bottom: 1.73vw;
