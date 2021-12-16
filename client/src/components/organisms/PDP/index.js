@@ -722,9 +722,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       >
                                         {isLoggedIn &&
                                           '$' +
-                                            parseFloat(
-                                              item?.totalPrice || 0,
-                                            ).toFixed(2)}
+                                            Number(
+                                              parseFloat(
+                                                item?.totalPrice || 0,
+                                              ).toFixed(2),
+                                            ).toLocaleString()}
                                       </div>
                                     </div>
                                   ) : (
@@ -766,9 +768,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                 >
                                   {'$' +
                                     (items?.totalPackagedOrderPrice > 0
-                                      ? parseFloat(
-                                          items?.totalPackagedOrderPrice,
-                                        ).toFixed(2)
+                                      ? Number(
+                                          parseFloat(
+                                            items?.totalPackagedOrderPrice,
+                                          ).toFixed(2),
+                                        ).toLocaleString()
                                       : '0.00')}
                                 </div>
                               </div>
