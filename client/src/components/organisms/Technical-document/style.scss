@@ -210,6 +210,7 @@ $vw-viewport: 1440;
       .ant-col-lg-8 {
         p {
           @media screen and (max-width: 768px) {
+            margin-bottom: 24px;
             font-size: 16px;
             font-style: normal;
             font-weight: bold;
