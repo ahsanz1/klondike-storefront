@@ -206,6 +206,7 @@
       .ant-select-selection-item {
         position: relative;
         top: 1.3vw;
+        margin-right: 1.73vw;
         margin-left: 0.902vw;
         color: #fff !important;
         font-family: $OpenSans;
@@ -214,6 +215,7 @@
 
         @media (max-width: 500px) {
           top: 4.46vw;
+          margin-right: 4.5vw;
           margin-left: 3.46vw;
           font-family: $OpenSans;
           font-size: 4.26vw;
