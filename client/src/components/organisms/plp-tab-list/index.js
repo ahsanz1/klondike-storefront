@@ -37,9 +37,9 @@ const PlpTabList = ({
       {categories &&
         categories.length &&
         categories.map((item, index) => (
-          <>
+          <div key={index}>
             {item.categoryName.length > 0 && (
-              <>
+              <div className={`plp-tab-list-category-${index}`}>
                 {itemName === item.categoryName
                   ? setPlpDescription(item.categoryDesc)
                   : null}
@@ -71,48 +71,44 @@ const PlpTabList = ({
                     {item.categoryName}
                   </span>
                   {itemName === item.categoryName && (
-                    <>
-                      <div className="subItem">
-                        {subItem &&
-                          subItem.hits &&
-                          subItem.hits.map(
-                            (item, index) =>
-                              !item.isVariant && (
-                                <Label
-                                  key={index}
-                                  onClick={() => productClickHandler(item)}
-                                  className={
-                                    item.sku === product
-                                      ? 'active-product'
-                                      : 'deactive-product'
-                                  }
+                    <div className="subItem">
+                      {subItem &&
+                        subItem.hits &&
+                        subItem.hits.map(
+                          (item, index) =>
+                            !item.isVariant && (
+                              <Label
+                                key={index}
+                                onClick={() => productClickHandler(item)}
+                                className={
+                                  item.sku === product
+                                    ? 'active-product'
+                                    : 'deactive-product'
+                                }
+                              >
+                                <Link
+                                  to={`/product?sku=${item.sku}`}
+                                  className="notranslate"
                                 >
-                                  <Link
-                                    to={`/product?sku=${item.sku}`}
-                                    className="notranslate"
-                                  >
-                                    {item.title}
-                                  </Link>
-                                </Label>
-                              ),
-                          )}
-                      </div>
-                    </>
-                  )}
-                </Label>
-                <div>
-                  {item.categoryName === categoryName && (
-                    <div className="productItem-mobile">
-                      <Category
-                        categoryName={categoryName}
-                        subItemHandler={subItemHandler}
-                      />
+                                  {item.title}
+                                </Link>
+                              </Label>
+                            ),
+                        )}
                     </div>
                   )}
-                </div>
-              </>
+                </Label>
+                {item.categoryName === categoryName && (
+                  <div className="productItem-mobile">
+                    <Category
+                      categoryName={categoryName}
+                      subItemHandler={subItemHandler}
+                    />
+                  </div>
+                )}
+              </div>
             )}
-          </>
+          </div>
         ))}
     </div>
   )

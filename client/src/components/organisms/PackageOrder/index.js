@@ -15,7 +15,7 @@ const PackageOrder = ({ order, setModalVisible }) => {
         <p>{order.paragraph2}</p>
       </div>
       <div className="Continue" onClick={() => setModalVisible(false)}>
-        Continue
+        <span>Continue</span>
       </div>
     </div>
   )
