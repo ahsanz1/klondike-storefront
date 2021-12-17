@@ -30,11 +30,11 @@ const CartDropdown = () => {
     isModalVisible && (
       // size > 768 &&
       <>
-        <img
+        {/*  <img
           className="mobile-nav-logo"
           src="static/images/mbl-logo.png"
           alt=""
-        />
+        /> */}
         <div className="cart-header"></div>
         <div
           className="cart-overlay"
