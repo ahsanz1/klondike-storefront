@@ -119,7 +119,7 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
             </Col>
           ))
         ) : (
-          <div className="category-product-items">
+          <>
             {products &&
               products.map(
                 (product, index) =>
@@ -137,7 +137,7 @@ const Category = ({ categoryName, tproducts, subItemHandler, productList }) => {
                     </Col>
                   ),
               )}
-          </div>
+          </>
         )}
       </Row>
     </div>
