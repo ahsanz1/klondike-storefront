@@ -581,7 +581,9 @@ const Checkoutsection = () => {
                 </Radio.Group>
               </div>
               <div className="checkout-info">
-                <span>{`${personalInfo?.email}`}</span>
+                <span
+                  style={{ fontWeight: 'bold' }}
+                >{`${personalInfo?.email}`}</span>
               </div>
               {delivery ? (
                 <div className="checkout-info-second">

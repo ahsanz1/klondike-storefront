@@ -139,7 +139,15 @@ const QuickOrder = () => {
     let stockRes = await checkItemsInStock(items)
 
     if (stockRes?.length) {
-      error(`These items ${JSON.stringify(stockRes)} are not in stock!`)
+      if (stockRes.length === 1) {
+        error(`Part number ${stockRes[0].sku} is out of stock.`)
+      } else {
+        error(
+          `Part numbers ${stockRes.map(
+            item => `${item.sku}`,
+          )} are out of stock.`,
+        )
+      }
       setPackgdata([])
       setAddingToCart(false)
       setInputList([{ partnumber: '', quantity: '' }])
@@ -580,7 +588,10 @@ const QuickOrder = () => {
 
                           <div>
                             <p className="quickorder-Price">
-                              ${item?.price?.base.toFixed(2)}
+                              $
+                              {Number(
+                                item?.price?.base.toFixed(2),
+                              ).toLocaleString() || ''}
                             </p>
                           </div>
                           <div style={{ position: 'relative' }}>
@@ -653,7 +664,10 @@ const QuickOrder = () => {
                               <div className="price-wrapper">
                                 <p className="price white">PRICE</p>
                                 <p className="price-value">
-                                  ${item?.price?.base.toFixed(2)}
+                                  $
+                                  {Number(
+                                    item?.price?.base.toFixed(2),
+                                  ).toLocaleString() || ''}
                                 </p>
                               </div>
                               <div className="remove-button">
@@ -680,7 +694,10 @@ const QuickOrder = () => {
                               <div className="Total_price">
                                 <p className="total-price white">TOTAL PRICE</p>
                                 <p className="total-price-value">
-                                  ${item?.totalPrice?.amount.toFixed(2)}
+                                  $
+                                  {Number(
+                                    item?.totalPrice?.amount.toFixed(2),
+                                  ).toLocaleString() || ''}
                                 </p>
                               </div>
                             </div>

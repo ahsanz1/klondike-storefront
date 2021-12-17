@@ -183,7 +183,7 @@ const Navbar = ({
             </Button>
           </Link>
           {userLoginInfo && userLoginInfo.email && (
-            <Button iconOnly className="cart-button">
+            <div className="cart-butt-and-amount">
               {getCartItems?.totalAmount?.amount > 0 ? (
                 <div className="cart-amount">
                   {`$${Number(
@@ -195,11 +195,13 @@ const Navbar = ({
               ) : (
                 ''
               )}
-              <NavbarcartIcon
-                linkCartPageIcon={location.pathname === '/cart' && true}
-                cartIcon={cartIcon}
-              />
-            </Button>
+              <Button iconOnly className="cart-button">
+                <NavbarcartIcon
+                  linkCartPageIcon={location.pathname === '/cart' && true}
+                  cartIcon={cartIcon}
+                />
+              </Button>
+            </div>
           )}
         </div>
       </div>

@@ -92,6 +92,7 @@ $vw-viewport: 1440;
     font-size: get-vw(32px);
     font-style: normal;
     font-weight: bold;
+    line-height: get-vw(35.2px);
     text-transform: uppercase;
 
     @media (max-width: 768px) {
@@ -100,7 +101,8 @@ $vw-viewport: 1440;
       margin-top: 2.01vw;
       margin-right: 9.86vw;
       margin-bottom: 1.58vw;
-      font-size: 4.26vw;
+      font-size: 16px;
+      line-height: 140%;
     }
   }
 
@@ -124,11 +126,13 @@ $vw-viewport: 1440;
       color: #fff;
       font-size: 1.597vw;
       font-weight: 700;
+      line-height: get-vw(24px);
 
       @media (max-width: 768px) {
         width: 87.2vw;
         height: 64px !important;
-        font-size: 4vw;
+        font-size: 16px;
+        line-height: 28px;
       }
     }
 
@@ -154,7 +158,9 @@ $vw-viewport: 1440;
     padding: 2.43vw 0 0 get-vw(120px);
 
     .radio-btn {
-      font-size: 1vw !important;
+      font-size: get-vw(170px) !important;
+      font-style: normal !important;
+      font-weight: bold !important;
 
       @media (max-width: 768px) {
         font-size: 4vw !important;
@@ -205,19 +211,27 @@ $vw-viewport: 1440;
     }
 
     .total-price {
-      font-size: 1.666vw;
+      font-size: get-vw(24px);
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      line-height: get-vw(30px);
 
       @media (max-width: 768px) {
-        font-size: 5vw;
+        font-size: 24px;
       }
     }
 
     .total-amount {
       color: #f2a900;
-      font-size: 1.666vw;
+      font-size: get-vw(24px);
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      line-height: get-vw(30px);
 
       @media (max-width: 768px) {
-        font-size: 5vw;
+        font-size: 24px;
       }
     }
   }
@@ -232,10 +246,15 @@ $vw-viewport: 1440;
     }
 
     .radio-btn {
-      font-size: 1.1805vw !important;
+      font-size: get-vw(17px) !important;
+      font-style: normal !important;
+      font-weight: bold !important;
+      letter-spacing: 0.03em;
+      line-height: get-vw(23px) !important;
 
       @media (max-width: 768px) {
-        font-size: 4vw !important;
+        font-size: 17px !important;
+        line-height: 23px !important;
       }
     }
 
@@ -246,6 +265,7 @@ $vw-viewport: 1440;
       border-radius: get-vw(5px);
       font-size: 1.2vw !important;
       // border-color: #f2a900 !important;
+      font-weight: 700;
 
       @media (max-width: 768px) {
         box-sizing: border-box;
@@ -268,17 +288,21 @@ $vw-viewport: 1440;
 
     .checkout-info {
       width: get-vw(794px);
+      min-height: get-vw(68px);
       margin-bottom: get-vw(15px);
       // margin-left: 0;
       padding: get-vw(24px);
       background-color: #002a3a;
+      font-size: get-vw(14px);
       word-break: break-all;
 
       @media (max-width: 768px) {
         width: 100%;
+        min-height: get-vw(64px);
         margin-bottom: 15px;
         margin-left: 0;
         padding: 4vw;
+        font-size: 14px;
         // height: 127px;
 
         &:last-child {
@@ -288,10 +312,16 @@ $vw-viewport: 1440;
       }
 
       span {
-        font-size: 1.2vw;
+        // font-weight: bold;
+        font-family: $OpenSans;
+        font-size: get-vw(14px);
+        font-style: normal;
+        line-height: get-vw(28px);
+        line-height: 140%;
 
         @media (max-width: 768px) {
-          font-size: 4vw;
+          font-size: 14px;
+          line-height: 28px;
         }
       }
 
@@ -359,6 +389,7 @@ $vw-viewport: 1440;
       // padding-left: 1.4vw;
       padding: get-vw(24px);
       background-color: #002a3a;
+      font-size: get-vw(14px);
       word-break: break-all;
 
       @media (max-width: 768px) {
@@ -367,6 +398,7 @@ $vw-viewport: 1440;
         margin-bottom: 15px;
         margin-left: 0;
         padding: 4vw;
+        font-size: 14px;
       }
 
       .change-button {
@@ -397,10 +429,14 @@ $vw-viewport: 1440;
       }
 
       span {
-        font-size: 0.972vw;
+        font-size: get-vw(14px);
+        line-height: get-vw(19.6px);
+        // font-weight: bold;
+        // font-style: normal;
 
         @media (max-width: 768px) {
           font-size: 4vw;
+          line-height: 19.6px;
         }
       }
 
@@ -450,6 +486,7 @@ $vw-viewport: 1440;
       margin-bottom: get-vw(15px);
       padding: get-vw(24px);
       background-color: #002a3a;
+      font-size: get-vw(14px);
       word-break: break-all;
 
       @media (max-width: 768px) {
@@ -458,6 +495,7 @@ $vw-viewport: 1440;
         // margin-bottom: 36px;
         margin-left: 0;
         padding: 4vw;
+        font-size: 16px;
       }
 
       .checkout-po {
@@ -482,10 +520,12 @@ $vw-viewport: 1440;
         }
 
         span {
-          font-size: 1.2vw;
+          font-size: get-vw(14px);
+          line-height: get-vw(19.6px);
 
           @media (max-width: 768px) {
-            font-size: 4vw;
+            font-size: 16px;
+            line-height: 19.6px;
           }
         }
       }

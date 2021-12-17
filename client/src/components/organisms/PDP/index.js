@@ -395,7 +395,16 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
 
     let itemsNotInStock = await checkItemsInStock(payload?.items)
     if (itemsNotInStock?.length) {
-      error(`These Items ${JSON.stringify(itemsNotInStock)} are not in stock!`)
+      // error(`These Items ${JSON.stringify(itemsNotInStock)} are not in stock!`)
+      if (itemsNotInStock.length === 1) {
+        error(`Part number ${itemsNotInStock[0].sku} is out of stock.`)
+      } else {
+        error(
+          `Part numbers ${itemsNotInStock.map(
+            item => `${item.sku}`,
+          )} are out of stock.`,
+        )
+      }
       setAddingToCart(false)
     } else {
       addProductToCart(payload)
@@ -448,7 +457,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                   </Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <Link to="/category" style={{ color: '#FFFFFF' }}>
+                  <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
                     {productData?.category}
                   </Link>
                 </Breadcrumb.Item>
@@ -722,9 +731,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                       >
                                         {isLoggedIn &&
                                           '$' +
-                                            parseFloat(
-                                              item?.totalPrice || 0,
-                                            ).toFixed(2)}
+                                            Number(
+                                              parseFloat(
+                                                item?.totalPrice || 0,
+                                              ).toFixed(2),
+                                            ).toLocaleString()}
                                       </div>
                                     </div>
                                   ) : (
@@ -766,9 +777,11 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                 >
                                   {'$' +
                                     (items?.totalPackagedOrderPrice > 0
-                                      ? parseFloat(
-                                          items?.totalPackagedOrderPrice,
-                                        ).toFixed(2)
+                                      ? Number(
+                                          parseFloat(
+                                            items?.totalPackagedOrderPrice,
+                                          ).toFixed(2),
+                                        ).toLocaleString()
                                       : '0.00')}
                                 </div>
                               </div>

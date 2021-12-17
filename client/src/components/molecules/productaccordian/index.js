@@ -139,7 +139,15 @@ const ProductAccordion = ({ question }) => {
         console.log('selectedITEMP', payload)
         let stockRes = await checkItemsInStock(payload?.items)
         if (stockRes?.length) {
-          error(`This item ${JSON.stringify(stockRes)} is not in stock!`)
+          if (stockRes.length === 1) {
+            error(`Part number ${stockRes[0].sku} is out of stock.`)
+          } else {
+            error(
+              `Part numbers ${stockRes.map(
+                item => `${item.sku}`,
+              )} are out of stock.`,
+            )
+          }
           setAddToCart(false)
           return
         }
