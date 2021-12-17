@@ -18,7 +18,7 @@ baseConfig.module.rules.find(
 ).options.cacheDirectory = true
 module.exports = merge(baseConfig, {
   mode: 'development',
-  devtool: 'cheap-module-source-map',
+  devtool: '#eval-source-map',
 
   output: {
     filename: 'js/[name].js',
