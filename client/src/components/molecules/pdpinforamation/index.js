@@ -6,59 +6,36 @@ import { array, object, string } from 'yup/lib/locale'
 // import ReadMoreReact from 'read-more-react'
 import './style.scss'
 
-const PDPInformation = props => {
+const PDPInformation = ({ techInfo = [] }) => {
   const [more, setMore] = React.useState(false)
-  console.log('tech info check:', props.techInfo[0])
+
   return (
-    <>
-      <div className="Pdp-content">
-        {/* <p className='center'>{subheading}</p>
-        <h1 className='center'>{heading}</h1>
-        <Link href='#'>{pds}</Link>
-        <br />
-        <Link href='#'>{sds}</Link>
-        {paragraph.map((data, i) => (
-          <>
-            <ReadMoreReact
-              text={data.text}
-              dangerouslySetInnerHTML={{ __html: value }}
-              min={500}
-              ideal={700}
-              max={1000}
-              readMoreText={Readmore}
-            />
-          </>
-        ))} */}
-        {props.techInfo?.map((item, i) => (
-          <>
-            {console.log(item, 'itemm')}
-            <p className="coat">KLONDIKE - BRAVING THE FORCE OF MOVEMENT®</p>
-            <p key={i} className="name-info">
-              {item.name}
-            </p>
-            <p
-              dangerouslySetInnerHTML={
+    <div className="Pdp-content">
+      {techInfo.map((item, i) => (
+        <div key={i}>
+          <p className="coat">
+            <span>KLONDIKE - BRAVING THE FORCE OF MOVEMENT®</span>
+          </p>
+          <p className="name-info">{item.name}</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html:
                 !more && item.value.length > 1500
-                  ? {
-                      __html: item.value.slice(0, 1500) + '...',
-                    }
-                  : {
-                      __html: item.value,
-                    }
-              }
-              className="info-desc"
-            ></p>
-            {!more && item.value.length > 1500 && (
-              <p>
-                <button onClick={() => setMore(true)} className="button-pdp">
-                  Read more
-                </button>
-              </p>
-            )}
-          </>
-        ))}
-      </div>
-    </>
+                  ? item.value.slice(0, 1500) + '...'
+                  : item.value,
+            }}
+            className="info-desc"
+          ></p>
+          {!more && item.value.length > 1500 && (
+            <p className="r-more">
+              <button onClick={() => setMore(true)} className="button-pdp">
+                <span>Read more</span>
+              </button>
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
   )
 }
 

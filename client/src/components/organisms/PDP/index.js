@@ -994,33 +994,35 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
         </Row>
         {/* <CartDropdown productData={productData} /> */}
       </div>
-      <PDPMobile
-        pdpdata={items}
-        productData={productData}
-        isLoggedIn={isLoggedIn}
-        onQtyChange={onQtyChange}
-        onRadioChange={onChange}
-        value={value}
-        packagedOrder={packagedOrder}
-        onBulkQtyChange={onBulkQtyChange}
-        btnDisabled={btnDisabled}
-        techInfoMobile={techAttributes}
-        onSubmit={onSubmit}
-        addingToCart={addingToCart}
-        contextPlp={contextPlp}
-        categories={categories}
-        clickCategoryHandler={clickCategoryHandler}
-        subItem={subItem}
-        subItemClickHandler={subItemClickHandler}
-        isPdpLoading={isPdpLoading}
-        items={items}
-        packagedItemsCart={packagedItemsCart}
-        bulkItemsCart={bulkItemsCart}
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        getCartItems={getCartItems}
-        itemSku={itemSku}
-      />
+      {window.innerWidth < 768 ? (
+        <PDPMobile
+          pdpdata={items}
+          productData={productData}
+          isLoggedIn={isLoggedIn}
+          onQtyChange={onQtyChange}
+          onRadioChange={onChange}
+          value={value}
+          packagedOrder={packagedOrder}
+          onBulkQtyChange={onBulkQtyChange}
+          btnDisabled={btnDisabled}
+          techInfoMobile={techAttributes}
+          onSubmit={onSubmit}
+          addingToCart={addingToCart}
+          contextPlp={contextPlp}
+          categories={categories}
+          clickCategoryHandler={clickCategoryHandler}
+          subItem={subItem}
+          subItemClickHandler={subItemClickHandler}
+          isPdpLoading={isPdpLoading}
+          items={items}
+          packagedItemsCart={packagedItemsCart}
+          bulkItemsCart={bulkItemsCart}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          getCartItems={getCartItems}
+          itemSku={itemSku}
+        />
+      ) : null}
     </div>
   )
 }
