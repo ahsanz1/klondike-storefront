@@ -59,9 +59,10 @@
       top: 0%;
       right: 0%;
       bottom: getmb-vw(83px);
-      width: 200%;
+      width: 100%;
       height: getmb-vh(70px);
-      background-color: #002a3a;
+      background: url('/static/images/mbl-logo.png') no-repeat center;
+      background-color: #002a3a !important;
     }
   }
 
