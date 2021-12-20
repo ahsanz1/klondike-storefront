@@ -31,7 +31,8 @@
 }
 
 .forgot-password-container {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 3vw;
   padding-left: 9vw;
 
@@ -39,6 +40,19 @@
     width: 12vw;
     margin-left: 20px;
     border-radius: 1.1vw;
+
+    @media (max-width: 768px) {
+      width: 87.2vw;
+      height: 17vw;
+      margin: auto !important;
+      margin-top: 10px !important;
+      border-radius: 4.2vw;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-right: 6vw !important;
+    padding-left: 6vw;
   }
 }
 
@@ -50,13 +64,5 @@
   .forgot-password-container {
     display: block;
     padding-left: 6vw;
-
-    .c-button {
-      width: 87.2vw;
-      height: 17vw;
-      margin-top: 10px;
-      margin-left: 0;
-      border-radius: 4.2vw;
-    }
   }
 }
