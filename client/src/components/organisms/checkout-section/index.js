@@ -624,7 +624,7 @@ const Checkoutsection = () => {
                         <span>{`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}</span>
                         <br />
                         <span>{`${selectedLocation?.address?.phone?.number ||
-                          '-'}`}</span>
+                          ''}`}</span>
                       </span>
                     </div>
                   )}

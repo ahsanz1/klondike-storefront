@@ -85,19 +85,19 @@ const CheckoutSuccess = () => {
                 <span className="order-receipt">Print receipt</span>
               </span>
               <span className="order-number">
-                Order Number:
+                Order Number :
                 <span className="order-number-two">
                   {checkoutData?.orderId}
                 </span>
               </span>
               <span className="bold po-num">
-                PO Number: <span className="bold-two">{address?.zipCode}</span>
+                PO Number : <span className="bold-two">{address?.zipCode}</span>
               </span>
               <span className="bold">
-                Order Date: <span className="bold-two">{getDate()}</span>
+                Order Date : <span className="bold-two">{getDate()}</span>
               </span>
               <span className="bold">
-                Order Total:{' '}
+                Order Total :{' '}
                 <span className="bold-two">{`$${Number(
                   parseFloat(checkoutData?.totalAmount).toFixed(2),
                 ).toLocaleString()}`}</span>
