@@ -591,11 +591,11 @@ const Checkoutsection = () => {
                     <span>
                       <strong>{`${personalInfo?.firstName} ${personalInfo?.lastName}`}</strong>
                       <br />
-                      {`${address?.street1},`}
+                      <span>{`${address?.street1},`}</span>
                       <br />
-                      {`${address?.city}, ${address?.state} ${address?.zipCode}`}
+                      <span>{`${address?.city}, ${address?.state} ${address?.zipCode}`}</span>
                       <br />
-                      {`${address?.phone?.number}`}
+                      <span>{`${address?.phone?.number}`}</span>
                     </span>
                   </div>
                 </div>
@@ -619,11 +619,12 @@ const Checkoutsection = () => {
                       <span>
                         <strong>{`${selectedLocation?.name}`}</strong>
                         <br />
-                        {`${selectedLocation?.address?.street1},`}
+                        <span>{`${selectedLocation?.address?.street1},`}</span>
                         <br />
-                        {`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}
+                        <span>{`${selectedLocation?.address?.city}, ${selectedLocation?.address?.state} ${selectedLocation?.address?.zipCode}`}</span>
                         <br />
-                        {`${selectedLocation?.address?.phone?.number || '-'}`}
+                        <span>{`${selectedLocation?.address?.phone?.number ||
+                          '-'}`}</span>
                       </span>
                     </div>
                   )}
