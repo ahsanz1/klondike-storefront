@@ -159,10 +159,7 @@ const CartDropdown = () => {
                     ''
                   )}
                 <div className="cart-dropdown-checkout">
-                  <Link
-                    className="cart-dropdown-checkout"
-                    to="/Checkoutsection"
-                  >
+                  <Link className="cart-dropdown-checkout" to="/checkout">
                     CHECKOUT
                   </Link>
                 </div>

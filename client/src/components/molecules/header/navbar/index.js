@@ -78,9 +78,7 @@ const Navbar = ({
 
   return (
     <div
-      className={
-        location.pathname === '/Checkoutsection' ? 'hide-header' : 'header'
-      }
+      className={location.pathname === '/checkout' ? 'hide-header' : 'header'}
     >
       <div className="header__nav">
         <CartDropdown />
