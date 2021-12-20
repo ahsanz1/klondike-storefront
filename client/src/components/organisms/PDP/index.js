@@ -61,7 +61,7 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
   const { search } = useLocation()
   const { sku } = queryString.parse(search)
   const [itemSku, setItemSku] = useState(sku)
-
+  const [mouseEnter, setMouseEnter] = useState(false)
   const [productData, setProductData] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [packagedOrder, setPackagedOrder] = useState(true)
@@ -701,12 +701,22 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                                             onChange={e => onQtyChange(e, i)}
                                             disabled={!packagedOrder}
                                             size="middle"
-                                            className="input"
+                                            className={
+                                              mouseEnter
+                                                ? 'input leftText'
+                                                : 'input'
+                                            }
                                             style={{
                                               backgroundColor:
                                                 !packagedOrder &&
                                                 'rgba(255, 255, 255, 0.3)',
                                             }}
+                                            onMouseEnter={() =>
+                                              setMouseEnter(true)
+                                            }
+                                            onMouseLeave={() =>
+                                              setMouseEnter(false)
+                                            }
                                             onKeyUp={e => {
                                               if (e.target.value < 0) {
                                                 e.target.value =
