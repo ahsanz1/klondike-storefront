@@ -114,7 +114,7 @@ const CartDropdown = () => {
                   return <CartDropdownItem {...cart} key={id} />
                 })
               ) : (
-                <Label className="no-item">No items are in your cart.</Label>
+                <Label className="no-item">Your cart is empty</Label>
               )}
             </div>
           )}
