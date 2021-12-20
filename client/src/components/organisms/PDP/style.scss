@@ -194,6 +194,10 @@ $vw-viewport: 1440;
   text-align: center !important;
 }
 
+.leftText {
+  text-align: left !important;
+}
+
 .customContainer {
   // margin: auto;
   // justify-content: center;
@@ -380,5 +384,9 @@ $vw-viewport: 1440;
 
   @media (max-width: 768px) {
     font-size: 15px !important;
+  }
+
+  &:hover {
+    text-align: left !important;
   }
 }
