@@ -28,7 +28,7 @@ import {
   authRegisterFormData,
   authForgetPasswordFormData,
   referEarn,
-  shippingFormData,
+  // shippingFormData,
   category,
   shopBanner,
   authResetPasswordFormData,
@@ -346,7 +346,7 @@ const mockData = {
     },
   ],
 
-  '/Price-List': [
+  '/price-list': [
     {
       id: 'Faqs',
       params: faqsData,
@@ -374,12 +374,12 @@ const mockData = {
       params: { ...referEarn },
     },
   ],
-  '/checkout': [
-    {
-      id: 'CheckoutPage',
-      params: { ...shippingFormData },
-    },
-  ],
+  // '/checkout': [
+  //   {
+  //     id: 'CheckoutPage',
+  //     params: { ...shippingFormData },
+  //   },
+  // ],
   '/review': [
     {
       id: 'Reviews',
@@ -566,7 +566,7 @@ const mockData = {
       params: {},
     },
   ],
-  '/Checkoutsection': [
+  '/checkout': [
     {
       id: 'Checkoutsection',
       params: {},

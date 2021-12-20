@@ -442,7 +442,7 @@ const QuickOrder = () => {
     return (
       <div className="checkout-and-pricelist">
         <div className="price-list-btn">
-          <Link className="price-list-text" to="/Price-List">
+          <Link className="price-list-text" to="/price-list">
             View Price List
           </Link>
         </div>

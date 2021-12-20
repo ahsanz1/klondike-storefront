@@ -61,9 +61,7 @@ const Header = ({
   return (
     <div
       className={
-        location.pathname === '/Checkoutsection'
-          ? 'hide-mainheader'
-          : 'main-header'
+        location.pathname === '/checkout' ? 'hide-mainheader' : 'main-header'
       }
     >
       <div className="main-header__wrapper--fix">
