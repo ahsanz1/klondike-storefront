@@ -51,10 +51,16 @@ const CartDropdown = () => {
                   <Label className="cart-text">CART</Label>
                 </div>
                 <div className="cart-dropdown-header-item-no">
-                  {`${cartState?.items && cartState?.items?.length} ${
-                    cartState?.items && cartState?.items?.length < 2
-                      ? 'Item'
-                      : 'Items'
+                  {`${
+                    cartState?.items && cartState?.items?.length > 0
+                      ? cartState?.items?.length
+                      : ''
+                  } ${
+                    cartState?.items && cartState?.items?.length === 0
+                      ? ''
+                      : cartState?.items?.length < 2
+                        ? 'Item'
+                        : 'Items'
                   }`}
                 </div>
               </div>
@@ -114,7 +120,7 @@ const CartDropdown = () => {
                   return <CartDropdownItem {...cart} key={id} />
                 })
               ) : (
-                <Label className="no-item">No items are in your cart.</Label>
+                <Label className="no-item">Your cart is empty</Label>
               )}
             </div>
           )}

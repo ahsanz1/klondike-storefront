@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @import '~styles/globals';
 
 .mini-cart-item {
@@ -487,4 +488,17 @@
       }
     }
   }
+
+  .ant-input-number-handler-wrap {
+    width: 15px !important;
+  }
+
+  .ant-input-number-handler-up-inner {
+    width: auto !important;
+  }
+
+  .ant-input-number-handler-down-inner {
+    width: auto !important;
+  }
 }
+/* stylelint-enable */
