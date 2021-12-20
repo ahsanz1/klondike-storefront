@@ -103,9 +103,7 @@ const Footer = ({
   return (
     <>
       <div
-        className={
-          location.pathname === '/Checkoutsection' ? 'hide-footer' : 'footer'
-        }
+        className={location.pathname === '/checkout' ? 'hide-footer' : 'footer'}
       >
         <div className="footer-img">
           <img src={footerimg.url} alt="alt" />
@@ -247,9 +245,7 @@ const Footer = ({
       </div>
       <div
         className={
-          location.pathname === '/Checkoutsection'
-            ? 'hide-bottom-bar'
-            : 'bottom-bar'
+          location.pathname === '/checkout' ? 'hide-bottom-bar' : 'bottom-bar'
         }
       >
         <p className="policy-text">{policyText}</p>

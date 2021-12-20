@@ -77,7 +77,7 @@ const MyAccount = ({ title, logoutBtnText, accountTabsData }) => {
                 </TabsDropdown>
               </div>
               <div className="pricesheet-container">
-                <Link to="/Price-List">View Price List</Link>
+                <Link to="/price-list">View Price List</Link>
               </div>
             </div>
           </div>
