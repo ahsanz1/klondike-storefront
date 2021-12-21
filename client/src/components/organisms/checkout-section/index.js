@@ -31,6 +31,10 @@ import {
   getPickupPoints,
 } from 'libs/services/api/checkout'
 import LinkIcon from 'components/atoms/link-icon'
+import Axios from 'axios'
+import ENDPOINTS from 'libs/services/endpoints'
+import { apiDomain } from 'libs/general-config'
+import HEADERS from 'libs/services/axios/headers'
 // import { LeftOutlined } from '@ant-design/icons'
 // import AccordionComponent from 'components/molecules/accordionComponent'
 // import { Link } from 'react-router-dom'
@@ -249,6 +253,51 @@ const Checkoutsection = () => {
     return newArray
   }
 
+  const attachInvoiceURL = async (cart = {}) => {
+    const { _id } = cart
+    try {
+      const response = await Axios.get(
+        `${apiDomain}${ENDPOINTS.GET.getAllOrderLevelAttributes}`,
+        {
+          headers: HEADERS.common,
+        },
+      )
+      const { attributes = [] } = response.data
+      let invoiceURLattribute = null
+      for (const attr of attributes) {
+        if (attr.name.toLowerCase() === 'invoice url') {
+          invoiceURLattribute = attr
+        }
+      }
+      if (invoiceURLattribute) {
+        const payload = {
+          attributeId: invoiceURLattribute.attributeId,
+          attributeValue: 'NIL',
+        }
+
+        try {
+          const response = await Axios.patch(
+            `${apiDomain}${ENDPOINTS.PATCH.addAttributeToCart(_id)}`,
+            [payload],
+            {
+              headers: {
+                ...HEADERS.common,
+                Authorization: user.accessToken || '',
+              },
+            },
+          )
+          if (response.data) {
+            console.log('Invoice URL added to cart successfully', response)
+          }
+        } catch (error) {
+          console.log('Failed to add Invoice URL to cart', error)
+        }
+      } else throw new Error('Invoice URL attribute not found')
+    } catch (error) {
+      console.log('Failed to fetch all order level attributes', error)
+    }
+  }
+
   const finalCheckout = async (shipToResponse, shipMethodCost) => {
     console.log({ shipToResponse })
     var itemsTaxes = await getItemsTaxes(shipToResponse?.data?.items)
@@ -281,6 +330,7 @@ const Checkoutsection = () => {
         shipToTaxes: shipToTaxes,
       },
     }
+    await attachInvoiceURL(cartPayload)
     let finalResponse = await checkout(req)
     console.log({ finalResponse })
     if (finalResponse?.data?.checkoutComplete) {
