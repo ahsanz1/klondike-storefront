@@ -32,7 +32,7 @@ const CartDropdown = () => {
   }, [getCartItems])
 
   useEffect(() => {
-    if (cartState.hasPackaged) {
+    if (cartState && cartState.hasPackaged) {
       if (cartState.totalPackagedOrderLitres >= 900) {
         setIsPackagedFree(true)
       } else {
@@ -40,10 +40,10 @@ const CartDropdown = () => {
           parseFloat(900 - cartState.totalPackagedOrderLitres).toFixed(2),
         )
       }
-    } else if (cartState.quantity >= 500) {
+    } else if (cartState && cartState.quantity >= 500) {
       setIsBulkFree(true)
     } else {
-      setFreeBulkDiff(500 - cartState.quantity)
+      setFreeBulkDiff(500 - (cartState ? cartState.quantity : 0))
     }
   }, [cartState])
 
