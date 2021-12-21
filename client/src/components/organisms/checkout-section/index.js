@@ -263,16 +263,14 @@ const Checkoutsection = () => {
         },
       )
       const { attributes = [] } = response.data
-      let invoiceURLattribute = null
-      for (const attr of attributes) {
-        if (attr.name.toLowerCase() === 'invoice url') {
-          invoiceURLattribute = attr
-        }
-      }
+      const invoiceURLattribute = attributes.find(
+        attr => attr.name.toLowerCase().trim() === 'invoice url',
+      )
       if (invoiceURLattribute) {
         const payload = {
-          attributeId: invoiceURLattribute.attributeId,
-          attributeValue: 'NIL',
+          attributeId: invoiceURLattribute._id,
+          attributeValue:
+            'https://www.clickdimensions.com/links/TestPDFfile.pdf',
         }
 
         try {
