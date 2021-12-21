@@ -81,7 +81,6 @@ const Accounts = () => {
           {fetchedOrders &&
             fetchedOrders.length > 0 &&
             fetchedOrders.map((order, i) => {
-              console.log('order', order)
               return (
                 <div className="account-section-block" key={i}>
                   <div className="account-image-block">
