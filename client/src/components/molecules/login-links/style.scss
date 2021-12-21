@@ -32,13 +32,13 @@
 
 .forgot-password-container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   padding-bottom: 3vw;
-  padding-left: 9vw;
 
   .c-button {
-    width: 12vw;
-    margin-left: 20px;
+    width: 22.7vw;
+    margin-top: 1.38vw;
+    margin-left: 0;
     border-radius: 1.1vw;
 
     @media (max-width: 768px) {
@@ -51,18 +51,36 @@
   }
 
   @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
     padding-right: 6vw !important;
     padding-left: 6vw;
   }
+
+  img {
+    width: 20.8vw;
+
+    @media (max-width: 768px) {
+      width: 50.8vw;
+      margin-bottom: 2.66vw;
+    }
+  }
+
+  .ant-modal .ant-modal-body {
+    @media (max-width: 768px) {
+      height: 260px;
+      padding-top: 0 !important;
+    }
+  }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 768px) {
   .ant-modal .ant-modal-body {
-    height: 260px;
+    height: 69.3vw;
+    padding-top: 6.66vw !important;
   }
 
   .forgot-password-container {
-    display: block;
     padding-left: 6vw;
   }
 }
