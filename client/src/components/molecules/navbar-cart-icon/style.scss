@@ -35,6 +35,10 @@
   .navbar-cart-icon {
     z-index: 2;
 
+    @media (max-width: 768px) {
+      top: 4px;
+    }
+
     img {
       width: 1.66vw;
       height: 1.66vw;
