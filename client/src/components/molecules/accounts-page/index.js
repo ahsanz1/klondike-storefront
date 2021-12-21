@@ -81,6 +81,7 @@ const Accounts = () => {
           {fetchedOrders &&
             fetchedOrders.length > 0 &&
             fetchedOrders.map((order, i) => {
+              console.log('order', order)
               return (
                 <div className="account-section-block" key={i}>
                   <div className="account-image-block">
@@ -125,7 +126,8 @@ const Accounts = () => {
                       </Label>
                     )}
                     <a
-                      href="https://www.google.com"
+                      href={`${((order.attributes || [])[0] || {}).value ||
+                        ''}`}
                       target="_blank"
                       rel="noreferrer"
                     >
