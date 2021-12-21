@@ -18,7 +18,7 @@ export const getAttributesbyId = async itemIds => {
   }
 }
 
-export const addAttributeToCart = async (
+export const addAttributeToCartItem = async (
   cartId,
   lineItemId,
   attributeId,
@@ -26,7 +26,7 @@ export const addAttributeToCart = async (
 ) => {
   try {
     const response = await axios.common.patch(
-      ENDPOINTS.PATCH.AddAttributeToCart(cartId),
+      ENDPOINTS.PATCH.addAttributeToCartItem(cartId),
       [
         {
           lineItemId,

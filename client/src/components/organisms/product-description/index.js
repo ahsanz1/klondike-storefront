@@ -28,7 +28,7 @@ import useAddToCart from 'libs/api-hooks/useAddToCart'
 import { StyledRadio } from './constants'
 import {
   getAttributesbyId,
-  addAttributeToCart,
+  addAttributeToCartItem,
 } from 'libs/services/api/attributes-apis'
 import { benefits, bodyNutrients, badStuff, perfect } from './7BarSamplerData'
 
@@ -166,7 +166,7 @@ const ProductDescription = ({ sku }) => {
     configuredCase.forEach(({ flavor, quantity }) => {
       cases += `${flavor}\n${quantity},\n`
     })
-    const resData = await addAttributeToCart(
+    const resData = await addAttributeToCartItem(
       cartId,
       lineItemId,
       attributeId,
