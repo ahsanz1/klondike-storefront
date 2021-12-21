@@ -125,7 +125,8 @@ const Accounts = () => {
                       </Label>
                     )}
                     <a
-                      href="https://www.google.com"
+                      href={`${((order.attributes || [])[0] || {}).value ||
+                        ''}`}
                       target="_blank"
                       rel="noreferrer"
                     >
