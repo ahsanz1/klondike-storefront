@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import RightArrow from 'images/right-arrow.png'
 import Image from 'components/atoms/image'
 import './styles.scss'
-import { navigate } from '@reach/router'
+// import { navigate } from '@reach/router'
 
 const PLP = props => {
   const { setStep, plpredirect, plpDescription } = useContext(AppContext)
@@ -18,12 +18,12 @@ const PLP = props => {
 
   useEffect(() => {
     setStep(1)
-    navigate(
-      `/category?category=${contextPlp
-        .split(' ')
-        .join('-')
-        .toLowerCase()}`,
-    )
+    // navigate(
+    //   `/category?category=${contextPlp
+    //     .split(' ')
+    //     .join('-')
+    //     .toLowerCase()}`,
+    // )
   }, [])
   useEffect(() => {
     setContextPlp(plpredirect)
