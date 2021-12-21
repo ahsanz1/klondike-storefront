@@ -35,6 +35,7 @@ const ENDPOINTS = {
     getDeliverySchedule: userId =>
       `/orders/scheduled/get-by-customerId/${userId}`,
     getUserDetails: userId => `/api-commerceIdentity/user/${userId}`,
+    getAllOrderLevelAttributes: `/api-configuration/attribute/getAll/order-attributes`,
   },
   POST: {
     addToCart: '/api-cart/cart/item',
@@ -61,7 +62,8 @@ const ENDPOINTS = {
   PATCH: {
     resetPassword: '/api-commerceIdentity/auth/local/reset',
     updateShipTo: cartId => `/api-cart/cart/${cartId}/ship-to`,
-    AddAttributeToCart: cartId => `/api-cart/cart/${cartId}/item/attribute`,
+    addAttributeToCartItem: cartId => `/api-cart/cart/${cartId}/item/attribute`,
+    addAttributeToCart: cartId => `/api-cart/cart/${cartId}/attribute`,
   },
   DELETE: {},
 }

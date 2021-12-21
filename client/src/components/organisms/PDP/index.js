@@ -452,12 +452,15 @@ const PDP = ({ pdpdata, pdpdatasheet, RadioData, categories }) => {
                   </Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <Link to="/PCP" style={{ color: '#FFFFFF' }}>
+                  <Link to="/categories" style={{ color: '#FFFFFF' }}>
                     Our Products
                   </Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <Link to="/plp-page" style={{ color: '#FFFFFF' }}>
+                  <Link
+                    to={`/category?category=${productData?.category}`}
+                    style={{ color: '#FFFFFF' }}
+                  >
                     {productData?.category}
                   </Link>
                 </Breadcrumb.Item>
