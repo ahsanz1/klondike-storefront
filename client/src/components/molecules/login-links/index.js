@@ -53,19 +53,24 @@ const LoginLinks = ({ links = [] }) => {
       </div>
       <Modal visible={isModalVisible} onCancel={e => handleCancel(e)}>
         <div className="forgot-password-container">
-          <input
-            type="email"
-            placeholder="Enter Email"
-            className="label-input__input"
-            onChange={e => setEmail(e)}
-          />
-          <button
-            type="button"
-            className="c-button request-form__submit-button"
-            onClick={e => forgotPassword(e)}
-          >
-            Send Email
-          </button>
+          <div>
+            <input
+              type="email"
+              placeholder="Enter Email"
+              className="label-input__input"
+              onChange={e => setEmail(e)}
+            />
+            <button
+              type="button"
+              className="c-button request-form__submit-button"
+              onClick={e => forgotPassword(e)}
+            >
+              Send Email
+            </button>
+          </div>
+          <div>
+            <img src="/static/images/logo.png" alt="logo" />
+          </div>
         </div>
       </Modal>
     </>
