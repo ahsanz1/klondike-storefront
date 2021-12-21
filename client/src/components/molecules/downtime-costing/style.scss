@@ -28,6 +28,7 @@
 
   h1 {
     align-items: center;
+    margin-bottom: 1.0416vw;
     color: white;
     font-family: $OpenSans;
     font-size: 1.66vw;
@@ -44,6 +45,8 @@
     // }
 
     @media screen and (max-width: 500px) {
+      margin-top: 0;
+      margin-bottom: 2.66vw;
       font-size: 5.8vw;
       font-weight: bold;
       letter-spacing: 0.1vw;
@@ -102,6 +105,7 @@
       width: 87.2vw;
       //margin: 0 auto;
       //font-size: 12px;
+      margin-bottom: 0;
     }
   }
 
@@ -116,7 +120,9 @@
       color: white;
 
       h3 {
-        padding-top: 1.5vw;
+        margin-top: 1.0416vw;
+        //  padding-top: 1.5vw;
+        margin-bottom: 0.97vw;
         color: white;
         font-size: 0.833vw;
         font-weight: bold;
@@ -125,6 +131,8 @@
         //   font-size: 12px;
         // }
         @media screen and (max-width: 500px) {
+          margin-top: 3vw;
+          margin-bottom: 3vw;
           font-size: 3.7vw;
         }
       }
