@@ -92,9 +92,11 @@ const CartDropdown = () => {
           )}
           {cartState && cartState.hasPackaged && !isPackagedFree && (
             <span>
-              You are{' '}
-              <span className="free-litre-pkg">{`${freePkgDiff}L`}</span> away
-              from free shipping
+              You are{'  '}
+              <span className="free-litre-pkg">{`${
+                isNaN(freePkgDiff) ? 900 : freePkgDiff
+              }L  `}</span>{' '}
+              away from free shipping
             </span>
           )}
           {cartState && !cartState.hasPackaged && isBulkFree && (
@@ -103,7 +105,9 @@ const CartDropdown = () => {
           {cartState && !cartState.hasPackaged && !isBulkFree && (
             <span>
               You are{' '}
-              <span className="free-litre-bulk">{`${freeBulkDiff} ltrs`}</span>{' '}
+              <span className="free-litre-bulk">{`${
+                isNaN(freeBulkDiff) ? 500 : freeBulkDiff
+              } ltrs`}</span>{' '}
               away from free shipping
             </span>
           )}
@@ -115,7 +119,13 @@ const CartDropdown = () => {
           </div>
         ) : (
           // <h1 style={{ color: 'gray' }}>Loading...</h1>
-          <div className="cart-dropdown-items">
+          <div
+            className={
+              (cartState?.items && cartState?.items.length) <= 1
+                ? 'cart-dropdown-items-overflow-hidden'
+                : 'cart-dropdown-items'
+            }
+          >
             {cartState?.items && cartState?.items.length > 0 ? (
               cartState?.items.map((cartItem, id) => {
                 let cart = { cartId: cartState?._id, ...cartItem }
