@@ -93,6 +93,8 @@
     img {
       @media (max-width: 500px) {
         width: 4.8vw;
+        image-rendering: pixelated;
+        object-fit: scale-down;
       }
     }
 
