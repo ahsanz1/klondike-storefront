@@ -92,9 +92,11 @@ const CartDropdown = () => {
           )}
           {cartState && cartState.hasPackaged && !isPackagedFree && (
             <span>
-              You are{' '}
-              <span className="free-litre-pkg">{`${freePkgDiff}L`}</span> away
-              from free shipping
+              You are{'  '}
+              <span className="free-litre-pkg">{`${
+                isNaN(freePkgDiff) ? 900 : freePkgDiff
+              }L  `}</span>{' '}
+              away from free shipping
             </span>
           )}
           {cartState && !cartState.hasPackaged && isBulkFree && (
@@ -103,7 +105,9 @@ const CartDropdown = () => {
           {cartState && !cartState.hasPackaged && !isBulkFree && (
             <span>
               You are{' '}
-              <span className="free-litre-bulk">{`${freeBulkDiff} ltrs`}</span>{' '}
+              <span className="free-litre-bulk">{`${
+                isNaN(freeBulkDiff) ? 500 : freeBulkDiff
+              } ltrs`}</span>{' '}
               away from free shipping
             </span>
           )}
