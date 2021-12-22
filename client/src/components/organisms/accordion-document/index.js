@@ -20,6 +20,7 @@ const Accordiondocment = ({
   // short = false,
   tableData,
 }) => {
+  // const [link, setLink] = useState(true)
   // const { tableData } = tableProAccoData
   return (
     <>
@@ -103,32 +104,40 @@ const Accordiondocment = ({
                               </p>
                             </Col>
                             <Col lg={4} className="custom-width">
-                              <Link
-                                to={data.PSDENGLISH}
-                                className="light-text-weight"
-                              >
-                                view
-                              </Link>
+                              {data.PSDENGLISH && (
+                                <Link
+                                  to={data.PSDENGLISH}
+                                  className="light-text-weight"
+                                >
+                                  view
+                                </Link>
+                              )}
                             </Col>
                             <Col lg={3} className="custom-width">
-                              <Link to={data.PSDFRENCH}>view</Link>
+                              {data.PSDFRENCH && (
+                                <Link to={data.PSDFRENCH}>view</Link>
+                              )}
                             </Col>
                             <Col lg={3} className="custom-width">
-                              <Link
-                                to={data.SDSENGLISH}
-                                className="text-class-center"
-                              >
-                                view
-                              </Link>
+                              {data.SDSENGLISH && (
+                                <Link
+                                  to={data.SDSENGLISH}
+                                  className="text-class-center"
+                                >
+                                  view
+                                </Link>
+                              )}
                             </Col>
                             <Col lg={3} className="custom-width">
-                              <Link
-                                to={data.SDSFRENCH}
-                                className="text-class-center"
-                              >
-                                {' '}
-                                view
-                              </Link>
+                              {data.SDSFRENCH && (
+                                <Link
+                                  to={data.SDSFRENCH}
+                                  className="text-class-center"
+                                >
+                                  {' '}
+                                  view
+                                </Link>
+                              )}
                             </Col>
                           </Row>
                         </>

@@ -48,6 +48,9 @@ const QuickOrder = () => {
   const [indexState, setIndexState] = useState(0)
   const [isPackage, setIsPackage] = useState()
   const [hasCartData, setHasCartData] = useState(false)
+  const [cartItemQty, setCartItemQty] = useState(null)
+
+  const ENTER_KEY = 'Enter'
 
   useEffect(() => {
     if (getCartItems && getCartItems.items && getCartItems.items.length > 0) {
@@ -248,7 +251,7 @@ const QuickOrder = () => {
         {
           lineItemId: item.lineItemId,
           itemId: item.itemId,
-          quantity: value,
+          quantity: value === '' ? 0 : value,
           price: item.price,
         },
       ],
@@ -477,6 +480,16 @@ const QuickOrder = () => {
     )
   }
 
+  const handleCartItemQtyChange = qty => {
+    setCartItemQty(qty)
+  }
+
+  const onSubmitUpdatedQty = (e, i, item) => {
+    if (e && e.key === ENTER_KEY) {
+      onChangeqty(e.target.value, i, item)
+    }
+  }
+
   return (
     <>
       <div className="quick-order-wrapper">
@@ -605,13 +618,13 @@ const QuickOrder = () => {
                             )}
                             <InputNumber
                               min={0}
-                              max={100}
                               type="number"
-                              defaultValue={1}
                               value={item?.quantity}
                               onChange={e => onChangeqty(e, i, item)}
                               size="middle"
-                              className="input"
+                              className="qty-update-input-desktop"
+                              disabled={inputchange}
+                              onKeyDown={e => e.preventDefault()}
                             />
                           </div>
                           <div>
@@ -675,13 +688,17 @@ const QuickOrder = () => {
                                   <span className="quantity white">QTY:</span>
                                   <InputNumber
                                     min={0}
-                                    max={100}
                                     type="number"
-                                    defaultValue={1}
-                                    value={item?.quantity}
-                                    onChange={e => onChangeqty(e, i, item)}
+                                    defaultValue={item?.quantity}
+                                    value={cartItemQty || item?.quantity}
+                                    onChange={value =>
+                                      handleCartItemQtyChange(value)
+                                    }
                                     size="middle"
                                     className="input"
+                                    onKeyDown={e =>
+                                      onSubmitUpdatedQty(e, i, item)
+                                    }
                                   />
                                 </p>
                                 <button
