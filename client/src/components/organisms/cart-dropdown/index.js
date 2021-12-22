@@ -115,7 +115,15 @@ const CartDropdown = () => {
           </div>
         ) : (
           // <h1 style={{ color: 'gray' }}>Loading...</h1>
-          <div className="cart-dropdown-items">
+          <div
+            className="cart-dropdown-items"
+            style={{
+              overflow:
+                (cartState?.items && cartState?.items.length) <= 1
+                  ? 'hidden'
+                  : '',
+            }}
+          >
             {cartState?.items && cartState?.items.length > 0 ? (
               cartState?.items.map((cartItem, id) => {
                 let cart = { cartId: cartState?._id, ...cartItem }
