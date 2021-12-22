@@ -20,6 +20,9 @@ const CartDropdownItem = (cartData, key) => {
   const [cart, setCart] = useState(cartData)
   const [removing, setRemoving] = useState(false)
   const [updating, setUpdating] = useState(false)
+  const [cartItemQty, setCartItemQty] = useState(null)
+
+  const ENTER_KEY = 'Enter'
 
   useEffect(() => {
     setCart(cartData)
@@ -33,7 +36,7 @@ const CartDropdownItem = (cartData, key) => {
     })
   }
 
-  const onChange = async (qty, cart) => {
+  const onChangeQty = async (qty, cart) => {
     if (qty === null) {
       return
     }
@@ -58,7 +61,7 @@ const CartDropdownItem = (cartData, key) => {
         {
           lineItemId: cart?.lineItemId,
           itemId: cart?.itemId,
-          quantity: qty,
+          quantity: qty === '' ? 0 : qty,
           price: cart?.price,
         },
       ],
@@ -78,6 +81,16 @@ const CartDropdownItem = (cartData, key) => {
       setGetCartItemsState(userCartRes)
     }
     setRemoving(false)
+  }
+
+  const handleCartItemQtyChange = qty => {
+    setCartItemQty(qty)
+  }
+
+  const onSubmitUpdatedQty = (e, cart) => {
+    if (e && e.key === ENTER_KEY) {
+      onChangeQty(e.target.value, cart)
+    }
   }
 
   return (
@@ -129,12 +142,13 @@ const CartDropdownItem = (cartData, key) => {
               <InputNumber
                 className="product-quantity-spinner"
                 min={1}
-                max={1000}
+                // max={1000}
                 type="number"
                 disabled={updating}
                 defaultValue={cart?.quantity}
-                value={cart?.quantity}
-                onChange={e => onChange(e, cart)}
+                value={cartItemQty || cart?.quantity}
+                onChange={value => handleCartItemQtyChange(value)}
+                onKeyDown={e => onSubmitUpdatedQty(e, cart)}
               />
             </div>
             <Label className="total-price">
@@ -172,13 +186,14 @@ const CartDropdownItem = (cartData, key) => {
           <div className="quantity-box">
             <Label className="product-quantity-mobile">QTY:</Label>
             <InputNumber
-              className="product-quantity-spinner desktop"
+              className="product-quantity-spinner desktop cart-dropdown-qty-desktop"
               min={1}
-              max={1000}
+              // max={1000}
               disabled={updating}
               type="number"
               value={cart?.quantity}
-              onChange={e => onChange(e, cart)}
+              onChange={e => onChangeQty(e, cart)}
+              onKeyDown={e => e.preventDefault()}
             />
           </div>
           <Label className="total-price-desktop">

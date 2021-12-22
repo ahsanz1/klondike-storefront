@@ -434,6 +434,10 @@
   .ant-input-number {
     width: 59px !important;
 
+    .ant-input-number-handler-wrap {
+      opacity: 1;
+    }
+
     @media screen and (min-width: 768px) and (max-width: 1024px) {
       min-width: 8.2vw !important;
     }
@@ -840,5 +844,13 @@
         }
       }
     }
+  }
+}
+
+.qty-update-input-desktop {
+  .ant-input-number-input {
+    padding-right: 33px;
+    text-align: center !important;
+    caret-color: transparent;
   }
 }
