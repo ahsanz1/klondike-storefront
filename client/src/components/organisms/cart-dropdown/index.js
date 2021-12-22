@@ -125,12 +125,6 @@ const CartDropdown = () => {
                 ? 'cart-dropdown-items-overflow-hidden'
                 : 'cart-dropdown-items'
             }
-            /* style={{
-              overflow:
-                (cartState?.items && cartState?.items.length) <= 1
-                  ? 'hidden'
-                  : '',
-            }} */
           >
             {cartState?.items && cartState?.items.length > 0 ? (
               cartState?.items.map((cartItem, id) => {
