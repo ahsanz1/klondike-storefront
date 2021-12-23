@@ -278,6 +278,10 @@
         font-size: get-vw(14px);
         font-weight: normal;
         line-height: get-vw(20px);
+
+        strong {
+          font-weight: 600;
+        }
         //   color: rgba(38, 70, 83, 0.5);
         @media screen and (max-width: 768px) {
           display: none;
