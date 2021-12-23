@@ -501,4 +501,17 @@
     width: auto !important;
   }
 }
+
+.cart-dropdown-qty-desktop {
+  .ant-input-number-input {
+    caret-color: transparent;
+    padding-left: 15px !important;
+    text-align: left !important;
+
+    @media (min-width: 1440px) {
+      padding-left: 17.5px !important;
+    }
+  }
+}
+
 /* stylelint-enable */
