@@ -358,18 +358,27 @@
 
         @media (max-width: 768px) {
           display: flex;
+          //line-height: 185.5%;
+          position: absolute;
+          top: 16px;
+          right: -2px;
           align-self: flex-start;
-          margin-top: -16px;
+          //margin-top: -16px;
           // top: 10px;
           // right: 5vw;
           padding-right: 6.33vw;
           font-size: 12px;
-          line-height: 185.5%;
         }
 
         @media (min-width: 769px) and (max-width: 992px) {
           right: -3vw;
           font-size: 1.6vw;
+        }
+
+        @media (min-width: 1024px) {
+          position: absolute;
+          top: 36px;
+          right: 10px;
         }
       }
     }

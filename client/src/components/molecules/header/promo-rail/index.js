@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 // import { AppContext } from 'libs/context'
 /* eslint-disable jsx-a11y/no-onchange */
 import PropTypes from 'prop-types'
@@ -9,8 +9,8 @@ import rightImage from '/static/images/chevron right-black.png'
 import Button from 'components/atoms/button'
 // import Select from 'components/atoms/dropdown'
 import './styles.scss'
-import Cookies from 'js-cookie'
-import { AppContext } from 'libs/context'
+// import Cookies from 'js-cookie'
+// import { AppContext } from 'libs/context'
 
 const PromoRail = ({
   promoOffer = {},
@@ -25,12 +25,12 @@ const PromoRail = ({
   const [lastScrollTop, setLastScrollTop] = useState(
     window.pageYOffset || document.documentElement.scrollTop,
   )
-  const [selectedLang, setSelectedLang] = useState()
-  const { handleAppLanguage } = useContext(AppContext)
-  const langOptions = [
-    { lang: 'ENG', value: '/auto/en' },
-    { lang: 'FR', value: '/auto/fr' },
-  ]
+  // const [selectedLang, setSelectedLang] = useState()
+  // const { handleAppLanguage } = useContext(AppContext)
+  // const langOptions = [
+  //   { lang: 'ENG', value: '/auto/en' },
+  //   { lang: 'FR', value: '/auto/fr' },
+  // ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,41 +50,56 @@ const PromoRail = ({
     }
   })
 
-  useEffect(() => {
-    const lang = Cookies.get('googtrans') || '/auto/en'
-    setTimeout(() => {
-      handleLangChange(lang)
-    }, 500)
-  }, [])
+  // useEffect(() => {
+  //   const lang = Cookies.get('googtrans') || '/auto/en'
+  //   setTimeout(() => {
+  //     handleLangChange(lang)
+  //   }, 500)
+  // }, [])
 
-  const handleLangChange = (lang = '/auto/en') => {
-    if (Cookies.get('googtrans') && Cookies.get('googtrans') !== lang) {
-      Cookies.set('googtrans', lang)
-    }
+  // const handleLangChange = (lang = '/auto/en') => {
+  //   if (Cookies.get('googtrans') && Cookies.get('googtrans') !== lang) {
+  //     Cookies.set('googtrans', lang)
+  //   }
+  //   const script = document.createElement('script')
+
+  //   script.src =
+  //     '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+  //   document.head.appendChild(script)
+
+  //   if (lang === '/auto/en') {
+  //     setSelectedLang('ENG')
+  //   } else {
+  //     setSelectedLang('FR')
+  //   }
+  //   handleAppLanguage(lang)
+  // }
+
+  useEffect(() => {
     const script = document.createElement('script')
 
     script.src =
       '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-    document.head.appendChild(script)
+    script.async = true
 
-    if (lang === '/auto/en') {
-      setSelectedLang('ENG')
-    } else {
-      setSelectedLang('FR')
-    }
-    handleAppLanguage(lang)
-  }
+    document.body.appendChild(script)
+  }, [])
 
   return (
     <div className={`promo-rail ${showPromo}`}>
       <div className="promo-rail__page-width">
         <div
           style={{
-            display: 'none',
+            width: '100px',
+            color: '#000',
+            padding: 0,
+            lineHeight: '0px',
+            alignSelf: 'center',
+            outline: 'none',
           }}
           id="google_translate_element"
         ></div>
-        <select
+        {/* <select
           onChange={e => handleLangChange(e.target.value)}
           className="language-selector notranslate"
         >
@@ -97,7 +112,7 @@ const PromoRail = ({
               {option.lang}
             </option>
           ))}
-        </select>
+        </select> */}
         {/* <Select
           items={selectItem}
           style={{

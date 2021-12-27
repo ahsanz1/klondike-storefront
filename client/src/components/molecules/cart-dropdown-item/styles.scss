@@ -106,7 +106,7 @@
     }
 
     .ant-input-number {
-      width: get-vw(58px);
+      width: get-vw(59px);
       height: get-vw(30px);
       border-radius: get-vw(3px);
 
@@ -505,7 +505,7 @@
 .cart-dropdown-qty-desktop {
   .ant-input-number-input {
     caret-color: transparent;
-    padding-left: 15px !important;
+    //padding-left: 15px !important;
     text-align: left !important;
 
     @media (min-width: 1440px) {
