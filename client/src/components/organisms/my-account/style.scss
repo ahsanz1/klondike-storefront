@@ -442,8 +442,8 @@
 
 /*** TEMPORARY HEADER STYLE FIX ***/
 .main-header {
-  position: fixed;
-  z-index: 999;
+  // position: fixed;
+  // z-index: 999;
   height: auto;
 
   @media (max-width: 768px) {
