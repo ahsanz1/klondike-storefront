@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @import '~styles/globals';
 
 .quick-order-wrapper {
@@ -433,6 +434,7 @@
 
   .ant-input-number {
     width: 59px !important;
+    height: 30px;
 
     .ant-input-number-handler-wrap {
       opacity: 1;
@@ -849,8 +851,26 @@
 
 .qty-update-input-desktop {
   .ant-input-number-input {
-    padding-right: 33px;
+    //padding-right: 33px;
     text-align: center !important;
     caret-color: transparent;
+  }
+
+  .ant-input-number-input-wrap {
+    width: 44px;
+
+    .ant-input-number-input {
+      padding: 0;
+    }
+  }
+
+  .ant-input-number-handler-wrap {
+    width: 15px !important;
+
+    span {
+      span {
+        right: 2px;
+      }
+    }
   }
 }
