@@ -680,30 +680,44 @@ const QuickOrder = () => {
                                   ).toLocaleString() || ''}
                                 </p>
                               </div>
-                              <div className="remove-button">
-                                <p>
-                                  <span className="quantity white">QTY:</span>
-                                  <InputNumber
-                                    min={0}
-                                    type="number"
-                                    defaultValue={item?.quantity}
-                                    value={cartItemQty || item?.quantity}
-                                    onChange={value =>
-                                      handleCartItemQtyChange(value)
-                                    }
-                                    size="middle"
-                                    className="input"
-                                    onKeyDown={e =>
-                                      onSubmitUpdatedQty(e, i, item)
-                                    }
-                                  />
-                                </p>
-                                <button
-                                  className="quick-orde_btn"
-                                  onClick={e => itemremove(i, item)}
-                                >
-                                  Remove
-                                </button>
+                              <div
+                                className="mobile-qty-input-wrapper"
+                                style={{ textAlign: 'right' }}
+                              >
+                                {addingToCart ? (
+                                  <span
+                                    style={{ fontSize: '14px', color: 'white' }}
+                                  >
+                                    Please Wait...
+                                  </span>
+                                ) : (
+                                  ''
+                                )}
+                                <div className="remove-button">
+                                  <p>
+                                    <span className="quantity white">QTY:</span>
+                                    <InputNumber
+                                      min={0}
+                                      type="number"
+                                      defaultValue={item?.quantity}
+                                      value={cartItemQty || item?.quantity}
+                                      onChange={value =>
+                                        handleCartItemQtyChange(value)
+                                      }
+                                      size="middle"
+                                      className="input"
+                                      onKeyDown={e =>
+                                        onSubmitUpdatedQty(e, i, item)
+                                      }
+                                    />
+                                  </p>
+                                  <button
+                                    className="quick-orde_btn"
+                                    onClick={e => itemremove(i, item)}
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
                               </div>
                               <div className="Total_price">
                                 <p className="total-price white">TOTAL PRICE</p>
