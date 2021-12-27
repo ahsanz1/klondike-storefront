@@ -141,7 +141,7 @@ const CartDropdownItem = (cartData, key) => {
               className="qty-box-wrapper-mobile"
               style={{ textAlign: 'right' }}
             >
-              {!updating ? (
+              {updating ? (
                 <span style={{ fontSize: '14px' }}>Please Wait...</span>
               ) : (
                 ''
@@ -197,7 +197,7 @@ const CartDropdownItem = (cartData, key) => {
             className="qty-box-wrapper-desktop"
             style={{ textAlign: 'right' }}
           >
-            {!updating ? (
+            {updating ? (
               <span style={{ fontSize: '14px' }}>Please Wait...</span>
             ) : (
               ''
