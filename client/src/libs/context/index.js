@@ -84,6 +84,14 @@ const AppProvider = ({ children }) => {
     initialState?.personalInfo?.creditLimit || 5000,
   )
 
+  const [appLanguage, setAppLanguage] = useState('')
+
+  const handleAppLanguage = (appLang = '/auto/en') => {
+    window.localStorage.setItem('kd-lang', JSON.stringify(appLang))
+
+    setAppLanguage(appLang)
+  }
+
   const handleDisplayForm = () => {
     setIsNewAddress(!isNewAddress)
   }
@@ -339,6 +347,8 @@ const AppProvider = ({ children }) => {
         setItemList,
         loadingState,
         setLoadingState,
+        appLanguage,
+        handleAppLanguage,
         ...state,
       }}
     >
