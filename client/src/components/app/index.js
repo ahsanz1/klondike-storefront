@@ -16,7 +16,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import 'antd/dist/antd.css'
 import ErrorComponent from 'components/organisms/error-component'
 import { ErrorBoundary } from 'react-error-boundary'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 
 // const PreviewPage = lazyLoad(() => import('components/pages/cmsPreview'));
 // const XPM = lazyLoad(() => import('components/xpm-manager'))
@@ -54,10 +54,10 @@ const App = () => {
     script.async = true
     document.body.appendChild(script)
 
-    const currentLang = Cookies.get('googtrans') || null
-    if (!currentLang) {
-      Cookies.set('googtrans', '/auto/en')
-    }
+    // const currentLang = Cookies.get('googtrans') || null
+    // if (!currentLang) {
+    //   Cookies.set('googtrans', '/auto/en')
+    // }
   }, [])
 
   const handleGlobalLayout = gcData => {

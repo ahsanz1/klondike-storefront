@@ -137,19 +137,29 @@ const CartDropdownItem = (cartData, key) => {
                 </Label>
               </Label>
             </div>
-            <div className="quantity-box">
-              <Label className="product-quantity-mobile">QTY:</Label>
-              <InputNumber
-                className="product-quantity-spinner"
-                min={1}
-                // max={1000}
-                type="number"
-                disabled={updating}
-                defaultValue={cart?.quantity}
-                value={cartItemQty || cart?.quantity}
-                onChange={value => handleCartItemQtyChange(value)}
-                onKeyDown={e => onSubmitUpdatedQty(e, cart)}
-              />
+            <div
+              className="qty-box-wrapper-mobile"
+              style={{ textAlign: 'right' }}
+            >
+              {!updating ? (
+                <span style={{ fontSize: '14px' }}>Please Wait...</span>
+              ) : (
+                ''
+              )}
+              <div className="quantity-box">
+                <Label className="product-quantity-mobile">QTY:</Label>
+                <InputNumber
+                  className="product-quantity-spinner"
+                  min={1}
+                  // max={1000}
+                  type="number"
+                  disabled={updating}
+                  defaultValue={cart?.quantity}
+                  value={cartItemQty || cart?.quantity}
+                  onChange={value => handleCartItemQtyChange(value)}
+                  onKeyDown={e => onSubmitUpdatedQty(e, cart)}
+                />
+              </div>
             </div>
             <Label className="total-price">
               <p className="product-total-mobile">TOTAL PRICE</p>
@@ -183,18 +193,28 @@ const CartDropdownItem = (cartData, key) => {
           </Button>
         </div>
         <div className="quantity-block">
-          <div className="quantity-box">
-            <Label className="product-quantity-mobile">QTY:</Label>
-            <InputNumber
-              className="product-quantity-spinner desktop cart-dropdown-qty-desktop"
-              min={1}
-              // max={1000}
-              disabled={updating}
-              type="number"
-              value={cart?.quantity}
-              onChange={e => onChangeQty(e, cart)}
-              onKeyDown={e => e.preventDefault()}
-            />
+          <div
+            className="qty-box-wrapper-desktop"
+            style={{ textAlign: 'right' }}
+          >
+            {!updating ? (
+              <span style={{ fontSize: '14px' }}>Please Wait...</span>
+            ) : (
+              ''
+            )}
+            <div className="quantity-box">
+              <Label className="product-quantity-mobile">QTY:</Label>
+              <InputNumber
+                className="product-quantity-spinner desktop cart-dropdown-qty-desktop"
+                min={1}
+                // max={1000}
+                disabled={updating}
+                type="number"
+                value={cart?.quantity}
+                onChange={e => onChangeQty(e, cart)}
+                onKeyDown={e => e.preventDefault()}
+              />
+            </div>
           </div>
           <Label className="total-price-desktop">
             <p className="product-total-desktop">TOTAL PRICE</p>$

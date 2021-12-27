@@ -41,7 +41,7 @@ const Navbar = ({
     getCartItems,
     loadingState,
     setLoadingState,
-    appLanguage,
+    // appLanguage,
   } = useContext(AppContext)
 
   useEffect(() => {
@@ -133,7 +133,6 @@ const Navbar = ({
           className={
             userLoginInfo && userLoginInfo.email ? 'quick-order' : 'Buy-Button'
           }
-          style={{ left: appLanguage === '/auto/fr' ? '2vw' : '' }}
         >
           <Link
             style={{ color: '#fff' }}
