@@ -454,7 +454,7 @@ const QuickOrder = () => {
             <div className="order-price">
               <Label className="sub-total">Order Total</Label>
               <Label className="total">
-                <span>
+                <span className="notranslate">
                   $
                   {Number(
                     parseFloat(
@@ -537,14 +537,9 @@ const QuickOrder = () => {
                 <div className="item_count_mobile">
                   {getCartItems?.items?.length > 0 && (
                     <Label className="item-count">
-                      <i className="fas fa-check" aria-hidden="true"></i>
-                      You added
-                      {` ${getCartItems?.items.length} ${
-                        getCartItems?.items.length < 2
-                          ? ' new item '
-                          : ' new items '
-                      }`}
-                      to your cart
+                      {`You added ${getCartItems.items.length} new${
+                        getCartItems.items.length > 1 ? ' items' : ' item'
+                      } to your cart`}
                     </Label>
                   )}
                 </div>
@@ -589,18 +584,20 @@ const QuickOrder = () => {
                                 </p>
                               </div>
                               <div>
-                                <p>
-                                  {item?.percase ? 'PER CASE' : ''}
-                                  <span className="quick-item-description">
-                                    {item?.percase}
-                                  </span>
-                                </p>
+                                {item?.percase && (
+                                  <p>
+                                    PER CASE
+                                    <span className="quick-item-description">
+                                      {item?.percase}
+                                    </span>
+                                  </p>
+                                )}
                               </div>
                             </div>
                           </div>
 
                           <div>
-                            <p className="quickorder-Price">
+                            <p className="quickorder-Price notranslate">
                               $
                               {Number(
                                 item?.price?.base.toFixed(2),
@@ -628,7 +625,7 @@ const QuickOrder = () => {
                             />
                           </div>
                           <div>
-                            <p className="quickorder-Price subtotal-color">
+                            <p className="quickorder-Price subtotal-color notranslate">
                               $
                               {Number(
                                 item?.totalPrice?.amount.toFixed(2),
@@ -658,7 +655,7 @@ const QuickOrder = () => {
                                   </p>
                                   {item?.percase && (
                                     <p>
-                                      {item?.percase ? 'PER CASE' : ''}
+                                      PER CASE
                                       <span className="span">
                                         {item?.percase}
                                       </span>
@@ -676,7 +673,7 @@ const QuickOrder = () => {
                             <div className="quantity-container">
                               <div className="price-wrapper">
                                 <p className="price white">PRICE</p>
-                                <p className="price-value">
+                                <p className="price-value notranslate">
                                   $
                                   {Number(
                                     item?.price?.base.toFixed(2),
@@ -710,7 +707,7 @@ const QuickOrder = () => {
                               </div>
                               <div className="Total_price">
                                 <p className="total-price white">TOTAL PRICE</p>
-                                <p className="total-price-value">
+                                <p className="total-price-value notranslate">
                                   $
                                   {Number(
                                     item?.totalPrice?.amount.toFixed(2),
