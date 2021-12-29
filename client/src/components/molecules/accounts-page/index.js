@@ -11,11 +11,16 @@ import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 const Accounts = () => {
   const perPageItems = 3
-  const { user } = useContext(AppContext)
+  const {
+    user,
+    setTotalOrders,
+    totalOrders,
+    setAllOrders,
+    setOrders,
+    orders,
+  } = useContext(AppContext)
   const [size] = useWindowSize()
   const [fetchedOrders, setFetchedOrders] = useState('')
-  const [orders, setOrders] = useState([])
-  const [totalOrders, setTotalOrders] = useState(0)
 
   useEffect(() => {
     fetchOrders(0)
@@ -60,7 +65,8 @@ const Accounts = () => {
       perPageItems,
     )
     let data = ordersByUser.response.data
-    setOrders(data.orders)
+    setAllOrders(data)
+    setOrders(data?.orders)
     setTotalOrders(data?.query?.count)
   }
 
@@ -78,9 +84,8 @@ const Accounts = () => {
               ))}
             </>
           ) : null}
-          {fetchedOrders &&
-            fetchedOrders.length > 0 &&
-            fetchedOrders.map((order, i) => {
+          {fetchedOrders && fetchedOrders.length > 0
+            ? fetchedOrders.map((order, i) => {
               return (
                 <div className="account-section-block" key={i}>
                   <div className="account-image-block">
@@ -95,7 +100,7 @@ const Accounts = () => {
 
                   <div className="account-review-block">
                     <Label className="account-image-block__orderNumber">
-                      Order Number :
+                        Order Number :
                     </Label>
                     {order?.orderId && (
                       <Label className="account-image-block__orderNumberDetail">
@@ -106,7 +111,7 @@ const Accounts = () => {
                   <div className="account-date-block">
                     {order.items && (
                       <Label className="account-image-block__orderDate">
-                        Items ({order.items.length})
+                          Items ({order.items.length})
                       </Label>
                     )}
                     {order.createdAt && (
@@ -116,34 +121,37 @@ const Accounts = () => {
                     )}
                     {order.orderTotal && (
                       <Label className="account-image-block__orderPricee">
-                        ${order?.orderTotal.toFixed(2)}
+                          ${order?.orderTotal.toFixed(2)}
                       </Label>
                     )}
                     {order.status && (
                       <Label className="account-image-block__orderStatus">
-                        Status: {order.status.replace('ORDER_', ' ')}
+                          Status: {order.status.replace('ORDER_', ' ')}
                       </Label>
                     )}
                     <a
                       href={`${((order.attributes || [])[0] || {}).value ||
-                        ''}`}
+                          ''}`}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      View Invoice
+                        View Invoice
                     </a>
                   </div>
                 </div>
               )
-            })}
-          <div className="page-no" key="pagination-order-desktop">
-            <Pagination
-              defaultCurrent={1}
-              pageSize={perPageItems}
-              total={totalOrders}
-              onChange={e => fetchOrders(e)}
-            />
-          </div>
+            })
+            : 'No Orders Found!'}
+          {totalOrders > perPageItems ? (
+            <div className="page-no" key="pagination-order-desktop">
+              <Pagination
+                defaultCurrent={1}
+                pageSize={perPageItems}
+                total={totalOrders}
+                onChange={e => fetchOrders(e)}
+              />
+            </div>
+          ) : null}
         </div>
       ) : (
         <>
@@ -157,14 +165,13 @@ const Accounts = () => {
               ))}
             </>
           ) : null}
-          {fetchedOrders &&
-            fetchedOrders.length > 0 &&
-            fetchedOrders.map((order, i) => {
+          {fetchedOrders && fetchedOrders.length > 0
+            ? fetchedOrders.map((order, i) => {
               return (
                 <div key={i} className="total-item">
                   {order.items && (
                     <Label className="item-and-amount">
-                      Items ({order.items.length})
+                        Items ({order.items.length})
                     </Label>
                   )}
                   <div className="account-sections">
@@ -185,7 +192,9 @@ const Accounts = () => {
                     <div className="account-mobile-description">
                       {size < 768 && order.orderId && (
                         <div>
-                          <p className="account-mobile-label">Order Number :</p>
+                          <p className="account-mobile-label">
+                              Order Number :
+                          </p>
                           <p className="account-mobile-label">
                             {order?.orderId}
                           </p>
@@ -193,7 +202,7 @@ const Accounts = () => {
                       )}
                       {order.orderTotal && (
                         <Label className="account-mobile-orderPrice">
-                          $ {order?.orderTotal.toFixed(2)}
+                            $ {order?.orderTotal.toFixed(2)}
                         </Label>
                       )}
                       {/* {order.totalQuantity && (
@@ -208,22 +217,25 @@ const Accounts = () => {
                      )} */}
                       {order.status && (
                         <Label className="account-image-block__orderStatus">
-                          Status: {order.status.replace('ORDER_', ' ')}
+                            Status: {order.status.replace('ORDER_', ' ')}
                         </Label>
                       )}
                     </div>
                   </div>
                 </div>
               )
-            })}
-          <div className="page-no" key="pagination-order-mobile">
-            <Pagination
-              defaultCurrent={1}
-              pageSize={perPageItems}
-              total={totalOrders}
-              onChange={e => fetchedOrders(e)}
-            />
-          </div>
+            })
+            : 'No Orders Found!'}
+          {totalOrders > perPageItems ? (
+            <div className="page-no" key="pagination-order-mobile">
+              <Pagination
+                defaultCurrent={1}
+                pageSize={perPageItems}
+                total={totalOrders}
+                onChange={e => fetchedOrders(e)}
+              />
+            </div>
+          ) : null}
         </>
       )}
     </div>

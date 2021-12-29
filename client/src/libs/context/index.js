@@ -15,6 +15,9 @@ const AppProvider = ({ children }) => {
   const [loginBottom, setLoginBottom] = useState(false)
   const [step, setStep] = useState(1)
   const [checked, setChecked] = useState(0)
+  const [AllOrders, setAllOrders] = useState('')
+  const [orders, setOrders] = useState([])
+  const [totalOrders, setTotalOrders] = useState(0)
   const [shippingServicePrice, setShippingServicePrice] = useState('')
   const [shippingServiceName, setShippingServiceName] = useState('')
   const [formikValues, setFormikValues] = useState({})
@@ -242,10 +245,16 @@ const AppProvider = ({ children }) => {
         handleCheckedChange,
         shippingServiceName,
         setShippingServiceName,
+        AllOrders,
+        setAllOrders,
         formikValues,
         setFormikValues,
         submitPayment,
         setSubmit,
+        setOrders,
+        orders,
+        setTotalOrders,
+        totalOrders,
         setSubmitPayment,
         shippingAddress,
         setShippingAddress,
