@@ -56,7 +56,7 @@ const PackageOrder = ({
           console.log('InputList', x)
           return (
             <div key={i}>
-              <div className="text-fields">
+              <div className="text-fields" style={{ paddingBottom: 0 }}>
                 <div>
                   <input
                     list="partnumber"
@@ -79,7 +79,10 @@ const PackageOrder = ({
                   </datalist>
                 </div>
 
-                <div className="package-qty">
+                <div
+                  className="package-qty"
+                  style={{ width: 'min-content', textAlign: 'center' }}
+                >
                   <input
                     min="1"
                     name="quantity"
@@ -97,11 +100,20 @@ const PackageOrder = ({
                   {qtyerror && (
                     <span className="packageqty-error">Please Entre QTY</span>
                   )}
-                  {!qtyerror && validation && inputList[0].quantity === '' && (
-                    <div style={{ color: 'red' }} className="validation">
-                      Please Enter Quantity
-                    </div>
-                  )}
+                  {/* {!qtyerror && validation && inputList[0].quantity === '' && ( */}
+                  <div
+                    style={{
+                      color: 'red',
+                      opacity:
+                        !qtyerror && validation && inputList[0].quantity === ''
+                          ? 1
+                          : 0,
+                    }}
+                    className="validation"
+                  >
+                    Please Enter Quantity
+                  </div>
+                  {/* )} */}
                 </div>
                 <div className="remove-rowbtn">
                   {InputList.length > 1 && InputList.length - 1 === i && (
@@ -117,7 +129,7 @@ const PackageOrder = ({
             </div>
           )
         })}
-        <div className="submit-btns">
+        <div className="submit-btns" style={{ paddingTop: 0 }}>
           <Button className="row-btn" onClick={rowHandler}>
             ADD ROW
           </Button>
