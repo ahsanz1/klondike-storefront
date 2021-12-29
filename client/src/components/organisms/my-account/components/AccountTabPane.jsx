@@ -8,9 +8,14 @@ import { Skeleton } from 'antd'
 import { getOrdersByUser } from 'libs/services/api/orders.api'
 
 const AccountTabPane = ({ data, title }) => {
-  // const perPageItems = 3
-  const { creditLimit, user, personalInfo } = useContext(AppContext)
-  // const [totalOrders, setTotalOrders] = useState(0)
+  const {
+    creditLimit,
+    user,
+    personalInfo,
+    setTotalOrders,
+    setOrders,
+    AllOrders,
+  } = useContext(AppContext)
   const [shipmentDetails, setShipmentDetails] = useState('')
 
   useEffect(() => {
@@ -19,9 +24,51 @@ const AccountTabPane = ({ data, title }) => {
 
   const fetchShipment = async offset => {
     const ordersByUser = await getOrdersByUser(user.accessToken, offset, 2)
-    let data = ordersByUser.response.data
-    setShipmentDetails(data.orders)
-    // setTotalOrders(data?.query?.count)
+    let data = ordersByUser?.response?.data
+    setShipmentDetails(data?.orders)
+  }
+
+  const orderFilter = value => {
+    switch (value) {
+      case 'All':
+        setOrders(AllOrders?.orders)
+        setTotalOrders(AllOrders?.query?.count)
+        break
+
+      case 'Created':
+        filter('ORDER_CREATED')
+        break
+
+      case 'Confirmed':
+        filter('ORDER_CONFIRMED')
+        break
+
+      case 'Cancelled':
+        filter('ORDER_CANCELLED')
+        break
+
+      case 'Shipped':
+        filter('ORDER_SHIPPED')
+        break
+
+      case 'Delivered':
+        filter('ORDER_DELIVERED')
+        break
+    }
+
+    console.log('filter', value)
+  }
+
+  const filter = async status => {
+    let bulk = []
+    await AllOrders?.orders.map(v => {
+      if (v.status === status) {
+        bulk.push(v)
+      }
+    })
+
+    setOrders(bulk)
+    setTotalOrders(AllOrders?.query?.statusCounts[status])
   }
 
   return (
@@ -111,8 +158,13 @@ const AccountTabPane = ({ data, title }) => {
                   <div className="order-filter">
                     <Label>
                       FILTER BY STATUS{' '}
-                      <select>
+                      <select onInput={e => orderFilter(e.currentTarget.value)}>
                         <option>All</option>
+                        <option>Created</option>
+                        <option>Confirmed</option>
+                        <option>Delivered</option>
+                        <option>Cancelled</option>
+                        <option>Shipped</option>
                       </select>
                     </Label>
                   </div>
